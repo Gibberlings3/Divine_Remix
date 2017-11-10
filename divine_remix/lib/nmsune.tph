@@ -1,0 +1,34 @@
+COPY ~divine_remix/2da/nmsune.2DA~ ~override~
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi411.spl~ ~override/nmsun07.spl~ // emotion
+              ~sppr503.spl~ ~override/nmsun09.spl~ // flame strike
+              ~spwi607.spl~ ~override/nmsun11.spl~ // mislead
+              ~spwi708.spl~ ~override/nmsun14.spl~ // mantle
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY ~Divine_Remix/spl/nmsun0b.spl~ ~override~  // Shock Flail (innate)
+  SAY NAME1 @12403
+  SAY NAME2 @12403
+  SAY UNIDENTIFIED_DESC @12404
+  SAY DESC @12404
+
+COPY ~Divine_Remix/bam/nmisune.bam~  ~override~
+COPY ~Divine_Remix/itm/nmsune00.itm~ ~override~  // Shock Flail +0
+  SAY NAME1 @12403
+  SAY NAME2 @12403
+  SAY UNIDENTIFIED_DESC @12404
+  SAY DESC @12404
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~nmsune00.itm~ ~override/nmsune01.itm~  // shock flail +1
+              ~nmsune00.itm~ ~override/nmsune02.itm~  // shock flail +2
+              ~nmsune00.itm~ ~override/nmsune03.itm~  // shock flail +3
+              ~nmsune00.itm~ ~override/nmsune04.itm~  // shock flail +4
+              ~nmsune00.itm~ ~override/nmsune05.itm~  // shock flail +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C "%weap_idx%"
+  WRITE_SHORT 0x84 (5 - "%weap_idx%")

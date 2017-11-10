@@ -1,0 +1,17 @@
+IF // sends Selune clerics to Lathander
+        Global("GaalSpoke","AR0900",1)
+        Kit(Player1,CDSELUNE)
+	OR(6)
+	  Class(Player1,CLERIC)
+	  Class(Player1,FIGHTER_CLERIC)
+	  Class(Player1,CLERIC_MAGE)
+	  Class(Player1,CLERIC_THIEF)
+	  Class(Player1,FIGHTER_MAGE_CLERIC)
+	  Class(Player1,CLERIC_RANGER)
+THEN
+	RESPONSE #100
+		Wait(2)
+		CreateCreature("bharval",[3077.1630],2) // High Mornmaster Arval
+		SetGlobal("GoodMask","AR0900",1)
+		SetGlobal("GaalSpoke","AR0900",2)
+END

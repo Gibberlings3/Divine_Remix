@@ -1,0 +1,3844 @@
+BACKUP   ~divine_remix/backup~    // location to store files for uninstall purposes
+AUTHOR   ~pcamagna@yahoo.com~  // email address displayed if install fails
+
+ALWAYS
+
+  INCLUDE ~divine_remix/lib/macros.tph~ // defines patch macro
+  INCLUDE ~divine_remix/lib/fl#add_kit_ee.tpa~         // for ee kit features
+  OUTER_SET bio = "-1"
+
+  ACTION_IF NOT VARIABLE_IS_SET cd_always THEN BEGIN
+
+    OUTER_SET cd_always = 1 // just do this part once per install
+
+    INCLUDE ~divine_remix/lib/ids_stuff.tph~             // ids fixes
+
+    // Borrowed from Edwin Romance: convert strings to UTF-8 for BGEE/BG2EE
+    INCLUDE ~%MOD_FOLDER%/lib/handle_charsets.tpa~
+    ACTION_DEFINE_ARRAY cdnoconvert BEGIN setup END
+    ACTION_DEFINE_ARRAY cdreload BEGIN divine_remix kit_sphere END
+    LAF HANDLE_CHARSETS
+      INT_VAR
+        infer_charset = 1
+      STR_VAR
+        tra_path = EVAL ~%MOD_FOLDER%/languages~
+        // charset_table = cdcharsets // Included for illustrative purposes.
+        noconvert_array = cdnoconvert
+        reload_array = cdreload
+    END
+  
+  END
+
+END
+
+VERSION  ~v8~
+
+README   ~divine_remix/readme-divine_remix.html~
+
+ASK_EVERY_COMPONENT
+
+AUTO_TRA ~divine_remix/languages/%s~
+LANGUAGE
+  ~English~
+  ~english~
+  ~divine_remix/languages/english/setup.tra~
+  ~divine_remix/languages/english/divine_remix.tra~
+LANGUAGE
+  ~Francais (by Sanctifer)~
+  ~french~
+  ~divine_remix/languages/english/setup.tra~
+  ~divine_remix/languages/english/divine_remix.tra~
+  ~divine_remix/languages/french/setup.tra~
+  ~divine_remix/languages/french/divine_remix.tra~
+/*
+LANGUAGE
+  ~Polski (by yarpen)~
+  ~polski~
+  ~divine_remix/languages/english/setup.tra~
+  ~divine_remix/languages/polski/setup.tra~
+LANGUAGE
+  ~Czech (by Neferit, Katie, and Ondrej)~
+  ~czech~
+  ~divine_remix/languages/english/setup.tra~
+  ~divine_remix/languages/czech/setup.tra~
+*/
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Add new spells                                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Add new, overwrite other mods                    \\\\\
+/////                                                  \\\\\
+
+BEGIN @1001 DESIGNATED 10 // component 0
+SUBCOMPONENT @1000
+GROUP @10 GROUP @11 GROUP @13 // GROUP @12
+
+OUTER_SET overwrite = 1
+INCLUDE ~divine_remix/lib/new_spells.tph~
+
+/////                                                  \\\\\
+///// Only add new, don't overwrite other mods         \\\\\
+/////                                                  \\\\\
+
+BEGIN @1002 DESIGNATED 11 // component 0
+SUBCOMPONENT @1000
+GROUP @10 GROUP @11 GROUP @13 // GROUP @12
+
+OUTER_SET overwrite = 0
+INCLUDE ~divine_remix/lib/new_spells.tph~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Kit removing components                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// remove cleric kits, mod                          \\\\\
+/////                                                  \\\\\
+
+BEGIN @5000 DESIGNATED 50
+SUBCOMPONENT @5002
+GROUP @15
+
+LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = c END
+
+/////                                                  \\\\\
+///// remove cleric kits, all                          \\\\\
+/////                                                  \\\\\
+
+BEGIN @5001
+SUBCOMPONENT @5002
+GROUP @15
+
+LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = c END
+
+/////                                                  \\\\\
+///// remove druid kits, mod                           \\\\\
+/////                                                  \\\\\
+
+BEGIN @5000
+SUBCOMPONENT @5003
+GROUP @15
+
+LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = d END
+
+/////                                                  \\\\\
+///// remove druid kits, all                           \\\\\
+/////                                                  \\\\\
+
+BEGIN @5001
+SUBCOMPONENT @5003
+GROUP @15
+
+LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = d END
+
+/////                                                  \\\\\
+///// remove paladin kits, mod                         \\\\\
+/////                                                  \\\\\
+
+BEGIN @5000
+SUBCOMPONENT @5004
+GROUP @15
+
+LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = p END
+
+/////                                                  \\\\\
+///// remove paladin kits, all                         \\\\\
+/////                                                  \\\\\
+
+BEGIN @5001
+SUBCOMPONENT @5004
+GROUP @15
+
+LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = p END
+
+/////                                                  \\\\\
+///// remove ranger kits, mod                          \\\\\
+/////                                                  \\\\\
+
+BEGIN @5000
+SUBCOMPONENT @5005
+GROUP @15
+
+LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = r END
+
+/////                                                  \\\\\
+///// remove ranger kits, all                          \\\\\
+/////                                                  \\\\\
+
+BEGIN @5001
+SUBCOMPONENT @5005
+GROUP @15
+
+LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = r END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Cleric Remix                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @10000 DESIGNATED 100
+GROUP @10
+
+COPY ~divine_remix/2da/mxsplprs.2da~ ~override~
+
+/////                                                  \\\\\
+///// universal elements for kit priests               \\\\\
+/////                                                  \\\\\
+
+// only if alignments not already shifted
+ACTION_IF NOT FILE_CONTAINS_EVALUATED (~alignment.2da~ ~^LATHANDER[ %TAB%]+1[ %TAB%]+0[ %TAB%]+0[ %TAB%]+1[ %TAB%]+1[ %TAB%]+0[ %TAB%]+1[ %TAB%]+0[ %TAB%]+0~) THEN BEGIN
+
+  COPY_EXISTING ~alignmnt.2da~ ~override~
+    REPLACE_TEXTUALLY ~^TALOS[ %TAB%]+.+~     ~TALOS     0 0 0 0 0 1 0 1 1~
+    REPLACE_TEXTUALLY ~^HELM[ %TAB%]+.+~      ~HELM      1 1 1 0 1 0 0 0 0~
+    REPLACE_TEXTUALLY ~^LATHANDER[ %TAB%]+.+~ ~LATHANDER 1 0 0 1 1 0 1 0 0~
+    PRETTY_PRINT_2DA
+    BUT_ONLY
+
+  ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+    COMPILE ~divine_remix/dlg/temple.d~
+
+    EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/ar0900.baf~
+    EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/ar0901.baf~
+    EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/ar0902.baf~
+    EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/ar0904.baf~
+
+  END
+
+END
+
+// new descripts
+COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
+  SPRINT mixed_match @10133 // Priest
+  SPRINT lower_match @10134 // priest
+  SPRINT upper_match @10135 // PRIEST
+  COUNT_2DA_ROWS 9 rows
+  FOR (index = 0 ; index < rows ; ++index) BEGIN
+    READ_2DA_ENTRY index 5 8 clab
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr02" = 0) BEGIN // talos
+      SPRINT mixed_replace @10136 // Stormlord
+      SPRINT lower_replace @10137 // stormlord
+      SPRINT upper_replace @10138 // STORMLORD
+      LAUNCH_PATCH_MACRO cd_descript_replace
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "clabpr03" = 0) BEGIN // helm
+      SPRINT mixed_replace @10139 // Watcher
+      SPRINT lower_replace @10140 // watcher
+      SPRINT upper_replace @10141 // WATCHER
+      LAUNCH_PATCH_MACRO cd_descript_replace
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "clabpr04" = 0) BEGIN // lathander
+      SPRINT mixed_replace @10142 // Morninglord
+      SPRINT lower_replace @10143 // morninglord
+      SPRINT upper_replace @10144 // MORNINGLORD
+      LAUNCH_PATCH_MACRO cd_descript_replace
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "ohtempus" = 0) BEGIN // tempus
+      SPRINT mixed_replace @10145 // Battleguard
+      SPRINT lower_replace @10146 // battleguard
+      SPRINT upper_replace @10147 // BATTLEGUARD
+      LAUNCH_PATCH_MACRO cd_descript_replace
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "ohtyr" = 0) BEGIN // tyr
+      SPRINT mixed_replace @10148 // Holy Justice
+      SPRINT lower_replace @10149 // holy justice
+      SPRINT upper_replace @10150 // HOLY JUSTICE
+      LAUNCH_PATCH_MACRO cd_descript_replace
+    END
+  END
+  BUT_ONLY
+
+/////                                                  \\\\\
+///// Changes to HLAs and holy symbols for ToB         \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~bgt tob bg2ee~ THEN BEGIN // holy symbols
+
+  COPY ~divine_remix/spl/CDHLYSYM.spl~ ~override~
+       ~divine_remix/spl/CDHLYSY2.spl~ ~override~
+       ~divine_remix/itm/CDHLYSYM.itm~ ~override~
+
+  COPY_EXISTING ~clabpr02.2da~ ~override~
+                ~clabpr03.2da~ ~override~
+                ~clabpr04.2da~ ~override~
+    REPLACE_TEXTUALLY ~AP_SPCl93[123] ~ ~AP_CDHLYSYM~
+    BUT_ONLY_IF_IT_CHANGES
+  
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_holy_symbol BEGIN
+    GODHELM      => BELT13
+    GODLATHANDER => BELT12
+    GODTALOS     => BELT14
+  END
+  
+  ACTION_PHP_EACH cd_holy_symbol AS kit => symbol BEGIN
+  
+    OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+  
+      EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+      EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+  
+    END
+
+  END
+
+  COPY_EXISTING ~belt12.itm~ ~override~ // Lathander Holy symbol
+    SAY UNIDENTIFIED_DESC @10183
+    SAY DESC @10183
+    READ_BYTE  0x1E "use1"
+    WRITE_BYTE 0x1E ("%use1%" BAND 0b11110111) // unusable by evil alignments
+
+  COPY_EXISTING ~belt13.itm~ ~override~ // Helm Holy Symbol
+    SAY UNIDENTIFIED_DESC @10187
+    SAY DESC @10187
+    READ_BYTE  0x1E "use1"
+    WRITE_BYTE 0x1E (("%use1%" BAND 0b11111001) BOR 0b00000001) // unusable by chaotic alignments
+
+  COPY_EXISTING ~belt14.itm~ ~override~ // Talos holy symbol
+    SAY UNIDENTIFIED_DESC @10182
+    SAY DESC @10182
+    READ_BYTE  0x1E "use1"
+    WRITE_BYTE 0x1E (("%use1%" BAND 0b11110111) BOR 0b00010000) // unusable by lawful and good alignments
+
+END
+
+/////                                                  \\\\\
+///// misc                                             \\\\\
+/////                                                  \\\\\
+
+// added at Idobek's request for NPC Kit compatibility
+ACTION_IF FILE_EXISTS_IN_GAME ~ikitano1.spl~ THEN BEGIN
+
+  COPY_EXISTING ~ikitano1.spl~ ~override~
+    SAY 0x9e @10101
+
+END
+
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+// find tempus, tyr kit in kitlist
+COPY_EXISTING ~kitlist.2da~ ~override~
+  SET ohtyr    = 0
+  SET ~a#temp~ = 0
+  COUNT_2DA_ROWS ~9~ "rows"
+  FOR (index = rows ; index > 31 ; --index) BEGIN
+    READ_2DA_ENTRY index 5 9 clab
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "OHTEMPUS" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 ~a#temp~
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "OHTYR" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 ohtyr
+    END
+  END
+  BUT_ONLY_IF_IT_CHANGES
+
+OUTER_SET kit = 19 // talos
+ACTION_FOR_EACH creature IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos nalla scyarryl talmiss talvilon vvpriest yssold16 BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~  
+      WRITE_SHORT   0x244 0
+      WRITE_BYTE    0x246 "%kit%"
+      WRITE_BYTE    0x247 0x40
+      BUT_ONLY
+
+  END
+
+END
+
+OUTER_SET kit = 20 // helm
+ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig sctelwyn BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~  
+      WRITE_SHORT   0x244 0
+      WRITE_BYTE    0x246 "%kit%"
+      WRITE_BYTE    0x247 0x40
+      BUT_ONLY
+
+  END
+
+END
+
+OUTER_SET kit = 21 // lathander
+ACTION_FOR_EACH creature IN acolyte2 amtcle01 amtcler0 arenthis arval bharval c6cler1 cllatp01 cscleric dawnmas latlara scsain BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~  
+      WRITE_SHORT   0x244 0
+      WRITE_BYTE    0x246 "%kit%"
+      WRITE_BYTE    0x247 0x40
+      BUT_ONLY
+
+  END
+
+END
+
+ACTION_IF ohtyr != 0 THEN BEGIN
+
+  OUTER_SET kit = "%ohtyr%" // tyr
+  ACTION_FOR_EACH creature IN ohdcru01 ohdcru02 ohdlufc1 ohdlumc1 ohdneo03 ohdneo04 ohdppe01 ohdppe02 ohdrdef ohdtree1 BEGIN
+
+    ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+      COPY_EXISTING ~%creature%.cre~ ~override~
+        WRITE_SHORT   0x244 0
+        WRITE_BYTE    0x246 "%kit%"
+        WRITE_BYTE    0x247 0x40
+        BUT_ONLY
+
+    END
+
+  END
+
+END
+
+ACTION_IF "%a#temp%" != 0 THEN BEGIN
+
+  OUTER_SET kit = "%a#temp%" // tempus
+  ACTION_FOR_EACH creature IN kpchap01 everard accalia BEGIN
+
+    ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+      COPY_EXISTING ~%creature%.cre~ ~override~
+        WRITE_SHORT   0x244 0
+        WRITE_BYTE    0x246 "%kit%"
+        WRITE_BYTE    0x247 0x40
+        BUT_ONLY
+
+    END
+
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Silverstar of Selûne                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @10300 DESIGNATED 103 // component 103
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+
+COPY ~divine_remix/bam/CDMNSHLB.bam~ ~override~ /// use spell shield BAM for moon shield
+
+COPY ~divine_remix/spl/cdslmsd.spl~ ~override~  // Moon Shield (innate spell)
+  // temp to get some strings into the game
+  PATCH_IF ((GAME_IS ~bgee bg2ee~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @10322
+      READ_LONG NAME1 bio
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+  SAY NAME1 @10307
+  SAY NAME2 @10307
+  SAY UNIDENTIFIED_DESC @10308
+  SAY DESC @10308
+
+// change spells to innates as needed
+COPY_EXISTING ~sppr403.spl~  ~override/cdslfre.spl~ // free action (innate)
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/cdselune.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~cdslfre~ // free action as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~cdslmsd~ // moon shield as 1/10
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~CDSelune~
+  ~CDSelune                0           0           1           1           0           1           0           0~
+  ~CDSelune 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~CDSelune                0       0       0       0       9       0~
+  ~CDSelune                0       0       0       0       0       0~
+  ~CDSelune                0       0       0       0       17      0~
+  ~CDSelune                0       0       0       0       15      0~
+  ~CDSelune                0       0       0       1       0       0       1       1       0~
+  ~CDSelune                1       0       1       1       0       1~
+  ~override/cdselune.2da~
+  ~K_C_D K_C_E K_C_G K_C_H K_C_HE K_C_HL K_C_HO~
+  ~0x00004000     3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+  SAY @10305
+  SAY @10301
+  SAY @10321
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = CDSelune
+    clascolr = ~35 21 58 25 80~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~J#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%CDSelune%")
+    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
+    END
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    CDSelune
+  OUTER_SPRINT symbol cdslhly
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/bam/cdislhly.bam~ ~override~ // holy symbol
+  COPY ~divine_remix/bam/cdpslhly.bam~ ~override~
+  COPY ~divine_remix/itm/cdslhly.itm~ ~override~
+    SAY NAME1 @10319
+    SAY NAME2 @10319
+    SAY UNIDENTIFIED_DESC @10320
+    SAY DESC @10320
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/Selune_ar0900.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/Selune_ar0902.baf~
+  COMPILE ~divine_remix/dlg/selune.d~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Nightcloak of Shar                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @10600 DESIGNATED 106 // component 106
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi401.spl~ ~override/a#sha09.spl~ // confusion
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY ~divine_remix/spl/cdshar2.spl~ ~override~  // dark bolt
+  // temp to get some strings into the game
+  PATCH_IF ((GAME_IS ~bgee bg2ee~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @10620
+      READ_LONG NAME1 bio
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+  SAY NAME1 @10621
+  SAY NAME2 @10621
+  SAY UNIDENTIFIED_DESC @10622
+  SAY DESC @10622
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR resource = SPCRTWPN END
+
+COPY ~divine_remix/bam/a#sha01.bam~ ~override~ // bams for dark bolt
+     ~divine_remix/bam/a#sha02.bam~ ~override~
+
+COPY ~divine_remix/itm/cdshar2.itm~ ~override~  // dark bolt
+  SAY NAME1 @10621
+  SAY NAME2 @10621
+  SAY UNIDENTIFIED_DESC @10622
+  SAY DESC @10622
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/a#shar.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#sha09~ // free action as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~cdshar2~ // dark bolt as 1/10
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~A#SHAR~
+  ~A#SHAR                  0           0           1           1           0           1           0           0~
+  ~A#SHAR 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#SHAR	0	0	0	0	9	0~
+  ~A#SHAR		0	0	0	0	0	0~
+  ~A#SHAR		0	0	0	0	17	0~
+  ~A#SHAR		0	0	0	0	15	0~
+  ~A#SHAR		0	0	1	0	1	1	0	0	1~
+  ~A#SHAR		1	0	1	1	0	1~
+  ~override/a#shar.2DA~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000	3~
+  ~cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @10603
+  SAY @10601
+  SAY @10619
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~a#shar~
+    clascolr = ~35 66 60 25 80~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%A#SHAR%")
+    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
+    END
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    ~A#SHAR~
+  OUTER_SPRINT symbol ~a#sha25~
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/itm/a#sha25.itm~ ~override~  // holy symbol
+    SAY NAME1 @10615
+    SAY NAME2 @10615
+    SAY DESC  @10616
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/Shar_ar0900.baf~
+  EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/Shar_ar0904.baf~
+  COMPILE ~divine_remix/dlg/shar.d~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Holy Strategist of the Red Knight                \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @10700 DESIGNATED 107 // component 107
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+
+COPY ~divine_remix/spl/a#re0b.spl~ ~override~  // Additional Attack per round (innate)
+  PATCH_IF ((GAME_IS ~bgee bg2ee~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @10716
+      READ_LONG NAME1 bio
+      WRITE_LONG NAME1 `0
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi305.spl~ ~override/a#re07.spl~ // haste
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/a#red.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~ // free action as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~****   ~ // nothing as 1/10
+  SET_2DA_ENTRY 2 14 50 ~AP_a#re0b~     // extra attack
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~A#RED~
+  ~A#RED                   0           0           1           1           0           1           0           0~
+  ~A#RED  0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#RED 	0	0	0	0	9	0~
+  ~A#RED 		0	0	0	0	0	0~
+  ~A#RED 		0	0	0	0	17	0~
+  ~A#RED 		0	0	0	0	15	0~
+  ~A#RED 		1	1	1	0	0	0	0	0	0~
+  ~A#RED 		1	0	1	1	0	1~
+  ~override/a#red.2da~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000 3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @10714
+  SAY @10701
+  SAY @10715
+  
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~a#red~
+    clascolr = ~35 63 47 25 80~
+END
+
+  
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%A#RED%")
+    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
+    END
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    ~A#RED~
+  OUTER_SPRINT symbol ~a#red25~
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/bam/cdirdhly.bam~ ~override~ // holy symbol
+  COPY ~divine_remix/bam/cdprdhly.bam~ ~override~
+  COPY ~divine_remix/itm/a#red25.itm~  ~override~
+    SAY NAME1 @10710
+    SAY NAME2 @10710
+    SAY DESC  @10711
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/red_ar0900.baf~
+  EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/red_ar0901.baf~
+  COMPILE ~divine_remix/dlg/red.d~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Battleguard of Tempus                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @10900 DESIGNATED 109// component 109
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~ohtempus.2da~ @14
+
+// change spells to innates as needed
+COPY_EXISTING ~sppr412.spl~ ~override/a#tem07.spl~ // holy power
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/a#temp.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#tem07~ // free action as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~spcl321~ // enrage as 1/10
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~A#TEMP~
+  ~A#TEMP                  0           0           1           1           0           1           0           0~
+  ~A#TEMP 0 0 0 0 2 2 0 0 0 0 0 0 0 0 0 0 2 2 0 0 2 2 2 0 0 0 0 0 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#TEMP	        0       0       0       0       9       0~
+  ~A#TEMP		0	0	0	0	0	0~
+  ~A#TEMP		0	0	0	0	17	0~
+  ~A#TEMP		0	0	0	0	15	0~
+  ~A#TEMP		0	0	0	0	1	0	1	1	1~
+  ~A#TEMP		1	0	1	1	0	1~
+  ~override/a#temp.2da~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000	3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @10914
+  SAY @10901
+  SAY @10915
+  
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = ~a#temp~
+    clascolr = ~80 126 127 93 97~
+    clswpbon = ~1 0 3~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%A#TEMP%")
+    FOR (row = 2; row < 25 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~2~
+    END
+    SET_2DA_ENTRY_LATER ~aoe~ 4 column ~0~
+    SET_2DA_ENTRY_LATER ~aoe~ 9 column ~0~
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    ~A#temp~
+  OUTER_SPRINT symbol ~a#tem25~
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/bam/cditmhly.bam~ ~override~ // holy symbol
+  COPY ~divine_remix/bam/cdptmhly.bam~ ~override~
+  COPY ~divine_remix/itm/a#tem25.itm~  ~override~
+    SAY NAME1 @10910
+    SAY NAME2 @10910
+    SAY UNIDENTIFIED_DESC @10911
+    SAY DESC @10911
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/tempus_ar0900.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/tempus_ar0904.baf~
+  COMPILE ~divine_remix/dlg/tempus.d~
+
+END
+
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = "%A#TEMP%" // tempus
+ACTION_FOR_EACH creature IN kpchap01 everard accalia BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~
+      WRITE_SHORT   0x244 0
+      WRITE_BYTE    0x246 "%kit%"
+      WRITE_BYTE    0x247 0x40
+      BUT_ONLY
+
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Painbearer of Ilmater                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @11200 DESIGNATED 112 // component 112
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+
+COPY ~divine_remix/bam/cdilenda.bam~ ~override~ // Ilmater's Endurance (innate)
+     ~divine_remix/bam/cdilendb.bam~ ~override~
+     ~divine_remix/bam/cdilendc.bam~ ~override~
+COPY ~divine_remix/spl/cdilend.spl~  ~override~
+  PATCH_IF ((GAME_IS ~bgee bg2ee~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @11211
+      READ_LONG NAME1 bio
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+  SAY NAME1 @11205
+  SAY NAME2 @11205
+  SAY UNIDENTIFIED_DESC @11206
+  SAY DESC @11206
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/cdilmatr.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL211~ // lay on hands as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~cdilend~ // ilmater's endurance as 1/10
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~CDILMATR~
+  ~CDILMATR                  0           0           1           1           0           1           0           0~
+  ~CDILMATR 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~CDILMATR	0	0	0	0	9	0~
+  ~CDILMATR		0	0	0	0	0	0~
+  ~CDILMATR		0	0	0	0	17	0~
+  ~CDILMATR		0	0	0	0	15	0~
+  ~CDILMATR		1	1	0	1	0	0	0	0	0~
+  ~CDILMATR		1	0	1	1	0	1~
+  ~override/cdilmatr.2da~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000	3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @11209
+  SAY @11201
+  SAY @11210
+  
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~cdilmatr~
+    clascolr = ~35 67 67 25 80~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%CDILMATR%")
+    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
+    END
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    ~CDILMATR~
+  OUTER_SPRINT symbol ~cdilhly~
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/bam/cdiilhly.bam~ ~override~ // holy symbol
+  COPY ~divine_remix/bam/cdpilhly.bam~ ~override~
+  COPY ~divine_remix/itm/cdilhly.itm~  ~override~
+    SAY NAME1 @11207
+    SAY NAME2 @11207
+    SAY UNIDENTIFIED_DESC @11208
+    SAY DESC @11208
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/ilmater_ar0900.baf~
+  EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/ilmater_ar0901.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/ilmater_ar0902.baf~
+  COMPILE ~divine_remix/dlg/ilmater.d~
+
+END
+
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = "%CDILMATR%" // ilmater
+ACTION_FOR_EACH creature IN _priilm _priilmu priilm priilmu slilmat wilmat BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~
+      WRITE_SHORT   0x244 0
+      WRITE_BYTE    0x246 "%kit%"
+      WRITE_BYTE    0x247 0x40
+      BUT_ONLY
+
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Firewalker of Kossuth kit                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @11500 DESIGNATED 115
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+
+COPY ~divine_remix/spl/a#kos0c.spl~ ~override~
+  PATCH_IF ((GAME_IS ~bgee bg2ee~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @11511
+      READ_LONG NAME1 bio
+      WRITE_LONG 0x08 `0
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi523.spl~ ~override/a#kos09.spl~ // sunfire
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/a#koss.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#kos09~ // lay on hands as 1/5
+  FOR (index = 1 ; index < 51 ; ++index) BEGIN
+    SET_2DA_ENTRY 1 index 50 ~AP_a#kos0c~
+  END
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~A#KOSS~
+  ~A#KOSS                  0           0           1           1           0           1           0           0~
+  ~A#KOSS   0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#KOSS	0	0	0	0	9	0~
+  ~A#KOSS		0	0	0	0	0	0~
+  ~A#KOSS		0	0	0	0	17	0~
+  ~A#KOSS		0	0	0	0	15	0~
+  ~A#KOSS		1	1	1	1	1	1	1	1	1~
+  ~A#KOSS		1	0	1	1	0	1~
+  ~override/a#koss.2da~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000	3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @11509
+  SAY @11503
+  SAY @11510
+  
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~a#koss~
+    clascolr = ~35 46 47 25 80~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%A#KOSS%")
+    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
+    END
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    ~a#koss~
+  OUTER_SPRINT symbol ~a#koss25~
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/bam/a#ikos25.bam~ ~override~ // holy symbol
+  COPY ~divine_remix/bam/a#pkos25.bam~ ~override~
+  COPY ~divine_remix/itm/a#koss25.itm~ ~override~
+    SAY NAME1 @11507
+    SAY NAME2 @11507
+    SAY UNIDENTIFIED_DESC @11508
+    SAY DESC @11508
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/kossuth_ar0900.baf~
+  EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/kossuth_ar0901.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/kossuth_ar0902.baf~
+  EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/kossuth_ar0904.baf~
+  COMPILE ~divine_remix/dlg/kossuth.d~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Authlim of Iyachtu Xvim                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @11800 DESIGNATED 118
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+
+COPY ~divine_remix/spl/CDXVFEAR.spl~ ~override~  // immunity to fear (permanent innate spell)
+  PATCH_IF ((GAME_IS ~bgee bg2ee~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @11811
+      READ_LONG NAME1 bio
+      WRITE_LONG 0x08 `0
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi412.spl~ ~override/cdxvgml.spl~ // greater malison (innate)
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~spwi412.spl~ ~override~ // make innate/arcane GMs unstackable
+  LPF CLONE_EFFECT STR_VAR match_resource = spwi412 resource = cdxvgml insert = above END // picks up 321 for ee games, 206 for non-ee
+
+COPY_EXISTING ~cdxvgml.spl~ ~override~ // make innate/arcane GMs unstackable
+  LPF CLONE_EFFECT STR_VAR match_resource = spwi412 resource = cdxvgml insert = below END // picks up 321 for ee games, 206 for non-ee
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/cdxvim.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~cdxvgml~ // greater malison as 1/5
+  REPLACE_TEXTUALLY ~ABILITY2    GA_KITBIL2 ~ ~ABILITY2    AP_CDXVFEAR~ // no 1/10
+  REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****      ~ // no 1/10
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~CDXvim~
+  ~CDXvim                  0           0           1           1           0           1           0           0~
+  ~CDXvim   0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~CDXvim                  0       0       0       0       9       0~
+  ~CDXvim                  0       0       0       0       0       0~
+  ~CDXvim                  0       0       0       0       17      0~
+  ~CDXvim                  0       0       0       0       15      0~
+  ~CDXvim                  0       1       1       0       0       1       0       0       0~
+  ~CDXvim                  1       0       1       1       0       1~
+  ~override/cdxvim.2da~
+  ~K_C_D K_C_E K_C_G K_C_H K_C_HE K_C_HL K_C_HO~
+  ~0x00004000     3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
+  SAY @11809
+  SAY @11801
+  SAY @11810
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~cdxvim~
+    clascolr = ~35 52 66 25 80~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%CDXvim%")
+    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
+    END
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    ~CDXvim~
+  OUTER_SPRINT symbol ~cdxvhly~
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/bam/cdixvhly.bam~ ~override~ // holy symbol
+       ~divine_remix/bam/cdpxvhly.bam~ ~override~
+  COPY ~divine_remix/itm/cdxvhly.itm~  ~override~
+    SAY NAME1 @11803
+    SAY NAME2 @11803
+    SAY UNIDENTIFIED_DESC @11804
+    SAY DESC @11804
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/xvim_ar0900.baf~
+  EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/xvim_ar0901.baf~
+  COMPILE ~divine_remix/dlg/xvim.d~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Lorekeeper of Oghma kit                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @12100 DESIGNATED 121
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi419.spl~ ~override/a#og07.spl~ // secret word
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY ~divine_remix/spl/a#og0b.spl~ ~override~  // Lore boost (innate)
+  PATCH_IF ((GAME_IS ~bgee bg2ee~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @12109
+      READ_LONG NAME1 bio
+      WRITE_LONG 0x08 `0
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/a#ogma.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#og07~ // lay on hands as 1/5
+  FOR (index = 1 ; index < 51 ; ++index) BEGIN
+    SET_2DA_ENTRY 1 index 50 ~AP_a#og07~
+  END
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~A#OGMA~
+  ~A#OGMA                  0           0           1           1           0           1           0           0~
+  ~A#OGMA 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#OGMA	0	0	0	0	9	0~
+  ~A#OGMA		0	0	0	0	0	0~
+  ~A#OGMA		0	0	0	0	17	0~
+  ~A#OGMA		0	0	0	0	15	0~
+  ~A#OGMA		1	1	1	1	1	1	1	1	1~
+  ~A#OGMA		1	0	1	1	0	1~
+  ~override/a#ogma.2da~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000 3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @12107
+  SAY @12101
+  SAY @12108
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%A#OGMA%")
+    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
+    END
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~a#ogma~
+    clascolr = ~35 66 66 25 80~
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    ~CDXvim~
+  OUTER_SPRINT symbol ~cdxvhly~
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/bam/cdioghly.bam~   ~override~ // holy symbol
+       ~divine_remix/bam/cdpoghly.bam~   ~override~
+  COPY ~divine_remix/itm/a#koss25.itm~ ~override/a#og25.itm~// This is ok because they have the same alignment restrictions... Yeh.
+    SAY NAME1 @12105
+    SAY NAME2 @12105
+    SAY UNIDENTIFIED_DESC @12106
+    SAY DESC @12106
+    WRITE_ASCII 0x3a ~cdioghly~
+    WRITE_ASCII 0x58 ~cdpoghly~
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/oghma_ar0900.baf~
+  EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/oghma_ar0901.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/oghma_ar0902.baf~
+  EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/oghma_ar0904.baf~
+  COMPILE ~divine_remix/dlg/oghma.d~
+
+END
+
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = "%A#OGMA%" // oghma
+ACTION_FOR_EACH creature IN doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma poghma3 poghma4 poghma5 poghma6 poghma7 poghma8 _poghm10 _poghm3 _poghm6 _poghm8 _poghm9 _poghma _poghma3 _poghma4 _poghma5 _poghma6 _poghma7 _poghma8 BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~
+      WRITE_SHORT   0x244 0
+      WRITE_BYTE    0x246 "%kit%"
+      WRITE_BYTE    0x247 0x40
+      BUT_ONLY
+
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Heartwarder of Sune kit                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @12400 DESIGNATED 124
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi411.spl~ ~override/nmsun07.spl~ // emotion
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+  
+COPY ~divine_remix/spl/cdsune2.spl~ ~override~
+  PATCH_IF ((GAME_IS ~bgee bg2ee~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @12411
+      READ_LONG NAME1 bio
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+  SAY NAME1 @12409
+  SAY NAME2 @12409
+  SAY UNIDENTIFIED_DESC @12410
+  SAY DESC @12410
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/nmsune.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~nmsun07~ // emotion as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~cdsune2~ // lay on hands as 1/5
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~NMSUNE~
+  ~NMSUNE                0           0           1           1           0           1           0           0~
+  ~NMSUNE 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~NMSUNE                0       0       0       0       9       0~
+  ~NMSUNE                0       0       0       0       0       1~
+  ~NMSUNE                0       0       0       0       17      0~
+  ~NMSUNE                0       0       0       0       15      0~
+  ~NMSUNE                0       0       0       1       0       0       1       1       0~
+  ~NMSUNE                1       0       1       1       0       1~
+  ~override/nmsune.2da~
+  ~K_C_D K_C_E K_C_G K_C_H K_C_HE K_C_HL K_C_HO~
+  ~0x00004000	3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @12407
+  SAY @12401
+  SAY @12408
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~NMSUNE~
+    clascolr = ~35 49 46 25 80~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%NMSUNE%")
+    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
+    END
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    ~NMSUNE~
+  OUTER_SPRINT symbol ~nmsuhly~
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/bam/nmisuhly.bam~ ~override~ // holy symbol
+  COPY ~divine_remix/bam/nmpsuhly.bam~ ~override~
+  COPY ~divine_remix/itm/nmsuhly.itm~  ~override~
+    SAY NAME1 @12405
+    SAY NAME2 @12405
+    SAY UNIDENTIFIED_DESC @12406
+    SAY DESC @12406
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~Divine_Remix/baf/sune_ar0900.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~Divine_Remix/baf/sune_ar0902.baf~
+  COMPILE ~Divine_Remix/dlg/sune.d~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Feywarden of Corellon kit                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @12700 DESIGNATED 127
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+
+//save vs.death bonus
+COPY ~divine_remix/spl/a#fey0a.spl~ ~override~
+  PATCH_IF ((GAME_IS ~bgee bg2ee~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @12710
+      READ_LONG NAME1 bio
+      WRITE_LONG NAME1 `0
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi510.spl~ ~override/a#fey09.spl~ // spell immunity
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/a#feyw.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#fey09~ // emotion as 1/5
+  REPLACE_TEXTUALLY ~GA_KITBIL1~ ~****   ~ // nothing as 1/10
+  SET_2DA_ENTRY 2 2 50 ~AP_a#fey0a~     // save bonus
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~A#FEYWARDEN~
+  ~A#FEYWARDEN                0           0           1           1           0           1           0           0~
+  ~A#FEYWARDEN 0 0 0 0 2 2 0 2 0 0 0 0 0 0 0 0 2 2 0 0 2 2 2 0 0 0 0 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#FEYWARDEN                0       0       0       0       9       0~
+  ~A#FEYWARDEN                0       0       0       0       0       1~
+  ~A#FEYWARDEN                0       0       0       0       17      0~
+  ~A#FEYWARDEN                0       0       0       0       15      0~
+  ~A#FEYWARDEN                0       0       0       1       0       0       1       1       0~
+  ~A#FEYWARDEN                1       0       1       1       0       1~
+  ~override/a#feyw.2da~
+  ~K_C_E K_C_HE~
+  ~0x00004000	3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @12701
+  SAY @12702
+  SAY @12709
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~A#FEYWARDEN~
+    clascolr = ~35 21 57 25 80~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%A#FEYWARDEN%")
+    FOR (row = 2; row < 25 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~2~
+    END
+    SET_2DA_ENTRY_LATER ~aoe~ 4 column ~0~
+    SET_2DA_ENTRY_LATER ~aoe~ 9 column ~0~
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    ~A#FEYWARDEN~
+  OUTER_SPRINT symbol ~a#feyhly~
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/bam/a#feyhly.bam~ ~override~ // holy symbol
+  COPY ~divine_remix/itm/a#feyhly.itm~ ~override~
+    SAY NAME1 @12707
+    SAY NAME2 @12707
+    SAY UNIDENTIFIED_DESC @12708
+    SAY DESC @12708
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/Corellon_ar0900.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/Corellon_ar0902.baf~
+  COMPILE ~divine_remix/dlg/corellon.d~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Strifeleader of Cyric kit                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @13001 DESIGNATED 130
+GROUP @10
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+
+//Dread Blast innate
+COPY ~divine_remix/spl/a#cyr07.spl~ ~override~
+  PATCH_IF ((GAME_IS ~bgee bg2ee~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @13011
+      READ_LONG NAME1 bio
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+  SAY NAME1 @13000
+  SAY NAME2 @13000
+  SAY 0x50 @13010
+  SAY 0x54 @13010
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/a#cyric.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL423~ // poison weapon as 1/5
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#cyr07~ // dread blast as 1/10
+  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~A#CYRIC~
+  ~A#CYRIC                  0           0           1           1           0           1           0           0~
+  ~A#CYRIC 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#CYRIC	        0       0       0       0       9       0~
+  ~A#CYRIC		0	0	0	0	0	0~
+  ~A#CYRIC		0	0	0	0	17	0~
+  ~A#CYRIC		0	0	0	0	15	0~
+  ~A#CYRIC		0	0	1	0	0	1	0	1	1~
+  ~A#CYRIC		1	0	1	1	0	1~
+  ~override/a#cyric.2da~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000	3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @13002
+  SAY @13003
+  SAY @13004
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~A#CYRIC~
+    clascolr = ~35 67 67 25 80~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%A#CYRIC%")
+    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
+    END
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+END
+
+ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+
+  OUTER_SPRINT kit    ~A#CYRIC~
+  OUTER_SPRINT symbol ~a#cyr25~
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+
+  COPY ~divine_remix/itm/a#cyr25.itm~ ~override~
+    SAY NAME1 @13005
+    SAY NAME2 @13005
+    SAY UNIDENTIFIED_DESC @13006
+    SAY DESC @13006
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~soa bg2 tob bg2ee bgt~ THEN BEGIN // temple stronghold stuff
+
+  ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN //Compile dialogue alteration for Cyric in the Pocket Plane
+
+    COMPILE ~divine_remix/dlg/cyricpp.d~
+
+  END
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/cyric_ar0900.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/cyric_ar0904.baf~
+  COMPILE ~divine_remix/dlg/cyric.d~
+
+END
+
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = "%A#CYRIC%" // cyric
+ACTION_FOR_EACH creature IN ar18prie mvpries slapri dcleric BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~
+      WRITE_SHORT   0x244 0
+      WRITE_BYTE    0x246 "%kit%"
+      WRITE_BYTE    0x247 0x40
+      BUT_ONLY
+
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Druid Remix                                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @20000 DESIGNATED 200
+GROUP @11
+
+// change f/d description to mention armor is now also restricted to druid armor
+OUTER_SPRINT ~old_wep~ @20003
+OUTER_SPRINT ~new_wep~ @20004
+ACTION_GET_STRREF 9579 desc // fighter-druid descript
+OUTER_INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+  REPLACE_TEXTUALLY ~%old_wep%~ ~%new_wep%~
+END
+
+STRING_SET_EVALUATE 9579 ~%desc%~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~jahei14.cre~ THEN BEGIN
+
+  //Jaheira's ToB armor change to Ankheg Plate
+  COPY_EXISTING ~jahei14.cre~ ~override~
+    READ_LONG  0x2bc "itm_off"
+    READ_LONG  0x2c0 "itm_num"
+    FOR ( index = 0 ; index < itm_num ; index = index + 1 ) BEGIN
+      READ_ASCII ("%itm_off%" + (0x14 * "%index%")) "item"
+      PATCH_IF ("%item%" STRING_COMPARE_CASE "chan08" = 0) BEGIN
+        WRITE_ASCII ("%itm_off%" + (0x14 * "%index%")) "plat06" #8
+      END
+    END
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+//Alignment changes
+COPY_EXISTING ~alignmnt.2da~ ~override~
+  REPLACE_TEXTUALLY ~^\(DRUID\|FIGHTER_DRUID\|TOTEMIC_DRUID\|SHAPESHIFTER\|BEAST_FRIEND\)[ %TAB%]~ ~\1 0 1 0 1 1 1 0 1 0~
+  BUT_ONLY_IF_IT_CHANGES
+
+PRINT @3
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  READ_BYTE 0x1C "type" ELSE 0
+  PATCH_IF (("%type%" = 2) OR (("%type%" > 59) AND ("%type%" < 68))) BEGIN // any armor
+    READ_BYTE 0x1F "fighter_druid"
+    READ_BYTE 0x21 "druid"
+    PATCH_IF (("%druid%"  BAND 0b01000000) = 0b01000000) BEGIN // If unusable by druids
+      WRITE_BYTE 0x1F ("%fighter_druid%" BOR 0b00010000)        // Making sure Fighter-Druids are restricted to Druid items only.
+    END
+  END
+  BUT_ONLY_IF_IT_CHANGES
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Oozemaster Druid kit                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @20301 DESIGNATED 203
+GROUP @11
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~200~ @8
+
+//Paralytic Touch
+COPY_EXISTING ~spwi218.spl~ ~override/a#ooze1.spl~ //Ghoul Touch
+  SAY NAME1 @20305
+  SAY NAME2 @20305
+  READ_LONG  0x64 "abil_off" ELSE 0
+  READ_SHORT 0x68 "abil_num" ELSE 0
+  READ_LONG  0x6A "fx_off" ELSE 0
+  READ_ASCII ("%abil_off%" + 0x04) "bam" (8) // reads the bam filename from ability
+  WRITE_SHORT 0x1C 4                         // sets spell type to innate (4)
+  WRITE_LONG  0x34 1                         // sets spell level to 1 to avoid scripting issues
+  WRITE_EVALUATED_ASCII 0x3A "%bam%" #8      // writes the bam filename from abilities to spell icon
+  FOR ( index = 0 ; index < abil_num ; index = index + 1 ) BEGIN
+    WRITE_SHORT ("%abil_off%" + 0x02 + (0x28 * "%index%")) 4 // changes ability icon location to innate (4)
+    READ_SHORT  ("%abil_off%" + 0x12 + (0x28 * "%index%")) "speed" // reads casting speed
+    PATCH_IF ("%speed%" > 3) BEGIN
+      WRITE_SHORT  ("%abil_off%" + 0x12 + (0x28 * "%index%")) ("%speed%" - 2) // reduces casting speed
+    END ELSE BEGIN
+      WRITE_SHORT  ("%abil_off%" + 0x12 + (0x28 * "%index%")) 0 // makes instant
+    END
+    READ_SHORT  ("%abil_off%" + 0x1e + (0x28 * "%index%")) "abil_fx_num" ELSE 0
+    READ_SHORT  ("%abil_off%" + 0x20 + (0x28 * "%index%")) "abil_fx_idx" ELSE 0
+    FOR ( index2 = 0 ; index2 < abil_fx_num ; index2 = index2 + 1 ) BEGIN // loops through and changes item created
+      READ_SHORT ("%fx_off%" +        (0x30 * ("%abil_fx_idx%" + "%index2%" - 1))) "opcode" ELSE 0
+      READ_ASCII ("%fx_off%" + 0x14 + (0x30 * ("%abil_fx_idx%" + "%index2%" - 1))) "item" ELSE 0
+      PATCH_IF (("%opcode%" = 111) AND ("%item%" STRING_COMPARE_CASE "ghoult" = 0)) BEGIN
+        WRITE_ASCII ("%fx_off%" + 0x14 + (0x30 * ("%abil_fx_idx%" + "%index2%" - 1))) ~a#oozet~ #8
+      END
+    END
+  END
+  BUT_ONLY_IF_IT_CHANGES
+
+//Renaming called item
+COPY_EXISTING ~ghoult.itm~ ~override/a#oozet.itm~
+  SAY NAME1 @20305
+  SAY NAME2 @20305
+
+//Shapeshift to mustard jelly
+COPY ~divine_remix/spl/a#ooze3.spl~ ~override~
+  SAY NAME1 @20306
+  SAY NAME2 @20306
+
+// shapeshift to nat form
+COPY ~divine_remix/spl/a#ooze3a.spl~ ~override~
+
+COPY ~divine_remix/spl/a#ooze2.spl~ ~override~ //immune to poison
+     ~divine_remix/spl/a#ooze4.spl~ ~override~ //immune to acid
+     ~divine_remix/spl/a#ooze5.spl~ ~override~ //immune to disease
+     ~divine_remix/spl/a#ooze6.spl~ ~override~ //immune to blindness, sleep, paralysis, stunning and critical hits
+     ~divine_remix/spl/a#ooze7.spl~ ~override~ //charisma drop
+  SAY NAME1 #-1
+  SAY NAME2 #-1
+
+ADD_KIT ~A#OOZE~
+  ~A#OOZE                  0           0           1           1           0           1           0           0~
+  ~A#OOZE 0 0 0 0 1 1 0 1 0 0 0 0 0 0 1 1 0 1 1 0 0 0 1 0 0 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#OOZE	0	0	0	0	12	7~
+  ~A#OOZE		0	0	0	0	0	0~
+  ~A#OOZE		0	0	0	0	17	0~
+  ~A#OOZE		0	0	0	0	15	0~
+  ~A#OOZE		0	1	0	1	1	1	0	1	0~
+  ~A#OOZE		1	0	0	0	0	0~
+  ~divine_remix/2da/a#ooze.2da~
+  ~K_D_H    K_D_D   K_D_G   K_D_E   K_D_HE   K_D_HL   K_D_HO~
+  ~0x00004000 11~
+  ~Cl0~
+  ~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @20302
+  SAY @20303
+  SAY @20304
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = ~A#OOZE~
+    clascolr = ~35 67 67 25 80~
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  COPY_EXISTING ~weapprof.2da~ ~override~
+    SET "column" = (22 + "%A#OOZE%")
+    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
+      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
+    END
+    SET_2DA_ENTRIES_NOW ~aoe~ 1
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Bowslinger                                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @40300 DESIGNATED 403
+GROUP @13
+
+ADD_KIT NMRNBSLN // ROWNAME in KITLIST.2da
+  ~NMRNBSLN                1           1           1           1           1           1           1           1~ // CLASWEAP.2DA (weapons class can use)
+  ~NMRNBSLN 1 1 1 0 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 5 5 5 2 2 1 1 1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~ // WEAPPROF (proficiency points this kit can place)
+  ~NMRNBSLN                13      13      14      0       14      15~ // ABCLASRQ.2da (minimum stats)
+  ~NMRNBSLN                0       0       0       0       0       0~ // ABCLSMOD.2da (stat modifiers)
+  ~NMRNBSLN                17      17      0       0       17      0~ // ABDCDSRQ.2da (minimum stats needed to dual-class from this class)
+  ~NMRNBSLN                15      15      0       0       15      0~ // ABDCSCRQ.2da (minimum stats needed to dual-class to this class)
+  ~NMRNBSLN                1       0       0       1       0       0       1       0       0~ // ALIGNMNT.2da (alignments this kit can be)
+  ~NMRNBSLN                0       1       0       0       0       0~ // DUALCLAS.2da (classes this kit can be dualed with)
+  ~divine_remix/2da/nmrnbsln.2da~ // CLAB****.2da (abilities file)
+  ~K_R_E K_R_HE~ // K_B_H.2da, K_B_HE.2da, etc (class/race restrictions)
+  ~0x00008000 12~ // UNUSABLE in KITLIST.2da (item restriction flag this kit uses)
+  ~Ra2~ // LuBa0.2da, LuBa1.2da, etc (high level abilities file)
+  ~LEAT20 DART03,40 HELM07 BAG26 RING06 RING31 CLCK27 BOOT01 AMUL19 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 BOW11 BOW19 XBOW06~ // ToB starting equipment (PC only)
+  SAY @40301 // Kit name without capitals
+  SAY @40302 // Kit name with capitals
+  SAY @40303 // Full kit description
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = ~NMRNBSLN~
+    clascolr = ~35 67 67 25 80~
+END
+
+COPY ~divine_remix/spl/nmrnbs1.spl~ ~override~ // -1 to damage with melee
+     ~divine_remix/spl/nmrnbs2.spl~ ~override~ // Called Shot
+
+COPY ~divine_remix/spl/nmrnbs3.spl~ ~override~ // Speed Shot
+  SAY NAME1 @40304
+  SAY NAME2 @40304
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi203.spl~ ~override/nmrnbs4.spl~ // detect invisibility
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Feralan                                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @40600 DESIGNATED 406
+GROUP @13
+REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~a#feral.2da~ @9
+
+// shapeshifters get locked out of all armor, either by the druid flag or their individual kit flag
+COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
+  READ_BYTE 0x1C "type" ELSE 0 // skips invalid files
+  PATCH_IF (("%type%" = 2) OR (("%type%" > 59) AND ("%type%" < 68))) BEGIN
+    READ_BYTE 0x21 "druid"
+    READ_BYTE 0x29 "shapeshifter"
+    PATCH_IF (("%druid%" BAND 0b01000000) = 0b01000000) BEGIN // if unusable by druids
+      WRITE_BYTE 0x29 ("%shapeshifter%" BAND 0b11101111) // remove redundant shapeshifter restriction; shapeshifters can't use it 'coz of druid flag
+    END ELSE BEGIN
+      WRITE_BYTE 0x29 ("%shapeshifter%" BOR  0b00010000) // making unusable by shapeshifters
+    END
+  END
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~spcl321.spl~ ~override/a#fera02.spl~ // 'Feral Rage' innate
+  SAY NAME1 @40604
+
+COPY ~divine_remix/spl/A#fera03.spl~ ~override~ // 'Call of the Wild' innate
+  SAY NAME1 @40605
+
+COPY ~divine_remix/cre/a#fera01.cre~ ~override~ // Wild Dog
+  SAY NAME1 @40606
+  SAY NAME2 @40606
+
+COPY ~divine_remix/cre/a#fera02.cre~ ~override~ // Wolf
+  SAY NAME1 @40607
+  SAY NAME2 @40607
+
+COPY ~divine_remix/cre/a#fera03.cre~ ~override~ // Dire Wolf
+  SAY NAME1 @40608
+  SAY NAME2 @40608
+
+COPY ~divine_remix/cre/a#fera04.cre~ ~override~ // Pack Leader
+  SAY NAME1 @40609
+  SAY NAME2 @40609
+
+COPY ~divine_remix/spl/a#fera01.spl~ ~override~ // +10% Stealth
+     ~divine_remix/eff/a#fera01.eff~ ~override~
+     ~divine_remix/eff/a#fera02.eff~ ~override~
+     ~divine_remix/eff/a#fera03.eff~ ~override~
+     ~divine_remix/eff/a#fera04.eff~ ~override~
+
+ADD_KIT ~A#FERALAN~
+  ~A#FERALAN		1	1	1	1	1	1	1	1~
+  ~A#FERALAN 1 1 2 2 2 1 2 2 1 1 1 2 1 1 1 2 2 2 2 1 1 2 2 1 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#FERALAN	13	13	14	0	14	0~
+  ~A#FERALAN		0	0	0	0	0	-2~
+  ~A#FERALAN		17	17	0	0	17	0~
+  ~A#FERALAN		15	15	0	0	15	0~
+  ~A#FERALAN		0	0	0	1	0	0	1	0	0~
+  ~A#FERALAN		0	1	0	0	0	0~
+  ~divine_remix/2da/a#feral.2da~
+  ~K_R_H K_R_HE K_R_E~
+  ~0x10000000	12~
+  ~ra0~
+  ~* * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @40601
+  SAY @40602
+  SAY @40603
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = ~A#FERALAN~
+    clascolr = ~35 67 67 25 80~
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Forest Runner                                    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @40900 DESIGNATED 409
+GROUP @13
+
+ADD_KIT NMRNFRRN // ROWNAME in KITLIST.2da
+  ~NMRNFRRN                1           1           1           1           1           1           1           1~ // CLASWEAP.2DA (weapons class can use)
+  ~NMRNFRRN 2 2 2 2 2 2 2 2 2 3 2 1 1 2 2 3 1 2 2 2 2 2 3 1 3 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~ // WEAPPROF (proficiency points this kit can place)
+  ~NMRNFRRN                13      13      14      0       14      15~ // ABCLASRQ.2da (minimum stats)
+  ~NMRNFRRN                0       0       0       0       0       0~ // ABCLSMOD.2da (stat modifiers)
+  ~NMRNFRRN                17      17      0       0       17      0~ // ABDCDSRQ.2da (minimum stats needed to dual-class from this class)
+  ~NMRNFRRN                15      15      0       0       15      0~ // ABDCSCRQ.2da (minimum stats needed to dual-class to this class)
+  ~NMRNFRRN                1       0       0       1       0       0       1       0       0~ // ALIGNMNT.2da (alignments this kit can be)
+  ~NMRNFRRN                0       1       0       0       0       0~ // DUALCLAS.2da (classes this kit can be dualed with)
+  ~divine_remix/2da/nmrnfrrn.2da~ // CLAB****.2da (abilities file)
+  ~K_R_E K_R_H K_R_HE~ // K_B_H.2da, K_B_HE.2da, etc (class/race restrictions)
+  ~0x00008000 12~ // UNUSABLE in KITLIST.2da (item restriction flag this kit uses)
+  ~Ra4~ // LuBa0.2da, LuBa1.2da, etc (high level abilities file)
+  ~LEAT20 DART03,40 HELM07 BAG26 RING06 RING31 CLCK27 BOOT01 AMUL19 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 BOW11 BOW19 XBOW06~ // ToB starting equipment (PC only)
+  SAY @40901 // Kit name without capitals
+  SAY @40902 // Kit name with capitals
+  SAY @40903 // Full kit description
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = ~nmrnfrrn~
+    clascolr = ~35 67 67 25 80~
+END
+
+COPY ~divine_remix/spl/nmrnfr1.spl~ ~override~ // +5% Stealth
+
+COPY ~divine_remix/spl/nmrnfr2.spl~ ~override~ // 'Inspire' innate
+  SAY NAME1 @40904
+  SAY NAME2 @40904
+  SAY 0xfe  @40905
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Justifier                                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @41200 DESIGNATED 412
+GROUP @13
+REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~a#justif.2da~ @9
+
+ADD_KIT ~A#JUSTIFIER~
+  ~A#JUSTIFIER		1	1	1	1	1	1	1	1~
+  ~A#JUSTIFIER 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#JUSTIFIER	13	13	14	0	14	0~
+  ~A#JUSTIFIER		0	0	0	0	0	0~
+  ~A#JUSTIFIER		17	17	0	0	17	0~
+  ~A#JUSTIFIER		15	15	0	0	15	0~
+  ~A#JUSTIFIER		1	0	0	0	0	0	0	0	0~
+  ~A#JUSTIFIER		0	0	0	0	0	0~
+  ~divine_remix/2da/a#justif.2da~
+  ~K_R_H K_R_HE K_R_E~
+  ~0x00004000	12~
+  ~ra0~
+  ~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @41201
+  SAY @41202
+  SAY @41203
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = ~A#JUSTIFIER~
+    clascolr = ~35 67 67 25 80~
+END
+
+COPY ~divine_remix/spl/a#just01.spl~ ~override~ // +10% Stealth
+     ~divine_remix/spl/a#just02.spl~ ~override~ // +1 to speed factor and to hit
+     ~divine_remix/spl/a#justns.spl~ ~override~ // Removes priest spells
+
+// change spells to innates as needed
+COPY_EXISTING ~sppr103.spl~ ~override/a#justcl.spl~ // 'cure light wounds'
+              ~sppr111.spl~ ~override/a#justaf.spl~ // 'armour of faith'
+              ~spwi209.spl~ ~override/a#justlu.spl~ // 'luck'
+              ~sppr108.spl~ ~override/a#justrf.spl~ // 'remove fear'
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Wilderness Runner                                \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @41500 DESIGNATED 415
+GROUP @13
+
+ADD_KIT NMRNWLRN // ROWNAME in KITLIST.2da
+  ~NMRNWLRN                1           1           1           1           1           1           1           1~ // CLASWEAP.2DA (weapons class can use)
+  ~NMRNWLRN 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 1 2 3 2 3 2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~ // WEAPPROF (proficiency points this kit can place)
+  ~NMRNWLRN                13      13      14      0       14      15~ // ABCLASRQ.2da (minimum stats)
+  ~NMRNWLRN                0       0       0       0       0       -2~ // ABCLSMOD.2da (stat modifiers)
+  ~NMRNWLRN                17      17      0       0       17      0~ // ABDCDSRQ.2da (minimum stats needed to dual-class from this class)
+  ~NMRNWLRN                15      15      0       0       15      0~ // ABDCSCRQ.2da (minimum stats needed to dual-class to this class)
+  ~NMRNWLRN                1       0       0       1       0       0       1       0       0~ // ALIGNMNT.2da (alignments this kit can be)
+  ~NMRNWLRN                0       1       0       0       0       0~ // DUALCLAS.2da (classes this kit can be dualed with)
+  ~divine_remix/2da/nmrnwlrn.2da~ // CLAB****.2da (abilities file)
+  ~K_R_E~ // K_B_H.2da, K_B_HE.2da, etc (class/race restrictions)
+  ~0x00010000 12~ // UNUSABLE in KITLIST.2da (item restriction flag this kit uses)
+  ~Ra3~ // LuBa0.2da, LuBa1.2da, etc (high level abilities file)
+  ~LEAT20 DART03,40 HELM07 BAG26 RING06 RING31 CLCK27 BOOT01 AMUL19 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 BOW11 BOW19 XBOW06~ // ToB starting equipment (PC only)
+  SAY @41501 // Kit name without capitals
+  SAY @41502 // Kit name with capitals
+  SAY @41503 // Full kit description
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = ~nmrnwlrn~
+    clascolr = ~35 67 67 25 80~
+END
+
+COPY ~divine_remix/spl/nmrnwr1.spl~ ~override~ // 'Enhanced Charm Animal' innate
+  SAY NAME1 @41504
+  SAY NAME2 @41504
+
+COPY_EXISTING ~spcl412.spl~ ~override/nmrnwr2.spl~ // Set Snare
+
+COPY ~divine_remix/spl/nmrnwr3.spl~ ~override~ // +10% Fire and Cold Resistance
+     ~divine_remix/spl/nmrnwr4.spl~ ~override~ // +20% set snares
+
+COPY_EXISTING ~nmrnwr4.spl~ ~override/nmrnwr5.spl~ // +5% set snares
+  WRITE_LONG 0x9e 5
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Tempus kit for Branwen                           \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @60000 DESIGNATED 600 // component 600
+GROUP @10
+REQUIRE_PREDICATE GAME_IS ~bgt tutu tutu_totsc tob soa bg2ee bgee~ @16
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~109~ @4
+
+// find tempus kit in kitlist
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS ~9~ "rows"
+  FOR (index = rows ; index > 31 ; --index) BEGIN
+    READ_2DA_ENTRY "%index%" 5 9 "clab"
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "ohtempus" = 0) BEGIN
+      READ_2DA_ENTRY "%index%" 0 9 "A#TEMP"
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "a#temp" = 0) BEGIN
+      READ_2DA_ENTRY "%index%" 0 9 "A#TEMP"
+    END
+  END
+  BUT_ONLY_IF_IT_CHANGES
+
+OUTER_SET kit = "%A#TEMP%" // tempus
+ACTION_FOR_EACH creature IN branwe branwe5 _branwe _branwe5 ttbran BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~
+      WRITE_SHORT   0x244 0
+      WRITE_BYTE    0x246 "%kit%"
+      WRITE_BYTE    0x247 0x40
+      BUT_ONLY
+
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Change Jaheira to NG                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @60500 DESIGNATED 605
+GROUP @11
+REQUIRE_PREDICATE GAME_IS ~bgt tutu tutu_totsc tob soa bg2ee bgee~ @16
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~200~ @8
+
+// this file does nothing, it just allows other mods to detect this component
+COPY_EXISTING ~SW1H01.itm~ ~override/cdjahs2NG.g3~
+
+COPY_EXISTING_REGEXP GLOB ~^jahei.+\.cre$~ ~override~
+  PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN // protects against invalid files
+    WRITE_BYTE 0x27b 33 // neutral good
+  END
+  BUT_ONLY_IF_IT_CHANGES
+
+ACTION_IF FILE_EXISTS_IN_GAME misc5x.itm THEN BEGIN
+
+  COPY_EXISTING ~misc5x.itm~ ~override~ // harper pin
+    READ_BYTE  0x1e "use1"
+    WRITE_BYTE 0x1e (("%use1%" BOR 0b00001000) BAND 0b11111011) // adds GE-Neutral flag, removes good flag
+    BUT_ONLY_IF_IT_CHANGES
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Shar kit for Viconia                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @61000 DESIGNATED 610
+GROUP @10
+REQUIRE_PREDICATE GAME_IS ~bgt tutu tutu_totsc tob soa bg2ee bgee~ @16
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~106~ @2
+
+ACTION_IF FILE_EXISTS_IN_GAME ~mel01.cre~ THEN BEGIN // Fate Spirit line if ToB is installed
+
+  STRING_SET 65023 @61001
+
+END
+
+// find shar kit in kitlist
+COPY_EXISTING ~kitlist.2da~ ~override~
+  COUNT_2DA_ROWS ~9~ "rows"
+  FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
+    READ_2DA_ENTRY "%index%" 5 9 "clab"
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#SHAR" = 0) BEGIN
+      SET "A#SHAR" = "%index%"
+      SET "rows" = 0
+    END
+  END
+  BUT_ONLY_IF_IT_CHANGES
+
+OUTER_SET kit = "%A#SHAR%" // tempus
+ACTION_FOR_EACH creature IN viconi6 viconi8 viconi9 viconi11 viconi13 viconi16 viconi4 viconi BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~
+      WRITE_SHORT   0x244 0
+      WRITE_BYTE    0x246 "%kit%"
+      WRITE_BYTE    0x247 0x40
+      BUT_ONLY
+
+  END
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~a#sha0b.spl~ THEN BEGIN OUTER_SPRINT vic_spell "a#sha0b" END ELSE BEGIN OUTER_SPRINT vic_spell "cdshar2" END
+
+COPY_EXISTING ~viconia.bcs~ ~override~
+  DECOMPILE_AND_PATCH BEGIN
+    REPLACE_TEXTUALLY ~ForceSpell(Myself,CLERIC_FLAME_BLADE)~ ~ForceSpellRES("%vic_spell%",Myself)~
+  END
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// implement sphere system                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @2000 DESIGNATED 1000
+GROUP @10 GROUP @11 GROUP @13 // GROUP @12
+
+/////                                                  \\\\\
+///// add sphere descripts to base classes             \\\\\
+/////                                                  \\\\\
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // generic cleric
+  INT_VAR 
+    string          = 9559
+  STR_VAR
+    all             = major
+    charm           = major
+    combat          = major
+    creation        = major
+    divination      = major
+    elemental_earth = minor
+    elemental_water = minor
+    guardian        = major
+    healing         = major
+    necromantic     = major
+    necromantic_restorative = major
+    protection      = major
+    summoning       = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // ranger
+  INT_VAR
+    string          = 9557
+  STR_VAR
+    all             = major
+    animal          = major
+    healing         = major
+    plant           = major
+    weather         = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // paladin
+  INT_VAR 
+    string          = 9558
+  STR_VAR
+    combat          = major
+    divination      = major
+    healing         = major
+    protection      = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // druid
+  INT_VAR 
+    string          = 9560
+  STR_VAR
+    all             = major
+    animal          = major
+    elemental       = major
+    elemental_air   = major
+    elemental_earth = major
+    elemental_fire  = major
+    elemental_water = major
+    healing         = major
+    plant           = major
+    sun             = major
+    weather         = major
+  END
+
+/////                                                  \\\\\
+///// innates for bioware three                        \\\\\
+/////                                                  \\\\\
+
+COPY ~divine_remix/2da/clabpr02.2da~ ~override~
+     ~divine_remix/2da/clabpr03.2da~ ~override~
+     ~divine_remix/2da/clabpr04.2da~ ~override~
+
+COPY ~Divine_Remix/spl/cdtlers.spl~ ~override~ // electrical resistance
+  SAY NAME1 @10166
+  SAY NAME2 @10166
+  SAY UNIDENTIFIED_DESC @10166
+  SAY DESC @10166
+
+COPY ~Divine_Remix/spl/cdtldst.spl~ ~override~ // destructive blow
+  SAY NAME1 @10169
+  SAY NAME2 @10169
+  SAY UNIDENTIFIED_DESC @10170
+  SAY DESC @10170
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi324.spl~ ~override/cdlthun.spl~ // hold undead innate
+              ~sppr503.spl~ ~override/cdltflm.spl~ // flame strike innate
+              ~sppr607.spl~ ~override/cdlthel.spl~ // heal innate
+              ~sppr713.spl~ ~override/cdltgrs.spl~ // greater restoration innate
+              ~sppr304.spl~ ~override/cdhmglp.spl~ // glyph of warding innate
+              ~sppr415.spl~ ~override/cdhmfst.spl~ // farsight innate
+              ~spwi511.spl~ ~override/cdhmpnw.spl~ // protection from normal weapons innate
+              ~sppr505.spl~ ~override/cdhmtse.spl~ // true seeing innate
+              ~spwi708.spl~ ~override/cdhmmnt.spl~ // mantle innate
+              ~spwi502.spl~ ~override/cdtlcld.spl~ // cloudkill innate
+              ~spwi615.spl~ ~override/cdtlcnl.spl~ // chain lightning innate
+              ~sppr720.spl~ ~override/cdtlqak.spl~ // earthquake innate
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY ~Divine_Remix/spl/cdltmac.spl~ ~override~  // Lathander's Mace (innate spell)
+  SAY NAME1 @10180
+  SAY NAME2 @10180
+  SAY UNIDENTIFIED_DESC @10181
+  SAY DESC @10181
+
+COPY ~Divine_Remix/itm/cdltmc0.itm~ ~override~  // Lathander's Mace +0
+  SAY NAME1 @10180
+  SAY NAME2 @10180
+  SAY UNIDENTIFIED_DESC @10181
+  SAY DESC @10181
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~cdltmc0.itm~ ~override/cdltmc1.itm~  // lathander's mace +1
+              ~cdltmc0.itm~ ~override/cdltmc2.itm~  // lathander's mace +2
+              ~cdltmc0.itm~ ~override/cdltmc3.itm~  // lathander's mace +3
+              ~cdltmc0.itm~ ~override/cdltmc4.itm~  // lathander's mace +4
+              ~cdltmc0.itm~ ~override/cdltmc5.itm~  // lathander's mace +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C ("%weap_idx%" + 1)
+  WRITE_SHORT 0x84 (7 - "%weap_idx%")
+
+COPY ~Divine_Remix/spl/cdhmbst.spl~ ~override~  // Bastard Sword of Helm (innate spell)
+  SAY NAME1 @10185
+  SAY NAME2 @10185
+  SAY UNIDENTIFIED_DESC @10186
+  SAY DESC @10186
+
+COPY ~Divine_Remix/itm/cdhmbs0.itm~ ~override~  // Bastard Sword +0
+  SAY NAME1 @10185
+  SAY NAME2 @10185
+  SAY UNIDENTIFIED_DESC @10186
+  SAY DESC @10186
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~cdhmbs0.itm~ ~override/cdhmbs1.itm~  // bastard sword +1
+              ~cdhmbs0.itm~ ~override/cdhmbs2.itm~  // bastard sword +2
+              ~cdhmbs0.itm~ ~override/cdhmbs3.itm~  // bastard sword +3
+              ~cdhmbs0.itm~ ~override/cdhmbs4.itm~  // bastard sword +4
+              ~cdhmbs0.itm~ ~override/cdhmbs5.itm~  // bastard sword +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C "%weap_idx%"
+  WRITE_SHORT 0x84 (8 - "%weap_idx%")
+
+COPY ~Divine_Remix/spl/cdtlspr.spl~ ~override~  // Half-Spear of Talos (innate spell)
+  SAY NAME1 @10167
+  SAY NAME2 @10167
+  SAY UNIDENTIFIED_DESC @10168
+  SAY DESC @10168
+
+COPY ~Divine_Remix/itm/cdtlsp0.itm~ ~override~  // Half-Spear +0
+  SAY NAME1 @10167
+  SAY NAME2 @10167
+  SAY UNIDENTIFIED_DESC @10168
+  SAY DESC @10168
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~cdtlsp0.itm~ ~override/cdtlsp1.itm~  // half-spear +1
+              ~cdtlsp0.itm~ ~override/cdtlsp2.itm~  // half-spear +2
+              ~cdtlsp0.itm~ ~override/cdtlsp3.itm~  // half-spear +3
+              ~cdtlsp0.itm~ ~override/cdtlsp4.itm~  // half-spear +4
+              ~cdtlsp0.itm~ ~override/cdtlsp5.itm~  // half-spear +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C "%weap_idx%"
+  PATCH_IF ("%weap_idx%" > 2) BEGIN
+    WRITE_SHORT 0x84 0
+  END ELSE BEGIN
+    WRITE_SHORT 0x84 (3 - "%weap_idx%")
+  END
+  
+ACTION_FOR_EACH kts IN cdselune ~a#shar~ ~a#red~ ~a#temp~ ohtempus cdilmatr ~a#koss~ cdxvim ~a#ogma~ nmsune ~A#feyw~ ~A#Cyric~ BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%kts%.2da~ THEN BEGIN
+    
+    INCLUDE ~divine_remix/lib/%kts%.tph~
+  
+  END
+
+END
+
+/////                                                  \\\\\
+///// adjust kits to prep for spheres                  \\\\\
+/////                                                  \\\\\
+
+// new descripts
+COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
+  SPRINT mixed_match @10133 // Priest
+  SPRINT lower_match @10134 // priest
+  SPRINT upper_match @10135 // PRIEST
+  COUNT_2DA_ROWS 9 rows
+  FOR (index = rows ; index > 0 ; --index) BEGIN
+    READ_2DA_ENTRY index 5 8 clab
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr02" = 0) BEGIN // talos
+      READ_2DA_ENTRY index 4 8 talos_sphere
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "clabpr03" = 0) BEGIN // helm
+      READ_2DA_ENTRY index 4 8 helm_sphere
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "clabpr04" = 0) BEGIN // lathander
+      READ_2DA_ENTRY index 4 8 lathander_sphere
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "ohtempus" = 0) BEGIN // tempus
+      READ_2DA_ENTRY index 4 8 tempus_sphere
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "ohtyr" = 0) BEGIN // tyr
+      READ_2DA_ENTRY index 4 8 tyr_sphere
+    END
+  END
+  BUT_ONLY
+
+ACTION_IF VARIABLE_IS_SET talos_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%talos_sphere%~ @10171
+END
+
+ACTION_IF VARIABLE_IS_SET helm_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%helm_sphere%~ @10184
+END
+
+ACTION_IF VARIABLE_IS_SET lathander_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%lathander_sphere%~ @10179
+END
+
+ACTION_IF VARIABLE_IS_SET tempus_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%tempus_sphere%~ @10902
+END
+
+ACTION_IF VARIABLE_IS_SET tyr_sphere THEN BEGIN
+//  STRING_SET_EVALUATE ~%tyr_sphere%~ @10171
+END
+
+/////                                                  \\\\\
+///// read tables to determine when spells issued      \\\\\
+/////                                                  \\\\\
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_table_lookups BEGIN
+
+  druid   => mxspldru
+  cleric  => mxsplprs
+  paladin => mxsplpal
+  ranger  => mxsplran
+
+END
+
+ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%table%.2da~ THEN BEGIN
+  
+    COPY ~divine_remix/spheres/template.2da~ ~divine_remix/spheres/%class%.2da~
+
+    COPY_EXISTING ~%table%.2da~ ~override~
+      FOR (index = 1 ; index < 8 ; ++index) BEGIN
+        COUNT_2DA_ROWS (index + 1) rows
+        PATCH_IF (index = 1) BEGIN SET start = 2 END ELSE BEGIN SET start = 1 END
+        FOR (index2 = start ; index2 < rows ; ++index2) BEGIN
+          READ_2DA_ENTRY index2 index (index + 1) val
+          PATCH_IF (val > 0) BEGIN
+            READ_2DA_ENTRY index2 0 (index + 1) level
+            SET index2 = rows // kill loop
+            INNER_ACTION BEGIN
+
+              COPY ~divine_remix/spheres/%class%.2da~ ~divine_remix/spheres/%class%.2da~
+                SET_2DA_ENTRY 0 level 50 ~CDREPLACE%index%~
+            
+            END
+          END
+        END
+      END
+      BUT_ONLY
+
+  END
+
+END
+
+ACTION_IF NOT FILE_EXISTS ~divine_remix/spheres/druid.2da~ THEN BEGIN
+
+  COPY ~divine_remix/spheres/cleric.2da~ ~divine_remix/spheres/druid.2da~
+
+END
+
+/////                                                  \\\\\
+///// clerics get an extra spell for levels 4-7        \\\\\
+/////                                                  \\\\\
+
+COPY ~divine_remix/spl/cdvngn4.spl~  ~override~
+
+COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn5.spl~     // adds lvl 5 spell slot for non-kit priests
+  WRITE_LONG 0xA2 16
+
+COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn6.spl~     // adds lvl 6 spell slot for non-kit priests
+  WRITE_LONG 0xA2 32
+
+COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn7.spl~     // adds lvl 7 spell slot for non-kit priests
+  WRITE_LONG 0xA2 64
+
+COPY_EXISTING ~clabpr01.2da~ ~override~
+  LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove eof blank lines
+  APPEND_FILE ~divine_remix/spheres/cleric.2da~
+  REPLACE_TEXTUALLY ~CDREPLACE\([4-7]\)~ ~AP_CDVNGN\1~
+  REPLACE_TEXTUALLY ~CDREPLACE[1-3]~     ~****      ~
+  LAUNCH_PATCH_MACRO ~reindex_clab~ // get ABLITYx in order
+
+/////                                                  \\\\\
+///// create sphere framework                          \\\\\
+/////                                                  \\\\\
+
+COPY ~divine_remix/spheres/hla_blank.2da~ ~divine_remix/spheres/hla_master.2da~
+
+ACTION_FOR_EACH sphere IN al an as cs cm co cr di ex ea ee ef ew gu he lw ne nr nu pl pr su sn th ti tr wa wd we BEGIN
+
+  ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
+  
+    COPY ~divine_remix/spheres/%class%.2da~ ~divine_remix/spheres/%class%_%sphere%_major.2da~
+      REPLACE_TEXTUALLY ~CDREPLACE\([1-7]\)~ ~AP_CDDR%sphere%\1~
+  
+    COPY ~divine_remix/spheres/%class%_%sphere%_major.2da~ ~divine_remix/spheres/%class%_%sphere%_minor.2da~
+      REPLACE_TEXTUALLY ~AP_CDDR%sphere%[4-7]~ ~****~ // delete levels 4-7 for minor access
+                 
+    COPY ~divine_remix/spheres/hla_blank.2da~ ~divine_remix/spheres/hla_%sphere%.2da~
+
+    OUTER_FOR (index = 1 ; index < 8 ; ++index) BEGIN
+
+      COPY ~divine_remix/spheres/template.spl~           ~override/cddr%sphere%%index%.spl~
+           ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%sphere%_%index%_all.2da~
+           ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%sphere%_%index%_evil.2da~
+           ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%sphere%_%index%_good.2da~
+           ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%sphere%_%index%_chaotic.2da~
+           ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%sphere%_%index%_lawful.2da~
+           ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%sphere%_%index%_geneutral.2da~
+           ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%sphere%_%index%_lcneutral.2da~
+    
+    END
+  
+  END
+
+END
+
+/////                                                  \\\\\
+///// assign spells to sphere spells                   \\\\\
+/////                                                  \\\\\
+
+// array sets primary sphere assignments
+ACTION_CLEAR_ARRAY cd_spheres
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
+  
+  // default bg2 spells
+  CLERIC_ARMOR_OF_FAITH                 => pr
+  CLERIC_BLESS                          => al
+  CLERIC_COMMAND                        => cm
+  CLERIC_CURE_LIGHT_WOUNDS              => he
+  CLERIC_DETECT_EVIL                    => di
+  CLERIC_DOOM                           => cm
+  CLERIC_ENTANGLE                       => pl
+  CLERIC_MAGIC_STONE                    => co
+  CLERIC_PROTECT_FROM_EVIL              => pr
+  CLERIC_REMOVE_FEAR                    => cm
+  CLERIC_SANCTUARY                      => cm
+  CLERIC_SHILLELAGH                     => co
+  CLERIC_AID                            => co
+  CLERIC_BARKSKIN                       => pl
+  CLERIC_CHANT                          => co
+  CLERIC_CHARM_PERSON                   => an
+  CLERIC_FIND_TRAPS                     => di
+  CLERIC_FLAME_BLADE                    => ef
+  CLERIC_GOOD_BERRIES                   => pl
+  CLERIC_HOLD_PERSON                    => cm
+  CLERIC_KNOW_ALIGNMENT                 => di
+  CLERIC_RESIST_FIRE                    => pr
+  CLERIC_SILENCE_15_FOOT                => gu
+  CLERIC_SLOW_POISON                    => he
+  CLERIC_SPIRITUAL_HAMMER               => co
+  CLERIC_DRAW_UPON_HOLY_MIGHT           => su
+  CLERIC_ANIMATE_DEAD                   => ne
+  CLERIC_CALL_LIGHTNING                 => we
+  CLERIC_DISPEL_MAGIC                   => al
+  CLERIC_GLYPH_OF_WARDING               => gu
+  CLERIC_HOLD_ANIMAL                    => an
+  CLERIC_PROTECTION_FROM_FIRE           => ef
+  CLERIC_REMOVE_CURSE                   => al
+  CLERIC_REMOVE_PARALYSIS               => nr
+  CLERIC_INVISIBILITY_PURGE             => wd
+  CLERIC_MISCAST_MAGIC                  => cs
+  CLERIC_RIGID_THINKING                 => lw
+  CLERIC_STRENGTH_OF_ONE                => lw
+  CLERIC_HOLY_SMITE                     => nr
+  CLERIC_UNHOLY_BLIGHT                  => nr
+  CLERIC_CURE_MEDIUM_WOUNDS             => he
+  CLERIC_CURE_DISEASE                   => he
+  CLERIC_ZONE_OF_SWEET_AIR              => ea
+  CLERIC_CURE_SERIOUS_WOUNDS            => he
+  CLERIC_ANIMAL_SUMMONING_1             => an
+  CLERIC_FREE_ACTION                    => cm
+  CLERIC_NEUTRALIZE_POISON              => he
+  CLERIC_MENTAL_DOMINATION              => th
+  CLERIC_DEFENSIVE_HARMONY              => lw
+  CLERIC_PROTECTION_FROM_LIGHTNING      => we
+  CLERIC_PROTECTION_FROM_EVIL_10_FOOT   => pr
+  CLERIC_DEATH_WARD                     => nr
+  CLERIC_CALL_WOODLAND_BEINGS           => an
+  CLERIC_POISON                         => he
+  CLERIC_HOLY_POWER                     => co
+  CLERIC_NEGATIVE_PLANE_PROTECTION      => nr
+  CLERIC_CAUSE_SERIOUS_WOUNDS           => he
+  CLERIC_FAR_SIGHT                      => di
+  CLERIC_CLOAK_OF_FEAR                  => cm
+  CLERIC_LESSER_RESTORATION             => nr
+  CLERIC_ANIMAL_SUMMONING_2             => an
+  CLERIC_CURE_CRITICAL_WOUNDS           => he
+  CLERIC_FLAME_STRIKE                   => co
+  CLERIC_RAISE_DEAD                     => nr
+  CLERIC_TRUE_SIGHT                     => al
+  CLERIC_IRONSKIN                       => ee
+  CLERIC_CHAMPIONS_STRENGTH             => lw
+  CLERIC_CHAOTIC_COMMANDS               => cs
+  CLERIC_MAGIC_RESISTANCE               => pr
+  CLERIC_CAUSE_CRITICAL_WOUNDS          => he
+  CLERIC_SLAY_LIVING                    => ne
+  CLERIC_GREATER_COMMAND                => cm
+  CLERIC_RIGHTEOUS_MAGIC                => co
+  CLERIC_MASS_CURE                      => he
+  CLERIC_REPULSE_UNDEAD                 => nr
+  CLERIC_PIXIE_DUST                     => co
+  CLERIC_INSECT_PLAGUE                  => an
+  CLERIC_AERIAL_SERVANT                 => su
+  CLERIC_ANIMAL_SUMMONING_3             => an
+  CLERIC_BLADE_BARRIER                  => cr
+  CLERIC_CONJURE_ANIMALS                => su
+  CLERIC_CONJURE_FIRE_ELEMENTAL         => ef
+  CLERIC_FIRE_SEEDS                     => ef
+  CLERIC_HEAL                           => he
+  CLERIC_HARM                           => he
+  CLERIC_FALSE_DAWN                     => sn
+  CLERIC_DOLOROUS_DECAY                 => co
+  CLERIC_WONDROUS_RECALL                => cm
+  CLERIC_BOLT_OF_GLORY                  => co
+  CLERIC_PHYSICAL_MIRROR                => nu
+  CLERIC_SOL_SEARING_ORB                => sn
+  CLERIC_SHIELD_OF_THE_ARCHONS          => pr
+  CLERIC_CONJURE_EARTH_ELEMENTAL        => ee
+  CLERIC_GATE                           => al
+  CLERIC_NATURE_BEAUTY                  => ex
+  CLERIC_FIRE_STORM                     => ef
+  CLERIC_SYMBOL_FEAR                    => gu
+  CLERIC_SUNRAY                         => sn
+  CLERIC_FINGER_OF_DEATH                => wa
+  CLERIC_CONFUSION                      => cm
+  CLERIC_HOLY_WORD                      => co
+  CLERIC_REGENERATE                     => nr
+  CLERIC_RESURRECTION                   => nr
+  CLERIC_RESTORATION                    => nr
+  CLERIC_UNHOLY_WORD                    => co
+  CLERIC_CREEPING_DOOM                  => an
+  CLERIC_SYMBOL_STUN                    => gu
+  CLERIC_SYMBOL_DEATH                   => gu
+  CLERIC_EARTHQUAKE                     => ee
+
+  // new spells from this mod
+  CLERIC_CAUSE_BLINDNESS_OR_DEAFNESS    => he
+  CLERIC_CAUSE_MEDIUM_WOUNDS            => he
+  CLERIC_CONJURE_AIR_ELEMENTAL          => ea
+  CLERIC_CURE_BLINDNESS_OR_DEAFNESS     => he
+  CLERIC_DETECT_GOOD                    => di
+  CLERIC_DIVINE_SHELL                   => cs
+  CLERIC_FAERIE_FIRE                    => we
+  CLERIC_IMPREGNABLE_MIND               => pr
+  CLERIC_PROTECT_FROM_GOOD              => pr
+  CLERIC_PROTECTION_FROM_GOOD_10_FOOT   => pr
+  CLERIC_RESIST_ACID_AND_CORROSION      => pr
+  CLERIC_STRENGTH_OF_STONE              => ee
+
+  // iwdee/iwdification stuff
+  CLERIC_ALICORN_LANCE                  => an
+  CLERIC_ANIMAL_RAGE                    => co
+  CLERIC_BEAST_CLAW                     => co
+  CLERIC_BLOOD_RAGE                     => co
+  CLERIC_CAUSE_DISEASE                  => he
+  CLERIC_CAUSE_LIGHT_WOUNDS             => he
+  CLERIC_CAUSE_MODERATE_WOUNDS          => he
+  CLERIC_CIRCLE_OF_BONES                => cr
+  CLERIC_CLOUD_OF_PESTILENCE            => co
+  CLERIC_CLOUDBURST                     => ew
+  CLERIC_CURE_MODERATE_WOUNDS           => he
+  CLERIC_CURSE                          => al
+  CLERIC_DESTRUCTION                    => he
+  CLERIC_ENERGY_DRAIN                   => ne
+  CLERIC_ENTROPY_SHIELD                 => pr
+  CLERIC_EXALTATION                     => he
+  CLERIC_FAVOR_OF_ILMATER               => nr
+  CLERIC_GIANT_INSECT                   => an
+  CLERIC_GOODBERRY                      => pl
+  CLERIC_GREATER_SHIELD_OF_LATHANDER    => gu
+  CLERIC_IMPERVIOUS_SANCTITY_OF_MIND    => pr
+  CLERIC_MASS_CAUSE_LIGHT_WOUNDS        => he
+  CLERIC_MIST_OF_ELDATH                 => ex
+  CLERIC_MOLD_TOUCH                     => pl
+  CLERIC_MOONBLADE                      => co
+  CLERIC_PRAYER                         => co
+  CLERIC_PRODUCE_FIRE                   => ef
+  CLERIC_RECITATION                     => co
+  CLERIC_RESIST_FIRE_AND_COLD           => pr
+  CLERIC_RIGHTEOUS_WRATH_OF_THE_FAITHFUL => co
+  CLERIC_SHIELD_OF_LATHANDER            => gu
+  CLERIC_SMASHING_WAVE                  => ew
+  CLERIC_SPIKE_GROWTH                   => ee
+  CLERIC_SPIKE_STONES                   => ee
+  CLERIC_SPIRITUAL_WRATH                => co
+  CLERIC_STALKER                        => pl
+  CLERIC_STAR_METAL_CUDGEL              => co
+  CLERIC_STATIC_CHARGE                  => we
+  CLERIC_STORM_SHELL                    => pr
+  CLERIC_SUMMON_INSECTS                 => an
+  CLERIC_SUNSCORCH                      => sn
+  CLERIC_SYMBOL_OF_HOPELESSNESS         => gu
+  CLERIC_SYMBOL_OF_PAIN                 => gu
+  CLERIC_THORN_SPRAY                    => pl
+  CLERIC_UNDEAD_WARD                    => wd
+  CLERIC_UNFAILING_ENDURANCE            => nr
+  CLERIC_WALL_OF_MOONLIGHT              => pr
+  CLERIC_WHIRLWIND                      => ea
+  CLERIC_WITHER                         => he
+
+  // galctygon
+  CLERIC_ADAMANTITE_MACE                => ee
+  CLERIC_BATTLEFATE                     => cs
+  CLERIC_CALL_UPON_FAITH                => su
+  CLERIC_DIMENSIONAL_FOLDING            => nu
+  CLERIC_ELYSIUMS_TEARS                 => co
+  CLERIC_HAMMER_OF_RETRIBUTION          => wa
+  CLERIC_MOON_BLADE                     => sn
+  CLERIC_MOON_MOTES                     => sn
+  CLERIC_PRODUCE_FLAME                  => cr
+  CLERIC_PRODUCE_ICE                    => cr
+  CLERIC_PYROTECHNICS                   => ef
+  CLERIC_RANDOM_CASUALTY                => cs
+  CLERIC_REINCARNATION                  => an
+  CLERIC_SECLUSION                      => nu
+  CLERIC_SEEKING                        => nu
+  CLERIC_SPACE_WARP                     => nu
+  CLERIC_WALL_OF_FIRE                   => cr
+  CLERIC_WHEEL_OF_BONES                 => cr
+END
+
+OUTER_SET sphere_descript = 1 
+OUTER_SET hla = 0
+LAUNCH_ACTION_MACRO CD_BUILD_SPHERE
+
+// now do it again for secondary spheres
+ACTION_CLEAR_ARRAY cd_spheres
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
+  CLERIC_COMMAND                        => co
+  CLERIC_SANCTUARY                      => pr
+  CLERIC_SHILLELAGH                     => pl
+  CLERIC_AID                            => nr
+  CLERIC_HOLD_PERSON                    => lw
+  CLERIC_REMOVE_PARALYSIS               => pr
+  CLERIC_ZONE_OF_SWEET_AIR              => wd
+  CLERIC_SUMMON_INSECTS                 => an
+  CLERIC_NEGATIVE_PLANE_PROTECTION      => pr
+  CLERIC_GREATER_COMMAND                => co
+  CLERIC_BLADE_BARRIER                  => gu
+  CLERIC_DOLOROUS_DECAY                 => ne
+  CLERIC_WONDROUS_RECALL                => cr
+  CLERIC_BOLT_OF_GLORY                  => su
+  CLERIC_CLOUD_OF_PESTILENCE            => ea
+
+  // new spells from this mod
+  CLERIC_BEAST_CLAW                     => ne
+  CLERIC_MOONBLADE                      => sn
+  CLERIC_IMPERVIOUS_SANCTITY_OF_MIND    => th
+  CLERIC_IMPREGNABLE_MIND               => th
+  
+  //iwdee
+  CLERIC_FAVOR_OF_ILMATER               => pr
+  CLERIC_STORM_SHELL                    => we
+  CLERIC_CIRCLE_OF_BONES                => gu
+  CLERIC_WALL_OF_MOONLIGHT              => sn
+  
+  //galc
+  CLERIC_PRODUCE_FLAME                  => ef
+  CLERIC_PRODUCE_ICE                    => ew
+  CLERIC_REINCARNATION                  => nr
+  CLERIC_WALL_OF_FIRE                   => ef
+  CLERIC_WHEEL_OF_BONES                 => ne
+END
+
+OUTER_SET sphere_descript = 2
+LAUNCH_ACTION_MACRO CD_BUILD_SPHERE
+
+// and a third time for tertiary spheres
+ACTION_CLEAR_ARRAY cd_spheres
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
+  CLERIC_COMMAND                        => lw
+  CLERIC_GREATER_COMMAND                => lw
+END
+
+OUTER_SET sphere_descript = 2
+LAUNCH_ACTION_MACRO CD_BUILD_SPHERE
+
+// now primary spheres of hlas
+ACTION_CLEAR_ARRAY cd_spheres
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
+  CLERIC_ENERGY_BLADES                  => cr
+  CLERIC_STORM_OF_VENGEANCE             => wa
+  CLERIC_ELEMENTAL_SWARM                => ex
+  CLERIC_GREATER_ELEMENTAL_SWARM        => ex
+  CLERIC_GLOBE_OF_BLADES                => cr
+  CLERIC_SUMMON_DEVA                    => al
+  CLERIC_SUMMON_FALLEN_DEVA             => al
+  CLERIC_IMPLOSION                      => co
+  CLERIC_MASS_RAISE_DEAD                => nr
+  CLERIC_AURA_OF_FLAMING_DEATH          => ef
+  CLERIC_ELEMENTAL_TRANSFORMATION_FIRE  => co
+  CLERIC_ELEMENTAL_TRANSFORMATION_EARTH => co
+  CLERIC_MASS_RAISE_DEAD                => nr
+END
+
+// build hla framework
+OUTER_SET sphere_descript = 1
+OUTER_SET hla = 1
+LAUNCH_ACTION_MACRO CD_BUILD_SPHERE
+
+// now secondary spheres of hlas
+ACTION_CLEAR_ARRAY cd_spheres
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
+  CLERIC_ENERGY_BLADES                  => co
+  CLERIC_STORM_OF_VENGEANCE             => we
+  CLERIC_ELEMENTAL_SWARM                => su
+  CLERIC_GREATER_ELEMENTAL_SWARM        => su
+  CLERIC_GLOBE_OF_BLADES                => gu
+  CLERIC_SUMMON_DEVA                    => su
+  CLERIC_SUMMON_FALLEN_DEVA             => su
+  CLERIC_IMPLOSION                      => nu
+  CLERIC_AURA_OF_FLAMING_DEATH          => pr
+  CLERIC_ELEMENTAL_TRANSFORMATION_FIRE  => ef
+  CLERIC_ELEMENTAL_TRANSFORMATION_EARTH => ee
+END
+
+OUTER_SET sphere_descript = 2
+OUTER_SET hla = 1
+LAUNCH_ACTION_MACRO CD_BUILD_SPHERE
+
+ACTION_FOR_EACH sphere IN al an as cs cm co cr di ex ea ee ef ew gu he lw ne nr nu pl pr su sn th ti tr wa wd we BEGIN
+
+  OUTER_FOR (index = 1 ; index < 8 ; ++index) BEGIN
+
+    MOVE ~override/spellbook_%sphere%_%index%_all.2da~       ~divine_remix/spheres~
+         ~override/spellbook_%sphere%_%index%_evil.2da~      ~divine_remix/spheres~
+         ~override/spellbook_%sphere%_%index%_good.2da~      ~divine_remix/spheres~
+         ~override/spellbook_%sphere%_%index%_chaotic.2da~   ~divine_remix/spheres~
+         ~override/spellbook_%sphere%_%index%_lawful.2da~    ~divine_remix/spheres~
+         ~override/spellbook_%sphere%_%index%_geneutral.2da~ ~divine_remix/spheres~
+         ~override/spellbook_%sphere%_%index%_lcneutral.2da~ ~divine_remix/spheres~
+  
+  END
+
+END
+
+/////                                                  \\\\\
+///// custom sphere assignments                        \\\\\
+/////                                                  \\\\\
+
+// anything not listed here gets the generic spheres for their class
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // talos
+  STR_VAR
+    table           = clabpr02
+    class           = cleric
+    all             = major
+    animal          = major
+    astral          = major
+    chaos           = major
+    combat          = major
+    creation        = minor
+    divination      = minor
+    elemental       = major
+    elemental_air   = major
+    elemental_earth = major
+    elemental_fire  = major
+    elemental_water = major
+    healing         = major
+    necromantic     = major
+    necromantic_restorative = major
+    protection      = minor
+    summoning       = major
+    sun             = major
+    time            = minor
+    war             = major
+    weather         = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // helm
+  STR_VAR
+    table           = clabpr03
+    class           = cleric
+    all             = major
+    astral          = major
+    combat          = major
+    creation        = minor
+    divination      = major
+    elemental       = minor
+    elemental_air   = minor
+    elemental_earth = minor
+    elemental_fire  = minor
+    elemental_water = minor
+    guardian        = major
+    healing         = minor
+    protection      = major
+    sun             = major
+    war             = minor
+    wards           = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // lathander
+  STR_VAR
+    table           = clabpr04
+    class           = cleric
+    all             = major
+    astral          = major
+    charm           = major
+    combat          = minor
+    creation        = major
+    divination      = minor
+    elemental       = major
+    elemental_air   = major
+    elemental_earth = major
+    elemental_fire  = major
+    elemental_water = major
+    guardian        = minor
+    healing         = major
+    necromantic_restorative = major
+    plant           = major
+    sun             = major
+    thoughts        = major
+    time            = minor
+    wards           = major
+    weather         = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // tyr
+  STR_VAR
+    table           = ohtyr
+    class           = cleric
+    all             = major
+    astral          = major
+    charm           = major
+    combat          = major
+    creation        = major
+    divination      = major
+    elemental       = minor
+    elemental_air   = minor
+    elemental_earth = minor
+    elemental_fire  = minor
+    elemental_water = minor
+    guardian        = major
+    healing         = major
+    law             = major
+    necromantic     = major
+    necromantic_restorative = major
+    protection      = major
+    summoning       = major
+    sun             = major
+    war             = major
+    wards           = major
+  END
+  
+ACTION_FOR_EACH tempus IN ~ohtempus~ ~a#temp~ BEGIN
+
+  LAUNCH_ACTION_FUNCTION cd_kit_sphere // tempus
+    STR_VAR
+      table           = EVAL ~%tempus%~
+      class           = cleric
+      all             = minor
+      animal          = major
+      chaos           = major
+      combat          = major
+      divination      = major
+      elemental       = major
+      elemental_air   = major
+      elemental_earth = major
+      elemental_fire  = major
+      elemental_water = major
+      guardian        = minor
+      healing         = major
+      necromantic     = major
+      necromantic_restorative = major
+      protection      = major
+      summoning       = minor
+      sun             = minor
+      war             = major
+      wards           = minor
+      weather         = major
+    END
+
+END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // selune
+  STR_VAR
+    table                   = cdselune
+    class                   = cleric
+    all                     = major
+    animal                  = major
+    astral                  = major
+    charm                   = minor
+    combat                  = major
+    divination              = major
+    elemental               = minor
+    elemental_air           = minor
+    elemental_earth         = minor
+    elemental_fire          = minor
+    elemental_water         = minor
+    guardian                = major
+    healing                 = major
+    necromantic             = major
+    necromantic_restorative = major
+    numbers                 = major
+    plant                   = minor
+    summoning               = major
+    sun                     = major
+    travelers               = major
+    wards                   = minor
+    weather                 = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // shar
+  STR_VAR
+    table                   = ~a#shar~
+    class                   = cleric
+    all                     = major
+    astral                  = major
+    charm                   = major
+    combat                  = major
+    creation                = minor
+    divination              = major
+    elemental               = minor
+    elemental_air           = minor
+    elemental_earth         = minor
+    elemental_fire          = minor
+    elemental_water         = minor
+    guardian                = major
+    healing                 = minor
+    necromantic             = major
+    necromantic_restorative = major
+    protection              = major
+    sun                     = major
+    thoughts                = major
+    time                    = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // red knight
+  STR_VAR
+    table                   = ~a#red~
+    class                   = cleric
+    all                     = major
+    charm                   = major
+    combat                  = major
+    creation                = minor
+    divination              = major
+    guardian                = major
+    law                     = major
+    necromantic             = minor
+    necromantic_restorative = minor
+    protection              = major
+    thoughts                = minor
+    travelers               = major
+    war                     = major
+    wards                   = minor
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // ilmater
+  STR_VAR
+    table                   = cdilmatr
+    class                   = cleric
+    all                     = major
+    charm                   = major
+    combat                  = minor
+    creation                = major
+    elemental               = minor
+    elemental_air           = minor
+    elemental_earth         = minor
+    elemental_fire          = minor
+    elemental_water         = minor
+    guardian                = major
+    healing                 = major
+    law                     = major
+    necromantic             = major
+    necromantic_restorative = major
+    protection              = major
+    summoning               = minor
+    sun                     = minor
+    travelers               = major
+    wards                   = minor
+    weather                 = minor
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // kossuth
+  STR_VAR
+    table                   = ~a#koss~
+    class                   = cleric
+    all                     = major
+    combat                  = major
+    divination              = minor
+    elemental_air           = minor
+    elemental_earth         = minor
+    elemental_fire          = major
+    healing                 = major
+    protection              = minor
+    summoning               = major
+    sun                     = major
+    war                     = minor
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // iyachtu xvim
+  STR_VAR
+    table                   = cdxvim
+    class                   = cleric
+    all                     = major
+    combat                  = major
+    creation                = minor
+    divination              = major
+    elemental               = major
+    elemental_air           = major
+    elemental_earth         = major
+    elemental_fire          = major
+    elemental_water         = major
+    guardian                = major
+    healing                 = minor
+    law                     = minor
+    necromantic             = major
+    necromantic_restorative = major
+    summoning               = major
+    sun                     = minor
+    thoughts                = major
+    war                     = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // oghma
+  STR_VAR
+    table                   = ~a#ogma~
+    class                   = cleric
+    all                     = major
+    animal                  = minor
+    astral                  = major
+    charm                   = major
+    combat                  = major
+    creation                = minor
+    divination              = major
+    elemental               = major
+    elemental_air           = major
+    elemental_earth         = major
+    elemental_fire          = major
+    elemental_water         = major
+    guardian                = major
+    healing                 = major
+    necromantic             = minor
+    necromantic_restorative = minor
+    protection              = major
+    summoning               = major
+    sun                     = minor
+    thoughts                = major
+    travelers               = major
+    wards                   = minor
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // sune
+  STR_VAR
+    table                   = nmsune
+    class                   = cleric
+    all                     = major
+    astral                  = major
+    charm                   = major
+    combat                  = minor
+    creation                = major
+    divination              = major
+    elemental               = minor
+    elemental_air           = minor
+    elemental_earth         = minor
+    elemental_fire          = minor
+    elemental_water         = minor
+    guardian                = major
+    healing                 = major
+    necromantic             = minor
+    necromantic_restorative = minor
+    protection              = major
+    summoning               = minor
+    sun                     = major
+    thoughts                = major
+    time                    = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // correllon
+  STR_VAR
+    table                   = ~a#feyw~
+    class                   = cleric
+    all                     = major
+    animal                  = minor
+    astral                  = major
+    chaos                   = minor
+    charm                   = major
+    combat                  = major
+    creation                = major
+    divination              = major
+    guardian                = major
+    healing                 = major
+    necromantic             = major
+    necromantic_restorative = major
+    plant                   = minor
+    protection              = major
+    summoning               = minor
+    sun                     = major
+    thoughts                = minor
+    war                     = major
+    wards                   = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // cyric
+  STR_VAR
+    table                   = ~a#cyric~
+    class                   = cleric
+    all                     = major
+    astral                  = major
+    charm                   = major
+    combat                  = major
+    divination              = minor
+    elemental               = minor
+    elemental_air           = minor
+    elemental_earth         = minor
+    elemental_fire          = minor
+    elemental_water         = minor
+    guardian                = major
+    healing                 = major
+    necromantic             = major
+    necromantic_restorative = major
+    numbers                 = minor
+    protection              = minor
+    summoning               = major
+    sun                     = major
+    time                    = major
+    war                     = major
+    weather                 = major
+  END
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere // oozemaster - normal druid minus animal and plant
+  STR_VAR
+    table                   = ~a#ooze~
+    class                   = druid
+    all                     = major
+    elemental               = major
+    elemental_air           = major
+    elemental_earth         = major
+    elemental_fire          = major
+    elemental_water         = major
+    healing                 = major
+    sun                     = major
+    weather                 = major
+  END
+
+/////                                                  \\\\\
+///// generic sphere assignments                       \\\\\
+/////                                                  \\\\\
+
+COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
+  COUNT_2DA_ROWS 9 rows
+  FOR (index = 2 ; index < rows ; ++index) BEGIN
+    READ_2DA_ENTRY index 8 8 class
+    PATCH_IF ((class = 6) OR (class = 12) OR (class = 11) OR (class = 3)) BEGIN
+      READ_2DA_ENTRY index 5 8 clab
+      PATCH_DEFINE_ASSOCIATIVE_ARRAY cd_mod_kits BEGIN "%clab%" => "%class%" END
+      // while we're here, also make array for future HLA work
+      READ_2DA_ENTRY index 1 8 internal_name
+      PATCH_DEFINE_ASSOCIATIVE_ARRAY cd_hla_lookup BEGIN "%internal_name%" => "%class%" END
+    END
+  END
+  BUT_ONLY
+
+// add generic classes to array
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_mod_kits BEGIN
+  clabpr01 => 3
+  clabpa01 => 6
+  clabrn01 => 12
+  clabdr01 => 11
+END
+
+// because cd_kit_sphere won't apply itself to already patched clabs, any unique sphere alignments 
+// taken care of prior to this step will be preserved.
+ACTION_PHP_EACH cd_mod_kits AS clab => class_check BEGIN
+
+  ACTION_IF class_check = 3 THEN BEGIN // clerics
+
+    LAUNCH_ACTION_FUNCTION cd_kit_sphere // generic cleric
+      STR_VAR
+        table           = EVAL "%clab%"
+        class           = cleric
+        all             = major
+        charm           = major
+        combat          = major
+        creation        = major
+        divination      = major
+        elemental_earth = minor
+        elemental_water = minor
+        guardian        = major
+        healing         = major
+        necromantic     = major
+        necromantic_restorative = major
+        protection      = major
+        summoning       = major
+      END
+
+  END ELSE
+
+  ACTION_IF class_check = 12 THEN BEGIN // ranger
+
+    LAUNCH_ACTION_FUNCTION cd_kit_sphere
+      STR_VAR
+        table           = EVAL "%clab%"
+        class           = ranger
+        all             = major
+        animal          = major
+        healing         = major
+        plant           = major
+        weather         = major
+      END
+
+  END ELSE
+
+  ACTION_IF class_check = 6 THEN BEGIN // paladin
+
+    LAUNCH_ACTION_FUNCTION cd_kit_sphere
+      STR_VAR
+        table           = EVAL "%clab%"
+        class           = paladin
+        combat          = major
+        divination      = major
+        healing         = major
+        protection      = major
+      END
+
+  END ELSE BEGIN // druids
+
+    LAUNCH_ACTION_FUNCTION cd_kit_sphere
+      STR_VAR
+        table           = EVAL "%clab%"
+        class           = druid
+        all             = major
+        animal          = major
+        elemental       = major
+        elemental_air   = major
+        elemental_earth = major
+        elemental_fire  = major
+        elemental_water = major
+        healing         = major
+        plant           = major
+        sun             = major
+        weather         = major
+      END
+
+  END
+
+END
+
+/////                                                  \\\\\
+///// special: cleric-rangers                          \\\\\
+/////                                                  \\\\\
+
+// merge spell lists. Lazy as f***, oh yes.
+ACTION_FOR_EACH align IN 0 17 18 19 33 34 35 49 50 51 BEGIN
+
+  OUTER_FOR (index = 1 ; index < 8 ; ++index) BEGIN //
+
+    COPY ~divine_remix/spheres/spellbook_clabpr01_%index%_%align%.2da~ ~divine_remix/spheres/spellbook_clericranger_%index%_%align%.2da~
+      LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove eof blank lines
+      APPEND_FILE ~divine_remix/spheres/spellbook_clabpr01_%index%_%align%.2da~
+  
+  END
+
+END
+
+ACTION_CLEAR_ARRAY cd_cleric_kits
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN
+
+  19 => clabpr02
+  20 => clabpr03
+  21 => clabpr04
+
+END
+
+ACTION_CLEAR_ARRAY cd_cleric_classes
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_cleric_classes BEGIN
+
+    3 => clabpr01     // cleric
+    6 => clabpa01     // paladin
+    8 => clabpr01     // figher-cleric
+   11 => clabdr01     // druid
+   12 => clabrn01     // ranger
+   14 => clabpr01     // cleric-mage
+   15 => clabpr01     // cleric-thief
+   16 => clabdr01     // fighter-druid
+   17 => clabpr01     // figher-mage-cleric
+   18 => clericranger // cleric-ranger
+  204 => clabpr01     // cleric_all
+  207 => clabpa01     // paladin_all
+  208 => clabdr01     // druid_all
+  209 => clabrn01     // ranger_all
+
+END
+
+// find new kits in kitlist
+COPY_EXISTING ~kitlist.2da~ ~override~
+  SET "A#CYRIC" = 0
+  SET "A#FEYW" = 0
+  SET "A#KOSS" = 0
+  SET "A#OGMA" = 0
+  SET "A#RED" = 0
+  SET "A#TEMP" = 0
+  SET "CDILMATR" = 0
+  SET "CDSELUNE" = 0
+  SET "CDXVIM" = 0
+  SET "NMSUNE" = 0
+  SET "OHTYR" = 0
+  COUNT_2DA_ROWS 9 rows
+  FOR (index = rows ; index > 31 ; --index) BEGIN
+    READ_2DA_ENTRY index 5 9 clab
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#SHAR" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 "A#SHAR"
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#SHAR%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "CDSelune" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 CDSelune
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%CDSELUNE%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#RED" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 "A#RED"
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#RED%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "OHTYR" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 OHTYR
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%OHTYR%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#TEMP" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 "A#TEMP"
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#TEMP%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "OHTEMPUS" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 "A#TEMP"
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#TEMP%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "CDILMATR" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 CDILMATR
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%CDILMATR%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#KOSS" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 "A#KOSS"
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#KOSS%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "CDXvim" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 CDXvim
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%CDXVIM%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#OGMA" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 "A#OGMA"
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#OGMA%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "NMSUNE" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 NMSUNE
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%NMSUNE%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "a#feyw" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 "a#feyw"
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#FEYW%" => "%clab%" END
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#CYRIC" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 "A#CYRIC"
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#CYRIC%" => "%clab%" END
+    END
+  END
+  BUT_ONLY_IF_IT_CHANGES
+
+// adjusting spellbooks is long ang ugly, so moved grunt work to external macro libraries
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  SET kit = 0
+  SET sb_delta = 0
+  READ_SHORT   0x244 kit1
+  READ_BYTE    0x246 kit2
+  READ_BYTE    0x247 kit3
+  PATCH_IF ((kit1 = 0) AND (kit3 = 0x40)) BEGIN
+    PATCH_PHP_EACH cd_cleric_kits AS kitno => clabcheck BEGIN
+      PATCH_IF ((IS_AN_INT kitno) AND (kitno = kit2)) BEGIN
+        SET kit = 1
+        LPF cd_spellbook STR_VAR clab = EVAL "%clabcheck%" END
+      END
+    END
+  END
+  PATCH_IF kit = 0 BEGIN // if not picked up by kit check
+    READ_BYTE 0x273 "class" ELSE 0
+    PATCH_PHP_EACH cd_cleric_classes AS classno => classclab BEGIN
+      PATCH_IF (classno = class) BEGIN
+        LPF cd_spellbook STR_VAR clab = EVAL "%classclab%" END
+      END
+    END
+  END
+  LPF cd_spellbook_wrapup END
+  BUT_ONLY
+
+/////                                                  \\\\\
+///// hla stuff                                        \\\\\
+/////                                                  \\\\\
+
+ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN // hlas
+
+  COPY_EXISTING ~spcl900.spl~ ~override/cdprwrl.spl~ // hla whirlwind
+                ~spcl906.spl~ ~override/cdprpwr.spl~ // hla power attack
+                ~spcl907.spl~ ~override/cdprhdy.spl~ // hla hardiness
+                ~spcl917.spl~ ~override/cdpravd.spl~ // hla avoid death
+                ~spcl902.spl~ ~override/cdprdbl.spl~ // hla death blow
+                ~spcl908.spl~ ~override/cdprcry.spl~ // hla war cry
+                ~spcl922.spl~ ~override/cdprtrk.spl~ // hla tracking
+    LAUNCH_PATCH_MACRO cd_hla_descript
+
+  COPY_EXISTING ~spcl913.spl~ ~override/cdprevd.spl~ // hla evasion
+    SAY UNIDENTIFIED_DESC @10176
+
+  COPY_EXISTING ~spcl904.spl~ ~override/cdprrmg.spl~  // resist magic
+    SAY UNIDENTIFIED_DESC @177
+
+  COPY ~Divine_Remix/spl/cdlthla.spl~ ~override~ // Lathander's Renewal
+    SAY NAME1 @10192
+    SAY NAME2 @10192
+    SAY UNIDENTIFIED_DESC @10193
+    SAY DESC @10193
+
+  COPY ~Divine_Remix/spl/cdprscr.spl~ ~override~ // scribe scrolls
+    SAY NAME1 #70282
+    SAY NAME2 #70282
+    SAY UNIDENTIFIED_DESC @10102
+    SAY DESC @10102
+
+  // assign kits unique hla tables
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_sphere_hla_assign BEGIN
+  // add druid, ranger, paladin tables
+    ~a#cyric~     => ~a#cyri~
+    ~a#FEYWARDEN~ => ~a#feyw~
+    ~a#koss~      => ~a#koss~
+    ~a#ogma~      => ~a#ogma~
+    ~a#ooze~      => ~a#ooze~
+    ~a#red~       => ~a#red~
+    ~a#shar~      => ~a#shar~
+    ~a#temp~      => ~a#temp~
+    ~cdilmatr~    => ~cdilma~
+    ~cdselune~    => ~cdselu~
+    ~cdxvim~      => ~cdxvim~
+    ~nmsune~      => ~nmsune~
+    ~talos~       => ~cdtalo~
+    ~helm~        => ~cdhelm~
+    ~lathander~   => ~cdlath~
+    ~ohtyr~       => ~cdtyr~
+    ~ohtempus~    => ~a#temp~
+    ~CLERIC~      => ~cdcler~
+  END
+
+  COPY_EXISTING ~luabbr.2da~ ~override~
+    PATCH_PHP_EACH cd_sphere_hla_assign AS kit => table BEGIN
+      REPLACE_TEXTUALLY ~^\(%kit%[ %TAB%]+\)[^ ^%TAB%]+[ %TAB%]*$~ ~\1%table%~
+    END
+
+  // patch hla table to exlude quest-level spells from disallowed spheres
+  ACTION_FOR_EACH table IN lucr0 BEGIN // cleric-ranger; patch separate since two potential sources of allowed hlas
+  
+    COPY_EXISTING ~%table%.2da~ ~override~
+      LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove blank lines at end of file
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%][0-9]+[ %TAB%]+\*[ %TAB%]+.+$~ ~~ // delete empty ability lines
+      // delete quest spells not available
+      REPLACE_EVALUATE ~\([%LNL%%MNL%%WNL%][^ ^%TAB%]+[ %TAB%]+GA_SPPR\)\([0-9][0-9][0-9]\)\([ %TAB%]+[^ ^%TAB%]+[ %TAB%]+[^ ^%TAB%]+[ %TAB%]+[^ ^%TAB%]+[ %TAB%]+[^ ^%TAB%]+[ %TAB%]+AP_CDDR\)\([0-9][0-9][0-9]\)\([ %TAB%]+[^ ^%TAB%]+[ %TAB%]+[^ ^%TAB%]+\)~ BEGIN
+        // if clab lakes AP_spell, delete line
+        PATCH_IF foo=1 BEGIN //((MATCH2 = MATCH4) AND (!FILE_CONTAINS_EVALUATED (~clabpr01.2da~ ~[ %TAB%]+AP_CDDR[0-9][0-9][0-9][ %TAB%]+~)) AND (!FILE_CONTAINS_EVALUATED (~clabrn01.2da~ ~[ %TAB%]+AP_CDDR[0-9][0-9][0-9][ %TAB%]+~))) BEGIN
+          SPRINT replace ""
+        END ELSE BEGIN
+          SPRINT replace "%MATCH1%%MATCH2%%MATCH3%%MATCH4%%MATCH5%"
+        END
+      END ~%replace%~
+      PATCH_IF FILE_EXISTS ~divine_remix/2da/hla_%table%.2da~ BEGIN
+        APPEND_FILE ~divine_remix/2da/hla_%table%.2da~
+      END
+      APPEND_FILE ~divine_remix/spheres/hla_padding.2da~
+      COUNT_2DA_ROWS 10 rows
+      FOR (index = 0 ; index < rows ; ++index) BEGIN
+        PATCH_IF (index < 24) BEGIN
+          SET_2DA_ENTRY index 1 10 (index + 1) // re-number rows
+        END ELSE BEGIN
+          SET_2DA_ENTRY index 1 10 DELETE_ROW
+        END
+      END
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW.+$~ ~~ // delete lines past 24
+      REPLACE_TEXTUALLY ~AP_CDDR[0-9][0-9][0-9]~ ~*         ~ // delete temp placeholders
+      PRETTY_PRINT_2DA
+      BUT_ONLY
+
+  END
+  
+  ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ THEN BEGIN
+
+    COPY_EXISTING ~ludr0.2da~ ~override/lua#ooze.2da~
+  
+  END
+
+  // patch hla table to exlude quest-level spells from disallowed spheres
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_sphere_hla_match BEGIN
+
+    ~a#cyri~ => ~a#cyric~
+    ~a#feyw~ => ~a#feyw~
+    ~a#koss~ => ~a#koss~
+    ~a#ogma~ => ~a#ogma~
+    ~a#ooze~ => ~a#ooze~
+    ~a#red~  => ~a#red~
+    ~a#shar~ => ~a#shar~
+    ~a#temp~ => ~a#temp~
+    ~cdselu~ => ~cdselune~
+    ~cdxvim~ => ~cdxvim~
+    ~nmsune~ => ~nmsune~
+    ~cdtalo~ => ~clabpr02~
+    ~cdhelm~ => ~clabpr03~
+    ~cdlath~ => ~clabpr04~
+    ~cdtyr~  => ~ohtyr~
+    ~a#temp~ => ~ohtempus~
+    ~cm0~    => ~clabpr01~ // cleric-mages
+    ~ct0~    => ~clabpr01~ // cleric-thief
+    ~dr0~    => ~clabdr01~ // druid
+    ~fc0~    => ~clabpr01~ // fighter-cleric
+    ~fd0~    => ~clabdr01~ // fighter-druid
+    ~fmc~    => ~clabpr01~ // fighter-mage-cleric
+//    ~cr0~    => ~clabpr01~ // cleric-ranger; special, handled above
+    ~cdcler~    => ~clabpr01~ // keep last as its used as template for others
+
+  END
+  
+  ACTION_PHP_EACH cd_sphere_hla_match AS table => clab BEGIN
+
+    ACTION_IF FILE_EXISTS_IN_GAME ~%clab%.2da~ THEN BEGIN
+      
+      ACTION_IF FILE_EXISTS_IN_GAME ~lu%table%.2da~ THEN BEGIN
+
+        OUTER_SPRINT source_table ~lu%table%~
+
+      END ELSE BEGIN
+
+        OUTER_SPRINT source_table ~lucl0~
+
+      END
+
+      COPY_EXISTING ~%source_table%.2da~ ~override/lu%table%.2da~
+        LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove blank lines at end of file
+        REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%][0-9]+[ %TAB%]+\*[ %TAB%]+.+$~ ~~ // delete empty ability lines
+        REPLACE_TEXTUALLY ~%TAB%~ ~ ~
+        // delete quest spells not available
+        REPLACE_EVALUATE ~\([%LNL%%MNL%%WNL%][0-9]+ +GA_SPPR\)\([1-7][0-9][0-9]\)\( .+\)$~ BEGIN
+          // if clab lakes AP_spell, delete line
+          PATCH_IF !FILE_CONTAINS_EVALUATED (~%clab%.2da~ ~CD_HLA%MATCH2%[ %TAB%]+~) BEGIN
+            SPRINT replace ""
+          END ELSE BEGIN
+            SPRINT replace "%MATCH1%%MATCH2%%MATCH3%"
+          END
+        END ~%replace%~
+
+      // brief interlude to add allowed hlas from master list not already in table
+      COPY_EXISTING ~divine_remix/spheres/hla_master.2da~ ~divine_remix/spheres/hla_master.2da~
+        COUNT_2DA_ROWS 10 rows
+        FOR (index = 0 ; index < rows ; ++index) BEGIN
+          READ_2DA_ENTRY index 1 10 ABILITY
+          INNER_PATCH_SAVE ABIL_SHORT ~%ABILITY%~ BEGIN
+            REPLACE_TEXTUALLY ~GA_SPPR~ ~CD_HLA~
+          END
+          PATCH_IF ((!FILE_CONTAINS_EVALUATED (~override/lu%table%.2da~ ~%ABILITY%~)) AND // hla on master table that's not in the current hla table
+                     (FILE_CONTAINS_EVALUATED (~%clab%.2da~ ~%ABIL_SHORT%[ %TAB%]+~))) BEGIN // and is allowed per the clab
+            READ_2DA_ENTRY index 2 10 ICON
+            READ_2DA_ENTRY index 3 10 STRREF
+            READ_2DA_ENTRY index 4 10 MIN_LEV
+            READ_2DA_ENTRY index 5 10 MAX_LEVEL
+            READ_2DA_ENTRY index 6 10 NUM_ALLOWED
+            READ_2DA_ENTRY index 7 10 PREREQUISITE
+            READ_2DA_ENTRY index 8 10 EXCLUDED_BY
+            READ_2DA_ENTRY index 9 10 ALIGNMENT_RESTRICT
+            INNER_ACTION BEGIN
+
+              COPY ~override/lu%table%.2da~ ~override/lu%table%.2da~
+                APPEND_FILE ~divine_remix/spheres/hla_append.2da~ EVALUATE_BUFFER
+
+            END
+          END
+        END
+        BUT_ONLY
+
+      COPY_EXISTING ~override/lu%table%.2da~ ~override/lu%table%.2da~
+        PATCH_IF FILE_EXISTS ~divine_remix/2da/hla_%table%.2da~ BEGIN
+          APPEND_FILE ~divine_remix/2da/hla_%table%.2da~
+        END
+        APPEND_FILE ~divine_remix/spheres/hla_padding.2da~
+        COUNT_2DA_ROWS 10 rows
+        FOR (index = 0 ; index < rows ; ++index) BEGIN
+          PATCH_IF (index < 24) BEGIN
+            SET_2DA_ENTRY index 0 10 (index + 1) // re-number rows
+          END ELSE BEGIN
+            SET_2DA_ENTRY index 0 10 DELETE_ROW
+          END
+        END
+        REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW.+$~ ~~ // delete lines past 24
+        REPLACE_TEXTUALLY ~AP_CDDR[0-9][0-9][0-9]~ ~*         ~ // delete temp placeholders
+        PRETTY_PRINT_2DA
+        BUT_ONLY
+
+    END
+    
+  END
+
+  ACTION_PHP_EACH cd_sphere_hla_match AS table => clab BEGIN
+
+    ACTION_IF FILE_EXISTS_IN_GAME ~%clab%.2da~ THEN BEGIN
+
+      // clean up generic class tables
+      COPY_EXISTING ~%clab%.2da~ ~override~
+        REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]CD_HLA[0-9][0-9][0-9][ %TAB%]+.+$~ ~~ // delete temp placeholders
+        BUT_ONLY
+
+    END
+
+  END
+
+END

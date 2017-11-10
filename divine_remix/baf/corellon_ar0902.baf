@@ -1,0 +1,15 @@
+IF
+	Global("SainSpawn","GLOBAL",0)
+        Kit(Player1,A#FEYWARDEN)
+	OR(6)
+	  Class(Player1,CLERIC)
+	  Class(Player1,FIGHTER_CLERIC)
+	  Class(Player1,CLERIC_MAGE)
+	  Class(Player1,CLERIC_THIEF)
+	  Class(Player1,FIGHTER_MAGE_CLERIC)
+	  Class(Player1,CLERIC_RANGER)
+THEN
+	RESPONSE #100
+		SetGlobal("SainSpawn","GLOBAL",1)
+		CreateCreature("SCSAIN",[642.627],0) // Dawnbringer Sain
+END

@@ -1,0 +1,19 @@
+IF
+	Global("TelwynSpawn","GLOBAL",0)
+        Kit(Player1,A#KOSS)
+        OR(3)
+          Alignment(Player1,LAWFUL_NEUTRAL)
+          Alignment(Player1,NEUTRAL)
+          Alignment(Player1,LAWFUL_EVIL)
+	OR(6)
+	  Class(Player1,CLERIC)
+	  Class(Player1,FIGHTER_CLERIC)
+	  Class(Player1,CLERIC_MAGE)
+	  Class(Player1,CLERIC_THIEF)
+	  Class(Player1,FIGHTER_MAGE_CLERIC)
+	  Class(Player1,CLERIC_RANGER)
+THEN
+	RESPONSE #100
+		SetGlobal("TelwynSpawn","GLOBAL",1)
+		CreateCreature("SCTELWYN",[705.711],4) // Guardian Telwyn
+END

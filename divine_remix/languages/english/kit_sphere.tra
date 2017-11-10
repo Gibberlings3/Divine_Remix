@@ -1,0 +1,43 @@
+@2001 = ~All~
+@2002 = ~Animal~
+@2003 = ~Astral~
+@2004 = ~Chaos~
+@2005 = ~Charm~
+@2006 = ~Combat~
+@2007 = ~Creation~
+@2008 = ~Divination~
+@2009 = ~Elemental~
+@2010 = ~Elemental Air~
+@2011 = ~Elemental Earth~
+@2012 = ~Elemental Fire~
+@2013 = ~Elemental Water~
+@2014 = ~Thought~
+@2015 = ~Travelers~
+@2016 = ~War~
+@2017 = ~Weather~
+@2018 = ~Guardian~
+@2019 = ~Healing~
+@2020 = ~Law~
+@2021 = ~Necromantic~
+@2022 = ~Numbers~
+@2023 = ~Protection~
+@2024 = ~Sun~
+@2025 = ~Summoning~
+
+@2026 = ~^\(Spheres?:.+\)$~
+@2027 = ~^\(Level:\)\( *.+\)~ // should be 1-7 or 'Quest'
+@2028 = ~Sphere:~
+
+@2029 = ~Plant~
+@2030 = ~Wards~
+
+@2031 = ~Sphere Access:~
+@2032 = ~- Major access to the sphere(s) of CD_REPLACEME~
+@2033 = ~- Minor access to the sphere(s) of CD_REPLACEME~
+@2034 = ~- No access to the sphere(s) of CD_REPLACEME~
+
+@2035 = ~Time~
+@2036 = ~Necromantic (restorative only)~
+
+@2037 = ~- No major sphere access~
+@2038 = ~- No minor sphere access~

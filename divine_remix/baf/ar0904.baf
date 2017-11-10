@@ -1,0 +1,28 @@
+IF
+	Global("YarrylSpawn","GLOBAL",0)
+        OR(4)
+          Alignment(Player1,CHAOTIC_NEUTRAL)
+          Alignment(Player1,NEUTRAL_EVIL)
+          Alignment(Player1,CHAOTIC_EVIL)
+          Kit(Player1,GODTALOS)
+	OR(6)
+	  Class(Player1,CLERIC)
+	  Class(Player1,FIGHTER_CLERIC)
+	  Class(Player1,CLERIC_MAGE)
+	  Class(Player1,CLERIC_THIEF)
+	  Class(Player1,FIGHTER_MAGE_CLERIC)
+	  Class(Player1,CLERIC_RANGER)
+	!Kit(Player1,GODLATHANDER)
+	!Kit(Player1,GODHELM)
+THEN
+	RESPONSE #100
+		SetGlobal("YarrylSpawn","GLOBAL",1)
+		CreateCreature("SCYARRYL",[341.323],14) // Talon Yarryl
+END
+
+IF // this block prevents the existing or Oversight-replaced blocks from spawning Yarryl
+	Global("YarrylSpawn","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("YarrylSpawn","GLOBAL",2)
+END

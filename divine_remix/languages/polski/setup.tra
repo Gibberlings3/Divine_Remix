@@ -1,0 +1,1929 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Generic installation strings                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@1   =~Ten komponent wymaga glownego sk³adnika.~
+@2   =~Ten komponent wymaga podklasy Plaszcza Nocy Shar.~
+@3   =~To chwile potrwa...~
+@4   =~Ten komponent wymaga podklasy Straznika Bitewnego Tempusa.~
+@5   =~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+/////                   Cleric Remix                   \\\\\
+/////             musi zostaæ odinstalowane            \\\\\
+/////          przed instalacj¹ Divine Remixes         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+~
+@6   =~To chwile potrwa.. Dodaje nowe zaklêcia do list zaklec wszystkich postaci 
+rzucajacych kaplanskie czary..~
+@7   =~Ten komponent wymaga glownego skladnika.~
+@8   =~Ten komponent wymaga Druid Remixes.~
+@9   =~Ta podklasa jest juz zainstalowana (Unfinished Business).~
+@10  =~Komponenty Ulepszen kaplanow~
+@11  =~Komponenty Ulepszen druidow~
+@12  =~Komponenty Ulepszen paladynow~
+@13  =~Komponenty Ulepszen lowcow~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// strings for core components                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@100 =~Glowny komponent Divine Remix (Wymagany dla wszystkiego)~
+@101 =~Nie mo¿esz rzucaæ tego zaklêcia dopóki nie skoñczy siê poprzednie.~
+@102 =~Lanca jednoro¿ca~
+@103 =~Lanca jednoro¿ca (Inwokacja)
+Poziom: 3
+Sfera: zwierzêta
+Zasiêg: pole widzenia
+Czas dzia³ania: natychmiastowy
+Czas rzucania: 5
+Obszar dzia³ania: 1 istota
+Rzut obronny: 1/2
+
+Czar ten tworzy czêœciowo eteryczn¹ lancê o srebrnym odcieniu i kszta³cie rogu jednoro¿ca. Gdy rzucaj¹cy czar namierzy ofiarê, lanca natychmiast wystrzeli, zadaj¹c 2K8 obra¿eñ k³utych (po³owê - w przypadku udanego rzutu obronnego przeciwko czarom). Mimo, ¿e po uderzeniu lanca ulegnie rozproszeniu, pozostawi wokó³ ofiary srebrzyst¹ poœwiatê, czyni¹c j¹ tym samym ³atwym celem. Ofiara otrzyma modyfikator -2 do klasy pancerza na trzy rundy.~
+@104 =~Przekleñstwo~
+@105 =~Przekleñstwo (Sprowadzanie/Przywo³ywanie)
+Poziom: 1
+Sfera: wszystkie
+Zasiêg: pole widzenia
+Czas dzia³ania: 6 rund
+Czas rzucania: 1 runda
+Obszar dzia³ania: w promieniu 7,5 metra
+Rzut obronny: brak
+
+Po wypowiedzeniu zaklêcia obni¿a siê morale wrogich istot, a co za tym idzie, otrzymuj¹ one modyfikator -1 do rzutów obronnych i ataków. Zaklêcie ma wp³yw na wszystkie istoty znajduj¹ce siê w obszarze o boku 15 m, z centrum w miejscu wskazanym przez rzucaj¹cego czar (istoty, które wyjd¹ z obszaru dzia³ania, wci¹¿ bêd¹ pod wp³ywem czaru; ci, którzy wejd¹ w ten obszar po ukoñczeniu wypowiadania go - nie).~
+@106 =~S³oneczny ¿ar~
+@107 =~S³oneczny ¿ar (Inwokacja)
+Poziom: 1
+Sfera: s³oñce
+Zasiêg: pole widzenia
+Czas trwania: natychmiastowy
+Czas rzucania: 4
+Obszar dzia³ania: 1 istota
+Rzut obronny: 1/2
+
+W chwili uaktywnienia tego zaklêcia, z nieba zstêpuje jaskrawy promieñ gor¹cego ¿aru i uderza w cel wybrany przez czarodzieja. Ofiara mo¿e wykonaæ rzut obronny przeciwko magii. Je¿eli jest on udany, obra¿enia zmniejszaj¹ siê o po³owê. Ka¿da istota zaatakowana promieniem otrzymuje 1K6 obra¿eñ oraz dodatkowo po 1 punkcie obra¿eñ na ka¿dy poziom zaawansowania czarodzieja. Istoty nieumar³e oraz potwory podatne na jaskrawe œwiat³o otrzymuj¹ 1K6 obra¿eñ oraz po 2 punkty obra¿eñ za ka¿dy poziom zaawansowania czarodzieja. Oprócz obra¿eñ, ofiary zostaj¹ równie¿ oœlepione na 3 rundy.~
+@108 =~Szpony bestii~
+@109 =~Szpony bestii (Przemiany)
+Poziom: 2
+Sfera: walka, nekromancja
+Zasiêg: rzucaj¹cy czar
+Czas trwania: 1 tura
+Czas rzucania: 5
+Obszar dzia³ania: rzucaj¹cy czar
+Rzut obronny: brak
+
+Czar ten zmienia ramiona rzucaj¹cego w szpony potê¿nej bestii, daj¹c mu 18/72 punktów si³y i mo¿liwoœæ zadania ofierze 2K4 punktów obra¿eñ siecznych (plus premia +3 za si³ê). Ten rodzaj ataku mo¿e byæ przeprowadzony dwa razy na rundê, przy modyfikatorze +2 na trafienie.~
+@110 =~Ksiê¿ycowe ostrze~
+@111 =~Ksiê¿ycowe ostrze (Przywo³anie)
+Poziom: 3
+Sfera: walka, s³oñce
+Zasiêg: rzucaj¹cy czar
+Czas trwania: 140 sekund
+Czas rzucania: 6
+Obszar dzia³ania: rzucaj¹cy czar
+Rzut obronny: brak
+
+Zaklêcie to przywo³uje bezszelestny i pozbawiony wagi przedmiot, podobny do miecza, wykonany z poœwiaty ksiê¿ycowej, który wyrasta z d³oni rzucaj¹cego na ponad metr. Ksiê¿ycowe ostrze jest uznawane za broñ klasy +4 z uwagi na istoty, które mo¿e trafiæ, chocia¿ premia nie dotyczy TraK0. Ponadto, z uwagi na eteryczn¹ naturê ksiê¿ycowego ostrza, jego posiadaczowi nie przys³uguj¹ premie pochodz¹ce od si³y.
+
+Uderzenie ksiê¿ycowym ostrzem os³abia ¿ywotnoœæ ofiary, wywo³uj¹c obra¿enia rzêdu 1K12 +4. W przypadku nieumar³ych, którzy s¹ szczególnie podatni na ciosy miecza, obra¿enia wynosz¹ dodatkowo 1K12. Udane uderzenie mo¿e tak¿e tymczasowo zak³óciæ magiê, powoduj¹c, ¿e wszelkie rzucane przez ofiarê zaklêcia nie bêd¹ dzia³aæ w nastêpnej rundzie.~
+@112 =~Ogieñ Faerie~
+@113 =~Ogieñ Faerie (Inwokacje/Wywo³anie)
+Poziom: 1
+Sfera: pogoda
+Zasiêg: pole widzenia
+Czas trwania: 15 rund
+Czas rzucania: 4
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Ogniki Faerie kr¹¿¹ wokó³ ofiary, dok³adnie pokazuj¹c jej pozycjê i zamiary. Przez to, otrzymuje ona karê -2 do klasy pancerza.~
+@114 =~Rozkaz (Zaczarowania/Zauroczenia)
+Poziom: 1
+Sfera: uroki, walka, prawo
+Zasiêg: 30 metrów
+Czas dzia³ania: 1 runda
+Czas rzucania: 1
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+To zaklêcie pozwala kap³anowi rozkazaæ istocie, by "umar³a" (usnê³a) na jedn¹ rundê, pod koniec której obudzi siê ona zupe³nie zdrowa.~
+@115 =~Przywo³anie boskiej mocy (Inwokacja)
+Poziom: 2
+Sfera: walka
+Zasiêg: rzucaj¹cy czar
+Czas dzia³ania: 1 tura
+Czas rzucania: 2
+Obszar dzia³ania: rzucaj¹cy czar
+Rzut obronny: brak
+
+Kap³an odwo³uje siê do swego boga, by na krótki czas obdarzy³ go cz¹stk¹ niebiañskiej mocy. Po rzuceniu tego czaru jego Si³a, Kondycja i Zrêcznoœæ wzrastaj¹ o 1 na ka¿de trzy poziomy. Tak wiêc cechy kap³ana z 3 poziomu zwiêksz¹ siê o 1, a duchownego z 12 - o 4.~
+@116 =~Wezwanie owadów (Przywo³ywanie)
+Poziom: 2
+Sfera: zwierzêta
+Zasiêg: 30 metrów
+Czas dzia³ania: 7 rund
+Czas rzucenia: 9
+Obszar dzia³ania: 1 istota
+Rzut obronny: specjalny
+
+Czar ten przywo³uje stado owadów, które zaatakuj¹ wybranego wroga. Stado zbiera siê w punkcie wybranym przez rzucaj¹cego czar, w promieniu dzia³ania i atakuje pojedyncz¹ wybran¹ ofiarê.
+Ofiara mo¿e wykonaæ rzut obronny na zioniêcia (z modyfikatorem -4) aby uciec. Jeœli jej siê nie uda otrzymuje 1 punkt obra¿eñ co dwie sekundy.
+Ofiara ma -2 do ataku i +2 do KP. Horda owadów ci¹gle k¹sa ofiarê, dlatego trudno jest rzuciæ jakiœ czar (50% szans na nieudane rzucenie czaru).~
+@117 =~Zamêt (Zaczarowania/Zauroczenia)
+Poziom: 7
+Sfera: uroki
+Zasiêg: pole widzenia
+Czas dzia³ania: 1 runda/2 poziomy
+Czas rzucania: 7
+Obszar dzia³ania: Szeœcian o boku do 20 m
+Rzut obronny: specjalny
+
+Efektem tego czaru jest niezdecydowanie i niezdolnoœæ do podejmowania skutecznych dzia³añ, które odczuwaj¹ ofiary (jedna lub wiêcej istot znajduj¹cych siê w obszarze dzia³ania). Wszystkie istoty znajduj¹ce siê w obszarze dzia³ania wykonuj¹ rzut obronny przeciw czarom zmniejszony o -2. Udany rzut oznacza, ¿e dana istota opar³a siê zaklêciu.
+
+Zaklêcie dzia³a przez jedn¹ rundê na ka¿de dwa poziomy kap³ana, który je rzuci³. Istoty, którym nie powiód³ siê rzut obronny, albo wpadaj¹ w sza³, albo stoj¹ zszokowane, albo zaczynaj¹ chodziæ to tu, to tam. Poruszaj¹ce siê istoty oddalaj¹ siê od kap³ana na najwiêksz¹ mo¿liw¹ odleg³oœæ w typowy dla siebie sposób (cz³owiek odejdzie, ryba odp³ynie, nietoperz odleci itd.). Zaatakowana ofiara tego zaklêcia uzna agresora za wroga i zachowa siê zgodnie ze swoj¹ natur¹.~
+@118 =~Regeneracja (Nekromancja)
+Poziom: 7
+Sfera: nekromancja
+Zasiêg: dotyk
+Czas dzia³ania: 1 runda/2 poziomy
+Czas rzucania: 7
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Ten potê¿ny czar umo¿liwia osobie go rzucaj¹cej nadanie wybranej istocie zdolnoœci regeneracyjnych, dziêki czemu mo¿e ona uleczyæ rany, a nawet zregenerowaæ stracone koñczyny. Istota pod wp³ywem czaru odzyskuje 3 punkty ¿ycia na sekundê. Efekt utrzymuje siê przez 1 rundê na ka¿de 2 poziomy rzucaj¹cego czar lub do momentu rozproszenia. Dla przyk³adu, kap³an 14 poziomu odzyskiwa³by 18 punktów ¿ycia na rundê przez 7 rund.~
+@119 =~Wykrycie z³a (Poznanie)
+Poziom: 1
+Sfera: poznanie
+Zasiêg: pole widzenia
+Czas dzia³ania: natychmiastowy
+Czas rzucania: 2
+Obszar dzia³ania: w promieniu 10 m
+Rzut obronny: brak
+
+Ten czar wykrywa emanacje z³a pochodz¹ce od dowolnej istoty. Ka¿de z³e stworzenie, znajduj¹ce siê w zasiêgu dzia³ania zaklêcia, bêdzie œwieciæ s³ab¹ czerwieni¹.~
+@120 =~Trucizna (Nekromancja)
+Poziom: 4
+Sfera: leczenie
+Zasiêg: 5 metrów
+Czas dzia³ania: 1 tura
+Czas rzucania: 4
+Obszar dzia³ania: 1 istota
+Rzut obronny: neguje
+
+Dziêki temu zaklêciu, kap³an mo¿e zatruæ ofiary, którym nie uda siê rzut obronny przeciw truciznom. Efekt dzia³ania zale¿y od poziomu kap³ana i jest opisany poni¿ej:
+
+7-9 poziom: 2k8+2/runda
+10-12 poziom: 3k8+3/runda
+13-14 poziom: 4k8+4/runda
+15-16 poziom: 5k8+5/runda
+17+ poziom: 8k8+6/runda
+
+Jeœli rzut obronny bêdzie udany, zaklêcie nie przynosi ¿adnego efektu.~
+@121 =~Zag³ada (Przemiany)
+Poziom: 1
+Sfera: uroki
+Zasiêg: Pole widzenia
+Czas dzia³ania: 1 tura
+Czas rzucania: 1 runda
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Zaklêcie to sprawia, ¿e jego ofiarê przepe³nia uczucie nieuchronnej zag³ady. Na czas trwania czaru, ofiara otrzymuje modyfikator -2 do wszystkich swoich rzutów, wliczaj¹c w to TraK0 i rzuty obronne. Nie ma rzutu obronnego przeciw temu zaklêciu.~
+@122 =~Sanktuarium (Odrzucanie)
+Poziom: 1
+Sfera: ochrona, uroki
+Zasiêg: rzucaj¹cy czar
+Czas dzia³ania: 1 tura
+Czas rzucania: 4
+Obszar dzia³ania: rzucaj¹cy czar
+Rzut obronny: brak
+
+To zaklêcie sprawia, ¿e przeciwnicy ignoruj¹ istnienie chronionej nim osoby - traktuj¹ j¹, jakby by³a niewidzialna. Chroniona osoba nie mo¿e wykonywaæ ¿adnych bezpoœrednich, ofensywnych dzia³añ (jeœli to uczyni, czar przestanie dzia³aæ), ma jednak prawo korzystaæ z niebojowych zaklêæ i zachowywaæ siê nieagresywnie. Oznacza to, ¿e chroniony kap³an mo¿e na przyk³ad leczyæ rany lub pob³ogos³awiæ siê. Kiedy jednak rzuci jakiœ czar na inn¹ istotê, dzia³anie Sanktuarium dobiegnie koñca.~
+@123 =~Pomoc (Nekromancja, Sprowadzanie)
+Poziom: 2
+Sfera: nekromancja, walka
+Zasiêg: dotyk
+Czas dzia³ania: 1 runda + 1 runda/poziom
+Czas rzucania: 5
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Istota, na któr¹ rzucono to zaklêcie, otrzymuje b³ogos³awieñstwo (+1 do ataku i rzutów obronnych) oraz 1-8 dodatkowych punktów ¿ycia na czas dzia³ania czaru. Zaklêcie sprawia, ¿e mo¿na mieæ wiêcej punktów ¿ycia ni¿ zwyk³e maksimum. Jeœli chroniona osoba zostanie zraniona, to najpierw zmniejszana jest w³aœnie ta czasowa wytrzyma³oœæ. Dodatkowych punktów ¿ycia nie mo¿na odzyskaæ dziêki leczniczej magii. Przyk³ad: 1. poziomowy wojownik ma 8 P¯, otrzymuje 2 obra¿enia a potem zostaje rzucony na niego czar Pomoc, który daje mu dodatkowe 5 P¯. Wojownik ma teraz 11 P¯, z czego 3 s¹ czasowe. Je¿eli zostanie trafiony za 7 pkt. obra¿eñ, traci 4 normalne P¯ i 3 czasowe. Nastêpnie rzucony zostaje na niego czar Leczenie lekkich ran, który leczy 4 punkty i przywraca jego oryginalne 8 P¯.~
+@124 =~Unieruchomienie osoby (Zaczarowania/Zauroczenia)
+Poziom: 2
+Sfera: uroki, prawo
+Zasiêg: pole widzenia
+Czas dzia³ania: 1 tura
+Czas rzucania: 5
+Obszar dzia³ania: ofiara i ka¿dy w promieniu 1,5 m
+Rzut obronny: neguje
+
+Ten czar unieruchamia 1 lub wiêcej osób - ludzi, nieludzi lub humanoidów - które sztywniej¹ i nie mog¹ siê poruszaæ przez 1 turê. Zaklêcie dzia³a na dwuno¿nych ludzi, nieludzi oraz humanoidy wielkoœci cz³owieka lub mniejsze. Mog¹ to byæ skrzaty, driady, krasnoludy, elfy, gnolle, gnomy, gobliny, pó³elfy, nizio³ki, pó³orkowie, hobgobliny, ludzie, koboldy, jaszczuroludzie, wodnice, orkowie, chochliki, leœne duszki i troglodyci. Tak wiêc wojownik z 10. poziomu mo¿e byæ ofiar¹ tego czaru, ale ogr nie.
+Centrum dzia³ania tego czaru znajduje siê w miejscu, gdzie stoi wybrana przez czaruj¹cego ofiara. Zaklêcie zadzia³a równie¿ na ka¿dego przeciwnika znajduj¹cego siê w odleg³oœci 1,5 metra od niej. Czar nie dzia³a na istoty, którym powiedzie siê rzut obronny. Nieumar³ych nie mo¿na unieruchomiæ za pomoc¹ tego zaklêcia.
+Unieruchomione istoty nie mog¹ siê poruszaæ ani mówiæ, s¹ jednak œwiadome tego, co dzieje siê wokó³ nich.
+Czar nie chroni przed ranami, chorobami lub truciznami, które mog¹ pogarszaæ stan jego ofiar.~
+@125 = ~Leczenie chorób (Odrzucanie)
+Poziom: 3
+Sfera: leczenie
+Zasiêg: dotyk
+Czas trwania: sta³y
+Czas rzucania: 1
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Przez na³o¿enie r¹k na chor¹ osobê, kap³an mo¿e wyleczyæ dowoln¹ istotê z wiêkszoœci znanych ludziom chorób. Leczenie jest sta³e, jednak nie gwarantuje ochrony przed nastêpnymi infekcjami. Zaklêcie to leczy równie¿ z chorób umys³owych np. szaleñstwa. Istniej¹ jednak choroby, które s¹ zbyt potê¿ne, by wyleczyæ je tym zaklêciem. Ponadto zaklêcie to nie ulecza œlepoty i g³uchoty.~
+@126 =~Rozproszenie magii (Odrzucanie)
+Poziom: 3
+Sfera: uniwersalna
+Zasiêg: pole widzenia
+Czas dzia³ania: specjalny
+Czas rzucania: 3
+Obszar dzia³ania: szeœcian o boku 10 m
+Rzut obronny: specjalny
+
+Rozproszenie magii usuwa magiczne efekty z wszystkiego, co znajduje siê w obszarze jego dzia³ania - wliczaj¹c w to skutki dzia³ania czarów, eliksirów i niektóre moce przedmiotów, takich jak ró¿d¿ki. Nie wp³ywa jednak na same magiczne przedmioty. Szansa udanego rozproszenia zale¿y od poziomu kap³ana i poziomu rozpraszanej magii. Bazowo wynosi ona 11 lub wiêcej na 1k20. Jeœli kap³an znajduje siê na wy¿szym poziomie ni¿ twórca rozpraszanego efektu, to ró¿nica poziomów jest odejmowana od bazowej szansy. W sytuacji odwrotnej, ró¿nica jest dodawana. Wynik 20 zawsze oznacza sukces, a 1 - pora¿kê. Tak wiêc, je¿eli kap³an znajduje siê 10 poziomów wy¿ej ni¿ rozpraszany przez niego magiczny efekt, to nie powiedzie mu siê tylko w przypadku uzyskania 1.
+Uwaga: mimo i¿ ten czar rozprasza efekty dzia³ania Œliskoœci, Pajêczyny i Œmierdz¹cej chmury to nie obejmie on ca³ego obszaru dzia³ania tych czarów.~
+@127 =~Œwiête uderzenie (Nekromancja)
+Poziom: 3
+Sfera: nekromancja
+Zasiêg: pole widzenia
+Czas dzia³ania: natychmiastowy
+Czas rzucania: 3
+Obszar dzia³ania: w promieniu 6 m
+Rzut obronny: specjalny
+
+Zaklêcie to wzywa energiê ze sfery œwiat³oœci by otworzyæ korytarz ³¹cz¹cy j¹ z celem. W wyniku tego wszelkie z³e istoty w promieniu dzia³ania otrzymuj¹ co rundê 1k4 obra¿eñ na poziom kap³ana. Udany rzut obronny zmniejsza te obra¿enia o po³owê. Dodatkowo jeœli ofierze nie uda siê odeprzeæ czaru, zostaje na jedn¹ rundê oœlepiona.~
+@128 =~Ujawnienie niewidzialnych (Poznanie)
+Poziom: 3
+Sfera: stra¿nicza
+Zasiêg: pole widzenia
+Czas dzia³ania: natychmiastowy
+Czas rzucania: 8
+Obszar dzia³ania: w promieniu 10 m
+Rzut obronny: brak
+
+Ujawnienie rozprasza niewidzialnoœæ wszystkich istot znajduj¹cych siê w zasiêgu jego dzia³ania. Dotyczy to chronionych zaklêciami Sanktuarium, Ulepszona niewidzialnoœæ, Drzwi z cienia itd.~
+@129 =~Ochrona przed ogniem (Odrzucanie)
+Poziom: 3
+Sfera: ¿ywio³y (ogieñ)
+Zasiêg: dotyk
+Czas dzia³ania: 3 rundy + 1 runda/poziom
+Czas rzucania: 6
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Czar ten zapewnia ca³kowit¹ niewra¿liwoœæ na normalny ogieñ (pochodnie, ogniska, p³on¹cy olej itd.) oraz znaczn¹ odpornoœæ na ogieñ magiczny, taki jak p³omienny smoczy oddech, czary w rodzaju: P³on¹ce d³onie, Ognista kula, Ogniste nasiona, Burza ognia, S³up ognia itd., poch³aniaj¹c 80% zadawanych przez nie obra¿eñ.~
+@130 =~Zdjêcie kl¹twy (Odrzucanie)
+Poziom: 3
+Sfera: uniwersalna
+Zasiêg: dotyk
+Czas dzia³ania: sta³y
+Czas rzucania: 6
+Obszar dzia³ania: specjalny
+Rzut obronny: specjalny
+
+Kap³an, który rzuci to zaklêcie, jest zwykle w stanie zdj¹æ kl¹twê, na³o¿on¹ na przedmiot lub osobê, b¹dŸ te¿ maj¹c¹ postaæ niechcianych przes³añ lub z³ej obecnoœci. Warto jednak wiedzieæ, ¿e zdjêcie kl¹twy nie zadzia³a np. na przeklêt¹ tarczê, broñ czy zbrojê, choæ pozwoli osobie posiadaj¹cej taki przedmiot pozbyæ siê go. To zaklêcie ma szansê osi¹gn¹æ skutek w przypadku specyficznych kl¹tw, o ile kap³an posiada odpowiednio wysoki poziom doœwiadczenia.~
+@131 =~Zdjêcie parali¿u (Odrzucanie)
+Poziom: 3
+Sfera: ochrona, nekromancja
+Zasiêg: 10 metrów/poziom
+Czas dzia³ania: sta³y
+Czas rzucania: 6
+Obszar dzia³ania: w promieniu 6 metrów
+Rzut obronny: brak
+
+Kap³an, który rzuci to zaklêcie, mo¿e uwolniæ jedn¹ istotê od dzia³ania dowolnego parali¿u lub podobnej magii (takiej jak Dotyk ghula lub Unieruchomienie).~
+@132 =~Przeklêta strefa (Nekromancja)
+Poziom: 3
+Sfera: nekromancja
+Zasiêg: pole widzenia
+Czas dzia³ania: natychmiastowy
+Czas rzucania: 3
+Obszar dzia³ania: w promieniu 6 m
+Rzut obronny: specjalny
+
+Zaklêcie to wzywa energiê sfery materii negatywnej by otworzyæ korytarz ³¹cz¹cy j¹ z celem. W wyniku tego wszelkie dobre istoty w promieniu dzia³ania otrzymuj¹ co rundê 1k4 obra¿eñ na poziom kap³ana. Udany rzut obronny zmniejsza te obra¿enia o po³owê. Dodatkowo jeœli ofierze nie uda siê odeprzeæ czaru, przez 4 rundy jej rzuty ataku zostan¹ pogorszone o 2.~
+@133 =~Strefa czystego powietrza (Odrzucanie)
+Poziom:  3
+Sfera: ¿ywio³ (powietrze), stra¿nicza
+Zasiêg: 30 metrów
+Czas trwania: natychmiastowy
+Czas rzucenia: 3
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Strefa czystego powietrza usuwa wszelkie szkodliwe sk³adniki z truj¹cych ob³oków (tak¿e tych magicznie stworzonych, jak na przyk³ad Zabójcza chmura). Czar ten przegania wszystkie chmury wokó³ osoby, która rzuci³a czar. Nie chroni jednak przed truj¹cym oddechem smoka (jak na przyk³ad chlor zielonego smoka).~
+@134 =~Przywo³anie zwierz¹t I (Sprowadzanie/Przywo³ywanie)
+Poziom: 4
+Sfera: zwierzêta
+Zasiêg: 20 metrów
+Czas dzia³ania: 3 tury
+Czas rzucania: 7
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Moc¹ tego czaru kap³an przywo³uje 2-3 zwierzêta o liczbie kostek 4 lub mniej. Czar mo¿na rzucaæ na wolnym powietrzu lub wewn¹trz budynków, a rodzaj przywo³anych zwierz¹t zale¿y od miejsca, w którym rzucany jest czar.~
+@135 =~Os³ona przed œmierci¹ (Nekromancja)
+Poziom: 4
+Sfera: nekromancja
+Zasiêg: pole widzenia
+Czas dzia³ania: 1 tura/poziom
+Czas rzucania: 1 runda
+Obszar dzia³ania: 1 istota
+Rzut obronny: neguje
+
+Czar ten chroni cel przed wszystkimi postaciami magii wywo³uj¹cej natychmiastow¹ œmieræ. Ochrona ta dzia³a przez czas dzia³ania czaru. Do magii œmierci zaliczaj¹ siê miêdzy innymi nastêpuj¹ce zaklêcia: Dezintegracja, S³owo Mocy: giñ, Zaklêcie Œmierci i Palec Œmierci. Zaklêcie to jednak nie chroni przed wszystkimi zaklêciami ze sfery nekromancji.~
+@136 =~Dalekowzrocznoœæ (Poznanie)
+Poziom: 4
+Sfera: poznanie
+Zasiêg: specjalny
+Czas trwania: 3 rundy + 1 runda/poziom
+Czas rzucania: 4
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Po rzuceniu tego zaklêcia rzucaj¹cy mo¿e obejrzeæ mapê niezbadanego obszaru. Po prostu kliknij na fragmencie mapy, który chcesz zobaczyæ. Przez czas dzia³ania czaru rzucaj¹cy mo¿e obserwowaæ ten obszar, zauwa¿aj¹c potwory i fortyfikacje.~
+@137 =~Œwiêta moc (Wywo³ywanie)
+Poziom: 4
+Sfera: walka
+Zasiêg: rzucaj¹cy czar
+Czas dzia³ania: 1 runda/poziom
+Czas rzucania: 6
+Obszar dzia³ania: rzucaj¹cy czar
+Rzut obronny: brak
+
+Dziêki temu zaklêciu, rzucaj¹ca je osoba zyskuje si³ê i umiejêtnoœci wojownika na tym samym poziomie co ona. Si³a kap³ana przyjmuje wartoœæ 18/00, nawet jeœli normalnie jest wiêksza, zaœ jego TraK0 staje siê takie samo jak wojownika na danym poziomie. Dodatkowo zyskuje on czasowo 1 punkt ¿ycia za ka¿dy poziom. Efekt ten trwa do chwili zakoñczenia dzia³ania zaklêcia, lub do momentu jego rozproszenia.~
+@138 =~Ochrona przed z³em, promieñ 3 metry (Odrzucanie)
+Poziom: 4
+Sfera: ochrona
+Zasiêg: dotyk
+Czas dzia³ania: 1 tura/poziom
+Czas rzucania: 7
+Obszar dzia³ania: w promieniu 3 metrów
+Rzut obronny: brak
+
+Zaklêcie to sprawia, ¿e wszystkie istoty w promieniu 3 metrów od rzucaj¹cego zostaj¹ objête indywidualn¹ Ochron¹ przed z³em. Wokó³ tych osób tworzy siê magiczna bariera, która porusza siê wraz z nimi i przynosi dwa efekty - po pierwsze, wszystkie ataki wykonane przez z³e istoty otrzymuj¹ -2 do trafienia; po drugie, daje +2 do wszystkich rzutów obronnych, które trzeba wykonaæ w wyniku takich ataków.~
+@139 =~Ochrona przed b³yskawicami (Odrzucanie)
+Poziom: 4
+Sfera: pogoda
+Zasiêg: dotyk
+Czas dzia³ania: 5 rund/poziom
+Czas rzucania: 7
+Obszar dzia³ania: dotkniêta istota
+Rzut obronny: brak
+
+Czar ten zapewnia ca³kowit¹ niewra¿liwoœæ na wszelkie ataki elektryczne, takie jak ataki magiczne typu B³yskawica, Pora¿aj¹cy uœcisk itp. Ochrona trwa do chwili zakoñczenia dzia³ania czaru lub udanego rozproszenia magii.~
+@140 =~Przywo³anie zwierz¹t II (Sprowadzanie/Przywo³ywanie)
+Poziom: 5
+Sfera: zwierzêta
+Zasiêg: 60 metrów/poziom
+Czas dzia³ania: 3 tury
+Czas rzucania: 8
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Moc¹ tego czaru kap³an przywo³uje 1-3 zwierzêta o liczbie kostek 8 lub mniej. Przez ca³y okres dzia³ania czaru, najlepiej jak potrafi¹, pomagaj¹ one rzucaj¹cemu. Moc czaru pozwala wezwaæ tylko normalne lub olbrzymie zwierzêta - nie mo¿na nim sprowadziæ fantastycznych stworów lub potworów (¿adnych smoków, ¿ywio³aków itp.).~
+@141 =~Potê¿niejszy rozkaz (Zaczarowania/Zauroczenia)
+Poziom: 5
+Sfera: uroki, walka, prawo
+Zasiêg: pole widzenia
+Czas dzia³ania: 1 runda/poziom
+Czas rzucania: 1
+Obszar dzia³ania: w promieniu 6 metrów
+Rzut obronny: neguje
+
+Podobnie jak zaklêcie Rozkaz z pierwszego poziomu, czar ten pozwala kap³anowi rozkazaæ innym istotom by "umar³y" (zasnê³y), z tym ¿e w tym wypadku efekt trwa przez 1 rundê na poziom kap³ana. Po up³ywie tego czasu ofiara (lub ofiary) budzi siê. Obszar dzia³ania jest podobny do obszaru Œmierdz¹cej chmury lub Ognistej kuli.~
+@142 =~Plaga owadów (Sprowadzanie/Przywo³ywanie)
+Sfera: zwierzêta
+Poziom: 5
+Zasiêg: 120 metrów
+Czas dzia³ania: 6 rund
+Czas rzucania: 5
+Obszar dzia³ania: wrogowie w polu widzenia
+Rzut obronny: brak
+
+Czar ten sprowadza rój pe³zaj¹cych, skacz¹cych i lataj¹cych owadów. Wszystkie istoty znajduj¹ce siê w zasiêgu jego dzia³ania otrzymuj¹ 1 punkt obra¿eñ w ka¿dej rundzie, nie mog¹ rzucaæ czarów, a ka¿da istota o 2 lub mniej Kostkach spróbuje natychmiastowej ucieczki. Istoty o 5 lub mniej kostkach musz¹ dokonaæ sprawdzianu swego morale, o ile chc¹ pozostaæ w zasiêgu roju.~
+@143 =~¯elazna skóra (Przemiany)
+Poziom: 5
+Sfera: ¿ywio³y (ziemia)
+Zasiêg: 0
+Czas dzia³ania: 12 godzin
+Czas rzucenia: 1 runda
+Obszar dzia³ania: rzucaj¹cy czar
+Rzut obronny: brak
+
+Kiedy druid rzuci na siebie ten potê¿ny czar, z ziemi uniesie siê ¿elazna skóra i okryje go. Skóra ta jest oczywiœcie magiczna i w ¿aden sposób nie przeszkadza druidowi. W efekcie druid jest chroniony przed atakami wrêcz i pociskami. Za ka¿de dwa poziomy kap³ana uzyskuje siê jedn¹ skórê. Na przyk³ad na 10 poziomie druid bêdzie mia³ 5 skór. Ka¿da skóra chroni przed jednym atakiem, wiêc druid 10 poziomu bêdzie chroniony przed piêcioma atakami, ale szósty zrani go normalnie. Skóry bêd¹ os³aniaæ druida dopóki nie zniszcz¹ ich ataki, nie zostan¹ rozproszone, albo nie minie czas dzia³ania czaru. Nale¿y jednak pamiêtaæ, ¿e czar ten nie chroni przed atakami w rodzaju Ognistej kuli, ale chroni przed magicznymi atakami fizycznymi, takimi jak Magiczne pociski.~
+@144 =~Py³ skrzatów (Iluzje/Urojenia)
+Poziom: 5
+Sfera: walka
+Zasiêg: 0
+Czas dzia³ania: specjalny
+Czas rzucenia: 1 runda
+Obszar dzia³ania: w promieniu 10 m
+Rzut obronny: brak
+
+Czar ten tworzy garœæ py³u skrzatów, który mo¿na rzuciæ w powietrze. Ka¿dy trafiony przez py³ staje siê niewidzialny (zasiêg py³u wynosi oko³o 10 m). Oczywiœcie niewidzialne istoty nie zostaj¹ uciszone i w niektórych sytuacjach mo¿na je wykryæ. Czar dzia³a do chwili rozproszenia, dopóki kap³an nie zechce go przerwaæ lub niewidzialny nie zaatakuje kogoœ, albo dopóki nie minie 24 godz. A wiêc niewidzialny mo¿e otwieraæ drzwi, jeœæ, rozmawiaæ, chodziæ po schodach itp., ale jeœli zaatakuje staje siê natychmiast widzialny, choæ dziêki niewidzialnoœci zaatakuje pierwszy.~
+@145 =~Odpêdzenie nieumar³ych (Odrzucanie)
+Poziom: 5
+Sfera: nekromancja
+Zasiêg: rzucaj¹cy czar
+Czas dzia³ania: 1 tura
+Czas rzucania: 5
+Obszar dzia³ania: rzucaj¹cy czar
+Rzut obronny: brak
+
+To potê¿ne zaklêcie tworzy fale energii ze sfery anty-negatywnej, które rozchodz¹ ciê od kap³ana. Fale te uniemo¿liwiaj¹ wszystkim nieumar³ym zaatakowanie osoby rzucaj¹cej, poniewa¿ na kilka chwil s¹ odpychani do ty³u. Przez czas dzia³ania czaru co rundê pojawia siê kolejna fala. Czar ten dzia³a na wszelkich nieumar³ych, bez rzutu obronnego.~
+@146 =~Zabijanie ¿yj¹cych (Nekromancja)
+Poziom: 5
+Sfera: nekromancja
+Zasiêg: dotyk
+Czas dzia³ania: specjalny
+Czas rzucania: 1
+Obszar dzia³ania: dotkniêta istota
+Rzut obronny: specjalny
+
+Kap³an musi po rzuceniu tego czaru dotkn¹æ wroga. W chwili rzucenia czaru powstaje przedmiot, którym kap³an wykonuje swój najbli¿szy atak. Atak ten musi zostaæ wykonany w ci¹gu najbli¿szych 18 sekund. Jeœli atak ten chybi przedmiot znika czar jest zmarnowany. Jeœli jednak atak siê uda, to automatycznie zadaje 2k6+9 obra¿eñ. Ponadto trafiona istota musi wykonaæ rzut obronny na czary albo zginie. Czar ten mo¿na rozproszyæ, jeœli rozproszenie zostanie u¿yte miêdzy rzuceniem Zabijania ¿yj¹cych a wykonaniem ataku.~
+@147 =~Prawdziwe widzenie (Poznanie)
+Poziom: 5
+Sfera: uniwersalna
+Zasiêg: 0
+Czas dzia³ania: 1 tura
+Czas rzucania: 8
+Obszar dzia³ania: w promieniu 20 metrów
+Rzut obronny: brak
+
+Zaklêcie to dzia³a na obszar otaczaj¹cy rzucaj¹cego, w promieniu 20 metrów. Natychmiast po rzuceniu tego czaru, a tak¿e w ka¿dej kolejnej rundzie przez 1 turê, rozproszone zostaj¹ wszystkie wrogie zaklêcia ze sfery Iluzji/Urojeñ dzia³aj¹ce na tym obszarze. Oto lista czarów, które podlegaj¹ temu dzia³aniu: Odbity obraz, Niewidzialnoœæ, Lustrzane odbicie, Niewykrywalnoœæ, Ulepszona niewidzialnoœæ, Drzwi z cienia, Zwodniczy sobowtór, Projekcja duplikatu i Mamid³o. Jeœli ofiara tego czaru posiada jak¹œ odpornoœæ magiczn¹, to nie dzia³a ona na Prawdziwe Widzenie. Czar ten dzia³a tylko na wrogów, a wiêc nie przerwie niewidzialnoœci chroni¹cej cz³onka dru¿yny.~
+@148 =~Przywo³anie zwierz¹t III (Sprowadzanie/Przywo³ywanie)
+Poziom: 6
+Sfera: zwierzêta
+Zasiêg: 60 metrów
+Czas dzia³ania: 4 tury
+Czas rzucania: 9
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Moc¹ tego czaru kap³an przywo³uje dwa lub trzy zwierzêta o liczbie kostek 12 lub mniej. Przybêd¹ tylko stworzenia, które w momencie rzucania czaru znajdowa³y siê w jego zasiêgu. Przyzwane zwierzêta bêd¹ w ka¿dy mo¿liwy sposób pomagaæ rzucaj¹cemu przez okres trwania zaklêcia lub póki nie zostan¹ zabite. Zaklêcie pozwala na przywo³anie jedynie zwyk³ych lub olbrzymich zwierz¹t.~
+@149 =~Sprowadzenie ¿ywio³aka ognia (Sprowadzanie/Przywo³ywanie)
+Poziom: 6
+Sfera: ¿ywio³y (ogieñ)
+Zasiêg: pole widzenia
+Czas dzia³ania: 1 tura/poziom
+Czas rzucania: 1 runda
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Po rzuceniu tego zaklêcia, kap³an otwiera specjaln¹ bramê do Sfery ¯ywio³u Ognia i przywo³uje ¿ywio³aka, który pojawia siê w jego polu widzenia. Jest 60% szans na to, ¿e ¿ywio³ak bêdzie mia³ 12 Kostek, 35% szans na to, ¿e bêdzie mia³ 16 Kostek, oraz 5% szans na przywo³anie ¿ywio³aka ognia o 24 Kostkach. Wszystkie polecenia wydawane s¹ telepatycznie, wiêc nie trzeba znaæ jêzyka przyzwanej istoty ani obawiaæ siê braku zrozumienia rozkazów. W przeciwieñstwie do magów, kap³ani nie musz¹ prowadziæ psychicznej walki z przywo³anymi ¿ywio³akami, które chc¹ kontrolowaæ.~
+@150 =~Ogniste nasiona (Sprowadzanie)
+Poziom: 6
+Sfera: ¿ywio³y (ogieñ)
+Zasiêg: specjalny
+Czas dzia³ania: 3 tury
+Czas rzucania: 1 runda
+Obszar dzia³ania: specjalny
+Rzut obronny: 1/2
+
+Za pomoc¹ tego czaru, kap³an tworzy 4 ogniste nasiona, które pojawiaj¹ siê w jego ekwipunku. Pozostan¹ tam przez 3 rundy. Jeœli w tym czasie ciœnie siê nimi w przeciwnika, wybuchn¹ w postaci kuli ognia, zadaj¹c 2-16 punktów obra¿eñ ka¿demu, kto znajdzie siê w obszarze dzia³ania. Udany rzut obronny przeciw czarom zmniejszy obra¿enia o po³owê.~
+@151 =~Sprowadzenie ¿ywio³aka ziemi (Sprowadzanie/Przywo³ywanie)
+Poziom: 7
+Sfera: ¿ywio³y (ziemia)
+Zasiêg: pole widzenia
+Czas dzia³ania: 1 tura/poziom
+Czas rzucania: 1 runda
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Po rzuceniu tego zaklêcia, mag otwiera specjaln¹ bramê do Sfery ¯ywio³u Ziemi i przywo³uje ¿ywio³aka, który pojawia siê w jego polu widzenia. Jest 60% szans na to, ¿e ¿ywio³ak bêdzie mia³ 16 Kostek, 35% szans na to, ¿e bêdzie mia³ 16 Kostek, oraz 5% szans na przywo³anie ¿ywio³aka ziemi o 24 Kostkach. Wszystkie polecenia wydawane s¹ telepatycznie, wiêc nie trzeba znaæ jêzyka przyzwanej istoty ani obawiaæ siê braku zrozumienia rozkazów. W przeciwieñstwie do magów, kap³ani nie musz¹ prowadziæ psychicznej walki z przywo³anymi ¿ywio³akami, które chc¹ kontrolowaæ. ¯ywio³ak pozostanie pod kontrol¹ rzucaj¹cego do chwili œmierci, lub do chwili zakoñczenia dzia³ania czaru.~
+@152 =~Pe³zaj¹ca zag³ada (Sprowadzanie/Przywo³ywanie)
+Poziom: 7
+Sfera: zwierzêta
+Zasiêg: 80 metrów
+Czas dzia³ania: 6 rund
+Czas rzucania: 1 runda
+Obszar dzia³ania: specjalny
+Rzut obronny: specjalny
+
+Rzucaj¹cy to zaklêcie przyzywa ogromn¹ masê wszelakich jadowitych, k³uj¹cych i gryz¹cych pajêczaków, insektów i robaków. Ta wygl¹daj¹ca niczym dywan masa rozpe³za siê po du¿ym obszarze. Po otrzymaniu rozkazu od rzucaj¹cego, rój zaczyna pe³zn¹æ we wskazan¹ stronê w zasiêgu 10 metrów. Ofiary, które znajd¹ siê na drodze roju mog¹ wykonaæ rzut obronny przeciw zioniêciom (z modyfikatorem -2), próbuj¹c uciec insektom. Stworzenia pochwycone przez rój, co rundê otrzymuj¹ 2 obra¿enia i nie mog¹ rzucaæ czarów.~
+@153 =~Brama (Sprowadzanie/Przywo³ywanie)
+Poziom: 7
+Sfera: uniwersalna
+Zasiêg: 20 metrów
+Czas dzia³ania: 33 rundy
+Czas rzucania: 5
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Za pomoc¹ tego zaklêcia, kap³an przywo³uje istotê ze sfer zewnêtrznych - Biesa z Czeluœci - który zaatakuje jego wrogów, a czasami i samego kap³ana, jeœli ten nie bêdzie doœæ ostro¿ny. Aby uniemo¿liwiæ demonowi zauwa¿enie go, kap³an (i jego towarzysze) musz¹ byæ pod wp³ywem Ochrony przez z³em. Jeœli nie uda siê odpowiednio zabezpieczyæ, Bies rozerwie na strzêpy rzucaj¹cego i jego kompanów, a nastêpnie po¿re ich szcz¹tki.~
+@154 =~Korowa skóra (Przemiany)
+Poziom: 2
+Sfera: roœliny
+Zasiêg: dotyk
+Czas dzia³ania: 4 rundy + 1 runda/poziom
+Czas rzucania: 5
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Czar ten sprawia, ¿e skóra istoty staje siê twarda, niczym kora drzewa, co podnosi jej bazow¹ klasê pancerza do 6 +1 na ka¿de cztery poziomy kap³ana rzucaj¹cego czar (tzn. KP 5 na poziomie 4, KP 4 na 8 itd.). Ponadto chroniona czarem osoba otrzymuje premiê +1 do wszystkich rzutów obronnych przed atakami, z wyj¹tkiem rzutów obronnych przeciw magii.~
+@155 =~Wezwanie leœnych istot (Sprowadzanie/Przywo³ywanie)
+Poziom: 4
+Sfera: zwierzêta
+Zasiêg: pole widzenia
+Czas dzia³ania: 3 tury
+Czas dzia³ania: 7
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Za pomoc¹ tego zaklêcia mo¿na przywo³aæ nimfê, która bêdzie pomaga³a dru¿ynie. Bêdzie ona posiada³a kilka czarów kap³añskich do swej dyspozycji i wykorzysta je dla dobra dru¿yny (wœród tych czarów bêd¹: Dominacja umys³owa, Zamêt i Uzdrowienie). Nimfa pozostaje pod kontrol¹ rzucaj¹cego do chwili œmierci lub zakoñczenia dzia³ania czaru.~
+@156 =~Przemiana w ¿ywio³aka ziemi
+Poziom: misja
+Sfera: walka, ¿ywio³y (ziemia)
+Zasiêg: 0
+Czas dzia³ania: 5 tur
+Czas rzucania: 4
+Obszar dzia³ania: rzucaj¹cy
+Rzut obronny: brak
+
+Czerpi¹ca z mocy ziemi, ta potê¿na zdolnoœæ zmiany kszta³tu umo¿liwia druidowi przemianê w ¿ywio³aka ziemi o 24 kostkach, dysponuj¹cego ogromn¹ si³¹. ¯ywio³ak taki ma KP -5, TraK0 2 i mo¿e wyrz¹dziæ 2k10 obra¿eñ obuchowych. Kiedy druid powróci do swojej poprzedniej formy, dodatkowo otrzymuje 3k10 punktów ¿ycia.~
+@157 =~Przemiana w ¿ywio³aka ognia
+Poziom: misja
+Sfera: walka, ¿ywio³y (ogieñ)
+Zasiêg: 0
+Czas dzia³ania: 5 tur
+Czas rzucania: 4
+Obszar dzia³ania: rzucaj¹cy
+Rzut obronny: brak
+
+Czerpi¹ca z mocy ognia, ta potê¿na zdolnoœæ zmiany kszta³tu umo¿liwia druidowi przemianê w ¿ywio³aka ognia o 24 kostkach, dysponuj¹cego ogromn¹ si³¹. ¯ywio³ak taki ma KP -5, TraK0 2 i mo¿e wyrz¹dziæ 1k10 obra¿eñ normalnych i 1k10 obra¿eñ od ognia. Kiedy druid powróci do swojej poprzedniej formy, dodatkowo otrzymuje 3k10 punktów ¿ycia.~
+@158 =~Ostrza energii
+(Dowolna szko³a)
+Poziom: misja
+Sfera: walka, tworzenie
+Zasiêg: specjalny
+Czas dzia³ania: 4 tury
+Czas rzucania: 3
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Ostrze energii to dysk utworzony z czystej energii, który dodaje +10 punktów do TraK0. Po rzuceniu we wroga, zadaje mu 1k4+5 obra¿eñ od pocisków, a tak¿e 1k10 dodatkowych obra¿eñ od elektrycznoœci. Zaklêcie to pozwala na stworzenie 1 dysku energii na poziom rzucaj¹cego. Dopóki rzucaj¹cy ma dyski, jego liczba ataków wynosi 9.~
+@159 =~Burza zemsty
+Poziom: misja
+Sfera: wojna, pogoda
+Zasiêg: 90 metrów
+Czas dzia³ania: natychmiastowy
+Czas rzucania: 8
+Obszar dzia³ania: w promieniu 10 m
+Rzut obronny: specjalny
+
+Po rzuceniu tego zaklêcia ziemia zaczyna siê trz¹œæ, a w niebiosach zaczyna siê gotowaæ od krwi i energii. Wszyscy wrogowie rzucaj¹cego zostaj¹ pora¿eni deszczem kwasu, trzêsieniami ziemi i b³yskawicami.
+
+Wszyscy nieprzyjaciele, do 8 poziomu w³¹cznie, zostaj¹ natychmiast zabici. Ci, którym uda³o siê prze¿yæ, zostaj¹ pora¿eni deszczem truj¹cego kwasu i b³yskawicami. Burza trwa 3 rundy. W czasie trwania ka¿dej rundy ofiary odnosz¹ 1k6 obra¿eñ od elektrycznoœci, 1k6 obra¿eñ od ognia i 1k6 obra¿eñ od kwasu (udany rzut obronny zmniejsza obra¿enia o po³owê). W czasie trwania pierwszej tury istnieje te¿ prawdopodobieñstwo, ¿e ofiary zostan¹ zatrute (rzut obronny przeciw œmierci).~
+@160 =~Przyzwanie ¿ywio³aków
+Poziom: misja
+Sfera: ¿ywio³y, przywo³ywanie
+Zasiêg: 10 metrów
+Czas dzia³ania: 10 rund
+Czas rzucania: 1 runda
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Czerpi¹c moc z otoczenia, zaklêcie to przyzywa 2 ¿ywio³aki o 16 kostkach, wybrane losowo spoœród ¿ywio³aków ziemi, powietrza lub ognia. Istoty te towarzysz¹ rzucaj¹cemu przez 10 rund, w czasie których wype³niaj¹ wszystkie jego rozkazy. Istnieje 10% prawdopodobieñstwa, ¿e zamiast 2 ¿ywio³aków zostanie sprowadzony Ksi¹¿ê ¯ywio³aków, który rz¹dzi innymi ¿ywio³akami z odpowiednich sfer. Ksiêciem ¿ywio³aków powietrza jest Chan. Ksiêciem ¿ywio³aków ziemi jest Sunnis, natomiast Ksiêciem ¿ywio³aków ognia jest Zaaman Rul.~
+@161 =~Wiêksze przyzwanie ¿ywio³aków
+Poziom: misja
+Sfera: ¿ywio³y, przywo³ywanie
+Zasiêg: 10 metrów
+Czas dzia³ania: 10 rund
+Czas rzucania: 1 runda
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Druidzi, z racji tego, ¿e z ¿ywio³ami ³¹cz¹ ich silniejsze wiêzi, mog¹ rzucaæ potê¿niejsz¹ wersjê Przyzwania ¿ywio³aków. Zaklêcie to pozwala przyzwaæ Ksi¹¿¹t ¯ywio³aków, wybranych losowo spoœród ¿ywio³aków ziemi, powietrza lub ognia. Istoty te towarzysz¹ rzucaj¹cemu przez 10 rund, w czasie których wype³niaj¹ wszystkie jego rozkazy.
+
+Wymagane: Przyzwanie ¿ywio³aków~
+@162 =~Przyzwanie devy
+(Sprowadzanie/Przywo³ywanie)
+Poziom: misja
+Sfera: uniwersalna, przywo³ywanie
+Zasiêg: 40 m
+Czas dzia³ania: 4 rundy + 1 runda/poziom
+Czas rzucania: 5
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Zaklêcie to powoduje otworzenie bram nieba i przywo³anie anielskiej istoty deva, która bêdzie walczyæ przy boku rzucaj¹cego czar, do czasu a¿ zaklêcie wygaœnie lub jej ziemskie wcielenie zostanie zabite.~
+@163 =~Przyzwanie upad³ego devy
+(Sprowadzanie/Przywo³ywanie)
+Poziom: misja
+Sfera: uniwersalna, przywo³ywanie
+Zasiêg: 40 m
+Czas dzia³ania: 4 rundy + 1 runda/poziom
+Czas rzucania: 5
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Zaklêcie to powoduje otwarcie bram Otch³ani i przywo³uje demonicznego Devê, który walczy po stronie czarodzieja do chwili zakoñczenia dzia³ania czaru, lub œmierci ziemskiego wcielenia Devy.~
+@164 =~Implozja (Wywo³ania)
+Poziom: misja
+Sfera: walka, liczby
+Zasiêg: pole widzenia
+Czas dzia³ania: 2 rundy
+Czas rzucania: 9
+Obszar dzia³ania: 1 istota
+Rzut obronny: specjalny
+
+Zaklêcie to tworzy pod wskazan¹ istot¹ szczelinê w ziemi, która imploduje, wci¹ga do swego wnêtrza przeciwnika, a nastêpnie zamyka siê, mia¿d¿¹c go i parz¹c przez 1 rundê. Zaklêcie mo¿e wyrz¹dziæ ofierze 10k10 obra¿eñ od ognia i 10k10 obra¿eñ od broni obuchowych. Jeœli zaatakowany w ten sposób przeciwnik wykona rzut obronny przeciwko czarom, to doznaje tylko po³owê obra¿eñ.~
+@165 =~Aura p³omiennej œmierci
+(Wywo³ywanie/Przemiany)
+Poziom: misja
+Sfera: ¿ywio³y (ogieñ) ochrona
+Zasiêg: 0
+Czas dzia³ania: 1 runda/2 poziomy
+Czas rzucania: 4
+Obszar dzia³ania: rzucaj¹cy
+Rzut obronny: brak
+
+Ten czar powoduje, ¿e wokó³ kap³ana pojawia siê aura intensywnych p³omieni, które zadaj¹ obra¿enia wrogom, a tak¿e chroni¹ przed obra¿eniami z zewn¹trz. Tarcza ta nie tylko zapewnia czaruj¹cemu 90% odpornoœci na ogieñ i dodaje premiê -4 punkty do Klasy Pancerza, ale te¿ ochrania go przed atakami wykonanymi z odleg³oœci 1,5 metra wokó³ niego. Przeciwnik znajduj¹cy siê na tym obszarze, który trafi postaæ chronion¹ aur¹ p³omiennej œmierci za pomoc¹ broni lub czarów, sam otrzyma 2k10 +2 obra¿eñ od ognia. Poza tym, intensywne gor¹co chroni czaruj¹cego przed wszystkimi broniami niemagicznymi, zarówno w starciu bezpoœrednim, jak i przed pociskami.~
+@166 =~Tarcza entropii~
+@167 =~Tarcza entropii (Odrzucanie)
+Poziom: 6
+Sfera: chaos
+Zasiêg: rzucaj¹cy czar
+Czas dzia³ania: 1 runda/poziom
+Czas rzucania: 9
+Rzut obronny: brak
+Czar ten otacza rzucaj¹cego ochronnym wirem energii, który blokuje lub odpiera wiele ataków. Daje to klasie pancerza kap³ana modyfikator +5 i 50% odpornoœæ na wiêkszoœæ typów ataków: od elektrycznoœci, ognia, ch³odu itd. Daje tak¿e modyfikator +2 wszystkim rzutom obronnym i odpornoœæ na ataki oparte na broni strzeleckiej.~
+@168 = ~Chaotyczne rozkazy (Zaczarowania/Zauroczenia)
+Poziom: 5
+Sfera: chaos
+Czas trwania: 1 tura/poziom
+Zasiêg: Pole widzenia
+Czas rzucania: 3
+Rzut obronny: Brak
+Obszar dzia³ania: 1 istota
+
+Ten czar czyni dotkniêt¹ nim osobê odporn¹ na magiczne rozkazy. W tej
+kategorii mieszcz¹ siê: Zauroczenie, Dominacja, Rozkaz, Uœpienie i
+Zamêt. Zaklêcie to obejmuje tylko jedn¹ istotê i trwa do wygaœniêcia lub
+magicznego rozproszenia.~
+@169 = ~Nietykalna œwiêtoœæ umys³u~
+@170 = ~Nietykalna œwiêtoœæ umys³u (Zaczarowania/Zauroczenia)
+Poziom: 7
+Sfera: ochrona, myœl
+Czas trwania: 1 tura/poziom
+Zasiêg: Rzucaj±cy czar
+Czas rzucania: 1
+Rzut obronny: Brak
+Obszar dzia³ania: Rzucaj±cy czar
+
+Czar ten otacza umys³ rzucaj¹cego barier¹ nie do pokonania, przez co chroni
+go przed wp³ywami zewnêtrznymi. w czasie dzia³ania zaklêcia, na rzucaj¹cego
+nie bêd± mia³y wp³ywu Zauroczenie, Zamêt, Dominacja, Strach, Og³upienie,
+Unieruchomienie, Uœpienie oraz wszelkie formy ataków na umys³, w tym
+psioniczne zdolnoœci £upie¿ców Umys³ów. Jednak isniej¹ niezwykle potê¿ne
+zaklêcia lub istoty, które potrafi¹ prze³amaæ t¹ barierê.~
+@171 = ~Czysty umys³~
+@172 = ~Czysty umys³ (Zaczarowania/Zauroczenia)
+Poziom: 5
+Sfera: ochrona, myœl
+Czas trwania: 1 tura + 1 runda/poziom
+Zasiêg: dotyk
+Czas rzucania: 1
+Rzut obronny: Brak
+Obszar dzia³ania: Rzucaj±cy czar
+
+Zaklêcie to chroni postaæ pod jego wp³ywem przed wiêkszoœci¹ zaklêæ i
+zdolnoœci nadnaturalnych oddzia³owuj¹cych na umys³. Wliczone s¹ w to
+unieruchomienia, zauroczenie, dominacja, zamêt i zaklêcia o podobnych
+efektach. Ponadto zaklêcie to chroni przed podstawowymi mocami i atakami
+psionicznymi.~
+@173 = ~Ochrona przed kwasem~
+@174 = ~Ochrona przed kwasem (Odrzucanie)
+Poziom: 2
+Sfera: ochrona
+Zasiêg: dotyk
+Czas trwania: 1 runda/poziom
+Czas rzucania: 5
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+To zaklêcie powoduje, i¿ istota bêd¹ca pod jego wp³ywem lepiej radzi sobie z
+przyjmowaniem obra¿eñ od wszelakich kwasów. Wliczaj¹ siê w to zarówno
+zaklêcia takie jak Kwasowa strza³a Melfa czy Zabójcza Chmura, a tak¿e i
+naturalne ataki zioniêcia czarnego smoka, ataki œluzów, szlamów i puddingów.
+Wszelkie ¿r¹ce substancje zadaj¹ chronionej postaci tylko po³owê obra¿eñ.~
+@175 = ~Si³a ska³y~
+@176 = ~Si³a ska³y (Inwokacje/Wywo³anie)
+Poziom: 1
+Sfera: ¿ywio³y (ziemia)
+Zasiêg: dotyk
+Czas trwania: 3 rundy + 1 runda/poziom
+Czas rzucania: 4
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+To zaklêcie obdarowuje cel nadnaturaln¹ moc¹, zwiêkszaj¹c jego si³ê o 15 +1K4, co czêœciej przybiera postaæ wyniku o wysokoœci 18/50 ni¿ 19. Jeœli si³a postaci jest wiêksza ni¿ ta dana w premii tego zaklêcia, to zostanie niestety obni¿ona do tego poziomu na czas trwania tego zaklêcia.~
+@177 =~Odpornoœæ na magiê
+Zdolnoœæ ta pozwala kap³anowi dziêki mocy swej duszy i wiary przeciwstawiæ siê efektom magii. Odpornoœæ na magiê kap³ana zwiêksza siê do 50% na 4 rundy. Premia ta nie jest dodawana do pozosta³ych form odpornoœci na magiê, dlatego jeœli kap³an posiada ju¿ odpornoœæ na magiê w wysokoœci 50% lub wiêksz¹, to zdolnoœæ ta staje siê bezu¿yteczna.~
+@178 =~Tropienie
+Dziêki doskona³ej znajomoœci swojego otoczenia i istot, które w nim ¿yj¹, ³owca mo¿e u¿yæ zdolnoœci Tropienie, by dowiedzieæ siê, jakie istoty zamieszkuj¹ w danym obszarze i gdzie siê one w danej chwili znajduj¹. Czerwone strza³ki przy krawêdziach ekranu wskazuj¹ ogólnie kierunek, w którym znajduj¹ siê stwory przebywaj¹ce w danej okolicy.~
+@179 = ~Leczenie œlepoty i g³uchoty~
+@180 = ~Leczenie œlepoty i g³uchoty (Odrzucanie)
+Poziom: 3
+Sfera: leczenie
+Zasiêg: dotyk
+Czas trwania: sta³y
+Czas rzucania: 1
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Przez dotyk, kap³an potrafi na trwa³e uleczyæ dowoln¹ istotê z chorób w postacii œlepoty lub g³uchoty. Chocia¿ po rzuceniu tego zaklêcia, choroba znika, to zaklêcie to nie daje ochrony przed kolejn¹ chorob¹. Ponadto s¹ choroby, przeciwko którym to zaklêcie nic nie zdzia³a.~
+@181 = ~Wywo³anie œlepoty i g³uchoty~
+@182 = ~Wywo³anie œlepoty i g³uchoty (Odrzucanie)
+Poziom: 3
+Sfera: leczenie
+Zasiêg: dotyk
+Czas trwania: 10 tur
+Czas rzucania: 1
+Obszar dzia³ania: 1 istota
+Rzut obronny: neguje
+
+Zaklêcie to wymaga udanego trafienia (ataku) przeciwnika. Jednak nawet przy trafieniu, gdy cel wykona udany rzut obronny, nie wystêpuja ¿adne efekty. Jeœli rzut obronny siê nie powiedzie, ofiara zostaje zaka¿ona bez-obra¿eniow¹ chorob¹, g³uchot¹ lub œlepot¹ (szanse 50% na 50%).
+
+G³ucha postaæ posiada karê 50% szans na nieudane rzucenie zaklêcie. Oœlepiona istota posiada drastycznie zmniejszony zasiêg widzenia, karê -4 do ataku i +4 do klasy pancerza.~
+
+@184 = ~Wywo³ywanie chorób~
+@185 = ~Wywo³ywanie chorób (Odrzucanie)
+Poziom: 3
+Sfera: leczenie
+Zasiêg: dotyk
+Czas trwania: 10 tur
+Czas rzucania: 1
+Obszar dzia³ania: 1 istota
+Rzut obronny: neguje
+
+Z pomoc¹ tego zaklêcia kap³an mo¿e wywo³aæ jeden z dwóch typów chorób u ofiary (50% szans na ka¿d¹) przy udanym trafieniu. Pierwszy typ choroby wywo³uje okropne deformacje i os³abienie cia³a, zmniejszaj¹c si³ê, zrêcznoœæ i kondycjê o 1 na ka¿de 3 poziomy tego, kto rzuci³ zaklêcie, ponadto istota zostaje spowolniona. Drugi typ choroby, wewnêtrzny, powoduje ogromne bóle, przez które otrzymuje ona obra¿enia o wysokoœci w zale¿noœci od poziomu kap³ana:
+
+3 poziom: 1 p¿/runda
+9 poziom: 2p¿/rundê
+15 poziom: 3p¿/rundê
+21 poziom: 4p¿/rundê
+
+Wszelkie efekty trwaj¹ 10 tur~
+
+
+@191 =~Okrzyk wojenny
+Wykorzystuj¹c Okrzyk wojenny, kap³an wydaje potê¿ny i przera¿aj¹cy krzyk, na którego dŸwiêk wszyscy wrogowie znajduj¹cy siê w promieniu 10 metrów zostaj¹ oszo³omieni ze strachu. Nieprzyjaciele nie odczuj¹ negatywnych efektów tej zdolnoœci, jeœli uda siê im wykonaæ rzut obronny przeciwko czarom.~
+@194 =~Wykrycie dobra~
+@195 =~Wykrycie dobra (Poznanie)
+Poziom: 1
+Sfera: poznanie
+Zasiêg: pole widzenia
+Czas dzia³ania: natychmiastowy
+Czas rzucania: 2
+Obszar dzia³ania: w promieniu 10 m
+Rzut obronny: brak
+
+Ten czar wykrywa emanacje dobra pochodz¹ce od dowolnej istoty. Ka¿de dobre stworzenie, znajduj¹ce siê w zasiêgu dzia³ania zaklêcia, bêdzie œwieciæ s³ab¹ zieleni¹.~
+@196 =~Ochrona przed dobrem~
+@197 =~Ochrona przed dobrem (Odrzucanie)
+Poziom: 1
+Sfera: ochrona
+Zasiêg: dotyk
+Czas dzia³ania: 3 rundy/poziom
+Czas rzucania: 1
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Czar ten tworzy wokó³ dotkniêtej istoty magiczn¹ barierê. Porusza siê ona wraz z ni¹ i chroni j¹ w nastêpuj¹cy sposób: istota otrzymuje modyfikator +2 do klasy pancerza i rzutów obronnych jeœli atakuje j¹ istota o dobrym charakterze.~
+@198 =~Ochrona przed dobrem, promieñ 3 metry~
+@199 =~Ochrona przed dobrem, promieñ 3 metry (Odrzucanie)
+Poziom: 3
+Sfera: ochrona
+Zasiêg: dotyk
+Czas dzia³ania: 1 tura/poziom
+Czas rzucania: 7
+Obszar dzia³ania: 3 metry
+Rzut obronny: brak
+
+Zaklêcie to dzia³a jak 1-poziomowe zaklêcie kap³ana Ochrona przed dobrem. Ró¿nica polega jednak na czasie trwania i na obszarze na jakim dzia³a. Czar ten tworzy wokó³ istot magiczn¹ barierê. Porusza siê ona wraz z nimi i chroni je w nastêpuj¹cy sposób: istota otrzymuje modyfikator +2 do klasy pancerza i rzutów obronnych jeœli atakuje j¹ istota o dobrym charakterze.~
+@201 =~Ochrona przed dobrem~
+@202 =~Zadawanie lekkich ran~
+@203 =~Zadawanie lekkich ran (Nekromancja)
+Poziom: 1
+Sfera: leczenie
+Zasiêg: dotyk
+Czas dzia³ania: 5
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+Po rzuceniu tego zaklêcia i dotkniêciu ofiary, kap³an zadaje jej 8 punktów obra¿eñ. Czar nie dzia³a na nieumar³ych, konstrukty i istoty z innych sfer. Zaklêcie nie mo¿e byæ rzucane przez postacie dobre. Nie ma na nie rzutu obronnego.~
+@204 =~Zadawanie œrednich ran~
+@205 =~Zadawanie œrednich ran (Nekromancja)
+Poziom: 3
+Sfera: leczenie
+Zasiêg: dotyk
+Czas dzia³ania: sta³y
+Czas rzucania: 5
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+Gdy kap³an rzuca ten czar i dotyka jakiejœ istoty, ofiara otrzymuje 14 punktów obra¿eñ. Czar ten nie dzia³a na nieumar³ych, konstrukty albo stwory z innych sfer. Zaklêcie nie mo¿e byæ rzucane przez postacie dobre. Nie ma na nie rzutu obronnego.~
+@206 =~Ochrona przed charakterem~
+@207 =~Cios œmierci
+Umiejêtnoœæ ta pozwala kap³anowi zadaæ cios, przenikaj¹cy pancerz ka¿dego potwora mniejszego. W ci¹gu 2 rund od momentu skorzystania z Ciosu Œmierci, ka¿da istota 10. lub ni¿szego poziomu zostanie natychmiast zabita, jeœli otrzyma uderzenie od wojownika.~
+@208 =~Ochrona przed dobrem~
+@209 =~Zwierzêcy sza³~
+@210 =~Zwierzêcy sza³ (Zaczarowanie)
+Poziom: 5
+Sfera: walka
+Zasiêg: dotyk
+Czas trwania: 15 rund
+Czas rzucania: 8
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+Zaklêcie to nape³nia istotê bêd¹c¹ celem dzia³ania czaru zwierzêc¹ dzikoœci¹. Zyskuje ona 19 punktów si³y, +20 punktów ¿ycia, +20% ruchu, a tak¿e +2 do wszystkich rzutów obronnych. Kiedy zaklêcie jest aktywne, istota bêd¹ca celem jego dzia³ania traci zdolnoœæ rzucania czarów. Zwykle istotê tak¹ da siê kontrolowaæ, chyba ¿e w zasiêgu wzroku pojawi¹ siê wrogowie. Wówczas natychmiast inicjuje ona walkê wrêcz, pos³uguj¹c siê wszystkim, co znajdzie w zasiêgu rêki. Na ka¿d¹ rundê przypada 5% szans, ¿e istota bêd¹ca celem dzia³ania czaru wpadnie w sza³ bojowy, atakuj¹c zarówno przyjació³, jak wrogów.~
+@211 =~¯¹dza krwi~
+@212 =~¯¹dza krwi (Przemiany)
+Poziom: 4
+Sfera: walka
+Zasiêg: pole widzenia
+Czas trwania: 2 tury
+Czas rzucania: 7
+Obszar dzia³ania: 1 sprzymierzona istota
+Rzut obronny: Brak
+Czar ten dzia³a tylko na postacie gracza lub sprzymierzone istoty. Po rzuceniu, ofiara wpada w berserk i atakuje najbli¿sz¹ istotê dopóki jej nie zabije, a nastêpnie przechodzi do nastêpnej ofiary. Bêd¹c pod wp³ywem £aknienia krwi ofiara jest odporna na Zauroczenie, Uœpienie, Strach, Unieruchomienie, Og³uszenie, Og³upienie, Emocje i tym podobne efekty. Dodatkowo, wskazana postaæ otrzymuje +2 do trafienia, +3 do obra¿eñ, +2 do si³y, 10 dodatkowych punktów ¿ycia oraz premiê do szybkoœci poruszania siê. Czar ma jednak kilka wad. W czasie jego trwania, nie mo¿na sprawdziæ iloœci punktów ¿ycia wskazanej postaci, która nie mo¿e korzystaæ z efektów, umo¿liwiaj¹cych jej odzyskanie. Pod koniec dzia³ania czaru wskazana postaæ robi siê zmêczona, a jej Si³a spada do 3 w czasie dwóch tur. Zaklêcie ¯¹dza krwi nie dzia³a na istoty o praworz¹dnym charakterze i nie mo¿e byæ przez takie istoty rzucane.~
+@213 =~¯¹dza krwi nie oddzia³owuje na praworz¹dne postacie.~
+@214 =~Sprowadzenie ¿ywio³aka powietrza (Sprowadzanie/Przywo³ywanie)
+Poziom: 7
+Sfera: ¿ywio³y (powietrze)
+Zasiêg: pole widzenia
+Czas dzia³ania: 1 tura/poziom
+Czas rzucania: 1 runda
+Obszar dzia³ania: specjalny
+Rzut obronny: brak
+
+Po rzuceniu tego zaklêcia, druid otwiera specjaln¹ bramê do Sfery ¯ywio³u Powietrza i przywo³uje ¿ywio³aka, który pojawia siê w jego polu widzenia. Jest 60% szans na to, ¿e ¿ywio³ak bêdzie mia³ 16 Kostek, 35% szans na to, ¿e bêdzie mia³ 16 Kostek, oraz 5% szans na przywo³anie ¿ywio³aka powietrza o 24 Kostkach. Wszystkie polecenia wydawane s¹ telepatycznie, wiêc nie trzeba znaæ jêzyka przyzwanej istoty ani obawiaæ siê braku zrozumienia rozkazów. W przeciwieñstwie do magów, kap³ani nie musz¹ prowadziæ psychicznej walki z przywo³anymi ¿ywio³akami, które chc¹ kontrolowaæ. ¯ywio³ak pozostanie pod kontrol¹ rzucaj¹cego do chwili œmierci, lub do chwili zakoñczenia dzia³ania czaru.~
+@215 =~Wyssanie energii (Nekromancja)
+Poziom: 7
+Zasiêg: dotyk
+Czas dzia³ania: sta³y
+Czas rzucania: 3
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Po rzuceniu tego czaru otwiera siê tunel miêdzy sfer¹ czarodzieja a sfer¹ Energii Negatywnej. Czarodziej dzia³a jak przewodnik ³¹cz¹cy te sfery. Wysysa z ofiary ¿ycie i wysy³a jej energiê do sfery Energii Negatywnej. Ofiara traci 2 poziomy doœwiadczenia. Cel traci na sta³e poziomy, Kostki, Punkty ¯ycia i zdolnoœci. Poziomy te mo¿na odzyskaæ tylko stosuj¹c kap³añski czar Przywrócenie.~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Disable Kits                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@5000 =~Usuniecie podklas z modow~
+@5001 =~Usuniecie wszystkich podklas~
+@5002 =~Usuniecie podklas kaplana~
+@5003 =~Usuniecie podklas druida~
+@5004 =~Usuniecie podklas paladyna~
+@5005 =~Usuniecie podklas lowcy~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Cleric Remix                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10000 =~Cleric Remixes~
+@10001 =~Otrzyma³em zadanie od œwi¹tyni Lathandera! To musi siê skoñczyæ!~
+
+@10002 =~W³adca Burzy Talosa~
+@10003 =~Obserwator Helma~
+@10004 =~Pan Poranka Lathandera~
+@10101 =~Wojownik/Obserwator Helma~
+@10102 =~Pisanie zwojów
+Umiejêtnoœæ ta pozwala kap³anowi stworzyæ zwoje czarów niskiego i œredniego poziomu. Zwoje, które kap³an mo¿e stworzyæ s¹ losowo wybierane z poni¿szej listy:
+ 1) Leczenie powa¿nych ran
+ 2) Swoboda dzia³ania
+ 3) Neutralizacja trucizn
+ 4) Dominacja umys³owa
+ 5) Jednoœæ obronna
+ 6) Si³a czempiona
+ 7) Chaotyczne rozkazy
+ 8) Leczenie krytycznych ran
+ 9) S³up ognia
+10) Wskrzeszenie~
+
+@10166 =~Odpornoœæ na elektrycznoœæ~
+@10167 =~Duchowa broñ~
+@10168 =~Krótka w³ócznia 'Furia Talosa' to duchowa broñ W³adcy Burzy, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Furia Talosa jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+@10169 =~Niszcz¹cy cios~
+@10170 =~Raz dziennie, kap³an mo¿e przyzwaæ moc Talosa wspomagaj¹c¹ go w walce. Umiejêtnoœæ ta daje premiê +2 do trafienia i obra¿eñ na czas 1 rundy na poziom rzucaj¹cego (do maksymalnie 20 rund).~ 
+
+@10171 =~W£ADCA BURZY TALOSA: Talos reprezentuje niszcz¹c¹ moc natury. Jest on bogiem burz, huraganów, leœnych po¿arów, trzêsieñ ziemi, tornad i ogólnie destrukcji. Jego siedzib¹ jest czêœæ Sfer zwana Pandemonium. Jest on przychylny wszelakim najeŸdŸcom, ludziom czerpi¹cym przyjemnoœæ z niszczenia i zabijania. Symbolem Talosa s¹ trzy ró¿nokolorowe b³yskawice trafiaj¹ce w ten sam punkt. Jest on tak¿e, razem z Auril, Umbrelle i Malarem, jednym z bóstw furii. 
+
+Talos Niszczyciel odpowiada za mroczn¹ stron¹ natury, która niespodziewanie atakuje i nie da siê jej powstrzymaæ. Jego w³adza nad rz¹dem dusz bardziej opiera siê na brutalnej tyranii i zagro¿eniu wielkiej burzy ni¿ na zjednywaniu sobie ludzi, jednak mimo to, Talos jest jednym z najczêœciej wyznawanych bóstw w Krainach. Koœció³ Talosa g³osi i¿ tylko zaspokojenie potrzeb Talosa mo¿e powstrzymaæ na jakiœ czas jego gniew. Tylko wtedy bêdzie on chroni³ swych wyznawców, gdy nadejdzie kolejny kataklizm wywo³any przez Niszczyciela.
+
+Kap³an Talosa mo¿e wybieraæ pomiêdzy chaotycznym neutralnym, neutralnym z³ym i chaotycznym z³ym charakterem.
+
+Sfery:
+- Pe³ny dostêp do sfer: uniwersalnej, zwierzêcej, astralnej, chaosu, walki, ¿ywio³ów, leczenia, nekromancji, przywo³añ, wojny i pogody
+- Ograniczony dostêp do sfer: tworzenia, poznania, ochrony, czasu
+- Brak dostêpu do sfer: uroki, stra¿niczej, obronnej, prawa, liczb, roœlin, s³oñca, myœli, podró¿y
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - krótk¹ w³óczniê 'Furia Talosa'
+Furia Talosa to duchowa broñ W³adcy Burzy, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Furia Talosa jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Otrzymuje 1% odpornoœci na elektrycznoœæ na ka¿dy poziom doœwiadczenia
+- Raz dziennie mo¿e u¿yæ zdolnoœci 'Niszcz¹cy cios', która zapewnia kap³anowi premiê +2 do trafienia i obra¿eñ na rundê na poziom rzucaj¹cego (do maksymalnie 20 rund)
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Burzow¹ tarczê', która zapewnia mu na 1 rundê na poziom (do maksymalnie 20 rund) kap³ana odpornoœæ na b³yskawice, ogieñ, zimno i normalne pociski.
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Zabójcz¹ chmurê'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Wy³adowanie ³añcuchowe'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Trzêsienie ziemi'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@10172 =~Potê¿ny atak
+Potê¿ny atak pozwala kap³anowi zadaæ uderzenia tak silne, ¿e jeœli przeciwnik nie zdo³a wykonaæ udanego rzutu obronnego przeciwko œmierci z modyfikatorem -4, to mo¿e zostaæ og³uszony na 2 rundy. Zdolnoœæ ta trwa 2 rundy.~
+@10173 =~Wytrzyma³oœæ
+Dziêki sile swej wiary, kleryk mo¿e wykorzystaæ zdolnoœæ Wytrzyma³oœæ, aby zdobyæ 40% odpornoœci na wszystkie formy obra¿eñ fizycznych. Zdolnoœæ ta trwa 1 rundê na ka¿de 2 poziomy kap³ana.~
+@10174 =~M³yniec
+Zdolnoœæ ta pozwala klerykowi zadawaæ seriê niezwykle szybkich ciosów. Po skorzystaniu z M³yñca, liczba ataków kap³ana w czasie jednej rundy wzrasta do 10, ale za to jego Trak0 i obra¿enia zmniejszaj¹ siê o 4 punkty. M³yniec trwa jedn¹ rundê.~
+@10175 =~Unikniêcie œmierci
+Dziêki swej wewnêtrznej sile, kap³an wysokiego poziomu mo¿e unikn¹æ niemal pewnej œmierci. Efekty tej zdolnoœci trwaj¹ 5 rund, w czasie których do wykonywanych przez ³otrzyka rzutów obronnych przeciwko œmierci dodaje siê 5 punktów, punkty ¿ycia s¹ zwiêkszane o 20, a kleryk staje siê niewra¿liwy na magiê œmierci.~
+@10176 =~Unik
+Dziêki zdolnoœci Unik, kap³an wzywa obronn¹ moc swego bóstwa, przez co jego klasa pancerza zmniejsza siê o 4 punkty, a do wszystkich rzutów obronnych dodawane s¹ 2 punkty. Efekty Uniku trwaj¹ przez 3 rundy.~
+
+
+@10179 =~PAN PORANKA LATHANDERA: Lathander, zwany równie¿ Panem Poranka, jest bogiem narodzin, wiosny, tworzenia, pocz¹tku, m³odoœci, myœli i samodoskonalenia. To on jest natchnieniem poety, pomys³em wynalazcy czy myœl¹ filozofa. Mieszka w sferze zwanej Elizjum, zaœ jego symbolem jest dysk z ró¿owego kwarcu lub podobnego materia³u.
+
+Lathander jest bogiem pocz¹tku, i do niego zanosz¹ mod³y ci, którzy zaczynaj¹ nowy rozdzia³ swego ¿ycia. Imiê Lathandera jest wzywane przy podpisywaniu traktatów i tworzeniu nowych przedsiêbiorstw. Przez to, Pan Poranka jest popularny wœród zamo¿nej klasy mieszczañskiej i rzemieœlniczej, co zaœ z sob¹ niesie, w œwi¹tyniach Lathandera panuje ³ad i dobrobyt.
+
+Kap³ani Lathandera mog¹ wybieraæ pomiêdzy dobrymi charakterami lub neutralnym.
+
+Sfery:
+- Pe³ny dostêp do sfer: uniwersalna, astralna, uroki, tworzenie, ¿ywio³y, leczenie, nekromancja (tylko lecz¹ca) roœliny, s³oñce, myœl, stra¿nicza, pogoda
+- Ograniczony dostêp do sfer: walka, poznanie, obrona, prawo, czas
+- Brak dostêpu do sfer: zwierzêta, chaos, prawo, liczby, ochrona, przywo³ywanie, podró¿, wojna
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - wiekierê 'Zwiastun œwitu'
+Wiekiera 'Zwiastun œwitu' to duchowa broñ Pana Poranka, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Zwiastun œwitu jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Raz dziennie mo¿e u¿yæ zdolnoœci '£aska Lathandera', która zapewnia wybranej istocie +1 do trafienia, obra¿eñ, wszystkich rzutów obronnych, dodatkowy atak na rundê i chroni przed utrat¹ poziomów
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Unieruchomienie nieumar³ego'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Ogieñ s³oñca'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Uzdrowienie'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Wiêksze przywrócenie'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@10180 =~Duchowa broñ~
+@10181 =~Wiekiera 'Zwiastun œwitu' to duchowa broñ Pana Poranka, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Zwiastun œwitu jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+@10182 =~Tylko najpotê¿niejsi i najbardziej oddani s³udzy Talosa otrzymuj¹ takie symbole.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@10183 =~Tylko najpotê¿niejsi i najbardziej oddanie s³udzy Lathandera otrzymuj¹ takie symbole.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@10184 =~OBSERWATOR HELMA: Helm jest bóstwem wszelakich stra¿ników i obroñców, i jego imiê szczególnie czêsto wzywaj¹ ci, którzy potrzebuj¹ ochrony przed z³em i nieprawoœci¹. Wszystkowidz¹cy jest bogiem zarówno stra¿ników, obroñców jak i sêdziów - jako esencja praworz¹dnej neutralnoœci uczy innych jak sprawiedliwie i obiektywnie s¹dziæ. 
+
+Stworzy³ swój dom w sferze zwanej Nirvana - wyj¹tkowym regionie, nad którym w³adzy nie ma Mystra. Symbolem Helma jest rêkawica z namalowanym na niej otwartym okiem. Jego podstawowymi przeciwnikami s¹ bóstwa furii, które nigdy nie przestrzegaj¹ prawa, z³e bóstwa i Mystra. W Czasie Niepokojów, w³asnorêcznie zg³adzi³ boginiê magii, przez co musia³a szukaæ swej nastêpcznyni, któr¹ zosta³a magini o imieniu Midnight.
+
+Helm uczy, i¿ zawsze musi istnieæ obroñca, który bêdzie chroni³ tych, którzy nie radz¹ sobie sami. Jest równie¿ po stronie tych, którzy czujnie stoj¹ i czekaj¹. Ostro¿ne planowanie zawsze zwyciê¿y nad szybk¹, nieprzemyœlan¹ akcj¹. Jego kap³ani musz¹ zawsze przestrzegaæ prawa. Znani s¹ ze swej surowoœci wzglêdem tych, którzy je ³ami¹.
+
+Obserwatorzy Helma mog¹ wybraæ miêdzy neutralnym lub dowolnym praworz¹dnym charakterem.
+
+Sfery:
+- Pe³ny dostêp do sfer: uniwersalna, astralna, walka, poznanie, obrona, ochrona, s³oñce, stra¿nicza
+- Czêœciowy dostêp do sfer: tworzenie, ¿ywio³y, leczenie, wojna
+- Brak dostêpu do sfer: zwierzêta, uroki, chaos, prawo, nekromancja, liczby, roœliny, przywo³ywanie, myœl, pogoda
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - miecz pó³torarêczny 'Wiecznie czujny'
+Miecz pó³torarêczny 'Wiecznie czujny' to duchowa broñ Obserwatorów Helma, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Wiecznie czujny jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Raz dziennie mo¿e u¿yæ zdolnoœci 'Glif stra¿niczy'
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Dalekowzrocznoœæ'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Ochronê przed zwyk³ymi broñmi'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Prawdziwe widzenie'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Opoñczê'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@10185 =~Duchowa broñ~
+@10186 =~Miecz pó³torarêczny 'Wiecznie czujny' to duchowa broñ Obserwatorów Helma, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Wiecznie czujny jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+@10187 =~Tylko najwytrwalsi s³udzy Wiecznie Czujnego otrzymuj¹ Œwiête symbole od swego pana, które pomagaj¹ w wymierzaniu sprawiedliwoœci w ca³ym Faerunie.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@10188 =~W³adca Burzy Talosa~
+@10189 =~Obserwator Helma~
+@10190 =~Pan Œwitu Lathandera~
+@10192 =~Odnowa Lathandera~
+@10193 =~Odnowa Lathandera
+Zaklêcie to, dostêpne jest tylko dla najpotê¿niejszych s³ug Lathandera. Dziêki niemu, kap³an mo¿e w pe³ni wyleczyæ wszystkich cz³onków dru¿yny z obra¿eñ i stanów odbiegaj¹cych od normalnego (zamêtu, wyssanych poziomów itp.). Ponadto ka¿dy cz³onek dru¿yny regeneruje 1 punkt ¿ycia na sekundê przez 20 rund po rzuceniu czaru.~
+
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Silverstar of Selûne                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10300 =~Zainstaluj podklase Srebrnej Gwiazdy Selune~
+@10301 =~Srebrna Gwiazda Selune~
+@10302 =~SREBRNA GWIAZDA SELUNE: Selune - srebrna dama, jest bogini¹ ksiê¿yca, gwiazd, dziêki czemu o jej ³askê staraj¹ siê ci, którzy poszukuj¹ swej drogi (zarówno w sensie bezpoœrednim jak i w przenoœni). Jej œmierteln¹ przeciwniczk¹ jest Shar - bogini mroku, nocy i zapomnienia. Selune zwana jest czêsto srebrn¹ dziewic¹ - w zwi¹zku z jej domen¹, ksiê¿ycem. Jest równie¿ bogini¹ podró¿y. Jej sfer¹ jest Srebrna brama, gdzie znajduje siê jej dom i s³ynna ju¿, srebrna hala zwana Argentil.
+
+Dobre likantropy (zmiennokszta³tni) wyznaj¹ Selune, tak samo jak wró¿bici i astrolodzy. Jednym z jej podstawowych dogmatów jest równoœæ kobiet i mê¿czyzn - i to jej wyznawcy g³osz¹ te prawdy w ca³ych krainach. Ponadto jest ona wyznawana przez nawigatorów, ¿eglarzy i kobiet zajmuj¹cych siê magi¹.
+
+Kap³ani Selune, zwani Srebrnymi Gwiazdami, s¹ g³osicielami wolnoœci, tolerancji i prawdy - co dok³adnie sprzeciwia siê programowi Shar. Próbuj¹ stworzyæ harmoniê pomiêdzy likantropami i zwyk³ymi ludŸmi. Wszêdzie tam gdzie s¹, staraj¹ siê broniæ s³abszych i biedniejszych. Nie toleruj¹ niewolnictwa, i wiêkszoœæ z nich nienawidzi nieumar³ych. Rzadko pozostaj¹ w jednym miejscu, gdy¿ preferuj¹ ci¹g³¹ podró¿ maj¹c¹ na celu g³oszenie prawdy i rozprzestrzenianie wiary. 
+
+Srebrna Gwiazda Selune mo¿e mieæ charakter chaotyczny dobry, neutralny dobry lub chaotyczny neutralny.
+
+Sfery:
+- Pe³ny dostêp do sfer: uniwersalna, zwierzêta, astralna, walka, poznanie, obrona, leczenie, nekromancja, liczby, przywo³ywanie, s³oñce, podró¿, pogoda
+- Czêœciowy dostêp do sfer: uroki, ¿ywio³y, roœliny, stra¿nicza
+- Brak dostêpu do sfer: chaos, prawo, tworzenie, ochrona, myœl, czas, wojna
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - wiekierê 'Ksiê¿ycow¹ d³oñ'
+Wiekiera 'Ksiê¿ycowa d³oñ' to duchowa broñ Srebrnych gwiazd, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Ksiê¿ycowa d³oñ jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Raz dziennie mo¿e u¿yæ zdolnoœci 'Ksiê¿ycowa tarcza', która zapewnia mu +2% odpornoœci na magiê na poziom kap³ana. Przyznawana odpornoœæ jest sta³a, wiêc jeœli wybrana postaæ ma j¹ wiêksz¹ - jej wartoœæ zostanie zmniejszona do tej przyznawanej przez czar. Ksiê¿ycowa tarcza utrzymuje siê przez 1 rundê na poziom rzucaj¹cego lub do czasu rozproszenia.
+- Sta³a infrawizja niezale¿nie od rasu
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Swoboda dzia³ania'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Ogieñ s³oñca'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Przywo³anie ¿ywio³aka powietrza'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Ochronê przed ¿ywio³ami'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@10303 =~Duchowa broñ~
+@10304 =~Wiekiera 'Ksiê¿ycowa d³oñ' to duchowa broñ Srebrnych gwiazd, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Ksiê¿ycowa d³oñ jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+@10305 =~Srebrna Gwiazda Selune~
+@10307 =~Ksiê¿ycowa tarcza~
+@10308 =~Ksiê¿ycowa tarcza (Odrzucanie)
+Poziom: 5
+Sfera: Ochrona
+Zasiêg: rzucaj¹cy
+Czas trwania: 3 rundy + 1 runda/poziom
+Czas rzucania: 10
+Obszar dzia³ania: rzucaj¹cy
+Rzut obronny: brak
+
+Dziêki temu zaklêciu kap³an Selune mo¿e uzyskaæ odpornoœæ na magiê. Przyznana niewra¿liwoœæ wynosi 2% na poziom kap³ana i mo¿e dojœæ do 40% na 20-tym poziomie. Poziom niewra¿liwoœci jest sta³y, tak wiêc je¿eli dana istota posiada ju¿ wiêksz¹ niewra¿liwoœæ ni¿ kap³an chcia³by jej przyznaæ, to w gruncie rzeczy zmniejszy j¹ do iloœci przyznawanej poprzez ten czar. Zaklêcie trwa przez okreœlony czas, lub do chwili rozproszenia.~
+@10319 =~Œwiêty symbol Selune~
+@10320 =~Tylko najbardziej oddani s³udzy Selune otrzymaj¹ ten symbol. Przepe³niony jest moc¹ swej bogini i skutecznie wspomaga kap³ana w walce ze z³em.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Nightcloak of Shar                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10600 =~Zainstaluj podklase Plaszcza Nocy Shar~
+@10601 =~P³aszcz Nocy Shar~
+@10602 =~P£ASZCZ NOCY SHAR: Shar jest bogini¹ nocy, mroku, zagubienia i zapomnienia. Jej wyznawcami s¹ g³ównie ci, którzy ceni¹ sobiê noc (jak z³odzieje), którzy nienawidz¹ œwiat³a (jak goblionidy i im podobne istoty) oraz ci, którzy zagubili siê w ¿yciu. Jej symbolem jest czarny dysk o ró¿owym rancie.
+
+Shar jest œmiertelnym wrogiem bogini Selune i walcz¹ ze sob¹ na ka¿dy mo¿liwy sposób. To samo dzieje siê wœród wyznawców Shar i Selune, którzy wedle swego religijnego Jihadu walcz¹ ze sob¹ na œmieræ i ¿ycie.
+
+Kap³anów Shar nazywa siê czasami Pow³okami lub P³aszczami Nocy. Nie posiadaj¹ oni ¿adnej standardowej koœcielnej hierarchi. Shar nie posiada ¿adnej g³ównej œwi¹tyni, jednak jej wyznawcy kryj¹ siê w prawie ka¿dym zak¹tku Faerunu - wszêdzie tam, gdzie s³abn¹ wp³ywy Selune, Shar roœnie w potêgê. Jej kap³ani s³u¿¹ jako misjonarze, szpiedzy i zabójcy swej Mrocznej Pani.
+
+Kap³ani Shar mog¹ wybieraæ miêdzy charakterem neutralnym lub dowolnym z³ym.
+
+Sfery:
+- Pe³ny dostêp do sfer: uniwersalna, uroki, walka, poznanie, obrona, nekromancja, ochrona, myœl
+- Czêœciowy dostêp do sfer: tworzenie, ¿ywio³y i leczenie
+- Brak dostêpu do sfer: zwierzêta, chaos, prawo, liczby, roœliny, przyzywanie, s³oñce, wojna, stra¿nicza i pogoda
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - chakram 'Dysk nocy'
+Chakram 'Dysk nocy' to duchowa broñ P³aszczów nocy, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Dysk nocy jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Odpornoœæ na oœlepienie
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Zamêt'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Og³upienie'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Niewidzialnego myœliwego'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'S³owo mocy: og³uszenie'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@10603 =~P³aszcz Nocy Shar~
+@10604 =~Kl¹twa Shar~
+@10605 =~Kl¹twa Shar (Zauroczenia/Zaklinanie)
+Poziom: misja
+Sfera: uroki
+Zasiêg: pole widzenia
+Czas trwania: sta³y
+Czas rzucania: 3
+Obszar dzia³ania: 1 istota
+Rzut obronny: neguje
+
+Jest to potê¿ne zaklêcie, którym Shar obdarowuje swych najmroczniejszych wyznawców. Gdy zostanie ono rzucone na jak¹œ istotê, i ona go nie odeprze - przepada. Ju¿ na zawsze (lub do czasu rozproszenia) pozostaje w stanie zapomnienia, apatii czy og³upienia - nie reaguje na otoczenie. By odeprzeæ efekt zaklêcia, ofiara musi wykonaæ rzut obronny przeciwko magii z modyfikatorem -4.
+
+Gdy wybierzesz t¹ wysokopoziomow¹ umiejêtnoœæ, bêdziesz móg³ j¹ rzucaæ z listy Umiejêtnoœci wrodzonych. Mo¿e ona byæ wybrana tylko raz.~
+@10608 =~Duchowa broñ~
+@10609 =~Chakram 'Dysk nocy' to duchowa broñ P³aszczów nocy, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Dysk nocy jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+@10615 =~Œwiêty symbol Shar~
+@10616 =~Shar nagradza swe najpotê¿niejsze s³ugi Œwiêtym Symbolem, czarnym pierœcieniem z purpurow¹ obwódk¹. Kiedy jest on za³o¿ony - wyzwala moc Shar.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@10617 =~Odpornoœæ na oœlepienie~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Holy Strategist of the Red Knight                \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10700 =~Zainstaluj podklase Uswieconego Stratega Czerwonej Rycerki~
+@10701 =~Uœwiêcony Strateg~
+@10702 =~UŒWIÊCONY STRATEG CZERWONEJ RYCERKI: Uœwiêceni Stratedzy, tytu³em tym okreœla siê kr¹g kap³anów kultu Czerwonej Rycerki. W rzeczy samej tytu³ ten to coœ wiêcej ni¿ puste s³owa. Ci wojowniczy kap³ani poprzez szkolenie siê w sztuce taktycznego dowodzenia i wojskowej strategii przekuwaj¹ swe cia³a i umys³y w jedn¹ z najgroŸniejszych bronii Faerunu. Ich s³awa i reputacja jest na tyle imponuj¹ca, ¿e znane s¹ przypadki gdy trzykrotnie wiêksza armia ucieka³a w pop³ochy na sam¹ wieœæ, ¿e dowódc¹ wra¿ych oddzia³ów jest jeden spoœrod Uœwiêconych Strategów.
+
+Kler Czerwonej Rycerki skupia siê w organizacji Czerwonego Bractwa. Wielu jego cz³onków piastuje wysokie stanowiska wojskowe w armiach ca³ego Faerunu, czêsto dowodz¹c elitarnymi oddzia³ami specjalnymi. Inni s³u¿¹ jako instruktorzy wojskowych akademii b¹dŸ kwatermistrzowie odpowiedzialni za to, by wojska na froncie by³y wypoczête i gotowe do walki. Strojem Uœwiêconego Stratega poza polem bitwy jest zwykle obszerna, czerwona szata z bia³ymi akcentami.
+
+Uœwiêceni Stratedzy Czerwonej Rycerki mog¹ wybraæ charakter Praworz¹dny Dobry, Praworz¹dny Neutralny i Praworz¹dny Z³y.
+
+Dostêp do Sfer:
+- Pe³ny dostêp: uniwersalna, uroki, walka, poznanie, obronna, leczenie, prawo, ochrona, wojna
+- Ograniczony dostêp: nekromancja, przywo³anie, myœli, podró¿e, stra¿nicza
+- Brak dostêpu do sfer: zwierzêta, astralna, chaos, tworzenie, ¿ywio³y, liczby, roœliny, s³oñce, czas, pogoda
+
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - d³ugi miecz 'Szachmat'
+Szachmat to duchowa broñ Uœwiêconego Stratega, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Szachmat jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Do zwoju kap³añskiego mo¿e dopisaæ zaklêcia: Infrawizja, Jasnowidzenie i Oko Maga.
+- Od 13 poziomy Uœwiêcony Strateg mo¿e wykonaæ dodatkowy atak w rundzie
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Przyspieszenie'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Jednoœæ obronn¹'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Grupowe leczenie'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Opoñczê'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@10703 =~Szachmat~
+@10704 =~Szachmat to duchowa broñ Uœwiêconego Stratega, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Szachmat jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+
+@10710 =~Œwiêty symbol Czerwonej Rycerki~
+@10711 =~Tylko najpotê¿niejsi i najbardziej oddani s³udzy Czerwonej rYCERKI otrzymuj¹ takie symbole.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@10714 =~uœwiêcony strateg~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Battleguard of Tempus                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10900 =~Zainstaluj podklase Straznika Bitewnego Tempusa~
+@10901 =~Stra¿nik Bitewny Tempusa~
+@10902 =~STRA¯NIK BITEWNY TEMPUSA: Tempus jest bogiem wojen w Krainach - nazywa siê go Panem Bitew. To on decyduje, komu w bitwie sprzyja los - jednak z powodu jego chaotycznego charakteru nikt nie wie, komu dziœ pomo¿e. Jednego dnia mo¿e wspomóc pewn¹ armiê, zaœ nastêpnego zmieœæ j¹ z powierzchni Faerunu. Ucieleœnia prawdziw¹ naturê wojny.
+
+Kap³ani Tempusa podró¿uj¹ w pe³nym rynsztunku i zawsze gotowi do bitwy - w koñcu s¹ oni bitewnymi kap³anami i na takich maj¹ wygl¹daæ. Ich miejsce nie jest w œwi¹tyni, tylko na polu bitwy, ramiê w ramiê z ¿o³nierzami. W prawie ka¿dej armii mo¿na znaleŸæ jakiegoœ s³ugê Pana Bitew, i szczerze mówi¹c, nikt nie wie komu dziœ on bêdzie sprzyja³.
+
+Bitewni Kap³ani Tempusa mog¹ wybieraæ pomiêdzy charakterami chaotycznymi i neutralnym.
+
+Sfery:
+- Pe³ny dostêp do sfer: walka, chaos, zwierzêta, poznanie, ¿ywio³y, nekromancja, ochrona i wojna
+- Czêœciowy dostêp do sfer: uniwersalna, obrona, leczenie, przywo³ywanie, s³oñce, stra¿nicza i pogoda
+- Brak dostêpu do sfer: uroki, tworzenie, prawo, liczby, roœliny i myœlenie
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - topór 'Bitewna przewaga'
+Topór 'Bitewna przewaga' to duchowa broñ Stra¿nika Bitew Tempusa, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Bitewna przewaga jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Raz dziennie mo¿e u¿yæ zdolnoœci 'Rozwœcieczenie', zapewniaj¹cej premie +2 do trafienia, obra¿eñ, klasy pancerza, odpornoœæ na wysysanie poziomów, zaklêcia uroków, unieruchomienia, strachu, uwiêzienia, og³uszenia oraz snu. Ponadto kap³an otrzymuje dodatkowe 15 punktów ¿ycia. Po zakoñczeniu 'Rozwœcieczenia', przez kolejne 60 sekund Stra¿nik jest wyczerpany. W tym stanie otrzymuje kary -2 do trafienia, obra¿eñ oraz +2 do KP, traci dodatkowe punkty ¿ycia i na dodatek otrzymuje 1-15 punktów obra¿eñ. Mo¿e to spowodowaæ œmieræ os³abionego s³ugi Tempusa.
+- Mo¿e uzyskaæ specjalizacjê w dowolnej broni do walki wrêcz dostêpnej dla kap³ana
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Œwiêt¹ moc'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Chaos'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Przemianê Tensera'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Sferê chaosu'
+
+Wady:
+- Nie mo¿e u¿ywaæ broni dystansowych
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@10903 =~Duchowa broñ~
+@10904 =~Topór 'Bitewna przewaga' to duchowa broñ Stra¿nika Bitew Tempusa, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Bitewna przewaga jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+
+@10910 =~Œwiêty symbol Tempusa~
+@10911 =~Tempus nagradza swych najpotê¿niejszych wyznawców za pomoc¹ pierœcieni, na których znajduj¹ siê charakterystyczne dla tej wiary symbole - srebrny miecz lub czerwona tarcza. Kiedy jest u¿ywany, objawia prawdziw¹ moc Pana Bitew.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@10912 =~Tarcza Tempusa~
+@10913 =~Tarcza Tempusa (Odrzucanie)
+Poziom: Misja
+Sfera: walka
+Zasiêg: dotyk
+Czas trwania: 4 rundy
+Czas rzucania: 1
+Obszar dzia³ania: rzucaj¹cy
+Rzut obronny: brak
+
+Najpotê¿niejsi kap³ani Tempusa mog¹ wezwaæ potêgê Pana Bitew, by przez jakiœ czas ochrania³ swego s³ugê przed wszelak¹ krzywd¹ i obra¿eniami. Gdy kap³an u¿yje tego zaklêcia, na czas 4 rund staje siê ca³kowicie odporny na wszelkie bronie, oprócz tych, których umagicznienie jest wy¿sze ni¿ +5. Zaklêcie to jest bardzo silne, jednak krótkie, wiêc lepiej u¿ywaj go w bitewnym ferworze, gdzie kilka sekund ¿ycia jest równe wygraniu bitwy.~
+@10914 =~Stra¿nik Bitewny Tempusa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Painbearer of Ilmater                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@11200 =~Zainstaluj podklase Nosiciela Bolu Ilmatera~
+@11201 =~Nosiciel Bólu Ilmatera~
+@11202 =~NOSICIEL BÓLU ILMATERA: Ilmater zwany P³acz¹cym Bogiem, jest w³adc¹ wytrzyma³oœci, cierpienia i pokory. To on daje pomoc i s³owa otuchy tym, którzy cierpi¹ lub pokutuj¹. W³aœnie pokuta jest wa¿n¹ czêœci¹ jego wiary, zaœ jego kap³ani czêsto oferuj¹ siebie zamiast skazañców, by pokutowaæ za nich. Ilmater jest te¿ bogiem zmartwionych i nies³usznie uwiêzionych, i zamieszkuje w BliŸniaczym Raju. Obecnie jego symbolem s¹ zwi¹zane, œnie¿nobia³e d³onie.
+
+Wyznawcy Ilmatera namawiaj¹ innych do przyjmowania cierpienia, jednak tak na prawdê, to czyni¹ "czysto kap³añskie" prace, takie jak leczenie i uzdrawianie tych, którzy s¹ ranni. Przek³adaj¹ innych nad siebie, i wy¿ej ceni¹ duchowy byt nad cia³o. Kap³ani Ilmatera s¹ zawsze tam, gdzie ich potrzeba - w miejscach gdzie ludzie cierpi¹ od ran, biedy, s³aboœci i tyranii. Ich strój musi byæ prosty - najczêœciej jest to szara szata, jednak wy¿si dostojnicy wœród kap³anów maj¹ prawo ubieraæ siê na czerwono.
+
+Nosiciele Bólu Ilmatera mog¹ wybieraæ pomiêdzy charakterem praworz¹dnym dobrym, neutralnym dobrym i praworz¹dnym neutralnym.
+
+Sfery:
+- Pe³ny dostêp do sfer: uniwersalna, uroki, tworzenie, obrona, leczenie, prawo, nekromancja, ochrona i podró¿
+- Czêœciowy dostêp do sfer: walka, ¿ywio³y, przywo³ywanie, s³oñce, stra¿nicza i pogoda
+- Brak dostêpu do sfer: zwierzêta, astralna, chaos, poznanie, liczby, roœliny, myœl, czas i wojna
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - piêœæ 'D³oñ Ilmatera'
+D³oñ Ilmatera to duchowa broñ Nosicieli Bólu, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. D³oñ jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Raz dziennie mo¿e u¿yæ zdolnoœci 'Nak³adanie r¹k', która leczy u dotkniêtej istoty 2 punkty ¿ycia na poziom kap³ana
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Leczenie trucizny'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Wytrzyma³oœæ Ilmatera', która podwaja liczbê punktów ¿ycia, zapewnia premiê +2 do rzutów obronnych, odpornoœæ na strach i choroby jednej istocie na czas 1 rundy na poziom.
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Uzdrowienie'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Regeneracjê'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@11203 =~Duchowa broñ~
+@11204 =~D³oñ Ilmatera to duchowa broñ Nosicieli Bólu, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. D³oñ jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+@11205 =~Wytrzyma³oœæ Ilmatera~
+@11206 =~Wytrzyma³oœæ Ilmatera
+Poziom: specjalne
+Sfera: nekromancja, ochrona
+Zasiêg: dotyk
+Czas trwania: 1 runda + 1 runda/poziom
+Czas rzucania: 7
+Obszar dzia³ania: 1 istota
+Rzut obronny: brak
+
+Nosiciel Bólu wzywa Ilmatera, by pomóg³ komuœ prze¿yæ ciê¿kie momenty walki. Przez 1 rundê na poziom doœwiadczenia, kap³an podwaja punkty ¿ycia celu, daje mu premiê +2 do rzutów obronnych, ponadto staje siê odporny na strach i choroby. ~
+@11207 =~Œwiêty Symbol Ilmatera~
+@11208 =~Ilmater nagradza swych najpotê¿niejszych wyznawców œwiêtymi pierœcieniami, na których widnieje jego znak. Pierœcieñ ten pomaga Nosicielowi Bólu w jego ciê¿kiej drodze. 
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@11209 =~Nosiciel Bólu Ilmatera~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Firewalker of Kossuth                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@11500 =~Zainstaluj podklase Pana Plomieni Kossutha~
+@11501 =~Duchowa broñ~
+@11502 =~Duchowa broñ~
+@11503 =~Pan P³omieni Kossutha~
+@11504 =~PAN P£OMIENI KOSSUTHA: Kossuth, W³adca ognia, jest Panem ¿ywio³u - jego sfer¹ i domen¹ jest g³ównie ogieñ. Chocia¿ nigdy nie musia³ i nie musi siê martwiæ o swoj¹ wiarê w Krainach, wci¹¿ nagradza swych kap³anów moc¹ swej sfery - ognia. Niezbyt interesuje siê jakimikolwiek ¿yciowymi problemami swych wyznawców, i rzadko ukazuje siê ludziom - jednak jeœli ju¿, przybiera postaæ zjawiska (najczêœciej ogromnego p³omienia) - nigdy awatara, nie chce siê zni¿aæ do ludzkiego poziomu choæby przez wygl¹d..
+
+Koœció³ Kossutha jest bardzo chaotyczny przez to, ¿e nikt nie interesuje siê jakimkolwiek jego uporz¹dkowaniem i nikt go nie kontroluje. Przez to, rzecz zwana Koœcio³em Kossutha jest zbiorem ró¿nych pomniejszych wiar, zarówno barbarzyñskich jak i tych spoza Krain, które ³¹czy jedno - ogieñ. Symbol Kossutha jest ró¿ny w zale¿noœci od od³amu wiary, jednak zawsze musi ocieraæ siê choæby o p³omieñ czy ogieñ. Pomimo problemów z Koœcio³em, wiara w Kossutha jest jedn¹ z najpotê¿niejszych w Krainach, i ¿aden inny Bóg nie chcia³by próbowaæ tego "naprawiæ". Jego ogromn¹ rzeszê wyznawców tworz¹ proœci ludzie, barbarzyñcy ¿yj¹cy na pustkowiach, dla których ogieñ jest jedyn¹ szans¹ na prze¿ycie - to on ogrzewa ich cia³a, rozœwietla drogê jak i odpêdza dzikie zwierzêta. I to w³aœnie Kossuth jest najsilniejszym W³adc¹ ¯ywo³u, zaœ dziêki temu, i¿ ogieñ symbolizuje czyst¹ si³ê i moc, jego wiara zaczyna byæ popularna i w cywilizowanych terenach, choæby w wschodnim Thay.
+
+Pan P³omieni Kossutha mo¿e wybieraæ spomiêdzy wszystkich charakterów, chocia¿ najczêœciej jest on z³y - gdy¿ obrazuje on destruktywn¹ moc ognia. Mog¹ równie¿ byæ przedstawicielami ka¿dej z ras. Ich ubranie powinno te¿ samo z siebie pokazywaæ, komu s¹ podporz¹dkowani. Najczêœciej ubieraj¹ siê w szaty o kolorach czerwieni, pomarañczu i ¿ó³tego.
+
+Sfery:
+- Pe³ny dostêp do sfer: uniwersalna, walka, ¿ywio³ (ogieñ), leczenie, przywo³ywanie, s³oñce
+- Czêœciowy dostêp do sfer: poznanie, ¿ywio³ (powietrze), ¿ywio³ (ziemia), ochrona i wojna
+- Brak dostêpu do sfer: zwierzêta, astralna, uroki, chaos, tworzenie, ¿ywio³ (woda), obrona, prawo, nekromancja, liczby, czas, myœl, podró¿, stra¿nicza i pogoda
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - korbacz 'Wstêga ognia'
+Korbacz 'Wstêga ognia' to duchowa broñ Pana P³omieni Kossutha, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Wstêga ognia jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Otrzymuje 2% odpornoœci na ogieñ na ka¿dy poziom doœwiadczenia
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Tarczê ognia: czerwon¹'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Ogieñ s³oñca'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Przywo³anie ¿ywio³aka ognia'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'OpóŸnion¹ kulê ognist¹'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@11505 =~Ogieñ Kossutha~
+@11506 =~Ogieñ Kossutha (Inwokacje/Wywo³ywanie)
+Poziom: misja
+Sfera: ¿ywio³ (ogieñ)
+Zasiêg: rzucaj¹cy
+Czas trwania: sta³y
+Czas rzucania: 3
+Obszar dzia³ania: specjalny
+Rzut obronny: 1/2
+
+P³omieñ Kossutha, wzywaj¹c swe bóstwo, mo¿e na chwile staæ siê ³¹cznikiem Kossutha. Wtedy Pan Ognia objawia sw¹ prawdziw¹ moc niszczenia. Po pierwsze zaklêcie to zadaje wszystkim przeciwnikom na obszarze dzia³ania 15k6 obra¿eñ od ognia (udany rzut obronny przeciwko czarom zapewnia po³owê obra¿eñ). A dziêki temu, ¿e przez cia³o rzucaj¹cego przep³ywa œwiêty i oczyszczaj¹cy ogieñ, zostaje on ca³kowicie uleczony.
+
+Wybranie tej wysokopoziomowej zdolnoœci pozwala na u¿ywanie jej raz dziennie jako zdolnoœci wrodzonej. Niestety, mo¿e zostaæ wybrana tylko raz.~
+@11507 =~Œwiêty Symbol Kossutha~
+@11508 =~Kossuth nagradza swych najpotê¿niejszych wyznawców za pomoc¹ œwiêtych pierœcieni, na których widnieje p³omieñ. 
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@11509 =~Pan P³omieni Kossutha~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Authlim of Iyachtu Xvim                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@11800 =~Zainstaluj podklase Authlima Iyachta Xwima~
+@11801 =~Authlim Iyachta Xwima~
+@11802 =~AUTHLIM IYACHTA XVIMA: Mówi siê i¿ Iyacht Xwim jest rezultatem zwi¹zku Czarnego Lorda - Bane'a i potê¿nego Tanari. Inna opowieœæ mówi o tym, ¿e pochodzi on z wspó³¿ycia Upad³ego paladyna i Bane'a. Nie wiadomo jak by³o naprawdê, jednak Iyacht zwany jest Synem Bane'a i sprawnie wykonuje obowi¹zki ojca w Krainach. Najczeœciej ukazuje siê ludziom albo jako gaut, albo potê¿ny mê¿czyzna dzier¿¹cy wielki sejmitar, albo czarna mg³a o zielonych oczach..
+
+Xwim zosta³ uwiêziony pod Twierdz¹ Zenthil, gdy trwa³ Czas K³opotów, gdzie trzymany by³ przez 10 lat. Po tym czasie uda³o mu siê uwolniæ, gdy Twierdza upad³a po klêsce Cyrica. Podczas ucieczki, ukrad³ Cyricowi zwoje-domeny tyrani i nienawiœci. W chwili obecnej jest on bogiem strachu, tyranii, korupcji, zawiœci i nienawiœci. Dzia³ania Iyachta pokrywaj¹ siê z planem jego ojca, co czyni z niego pewn¹ opozycjê dla Cyrica. Wiara w niego najmocniej utrzymuje siê na wschodzie, szczególnie w Thay, lecz jego religia powoli przenika do ca³ych Krain. Jego kap³ani preferuj¹ czarne ubranie o ciemnozielonych ozdobach. Nosz¹ równie¿ ¿elazne rêkawice z narysowanymi na nich zielonymi oczami. Rêkawice takie s¹ aktualnie symbolem Authlima Iyachtu Xwima.
+
+Authlimami mog¹ byæ przedstawiciele ka¿dej z ras, jednak mog¹ wybieraæ spomiêdzy charakterów praworz¹dnego neutralnego, praworz¹dnego z³ego i neutralnego z³ego.
+
+Sfery:
+-  Pe³ny dostêp do sfer: uniwersalna, walka, poznanie, obrona, leczenie, nekromancja, przyzywanie i wojna
+-  Ograniczony dostêp do sfer: uroki, tworzenie, ¿ywio³y i prawo
+-  Brak dostêpu do sfer: zwierzêta, chaos, liczby, roœliny, ochrona, stra¿nicza i pogoda
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - sejmitar 'Ostrze dusz'
+Sejmitar 'Ostrze dusz' to duchowa broñ Authlimów Iyachtu Xwima, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Ostrze dusz jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Odpornoœæ na strach
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Wielkie os³abienie'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Obni¿enie odpornoœci'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Zaklêcie œmierci'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Opoñczê'
+
+Wady:
+- Mo¿e rzucaæ zaklêcia lecz¹ce tylko na siebie. Authlimi uwa¿aj¹, ¿e s³absi musz¹ radziæ sobie sami.
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@11803 =~Œwiêty symbol Iyachta Xwima~
+@11804 =~Iyacht Xwim nagradza swych najpotê¿niejszych wyznawców za pomoc¹ œwiêtych symboli. W tym wypadku s¹ to czarne, ¿elazne rêkawice, na których namalowane zosta³y jadowicie zielone oczy.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@11805 =~Duchowa broñ~
+@11806 =~Sejmitar 'Ostrze dusz' to duchowa broñ Authlimów Iyachtu Xwima, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Ostrze dusz jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+@11807 =~Przywo³anie obserwatorów~
+@11808 =~Przywo³anie obserwatorów
+(Przyzwanie/Przywo³anie)
+Poziom: misja
+Sfera: uniwersalna, przywo³anie
+Zasiêg: pole widzenia
+Czas dzia³ania: 24 rundy
+Czas rzucania: 5 
+Obszar dzia³ania: specjalny
+Rzut obronny: Brak
+
+Kiedy Authlim Iyachta Xwima rzuci to potê¿ne zaklêcie, przyzwane zostaj¹ potê¿ne s³ugi o Praworz¹dnym z³ym charakterze - Prastare kule. Kap³an ma nad nimi pe³n¹ kontrolê, ale jeœli nie wyda im ¿adnych rozkazów bêd¹ stara³y siê jak najlepiej s³u¿yæ swemu panu. Ich iloœæ jest z regu³y losowa, jednak oscyluje w granicach 1-4.~
+@11809 =~Authlim Iyachta Xwima~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Lorekeeper of Oghma                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@12100 = ~Zainstaluj podklase Straznika Wiedzy Ogmy~
+@12101 = ~Stra¿nik Wiedzy Oghmy~
+@12102 = ~STRA¯NIK WIEDZY OGHMY: Oghma jest bogiem wiedzy i inwencji, kronikarzem zapisuj¹cym dzieje Krain, i patronem bardów. Jest on najpotê¿niejszym bóstwem wiedzy w Faerunie (Drug¹, o ile wiedzê magiczn¹ mo¿na liczyæ jako zwyczajn¹ wiedzê, jest Mystra). Oghma posiada dwoje s³ug - Deneira i Milila, którzy przynosz¹ mu nowe wieœci na temat tego co siê dzieje w Krainach.
+
+Wyznawcy Oghmy wierz¹, i¿ wiedza jest najwy¿sz¹ wartoœci¹ i najwa¿niejszym celem. Gdy¿ jest to cel, który nie ma si³y, jednak mo¿e przenosiæ góry. Nie ma wysokoœci, lecz mo¿e wywy¿szaæ narody. Nie ma masy, lecz mo¿e zgnieœæ cywilizacje. Wiedza jest najlepszym narzêdziem ludzkoœci, nieporównywalnym z jakimkolwiek innym, wykonanym przez ludzkie rêce. Bo w koñcu zawsze musi byæ myœl, póŸniej dopiero wykonanie.
+
+Kap³ani Oghmy mog¹ byæ przedstawicielami ka¿dej rasy i mog¹ wybraæ dowolny charakter.
+
+Sfery:
+- Pe³ny dostêp do sfer: uniwersalna, astralna, walka, uroki, poznanie, ¿ywio³y, obrona, leczenie, ochrona, przywo³ywanie, myœl i podró¿
+- Ograniczony dostêp do sfer: zwierzêta, tworzenie, nekromancja, s³oñce i stra¿nicza
+- Brak dostêpu do sfer: chaos, prawo, liczby, roœliny, czas, wojna i pogoda
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - d³ugi miecz 'Cios œmiertelnika'
+D³ugi miecz 'Cios œmiertelnika' to duchowa broñ Stra¿ników wiedzy Oghmy, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Cios œmiertelnika jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).rzucaj¹cego (do maksymalnie 20 rund).
+- Otrzymuje 10 punktów wiedzy na poziom
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Tajemne s³owo'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Wyroczniê'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'S³owo mocy: cisza'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Rubinowy promieñ odwrócenia'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@12103 = ~Duchowa broñ~
+@12104 = ~Wiedza Oghmy~
+@12105 = ~Œwiêty symbol Oghmy~
+@12106 = ~Oghma nagradza swych najrozwa¿niejszych i najpotê¿niejszych kap³anów œwiêtym symbolem - pierœcieniem. Gdy jest za³o¿ony, kap³ana wzmacnia moc wiedzy Oghmy.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@12107 = ~Stra¿nik Wiedzy Oghmy~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Heartwarder of Sune Kit                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@12400 =~Zainstaluj podklase Opiekuna Serca Sune~
+@12401 =~Opiekun Serca Sune~
+@12402 =~OPIEKUN SERCA SUNE: O P³omiennow³osej Sune mówi siê, i¿ jest ona najsprawiedliwsza (oprócz Helma) spoœród wszelkich Bogów Krain. Ludziom ukazuje siê jak piêkna kobieta, o lœni¹cych, p³omiennoczerwonych w³osach i niesamowitym uroku. Wiara w Sune jest bardzo popularna w miejskich terenach, szczególnie poœród szlachty. Ci, których natchnie mi³osna muza, lub zostan¹ porwani przez mi³oœæ, s³u¿¹ w³aœnie P³omiennow³osej Pani.
+
+Sama Sune jest wed³ug wielu ¿yczliw¹ bogini¹, jednak równie¿ ekscentryczn¹, która g³êboko poœwiêca siê swym pasjom i romansom. Znane s¹ jej zwi¹zki z wieloma mocami Krain, chocia¿ nigdy nie pa³a³a sympati¹ do niszczycielskich bóstw - takich jak Tempus czy Talona, a ju¿ w szczególnoœci do bóstw Furii. Ich destruktywne dzia³anie zniszczy³o wiele piêknych rzeczy, przez co sta³y siê one opozycj¹ dla P³omiennow³osej. O Sune obecnie mówi siê, i¿ oczarowana jest szlachetnym bóstwem - samym Tormem.
+
+Kap³ani Sune, znani jako Opiekunowie Serc lub Sunnici, s¹ ludŸmi, którzy we wszystkim co ich otacza, poszukuj¹ piêkna, zaœ ich ¿ycie up³ywa im równie¿ na tworzeniu piêknych rzeczy. S¹ oni doœæ czêsto w wielkich metropoliach, poœród bogatych elit, smakuj¹cych piêkna. Wielu kap³anów Sune jest patronami bardów i malarzy. Czasem nawet sami zabieraj¹ siê do sztuki, jednak jedno jest wiadome - wszêdzie tam, gdzie s¹ Kap³ani Sune - istnieje piêkno.
+
+Opiekunowie Serca Sune mog¹ wybieraæ pomiêdzy charakterem neutralnym dobrym, chaotycznym dobrym b¹dŸ chaotycznyn neutralnym.
+
+Sfery:
+- Pe³ny dostêp do sfer: uniwersalna, astralna, uroki, tworzenie, poznanie, obrona, leczenie, ochrona, s³oñce, myœl, czas
+- Czêœciowy dostêp do sfer: walka, ¿ywio³y, nekromancja, przywo³ywanie
+- Brak dostêpu do sfer: zwierzêta, chaos, prawo, liczby, roœliny, podró¿, wojna, stra¿nicza, pogoda
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - korbacz 'Jedwabna szarfa'
+Korbacz 'Jedwabna szarfa' to duchowa broñ Opiekuna Serca Sune, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Jedwabna szarfa jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Premia +1 do charyzmy przy tworzeniu postaci
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Emocje'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'S³up ognia'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Zwodniczego sobowtóra'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Opoñczê'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@12403 =~Duchowa broñ~
+@12404 =~Korbacz 'Jedwabna szarfa' to duchowa broñ Opiekuna Serca Sune, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Jedwabna szarfa jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+@12405 = ~Œwiêty Symbol Sune~
+@12406 = ~Sune nagradza swych wyznawców Œwiêtym Symbolem, z³otym amuletem na którym wygrawerowana jest twarz piêknej dziewicy. Kiedy jest noszony, zwiêksza moc wiary Stra¿nika Serca Sune.
+
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@12407 =~Opiekun Serca Sune~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Feywarden of Corellon                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@12700 =~Zainstaluj podklase Opiekuna Elfow Corellona~
+@12701 =~opiekun elfów corellona~
+@12702 =~Opiekun elfów Corellona~
+@12703 =~OPIEKUN ELFÓW CORELLONA: Mówi siê, i¿ to w³aœnie przywódca elfiego panteonu, Corellon Larethian wraz z Sehanine (lub jak twierdz¹ inni Angharradh), da³ pocz¹tek elfiej rasie, kiedy to po wielkiej bitwie z Gruumshem, jego krew zmiesza³a siê z ³zami Sehanine. Stówrca elfów uosabia w sobie najwy¿sze cnoty i idea³y elfiego ludu, i jest patronem rzeczy wynios³ych i szlachetnych - od poezji i muzyki, przez magiê a¿ po sztukê wojenn¹. Jest czczony przez wszystkich przedstawicieli czarodziejskiego ludu nie licz¹c drowów, którzy zwrócili siê ku Lolth, Ghaunadaurowi, Vhaeraunowi i innym mrocznym si³om. Corellon jest szczególnie popularny wœród magów, muzyków i poetów elfiej krwi.
+
+Ceremonialny ubiór kap³ana Corellona sk³ada siê z lazurowej szaty wykonanej z tkaniny przypominaj¹cej pajêczynê, z wyszytym srebrnym ksiê¿ycem. Oprócz tego, nosi on na czole srebrn¹ obrêcz z wyrytym symbolem Opiekuna. Œwiêtym symbolem wiary jest srebrny b¹dŸ mitrylowy symbol ukazuj¹cy ksiê¿yc, zawieszony na cienkim ³añcuchu. Podczas podró¿y, kap³ani Corellona preferuj¹ tradycyjny elfi ekwipunek, œwiadomie naœladuj¹c swego patrona.
+
+Opiekun elfów Corellona mo¿e zostaæ tylko kap³an elfiej (b¹dŸ pó³-elfiej) krwi o chaotycznym dobrym, neutralnym dobrym lub chaotycznym neutralnym charakterze.
+
+Dostêp do sfer:
+- Pe³ny dostêp do sfer: uniwersalna, astralna, uroki, walka, tworzenie, poznanie, obrona, leczenie, nekromancja, ochrona, s³oñce, wojna i stra¿nicza
+- Ograniczony dostêp do sfer: zwierzêta, chaos, przywo³ywanie, roœliny i myœli
+- Brak dostêpu do sfer: ¿ywio³y, prawo, liczby, czas, podró¿e i pogoda
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - d³ugi miecz 'Sahandrian'
+D³ugi miecz 'Sahandrian' to duchowa broñ Opiekuna Elfów Corellona, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Sahandrian jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Mo¿e uzyskaæ specjalizacjê w dowolnej broni dostêpnej dla kap³ana i we wszystkich stylach walki
+- Premia +1 do rzutów przeciwko œmierci
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Zaklêt¹ broñ'
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Odpornoœæ na czary'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Ochronê przed magicznymi broñmi'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Têczowe kolory'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@12704 =~Duchowa broñ~
+@12705 =~D³ugi miecz 'Sahandrian' to duchowa broñ Opiekuna Elfów Corellona, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Sahandrian jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+@12706 =~Akceleracja (Dowolna szko³a)
+Poziom: 10
+Zasiêg: nieograniczony
+Czas dzia³ania: 2 rundy
+Czas rzucenia: 9
+Obszar dzia³ania: specjalny
+Rzut obronny: specjalny
+
+Akceleracja powoduje usuniêcie przerwy pomiêdzy rzucaniem zaklêæ. Po rzuceniu tego czaru, kap³an mo¿e rozpocz¹æ rzucanie nowego zaklêcia natychmiast po zakoñczeniu poprzedniego. Efekt trwa przez dwie rundy.
+
+Zdolnoœæ ta mo¿e byæ wybrana do trzech razy.~
+@12707 =~Œwiêty symbol Corellona~
+@12708 =~Tylko najbardziej oddani s³udzy Corellona otrzymaj¹ ten symbol. Ten pierœcieñ z symbolem ksiê¿yca wzmacnia si³ê i ducha Opiekuna Elfów.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Strifleader of Cyric                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@13000 =~Straszne uderzenie~
+@13001 =~Zainstaluj podklase Przywodcy Sporu Cyrica~
+@13002 =~przywódca sporu cyrica~
+@13003 =~Przywódca sporu Cyrica~
+@13004 =~PRZYWÓDCA SPORU CYRICA: Cyric jest megalomaniakalnym bóstwem otoczonym rzesz¹ wyznawców. Jako jedna z trzech najwiêkszych si³ z³a w Faerûnie, jest niezwykle kapryœny i egoistyczny. Uwielbia omamiaæ œmiertelników, by ci podczas szaleñstwa rujnowali swe ¿ycie, lub chocia¿ pope³niali b³êdy, które s¹ fatalne w skutkach. To w³aœnie Cyric pije ³zy w³aœnie pozbawionego z³udzeñ marzyciela i kochanka o z³amanym sercu. Wi¹¿e sojusze tylko wtedy, gdy nie mo¿e kogoœ pokonaæ, lecz trwaj¹ one do czasu odpowiedniej sytuacji na zadanie ciosu w plecy i ucieczki.
+
+Celem koœcio³a Cyrica jest podsycanie konfliktów i zamêtu, oraz okazjonalnie wysy³anie agentów-morderców tam, gdzie wed³ug przywódców koœcio³a wiara i strach przed Czarnym s³oñcem s¹ za ma³e. Wspiera on wielkie intrygi i oszustwa, maj¹ce na celu sprawienie, ¿e ca³e Krainy pogr¹¿¹ siê w wojnach. Rzecz¹ normaln¹ w koœciele tego szaleñczego bóstwa s¹ "przepychanki" w drodze do w³adzy - trucizny i zdradzieckie sztychy s¹ powszechne. Jednak liczba konfliktów targaj¹cych wiar¹ zmniejszy³a siê od czasu, gdy Cyric zacz¹³ siê kontrolowaæ i zjednoczy³ pod swym sztandarem koœcio³y bóstw dziel¹cych z nim jego domeny.
+
+Przywódcy sporów ubieraj¹ siê najczêœciej w czarne b¹dŸ fioletowe szaty. Nosz¹ te¿ ¿elazne branzolety - symbol ich zniewolenia przez Cyrica. Przywódcy Sporu Cyrica mog¹ wybieraæ miêdzy dowolnymi z³ymi i chaotycznym neutralnym charakterem.
+
+Dostêp do sfer:
+- Pe³ny dostêp do sfer: uniwersalna, astralna, uroki, walka, obrona, leczenie, nekromancja, przywo³ywanie, s³oñce, czas, wojna, pogoda
+- Ograniczony dostêp do sfer: poznanie, ¿ywio³y, liczby, ochrona
+- Brak dostêpu do sfer: zwierzêta, roœliny, tworzenie, chaos, prawo, podró¿e, myœl, stra¿nicza
+
+Zalety:
+- Raz dziennie mo¿e wezwaæ duchow¹ broñ - d³ugi miecz 'Ostra brzytwa'
+D³ugi miecz 'Ostra brzytwa' to duchowa broñ Przywódców sporu Cyrica, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Brzytwa jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).
+- Raz dziennie na ka¿de 6 poziomów mo¿e pokryæ swoj¹ broñ trucizn¹. Nastêpny cios zadany tak¹ broni¹ wprowadza truciznê do organizmu zaatakowanego i zadaje 1 punkt obra¿eñ na sekundê przez 24 (3 punkty obra¿eñ w ci¹gu pierwszych 6 sekund). Rzut obronny przeciwko truciŸnie ogranicza obra¿enia do 12.
+
+Zaklêcia z domeny:
+- Od 7 poziomu mo¿e raz dziennie rzuciæ 'Straszne uderzenie', które zadaje ofierze 4K8 +1/poziom (do maksymalnie +20) obra¿eñ i wywo³uje u ofiary zamêt na rundê (rzut ochronny przeciw czarom z mod. -2 chroni przed zamêtem)
+- Od 9 poziomu mo¿e raz dziennie rzuciæ 'Chaos'
+- Od 11 poziomu mo¿e raz dziennie rzuciæ 'Zabójcz¹ mg³ê'
+- Od 14 poziomu mo¿e raz dziennie rzuciæ 'Sferê chaosu'
+
+Wady:
+- Mo¿e rzucaæ o jedno zaklêcie mniej na ka¿dy poziom~
+@13005 =~Œwiêty symbol Cyrica~
+@13006 =~Cyric nagradza swych najpotê¿niejszych wyznawców œwiêtymi symbolami, posrebrzanymi branzoletami z wygrawerowanym symbolem - czaszk¹ na tle Ciemnego s³oñca. Noszone, ukazuj¹ zarówno si³ê kap³ana, jak i jego zniewolenie wobec Ksiêcia k³amstw. Oprócz tego, symbol wzmacnia i tak ju¿ du¿¹ moc Przywódcy sporu.
+
+PARAMETRY:
+
+ Zapewnia dodatkowe zaklêcie 6. i 7. poziomu.
+ Kiedy siê go nosi, w³aœciciel otrzymuje dodatkowe 5% odpornoœci na magiê
+ Kiedy siê go nosi, w³aœciciel otrzymuje +1 do Si³y.
+
+Mo¿e u¿ywaæ tylko:
+ Kap³an~
+@13007 =~Duchowa broñ~
+@13008 =~D³ugi miecz 'Ostra brzytwa' to duchowa broñ Przywódców sporu Cyrica, i kap³an pos³uguje siê ni¹ tak, jakby posiada³ wielkie mistrzostwo w wymaganej bieg³oœci. Brzytwa jest zwyk³¹ broni¹ na poziomach 1-5, na poziomach 6-10 jest broni¹ +1, 11-15 +2, 16-20 +3, 21-25 +4 i od 26 jest traktowany jako broñ +5. Broñ przyzywana jest na 1 rundê na poziom kap³ana (do maksymalnie 20 rund).~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Druid Remix                                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@20000 =~Druid Remix~
+@20001 =~DRUID: Druid jest wiernym s³ug¹ natury i neutralnoœci, osob¹ która poszukuje m¹droœci nie w ksiêgach czy wyk³adach nauczycieli lecz w szumie lasu i przyrodzie. Zosta³ obdarzony przez naturê wieloma umiejêtnoœciami, które maj¹ mu dobrze s³u¿yæ do obrony neutralnoœci, przyrody i porz¹dku œwiata.~
+@20002 =~WOJOWNIK / DRUID: Ta postaæ posiada umiejêtnoœci wojownika i druida, choæ mo¿e wykorzystywaæ tylko te bronie i pancerze, na które pozwala jej druidyczny etos.~
+@20003 =~Lekkie, a mimo to wytrzyma³e ³uski Niebieskiego Smoka zapewniaj¹ doskona³¹ ochronê przed orê¿em wykorzystuj¹cym elektrycznoœæ i przed wszystkimi jej formami.
+
+PARAMETRY:
+
+Klasa Pancerza: -1
+Specjalne:
+ Zapewnia +90% odpornoœci na wszystkie b³yskawice i ataki elektryczne
+Waga: 20
+Wymagana si³a: 15
+Nie mo¿e u¿ywaæ:
+ Bard
+ Mag
+ Z³odziej~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Oozemaster Druid kit                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@20301 =~Zainstaluj podklase Wladcy Sluzow~
+@20302 =~W³adca œluzów~
+@20303 =~W³adca œluzów~
+@20304 =~W£ADCA ŒLUZÓW: S¹ takie miejsca, w które nie powinien siê nikt zapuszczaæ, gdy¿ kryj¹ one w sobie prawdopodobnie jak¹œ tajemnicê lub straszne potwory. Czasem, w najciemniejszych grotach Faerunu, w najmroczniejszych i nieznanych jego zak¹tkach istniej¹ istoty, budz¹ce wœród ludzi zarówno strach, nienawiœæ i obrzydzenie.. S¹ to szlamy - galaretowate drapie¿niki, u¿ywaj¹ce w walce swych pseudo macek o ¿r¹cych lub parali¿uj¹cych w³aœciwoœciach..
+
+W³adcy Œluzów s¹ odrzutkami spo³eczeñstwa. Zatracili ju¿ czêœæ swej ludzkoœci, i powoli staj¹ siê wpó³ cz³owiekiem, wpó³ szlamem. Zaczêli oni nienawidzieæ wszelkich ¿ywych istot, które ich odrzuci³y. Przez to zatracili oni potrzebê kontaktu z innymi ludŸmi. W przeciwieñstwie do innych druidów, porozumiewaj¹cych siê z zwierzêtami czy roœlinami, W³adcy Szlamu nie rozmawiaj¹ z nimi.. A raczej rozmawiaj¹, lecz szlam nie odpowiada - chocia¿ jest to sprawa psychiki druida, gdy¿ wielu posunê³o siê do tego, i¿ wierzy, ¿e zaprzyjaŸnili siê z galaretami i œluzem..
+
+Œcie¿ka W³adcy Œluzów daje druidowi zarówno wiele korzyœci jak i strat. Jego odmienna, pó³-œluzowa anatomia pozwala mu unikn¹æ efektów wielu zaklêæ, jednak wyobcowanie i nienawiœæ do ¿ywych istot, uniemo¿liwia mu dobre stosunki z ludŸmi.
+
+Zalety:
+- Co 5 poziomów otrzymuje umiejêtnoœæ Parali¿uj¹cy dotyk, dzia³aj¹c¹ jak 2-poziomowe zaklêcie maga Dotyk Ghula
+- Od 5 poziomu odmienny metabolizm W³adcy Œluzów powoduje, i¿ staje siê on odporny na trucizny
+- Od 7 poziomu otrzymuje umiejêtnoœæ Przemiany w musztardowy szlam, której mo¿e u¿yæ trzy razy dziennie
+- Od 9 poziomu staje siê odporny na obra¿enia od kwasu
+- Od 11 poziomu staje siê odporny na choroby
+- Od 15 poziomu staje siê wpó³-cz³owiekiem, wpó³ œluzem odpornym na usypianie, oœlepienie, parali¿, og³uszenie i uderzenia krytyczne.
+
+Wady:
+- Nie ma dostêpu do zaklêæ ze sfer: roœliny, zwierzêta
+- Nie otrzymuje standardowych zdolnoœci i cech druida (takich jak umiejêtnoœæ zmiany kszta³tu, czy odpornoœci na ¿ywio³y)
+- Przez pe³ne wyobcowanie i zmiany psychiczne, W³adca Œluzów otrzymuje karê -1 do charyzmy na poziomach: 1, 5, 7, 9, 11 i 15~
+
+@20305 = ~Parali¿uj¹cy dotyk~
+@20306 = ~Zmiana kszta³tu: Galareta musztardowa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Bowslinger Ranger Kit                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@40300 = ~Zainstaluj podklase Lesnego Strzelca~
+@40301 = ~Leœny strzelec~
+@40302 = ~Leœny strzelec~  
+@40303 = ~LEŒNY STRZELEC: Jest uosobieniem mistrzowskiego pos³ugiwania siê ³ukiem. To znakomity strzelec, potrafi¹cy oddaæ strza³ niemal z ka¿dej pozycji, niezale¿nie od stopnia trudnoœci. Aby zyskaæ takie umiejêtnoœci, ³ucznik musia³ poœwiêciæ czêœæ swoich punktów bieg³oœci za pos³ugiwanie siê broni¹ rêczn¹ i zbroj¹.
+
+Zalety:
+- +1 do trafienia i obra¿eñ ka¿d¹ broni¹ pociskow¹, za ka¿de 3 poziomy doœwiadczenia. Od 17 poziomu premia ta zostaje opóŸniona do +1 do trafienia i obra¿eñ co 5 poziomów doœwiadczenia.
+- Mo¿e uzyskaæ arcymistrzostwo w ka¿dej broni dystansowej
+- Co 4 poziomy mo¿e u¿yæ umiejêtnoœci "Mierzony strza³" (zaczynaj¹c od 4 poziomu). Kiedy Strzelec u¿yje tej umiejêtnoœci, przez nastêpne 20 sekund otrzymuje kumulatywn¹ z bazow¹, premiê +1 do trafienia i obra¿eñ na ka¿de 4 poziomy doœwiadczenia £ucznika.
+- Co 6 poziomów mo¿e u¿yæ umiejêtnoœci "Wykrycie niewidzialnego", dzia³aj¹c¹ jak 2-poziomowe zaklêcie maga
+- Co 8 poziomów mo¿e u¿yæ umiejêtnoœci "Szybki strza³" (zaczynaj¹c od 8 poziomu). Kiedy Strzelec u¿yje tej umiejêtnoœci, Na czas nastêpnych 5 rund otrzymuje dodatkowy atak na rundê, jednak musi siê liczyæ z kar¹ -2 do trafienia.
+
+Wady:
+- Nie otrzymuje wrodzonej zdolnoœci "Zauroczenia zwierz¹t"
+- Otrzymuje karê -1 do obra¿eñ, gdy u¿ywa broni do walki wrêcz
+- Nie mo¿e wydaæ punktów bieg³oœci na ¿adn¹ z broni do walki wrêcz oprócz: d³ugich mieczy, krótkich mieczy i sztyletów, w których mo¿e posiadaæ tylko bieg³oœæ (1 punkt)
+- Nie mo¿e u¿ywaæ metalowych pancerzy~
+@40304 = ~Szybki strza³~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Feralan Ranger Kit                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@40600 = ~Zainstaluj podklase Dzikusa~
+@40601 = ~Dzikus~
+@40602 = ~Dzikus~
+@40603 = ~DZIKUS: Co siê sta³o z ma³ymi dzieæmi, które zaginê³y w lesie? Lub co gorsza, zosta³y tam zostawione? Grozi im wiele ze strony dzikiej natury, jednak czasem mog¹ mieæ farta, i zostaæ przyjête do zwierzêcej gromady. Odciête od cywilizacji, czêœciowo sta³y siê podobne do istot, które je wychowywa³y, i wytworzy³y w sobie coœ w rodzaju wiêzi z dzikimi zwierzêtami. Dzikusa mo¿na nazwaæ cz³owiekiem o sprawnoœci bestii, ale równie¿ besti¹ o inteligencji cz³owieka.
+
+Dzikus ze wzglêdu na wychowanie w dzikim lesie nie mo¿e wybraæ Praworz¹dnego dobrego charakteru.
+
+Zalety:
+- Premia +10% do krycia siê w cieniu
+- Premia +1 do Klasy Pancerza na ka¿de 5 poziomów doœwiadczenia (rozpoczynaj¹c od 1 poziomu)
+- Co 10 poziomów mo¿e u¿yæ umiejêtnoœci "Dziki sza³". Sza³ trwa 1 turê, i daje Dzikusowi premiê +2 do trafienia, obra¿eñ i klasy pancerza, odpornoœæ na zauroczenie, unieruchomienie, strach, zamêt, uwiêzienie, utratê poziomów, og³uszenie i sen. Ponadto uzyskuje on dodatkowe 15 punktów ¿ycia, zaœ wszelkie obra¿enia odejmowane s¹ najpierw od tych dodatkowych punktów.
+- Raz dziennie mo¿e u¿yæ umiejêtnoœci "Zew Natury". Ta unikalna umiejêtnoœæ przywo³uje potê¿ne zwierzêta, które bêd¹ walczyæ w imieniu Dzikusa przez 3 rundy +1 runda/poziom. Ponadto wraz z wzrostem poziomów Dzikusa przyzywane s¹ coraz potê¿niejsze istoty.
+
+Wady:
+- Po zakoñczeniu Dzikiego sza³u jest wyczerpany. W tym stanie otrzymuje -2 do trafienia, -2 do obra¿eñ, oraz +2 do KP. Ponadto traci on dodatkowe 15 punktów ¿ycia, i otrzymuje kolejne 15 punktów obra¿eñ, co mo¿e groziæ œmierci¹ Dzikusa.
+- Mo¿e byæ tylko bieg³y (1 punkt) w broniach: miecz pó³torarêczny, d³ugi miecz, krótki miecz, miecz oburêczny, katana, sejmitar, halabarda, korbacz/morgensztern i kusza.
+- Nie mo¿e u¿ywaæ pancerzy ani pawê¿y.
+- Przy tworzeniu postaci jego charyzma zostaje zmniejszona o 2 punkty~
+@40604 = ~Dziki sza³~
+@40605 = ~Zew natury~
+@40606 = ~Dziki pies~
+@40607 = ~Wilk~
+@40608 = ~Straszny wilk~
+@40609 = ~Przywódca stada~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Forest Runner Ranger Kit                         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@40900 = ~Zainstaluj podklase Lesnego zbiega~
+@40901 = ~Leœny zbieg~
+@40902 = ~Leœny zbieg~
+@40903 = ~LEŒNY ZBIEG: Wszêdzie tam, gdzie pojawia siê tyrania, dyktatorska w³adza i re¿im, znajdzie siê miejsce dla Leœnego zbiega. Jest on opozycj¹ dla w³adzy - stara siê ¿yæ na swój sposób, ukrywaj¹c siê w lasach przed w³adz¹. S¹ oni przestêpcami tylko w prawniczych kruczkach i technicznym sensie, lecz posiadaj¹ w³asny system wartoœci, który nakazuje im grabiæ nieuczciwych bogatych, wszelakich urzêdników czy w³adców, którzy zbili maj¹tki na krzywdzie ludzkiej - by pomagaæ biednym. Kiedy lokalna w³adza widzi w Zbiegu tylko i wy³¹cznie problem, który nale¿a³oby wyeliminowaæ - proœci ludzie szanuj¹ go, widz¹c w nim si³ê, która mo¿e zniszczyæ okrutny system tyranii i re¿imu.
+
+Leœny zbieg nie mo¿e wybraæ praworz¹dnego charakteru.
+
+Zalety:
+- Premia +5% do krycia siê w cieniu
+- Mo¿e uzyskaæ mistrzostwo (3 punkty bieg³oœci) w d³ugich ³ukach, d³ugich mieczach, kijach i sztyletach
+- Co 6 poziomów mo¿e u¿yæ umiejêtnoœci "Zapa³" która na czas 3 rund polepsza morale i rzuty na atak wszystkich sojuszników ³owcy
+
+Wady:
+- Nie mo¿e u¿ywaæ metalowych pancerzy
+- Jest ograniczony do bieg³oœci (1 punkt) w broniach: topory, m³oty, dwurêczne miecze i kusze~
+@40904 = ~Zapa³~
+@40905 = ~Zapa³~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Justifier Ranger Kit                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@41200 = ~Zainstaluj podklase Smia³ka~
+@41201 = ~Œmia³ek~
+@41202 = ~Œmia³ek~
+@41203 = ~ŒMIA£EK: Niektóre wyprawy s¹ zbyt trudne lub niebezpieczne by uczestniczyli w nich zwykli ³owczy. Wtedy musi wkroczyæ prawdziwa piêœæ zmiataj¹ca z³o - Œmia³ek, mistrz taktyki, którego bitewny instynk, spryt i umiejêtnoœci przywódcze stawiaj¹ go w pierwszym szeregu wœród najlepszych wojowników.
+
+Dla zdeterminowanego Œmia³ka nie istnieje przeciwnik nie do pokonania lub praca nie do wykonania. Jego bieg³oœæ w pos³ugiwaniu siê broni¹ daje mu przewagê w walce, jednak jego braki w nauce magii mog¹ byæ czasem du¿¹ przeszkod¹.
+
+Œmia³ek jest ograniczony do Praworz¹dnego Dobrego charakteru, gdy¿ wymagana jest od niego dyscyplina myœli i skupienie. Nie ma u niego miejsca na wpadanie w sza³ lub ekstazê podczas walki.
+
+Zalety:
+- Otrzymuje premiê +1 do trafienia i opóŸnienia na ka¿de 10 poziomów doœwiadczenia
+- Premia +10% do krycia siê w cieniu
+
+Wady:
+- Nie otrzymuje wrodzonej zdolnoœci "Zauroczenia zwierz¹t"
+- Nie mo¿e rzucaæ zaklêæ kap³ana, otrzymuje tylko kilka jako zdolnoœci wrodzone:
+8 poziom: Leczenie lekkich ran, Zbroja wiary
+10 poziom: Szczêœcie, Prze³amanie strachu
+12 poziom: Przywo³anie boskiej mocy~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Wilderness Runner Ranger Kit                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@41500 = ~Zainstaluj podklase Znawcy dziczu~
+@41501 = ~Znawca Dziczu~
+@41502 = ~Znawca Dziczu~
+@41503 = ~ZNAWCA DZICZU: £owca jest osob¹, która jako jedna z niewielu potrafi zrozumieæ prawdziwy rytm dziczy i lasu. Jednak dopiero Znawca Dziczu w pe³ni postara³ siê wspó³¿yæ z natur¹, ¿yj¹c tak by jej nie zaszkodziæ.. Dziêki temu, zyska³ wiele umiejêtnoœci, lepiej ni¿ inni znosi trud i ch³ód.. Musia³ nauczyæ siê te¿ zak³adaæ sid³a. Niestety Znawca Dziczu sta³ siê odludkiem, i trudno przychodz¹ mu kontakty z zwyk³ymi ludŸmi.
+
+Zalety:
+- Premia +10% do odpornoœci na zwyk³y ogieñ i ch³ód
+- Mo¿e uzyskaæ mistrzostwo (3 punkty) w d³ugich ³ukach i kijach
+- Co 2 poziomy mo¿e u¿ywaæ ulepszonej wersji Zauroczenia zwierz¹t. Zdolnoœæ ta zastêpuje zwyk³e "Zauroczenie zwierz¹t", trwa 2 razy d³u¿ej i oddzia³owuje na wszystkie zwierzêta w polu widzenia rzucaj¹cego
+- Tak jak z³odziej, mo¿e zastawiaæ pu³apki (Zaczyna z zdolnoœci¹ o wysokoœci 20% która powiêksza siê o 5% na ka¿dym poziomie)
+
+Wady:
+- Nie mo¿e u¿ywaæ metalowych pancerzy
+- Jest ograniczony do bieg³oœci (1 punkt) w broniach: korbacz/morgensztern i m³oty
+- Przy tworzeniu postaci jego charyzma zostaje zmniejszona o 2~
+@41504 = ~Zauroczenie zwierz¹t~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Battleguard of Tempus kit for Branwen            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@60000 =~Zainstaluj podklase Bitewnego Straznika Tempusa dla Branwen~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Change Jaheira to Neutral Good                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@60500 = ~Zmien charakter Jaheiry na Neutralny dobry~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Nightcloak of Shar kit for Viconia               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+
+@61000 =~Zainstaluj podklase Plaszcza Nocy Shar dla Viconii~
+@61001 =~Przywo³aj Viconiê, drowkê P³aszcz Nocy Shar.~

@@ -1,0 +1,61 @@
+COPY ~divine_remix/2da/cdxvim.2da~ ~override~
+
+COPY ~Divine_Remix/spl/cdxvscm.spl~ ~override~  // Scimitar of Souls (innate)
+  SAY NAME1 @11805
+  SAY NAME2 @11805
+  SAY UNIDENTIFIED_DESC @11806
+  SAY DESC @11806
+
+COPY ~Divine_Remix/bam/cdixvim.bam~ ~override~
+COPY ~Divine_Remix/itm/cdxvsc0.itm~ ~override~  // Scimitar of Souls +0
+  SAY NAME1 @11805
+  SAY NAME2 @11805
+  SAY UNIDENTIFIED_DESC @11806
+  SAY DESC @11806
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~cdxvsc0.itm~ ~override/cdxvsc1.itm~  // scimitar of souls +1
+              ~cdxvsc0.itm~ ~override/cdxvsc2.itm~  // scimitar of souls +2
+              ~cdxvsc0.itm~ ~override/cdxvsc3.itm~  // scimitar of souls +3
+              ~cdxvsc0.itm~ ~override/cdxvsc4.itm~  // scimitar of souls +4
+              ~cdxvsc0.itm~ ~override/cdxvsc5.itm~  // scimitar of souls +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C "%weap_idx%"
+  WRITE_SHORT 0x84 (5 - "%weap_idx%")
+
+COPY ~Divine_Remix/spl/CDXVFEAR.spl~ ~override~  // immunity to fear (permanent innate spell)
+
+ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+
+  ACTION_IF !FILE_EXISTS_IN_GAME ~beheld01.cre~ THEN BEGIN
+    
+    COPY ~divine_remix/cre/cdxveorb.cre~ ~override~
+      WRITE_ASCII 0x248 ~gensht01~ #8
+      WRITE_ASCII 0x250 ~cdxveorb~ #8
+      WRITE_ASCII 0x258 ~~ #8
+      WRITE_ASCII 0x260 ~~ #8
+      WRITE_ASCII 0x268 ~wtasight~ #8
+  
+  END ELSE BEGIN
+
+    COPY_EXISTING ~beheld01.cre~ ~override/cdxveorb.cre~ // creates allied Elder Orbs for summoning
+      WRITE_ASCII 0x248 ~gensht01~ #8
+      WRITE_ASCII 0x250 ~cdxveorb~ #8
+      WRITE_ASCII 0x258 ~~ #8
+      WRITE_ASCII 0x260 ~~ #8
+      WRITE_ASCII 0x268 ~wtasight~ #8
+
+  END
+  
+  COMPILE ~Divine_Remix/baf/cdxveorb.baf~
+
+  COPY ~Divine_Remix/eff/cdxvhla.eff~ ~override~ // Xvim's Summoning
+  COPY ~Divine_Remix/spl/cdxvhla.spl~ ~override~
+    SAY NAME1 @11807
+    SAY NAME2 @11807
+    SAY UNIDENTIFIED_DESC @11808
+    SAY DESC @11808
+
+END

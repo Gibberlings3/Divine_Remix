@@ -1,0 +1,37 @@
+COPY ~divine_remix/2da/A#Cyric.2DA~ ~override~
+
+//Dread Blast innate
+COPY ~Divine_Remix/spl/a#cyr07.spl~ ~override~
+  SAY NAME1 @13000
+  SAY NAME2 @13000
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi508.spl~ ~override/a#cyr09.spl~ // chaos
+              ~spwi614.spl~ ~override/a#cyr11.spl~ // death fog
+              ~spwi711.spl~ ~override/a#cyr14.spl~ // sphere of chaos
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY ~Divine_Remix/spl/a#cyr0b.spl~ ~override~  // Razor's Edge (innate)
+  SAY NAME1 @13007
+  SAY NAME2 @13007
+  SAY UNIDENTIFIED_DESC @13008
+  SAY DESC @13008
+
+COPY ~Divine_Remix/itm/a#cyr00.itm~ ~override~  // Razor's Edge +0
+  SAY NAME1 @13007
+  SAY NAME2 @13007
+  SAY UNIDENTIFIED_DESC @13008
+  SAY DESC @13008
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~a#cyr00.itm~ ~override/a#cyr01.itm~  // Razor's Edge +1
+              ~a#cyr00.itm~ ~override/a#cyr02.itm~  // Razor's Edge +2
+              ~a#cyr00.itm~ ~override/a#cyr03.itm~  // Razor's Edge +3
+              ~a#cyr00.itm~ ~override/a#cyr04.itm~  // Razor's Edge +4
+              ~a#cyr00.itm~ ~override/a#cyr05.itm~  // Razor's Edge +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C ("%weap_idx%" + 1)
+  WRITE_SHORT 0x84 (7 - "%weap_idx%")

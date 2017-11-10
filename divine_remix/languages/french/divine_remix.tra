@@ -1,0 +1,1370 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// strings for core components                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@101 = ~Vous ne pouvez pas lancer ce sort jusqu'à ce que l'enchantement précédemment lancé se dissipe.~
+
+@112 = ~Lueur féérique~
+@113 = ~Lueur féérique (Évocation)
+Niveau : 1
+Sphère : Climat
+Portée : champ de vision du lanceur
+Durée : 4 rounds + 1 round / 5 niveaux
+Temps d'incantation : 4
+Zone d'effet : 1 créature
+Jet de sauvegarde : Aucun
+
+Ce sort crée une pâle lueur qui entoure la cible, signalant sa position et la rendant plus visible, lui infligeant un malus de -2 à la classe d'armure.~
+
+@125 = ~Guérison des maladies (Abjuration)
+Niveau : 3
+Sphère : Guérison
+Portée : Contact
+Durée : Permanente
+Temps d'incantation : 1
+Zone d'effet : 1 créature
+Jet de sauvegarde : Aucun
+
+En imposant les mains sur une personne souffrante, le lanceur de ce sort peut guérir presque toutes les maladies connues. La guérison est permanente mais n'accorde pas à son bénéficiaire une quelconque immunité magique contre de futures affections. Ce sort annule également l'effet d'un sort de débilité mentale. Certaines maladies magiques ne sont pas sujettes à ce sort.~
+
+@166 = ~Carapace Divine~
+@167 = ~Carapace Divine (Abjuration)
+Niveau : 6
+Sphère : Chaos
+Portée : Lanceur du sort
+Durée : 8 rounds
+Temps d'incantation : 9
+Zone d'effet : Lanceur du sort
+Jet de sauvegarde : Aucun
+
+Ce sort enveloppe le lanceur d'une carapace formée d'énergie qui bloque ou dévie la plupart des attaques. Le lanceur reçoit un bonus de 2 à la classe d'armure et aux jets de sauvegarde, 10 % de résistance aux dégâts élémentaires (froid, feu, électricité et acide) ainsi qu'une immunité aux projectiles non-magiques.~
+@168 = ~Ordres chaotiques (Enchantement/Charme)
+Niveau : 5
+Sphère : Chaos
+Portée : champ visuel du lanceur
+Durée : 1 tour/niveau
+Temps d'incantation : 3
+Zone d'effet : 1 créature
+Jet de sauvegarde : Aucun
+
+Ce sort immunise la cible contre les ordres magiques, comme par exemple Injonction, Ordre majeur, Charme personne, Charme néfaste, Sommeil... Ce sort n'affecte qu'une créature, jusqu'à expiration ou dissipation.~
+
+
+@171 = ~Esprit inexpugnable~
+@172 = ~Esprit inexpugnable (Enchantement/Charme)
+Niveau : 5
+Sphère : Protection, Pensée
+Portée : contact
+Durée : 1 tour + 1 round/niveau
+Temps d'incantation : 1
+Zone d'effet : 1 créature
+Jet de sauvegarde : Aucun
+
+Ce sortilège protège la cible contre les attaques magiques ou psioniques affectant l'esprit. Cela comprend les sorts d'Immobilisation des personnes, Obstination bornée, Confusion, Domination et effets similaires,  de même que la plupart des facultés psioniques appartenant à la discipline de la télépathie.~
+@173 = ~Résistance à l'Acide et à la Corrosion~
+@174 = ~Résistance à l'Acide et à la Corrosion (Abjuration)
+Niveau : 2
+Sphère : Protection
+Portée : contact
+Durée : 1 round/niveau
+Temps d'incantation : 5
+Zone d'effet : créature touchée
+Jet de sauvegarde : Aucun
+
+Ce sortilège offre à la cible une meilleure protection contre l'acide et les substances caustiques ou corrosives de toutes sortes, ce qui comprend le souffle d'un Dragon Noir, les Flèches Acides de Melf ainsi que les attaques naturelles de divers limons, vases, gelées et poudings. Ces attaques n'infligent que la moitié des dégâts au personnage ainsi protégé.~
+@175 = ~Force de la Pierre~
+@176 = ~Force de la Pierre (Invocation/Évocation)
+Niveau : 1
+Sphère : Élémentaire (terre)
+Portée : Contact
+Durée : 3 rounds + 1 round/niveau
+Temps d'incantation : 4
+Zone d'effet : 1 créature
+Jet de sauvegarde : Aucun
+
+Ce sort offre à la cible une force surnaturelle. En pratique, la force est augmentée jusqu'à 15+1d4 (15+4 donnant 18/50, et pas 19). Si la force du sujet est de 17 ou plus, il est possible que sa force soit diminuée.~
+@177 = ~Mental d'acier
+Cette faculté permet au prêtre de puiser dans la puissance de sa divinité pour combattre les effets négatifs de la magie. Sa résistance à la magie est portée à 50 % pour 4 rounds. Cette valeur n'est néanmoins pas cumulative avec d'autres bonus ; s'il a déjà 50 % ou plus de résistance, cette faculté est inutile.~
+@178 = ~Pistage
+Grâce à son intime connaissance de son environnement et des créatures qui y vivent, un prêtre peut utiliser cette faculté pour avoir une idée générale des créatures présentes dans une zone donnée, ainsi que de la direction dans laquelle on peut les trouver. Des flèches rouges indiquent à l'écran la direction générale des créatures de la zone.~
+@179 = ~Guérison de la cécité/surdité~
+@180 = ~Guérison de la cécité/surdité (Abjuration)
+Niveau : 3
+Sphère : Guérison
+Portée : contact
+Durée : permanente
+Temps d'incantation : 1
+Zone d'effet : créature touchée
+Jet de sauvegarde : Spécial
+
+Par simple contact, le prêtre peut soigner certaines formes de cécité ou de surdité affectant la cible.~
+@181 = ~Cécité/Surdité~
+@182 = ~Cécité/Surdité (Abjuration)
+Niveau : 3
+Sphère : Guérison
+Portée : contact
+Durée : 10 tours
+Temps d'incantation : 1
+Zone d'effet : créature touchée
+Jet de sauvegarde : spécial
+
+Ce sort requiert d'entrer en contact direct avec la cible (jet d'attaque réussi). Si la victime réussit son jet de sauvegarde, l'effet est annulé. Dans le cas contraire, une cécité ou une surdité magique non-douloureuse l'affecte (50 % de chances chacune).
+
+Une créature assourdie a 50 % de chances d'échouer à incanter ses sorts. Une créature aveuglée subit un malus de -4 à ses jets d'attaque et une pénalité de +4 à sa classe d'armure.~
+@184 = ~Maladie~
+@185 = ~Maladie (Abjuration)
+Niveau : 3
+Sphère : Guérison
+Portée : contact
+Durée : 1 tour
+Temps d'incantation : 1
+Zone d'effet : 1 créature
+Jet de sauvegarde : Annule
+
+Ce sort inocule l'une de deux formes de maladie à la victime (50 % de chances chacune). Il nécessite de toucher la cible pour faire effet. La première maladie fait apparaître des rougeurs et des plaies irritantes et douloureuses sur le corps de la victime, qui voit sa force, sa dextérité et sa constitution chacune réduites de 1 tous les 3 niveaux du lanceur, et qui la ralentit. La seconde maladie retourne littéralement les tripes de la cible, lui infligeant un point de dégâts par round au niveau 3, 2 points au niveau 9, 3 points au niveau 15 et 4 points à partir du niveau 21..~
+
+
+
+@194 = ~Détection du Bien~
+@195 = ~Détection du Bien (Divination)
+Niveau : 1
+Sphère : Divination
+Portée : champ visuel du lanceur
+Durée : instantanée
+Temps d'incantation : 2
+Zone d'effet : champ de vision du lanceur
+Jet de sauvegarde : Aucun
+
+Ce sort permet de découvrir l'aura de Bien de n'importe quelle créature. Toute créature d'alignement bon à portée du sort se met à luire pendant un bref instant d'une couleur verte.~
+@196 = ~Protection contre le Bien~
+@197 = ~Protection contre le Bien (Abjuration)
+Niveau : 1
+Sphère : Protection
+Portée : contact
+Durée : 3 rounds/niveau
+Temps d'incantation : 1
+Zone d'effet : créature touchée
+Jet de sauvegarde : Aucun
+
+Grâce à ce sort, une barrière magique se crée autour de la cible à 30 cm de distance. La barrière se déplace avec le bénéficiaire et a deux effets majeurs : d'abord, toute créature d'alignement bon ou sujette à un enchantement d'alignement bon lançant une attaque contre la cible protégée reçoit un malus de -2 au jet d'attaque, et la cible bénéficie d'un bonus de +2 sur ses jets de sauvegarde contre de telles attaques.~
+@198 = ~Protection contre le Bien sur 3 mètres~
+@199 = ~Protection contre le Bien sur 3 mètres (Abjuration)
+Niveau : 3
+Sphère : Protection
+Portée : contact
+Durée : 1 tour/niveau
+Temps d'incantation : 7
+Zone d'effet : 3 m de rayon
+Jet de sauvegarde : Aucun
+
+Lorsque le prêtre lance ce sort, toutes les créatures se trouvant à moins de 3 mètres de lui sont affectées individuellement par Protection contre le Bien. Ce sort crée autour de chaque bénéficiaire une barrière magique à 30 cm de distance, et qui se déplace avec lui. Cette protection a deux effets majeurs. Premièrement, les créatures d'alignement bon ou sujettes à un enchantement d'alignement bon reçoivent une pénalité de -2 à leurs attaques contre les cibles. Deuxièmement, elle confère un bonus de +2 aux jets de sauvegarde contre les attaques causées par de telles créatures.~
+@201 = ~Protégé contre le Bien~
+@204 = ~Blessure intermédiaire~
+@205 = ~Blessure intermédiaire (Nécromancie)
+Niveau : 5
+Sphère : Guérison
+Portée : contact
+Durée : permanente
+Temps d'incantation : 5
+Zone d'effet : créature touchée
+Jet de sauvegarde : Aucun
+
+Ce sort est l'inverse du sort de Soins des blessures moyennes. Au lieu de guérir la créature touchée, elle la blesse. Sur un jet d'attaque de contact réussi du prêtre, ce sort inflige 14 points de dégâts à la victime. Après avoir lancé le sort, l'attaque suivante que porte le prêtre inflige cet effet, mais il doit la porter au plus tard deux rounds après avoir lancé le sort sinon celui-ci se dissipe. Si l'attaque échoue, le sort est quand même consumé. Aucun jet de sauvegarde ne permet de se protéger contre ce sortilège.~
+@206 = ~Protection contre l'Alignement~
+
+
+@208 = ~Protégé contre le Bien~
+
+
+@214 = ~Convocation d'Elémentaire d'Air (Conjuration/Convocation)
+Sphère : Élémentaire (air)
+Niveau : 7
+Portée : champ visuel du lanceur
+Durée : 1 tour/niveau
+Temps d'incantation : 1 round
+Zone d'effet : spéciale 
+Jet de sauvegarde : Aucun
+
+Ce sort ouvre un portail vers le plan élémentaire de l'Air, invoquant un élémentaire d'air au voisinage du jeteur de sorts. Il y a 60 % de chances qu'un élémentaire de 12 dés de vie apparaisse, 35 % qu'un élémentaire de 16 dés de vie réponde à l'appel et 5 % qu'un élémentaire de 24 dés de vie vienne faire le ménage. Ce sort requiert une concentration intense après l'incantation afin d'implanter le contrôle, et ce pendant 3 rounds (il y a 15 % de chances de perdre le contrôle). Cependant, à la fin de cette période, l'élémentaire sera aux ordres du lanceur jusqu'à la fin de la durée du sortilège ou son trépas. Tous les ordres donnés à la créature le sont par télépathie, ce qui élimine les pertes de temps dues à des problèmes de compréhension ainsi que le besoin de connaître le langage de la créature.~
+@215 = ~Absorption d'énergie (Nécromancie)
+Niveau : 7
+Sphère : Nécromancie
+Portée : contact
+Durée : permanente
+Temps d'incantation : 3
+Zone d'effet : 1 créature
+Jet de sauvegarde : Aucun
+
+Ce sort ouvre un canal entre le Plan du lanceur et le Plan de l'Énergie Négative. Le lanceur devient alors un conduit entre ces plans, absorbant l'énergie de la victime et la transférant dans le Plan Négatif, lui drainant ainsi 2 niveaux d'expérience. La cible perd ses niveaux et toutes les capacités associées, définitivement. Seul le sort de prêtre Restauration peut les lui faire récupérer.~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// new spells                                       \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@1000 = ~Installer les nouveaux sorts~
+@1001 = ~Ecraser et remplacer les sorts des autres mods~
+@1002 = ~Ajouter les nouveaux sorts uniquement si d'autres mods ne l'ont pas deja fait~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Disable Kits                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@5000 = ~Desactiver seulement les kits issus d'autres mods~
+@5001 = ~Desactiver tous les kits~
+@5002 = ~Desactiver les kits de Clerc~
+@5003 = ~Desactiver les kits de Druide~
+@5004 = ~Desactiver les kits de Paladin~
+@5005 = ~Desactiver les kits de Rodeur~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Cleric Remix                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10001 = ~J'ai été mandaté par le temple du Seigneur de l'Aube ! Tout ceci prendra fin ici et maintenant !~
+
+@10002 = ~seigneur des tempêtes de talos~
+@10003 = ~vigilant de heaum~
+@10004 = ~seigneur de l'aube de lathandre~
+
+
+@10101 = ~Guerrier / Vigilant de Heaum~
+@10102 = ~Écriture de parchemins
+Cette faculté autorise le prêtre à recréer des parchemins magiques contenant des sorts de niveau moyen ou peu élevé. Les parchemins créés sont choisis aléatoirement dans la liste ci-dessous :
+ 1) Soins des blessures graves
+ 2) Action libre
+ 3) Neutralisation du poison
+ 4) Domination mentale
+ 5) Harmonie défensive
+ 6) Force du Champion
+ 7) Ordres chaotiques
+ 8) Soins des blessures critiques
+ 9) Colonne de Feu
+10) Rappel à la vie~
+
+
+@10120=~Alors je dois en remercier Oisig. Même si vous n'avez pas une réputation très claire, vous avez l'air d'un serviteur de la lumière, une personne charitable.~
+@10121=~Attendez ! Vous avez tout à fait l'air d'un serviteur du bien, une personne charitable et de bonne foi. J'aimerais vous demander quelque chose.~
+@10122=~Attendez ! Même si votre réputation n'est pas très nette, vous avez l'air d'un serviteur de la lumière, une personne charitable. J'aimerais vous demander quelque chose.~
+@10123=~Bienvenue dans la maison de l'Oeil Vigilant de Heaum.~
+@10124=~Le Grand Aubemestre Arval a évoqué un problème avec le prêcheur aveugle, dans la rue.~
+@10125=~Le dirigeant du temple de Lathandre a évoqué une menace qui pèse sur son temple et le vôtre, et m'a envoyé ici pour vous aider.~
+@10126=~Le Grand Aubemestre a toujours su cerner les gens, et je lui suis très reconnaissant pour son assistance. Vous semblez être une personne douée d'un grand coeur, mais qui sait aussi prendre en compte toutes les versions d'une affaire.~
+@10127=~Le Grand Aubemestre et moi-même partageons des intérêts communs. Je sais qui vous êtes ; vos actions tendent à prouver que vous ne respectez pas le bien autant que vous le pourriez, mais vous tenez compte de chaque version d'une affaire.~
+@10128=~Avant que vous ne partiez, j'ai une proposition à vous faire. Vous semblez être une personne douée d'un grand coeur, mais qui sait aussi tenir compte de toutes les versions d'une affaire.~
+@10129=~Avant que vous ne partiez, j'ai une proposition à vous faire. Je sais qui vous êtes ; vos actions tendent à prouver que vous ne respectez pas le bien autant que vous le pourriez, mais vous tenez compte de chaque version d'une affaire.~
+@10130 =~Enquêter et détruire le Culte de l'Oeil Aveugle.
+
+Après avoir assisté au sermon du prêtre sans yeux, j'ai été contacté par un prêtre de Heaum qui a émis le désir d'en savoir plus sur ce nouveau culte. Il m'a demandé de le suivre jusqu'au temple de Heaum pour discuter plus avant de cette affaire. Il a aussi mentionné que nous pouvions aider le temple de Lathandre.~
+@10131 =~Ou peut-être que vous êtes plus fidèle aux paroles de Heaum. Si tel est le cas, hâtez-vous d'aller vers son temple. Peu importe lequel de nos deux cultes chaperonne cette mission, à partir du moment où vous vous en chargez rapidement.~
+@10132 =~Mais peut-être que vous préférez servir Lathandre pour cette mission. Cela ne fait que très peu de différence, à partir du moment où l'on se charge rapidement de cette menace.~
+@10133 =~Enquêter et détruire le Culte de l'Oeil Aveugle.
+
+Après avoir assisté au sermon du prêtre sans yeux, j'ai été contacté par un clerc de Lathandre qui a souhaité que je l'accompagne jusqu'à son temple afin de rendre un service à son ordre en enquêter sur ce nouveau culte. Il a aussi mentionné que nous pouvions aider le temple de Heaum.~
+@10133 = ~Prêtre~
+@10134 = ~prêtre~
+@10135 = ~PRÊTRE~
+@10136 = ~Seigneur des Tempêtes~
+@10137 = ~seigneur des tempêtes~
+@10138 = ~SEIGNEUR DES TEMPÊTES~
+@10139 = ~Vigilant~
+@10140 = ~vigilant~
+@10141 = ~VIGILANT~
+@10142 = ~Seigneur de l'Aube~
+@10143 = ~seigneur de l'aube~
+@10144 = ~SEIGNEUR DE L'AUBE~
+@10145 = ~Aumônier de Guerre~
+@10146 = ~aumônier de guerre~
+@10147 = ~AUMÔNIER DE GUERRE~
+@10148 = ~Justicier Divin~
+@10149 = ~justicier divin~
+@10150 = ~JUSTICIER DIVIN~
+@10151 = ~guerrier~
+@10152 = ~roublard~
+@10153 = ~Rôdeur~
+
+
+@10166 = ~Résistance à l'électricité~
+@10167 = ~Demi-Pique : 'Furie de Talos'~
+@10168 = ~La demi-pique est l'arme spirituelle des Seigneurs des Tempêtes de Talos. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure un round par niveau de lanceur, jusqu'à un maximum de 20 rounds, et ne peut être utilisée qu'une fois par jour.~
+@10169 = ~Coup destructeur~
+@10170 = ~Une fois par jour, un Seigneur des Tempêtes peut concentrer la fureur de Talos au combat. Ce sort lui confère des bonus de +2 aux jets d'attaque et de dégâts pendant un round par niveau (20 rounds maximum).~ 
+@10171 =~SEIGNEUR DES TEMPÊTES DE TALOS : Talos est le dieu maléfique des tempêtes, de la destruction et de la rébellion. Ses prêtres affirment que Talos doit être apaisé ou il sèmera la destruction sur la terre.
+
+Avantages : 
+- Éclair une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+- Bouclier des Tempêtes une fois par jour tous les 10 niveaux (une utilisation au 1er niveau)
+
+BOUCLIER DES TEMPÊTEs : ce sort dure 1 round par niveau du lanceur de sorts. Il le protège contre l'électricité, le feu, le froid et les projectiles normaux.
+
+Désavantages :
+- Alignement restreint à neutre mauvais, chaotique mauvais, et chaotique neutre.~
+
+
+@10176 = ~Esquive
+Les prêtres les plus puissants peuvent faire appel à leur divinité pour les protéger du danger, et éviter les attaques. Cette faculté donne un bonus de 4 à la CA et de +2 à tous ses jets de sauvegarde. Cet effet dure 3 rounds.~
+@10177 = ~SEIGNEUR DES TEMPÊTES DE TALOS : Talos est le dieu maléfique des tempêtes, de la destruction et de la rébellion. Ses prêtres affirment que Talos doit être apaisé ou il sèmera la destruction sur la terre.
+
+Capacités :
+- Arme spirituelle : demi-pique - 'Furie de Talos' une fois par jour.
+ARME SPIRITUELLE : la demi-pique est l'arme spirituelle des Seigneurs des Tempêtes de Talos, et se manie comme si le lanceur en avait la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure un round par niveau de lanceur, jusqu'à un maximum de 20 rounds, et ne peut être utilisée qu'une fois par jour.
+- Résistance innée à l'électricité, 1 % par niveau.
+- 'Coup destructeur' une fois par jour.
+COUP DESTRUCTEUR : une fois par jour, un Seigneur des Tempêtes peut concentrer la fureur de Talos au combat. Ce sort lui confère des bonus de +2 aux jets d'attaque et de dégâts pendant un round par niveau (20 rounds maximum).
+- 'Bouclier des Tempêtes' une fois par jour au niveau 7.
+BOUCLIER DES TEMPÊTES : ce sort dure 6 secondes par niveau du lanceur. Il permet au prêtre de se protéger contre l'électricité, le feu, le froid et les projectiles normaux.
+- 'Nuage Mortel' une fois par jour au niveau 9 (comme le sort de mage de niveau 5).
+- 'Chaîne d'Éclairs' une fois par jour au niveau 11 (comme le sort de mage de niveau 6).
+- 'Tremblement de Terre' une fois par jour au niveau 14 (comme le sort de prêtre de niveau 7).
+
+Désavantages :
+- Alignement restreint à neutre mauvais, chaotique mauvais, et chaotique neutre.~
+@10178 =~SEIGNEUR DE L'AUBE DE LATHANDRE : disciple du dieu bon du Renouveau, de la Créativité et de la Jeunesse. Très apprécié dans les Royaumes, Lathandre est vénéré presque partout et de superbes temples lui sont consacrés.
+
+Capacités :
+- Arme spirituelle : masse - 'Oraison de l'Aube' une fois par jour.
+ARME SPIRITUELLE : cette masse est l'arme spirituelle des Seigneurs de l'Aube de Lathandre. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- 'Don de Lathandre' tous les 10 niveaux (une utilisation au 1er niveau).
+DON DE LATHANDRE : ce sort dure 6 secondes par niveau du lanceur. Il lui procure un bonus de +1 au toucher, aux dégâts et aux jets de sauvegarde, et lui confère une attaque supplémentaire par round. Il le protège aussi du drain de niveau.
+- 'Immobilisation des Morts-Vivants' une fois par jour à partir du niveau 7 (comme le sort de mage de niveau 3).
+- 'Colonne de Feu' une fois par jour à partir du niveau 9 (comme le sort de prêtre de niveau 5).
+- 'Guérison' une fois par jour à partir du niveau 11 (comme le sort de prêtre de niveau 6).
+- 'Restauration Majeure' une fois par jour à partir du niveau 14 (comme le sort de prêtre de niveau 7).
+
+Désavantages :
+- Alignement restreint à loyal bon, neutre bon, chaotique bon et neutre strict.~
+@10179 =~SEIGNEUR DE L'AUBE DE LATHANDRE : disciple du dieu bon du Renouveau, de la Créativité et de la Jeunesse. Très apprécié dans les Royaumes, Lathandre est vénéré presque partout et de superbes temples lui sont consacrés.
+
+Avantages :
+- Immobilisation des morts-vivants une fois par jour tous les 5 niveaux (une utilisation au 1er niveau).
+- Don de Lathandre tous les 10 niveaux (une utilisation au 1er niveau).
+
+DON DE LATHANDRE : ce sort dure 1 round par niveau et confère +1 aux jets d'attaque, de dégâts et de sauvegarde, ainsi qu'une attaque supplémentaire par round. Il protège également le bénéficiaire de l'absorption de niveau.
+
+Désavantages :
+- Alignement restreint à loyal bon, neutre bon, chaotique bon et neutre strict.~
+@10180 = ~Masse : 'Oraison de l'Aube'~
+@10181 = ~Cette masse est l'arme spirituelle des Seigneurs de l'Aube de Lathandre. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau de lanceur, jusqu'à 20 rounds.~
+@10182 = ~Seuls les plus fidèles et les plus dévoués serviteurs du Seigneur des Tempêtes reçoivent un de ces puissants symboles sacrés.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@10183 = ~Seuls les plus fidèles et les plus dévoués serviteurs du Seigneur de l'Aube reçoivent un de ces puissants symboles sacrés.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@10184 =~VIGILANT DE HEAUM : les fidèles du dieu neutre des Sentinelles et des Protecteurs sont des guerriers à part entière. Ils sont souvent considérés comme les défenseurs des innocents.
+
+Avantages : 
+- Vision Véritable, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+- Épée Animée, une fois par jour tous les 10 niveaux (une utilisation au 1er niveau)
+
+ÉPÉE ANIMÉE
+Ce sort fait apparaître une épée dans la main du prêtre (ne peut être lâchée, volontairement ou non). Dotée de 3 attaques par rounds à +4, elle inflige 2d4 points de dégâts et dure 1 round par niveau. Tant que le prêtre l'a en main, il ne peut pas lancer le moindre sort.
+
+Désavantages :
+- Alignement restreint à loyal bon, loyal neutre, loyal mauvais et neutre strict.~
+@10185 = ~Épée Bâtarde : 'Éternelle Vigilance'~
+@10186 = ~Cette épée bâtarde est l'arme spirituelle des Vigilants de Heaum. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à un maximum de 20 rounds.~
+@10187 = ~Seuls les plus fidèles et les plus dévoués serviteurs du Vigilant reçoivent un de ces puissants symboles sacrés.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@10188 = ~Seigneur des Tempêtes de Talos~
+@10189 = ~Vigilant de Heaum~
+@10190 = ~Seigneur de l'Aube de Lathandre~
+@10192 = ~Renouveau de Lathandre~
+@10193 = ~Accordé aux Seigneurs de l'Aube de Lathandre les plus puissants, ce sort permet de soigner tous les membres du groupe et de les guérir de tous les effets suivants : drain de niveau, maladie, confusion, cécité, surdité et débilité mentale. Le groupe acquiert en outre une régénération correspondant à un point de vie par seconde pendant 20 rounds.~
+@10194 = ~VIGILANT DE HEAUM : les fidèles du dieu neutre des Sentinelles et des Protecteurs sont des guerriers à part entière. Ils sont souvent considérés comme les défenseurs des innocents.
+
+Capacités :
+- Arme spirituelle : épée bâtarde - 'Éternelle Vigilance' une fois par jour.
+ARME SPIRITUELLE : cette épée bâtarde est l'arme spirituelle des Vigilants de Heaum. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25, et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- 'Glyphe de Garde' une fois par jour, comme le sort de clerc de niveau 3 du même nom.
+- 'Vision Lointaine' une fois par jour à partir du niveau 7, comme le sort de clerc de niveau 4 du même nom.
+- 'Protection contre les Armes Non-Magiques' une fois par jour à partir du niveau 9, comme le sort de mage de niveau 5 du même nom.
+- 'Vision Véritable' une fois par jour à partir du niveau 11, comme le sort de clerc de niveau 5 du même nom.
+- 'Manteau' une fois par jour à partir du niveau 14, comme le sort de mage de niveau 7 du même nom.~
+@10195 =~Je vous souhaite la bienvenue dans la Maison du Seigneur de l'Aube.~
+@10196 =~La Sentinelle Suprême Oisig a mentionné une menace qui pesait contre son temple et le vôtre.~
+@10197 =~Merci. Je vais m'en aller.~
+@10198 =~C'est Oisig qui m'envoie, à propos du prêcheur aveugle dans la rue.~
+@10199 =~C'est la Sentinelle Suprême Oisig qui vous envoie ? Alors je suis son obligé, car vous avez tout à fait l'air d'un serviteur du bien, une personne charitable et de bonne foi.~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Silverstar of Selune                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10301 =~Étoile d'Argent de Séluné~
+@10302 =~ÉTOILE D'ARGENT DE SÉLUNÉ : Séluné, Notre Dame d'Argent, est la déesse de la lune, des étoiles et de ceux qui les utilisent pour naviguer. Son ennemie éternelle est la déesse maléfique Shar, qui préside aux ténèbres, à la nuit, au sentiment de perte et à l'oubli. L'on surnomme souvent Séluné la Vierge Lunaire à cause de sa connexion à la lune argentée qui tourne en orbite autour de Féérune. Elle est la déesse de la lune et des voyageurs, et réside sur le plan des Portes de la Lune, dans un palais argenté nommé Argentil.
+
+Les lycanthropes d'alignement non-mauvais rendent hommage à Séluné car elle est la maîtresse de leur destinée, ainsi que les astrologues et les diseuses de bonne aventure. Depuis quelques temps, Séluné a gagné en popularité auprès des servantes, des lingères, des cuisinières et des femmes de ménage grâce à son message prônant la libération des femmes. Elle est aussi révérée par les lanceuses de sorts, les navigateurs et les marins.
+
+Les prêtres de Séluné se font appeler les Étoiles d'Argent. Ce sont d'ardents défenseurs de la liberté, de la tolérance et de la vérité, doublés d'ennemis absolus de Shar. Il veulent créer une entente entre les lycanthropes et les non-métamorphes. Ils protègent les faibles et les oppressés où qu'ils se trouvent. En aucun cas ils ne peuvent fermer les yeux sur l'esclavage, et haïssent particulièrement les morts-vivants. Il est rare qu'ils s'établissent quelque part pour longtemps, et voyagent le plus souvent, guidés par la bougeotte ou par une nouvelle cause à défendre. Ils commandent aux énergies lunaires, et peuvent, à un degré limité, tirer leur pouvoir de la lune, apportant sa lumière pure à Toril, en accord avec les souhaits de leur déesse.
+
+Capacités :
+- Arme spirituelle : masse - 'Main Lunaire' une fois par jour.
+ARME SPIRITUELLE : la Main Lunaire est l'arme spirituelle des Étoiles d'Argent de Séluné. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à un maximum de 20 rounds.
+- Infravision.
+- 'Bouclier Lunaire' une fois par jour.
+BOUCLIER LUNAIRE : avec ce sort, l'Étoile d'Argent reçoit une résistance à la magie à hauteur de 2 % par niveau de clerc (maximum 40 % au niveau 20). Si la cible disposait déjà d'une résistance à la magie supérieure, celle-ci peut se retrouver diminuée par ce sort. L'effet persiste jusqu'à la fin du sort, ou jusqu'à dissipation.
+- 'Action Libre' une fois par jour à partir du niveau 7 (comme le sort de prêtre du niveau 4).
+- 'Feu solaire' une fois par jour à partir du niveau 9 (comme le sort de mage du niveau 5).
+- 'Convocation d'Élémentaire d'Air' une fois par jour à partir du niveau 11 (comme le sort de mage du niveau 6).
+- 'Protection contre les Éléments' une fois par jour à partir du niveau 14 (comme le sort de mage du niveau 7).
+
+Désavantages :
+- Alignement restreint à chaotique bon, neutre bon et chaotique neutre.~
+@10303 = ~Masse : 'Main Lunaire'~
+@10304 = ~La Main Lunaire est l'arme spirituelle des Étoiles d'Argent de Séluné. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau de lanceur, jusqu'à un maximum de 20 rounds.~
+@10305 = ~étoile d'argent de séluné~
+@10307 = ~Bouclier Lunaire~
+@10308 = ~Bouclier Lunaire (Altération)
+Niveau : 5
+Sphère : Protection
+Portée : Lanceur du sort
+Durée : 3 rounds + 1 round/niveau
+Temps d'incantation : 1 round
+Zone d'effet : Lanceur du sort
+Jet de sauvegarde : Aucun
+
+Avec ce sort, l'Étoile d'Argent reçoit une résistance à la magie à hauteur de 2 % par niveau de clerc (maximum 40 % au niveau 20). Si la cible disposait déjà d'une résistance à la magie supérieure, celle-ci peut se retrouver diminuée par ce sort. L'effet persiste jusqu'à la fin du sort ou jusqu'à dissipation.~
+@10319 = ~Symbole Sacré de Séluné~
+@10320 = ~Seuls les plus fidèles et les plus dévouées Étoiles d'Argent reçoivent un de ces puissants symboles sacrés.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@10321 =~ÉTOILE D'ARGENT DE SÉLUNÉ : Séluné, Notre Dame d'Argent, est la déesse de la lune, des étoiles et de ceux qui les utilisent pour naviguer. Son ennemie éternelle est la déesse maléfique Shar, qui préside aux ténèbres, à la nuit, au sentiment de perte et à l'oubli. L'on surnomme souvent Séluné la Vierge Lunaire à cause de sa connexion à la lune argentée qui tourne en orbite autour de Féérune. Elle est la déesse de la lune et des voyageurs, et réside sur le plan des Portes de la Lune, dans un palais argenté nommé Argentil.
+
+Les lycanthropes d'alignement non-mauvais rendent hommage à Séluné car elle est la maîtresse de leur destinée, ainsi que les astrologues et les diseuses de bonne aventure. Depuis quelques temps, Séluné a gagné en popularité auprès des servantes, des lingères, des cuisinières et des femmes de ménage grâce à son message prônant la libération des femmes. Elle est aussi révérée par les lanceuses de sorts, les navigateurs et les marins.
+
+Les prêtres de Séluné se font appeler les Etoiles d'Argent. Ce sont d'ardents défenseurs de la liberté, de la tolérance et de la vérité, doublés d'ennemis absolus de Shar. Il veulent créer une entente entre les lycanthropes et les non-métamorphes. Ils protègent les faibles et les oppressés où qu'ils se trouvent. En aucun cas ils ne peuvent fermer les yeux sur l'esclavage, et haïssent particulièrement les morts-vivants. Il est rare qu'ils s'établissent quelque part pour longtemps, et voyagent le plus souvent, guidés par la bougeotte ou par une nouvelle cause à défendre. Ils commandent aux énergies lunaires, et peuvent, à un degré limité, tirer leur pouvoir de la lune, apportant sa lumière pure à Toril, en accord avec les souhaits de leur déesse.
+
+Avantages : 
+- Action Libre, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+- Bouclier Lunaire, une fois par jour tous les 10 niveaux (une utilisation au 1er niveau)
+
+BOUCLIER LUNAIRE : avec ce sort, l'Étoile d'Argent reçoit une résistance à la magie à hauteur de 2 % par niveau de clerc (maximum 40 % au niveau 20). Si la cible disposait déjà d'une résistance à la magie supérieure, celle-ci peut se retrouver diminuée par ce sort. L'effet persiste jusqu'à la fin du sort, ou jusqu'à dissipation.
+
+Désavantages :
+- Alignement restreint à chaotique bon, neutre bon et chaotique neutre.~
+// iwdee bio
+@10322 = ~Moins de deux semaines après votre initiation au Temple de Séluné, la prêtresse Front d’Argent de votre ordre vous convoqua. En termes chaleureux, appropriés pour une fidèle de la Dame d’Argent, elle vous confia votre première mission en tant que membre du clergé : voyager jusqu’aux régions frontalières du Grand Nord et apporter la parole de la Vierge lunaire aux habitants de ces rudes contrées. Elle vous parla également de présages et d’augures concernant de mystérieux évènements à l’oeuvre dans le Nord, et de la conviction du temple qu’un représentant de la foi pourrait aider à apaiser les troubles potentiels de la région.
+
+Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les moins enthousiastes, il vous fallut peu de temps pour accepter cette tâche, cette chance d’apporter l’espoir et la lumière aux habitants du Nord, cette chance de répandre réellement le bien plutôt que s’étioler à servir les banals fidèles des villes. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et la sagesse de la Vierge Lunaire dans le coeur.~
+@10323 =~Séluné a toujours été l'amie du Seigneur de l'Aube. J'aimerais que vous nous aidiez, en échange des faveurs de Lathandre.~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Nightcloak of Shar                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10601 = ~Manteau de la Nuit de Shar~
+@10602 = ~MANTEAU DE LA NUIT DE SHAR : Shar est la déesse des ténèbres, de la nuit, de la perte et de l'oubli. Ses principales attributions correspondent à ceux qui agissent la nuit (tels que les voleurs), qui haïssent la lumière (tels que les races gobelinoïdes et leurs alliés), ainsi que par ceux qui ont un fort sentiment d'amertume et de perte. Son symbole est un disque noir cerclé de violet foncé.
+
+La némésis de Shar est la déesse Séluné ; ces deux dernières se sont combattues à plusieurs niveaux au cours de leurs vies immortelles. Une guerre continuelle existe entre les représentants de ces deux fois, et les raids mortels contre les adorateurs de Séluné sont monnaie courante dans les régions où le pouvoir de Shar est particulièrement présent.
+
+Les prêtres de Shar sont appelés Manteaux de la Nuit. L'Eglise de Shar ne possède pas une hiérarchie standard ; Shar ne dispose pas d'un temple principal, mais plutôt une multitude de cellules et de lieux de culte secrets répartis dans tous les Royaumes. Les Manteaux de la Nuit de Shar servent de contacts et de représentants de la volonté de la Sombre Déesse.
+
+Les Manteaux de la Nuit de Shar peuvent uniquement être d'alignement Neutre Mauvais, Loyal Mauvais, Chaotique Mauvais et neutre Strict.
+
+Capacités :
+- Arme spirituelle : chakram - 'Disque de la Nuit' une fois par jour.
+ARME SPIRITUELLE : le chakram est l'arme spirituelle des Manteaux de la Nuit. Le chakram est équivalent à une fléchette de retour et s'utilise comme si le lanceur en avait la grande maîtrise. Le chakram est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- Immunité à toute forme de cécité.
+- 'Confusion' une fois par jour à partir du niveau 7 (comme le sort de mage de niveau 4).
+- 'Débilité Mentale' une fois par jour à partir du niveau 9 (comme le sort de mage de niveau 5).
+- 'Chasseur Invisible' une fois par jour à partir du niveau 11 (comme le sort de mage de niveau 6).
+- 'Mot de Pouvoir : Étourdissement' une fois par jour à partir du niveau 14 (comme le sort de mage du niveau 7).~
+@10603 = ~manteau de la nuit de shar~
+@10604 = ~Malédiction de Shar~
+@10605 = ~Malédiction de Shar (Enchantement/Charme)
+Niveau : spécial
+Sphère : Charme
+Portée : champ visuel du lanceur
+Durée : permanente
+Temps d'incantation : 3
+Zone d'effet : cible, et tout le monde dans un rayon de 1,50 mètres
+Jet de sauvegarde : annule
+
+La Malédiction de Shar, un sort puissant que Shar confère à ses prêtres les plus méritants, annihile la volonté de ses ennemis, les rendant incapables d'effectuer la moindre action ; une malédiction appropriée venant de la Dame de la Perte. Les adversaires affectés restent dans cet état jusqu'à ce qu'une dissipation de la magie soit lancée. La victime doit réussir un jet de sauvegarde contre les sorts à -4 pour éviter l'effet.
+
+Choisir cette capacité permet de lancer le sort de façon innée une fois par jour. Cette capacité ne peut être choisie qu'une seule fois.~
+@10608 = ~Chakram : 'Disque de la Nuit'~
+@10609 = ~L'arme de prédilection de Shar est le Disque de la Nuit, un chakram. Il s'agit d'une arme métallique circulaire qui se lance comme une fléchette et qui, dans ce cas, retourne magiquement à son propriétaire.
+
+Shar offre à ses plus fidèles dévots, les Manteaux de la Nuit, la capacité d'invoquer une telle arme une fois par jour. La puissance de l'arme augmente à mesure que le prêtre gagne en pouvoir et en importance aux yeux de Shar. Le chakram est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
+@10615 = ~Symbole Sacré de Shar~
+@10616 = ~Shar récompense les plus puissants serviteurs avec un Symbole Sacré, un anneau portant ses armoiries : un anneau noir cerclé de violet. Utilisé, le symbole accorde au Manteau de la Nuit la puissance de Shar.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force
+
+Utilisable uniquement par :
+ Manteau de la Nuit de Shar~
+@10618 = ~Protection contre la cécité~
+@10619 = ~MANTEAU DE LA NUIT DE SHAR : Shar est la déesse des ténèbres, de la nuit, de la perte et de l'oubli. Ses principales attributions correspondent à ceux qui agissent la nuit (tels que les voleurs), qui haïssent la lumière (tels que les races gobelinoïdes et leurs alliés), ainsi que par ceux qui ont un fort sentiment d'amertume et de perte. Son symbole est un disque noir cerclé de violet foncé.
+
+La némésis de Shar est la déesse Séluné ; ces deux dernières se sont combattues à plusieurs niveaux au cours de leurs vies immortelles. Une guerre continuelle existe entre les représentants de ces deux fois, et les raids mortels contre les adorateurs de Séluné sont monnaie courante dans les régions où le pouvoir de Shar est particulièrement présent.
+
+Les prêtres de Shar sont appelés Manteaux de la Nuit. L'Eglise de Shar ne possède pas une hiérarchie standard ; Shar ne dispose pas d'un temple principal, mais plutôt une multitude de cellules et de lieux de culte secrets répartis dans tous les Royaumes. Les Manteaux de la Nuit de Shar servent de contacts et de représentants de la volonté de la Sombre Déesse.
+
+Avantages : 
+- Confusion, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+- Disques Ténébreux, une fois par jour tous les 10 niveaux (une utilisation au 1er niveau)
+
+DISQUES TÉNÉBREUX : Ce sort crée des petits chakrams dans la main du lanceur (un par niveau du lanceur de sorts). Ces chakrams peuvent être lancés, provoquant le silence sur les cibles ratant leur jet de sauvegarde contre les sorts, ainsi que 2d4 dégâts de froid. Les morts-vivants doivent également réussir un jds contre la paralysie ou être immobilisés  pendant un round.
+
+Désavantages :
+- Alignement restreint à neutre mauvais, loyal mauvais, chaotique mauvais et neutre strict.~
+//iwdee bio
+@10620 = ~Moins de deux semaines après votre initiation secrète dans l’ordre local des Manteaux de la Nuit, le meneur de votre cellule vous convoqua. En un entretien bref et presque silencieux, le Seigneur de la Nuit vous confia votre première mission : voyager jusqu’aux régions frontalières du Grand Nord et étudier la possibilité d’y fonder une petite communauté. Il vous parla également de présages et d’augures concernant de mystérieux évènements à l’oeuvre dans le Nord pouvant intéresser la Dame de la Perdition et de la conviction du temple qu’une source d’information directe sur les troubles potentiels de la région était nécessaire.
+
+Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les plus impliqués politiquement, il vous fallut peu de temps pour accepter cette tâche, cette chance d’appliquer concrètement les volontés de la Chanteuse Nocturne, cette opportunité d’échapper à la routine des allées sombres de la ville. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et la promesse de secrets inviolés.~
+@10621 = ~Disques Ténébreux~
+@10622 = ~Disques Ténébreux 
+Ce sort crée des petits chakrams dans la main du lanceur (un par niveau du lanceur de sorts). Ces chakrams peuvent être lancés, provoquant le silence sur les cibles ratant leur jet de sauvegarde contre les sorts, ainsi que 2d4 dégâts de froid. Les morts-vivants doivent également réussir un jds contre la paralysie ou être immobilisés  pendant un round.~
+@10623 =~Shar a souvent été notre alliée. Je vous offre une chance d'être le bras armé de la vengeance au nom du Seigneur des Tempêtes !~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Holy Strategist of Red Knight                    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10701 = ~Stratège Divin de la Cavalière Rouge~
+@10702 = ~STRATÈGE DIVIN DE LA CAVALIÈRE ROUGE : Stratège Divin est la dénomination donnée aux prêtres de la Cavalière Rouge ; dénomination qui s'avère justifiée. En dévouant leur vie à la maîtrise des stratégies et tactiques militaires, ces prêtres volontaires font de leur corps et de leur esprit l'arme la plus mortelle de Féérune. Leur réputation est telle qu'il est arrivé que des armées se battant en supériorité numérique de trois contre un se rendent à leurs adversaires dès qu'ils apprirent qu'un Stratège Divin menait l'armée adverse.
+
+Publiquement, l'ensemble des prêtres de la Cavalière Rouge est surnommé "la Communauté Rouge". Beaucoup de leurs membres occupent des postes de haut-commandement dans diverses armées de Féérune, dirigeant souvent les unités de "forces spéciales" d'élite. Les autres, qui ne servent pas directement sous l'égide de l'Eglise, se font instructeurs dans les académies militaires ou quartier-maîtres chargés de la logistique des troupes au front. Lorsqu'ils ne sont pas en plein combat, les Stratèges Divins portent des robes flottantes rouges et blanches. 
+
+Capacités : 
+- Arme spirituelle : épée longue - 'Échec et Mat' une fois par jour.
+ARME SPIRITUELLE : Échec et Mat est l'arme spirituelle des Stratèges Divins et se manie comme si le lanceur en avait la grande maîtrise. Echec et Mat est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- Peut lancer les sorts de mage suivants : 'Infravision', 'Clairvoyance' et 'Oeil de Magicien'.
+- Au niveau 13, un Stratège Divin peut effectuer deux attaques de mêlée par round.
+- 'Hâte' une fois par jour à partir du niveau 7 (comme le sort de mage de niveau 3).
+- 'Harmonie Défensive' une fois par jour à partir du niveau 9 (comme le sort de prêtre de niveau 4).
+- 'Guérison de Masse' une fois par jour à partir du niveau 11 (comme le sort de prêtre de niveau 5).
+- 'Manteau' une fois par jour à partir du niveau 14 (comme le sort de mage de niveau 7).
+
+Désavantages :
+- Alignement restreint à loyal bon, loyal neutre et loyal mauvais.~
+@10703 = ~Épée Longue : 'Échec et Mat'~
+@10704 = ~Échec et Mat est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
+
+@10710 = ~Symbole Sacré de la Cavalière Rouge~
+@10711 = ~La Cavalière Rouge récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : une pièce d'échiquier de cavalier rouge. Le symbole accorde au Stratège Divin la puissance de la Cavalière Rouge.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@10714 = ~stratège divin de la Cavalière Rouge~
+@10715 = ~STRATÈGE DIVIN DE LA CAVALIÈRE ROUGE : Stratège Divin est la dénomination donnée aux prêtres de la Cavalière Rouge ; dénomination qui s'avère justifiée. En dévouant leur vie à la maîtrise des stratégies et tactiques militaires, ces prêtres volontaires font de leur corps et de leur esprit l'arme la plus mortelle de Féérune. Leur réputation est telle qu'il est arrivé que des armées se battant en supériorité numérique de trois contre un se rendent à leurs adversaires dès qu'ils apprirent qu'un Stratège Divin menait l'armée adverse.
+
+Publiquement, l'ensemble des prêtres de la Cavalière Rouge est surnommé "la Communauté Rouge". Beaucoup de leurs membres occupent des postes de haut-commandement dans diverses armées de Féérune, dirigeant souvent les unités de "forces spéciales" d'élite. Les autres, qui ne servent pas directement sous l'égide de l'Eglise, se font instructeurs dans les académies militaires ou quartier-maîtres chargés de la logistique des troupes au front. Lorsqu'ils ne sont pas en plein combat, les Stratèges Divins portent des robes flottantes rouges et blanches. 
+
+Avantages : 
+- Hâte, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+- Au niveau 13, un Stratège Divin peut effectuer deux attaques de mêlée par round.
+
+Désavantages :
+- Alignement restreint à loyal bon, loyal neutre et loyal mauvais.~
+@10716 = ~Moins de deux semaines après votre initiation dans l’ordre de la Cavalière Rouge, le Chevalier Commandeur vous convoqua. En termes cordiaux et empressés, il vous confia votre première mission en tant que membre du temple : voyager jusqu’aux régions frontalières du Grand Nord et apporter la foi aux habitants de ces rudes contrées. Il vous parla également de présages et d’augures concernant de mystérieux évènements à l’oeuvre dans le Nord, et de la conviction du temple qu’un représentant de la foi pourrait aider à maintenir la paix dans la région.
+
+Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les plus impliqués politiquement, il vous fallut peu de temps pour accepter cette tâche, cette chance d’apporter l’ordre aux habitants du Nord, cette chance de répandre réellement le bien plutôt que s’étioler dans la routine des service au temple. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et les doctrines de la foi fermement ancrées dans votre esprit.~
+@10717 = ~La Cavalière Rouge comprend le dévouement sans faille de Heaum pour son devoir. J'aimerais vous demander un service, en échange des faveurs de Heaum.~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Battleguard of Tempus                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10900 = ~Installer le kit de clerc d'Aumonier de Guerre de Tempus~
+@10901 = ~Aumônier de Guerre de Tempus~
+@10902 = ~AUMÔNIER DE GUERRE DE TEMPUS : Tempus est le dieu de la guerre des Royaumes, le Seigneur des Batailles, le Marteleur d'Ennemis. Il distribue ses faveurs au hasard, et pourtant sa nature chaotique fait qu'il favorise chaque camp de façon équitable. Il peut soutenir une armée un jour, puis ses adversaires le lendemain. Telle est la nature de la guerre incarnée par Tempus.
+
+Les prêtres de Tempus revêtent des armures usées et cabossées. Dans les régions civilisées, cela a été remplacé par une calotte d'acier, mais le message reste le même : ce sont des prêtres combattants. Leur place est au beau milieu de la bataille, à haranguer les troupes. Lors d'un conflit, on peut trouver des prêtres de Tempus dans les deux camps car nul ne peut vraiment savoir qui le dieu de la guerre choisira de soutenir.
+
+Les Aumôniers de Guerre de Tempus peuvent uniquement être d'alignement Chaotique Neutre, Chaotique Bon, Neutre Strict et Chaotique Mauvais.
+
+Capacités :
+- Arme spirituelle : hache d'armes - 'Prouesse Martiale' une fois par jour.
+ARME SPIRITUELLE : Prouesse Martiale est l'arme spirituelle des Aumôniers de Guerre de Tempus, et se manie comme si l'utilisateur en avait la grande maîtrise. Prouesse martiale est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- Peut se spécialiser (deux étoiles) dans toutes les armes de mêlée qu'un prêtre peut utiliser.
+- Peut entrer en Rage Berserk une fois par jour.
+- 'Puissance Sacrée' une fois par jour à partir du niveau 7 (comme le sort de prêtre du niveau 4).
+- 'Chaos' une fois par jour à partir du niveau 9 (comme le sort de mage du niveau 5).
+- 'Transformation de Tenser' une fois par jour à partir du niveau 11 (comme le sort de mage du niveau 6).
+- 'Sphère de Chaos' une fois par jour à partir du niveau 14 (comme le sort de mage du niveau 7).
+
+Désavantages :
+– Alignement restreint à chaotique neutre, chaotique bon, neutre strict et chaotique mauvais.
+- Ne peut placer de point de spécialisation dans les armes à distance.~
+@10903 = ~Hache d'Armes : 'Prouesse Martiale'~
+@10904 = ~Utilisée dans une bataille sans fin, la hache 'Prouesse Martiale' est l'arme favorite de Tempus. Il offre à ses suivants les plus ardents, les Aumôniers de Guerre, la capacité de créer une arme similaire enchantée par sa force une fois par jour. Ceci est un exemple d'une telle arme. La hache est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs.~
+
+@10910 = ~Symbole Sacré de Tempus~
+@10911 = ~Tempus récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : une épée argentée en forme d'éclair sur un bouclier rouge. Le symbole accorde à l'Aumônier de Guerre la puissance de Tempus.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@10912 = ~Bouclier de Tempus~
+@10913 = ~Bouclier de Tempus (Abjuration)
+Niveau : spécial
+Portée : 0
+Durée : 4 rounds
+Temps d'incantation : 1
+Zone d'effet : lanceur
+Sphère : Combat
+Jet de sauvegarde : non
+
+En faisant appel à l'endurance de Tempus dans l'adversité, l'Aumônier de Guerre se protège de la plupart des dégâts physiques. Lorsqu'il lance ce sort, il reçoit une invulnérabilité complète à toutes les armes, hormis celles qui disposent d'un enchantement supérieur à +5. Ce sort incroyablement puissant ne dure que très peu de temps. Cependant, le temps d'incantation très court en fait un sort incroyablement utile dans le feu de l'action, où quelques secondes de répit peuvent faire la différence entre la vie et la mort. Ce sort dure 4 rounds ou jusqu'à ce qu'il soit dissipé.~
+@10914 = ~aumônier de guerre de tempus~
+@10915 =~AUMÔNIER DE GUERRE DE TEMPUS : Tempus est le dieu de la guerre des Royaumes, le Seigneur des Batailles, le Marteleur d'Ennemis. Il distribue ses faveurs au hasard, et pourtant sa nature chaotique fait qu'il favorise chaque camp de façon équitable. Il peut soutenir une armée un jour, puis ses adversaires le lendemain. Telle est la nature de la guerre incarnée par Tempus.
+
+Les prêtres de Tempus revêtent des armures usées et cabossées. Dans les régions civilisées, cela a été remplacé par une calotte d'acier, mais le message reste le même : ce sont des prêtres combattants. Leur place est au beau milieu de la bataille, à haranguer les troupes. Lors d'un conflit, on peut trouver des prêtres de Tempus dans les deux camps car nul ne peut vraiment savoir qui le dieu de la guerre choisira de soutenir.
+
+Avantages : 
+- Peut se spécialiser (deux étoiles) dans toutes les armes de mêlée qu'un prêtre peut utiliser.
+- Puissance Sacrée, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+- Peut utiliser la Rage, une fois par jour tous les 10 niveaux (une utilisation au 1er niveau)
+
+RAGE : L'état enragé dure 1 tour. Un Aumônier de Guerre enragé gagne un bonus de +2 à ses jets d'attaque et de dégâts, ainsi qu'à sa classe d'armure, et devient immunisé au charme, à la confusion, la peur, la débilité mentale, l'immobilisation, l'emprisonnement, l'absorption de niveau, au sort de labyrinthe, à l'étourdissement et au sommeil. L'Aumônier de Guerre gagne également 15 pv temporaires qui lui seront retirés à la fin de sa rage berserk, donc avec le risque de l'assommer.
+
+Désavantages :
+– Alignement restreint à chaotique neutre, chaotique bon, neutre strict et chaotique mauvais.
+- Ne peut placer de point de spécialisation dans les armes à distance.~
+@10916 =~Les Aumôniers de Guerre connaissent bien le combat et la destruction. Soyez le messager de la fureur du Seigneur des Tempêtes !~ ~Les Aumôniers de Guerre connaissent bien le combat et la destruction. Soyez la messagère de la fureur du Seigneur des Tempêtes !~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Painbearer of Ilmater                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@11200 = ~Installer le kit de clerc de Noble Martyr d'Ilmater~
+@11201 = ~Noble Martyr d'Ilmater~
+@11202 = ~NOBLE MARTYR D'ILMATER : Ilmater est le Dieu Qui Pleure, le dieu de l'Endurance, de la souffrance, des martyrs et de la persévérance. Il est celui qui offre secours et réconfort à ceux qui souffrent, aux oppressés ou aux nécessiteux. Il souffre volontairement ; il est celui qui porte le fardeau des autres, qui ressent leur souffrance à leur place. Il est le dieu des opprimés et de ceux qui sont traités injustement. Le symbole d'Ilmater était jadis un chevalet de torture ensanglanté, mais actuellement on utilise plutôt une représentation de deux mains reliées entre elles par une cordelette rouge sang. Ce dernier symbole a grandement amélioré la popularité d'Ilmater. Ilmater réside dans les Paradis Jumeaux.
+
+Les dévots d'Ilmater sont souvent perçus comme des masochistes, mais en réalité ils offrent un grand service aux blessés, en complément des soins "classiques" des prêtres. Ils font preuve d'abnégation, sont altruistes et mettent l'accent sur la supériorité de la nature spirituelle de la vie sur le corps matériel imparfait. L'on trouve les prêtres d'Ilmater là où l'on a besoin d'eux, c'est-à-dire dans les pires conditions possibles, portant secours aux opprimés et aux nécessiteux. Ils revêtent des habits simples et gris, avec des calottes grises (rouges sang pour les rangs les plus élevés).
+
+Les Nobles Martyrs d'Ilmater peuvent uniquement être d'alignement Loyal Bon, Neutre Bon et Loyal Neutre.
+
+Capacités :
+- Arme spirituelle : poing - 'Main d'Ilmater' une fois par jour.
+ARME SPIRITUELLE : la Main d'Ilmater est l'arme spirituelle des Nobles Martyrs d'Ilmater. La Main d'Ilmater totalise 1d6 points de dégâts de base et se manie comme si l'utilisateur en avait la grande maîtrise. La Main d'Ilmater est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. La Main d'Ilmater dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- 'Guérison par Imposition des Mains' une fois par jour.
+- 'Neutralisation du Poison' une fois par jour à partir du niveau 7 (comme le sort de prêtre de niveau 4).
+- 'Endurance d'Ilmater' une fois par jour à partir du niveau 9.
+ENDURANCE D'ILMATER : les Nobles Martyrs puisent dans la puissance divine d'Ilmater pour alléger le fardeau des épreuves à venir. Pendant un round par niveau de Noble Martyr, le clerc gagne un bonus de +2 aux jets de sauvegarde, double le nombre de ses points de vie, est immunisé à la panique et aux maladies et ne reculera jamais devant n'importe quelle charge ou force.
+- 'Guérison' une fois par jour à partir du niveau 11 (comme le sort de prêtre du niveau 6).
+- 'Régénération' une fois par jour à partir du niveau 14 (comme le sort de prêtre du niveau 7).
+
+Désavantages :
+- Alignement restreint à loyal bon, neutre bon et loyal neutre.~
+@11203 = ~La Main d'Ilmater~
+@11204 = ~La Main d'Ilmater est l'arme spirituelle des Nobles Martyrs d'Ilmater. La Main d'Ilmater totalise 1d6 points de dégâts de base et se manie comme si l'utilisateur en avait la grande maîtrise. La Main d'Ilmater est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. La Main d'Ilmater dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
+@11205 = ~Endurance d'Ilmater~
+@11206 = ~Endurance d'Ilmater
+Sphère : Nécromancie, Protection
+Portée : Contact
+Durée : 1 round + 1 round/niveau
+Temps d'incantation : 7
+Zone d'effet : une créature
+Jet de sauvegarde : non
+
+Ce sort double le nombre de points de vie de la cible pendant la durée du sort. Tout dégât subi est déduit de ces "points de vie fantômes" jusqu'à ce qu'ils soient épuisés ; les dégâts subis sont alors déduits des véritables points de vie de la créature affectée.
+
+La cible reçoit un bonus de +2 aux jets de sauvegarde. En outre, une créature sous l'effet d'Endurance d'Ilmater ne peut être renversée, bousculée, jetée à terre ou piétinée ; elle est en mesure de résister fermement à toutes les charges.~
+@11207 = ~Symbole Sacré d'Ilmater~
+@11208 = ~Ilmater récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : une paire de mains blanches liées par une corde rouge sang. Le symbole accorde au Noble Martyr la puissance d'Ilmater.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@11209 = ~noble martyr d'ilmater~
+@11210 =~NOBLE MARTYR D'ILMATER : Ilmater est le Dieu Qui Pleure, le dieu de l'Endurance, de la souffrance, des martyrs et de la persévérance. Il est celui qui offre secours et réconfort à ceux qui souffrent, aux oppressés ou aux nécessiteux. Il souffre volontairement ; il est celui qui porte le fardeau des autres, qui ressent leur souffrance à leur place. Il est le dieu des opprimés et de ceux qui sont traités injustement. Le symbole d'Ilmater était jadis un chevalet de torture ensanglanté, mais actuellement on utilise plutôt une représentation de deux mains reliées entre elles par une cordelette rouge sang. Ce dernier symbole a grandement amélioré la popularité d'Ilmater. Ilmater réside dans les Paradis Jumeaux.
+
+Les dévots d'Ilmater sont souvent perçus comme des masochistes, mais en réalité ils offrent un grand service aux blessés, en complément des soins "classiques" des prêtres. Ils font preuve d'abnégation, sont altruistes et mettent l'accent sur la supériorité de la nature spirituelle de la vie sur le corps matériel imparfait. L'on trouve les prêtres d'Ilmater là où l'on a besoin d'eux, c'est-à-dire dans les pires conditions possibles, portant secours aux opprimés et aux nécessiteux. Ils revêtent des habits simples et gris, avec des calottes grises (rouges sang pour les rangs les plus élevés).
+
+Avantages : 
+- Guérison par Imposition des Mains, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+- Endurance d'Ilmater, une fois par jour tous les 10 niveaux (une utilisation au 1er niveau)
+
+ENDURANCE D'ILMATER : les Nobles Martyrs puisent dans la puissance divine d'Ilmater pour alléger le fardeau des épreuves à venir. Pendant un round par niveau de Noble Martyr, le clerc gagne un bonus de +2 aux jets de sauvegarde, double le nombre de ses points de vie, est immunisé à la panique et aux maladies et ne reculera jamais devant n'importe quelle charge ou force.
+
+Désavantages :
+- Alignement restreint à loyal bon, neutre bon et loyal neutre.~
+@11211 = ~Moins de deux semaines après votre initiation au Temple d’Ilmater, la Révérée Mère de votre ordre vous convoqua. En termes simples, appropriés pour une fidèle du Dieu qui Pleure, elle vous confia votre première mission en tant que membre du clergé : voyager jusqu’aux régions frontalières du Grand Nord et apaiser les souffrances des habitants de ces rudes contrées. Elle vous parla également de présages et d’augures concernant de mystérieux évènements à l’oeuvre dans le Nord, et de la conviction du temple qu’un représentant de la foi pourrait aider à apaiser les troubles potentiels de la région.
+
+Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les moins enthousiastes, il vous fallut peu de temps pour accepter cette tâche, cette chance d’apporter l’espoir et le repos aux habitants du Nord, cette chance de répandre réellement le bien plutôt que s’étioler à servir les banals fidèles des villes. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et l’endurance du Dieu Brisé dans le coeur.~
+@11212 =~Le Dieu Brisé a beaucoup de choses en commun avec Lathandre. J'aimerais vous demander un service en échange des faveurs du temple et de Lathandre.~
+@11213 =~Ilmater et Heaum ont beaucoup d'intérêts en commun. J'aimerais vous demander un service pour le compte du temple de Heaum.~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Firewalker of Kossuth                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@11501 = ~Fléau : 'Filament de Feu'~
+@11502 = ~Chaîne Cloutée : 'Filament de Feu'~
+@11503 = ~Adepte des Flammes de Kossuth~
+@11504 = ~ADEPTE DES FLAMMES DE KOSSUTH : Kossuth, le Seigneur du Feu, le Tyran des Flammes, est un Seigneur Élémentaire originaire du Plan Élémentaire du Feu. De façon générale il ne porte aucune attention à ses croyants, mais il continue à conférer des pouvoirs à ses prêtres ; en effet, leur dévotion augmente son pouvoir dans son plan de résidence. Afin de maintenir ce niveau de dévotion, il lui arrive de s'intéresser un minimum aux problèmes de ses dévots mortels et à l'occasion il peut lui arriver de montrer sa présence via une manifestation, mais jamais un avatar.
+
+L'église de Kossuth est diverse et très anarchique, puisque ce dernier ne s'intéresse nullement à sa structure. Il en résulte toute une galerie de cultes dont chaque faction possède ses propres valeurs morales ou éthiques, ses propres codes et ses propres enseignements. Le symbole de Kossuth est très variable d'une faction à l'autre, mais il symbolise généralement le feu. On estime que si tous les suivants de Kossuth s'unissaient, ils deviendraient une force considérable dans les Royaumes, chose que les autres dieux n'ont pas vraiment envie de voir se réaliser. Des quatre Seigneurs Elémentaires, ce sont les cultes de Kossuth qui sont les plus connus et les plus craints, notamment en Thay et dans les Terres de l'Est où ils représentent une force très puissante.
+
+Les Adeptes du Flammes peuvent être de n'importe quel alignement mais la plupart sont maléfiques, se complaisant dans les pouvoirs destructeurs du feu. Ils peuvent être de n'importe quelle race. Ils s'habillent dans les tenues que leur faction juge appropriées pour représenter leur dieu. Habituellement, ce sont des robes et de longues capes rouges, jaunes et oranges.
+
+Capacités :
+- Arme spirituelle : fléau - 'Filament de Feu' une fois par jour.
+Le fléau est l'arme spirituelle des Adeptes des Flammes de Kossuth. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Le fléau est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- Gagne 2 % de résistance au feu par niveau.
+- 'Bouclier de Feu (Rouge)' une fois par jour à partir du niveau 7 (comme le sort de mage du niveau 4).
+- 'Feu Solaire' une fois par jour à partir du niveau 9 (comme le sort de mage du niveau 5).
+- 'Conjuration d'Élémentaire du Feu' une fois par jour à partir du niveau 11 (comme le sort de prêtre du niveau 6).
+- 'Boule de Feu à Retardement' une fois par jour à partir du niveau 14 (comme le sort de mage du niveau 7).
+
+Désavantages :
+- Aucun~
+@11505 = ~Toucher Purificateur de Kossuth~
+@11506 = ~Toucher Purificateur de Kossuth (Invocation)
+Niveau : Quête
+Sphère : Élémentaire (feu)
+Portée : lanceur
+Durée : instantanée
+Temps d'incantation : 3
+Zone d'effet :  spécial
+Jet de sauvegarde : 1/2
+
+En appelant aux flammes de son dieu, l'Adepte des Flammes peut canaliser en lui une partie du pouvoir purificateur de Kossuth. Les deux faces du pouvoir majestueux du feu, aussi bien ses capacités destructrices que purificatrices, sont utilisées. En premier lieu, ce sort inflige 15d6 points de dégâts de feu (jet de sauvegarde contre la magie pour diviser les dégâts par deux) à tous les ennemis à 10 mètres à la ronde. Cet effet n'affecte pas les alliés. Ensuite, le corps du lanceur est purifié par les flammes sacrées, avec le même effet qu'un sort de Guérison.
+
+Cette capacité donne droit à une utilisation quotidienne du sort en tant que capacité spéciale. Cette aptitude ne peut être choisie qu'une fois.~
+@11507 = ~Symbole Sacré de Kossuth~
+@11508 = ~Kossuth récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : une flamme qui consume tout. Le symbole accorde à l'Adepte des Flammes la puissance de Kossuth.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@11509 = ~adepte des flammes de kossuth~
+@11510 =~ADEPTE DES FLAMMES DE KOSSUTH : Kossuth, le Seigneur du Feu, le Tyran des Flammes, est un Seigneur Elémentaire originaire du Plan Elémentaire du Feu. De façon générale il ne porte aucune attention à ses croyants, mais il continue à conférer des pouvoirs à ses prêtres ; en effet, leur dévotion augmente son pouvoir dans son plan de résidence. Afin de maintenir ce niveau de dévotion, il lui arrive de s'intéresser un minimum aux problèmes de ses dévots mortels et à l'occasion il peut lui arriver de montrer sa présence via une manifestation, mais jamais un avatar.
+
+L'Eglise de Kossuth est diverse et très anarchique, puisque ce dernier ne s'intéresse nullement à sa structure. Il en résulte toute une galerie de cultes dont chaque faction possède ses propres valeurs morales ou éthiques, ses propres codes et ses propres enseignements. Le symbole de Kossuth est très variable d'une faction à l'autre, mais il symbolise généralement le feu. On estime que si tous les suivants de Kossuth s'unissaient, ils deviendraient une force considérable dans les Royaumes, chose que les autres dieux n'ont pas vraiment envie de voir se réaliser. Des quatre Seigneurs Elémentaires, ce sont les cultes de Kossuth qui sont les plus connus et les plus craints, notamment en Thay et dans les Terres de l'Est où ils représentent une force très puissante.
+
+Les Adeptes du Flammes peuvent être de n'importe quel alignement mais la plupart sont maléfiques, se complaisant dans les pouvoirs destructeurs du feu. Ils peuvent être de n'importe quelle race. Ils s'habillent dans les tenues que leur faction juge appropriées pour représenter leur dieu. Habituellement, ce sont des robes et de longues capes rouges, jaunes et oranges.
+
+Avantages : 
+- Feu Solaire, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+- Gagne 2 % de résistance au feu par niveau
+
+Désavantages :
+- Aucun~
+@11511 = ~Moins de deux semaines après votre initiation au Temple de Kossuth, la Soeur des Flammes de votre temple vous convoqua. En termes cordiaux mais formels, elle vous confia votre première mission en tant que Promis : voyager jusqu’aux régions frontalières du Grand Nord et allumer le brasier de la foi en Kossuth chez les habitants de ces rudes contrées. Elle vous parla également de présages et d’augures concernant de mystérieux évènements à l’oeuvre dans le Nord dignes d’intérêt pour le Seigneur des Flammes, et de la conviction du temple qu’un représentant de Kossuth pourrait aider à apporter sa justice brutale dans la région.
+
+Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables, et malgré la hiérarchie indiscutable de votre foi, il vous fallut peu de temps pour accepter cette tâche, cette chance d’appliquer concrètement les volontés du Seigneur de Feu, cette opportunité d’échapper à la routine des complots incessants de la ville. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et un brasier dans le coeur.~
+@11512 =~Vous êtes un Adepte des Flammes de Kossuth, n'est-ce pas ? Il est bien rare que l'un d'entre vous marche sur les sentiers de la lumière.~
+@11513 =~Malgré tout, pour cette entreprise, nos objectifs se rejoignent. J'aimerais vous demander votre aide en échange des faveurs du temple.~
+@11514 =~Déchaînez vos pouvoirs, Adepte des Flammes, à notre service ! Vous devez être le bras armé de la punition au nom du Seigneur des Tempêtes !~
+@11515 =~Les chemins qu'empruntent les Adeptes des Flammes sont très variés, mais vous semblez servir l'ordre. Je requiers votre assistance, en échange de l'amitié du temple.~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Authlim of Iyachtu Xvim                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@11801 = ~Tyran d'Iyachtu Xvim~
+@11802 = ~TYRAN D'IYACHTU XVIM : Il est dit qu'Iyachtu Xvim est le fruit de l'union entre le Seigneur Noir, Baine, et une tanar'ri majeure ou vénérable. C'est ainsi que le sang de Baine coule dans ses veines. D'autres histoires disent qu'il est le rejeton du Seigneur Noir et d'une paladine corrompue. Aussi appelé l'Enfant-Dieu et le Fils de Baine, Xvim a servi ce dernier en tant qu'émissaire dans les Royaumes, accomplissant la volonté de son père. Il peut apparaître sous la forme d'un homme nu et décharné portant un gigantesque cimeterre ou un nuage noir avec des yeux brillants verts.
+
+Xvim a été emprisonné sous Château-Zhentil durant le Temps des Troubles, où il a été retenu captif pendant dix ans. Il a finalement réussi à s'enfuir lors de la chute de Château-Zhentil durant le fiasco de la Cyrinishad, où il a pu dérober à Cyric les attributions de la Tyrannie et de la Haine. Il est maintenant connu comme étant le dieu de la Peur, de la Haine, du Mal et de la Tyrannie. Il est en ce moment en train de travailler à récupérer la place de son défunt père, Baine, ce qui fait de lui un ennemi de Cyric. Il est particulièrement populaire dans l'Est, et plus particulièrement à Thay, mais son culte se développe rapidement dans les Royaumes. Ses prêtres portent habituellement des robes noires à motifs vert foncé. Ils portent aussi des gantelets de fer noir décorés d'un oeil vert au dos de la main. Il s'agit en fait du symbole sacré des prêtres de Xvim.
+
+Les Tyrans de Xvim peuvent être de n'importe quelle race. Ils peuvent uniquement être d'alignement Loyal Mauvais, Loyal Neutre ou Neutre Mauvais.
+
+Capacités :
+- Arme spirituelle : cimeterre - 'Cimeterre des Âmes' une fois par jour.
+Le Cimeterre des Âmes est l'arme spirituelle des Tyrans d'Iyachtu Xvim. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Le Cimeterre des Âmes est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- Immunité à la peur.
+- 'Grande Malédiction' une fois par jour à partir du niveau 7 (comme le sort de mage du niveau 4).
+- 'Abaissement de la Résistance' une fois par jour à partir du niveau 9 (comme le sort de mage du niveau 5).
+- 'Sort de Mort' une fois par jour à partir du niveau 11 (comme le sort de mage du niveau 6).
+- 'Manteau' une fois par jour à partir du niveau 14 (comme le sort de mage du niveau 7).
+
+Désavantages :
+- Alignement restreint à loyal mauvais, loyal neutre et neutre mauvais.~
+@11803 = ~Symbole sacré d'Iyachtu Xvim~
+@11804 = ~Iyachtu Xvim récompense ses serviteurs les plus puissants avec un Symbole Sacré, une paire de gantelets noirs avec des yeux verts. Utilisé, le symbole accorde au Tyran la puissance d'Iyachtu Xvim.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@11805 = ~Cimeterre : 'Cimeterre des Âmes'~
+@11806 = ~Le Cimeterre des Âmes est l'arme spirituelle des Tyrans d'Iyachtu Xvim. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Le Cimeterre des Âmes est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
+@11807 = ~Invocation de Xvim~
+@11808 = ~Invocation de Xvim (Conjuration/Convocation)
+Niveau : Quête
+Sphère : Générale, Convocation
+Portée : 35 mètres
+Durée : 24 rounds
+Temps d'incantation : 5 
+Zone d'effet : spéciale
+Jet de sauvegarde : non
+
+Ce sort invoque de puissantes créatures d'alignement loyal-mauvais pour combattre aux côtés du lanceur. Ce sort peut invoquer un à quatre tyrannoeils orbes anciens.~
+@11809 = ~tyran d'iyachtu xvim~
+@11810 =~TYRAN D'IYACHTU XVIM : Il est dit qu'Iyachtu Xvim est le fruit de l'union entre le Seigneur Noir, Baine, et une tanar'ri majeure ou vénérable. C'est ainsi que le sang de Baine coule dans ses veines. D'autres histoires disent qu'il est le rejeton du Seigneur Noir et d'une paladine corrompue. Aussi appelé l'Enfant-Dieu et le Fils de Baine, Xvim a servi ce dernier en tant qu'émissaire dans les Royaumes, accomplissant la volonté de son père. Il peut apparaître sous la forme d'un homme nu et décharné portant un gigantesque cimeterre ou un nuage noir avec des yeux brillants verts.
+
+Xvim a été emprisonné sous Château-Zhentil durant le Temps des Troubles, où il a été retenu captif pendant dix ans. Il a finalement réussi à s'enfuir lors de la chute de Château-Zhentil durant le fiasco de la Cyrinishad, où il a pu dérober à Cyric les attributions de la Tyrannie et de la Haine. Il est maintenant connu comme étant le dieu de la Peur, de la Haine, du Mal et de la Tyrannie. Il est en ce moment en train de travailler à récupérer la place de son défunt père, Baine, ce qui fait de lui un ennemi de Cyric. Il est particulièrement populaire dans l'Est, et plus particulièrement à Thay, mais son culte se développe rapidement dans les Royaumes. Ses prêtres portent habituellement des robes noires à motifs vert foncé. Ils portent aussi des gantelets de fer noir décorés d'un oeil vert au dos de la main. Il s'agit en fait du symbole sacré des prêtres de Xvim.
+
+Avantages : 
+- Grande Malédiction, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+– Immunité à la peur
+
+Désavantages :
+- Alignement restreint à loyal mauvais, loyal neutre et neutre mauvais.~
+@11811 = ~Moins de deux semaines après votre initiation comme Vermine de Iyachtu Xvim, le Seigneur de la Ruine de votre temple vous convoqua. En un entretien bref et froid, il vous confia votre première mission en tant que Tyran : voyager jusqu’aux régions frontalières du Grand Nord et renforcer la puissance du Maître Cruel chez les habitants de ces rudes contrées. Il vous parla également de présages et d’augures concernant de mystérieux évènements à l’oeuvre dans le Nord pouvant intéresser Iyachtu Xvim et de la conviction du temple qu’un représentant du Malveillant pourrait aider à exploiter les troubles potentiels de la région.
+
+Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les plus impliqués politiquement, il vous fallut peu de temps pour accepter cette tâche, cette chance d’appliquer concrètement les volontés du Maître Cruel, cette opportunité d’échapper à la routine des tâches idiotes confiées par vos supérieurs. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et la puissance à l’esprit.~
+@11812=~Même si fréquenter un suivant de Xvim me dérange au plus haut point, je crois que je n'ai pas le choix. Même à vos manières tordues, vous restez un serviteur de l'ordre et j'aimerais vous demander assistance.~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Lorekeeper of Oghma                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@12100 = ~Installer le kit de clerc de Gardien du Savoir d'Oghma~
+@12101 = ~Gardien du Savoir d'Oghma~
+@12102 = ~GARDIEN DU SAVOIR D'OGHMA : Oghma est le dieu de la connaissance, l'Archiviste de ce qui est Connu, ainsi que le Patron des bardes. Il est la plus puissante des divinités du savoir des Royaumes (second derrière Mystra si l'on considère que la magie est une forme de savoir). Déneïr et Milil font office d'intermédiaires pour Oghma. Ces derniers lui apportent des informations, ainsi qu'à ceux qui obtiennent ses faveurs.
+
+Les adeptes d'Oghma considèrent que le savoir est suprême, et particulièrement dans sa forme la plus brute, l'idée. Une idée ne pèse rien, mais elle peut déplacer des montagnes. Elle n'a aucune apparence, mais elle peut dominer des nations. Elle n'a pas de force, mais elle peut mettre en déroute des empires. La connaissance est le plus grand de tous les outils que l'humanité a à sa disposition ; elle dépasse tout ce qui peut être créé des mains des mortels. L'idée doit être avant que tout le reste ne puisse exister.
+
+Capacités :
+- Arme spirituelle : épée longue - 'Coup Mortel' une fois par jour.
+Coup Mortel est l'arme spirituelle des Gardiens du Savoir d'Oghma. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Coup Mortel est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- Gagne 10 points de connaissance par niveau.
+- 'Mot Secret' une fois par jour à partir du niveau 7 (comme le sort de mage du niveau 4).
+- 'Oracle' une fois par jour à partir du niveau 9 (comme le sort de mage du niveau 5).
+- 'Mot de Pouvoir : Silence' une fois par jour à partir du niveau 11 (comme le sort de mage du niveau 6).
+- 'Rayon Rubis d'Inversion' une fois par jour à partir du niveau 14 (comme le sort de mag du niveau 7).
+
+Désavantages :
+- Aucun~
+@12103 = ~Épée Longue : 'Coup Mortel'~
+@12104 = ~Savoir d'Oghma~
+@12105 = ~Symbole Sacré d'Oghma~
+@12106 = ~Oghma récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : un parchemin vierge. Utilisé, le symbole accorde au Gardien du Savoir la puissance d'Oghma.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@12107 = ~gardien du savoir d'oghma~
+@12108 = ~GARDIEN DU SAVOIR D'OGHMA : Oghma est le dieu de la connaissance, l'Archiviste de ce qui est Connu, ainsi que le Patron des bardes. Il est la plus puissante des divinités du savoir des Royaumes (second derrière Mystra si l'on considère que la magie est une forme de savoir). Déneïr et Milil font office d'intermédiaires pour Oghma. Ces derniers lui apportent des informations, ainsi qu'à ceux qui obtiennent ses faveurs.
+
+Les adeptes d'Oghma considèrent que le savoir est suprême, et particulièrement dans sa forme la plus brute, l'idée. Une idée ne pèse rien, mais elle peut déplacer des montagnes. Elle n'a aucune apparence, mais elle peut dominer des nations. Elle n'a pas de force, mais elle peut mettre en déroute des empires. La connaissance est le plus grand de tous les outils que l'humanité a à sa disposition ; elle dépasse tout ce qui peut être créé des mains des mortels. L'idée doit être avant que tout le reste ne puisse exister.
+
+Avantages : 
+- Mot Secret, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+– Gagne 10 points de connaissance par niveau
+
+Désavantages :
+- Aucun~
+@12109 = ~Moins de deux semaines après votre initiation au Temple d’Oghma, l’Atlar de votre ordre vous convoqua. En termes cordiaux mais formels, il vous confia votre première mission en tant que Gardien du Savoir : voyager jusqu’aux régions frontalières du Grand Nord et chercher la connaissance dans ces rudes contrées. Il vous parla également de présages et d’augures concernant de mystérieux évènements à l’oeuvre dans le Nord, et de la conviction du temple qu’il était crucial d’en savoir plus.
+
+Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les plus studieux, il vous fallut peu de temps pour accepter cette tâche, cette chance d’apprendre et d’explorer les confins de la civilisation, cette chance de contribuer à écrire un ouvrage plutôt qu’à le recopier. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et les yeux grands ouverts, avides de nouvelles connaissances.~
+@12110 =~En tant que Gardien du Savoir, je suis sûr que vous pouvez comprendre notre volonté d'enquêter à ce sujet.~
+@12111 =~Malgré vos atours de Gardien du Savoir, je vois le maelström de Talos dans votre coeur. Soyez le bras armé de la vengeance du Seigneur des Tempêtes !~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Heartwarder of Sune Kit                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@12401 = ~Garde du Coeur de Sunie~
+@12402 = ~GARDE DU COEUR DE SUNIE : Sunie, la déesse aux Cheveux de Feu est, parait-il, la plus douce de toutes les déesses. Elle est représentée sous les traits de la plus belle femme des Royaumes avec une chevelure rousse légère et resplendissante et au charme incroyable. La foi Sunite est très populaire parmi les nobles et dans les grandes villes. Ceux qui possèdent un don dans les arts ou la littérature, ainsi que les amoureux ou ceux qui cherchent l'amour vénèrent souvent la Dame aux Cheveux de Feu.
+
+On dit que Sunie est une déesse bienveillante mais parfois frivole, passant constamment d'une passion intense à un flirt sans conséquence. Elle s'est retrouvée engagée dans des relations amoureuses avec de nombreuses autres divinités des Royaumes, bien qu'elle n'ait jamais fait montre d'aucun attachement pour les dieux de la furie, Talona ou Tempus. En effet, les attributions de ces derniers comprennent la destruction de beaucoup de belles choses, vivantes ou non. Il paraîtrait que dernièrement, les nobles actions de Torm à Tantras lui ont tapé dans l'oeil.
+
+Les prêtres de Sunie, connus sous le titre de Gardes du Coeur, sont des esthètes et des hédonistes qui recherchent activement le plaisir et la beauté en toute chose, et qui encouragent la fabrication de beaux objets. On les trouve surtout dans les grandes villes, en compagnie de l'élite culturelle locale. Dès qu'ils le peuvent, ils jouent le rôle de mécènes ou d'entremetteurs amoureux, et ce pour tout le monde, peu importe la condition sociale. Beaucoup d'entre eux sont des artistes, des artisans, des acteurs, des musiciens ou des instructeurs, et certains d'entre eux sont des itinérants, cherchant à promouvoir la beauté et l'amour.
+
+Capacités :
+- Arme spirituelle : fléau 'Fléau de Choc' une fois par jour.
+ARME SPIRITUELLE : Fléau de Choc est l'arme spirituelle des Gardes du Coeur de Sunie. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Le Fléau de Choc est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- +1 en Charisme.
+- 'Émotion' une fois par jour à partir du niveau 7 (comme le sort de mage du niveau 4).
+- 'Colonne de Feu' une fois par jour à partir du niveau 9 (comme le sort de prêtre du niveau 5).
+- 'Double Illusoire' une fois par jour à partir du niveau 11 (comme le sort de mage du niveau 6).
+- 'Manteau' une fois par jour à partir du niveau 14 (comme le sort de mage du niveau 7).
+
+Désavantages :
+- Alignement restreint à neutre bon, chaotique bon et chaotique neutre.~
+@12403 = ~Fléau : 'Fléau de Choc'~
+@12404 = ~Le Fléau de Choc est l'arme spirituelle des Gardes du Coeur de Sunie. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Le Fléau de Choc est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
+@12405 = ~Symbole Sacré de Sunie~
+@12406 = ~Sunie récompense ses serviteurs les plus puissants avec un Symbole Sacré : une amulette dorée en forme de visage d'une très belle femme. Utilisé, le symbole accorde au Garde du Coeur la puissance de Sunie.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@12407 = ~garde du coeur de sunie~
+@12408 = ~GARDE DU COEUR DE SUNIE : Sunie, la déesse aux Cheveux de Feu est, parait-il, la plus douce de toutes les déesses. Elle est représentée sous les traits de la plus belle femme des Royaumes avec une chevelure rousse légère et resplendissante et au charme incroyable. La foi Sunite est très populaire parmi les nobles et dans les grandes villes. Ceux qui possèdent un don dans les arts ou la littérature, ainsi que les amoureux ou ceux qui cherchent l'amour vénèrent souvent la Dame aux Cheveux de Feu.
+
+On dit que Sunie est une déesse bienveillante mais parfois frivole, passant constamment d'une passion intense à un flirt sans conséquence. Elle s'est retrouvée engagée dans des relations amoureuses avec de nombreuses autres divinités des Royaumes, bien qu'elle n'ait jamais fait montre d'aucun attachement pour les dieux de la furie, Talona ou Tempus. En effet, les attributions de ces derniers comprennent la destruction de beaucoup de belles choses, vivantes ou non. Il paraîtrait que dernièrement, les nobles actions de Torm à Tantras lui ont tapé dans l'oeil.
+
+Les prêtres de Sunie, connus sous le titre de Gardes du Coeur, sont des esthètes et des hédonistes qui recherchent activement le plaisir et la beauté en toute chose, et qui encouragent la fabrication de beaux objets. On les trouve surtout dans les grandes villes, en compagnie de l'élite culturelle locale. Dès qu'ils le peuvent, ils jouent le rôle de mécènes ou d'entremetteurs amoureux, et ce pour tout le monde, peu importe la condition sociale. Beaucoup d'entre eux sont des artistes, des artisans, des acteurs, des musiciens ou des instructeurs, et certains d'entre eux sont des itinérants, cherchant à promouvoir la beauté et l'amour.
+
+Avantages : 
+- +1 en Charisme.
+- Émotion : Désespoir, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+- Peut utiliser Voile de Djalice, une fois par jour tous les 10 niveaux (une utilisation au 1er niveau)
+
+VOILE DE DJALICE : Le Garde du Coeur augmente temporairement sa beauté à un niveau surhumain, montant son charisme jusqu'à 20 et forçant les créatures hostiles à réussir un jds contre les sorts à -2, sous peine d'être sous l'effet du sort de Charme Néfaste pendant 6 rounds.
+
+Désavantages :
+- Alignement restreint à neutre bon, chaotique bon et chaotique neutre.~
+@12409 = ~Voile de Djalice~
+@12410 = ~Voile de Djalice
+Le Garde du Coeur augmente temporairement sa beauté à un niveau surhumain, montant son charisme jusqu'à 20 et forçant les créatures hostiles à réussir un jds contre les sorts à -2, sous peine d'être sous l'effet du sort de Charme Néfaste pendant 6 rounds.~
+@12411 = ~Moins de deux semaines après votre initiation au Temple de Sunie, la meneuse de votre ordre vous convoqua. En termes chaleureux, appropriés pour une fidèle de Sunie, elle vous confia votre première mission en tant que membre du clergé : voyager jusqu’aux régions frontalières du Grand Nord et apporter l’amour de la Dame au Cheveux de Feu aux habitants de ces rudes contrées. Elle vous parla également de présages et d’augures concernant de mystérieux évènements à l’oeuvre dans le Nord, et de la conviction du temple qu’un représentant de la foi pourrait aider à apaiser les troubles potentiels de la région.
+
+Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les moins enthousiastes, il vous fallut peu de temps pour accepter cette tâche, cette chance d’apporter l’amour et la passion aux habitants du Nord, cette chance de répandre réellement le bien plutôt que s’étioler à servir les banals fidèles des villes. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et l’amour de la Dame aux Cheveux de Feu dans la poitrine.~
+@12412 =~Sunie a toujours été une amie pour le Seigneur de l'Aube. J'aimerais que vous nous rendiez un service, en échange des faveurs de Lathandre.~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Feywarden of Corellon Kit                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@12701 = ~protecteur féérique de corellon~
+@12702 = ~Protecteur Féérique de Corellon~
+@12703 = ~PROTECTEUR FÉÉRIQUE DE CORELLON : Corellon Larethian est le leader du panthéon elfe. Il paraîtrait même qu'il est le créateur de la race des elfes, même si Séhanine ou Angharradh sont créditées du même exploit. Les légendes elfiques racontent que le Peuple Fée est né du sang que Corellon aurait versé au cours de batailles épiques contre Gruumsh, où il se serait mêlé aux larmes de Séhanine (ou d'Angharradh). Le Créateur des Elfes incarne les plus nobles idéaux elfiques, et il gouverne la plupart des activités esthétiques : l'art, la magie, la musique, la poésie et la guerre. Le Peuple Fée dans son intégralité rend hommage à Corellon, hormis les drows qui se sont tournés vers Llolth, Ghaunadaur, Vhaeraun et autres puissances de l'ombre. Corellon est particulièrement révéré parmi les magiciens, les musiciens et les poètes elfes ou demi-elfes.
+
+Les habits de cérémonie des prêtres de Corellon incluent des robes azurées faites de tissus très légers et décorés de croissants de lune argentés. Les prêtres portent souvent des anneaux d'argent gravés du symbole du Protecteur sur l'arcade sourcilière. Le symbole sacré de Corellon consiste en un croissant de lune en argent ou en mithril pendant à une fine chaîne portée autour du cou. Lorsqu'ils partent à l'aventure, les prêtres de Corellon préfèrent généralement utiliser de l'équipement elfique, soucieux d'imiter leur divinité patronne.
+
+Capacités :
+- Arme spirituelle : épée longue 'Sahandrian' une fois par jour.
+Sahandrian est l'arme spirituelle des Protecteurs Féériques de Corellon. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Sahandrian est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- Peut dépenser deux points de compétence dans les armes, et le maximum de points dans les styles de combat.
+- +1 aux jets de sauvegarde contre la mort.
+- 'Arme Magique' une fois par jour à partir du niveau 7 (comme le sort de mage du nivau 4).
+- 'Immunité aux Sorts' une fois par jour à partir du niveau 9 (comme le sort de mage du niveau 5).
+- 'Protection contre les Armes Magiques' une fois par jour à partir du niveau 11 (comme le sort de mage du niveau 6).
+- 'Vaporisation Prismatique' une fois par jour à partir du niveau 14 (comme le sort de mage du niveau 7).
+
+Désavantages :
+- Race restreinte aux elfes et demi-elfes.
+- Alignement restreint à chaotique bon, neutre bon et chaotique neutre.~
+@12704 = ~Épée Longue : 'Sahandrian'~
+@12705 = ~Sahandrian est l'arme spirituelle des Protecteurs Féériques de Corellon. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Sahandrian est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
+@12706 = ~Enchaînement (toutes écoles)
+Niveau : 10
+Portée : illimitée
+Durée : 2 rounds
+Temps d'incantation : 9
+Zone d'effet : spéciale
+Jet de sauvegarde : spécial
+
+Ce sort permet d'éliminer les intervalles de temps entre les incantations. Ainsi, un prêtre peut enchaîner un nouveau sort dès qu'il a fini le premier. Cet effet dure 2 rounds.
+
+Cette capacité peut être choisie 3 fois.~
+@12707 = ~Symbole Sacré de Corellon~
+@12708 = ~Corellon récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : un croissant de lune. Utilisé, le symbole accorde au Protecteur Féérique la puissance de Corellon.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@12709 =~PROTECTEUR FÉÉRIQUE DE CORELLON : Corellon Larethian est le leader du panthéon elfe. Il paraîtrait même qu'il est le créateur de la race des elfes, même si Séhanine ou Angharradh sont créditées du même exploit. Les légendes elfiques racontent que le Peuple Fée est né du sang que Corellon aurait versé au cours de batailles épiques contre Gruumsh, où il se serait mêlé aux larmes de Séhanine (ou d'Angharradh). Le Créateur des Elfes incarne les plus nobles idéaux elfiques, et il gouverne la plupart des activités esthétiques : l'art, la magie, la musique, la poésie et la guerre. Le Peuple Fée dans son intégralité rend hommage à Corellon, hormis les drows qui se sont tournés vers Llolth, Ghaunadaur, Vhaeraun et autres puissances de l'ombre. Corellon est particulièrement révéré parmi les magiciens, les musiciens et les poètes elfes ou demi-elfes.
+
+Les habits de cérémonie des prêtres de Corellon incluent des robes azurées faites de tissus très légers et décorés de croissants de lune argentés. Les prêtres portent souvent des anneaux d'argent gravés du symbole du Protecteur sur l'arcade sourcilière. Le symbole sacré de Corellon consiste en un croissant de lune en argent ou en mithril pendant à une fine chaîne portée autour du cou. Lorsqu'ils partent à l'aventure, les prêtres de Corellon préfèrent généralement utiliser de l'équipement elfique, soucieux d'imiter leur divinité patronne.
+
+Avantages : 
+- Immunité aux Sorts, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
+- Peut dépenser deux points de compétence dans les armes, et le maximum de points dans les styles de combat
+- +1 aux jets de sauvegarde contre la mort
+
+Désavantages :
+- Race restreinte aux elfes et demi-elfes.
+- Alignement restreint à chaotique bon, neutre bon et chaotique neutre.~
+@12710 = ~Moins de deux semaines après votre initiation au Temple de Corellon, la Syolkiir de votre ordre vous convoqua. Pendant une cérémonie sous les auspices des vétérans de votre foi, elle vous confia votre première mission en tant que Protecteur Féérique : voyager jusqu’à l’épine dorsale du monde et trouver des réponses à d’anciennes blessures du peuple elfique. Elle vous parla également de présages et d’augures concernant de mystérieux évènements à l’oeuvre dans le Nord, et de la conviction du temple qu’un représentant de la foi pourrait enquêter efficacement et apporter la lumière sur tout ça.
+
+Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les moins enthousiastes, il vous fallut peu de temps pour accepter cette tâche, cette chance d’apporter l’espoir et la joie aux habitants du Nord, cette chance de répandre réellement le bien et de trouver l’inspiration pour votre prochaine tâche. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et des questions à l’esprit.~
+@12711 =~Ah, bénis soyons-nous de rencontrer un Protecteur Féérique ! Corellon a toujours été un ami du Seigneur de l'Aube. J'aimerais vous demander un service, en échange des faveurs de Lathandre.~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Strifeleader of Cyric Kit                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@13000 = ~Décharge Terrifiante~
+@13002 = ~maître des conflits de cyric~
+@13003 = ~Maître des Conflits de Cyric~
+@13004 = ~MAÎTRE DES CONFLITS DE CYRIC : Cyric est un dieu mégalomane dont le culte est largement répandu, ainsi que l'une des trois plus grandes puissances maléfiques de Féérune. Mesquin et égocentrique, il n'aime rien tant que de mener des individus de tous bords à commettre des actes qui ruinent leur vie entière ou à leur faire faire des erreurs fatales. Il boit à la source des larmes des rêveurs qui ont perdu leurs illusions et des coeurs brisés. Il est tout à fait capable de s'allier à une autre divinité pourvu qu'il puisse la trahir et s'en sortir.
+
+Les prêtres du Soleil Noir font le voeu de propager le conflit et le meurtre afin d'accroître la peur et la croyance en Cyric. Ils soutiennent les dirigeants ayant un goût prononcé pour la cruauté, mais agissent de telle façon qu'ils évitent que le monde entier ne plonge dans une guerre de grande envergure (ce qui renforcerait le pouvoir de Tempus). Dans les faits, les fidèles de Cyric passent le plus clair de leur temps à comploter et à se trahir les uns les autres, mais de tels conflits se font de plus en plus rares récemment, Cyric ayant acquis un plus grand contrôle de lui-même et ayant consolidé son influence parmi les fidèles des divinités dont il a pris les attributions.
+
+Les maîtres des Conflits portent des robes noires et violettes. Ils portent des bracelets d'argent aux poings, symboles de leur asservissement à Cyric. Les Maîtres des Conflits de Cyric peuvent être d'alignement Chaotique Neutre ou n'importe quel alignement Mauvais.
+
+Capacités :
+- Arme spirituelle : épée longue 'Lame de Rasoir' une fois par jour.
+Lame de Rasoir est l'arme spirituelle des Maîtres des Conflits de Cyric. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Lame de Rasoir est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+- Peut enduire son arme de poison une fois par jour par tranche de 6 niveaux. Les attaques effectuées durant le round suivant empoisonneront la cible, qui subira un point de dégâts par seconde pendant 24 secondes (3 points de dégâts pendant les 6 premières secondes). Un jet de sauvegarde contre le poison réussi limitera les dégâts à 12 points.
+- 'Décharge Terrifiante' une fois par jour à partir du niveau 7.
+Cette capacité permet de lancer un rayon d'énergie négative qui inflige 4d8 points de dégâts +1 par niveau (+20 maximum) et qui rend la cible confuse pendant un round (un jet de sauvegarde contre les sorts à -2 réussi annule la confusion).
+- 'Chaos' une fois par jour à partir du niveau 9 (comme le sort de mage du niveau 5).
+- 'Brume Mortelle' une fois par jour à partir du niveau 11 (comme le sort de mage du niveau 6).
+- 'Sphère de Chaos' une fois par jour à partir du niveau 14 (comme le sort de mage du niveau 7).
+
+Accès aux Sphères :
+- Accès complet aux sphères : générale, astrale, charme, combat, garde, guérison, nécromancie, convocation, soleil, temps, guerre, climat
+- Accès mineur aux sphères : divination, élémentaire, nombres, protection
+- Pas d'accès aux sphères : faune, création, chaos, loi, flore, pensée, voyage, glyphes~
+@13005 = ~Symbole Sacré de Cyric~
+@13006 = ~Cyric récompense ses serviteurs les plus puissants avec un Symbole Sacré, des bracelets argentés représentant ses armoiries : un crâne devant un soleil de teinte sombre. En plus d'être un signe visible de la puissance du prêtre, ces bracelets représentent sa dévotion inconditionnelle au Prince des Mensonges. Utilisés, ces bracelets améliorent les pouvoirs déjà terrifiants du Maître des Conflits.
+
+PARAMÈTRES :
+
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+@13007 = ~Épée Longue : 'Lame de Rasoir'~
+@13008 = ~Lame de Rasoir est l'arme spirituelle des Maîtres des Conflits de Cyric. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Lame de Rasoir est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
+@13009 =~MAÎTRE DES CONFLITS DE CYRIC : Cyric est un dieu mégalomane dont le culte est largement répandu, ainsi que l'une des trois plus grandes puissances maléfiques de Féérune. Mesquin et égocentrique, il n'aime rien tant que de mener des individus de tous bords à commettre des actes qui ruinent leur vie entière ou à leur faire faire des erreurs fatales. Il boit à la source des larmes des rêveurs qui ont perdu leurs illusions et des coeurs brisés. Il est tout à fait capable de s'allier à une autre divinité pourvu qu'il puisse la trahir et s'en sortir.
+
+Les prêtres du Soleil Noir font le voeu de propager le conflit et le meurtre afin d'accroître la peur et la croyance en Cyric. Ils soutiennent les dirigeants ayant un goût prononcé pour la cruauté, mais agissent de telle façon qu'ils évitent que le monde entier ne plonge dans une guerre de grande envergure (ce qui renforcerait le pouvoir de Tempus). Dans les faits, les fidèles de Cyric passent le plus clair de leur temps à comploter et à se trahir les uns les autres, mais de tels conflits se font de plus en plus rares récemment, Cyric ayant acquis un plus grand contrôle de lui-même et ayant consolidé son influence parmi les fidèles des divinités dont il a pris les attributions.
+
+Les maîtres des Conflits portent des robes noires et violettes. Ils portent des bracelets d'argent aux poings, symboles de leur asservissement à Cyric.
+
+Avantages :
+- Peut enduire son arme de poison une fois par jour par tranche de 5 niveaux.
+
+ARME EMPOISONNÉE : les attaques effectuées durant le round suivant empoisonneront la cible, qui subira un point de dégâts par seconde pendant 24 secondes (3 points de dégâts pendant les 6 premières secondes). Un jet de sauvegarde contre le poison réussi limitera les dégâts à 12 points.
+
+- Peut utiliser Décharge Terrifiante, une fois par jour tous les 10 niveaux (une utilisation au 1er niveau)
+
+DÉCHARGE TERRIFIANTE : cette capacité permet de lancer un rayon d'énergie négative qui inflige 4d8 points de dégâts +1 par niveau (+20 maximum) et qui rend la cible confuse pendant un round (un jet de sauvegarde contre les sorts à -2 réussi annule la confusion).
+
+Désavantages :
+- Alignement restreint à chaotique neutre ou tout alignement mauvais.~
+@13010 = ~Décharge Terrifiante
+Cette capacité permet de lancer un rayon d'énergie négative qui inflige 4d8 points de dégâts +1 par niveau (+20 maximum) et qui rend la cible confuse pendant un round (un jet de sauvegarde contre les sorts à -2 réussi annule la confusion).~
+@13011 = ~~
+@13012 =~Le Prince des Mensonges nous envoie un Maître des Conflits ? Même s'il n'est pas aussi terrifiant que le tout-puissant Talos, votre seigneur Cyric doit sans doute vouloir nous porter assistance dans notre lutte contre les infidèles !~
+@13013 =~Les choses commencent à se résoudre d'elles-mêmes, et il ne reste plus qu'une poignée d'enfants de Bhaal. Ils sont comme toi... très puissants, ce sont des mortels pleins de ressources. Comme je l'étais autrefois. Je pense que tu peux comprendre mon inquiétude, hein ?~
+@13014= ~Tu penses que je vais te défier pour récupérer l'attribution divine du Meurtre.~
+@13015= ~Tu veux t'assurer que ce soit l'un de tes suivants qui remporte la mise.~
+@13016= ~Peut-être. J'ai pensé à plusieurs éventualités. Et c'est pour cela que je suis ici : pour évaluer ta loyauté envers moi... ou la menace que tu pourrais représenter.~
+@13017= ~Peut-être. J'ai pensé à plusieurs éventualités. Je suis ici pour évaluer ta loyauté envers moi... ou la menace que tu pourrais représenter.~
+@13018= ~Alors tu dois me craindre plus que tout ! Je vais m'occuper de toi, Cyric. Je vais vivre ma destinée !~
+@13019= ~Ma loyauté t'est toute dévouée, mon Seigneur. Je mettrai un terme aux vies des autres enfants de Bhaal en ton nom !~
+@13020= ~Je n'ai rien à dire. Tu me connais bien, donc c'est à toi de te faire ton idée.~
+@13021= ~Mensonge et tromperie... telles sont mes attributions divines, et c'est tout ce que j'attends de mes suivants. Ca, et rien d'autre. Malheureusement, tu es devenu trop puissant.~ ~Mensonge et tromperie... telles sont mes attributions divines, et c'est tout ce que j'attends de mes suivants. Ca, et rien d'autre. Malheureusement, tu es devenue trop puissante.~
+@13022= ~Je ne peux pas te détruire directement, mais je peux fournir les moyens de le faire. A partir de maintenant, je resterai sourd à tes prières.~
+@13023= ~Mensonge et tromperie... telles sont mes attributions divines, et c'est tout ce que j'attends de mes suivants. Ca, et rien d'autre.~
+@13024= ~Si tu réussis à aller jusque là, je t'accorderai le royaume du Meurtre, et tu seras mon allié. Beaucoup se sont succédés à ce poste, aucun n'a duré, mais tu pourras peut-être changer cela. Dans tous les cas, sache que si tu me trahis un jour, même Ao ne m'empêchera pas de te retirer ton pouvoir.~ ~Si tu réussis à aller jusque là, je t'accorderai le royaume du Meurtre, et tu seras mon alliée. Beaucoup se sont succédés à ce poste, aucun n'a duré, mais tu pourras peut-être changer cela. Dans tous les cas, sache que si tu me trahis un jour, même Ao ne m'empêchera pas de te retirer ton pouvoir.~
+@13025= ~Donc, <CHARNAME>, es-tu digne de mes faveurs ? C'est par le conflit que l'on apprend ce que l'on vaut vraiment. Maintenant, il est temps de tester ton courage face à certains de mes autres favoris. Peut-être nous reverrons-nous. Je te conseille de bien te préparer.~
+@13026= ~Oui, bien sûr que tu sais qui je suis. Tu sens mon regard sur toi à chacune de tes prières nocturnes.~
+@13027= ~J'ai été guéri récemment d'un léger accès de folie... pour constater en me réveillant que les enfants de mon prédécesseur avaient poussé un peu partout comme de mauvaises herbes.~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Druid Remix                                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@20003 = ~mais avec restrictions des armes~
+@20004 = ~mais avec restrictions des armes et armures~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Oozemaster Druid kit                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@20302 = ~maître des vases~
+@20303 = ~Maître des Vases~
+@20304 = ~MAÎTRE DES VASES : S'écoulant des fissures et crevasses de donjon, voici une substance monochromatique et corrompue dont les aventuriers ne souhaitent pas croiser le chemin. C'est juste au moment où ils ont évité la moisissure jaune que le limon vert s'égoutte du plafond. Bien souvent, de telles abominations jaillissent naturellement mais quelquefois, elles sont placées là à dessein... par le Maître des Vases.
+
+Cette classe n'est pas faite pour les individus stables. En effet, elle implique des relations avec des créatures qui ne s'apparentent à rien de connu. Contrairement aux compagnons animaux de la plupart des druides, les suivants du Maître des Vases n'ont rien à dire. Personne n'a, à ce jour, développé un sort de 'Communication avec les Vases'... Ou si quelqu'un l'a fait, les vases n'ont rien répondu. Etant donné que les Maîtres des Vases inspirent tout sauf la confiance, la grande majorité d'entre eux a peu d'amis intelligents, et encore moins d'invités. Ils ont donc tendance à marmonner et à beaucoup parler tout seuls.
+
+Il y a malgré tout de substantiels avantages à poursuivre ce choix de carrière. Au fur et à mesure que leurs pouvoirs se développent, les Maîtres des Vases adoptent de plus en plus les caractéristiques de leurs créatures de prédilection, même si leur esprit s'éloigne de plus en plus de la pensée des autres humanoïdes, auxquels ils ont de plus en plus de mal à s'identifier. Bien que cela ne leur apparaisse pas vraiment comme un inconvénient à ce stade.
+
+Avantages :
+- Peut effectuer une attaque de Toucher Paralytique une fois par jour par tranche de 5 niveaux. Cette capacité fonctionne de la même manière que le sort de mage de niveau 2 'Toucher de la Goule'.
+- A partir du niveau 5, le métabolisme étrange du Maître des Vases l'immunise au poison.
+- Au niveau 7, peut adopter la forme d'une gelée de moutarde trois fois par jour.
+- Immunité à l'acide à partir du niveau 9.
+- A partir du niveau 11, le métabolisme étrange du Maître des Vases l'immunise aux maladies.
+- A partir du niveau 15, le Maître des Vases est immunisé à la cécité, au sommeil, à la paralysie, à l'étourdissement et aux coups critiques. En effet, à ce niveau, son corps ne fait plus qu'un avec la vase, et il perd toute forme d'anatomie interne.
+
+Inconvénients :
+- Ne gagne pas les capacités standard du druide (forme animale de loup ou d'ours, résistances élémentaires).
+- Pénalité de -1 en charisme aux niveaux 1, 5, 7, 9, 11 et 15. En effet, au fur et à mesure de leur progression dans cette classe, les Maîtres des Vases se déconnectent progressivement du mode de pensée humanoïde, et leurs traits se distordent.~
+
+@20305 = ~Toucher Paralysant~
+@20306 = ~Forme Animale : Gelée Moutarde~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Bowslinger Ranger Kit                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@40301 = ~archer sylvain~
+@40302 = ~Archer Sylvain~  
+@40303 = ~ARCHER SYLVAIN : L'Archer Sylvain est la représentation ultime de l'archerie elfique. S'il existe une cible difficile à atteindre avec un arc, on peut parier qu'il y arrivera. Qu'il faille tirer par un vent violent ou que la cible soit totalement camouflée, l'Archer Sylvain est persuadé d'être capable de réussir son tir.
+
+Avantages :
+- +1 au TAC0 et aux dégâts avec toute arme à distance tous les 3 niveaux d'expérience, puis tous les 5 niveaux d'expérience une fois le niveau 18 atteint.
+- Peut atteindre la maîtrise (quatre points) dans les arcs.
+- Peut tirer un trait exceptionnel une fois par jour tous les 4 niveaux à partir du niveau 4. Lorsque l'Archer Sylvain active cette capacité, il gagne +1 au TAC0 et aux dégâts tous les 4 niveaux d'expérience pendant 20 secondes pour toutes les attaques à distance.
+- 'Tir Rapide' une fois par jour tous les 8 niveaux à partir du niveau 8. Cette capacité confère une attaque supplémentaire par round pendant 5 rounds.
+- 'Détection de l'Invisibilité' une fois par jour tous les 6 niveaux à partir du niveau 6.
+
+Inconvénients :
+- Race restreinte aux elfes et demi-elfes.
+- Ne gagne pas la capacité de Charme-Animal.
+- -1 aux dégâts avec les armes de mêlée.
+- Ne peut dépenser qu'un point de compétence dans les armes suivantes : épée longue, épée courte et dague.
+- Ne peut dépenser aucun point de compétence dans les autres armes de mêlée.
+- Ne peut porter aucune armure métallique.~
+@40304 = ~Tir Rapide~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Feralan Ranger Kit                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@40601 = ~sauvage~
+@40602 = ~Sauvage~
+@40603 = ~SAUVAGE : Qu'arrive-t-il aux enfants qui errent dans la nature et ne sont jamais retrouvés ? Ou pire, qui y ont été abandonnés ? Beaucoup succombent aux dangers de la nature sauvage, mais quelques chanceux sont adoptés par des animaux, élevés comme la progéniture d'un lion, ou comme la portée d'un loup. Coupés de la civilisation, ils acquièrent progressivement les caractéristiques des animaux qui les ont recueillis, formant une sorte d'unité avec l'esprit de la nature sauvage. Ils deviennent ainsi des Sauvages, des êtres qui combinent la sauvagerie des animaux et l'intelligence de l'homme.
+
+Les Sauvages ne peuvent être d'alignement Loyal-Bon.
+
+Avantages :
+- +10 % en furtivité.
+- +1 à la Classe d'Armure tous les 5 niveaux d'expérience (à partir du niveau 1).
+- Peut recourir à la capacité de 'Rage Féroce' une fois par jour tous les 10 niveaux. La rage dure une minute, pendant laquelle le personnage bénéficie d'un bonus de +2 à l'attaque, aux dégâts, à la CA, de +15 points de vie ainsi que d'une immunité au charme, à l'immobilisation, à la peur, aux sorts de labyrinthe et d'emprisonnement, à l'étourdissement et au sommeil.
+- 'Appel Sauvage' une fois par jour. Cette capacité permet au Sauvage d'invoquer un compagnon animal qui combattra pour lui pendant 3 rounds +1 round/niveau. Des créatures plus puissantes sont invoquées à plus haut niveau.
+
+Inconvénients :
+- Epuisement après la Rage Féroce. L'état d'épuisement donne des malus de -2 au toucher et aux dégâts, ainsi qu'une pénalité de +2 à la Classe d'Armure.
+- Ne peut dépenser qu'un seul point dans les armes suivantes : épée bâtarde, épée longue, épée courte, épée à deux mains, katana, cimeterre, hallebarde, fléau d'armes et arbalète.
+- Ne peut porter aucune armure, ni utiliser de grand bouclier.
+- Le charisme maximum est inférieur de 2 points à celui d'un membre standard de la même race.~
+@40604 = ~Rage Féroce~
+@40605 = ~Appel Sauvage~
+@40606 = ~Chien Sauvage~
+@40607 = ~Loup~
+@40608 = ~Loup Sanguinaire~
+@40609 = ~Chef de Meute~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Forest Runner Ranger Kit                         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@40901 = ~coureur des bois~
+@40902 = ~Coureur des Bois~
+@40903 = ~COUREUR DES BOIS : là où se trouve un régime corrompu ou oppressif, il y a toutes les chances de trouver un Coureur des Bois. Les Coureurs des Bois s'élèvent contre de tels régimes, vivant en marge de la société et souvent de la loi. Ce ne sont des criminels qu'au sens juridique du terme, car ils adhèrent à un code personnel qui les pousse à faire la guerre aux aristocrates avides ou aux dirigeants iniques. Là où les dirigeants en place voient le Coureur des Bois comme un brigand sans foi ni loi, la population l'acclame en héros, voyant en lui leur meilleur espoir contre un gouvernement tyrannique.
+
+Les Coureurs des Bois ne peuvent être d'alignement Loyal-Bon.
+
+Avantages :
+- +5 % en furtivité.
+- Peut atteindre la maîtrise (trois points) dans les armes suivantes : arc long, bâton, épée longue et dague.
+- 'Inspiration' une fois par jour tous les six niveaux (à partir du niveau 1). Cette aptitude permet d'améliorer le moral et les jets d'attaque des compagnons du Coureur des Bois pendant 3 rounds.
+
+Inconvénients :
+- Ne peut porter aucune armure métallique
+- Ne peut dépenser qu'un point de compétence dans les armes suivantes : hache, épée à deux mains, marteau de guerre et arbalète.~
+@40904 = ~Inspiration~
+@40905 = ~Inspiré~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Justifier Ranger Kit                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@41201 = ~vengeur~
+@41202 = ~Vengeur~
+@41203 = ~VENGEUR : Certaines expéditions sont si difficiles et certains adversaires si dangereux qu'ils requièrent l'attention d'un spécialiste hautement entraîné dont les talents au combat surpassent de loin ceux d'un rôdeur classique. Entre alors en scène le Vengeur, un maître tacticien que son instinct militaire, son aptitude au combat et ses nerfs d'acier placent au premier rang des guerriers d'élite.
+
+Pour un Vengeur déterminé, aucune tâche n'est trop difficile, aucun ennemi trop redoutable. Ses aptitudes avec les armes lui donnent un avantage au combat, bien que le peu de temps consacré à la pratique de la magie le laisse un peu démuni dans ce domaine.
+
+Les Vengeurs doivent être d'alignement Loyal-Bon.
+
+Avantages :
+- +10 % en furtivité.
+- +1 au toucher et au facteur de vitesse tous les 10 niveaux d'expérience.
+
+Inconvénients :
+- Ne gagne pas la capacité de Charme-Animal.
+- Lancement de sorts limité à :
+'Soins des Blessures Légères' et 'Armure de la Foi' une fois par jour chacun à partir du niveau 8.
+'Chance' et 'Apaisement' une fois par jour chacun à partir du niveau 10.
+'Puiser dans la Puissance Divine' une fois par jour à partir du niveau 12.~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Wilderness Runner Ranger Kit                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@41501 = ~coureur sauvage~
+@41502 = ~Coureur Sauvage~
+@41503 = ~COUREUR SAUVAGE : Il y a rôdeur et rôdeur... Les Elfes partagent une connexion unique avec le coeur de la forêt ; certains plus profondément que d'autres. Seuls ceux qui ont choisi la profession de rôdeur peuvent choisir de développer une connexion plus profonde avec la forêt, ignorant même les raffinements de la société elfique pour servir uniquement les besoins de la forêt. Ces individus sont appelés Coureurs Sauvages.
+
+Avantages :
+- +10 % de résistance au feu et au froid non-magiques.
+- Peut atteindre la maîtrise (trois points) dans les arcs longs et les bâtons.
+- Peut utiliser le Charme-Animal amélioré une fois par jour tous les deux niveaux (à partir du niveau 1) au lieu du Charme-Animal standard. La version améliorée dure deux fois plus longtemps et affecte tous les animaux de la zone.
+- Peut poser des pièges (20 % de chances au niveau 1, +5 % de chances à chaque niveau suivant).
+
+Inconvénients :
+- Race restreinte aux elfes.
+- Ne peut porter d'armure plus lourde que l'armure de cuir cloutée.
+- Ne peut dépenser qu'un point de compétence dans les marteaux de guerre, ainsi que les fléaux d'armes et étoiles du matin.
+- Le charisme maximum est inférieur de 2 points à celui d'un membre standard de la même race.~
+@41504 = ~Charme-Animal amélioré~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Battleguard of Tempus kit for Branwen            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Change Jaheira to Neutral Good                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Nightcloak of Shar kit for Viconia               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+
+@61001 = ~Amène-moi Viconia, l'elfe noire, Manteau de la Nuit de Shar.~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// sphere system                                    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@2000 = ~Installer le systeme des spheres~

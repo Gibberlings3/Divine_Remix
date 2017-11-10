@@ -1,0 +1,1834 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Generic installation strings                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@1   =~Tento komponent  vyzaduje komponent Klerikuv remix.~
+@2   =~Tento komponent vyzaduje kit Nocní plast Shar.~
+@3   =~Tento krok muze chvili trvat...~
+@4   =~Tento komponent vyzaduje kit Tempova Bitevni straz.~
+@5   =~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+/////               The old Cleric Remix               \\\\\
+/////                must be uninstalled               \\\\\
+/////          before installing Divine Remix          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+~
+@6   =~Tento krok muze nejakou dobu trvat. Prizpusobuje carodejne knihy vsem knezskym sesilacum ve hre.~
+@7   =~Tento komponent vyzaduje Hlavní komponenty.~
+@8   =~Tento komponent vyzaduje komponent Druiduv remix.~
+@9   =~Tento kit uz je nainstalovan spolu s modem Unfinished Business.~
+@10  =~Komponenty Klerikova remixu~
+@11  =~Komponenty Druidova remixu~
+@12  =~Komponenty Paladinova remixu~
+@13  =~Komponenty Hranicarova remixu~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// strings for core components                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@100 =~Hlavni komponenty Divine remixu (potrebne ke vsemu)~
+@101 = ~Nemùeš seslat toto kouzlo, dokud nevyprší souèasné seslání.~
+@102 =~Kopí z rohu jednoroce~
+@103 =~Kopí z rohu jednoroce (vzıvání)
+Úroveò: 2
+Sféra: zvíøata
+Dosah: dohled sesílatele
+Trvání: ihned
+Doba sesílání: 5
+Oblast pùsobení: 1 bytost
+Záchrannı hod: 1/2
+
+Toto kouzlo stvoøí støíbroskvoucí, èásteènì nehmotnı oštìp ve tvaru rohu jednoroce. Sesílatel zvolí cíl, na nìj zbraò okamitì vystøelí a zpùsobí bodné zranìní 3k6 (pøi úspìšném záchranném hodu polovinu). I kdy se roh po úspìšném zásahu rozptılí, obklopí protivníka støíbøitım jasem, kterı jej èiní lépe viditelnım a zranitelnım. Obì tak bude na tøi kola postiena penalizací -2 na obranné èíslo.~
+@104 =~Kletba~
+@105 =~Kletba (stvoøení/povolávání)
+Úroveò: 1
+Sféra: všechny
+Dosah: dohled sesílatele
+Trvání: 6 kol
+Doba sesílání: 1 kolo
+Oblast pùsobení: polomìr 25 stop
+Záchrannı hod: ádnı
+
+Kdy je vyøknuto kouzlo Kletba, sesílatel sníí morálku nepøátelskıch bytostí a sníí jejich záchranné a útoèné hody o -1. V okamiku, kdy je kouzlo dokonèeno, ovlivní všechny bytosti v oblasti padesátistopé krychle okolo místa, které sesílatel zvolil (take ovlivnìní tvorové, kteøí oblast opustí, stále podléhají jeho úèinkùm; na ty, kteøí do ní vstoupí a po dokonèení magické formule, se ji kouzlo nevztahuje).~
+@106 =~Sluneèní paprsek~
+@107 =~Sluneèní paprsek (vzıvání)
+Úroveò: 1
+Sféra: slunce
+Dosah: dohled sesílatele
+Trvání: ihned
+Doba sesílání: 4
+Oblast pùsobení: 1 bytost
+Záchrannı hod: 1/2
+
+Po vyslovení èarodìjné formule vyšlehne z nebes na zvolenı cíl oslnivı paprsek spalujícího áru. Obì si mùe hodit na záchranu proti kouzlu a pokud se jí vrh podaøí, utrpí pouze polovièní újmu. Kadı, na koho paprsek dopadne, ztratí 1k6 +1 ivot za kadou úroveò sesílatele. Nemrtvé bytosti a nestvùry zvláš zranitelné jasnım svìtlem pøijdou o 1k6 ivotù +2 za kadou knìzovu úroveò. K tomu všemu budou zasaení na 3 kola oslepeni.~
+@108 =~Bestiin spár~
+@109 =~Bestiin spár (pøemìny)
+Úroveò: 2
+Sféra: souboj, nekromancie
+Dosah: sesílatel
+Trvání: 1 tah
+Doba sesílání: 5
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı
+
+Toto kouzlo promìní sesílatelovy ruce v paøáty mocné šelmy, zvıší jeho sílu na 18/72 a dá mu monost zpùsobit nepøíteli seèná zranìní 2k4 (+bonus za sílu). Uivatel smí svımi spáry zaútoèit dvakrát za kolo s bonusem +2 k zásahu.~
+@110 =~Mìsíèní èepel~
+@111 =~Mìsíèní èepel (vzıvání)
+Úroveò: 3
+Sféra: souboj, slunce
+Dosah: sesílatel
+Trvání: 2 kola
+Doba sesílání: 6
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı
+
+Toto kouzlo vyvolá tichou beztínou zbraò podobnou meèi, sestávající z mìsíèního svìtla a dlouhou 1,2 m. Pøi útoku se chová jako zbraò +4, co má vliv na to, jaké nepøátele zasáhne, ale tento bonus se neodráí v THAC0. Díky køehké povaze tohoto bøitu také nelze aplikovat bonusy za sílu. Úder mìsíèní èepele vysává z cíle ivot a zpùsobuje tak újmu 1k12 +4 a dalších 1k12 zranìní nemrtvım, kteøí její moci více podléhají. Úspìšnı zásah také poškozuje magii a zpùsobuje, e kadé kouzlo, které se obì pokusí v následujícím kole seslat, se nezdaøí. ~
+@112 =~Vílí oheò~
+@113 =~Vílí oheò (vyvolávání)
+Úroveò: 1
+Sféra: ivly
+Dosah: dohled sesílatele
+Trvání: 4 kola + 1 kolo za 5 úrovní
+Doba sesílání: 4
+Oblast pùsobení: 1 bytost
+Záchrannı hod: ádnı
+
+Vílí oheò vyznaèí obrysy cíle slabou záøí zpùsobující, e jeho pozice a pohyby jsou jasnì viditelné. Další efekt je penalizace -2 k obrannému èíslu cíle.~
+@114 =~Rozkaz (oèarování/zmámení) 
+Úroveò: 1
+sféra: zmámení, souboj, právo 
+Dosah: 30 metrù 
+Trvání: 1 kolo
+Doba sesílání: 1
+Oblast pùsobení: 1 bytost
+Záchrannı hod: zvláštní
+
+Toto kouzlo dovoluje klerikovi poruèit jiné bytosti "zemøi" (usni) na jedno kolo. Na konci kola se bytost probere a je nezranìna. Stvoøením s s ivotaschopností 6 nebo vyšší(nebo zkušenostními úrovnìmi) je povolen záchrannı hod proti kouzlu, aby ignorovali rozkaz.~
+@115 =~Posílení svatou mocí (vzıvání) 
+Úroveò: 2
+Sféra: povolávání
+Dosah: 0 
+Trvání: 1 tah
+Doba sesílání: 2
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı
+
+Klerik vzıvá svého boha a ten mu na krátkou chvíli zaruèí velkou moc. Síla, odolnost a obratnost se mu zvıší o 1 bod za kadé 3 úrovnì sesílatele. Sesílateli na tøetí úrovni se jeho schopnosti zvıší o 1, zatímco sesílateli na dvanácté se všechny jeho schopnosti zvıší o 4. ~
+@116 =~Povolej hmyz (vyvolávání/povolávání)
+Sféra: zvíøata
+Dosah: 30 metrù
+Trvání: 7 kol
+Doba sesílání: 9
+Oblast pùsobení: 1 bytost
+Záchrannı hod: zvláštní
+
+Toto kouzlo pøiláká roj normálního hmyzu, kterı napadne jednoho sesílatelova nepøítele. Hmyz se objeví na místì urèeném knìzem (v dosahu kouzla) a napadne jednu bytost, na ni sesílatel ukáe. Obì mùe zkusit záchrannı hod proti dechu (s postihem -4), aby roji unikla. Jinak je zranìna za 1 ivot kadé dvì vteøiny trvání kouzla. Obì bojuje s postihem -2 k útoku a +2 k obrannému èíslu. Jeliko hmyzáci napadeného neustále koušou, je velmi obtíné sesílat kouzla (50% šance neúspìchu).~
+@117 =~Zmatek (oèarování/zmámení)
+Úroveò: 7
+Sféra: oèarování
+Dosah: dohled sesílatele
+Trvání: 1 kolo/2 úrovnì
+Doba sesílání: 7
+Oblast pùsobení: krychle 18 metrù
+Záchrannı hod: zvláštní
+
+Kouzlo zmate jednu èi více bytostí v oblasti; zpùsobí nerozhodnost a neschopnost aktivnì jednat. Všechna stvoøení v oblasti úèinku si mohou hodit na záchranu pøed kouzlem s postihem -2. Ta, která úspìšnì vyváznou, zùstanou neovlivnìna.
+Ta, kterım se to nepodaøí, podlehnou bojovému šílenství, zùstanou zmatená nebo po dobu trvání neèinnì bloumají kolem. Kouzlo trvá jedno kolo za kadé dvì úrovnì sesílatele.
+Pobíhající tvorové se vzdálí od knìze tak daleko, jak je to jen moné, podle toho, jak se obvykle pohybují (postavy chodí, ryby plavou, netopıøi létají, atd.) Kadı zmatenı subjekt, kterı je napaden, povauje útoèníka za nepøítele a podle toho také jedná.~
+@118 =~Regenerace (nekromancie) 
+Úroveò: 7
+Sféra: nekromancie
+Dosah: dotyk
+Trvání: 1 kolo/ 2 úrovnì
+Doba sesílání: 7
+Oblast pùsobení: cílová bytost
+Záchrannı hod: ádnı 
+
+Toto mocné kouzlo umoòuje knìzi pøedat jedné bytosti schopnost regenerace. Tato regenerace vyléèí jakékoli zranìní a dokonce i zregeneruje ztracené konèetiny. Ovlivnìná bytost získává 3 ivoty za vteøinu. Úèinky trvají 1 kolo za kadé dvì úrovnì sesílatele nebo do zrušení. Èili klerik na 14. úrovni by regeneroval 18 ivotù za kolo po dobu 7 kol.~
+@119 =~Najdi zlo (vìštìní) 
+Úroveò: 1
+Sféra: vìštìní
+Dosah: dohled sesílatele
+Trvání: okamitì
+Doba sesílání: 2
+Oblast pùsobení: dohled
+Záchrannı hod: ádnı 
+
+Toto kouzlo odhalí vyzaøování zla z jakékoliv bytosti. Všechny zlé bytosti v dosahu kouzla zaènou slabì rudì záøit.~
+@120 =~Jed (nekromancie) 
+Úroveò: 4
+Sféra: léèení
+Dosah: 15 stop
+Trvání: 1 tah
+Doba sesílání: 4
+Oblast pùsobení: 1 bytost
+Záchrannı hod: zrušení
+
+Tímto kouzlem mùe sesílatel otrávit obìti, které neuspìjí v záchranì proti jedu. Úèinky závisí na úrovni sesílatele a jsou popsány zde:
+7.-9. úroveò:  2k8  +  2/kolo
+10.-12. úroveò:  3k8  + 3/kolo
+13.-14. úroveò:  4k8  +  4/kolo
+15.-16. úroveò:  6k8  +  5/kolo
+17+ úroveò:  8k8  +  6/kolo
+Ti, kteøí uspìjí v záchranì, nebudou otráveni.~
+@121 =~Záhuba (Promìny) 
+Úroveò: 1
+Sféra: oèarování
+Dosah: dohled sesílatele
+Trvání: 1 tah 
+Doba sesílání: 1 kolo
+Oblast pùsobení: 1 bytost
+Záchrannı hod: ádnı 
+
+Po tomto zaklínadle pøepadne obì pocit zmaru a zkázy. Po dobu trvání kouzla trpí postihem -2 ke všem hodùm, tedy vèetnì THAC0 a záchrannıch hodù. Na toto kouzlo není ádnı záchranı hod. Násobná seslání kouzla se nesèítají.~
+@122 =~Útoèištì (ochrana) 
+Úroveò: 1
+Sféra: oèarování, ochrana 
+Dosah: 0
+Trvání: 1 tah
+Doba sesílání: 4 
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı 
+
+Kdy knìz sešle kouzlo Útoèištì, zpùsobí, e všichni jeho protivníci pøestanou vnímat jeho pøítomnost, jako by byl neviditelnı. Kdy je takto chránìn, nemùe napadat nepøátele, ani by moc svého útoèištì zrušil; smí však provádìt neagresivní kouzla nebo jinou èinnost, která není v rozporu s tímto zákazem útoèení. Toto dovoluje chránìnému klerikovi aby vyléèil svá zranìní, nebo se pomodlil. Nemùe sesílat kouzla na jiné bytosti, ani by ukonèil toto kouzlo.~
+@123 =~Posílení (nekromancie, stvoøení)
+Úroveò: 2
+Sféra: souboj, nekromancie 
+Dosah: dotyk 
+Trvání: 1 kolo + 1 kolo/úroveò 
+Doba sesílání: 5
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: ádnı
+
+Toto kouzlo funguje na pøíjemce jako Poehnání (+1 na útok a všechny záchranné hody) a pøidá bonusovıch 1k8 ivotù navíc po dobu trvání kouzla. Posílení umoòuje, aby mìla postava více ivotù, ne je její normální maximum. Bonusové ivoty jsou pøi zranìní postavy ztraceny první a nemohou bıt léèeny. Pøíklad: Bojovník na 1. úrovni má 8 ivotù, utrpí zranìní za 2 (8 - 2 = 6) a poté dostane kouzlo Posílení, které mu dává 5 bonusovıch. Díky tomu má 11 ivotù, tøi z nich jsou pouze doèasné. Pokud bude poté zranìn napø. za 7 bodu zranìní, 4 normální ivoty a všechny 3 doèasné budou ztraceny. Poté na nìj bude sesláno kouzlo Vyleè lehká zranìní s úèinností 5 ivotù, èím se jejich poèet zvıší na pùvodních 8.~
+@124 =~Dr osobu (zaøíkávání/zmámení) 
+Úroveò: 2
+Sféra: zmámení, zákon 
+Dosah: dohled sesílatele 
+Trvání: 1 tah
+Doba sesílání: 5
+Oblast pùsobení: cíl a kadı do 1,5 metru
+Záchrannı hod: zrušení
+
+Toto kouzlo zadrí jednu osobu. Termín osoba oznaèuje dvounohé lidi, demilidi nebo humanoidy lidské velikosti èi menší, jako jsou brownie, dryády, trpaslíci, elfové, gnollové, gnomové, skøeti, pùlelfové, pùlèíci, pùlorci, skuruti, lidé, koboldi, ještìøí lidé, nixie, orkové, pixie, skøítci, troglodyti a mnozí další.
+Úèinek je vystøedìn na obì vybranou sesílatelem. Kadı nepøítel do 1,5 metru od cíle je také ovlivnìn. Na ty, kteøí v záchranném hodu uspìjí, nebude mít kouzlo ádnı úèinek. Nemrtvé bytosti není mono zadret.
+Postiení tvorové se nemohou pohybovat ani mluvit, zùstávají však pøi vìdomí, registrují dìní kolem sebe, aèkoliv je nemohou zmìnit.
+Èas pro zasaené ubíhá normálním tempem, znehybnìní je ale neuchrání pøed zhoršováním stavu v dùsledku zranìní, nákazy nebo jedù.~
+@125 = ~Uzdrav nemocného (ochrana)
+Úroveò: 3
+Sféra: léèení
+Dosah: dotyk
+Trvání: trvale
+Doba sesílání: 1
+Oblast pùsobení: 1 bytost
+Záchrannı hod: ádnı
+
+Pøiloením rukou na nemocnou osobu vyléèí sesílatel jakoukoli chorobu. Uzdravení je trvalé, ale nikdo nemùe zaruèit, e se osoba znovu nenakazí. Toto kouzlo vyléèí také slabomyslnost. Kouzlo však nemusí vyléèit nìkteré choroby magického pùvodu.~
+@126 =~Rozptyl magii (ochrana)
+Úroveò: 3
+Sféra: všechny
+Dosah: dohled sesílatele
+Trvání: zvláštní
+Doba sesílání: 6
+Oblast pùsobení: Krychle 10 metrù (30 stop)
+Záchrannı hod: zvláštní
+
+Kouzlo odstraní magické úèinky z kohokoli v oblasti. To zahrnuje efekty kouzel, lektvarù a jistıch magickıch pøedmìtù, jako jsou hole. Neovlivní samotné oèarované pøedmìty nebo kouzelné ochrany jako napø. Odvracení kouzla èi Odraení kouzla. Šance na zrušení kouzla je urèena úrovní sesílatele a úrovní likvidované magie. Základní šance je 50 %. Za kadou úroveò, o kterou je sesílatel odstranìní vıše ne pùvodní sesílatel, se šance na úspìch zvıší o 5 %. Za kadou úroveò, o kterou je sesílatel odstranìní níe ne pùvodce kouzla, se šance na úspìch o 10 % sníí. Avšak bez ohledu na úrovnì, je vdy 1% šance na neúspìch. Podobnì pokud je sesílatel o ètyøi úrovnì níe, ne magie, kterou se snaí odstranit, je jenom 10% šance na úspìch. Toto kouzlo je takøka nepouitelné, je-li cíl o 5 nebo více úrovní vıš nad sesílatelem.
+Poznámka: i kdy toto kouzlo odstraòuje individuální efekty sádla, pavuèiny, smrdícího mraku a podobnıch kouzel, nevyèistí oblast pùsobení.~
+@127 =~Svatı úder (nekromancie)
+Úroveò: 3
+Sféra: nekromancie
+Dosah: vıhled sesílatele
+Trvání: okamitì
+Doba sesílání: 3
+Oblast pùsobení: polomìr 6 metrù
+Záchrannı hod: zvláštní
+
+Toto kouzlo pøivolá energii ze záøivé sféry, díky ní se ta sféra propojí s cíli. Vısledkem je, e kadá zlá bytost v okruhu pùsobnosti utrpí 1-4 zranìní za kadou úroveò sesílatele a pokud uspìje v hodu na záchranu proti kouzlu, utrpí polovinu zranìní. V pøípadì, e se nepøíteli vrh nezdaøí, bude ještì k tomu na 1 kolo oslepen.~
+@128 =~Zrušení neviditelnosti (vìštìní)
+Úroveò: 3
+Sféra: ochrana
+Dosah: dohled sesílatele
+Trvání: okamitì
+Doba sesílání: 8
+Oblast pùsobení: polomìr 9 metrù
+Záchrannı hod: ádnı
+
+Kadá neviditelná bytost v dosahu kouzla je zviditelnìna, vèetnì bytostí, které vyuívají útoèištì, vylepšenou neviditelnost a stínové dveøe.~
+@129 =~Ochrana pøed ohnìm (ochrana)
+Úroveò: 3
+Sféra: elementy (oheò)
+Dosah: dotyk
+Trvání: 3 kola + 1 kolo/úroveò
+Doba sesílání: 6
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: ádnı
+
+Kouzlo netrvá déle ne 3 kola plus 1 kolo za úroveò sesílatele. Po tu dobu však zaruèuje úplnou nezranitelnost normálním ohnìm (pochodnì, hranice apod.) Podobnì u magickıch ohòù, jako dech ohnivého draka, nebo kouzel jako hoøící ruce, ohnivá koule, havé uhlíky, ohnivá bouøe, ohnivı úder, meteorická bouøe, pekelnı ohaø nebo dech ohnivé hydry, kouzlo absorbuje 80%. Nìkolikanásobná sesílání kouzla se nesèítají.~
+@130 =~Odstraò kletbu (ochrana)
+Úroveò: 3
+Sféra: všechny
+Dosah: dotyk
+Trvání: trvale
+Doba sesílání: 6
+Oblast pùsobení: zvláštní
+Záchrannı hod: zvláštní
+
+Pøi vyvolání tohoto kouzla mùe knìz obvykle sejmout kletbu z pøedmìtu, osoby nebo z jiné formy, která je napadena zlem. Tímto zpùsobem však nelze odstranit kletbu z prokletıch štítù, zbraní nebo zbroje, aèkoliv toto kouzlo obvykle umoní osobì ovlivnìné takovım pøedmìtem, aby se jej zbavila. Urèité zvláštní kletby tímto zpùsobem zlikvidovat nelze nebo na nì je potøeba, aby sesílatel dosáhl urèité úrovnì.~
+@131 =~Odstraò ochromení (ochrana)
+Úroveò: 3
+Sféra: ochrana
+Dosah: 10 metrù/úroveò
+Trvání: stále
+Doba sesílání: 6
+Oblast pùsobení: 1 bytost
+Záchrannı hod: ádnı
+
+S pomocí tohoto kouzla mùe sesílatel osvobodit jednu bytost od úèinku jakéhokoliv ochromení èi pøíbuzné magie (jako je napø. dotyk ghúla nebo drení).~
+@132 =~Bezboná zkáza (nekromancie)
+Úroveò: 3
+Sféra: léèení
+Dosah: vıhled sesílatele
+Trvání: okamitì
+Doba sesílání: 3
+Oblast pùsobení: polomìr 6 m
+Záchrannı hod: zvláštní
+
+Toto kouzlo pøivolá energii z negativní sféry, díky ní se urèená oblast naèas propojí s touto dimenzí. Vısledkem je, e kadá dobrá bytost v oblasti pùsobení utrpí zranìní 1-4 ivoty za kadou úroveò sesílatele, se záchranou proti kouzlu na polovinu. Pokud obì v záchranì neuspìje, obdrí na 4 kola postih -2 ke všem hodùm.~
+@133 =~Oblast èerstvého vzduchu (ochrana)
+Úroveò: 3
+Sféra: ochrana
+Dosah: 30 metrù
+Trvání: ihned
+Doba sesílání: 3
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Oblast èerstvého vzduchu zapudí všechny škodlivé otrávené vıpary (vèetnì tìch magicky vytvoøenıch - jako tøeba Smrtící mrak). Toto kouzlo zlikviduje všechny takové oblaky oblasti, kde se právì sesílatel nachází. Zaklínadlo nechrání pøed otrávenımi vıpary vytvoøenımi draèím dechem.~
+@134 =~Povolávání zvíøat I (vyvolávání/povolávání)
+Úroveò: 4
+Sféra: zvíøata
+Dosah: 20 m
+Trvání: 3 tahy
+Doba sesílání: 7
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Tímto kouzlem pøivolá knìz na pomoc 2 a 3 zvíøata, která mají ivotaschopnost 4 nebo ménì. Druh se urèí náhodnì. Tyto tvory sesílatel ovládá, dokud jsou naivu, nebo neskonèí kouzlo.~
+@135 =~Odraz smrt (nekromancie)
+Úroveò: 4
+Dosah: dohled sesílatele
+Trvání: 1 tah/úroveò sesílatele
+Doba sesílání: 1 kolo
+Oblast pùsobení: 1 bytost
+Záchrannı hod: ádnı
+
+Toto kouzlo chrání po dobu svého trvání pøed všemi druhy smrtící magie. Mezi nì kupøíkladu patøí Rozloení, Mocné slovo: Zabij, Kouzlo smrti èi Prst smrti, i kdy to není omezeno pouze na nì.~
+@136 =~Bystrozrakost (vìštìní)
+Úroveò: 4
+Sféra: vìštìní
+Dosah: zvláštní
+Trvání: 3 kola + 1 kolo/úroveò
+Doba sesílání: 4
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+S pomocí tohoto kouzla je sesílatel schopen prohlédnout neprozkoumaná území. Pro jeho seslání prostì klikni na èást mapy, kterou chceš odkrıt. Po dobu trvání kouzla mùe mág zkoumat oblast, sledovat bytosti a prohlédnout si opevnìní.~
+@137 =~Svatá síla (vzıvání)
+Úroveò: 4
+Dosah: ádnı
+Trvání: 1 kolo/úroveò
+Doba sesílání: 6
+Oblast pùsobení: Sesílatel
+Záchrannı hod: ádnı
+
+Pomocí tohoto kouzla sesílatel získá sílu a schopnosti bojovníka na stejné úrovni. Síla knìze se zmìní na 18/00 (i kdy je normálnì vyšší), jeho THAC0 bude stejné jako u váleèníka tée úrovnì a získá navíc 1 ivot za kadou úroveò. Tyto úèinky potrvají po dobu trvání kouzla nebo do odèarování. Násobná seslání se nesèítají.~
+@138 =~Ochrana pøed zlem, polomìr 3 m (ochrana)
+Úroveò: 3
+Sféra: ochrana
+Dosah: dotyk
+Trvání: 1 tah/úroveò
+Doba sesílání: 7
+Oblast pùsobení: polomìr 3 m
+Záchrannı hod: ádnı
+
+Po seslání tohoto kouzla jsou všechny bytosti v okruhu 3 metry ovlivnìny kouzlem Ochrana pøed zlem. To vytvoøí magickou bariéru okolo pøíjemce ve vzdálenosti 30 cm. Bariéra se pohybuje s pøíjemcem a má dva hlavní efekty: Všechny útoky vedené zlımi nebo zlem oèarovanımi bytostmi proti chránìné bytosti mají postih -2 k hodu na útok, a všechny záchranné hody chránìné bytosti zapøíèinìné takovımi útoky získají bonus +2.~
+@139 =~Ochrana pøed bleskem (ochrana)
+Úroveò: 4
+Sféra: poèasí
+Dosah: dotyk
+Trvání: 5 kol/úroveò
+Doba sesílání: 7
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: ádnı
+
+Kouzlo zaruèuje úplnou nezranitelnost elektrickımi útoky, jako je napø. draèí dech nebo kouzla typu Blesk, Dìsivé sevøení atd. Ochrana pùsobí po dobu trvání kouzla (nebo do odèarování).~
+@140 =~Povolávání zvíøat II (vyvolávání/povolávání)
+Úroveò: 5
+Sféra: zvíøata
+Dosah: 60 metrù/úroveò
+Trvání: 3 tahy
+Doba sesílání: 8
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Tímto zaklínadlem sesílatel pøivolá na pomoc 1 a 3 zvíøata, která mají ivotaschopnost 8 nebo ménì. Zvíøata pomáhají sesílateli všemi svımi monostmi, dokud jsou naivu, nebo neskonèí kouzlo.
+Mohou bıt povolána jedinì normální èi obøí zvíøata; fantastická zvíøata èi pøíšery nejsou kouzlem ovlivnìny (ádné chiméry, draci, gorgony, mantikory atd.).~
+@141 =~Vìtší pøíkaz (zaøíkávání/zmámení)
+Úroveò: 5
+Sféra: zmámení, souboj, zákon
+Dosah: dohled sesílatele
+Trvání: 1 kolo/úroveò sesílatele
+Doba sesílání: 1
+Oblast pùsobení: polomìr 6 m
+Záchrannı hod: zrušení
+
+Podobnì jako jeho modifikace první úrovnì, dovoluje i toto kouzlo pøikázat jinım bytostem "umøi" (usni), ovšem nyní úèinky kouzla vyprší po dobì jednoho kola za úroveò sesílatele. Na konci kola se tvorové probudí zcela nezranìni. Okruh pùsobení se podobá okruhu Smrdícího oblaku èi Ohnivé koule.~
+@142 =~Epidemie hmyzu (vyvolávání/povolávání)
+Úroveò: 5
+Sféra: zvíøata
+Dosah: 120 metrù
+Trvání: 6 kol
+Doba sesílání: 5
+Oblast pùsobení: nepøátelé v dohledu
+Záchrannı hod: zvláštní
+
+Toto kouzlo pøivolá roj plazícího se, skákavého a létajícího hmyzu. Hmyzáci se nejprve vrhnou na nejbliší cíl a poté na další jeho spojence, dokud neovlivní šest bytostí. Sesílání v roji je naprosto nemoné (100% šance neúspìchu). Bez ohledu na OÈ jsou všechny bytosti v roji zranìny za 1 ivot kadé dvì vteøiny, kdy zùstávají uvnitø. Neviditelnost nijak nechrání. Ten, kdo neuspìje v záchranì proti dechu, panicky prchá jedno kolo.~
+@143 =~elezná kùe (promìny)
+Úroveò: 5
+Sféra: ivly (zemì)
+Dosah: 0
+Trvání: 12 hodin
+Doba sesílání: 1 kolo
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı
+
+Kdy na sebe druid sešle toto mocné kouzlo, celého jej pokryje elezná kùe. Tato kùe je samozøejmì magická a sesílatele nijak neomezuje. Chrání druida pøed fyzickımi útoky, jako jsou zbranì na blízko èi støely. Za kadé dvì úrovnì sesílatele se objeví jedna vrstva kùe navíc. Napø. druid na 10. úrovni získá 5 vrstev kùe, zatímco jeho kolega na 20. úrovni ji získá vrstev 10. Kadá vrstva zastaví jeden útok, take druid na 10. úrovni se ochrání pøed 5 prvními zásahy, ale šestı jej ji normálnì ovlivní. Kouzlo sesílatele chrání, dokud není zrušeno, všechny vrstvy nejsou odstranìny útoky nebo dokud samo nevyprší. Je dùleité poznamenat, e druida neochrání pøed magickımi útoky (napø. Ohnivou koulí), avšak ochrání jej pøed fyzickımi magickımi útoky (napø. Magickou støelou).~
+@144 =~Prach skøítkù (iluze/pøeludy)
+Sféra: souboj
+Úroveò: 5
+Dosah: 0
+Trvání: zvláštní
+Doba sesílání: 1 kolo
+Oblast pùsobení: polomìr 9 m
+Záchrannı hod: ádnı
+
+Toto kouzlo vytvoøí hrst prachu skøítkù, kterı mùe sesílatel rozhodit do vzduchu. Kadı, koho prach zasáhne, se stane neviditelnım (dosah je pøiblinì 9 m). Neviditelné bytosti samozøejmì nejsou magicky utišeny a za jistıch podmínek je lze odhalit. Takové stvoøení a jeho vybavení nevidí ani spojenci (pokud ovšem tito spojenci normálnì nevidí neviditelné). Odloené pøedmìty se zviditelní a zvednuté pøedmìty zmizí, jsou-li skryty pod obleèení. Kouzlo trvá, dokud není rozptıleno, dokud je èarodìj èi pøíjemce nezruší, dokud pøíjemce nezaútoèí, nebo dokud neuplyne 24 hodin. Takto skrytá bytost tudí mùe chodit a sesílat obranná kouzla, ale jakmile zaútoèí, okamitì se svému okolí zjeví (pøesto jí neviditelnost zaruèí první útok).~
+@145 =~Odraz nemrtvého (ochrana)
+Sféra: nekromancie
+Úroveò: 5
+Dosah: sesílatel
+Trvání: 1 tah
+Doba sesílání: 5
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı
+
+Toto mocné kouzlo vytvoøí vlnu energie pùsobící proti negativním sférám. Tato vlna zadrí všechny nemrtvé, kteøí se pokusí napadnout sesílatele; na urèitı èas je bude dret z dosahu. Po dobu trvání kouzla vytvoøí knìz v kadém kole jednu vlnu. Pùsobí na všechny nemrtvé, bez záchranného hodu.~
+@146 =~Zabij ivé (nekromancie)
+Úroveò: 5
+Sféra: nekromancie
+Dosah: dotyk
+Trvání: zvláštní
+Doba sesílání: 1
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: zvláštní
+
+Toto kouzlo nabıvá na úèinnosti a poté, co se knìz svého protivníka dotkne. Bìhem seslání je vytvoøen pøedmìt, kterım musí bıt útok proveden; knìz má na napadení nepøítele 3 kola. Pokud prvním útokem mine, pøedmìt zmizí a kouzlo je promarnìno. Avšak pokud útok uspìje, obì je automaticky zranìna za 2k6 + 9 ivotù a musí uspìt v záchranì proti kouzlu, jinak okamitì zemøe. Kouzlo lze odèarovat v dobì mezi sesláním a následnım útokem.~
+@147 =~Pravdivé vidìní (vìštìní)
+Úroveò: 5
+Sféra: všechny
+Dosah: 0
+Trvání: 1 tah
+Doba sesílání: 8
+Oblast pùsobení: polomìr 21 m
+Záchrannı hod: ádnı
+
+Po seslání kouzla bude ovlivnìn okruh pøiblinì 21 m od sesílatele. Všechny nepøátelské iluze/pøeludy v oblasti pùsobení budou kadé kolo po dobu jednoho tahu okamitì rozptıleny. Pùsobí na tato kouzla: Odraenı obraz, Neviditelnost, Zrcadlovı obraz, Nezjistitelnost, Vylepšená neviditelnost, Stínové dveøe, Sple, Vytvoø obraz a Dvojník. Toto zaklínadlo nijak neovlivòuje magická odolnost cíle a pùsobí jen na nepøátele, take nemùe rozptılit neviditelnost ze èlena druiny.~
+@148 =~Povolávání zvíøat III (vyvolávání/povolávání)
+Úroveò: 6
+Sféra: zvíøata
+Dosah: 60 metrù
+Trvání: 4 tahy
+Doba sesílání: 9
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Tímto kouzlem sesílatel pøivolá tøi zvíøata, která mají ivotaschopnost 12 èi ménì. Pøijdou pouze tvorové, kteøí jsou pøi sesílání v dosahu kouzla. Povolaná zvíøata pomáhají sesílateli všemi prostøedky, dokud nejsou zabita nebo dokud kouzlo nevyprší. Povolána mohou bıt jen normální nebo obøí zvíøata.~
+@149 =~Vyvolej ohnivého elementála (vyvolávání/povolávání)
+Úroveò: 6
+Sféra: ivly (oheò)
+Dosah: dohled sesílatele
+Trvání: 1 tah/úroveò
+Doba sesílání: 1 kolo
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Tímto kouzlem sesílatel otevøe magickou bránu do elementální sféry ohnì a vyvolá ohnivého elementála. Je 60% pravdìpodobnost, e se objeví elementál s ivotaschopnost 12, 35% šance, e bude mít ivotaschopnost 16, a 5% šance, e se objeví elementál s ivotaschopností 24. Tento elementál bude plnit pøíkazy sesílatele, dokud kouzlo nevyprší nebo dokud sám nezemøe. Všechny pøíkazy se pøedávají telepaticky, take není tøeba znát jazyk elementálù a nedochází ke zmatkùm. Na rozdíl od mágovıch kouzel vyvolávání elementálù nemusí knìí podstupovat mentální souboj, aby takovou bytost ovládli.~
+@150 =~havé uhlíky (vyvolávání)
+Úroveò: 6
+Sféra: ivly (oheò)
+Dosah: zvláštní
+Trvání: 3 tahy
+Doba sesílání: 1 kolo
+Oblast pùsobení: zvláštní
+Záchrannı hod: 1/2 zranìní
+
+Sesílatel vytvoøí 4 havé uhlíky, které se objeví v jeho inventáøi. Uhlíky existují po tøi kola od seslání kouzla. Jsou-li bìhem této doby hozeny na nepøítele, vybuchnou v ohnivou kouli a zraní všechny v oblasti pùsobení za 2-16 ivotù. Pøi úspìšné záchranì proti kouzlu je újma polovièní.~
+@151 =~Vyvolej elementála zemì (vyvolávání/povolávání)
+Úroveò: 7
+Sféra: ivly (zemì)
+Dosah: dohled sesílatele
+Trvání: 1 tah/úroveò
+Doba sesílání: 1 kolo
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Sesílatel otevøe zvláštní bránu do elementální sféry zemì a pøivolá do své blízkosti elementála zemì. Je 60% pravdìpodobnost, e se objeví elementál s ivotaschopností 12, 35% šance, e bude mít ivotaschopnost 16, a 5% šance, e se objeví elementál s ivotaschopností 24. Tento tvor bude plnit pøíkazy knìze, dokud kouzlo nevyprší nebo dokud sám nezemøe. Všechny pøíkazy se pøedávají telepaticky, take není tøeba znát ádnı speciální jazyk. Na rozdíl od mágovıch kouzel vyvolávání elementálù nemusí knìí podstupovat mentální souboj, aby takovou bytost ovládli. Elementál zùstane pod kontrolou sesílatele do doby, kdy je zabit nebo dokud nevyprší kouzlo.~
+@152 =~Plíivá záhuba (vyvolávání/povolávání)
+Úroveò: 7
+Sféra: zvíøata
+Dosah: 80 metrù
+Trvání: 3 kola
+Doba sesílání: 5
+Oblast pùsobení: zvláštní
+Záchrannı hod: zvláštní
+
+Plíivá zhouba pøivolá do urèené oblasti spoustu jedovatıch, kousajících a bodajících pavoukù, hmyzu a stonoek, kteøí se rychle rozptılí a zaútoèí na nepøátele. Tato masa se rozprostøe po velkém území, a ke všem bytostem v okruhu 9 m od cíle. Bytosti napadené hmyzem jsou zranìny za 2 ivoty kadé kolo a nedokáí seslat ádné kouzlo. Kadı tah, kdy obì zùstává mezi brouky, musí uspìt v záchranì proti kouzlu s postihem -2, jinak bude ve strachu jedno kolo zmatenì pobíhat. Vıhoda oproti zaklínadlu Epidemie hmyzu je v tom, e toto kouzlo zraòuje dvojnásobnì.~
+@153 =~Brána (vyvolávání/povolávání)
+Úroveò: 7
+Sféra: všechno
+Dosah: 20 metrù
+Trvání: 33 kol
+Doba sesílání: 5
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Tímto kouzlem sesílatel pøivolá bytost z vnìjších sfér - pekelného démona - kterı napadne jeho nepøátele a také sesílatele samotného, pokud není dost opatrnı. Sesílatel (i jeho spoleèníci) musí bıt chránìn kouzlem Ochrana pøed zlem, aby si jej démon nevšímal. Pokud se sesílatel takto neochrání, démon jej roztrhá na kusy a pak se dobøe nadlábne.~
+@154 =~Kùra (promìny)
+Úroveò: 2 
+Sféra:  rostliny
+Dosah: dotyk
+Trvání: 4 kola + 1 kolo/úroveò
+Doba sesílání: 5
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: ádnı
+
+Kùe pøíjemce tohoto kouzla se stane tvrdou jako kùra. Jeho základní obranné èíslo se zlepší na 6 +1 za kadé ètyøi úrovnì knìze. Navíc k záchrannım hodùm proti všem útokùm kromì magie získá bonus +1. Toto kouzlo mùe bıt zaèarováno na sesílatele nebo libovolnou bytost, které se dotkne. Mnohonásobná seslání kouzla se nesèítají.~
+@155 =~Vyvolej lesní bytost (vyvolávání/povolávání)
+Úroveò: 4
+Sféra: zvíøata
+Dosah: dohled sesílatele
+Trvání: 3 tahy
+Doba sesílání: 7
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Toto kouzlo pøivolá nymfu, která bude druinì pomáhat. Nymfa ovládá nìkolik knìskıch kouzel a pouije je ku prospìchu druiny (patøí mezi nì kouzla Duševní ovládnutí, Zmatek a léèivá kouzla). Zùstává pod kontrolou sesílatele, dokud není zabita nebo kouzlo nevyprší.~
+@156 =~Promìna v elementála zemì
+Úroveò: za zásluhy
+Sféra: Souboj, elementy (zemì)
+Dosah: 0
+Trvání: 5 tahù
+Doba sesílání: 1
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı
+
+Tato mocná pøemìna dovoluje druidovi nebo knìzi stát se zemskım elementálem, s ivotaschopností 24, nesmírné síly. Elementální podoba má OÈ -5, THAC0 2 a útokem zpùsobuje 2k10 drtivého zranìní. Kdy se promìní zpátky do lidské podoby, vyléèí se mu 3k10 ivotù.~
+@157 =~Promìna v ohnivého elementála
+Úroveò: za zásluhy
+Sféra: souboj, elementy (oheò)
+Dosah: 0
+Trvání: 5 tahù
+Doba sesílání: 1
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı
+
+Tato mocná pøemìna dovoluje druidovi nebo knìzi stát se ohnivım elementálem s ivotaschopností 24 nesmírné síly. Elementální podoba má OÈ -5, THAC0 2 a útokem zpùsobuje 1k10 normálního a 1k10 ohnivého zranìní. Kdy se promìní zpátky, vyléèí se mu 3k10 ivotù.~
+@158 =~Energetické èepele (všechny školy) 
+Úroveò: za zásluhy
+Sféra: stvoøení, souboj
+Dosah: zvláštní
+Trvání: 4 tahy
+Doba sesílání: 3
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Energetická èepel je tvoøena èistou energií. Disk dává +10 k THAC0 a kdy je hozen, zpùsobí 1k4+5 støelného zranìní a navíc 1K10 zranìní elektøinou. Toto kouzlo vytvoøí 1 disk za úroveò sesílatele a nastaví poèet útokù sesílatele na 9, dokud drí disky.~
+@159 =~Bouøe pomsty
+Úroveò: za zásluhy
+Sféra: válka, poèasí
+Dosah: 90 metrù
+Trvání: 3 kola
+Doba sesílání: 8
+Oblast pùsobení: polomìr 10 metrù
+Záchrannı hod: zvláštní
+
+Po seslání kouzla se zemì zatøese a nebe pøekypuje krví a energií. Všichni nepøátelé sesílatele jsou sraeni kyselım deštìm, zemìtøesením a blesky.
+
+Všichni nepøátelé na 8. a niší úrovni okamitì umírají. Pøeivší jsou zasaeni kyselım deštìm a blesky. Bouøe trvá 3 kola. Kadé kolo utrpí obìti 1k6 zranìní elektøinou, 1k6 zranìní ohnem a 1k6 zranìní kyselinou (pøi záchranì proti kouzlu polovina zranìní). V prvním kole je také šance, e budou otráveni (záchrana proti smrti zrušení).~
+@160 =~Povolávání elementálù
+Úroveò: za zásluhy 
+Dosah: 10 metrù
+Trvání: 10 kol
+Doba sesílání: 1 kolo
+Oblast pùsobení: zvláštní 
+Záchrannı hod: ádnı
+
+Kouzlo posbírá sílu z okolního prostøedí a povolá 2 elementály s ivotaschopností 16, kteøí jsou náhodnì vybráni buï ze zemì, vzduchu èi ohnì. Elementálové zùstanou 10 kol a plní pøíkazy sesílatele. Je 10% šance, e bude povolán náhodnì zvolenı Princ elementálù. Princové vládnou elementálùm ze své sféry. Princ elementálù vzduchu je Chan. Princ elementálù zemì je Sunnis. Princ elementálù ohnì je Zaaman Rul.~
+@161 =~Silnìjší povolávání elementálù 
+Úroveò: za zásluhy
+Sféra: elementy, vyvolávání
+Dosah: 10 metrù
+Trvání: 10 kol
+Doba sesílání: 1 kolo
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Druidé a nìkteøí knìí, mající silnìjší pouto s elementy, mohou seslat silnìjší verzi Povolávání elementálù. Toto kouzlo povolá samotné Prince elementálù, náhodnì vybrané z elementu zemì, vzduchu èi ohnì. Princové zùstanou 10 kol a budou plnit pøíkazy sesílatele.
+
+Vyaduje: Povolávání elementálù~
+@162 =~Povolej Dévu (Stvoøení/Povolávání)
+Úroveò: Za zásluhy
+Sféra: všechny, povolávání
+Dosah: 40 metrù
+Trvání: 4 kola + 1 kolo/úroveò
+Doba sesílání: 5
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Kouzlo otevøe brány nebes a povolá andìlského Dévu, aby bojoval po sesílatelovì boku, dokud kouzlo nevyprší nebo není Devùv pozemskı avatar zabit.~
+@163 =~Povolej padlého Dévu (vyvolávání/pøivolávání)
+Úroveò: za zásluhy
+Sféra: všechny, povolávání
+Dosah: 40 metrù
+Trvání: 4 kola + 1 kolo/úroveò
+Doba sesílání: 5
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Kouzlo otevøe brány pekel a povolá démonického Dévu, aby bojoval po sesílatelovì boku, dokud kouzlo nevyprší nebo není Devùv pozemskı avatar zabit.~
+@164 =~Pohlcení (vzıvání)
+Úroveò: za zásluhy
+Sféra: souboj, èísla
+Dosah: dohled sesílatele
+Trvání: 2 kola
+Doba sesílání: 5
+Oblast pùsobení: 1 bytost
+Záchrannı hod: zvláštní
+
+Toto kouzlo otevøe trhlinu v zemi, je se zvedne a uzavøe nad obìtí, kterou drtí, pálí a drí 1 kolo. Kouzlo zpùsobí 10K10 zranìní ohnìm a 10k10 tupého zranìní. Pøi úspìšné záchranì proti kouzlu je zranìní polovièní.~
+@165 =~Aura plamenné smrti (vzıvání, promìny)
+Úroveò: za zásluhy
+Sféra: elementy (oheò), ochrana
+Dosah: 0
+Trvání: 1 kolo/ 2 úrovnì
+Doba sesílání: 4 
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı 
+
+Toto kouzlo zpùsobí, e sesílatele obklopí aura prudkıch plamenù, která zraòuje protivníky a chrání pøed zranìním. Tento štít nejen sesílateli zaruèuje 90% odolnost na oheò a bonus +4 k OÈ, ale také chrání sesílatele pøed útoky uèinìnımi z okruhu 1,5 m kolem nìj. Protivník, kterı z tohoto okruhu zasáhne sesílatele jakoukoli zbraní èi kouzlem, utrpí zranìní ohnìm za 2k10 +2. Navíc silnı ár chrání sesílatele pøed všemi nemagickımi zbranìmi, støelnımi èi na blízko.~
+@166 =~Boská schránka~
+@167 =~Boská schránka (ochrana)
+Úroveò: 6
+Sféra: chaos
+Dosah: sesílatel
+Trvání: 8 kol
+Doba sesílání: 9
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı
+
+Toto kouzlo obklopí sesílatele ochrannou skoøápkou energie, blokující nebo odklánìjící útoky. Sesílatel obdrí bonus +2 k obrannému èíslu, 10% odolnost na elementální zranìní (chlad, oheò, elektøina a kyselina), +2 k záchrannım hodùm a imunitu na normální støely.~
+@168 = ~Zmatené pøíkazy (zaøíkávání/zmámení)
+Úroveò: 5
+Sféra: chaos
+Dosah: dohled sesílatele
+Trvání: 1 tah/úroveò
+Doba sesílání: 3
+Oblast pùsobení: 1 bytost
+Záchrannı hod: ádnı
+
+Toto zaklínadlo uèiní bytost imunní vùèi magickım pøíkazùm. Do této kategorie patøí Pøíkaz, Vìtší pøíkaz, Zmam osobu, Silná náklonnost, Spánek a podobná kouzla. Kouzlo ovlivní jen jednu bytost a trvá 1 tah/úroveò nebo do zrušení.~
+@169 = ~Neprostupná svatost mysli~
+@170 = ~Neprostupná svatost mysli (Ochrana)
+Úroveò: 7
+Sféra: ochrana, myšlenka
+Dosah: 0
+Trvání: 1 kolo/úroveò
+Doba sesílání: 1
+Oblast pùsobení: sesílatel
+Záchrannı hod: ádnı
+
+Po vyøèení magického zaklínadla se knìzova mysl zatvrdí proti jakémukoliv vnìjšímu vlivu. Dokud pùsobí, selhávají všechny psionické útoky a kouzla zmámení, pøíkaz, nadvláda, strach, slabomyslnost, znehybnìní a spánek, která na nìj smìøují. Krátce, pokud je knìz kouzlem nebo mocí nucen do èinu nebo do utvoøení dojmu, kterı si nepøeje, dokud je toto kouzlo funkèní, nebude to fungovat. Jediná mysl ovlivòující kouzla nebo síla, je mùe chránìného knìze ovlivnit jsou buï ta pocházející od mimoøádnì mocnıch bytostí nebo artefaktù èi relikvií.~
+@171 = ~Nedobytná mysl~
+@172 = ~Nedobytná mysl (Oèarování/Zmámení)
+Úroveò: 5
+Sféra: ochrana, myšlenka
+Dosah: dotyk
+rvání: 1 tah + 1 kolo/úroveò
+Doba sesílání: 1
+Oblast pùsobení: 1 bytost
+Záchrannı hod: ádnı
+
+Toto kouzlo chrání pøíjemce kouzla proti magickım èi psionickım útokùm ovlivòujícím mysl. To zahrnuje Dr osobu, Otupìlou mysl, Zmatek, Ovládnutí a podobné úèinky, spolu s vìtšinou telepatickıch psionickıch sil a útokù.~
+@173 = ~Odolej kyselinì a rzi~
+@174 = ~Odolej kyselinì a rzi (Ochrana) (Abjuration)
+Úroveò: 2
+Sféra: ochrana
+Dosah: dotyk
+Trvání: 1kolo/úroveò
+Doba sesílání: 5
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: ádnı
+
+Toto kouzlo zaruèuje cíli lepší odolnost vùèi kyselinì, rzím a leptavım substancím všeho druhu, jako je tøeba dech èerného draka, Melfùv kyselinovı šíp a útoky rùznıch rosolù a slizù. Takové substance zpùsobují chránìné postavì pouze polovinu zranìní.~
+@175 = ~Síla kamene~
+@176 = ~Síla kamene (Invokace/Vyvolávání)
+Úroveò: 1
+Sféra: elementy (zemì)
+Dosah: dotyk
+Trvání: 3 kola + 1 kolo/úroveò
+Doba sesílání: 4
+Oblast pùsobení: 1 bytost
+Záchrannı hod: ádnı
+
+Toto kouzlo zaruèuje cíli mimoøádnou sílu tím, e navıší jeho sílu na 15 + 1k4, s tím, e +4 pøesune spíš na 18/50 ne na 19. Pokud u je síla cíle 17 a vyšší, toto kouzlo ji mùe sníit.~
+@177 =~Odolej magii
+Tato schopnost dovoluje knìzi vzıvat jeho bostvo, aby mu pomohlo odrazit úèinky zlovolné magie. Po 4 kola je knìzova magická odolnost nastavena na 50%. Tato schopnost se nesèítá s jinou magickou odolností, take pokud u je knìzova magická odolnost 50% nebo vyšší, tato schopnost je zbyteèná.~
+@178 =~Stopování 
+S dùvìrnou znalostí svého okolí a bytostí, které v nìm ijí, mùe knìz pouít tuto schopnost, aby zjistil, co za bytosti tam ije a jakım smìrem jsou. Èervené šipky na okraji obrazovky ukáí smìr, kde se v dané oblasti vyskytují.~
+@179 = ~Vyleè slepotu nebo hluchotu~
+@180 = ~Vyleè slepotu nebo hluchotu (Ochrana)
+Úroveò: 3
+Sféra: léèení
+Dosah: dotyk
+Trvání: trvalé
+Doba sesílání: 1
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: zvláštní
+
+Pøiloením rukou na postienou bytost mùe knìz trvale vyléèit nìkteré formy slepoty èi hluchoty.~
+@181 = ~Zpùsob slepotu nebo hluchotu~
+@182 = ~Zpùsob slepotu nebo hluchotu (Ochrana)
+Úroveò: 3
+Sféra: léèení
+Dosah: dotyk
+Trvání: 10 kol
+Doba sesílání: 1
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: zvláštní
+
+Toto kouzlo vyaduje dotknutí se (úspìšnı hod na útok) obìti. Pokud obì hodí úspìšnou záchranu, úèinek je zrušen. Pokud v záchranném hodu neuspìje, je následkem nezraòující magická slepota nebo hluchota (50% šance na kadé).
+
+Ohlušení sesílaèi kouzel mají 50% šanci na neúspìšné seslání kouzla. Oslepené bytosti utrpí postih -4 k útoènım hodùm a +4 ke svému obrannému èíslu.~
+@184 = ~Zpùsob chorobu~
+@185 = ~Zpùsob chorobu (Ochrana)
+Úroveò: 3
+Sféra: léèení
+Dosah: dotyk
+Trvání: 1 tah
+Doba sesílání: 1
+Oblast pùsobení: 1 bytost
+Záchrannı hod: zrušení
+
+Toto kouzlo zpùsobí bytosti jednu ze dvou forem nemoci (50% šance na kadou), pokud se jí sesílatel dotkne. První typ zpùsobí, e na tìle obìti se objeví nepøíjemná a drádivá vyráka a boláky, sniující její sílu, obratnost a odolnost za kadé 3 úrovnì sesílatele. Také ji zpomalí. Druhı typ zpùsobí vnitøní vyèerpání, zraòující obì za 1 ivot na 3. úrovni, za 2 ivoty na 9. úrovni, 3 ivoty na 15. úrovni a 4 ivoty na 21. úrovni.~
+@191 =~Váleènı pokøik
+Knìz zaøve tak silnì a dìsivì, e jsou všichni protivníci v okruhu 9 m ochromení strachem, pokud neuspìjí v záchranì proti kouzlu.~
+@194 =~Najdi dobro~
+@195 =~Najdi dobro (Vìštìní)
+Úroveò: 1
+Sféra: vìštìní
+Dosah: dohled sesílatele
+Trvání: okamitì
+Doba sesílání: 2
+Oblast pùsobení: dohled
+Záchrannı hod: ádnı
+
+Toto kouzlo odhalí vyzaøování dobra z jakékoliv bytosti. Všechny dobré bytosti v dosahu kouzla zaènou slabì zelenì záøit.~
+@196 =~Ochrana pøed dobrem~
+@197 =~Ochrana pøed dobrem (Ochrana)
+Úroveò: 1
+Sféra: ochrana
+Dosah: dotyk
+Trvání: 3 kola/úroveò
+Doba sesílání: 1
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: ádnı
+
+Kouzlo vytvoøí kolem pøíjemce magickou bariéru, která se pohybuje s osobou a má dva hlavní úèinky: všechny útoky provádìné dobrımi èi dobøe oèarovanımi bytostmi proti chránìné osobì mají postih -2 k hodu na útok a ke všem záchrannım hodùm, zpùsobenım takovımi útoky, má chránìná bytost bonus +2.~
+@198 =~Ochrana pøed dobrem, polomìr 3 metry~
+@199 =~Ochrana pøed dobrem, polomìr 3 metry (Ochrana)
+Úroveò: 3
+Sféra: ochrana
+Dosah: dotyk
+Trvání: 1kolo/úroveò
+Doba sesílání: 7
+Oblast pùsobení: 10 metrù
+Záchrannı hod: ádnı
+
+Po seslání tohoto kouzla jsou všechny bytosti v okruhu 3 metry ovlivnìny kouzlem Ochrana pøed dobrem. To vytvoøí magickou bariéru okolo pøíjemce ve vzdálenosti 30 cm. Bariéra se pohybuje s pøíjemcem a má dva hlavní efekty: Všechny útoky vedené dobrımi nebo dobrem oèarovanımi bytostmi proti chránìné bytosti mají postih -2 k hodu na útok, a všechny záchranné hody chránìné bytosti, zapøíèinìné takovımi útoky, získají bonus +2.~
+@201 =~Chránìn pøed dobrem~
+@202 =~Zpùsob lehká zranìní~
+@203 =~Zpùsob lehká zranìní (Nekromancie)
+Úroveò: 5
+Sféra: léèení
+Dosah: dotyk
+Trvání: trvale
+Doba sesílání: 5
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: ádnı
+
+Toto kouzlo je opakem léèby lehkıch zranìní - namísto vyhojení ztratí dotyèná bytost pøi úspìšném dotyku 8 ivotù (pøi úspìšném záchranném hodu polovic). Toto kouzlo neúèinkuje na bytosti nemrtvé, vyrobené nebo stvoøení z jinıch dimenzí. Lehká zranìní nemohou pùsobit postavy s dobrım pøesvìdèením.~
+@204 =~Zpùsob støední zranìní~
+@205 =~Zpùsob støední zranìní (Nekromancie)
+Úroveò: 5
+Sféra: léèení
+Dosah: dotyk
+Trvání: trvale
+Doba sesílání: 5
+Oblast pùsobení: dotknutá bytost
+Záchrannı hod: ádnı
+
+Toto kouzlo je opakem kouzla Vyleè støední zranìní. Namísto vyléèení dotknutou bytost zraní. Pokud se knì cíle úspìšnì dotkne, zpùsobí zranìní za 14 ivotù. Další knìzùv útok bude mít stejnı úèinek. Knì má pouze dvì kola na to, aby zaútoèil, ne kouzlo vyprchá. Pokud mine, kouzlo je promarnìno. Není ádnı záchrannı hod.~
+@206 =~Ochrana pøed pøesvìdèením~
+@207 =~Smrtící rána 
+Tato schopnost umoòuje knìzi prorazit obrany všech slabších bytostí. Následující 2 kola je kadá bytost na 8. èi niší úrovni, kterou knìz zasáhne, okamitì zabita.~
+@208 =~Chránìn pøed dobrem~
+@209 =~Zvíøecí bìs~
+@210 =~Zvíøecí bìs (Oèarování)
+Úroveò: 5
+Sféra: souboj
+Dosah: dotyk
+Trvání: 15 kol
+Doba sesílání: 8
+Oblast pùsobení: 1 bytost
+Záchrannı hod: ádnı
+
+Toto kouzlo obdaøí dotyèného zvíøecí dravostí, dávajíc mu sílu 19, +20 ivotù, +20% k pohyblivosti a +2 ke všem hodùm na záchranu. Avšak dokud je pod vlivem kouzla, ztrácí cíl schopnost kouzlit. Daná postava mùe bıt normálnì ovládána, dokud se v dohledu neobjeví nepøátelé. V tom okamiku se zuøivec neprodlenì vrhne na protivníka a zaène doò sekat vším, co zrovna drí v ruce. V kadém kole vzniká 5%ní šance, e dotyènı propadne bojovému šílenství a zaène útoèit jak na soupeøe, tak i na své spojence. ~
+@211 =~Krvelaèná zuøivost~
+@212 =~Krvelaèná zuøivost (Promìny)
+Úroveò: 4
+Sféra: souboj
+Dosah: dohled sesílatele
+Trvání: 20 kol
+Doba sesílání: 7
+Oblast pùsobení: 1 spøátelená bytost
+Záchrannı hod: ádnı
+
+Toto kouzlo úèinkuje pouze na hráèovy postavy nebo pøátelské tvory. Postiená bytost propadne bojovému šílenství a útoèí na nejblišího tvora, dokud ho nezabije, a pak pokraèuje k dalšímu cíli. Po dobu úèinku je dotyènı imunní na zmámení, spánek, strach, znehybnìní, omráèení, zmatení, emoce, kouzla symbolù a podobné úèinky. K tomu ještì obdrí +2 k zásahu, +3 ke zpùsobovanému zranìní, +2 k síle, +10 ivotù a bonus k pohyblivosti. Kouzlo má však i své nevıhody: po èas jeho trvání jsou ivoty zuøivce skryty a nemùe vyuívat nic, co pøináší uzdravení. Po vypršení stanovené doby je osoba unavená a její síla na 2 kola klesne na 3. Krvelaèná zuøivost nijak neovlivní (a ani ji nemohou sesílat) postavy se zákonnım pøesvìdèením. ~
+@213 =~Krvavá zuøivost neovlivòuje zákonná stvoøení.~
+@214 =~Vyvolej vzdušného elementála (vyvolávání/povolávání)
+Sféra: elementy (vzduch)
+Úroveò: 6
+Dosah: dohled sesílatele
+Trvání: 1 tah/úroveò
+Doba sesílání: 1 kolo
+Oblast pùsobení: zvláštní
+Záchrannı hod: ádnı
+
+Tímto kouzlem sesílatel otevøe magickou bránu do elementální sféry vzduchu a vyvolá vzdušného elementála. Je 60% pravdìpodobnost, e se objeví elementál s ivotaschopnost 12, 35% šance, e bude mít ivotaschopnost 16, a 5% šance, e se objeví elementál s ivotaschopností 24. Kdy se bytost objeví, sesílatel se musí 3 kola soustøedit na mentální souboj, aby zajistil, e se elementál neobrátí proti nìmu (15% šance na ztrátu kontroly). Po této dobì elementál plní pøíkazy èarodìje, dokud kouzlo nevyprší nebo dokud nezemøe. Všechny pøíkazy se pøedávají telepaticky, take není tøeba znát jazyk elementálù a nedochází ke zmatkùm.~
+@215 =~Vysátí energie (nekromancie)
+Úroveò: 7
+Dosah: dotyk
+Trvání: trvale
+Doba sesílání: 3
+Oblast pùsobení: 1 bytost
+Záchrannı hod: ádnı
+
+Èarodìj tímto kouzlem otevøe spojení mezi svou sférou a sférou negativní energie. Toto spojení vysaje ivotní sílu obìti a pøenese ji do sféry negativní energie. Obìti tak budou vysáty 2 úrovnì zkušeností. Cíl kouzla ztratí natrvalo úrovnì, ivoty, ivotaschopnost a schopnosti. Tyto úrovnì lze navrátit pouze knìskım kouzlem Obnova.~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Disable Kits                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@5000 =~Odstran modové kity~
+@5001 =~Odstran Kity od BioWare & modové kity~
+@5002 =~Odstran knezovy kity~
+@5003 =~Odstran druidovy kity~
+@5004 =~Odstran paladinovy kity~
+@5005 =~Odstran hranicarovy kity~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Cleric Remix                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10000 =~Klerikuv remix~
+@10001 =~Byl jsem poádán chrámem Pána úsvitu! Zde to konèí!~
+
+@10002 =~taluv pan bouri~
+@10003 =~helmuv strazce~
+@10004 =~lathanderuv pan usvitu~
+@10101 =~Bojovník / Helmùv Strazce~
+@10102 = ~Psaní svitkù
+Tato schopnost umoòuje knìzi vytvoøit svitky kouzel nízkıch a støedních úrovní. Náhodnì se vybírají z následujícího seznamu.:
+ 1) Vyleè tìká zranìní
+ 2) Free Action
+ 3) Neutralize Poison
+ 4) Mental Domination
+ 5) Defensive Harmony
+ 6) Champion's Strength
+ 7) Chaotic Commands
+ 8) Cure Critical Wounds
+ 9) Flame Strike
+10) Raise Dead~
+
+@10166 =~Odolnost na elektøinu~
+@10167 =~Polokopí - 'Talùv hnìv'~
+@10168 =~Polokopí je duchovní zbraò Talovıch Pánù bouøí a sesílatel ho ovládá jako kdyby s ním umìl zacházet s velmistrovstvím ve zbrani. Polokopí je na úrovních 1-5 obyèejná zbraò, +1 na úrovních 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25, a +5 na úrovni 26 a vyšší. Duchovní zbraò trvá jedno kolo za úroveò sesílatele a do maxima 20 kol a mùe bıt pouito jednou za den. ~
+@10169 =~Nièivı úder~
+@10170 =~Jednou za den mùe Pán bouøí v boji zaostøit nièivou sílu Talose. Toto kouzlo mu poskytne bonus +2 ke zranìní a +2 k zasaení na jedno kolo za úroveò, a do maxima 20 kol.~ 
+
+@10171 =~TALÙV PÁN BOUØÍ: Talos je nièivá síla pøírody. Je to bùh bouøí, lesních poárù, zemìtøesení, tornád a nièení. Jeho domovem je sféra vıstinì pojmenovaná Pandemonium. Jako své vyznavaèe pøitahuje nièitele, nájezdníky, lupièe a zbojníky. Talùv symbol jsou tøi blesky, kadı jiné barvy, vyzaøující z centrálního bodu.
+
+Talos Nièitel je temná strana pøírody, bezcitná a nièivá síla, která tiše èeká na vhodnou dobu, aby pak udeøila. Tala se lidé spíše bojí, ne aby ho uctívali, co více ne cokoli jiného vysvìtluje jeho velkou popularitu. Talosova církev se raduje z nejdivoèejšího nièení pøírody a vìøí svému vlastnímu štìstí a pøízni (nebo nepøízni) boha, e ji ochrání. Èlenové církve jsou proto v pøírodì fatalistiètí -- témìø sebedestruktivní. Avšak Talovi klerici chtìjí s sebou do záhuby vzít pokud mono co nejvíce dalších lidí.
+
+Talovi Páni bouøí mohou bıt zmatenì zlí, zmatenì neutrální a neutrálnì zlí.
+
+Schopnosti:
+- Duchovní zbraò: Polokopí - 'Talùv hnìv' jednou za den
+Polokopí je duchovní zbraò Talovıch Pánù bouøí a sesílatel ho ovládá jako kdyby s ním umìl zacházet s velmistrovstvím ve zbrani. Polokopí je na úrovních 1-5 obyèejná zbraò, +1 na úrovních 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25, a +5 na úrovni 26 a vyšší. Duchovní zbraò trvá jedno kolo za úroveò sesílatele a do maxima 20 kol a mùe bıt pouito jednou za den.
+-  Pøirozená odolnost na elektøinu 1% za úroveò
+-  Nièivı úder jednou za den
+Jednou za den mùe Pán bouøí v boji zaostøit nièivou sílu Talose. Toto kouzlo mu poskytne bonus +2 ke zranìní a +2 k zasaení na jedno kolo za úroveò, a do maxima 20 kol.
+-  Od 7. úrovnì mùe jednou za den kouzlit Štít bouøe
+Toto kouzlo trvá jedno kolo za úroveò sesílatele. Chrání sesílatele pøed bleskem, ohnìm, chladem a normálními støelami.
+-  Od 9. úrovnì mùe jednou dennì seslat Smrtící oblak, jako mágovo kouzlo 5. úrovnì stejného jména.
+-  Od 11. úrovnì mùe jednou za den seslat Øetìzovı blesk, jako mágovo kouzlo 6. úrovnì stejného jména.
+-  Od 14. úrovnì mùe jednou za den seslat Zemìtøesení, jako klerikovo kouzlo 7. úrovnì stejného jména
+
+Pøístup ke sférám:
+-  Úplnı pøístup ke sférám magie: všechna, zvíøecí, astrální, chaosu, bojová, ivelná, léèitelská, nekromantická, povolávací, váleèná, poèasí
+-  Èásteènı pøístup ke sférám magie: stvoøení, vìštìní, ochranná, èasu
+-  Bez pøístupu ke sférám magie: okouzlení, strání, zákona, èíselná, rostlinná, mylení, cestovatelská~
+@10172 =~Silná rána
+Silná rána dovoluje klerikovi udeøit tak silnì, e omráèí protivníka na 2 kola, pokud neuspìje pøi záchranì proti smrti s postihem -4. Tato schopnost trvá 2 kola.~
+@10173 =~Vytrvalost
+V pøípadì ohroení klerik sáhne na dno svıch sil a Vytrvalost mu poskytne 40% odolnost na všechny druhy fyzického zranìní. Tato schopnost trvá 1 kolo za kadé 2 úrovnì klerika.~
+@10174 =~Víøivı útok
+Tato schopnost umoòuje klerikovi rozpoutat smrš rychlıch útokù. Poèet jeho útokù se zmìní na 10 za kolo, ale utrpí postih -4 k THAC0 a zranìní. Víøivı útok trvá jedno kolo.~
+@10175 =~Vyhnutí se smrti
+S nadlidskım usilím dokáe klerik na vysoké úrovni uniknout témìø jisté smrti. Úèinek trvá 5 kol a bìhem této doby získává klerik bonus +5 k záchranì proti smrti, poèet jeho ivotù se zvıší o 20 a je imunní vùèi smrtící magii.~
+@10176 =~Únik
+Mocní klerici mohou vzıvat svého boha aby je ochránil pøed nebezpeèím a s lehkostí se vyhnou úderùm. Únik poskytuje bonus +4 k OÈ a +2 ke všem záchrannım hodùm. Úèinek trvá 3 kola.~
+
+
+@10179 =~LATHANDERÙV PÁN ÚSVITU: Lathander, té zvanı Pán úsvitu, je bohem jara, rozbøesku, narození a obnovy, bùh zaèátkù a skrytıch moností, bostvo veškerého chápání, vitality, mládí, obnovy a vlastní dokonalosti. Je pánem tvoøivosti. Jeho rodnım krajem je pláò Elysium a udruje dobré vztahy s Chaunteou. Lathanderùv symbol je prostı disk narùovìlého odstínu. Tyto kotouèe jsou èasto úlomky rùového køemene èi podobnıch minerálù.  
+
+Lathander je bùh zaèátkù a dokonce i ti, kteøí uctívají jiné bohy, mu stále vìnují krátkou modlitbu na poèátku své cesty úsilí. Lathanderovo jméno je provoláváno pøi upevòování svazkù a vzniku novıch podnikù a spoleèenství. Ve vısledku je tedy Lathander velmi populární mezi kastami obchodníkù a je té bohatì odmìòován. 
+
+Lathanderùv Pán úsvitu mùe pouívat pouze Neutrální Dobro, Zákonné Dobro, Zmatené Dobro a Pravé Neutrální pøesvìdèení.
+
+Vlastnosti:
+-  Duševní zbraò: Palcát -'Objetí rozbøesku' jednou dennì
+Tento palcát je duchovní zbraò Lathanderovıch Pánù úsvitu a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Palcát je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.
+-  Lathanderùv dar jednou dennì
+Toto kouzlo vydrí 6 sekund za kadou úroveò sesílatele. Dává sesílateli +1 k zásahu, +1 ke zranìní, +1 ke všem záchrannım hodùm a pøidává 1 extra útok za kolo. Dále chrání pøíjemce proti vysátí úrovní.
+-  Od 7. levelu mono zakouzlit Dr nemrtvé jednou dennì, jako stejnojmenné mágovo kouzlo tøetí úrovnì          
+-  Od 9. levelu mono zakouzlit Ohnivı úder jednou dennì, jako stejnojmenné knìské kouzlo páté úrovnì
+-  Od 11. levelu mono zakouzlit Léèení jednou dennì, jako stejnojmenné knìské kouzlo šesté úrovnì
+-  Od 14. levelu mono zakouzlit Vìtší obnovu jednou dennì, jako stejnojmenné knìské kouzlo sedmé úrovnì
+
+Pøístup ke sférám: 
+-  Úplnı pøístup ke sférám astrálna, zaøíkávání, stvoøení, ivlu, léèení, nekromancie (pouze  posilující formy), rostliny, slunce, myšlenky, ochran, poèasí
+-  Èásteènı pøístup ke sférám souboje, vìštby, stráce, èasu
+-  Bez pøístupu ke sférám zvìøe, chaosu, zákonu, èísel, protekce, vyvolávání, cestovatelù a války~
+@10180 =~Palcát - 'Objetí rozbøesku'~
+@10181 =~Tento palcát je duchovní zbraò Lathanderovıch Pánù úsvitu a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni nejvyššího mistrovství. Palcát je øadovou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše.~
+@10182 =~Pouze ti nejvybranìjší a nejoddanìjší sluebníci Pána Bouøí mohou bıt obdarováni tìmito mocnımi svatımi symboly.
+
+STATISTIKY: 
+Pøidává dodateèné kouzlo 6. a 7. úrovnì
+5% ochrana proti magii, pokud je nošen
++1 k síle, pokud je nošen
+
+Nepouitelnı:
+Knìzem jakéhokoliv zákonného nebo dobrého pøesvìdèení~
+@10183 =~Pouze ti nejvybranìjší a nejoddanìjší sluebníci Nositele úsvitu mohou bıt obdarování tìmito mocnımi svatımi symboly.
+
+STATISTIKY: 
+Pøidává dodateèné kouzlo 6. a 7. úrovnì
+5% ochrana proti magii, pokud je nošen
++1 k síle, pokud je nošen
+
+Nepouitelnı:
+Knìzem zlého pøesvìdèení~
+@10184 =~HELMÙV STRÁCE: Bùh strácù a ochráncù, Helm je zosobnìním ochránce, pozorovatele a stráce. V døívìjších letech byl zejména uctíván tìmi, je ho ádali, aby støeil jejich práh pøed zlem. Helm je stále bdìlım a ztìlesòuje duši zákonné neutrality. Helm si zvolil za svùj domov mechanickou sféru Nirvanu; v regionu oddìleném od Mystry. Helmùv Symbol je otevøené oko, vyobrazené na rytíøské rukavici. 
+
+Helm káe kadému bıt stále ostraitı, vdy uvìdomnìlı, vdy pøipravenı støetnout se s nepøítelem. Také slouí tìm, je obezøetnì èekají a naslouchají. Peèlivá pøíprava ve vısledku vdy zvítìzí nad zbrklımi èiny.
+
+Helmovi stráci mohou bıt pouze ti, jeji pøesvìdèení je Zákonnı neutrál, Zákonné dobro, Pravı neutrál a Zákonné zlo.
+
+Schopnosti:
+-  Duševní zbraò: Meè bastard -'Vdy ostraitı' jednou dennì
+Meè bastard je duševní zbraò Helmovıch strácù a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Meè bastard je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na úrovni 26 a vyšší. Duševní zbraò vydrí jedno kolo za úroveò sesílatele a do maxima 20 kol.
+-  Runa ochrany jednou dennì, jako stejnojmenné knìské kouzlo tøetí úrovnì
+-  Od 7. úrovnì mono zakouzlit Dalekozrakost jednou dennì, jako stejnojmenné knìské kouzlo ètvrté úrovnì     
+-  Od 9. úrovnì mono zakouzlit Ochrana pøed normálními zbranìmi jednou dennì, jako stejnojmenné mágovo kouzlo páté úrovnì
+-  Od 11. úrovnì mono zakouzlit Pravdivé vidìní jednou dennì, jako stejnojmenné knìské kouzlo páté úrovnì
+-  Od 14. úrovnì mono zakouzlit Ochrannı štít jednou dennì, jako stejnojmenné mágovo kouzlo sedmé úrovnì 
+
+
+Pøístup ke sférám: 
+-  Úplnı pøístup ke sférám všeho, astrálna, souboje, vìštby, stráce, protekce, slunce, ochrany
+-  Èásteènı pøístup ke sférám stvoøení, ivlu, uzdravení, války
+-  Bez pøístupu ke sférám zvíøete, šarmu, chaosu, zákonu, nekromancie, èísel, rostliny, vyvolávání, myšlenky, poèasí~
+@10185 =~Meè bastard - 'Vdy ostraitı'~
+@10186 =~Meè bastard je duševní zbraò Helmovıch strácù a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Meè bastard je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na úrovni 26 a vyšší. Duševní zbraò vydrí jedno kolo za úroveò sesílatele a do maxima 20 kol.~
+@10187 =~Pouze ti nejvybranìjší a nejoddanìjší sluebníci Stráce mohou bıt obdarováni tìmito svatımi symboly.
+
+STATISTIKY:
+
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Nepouitelnı:
+Knìí zmateného pøesvìdèení~
+@10188 =~Talùv Pán bouøe~
+@10189 =~Helmùv Stráce~
+@10190 =~Lathanderùv Pán úsvitu~
+@10192 =~Lathanderova obroda~
+@10193 =~Toto kouzlo, dáno tìm nejvıše postavenım Pánùm úsvitu, vyléèí všechny èleny druiny a odstraní nepøíznivé úèinky vèetnì vysátí úrovnì, slepoty, nemoci, zmatku, slabomyslnosti a hluchoty. Druina se také bude po dobu 20 kol regenerovat rychlostí 1 ivot za sekundu.~
+
+
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Silverstar of Selune                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10300 =~Instaluj Stribrohvezda Selune Knezska Sada~
+@10301 =~Støíbrohvìzda Selune~
+@10302 =~STØÍBROHVÌZDA SELUNE: Selune (vyslovováno: se-lu-nej), naše Støíbrná Lady, je bohyní mìsíce, hvìzd a tìch, je je vyuívají k navigaci. Jejím stálım nepøítelem je zlá Shar, bohynì temnoty, noci, poráky a zapomnìní. Selune je èasto nazıvána Mìsíèní panna, pro její spojitost se støíbrnım mìsícem obíhajícím Faerun. Je bohyní mìsíce a poutníkù. Jejím domovem je záøící dvorana støíbra Argentil, nacházející se na pláních, zvanıch Brány Mìsíce.
+
+Jak praví astrologové a vìštci, nezkaení lykantropové Selune uctívají jako paní svého osudu. Selune se té stává velmi oblíbenou mezi hospodynìmi, pradlenami, švadlenami a slukami, posilujíc jejich enskost. Také je uctívána kouzelnicemi, navigátorkami a námoønicemi.
+
+Knìí Selune, nazıváni Seluniny Støíbrohvìzdy, jsou oddanımi zastánci svobody a tolerance, poutníci na cestì pravdy a úhlavní nepøátelé Shar. Snaí se vybudovat harmonii mezi lykantropy a tìmi, je nevládnou schopností mìnit podobu, a vdy chrání slabé a utlaèované. Nemohou strpìt otroctví a nenávidí nemrtvé. Zøídkakdy setrvají na jednom místì po delší dobu, místo toho cestují z místa na místo, hnáni touhou po putování èi novım úkolem. Obchodují s mìsíèními úkazy a energií a jsou v omezené míøe schopni vládnout silou mìsíce, snést jeho ostré a èisté bílé svìtlo na Toril a vyuít jej k plnìní pøání své bohynì.
+
+Støíbrohvìzdami Selune se mohou stát pouze postavy Zmatenì dobré, Neutrálnì dobré a Zmatenì neutrální.
+
+Schopnosti:
+-  Duševní zbraò: Palcát - 'Ruka mìsíce' jednou dennì 
+Ruka mìsíce je duševní zbraò Støíbrohvìzd Selune a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Ruka mìsíce je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.
+-  Infravidìní
+-  Mono zakouzlit Mìsíèní štít jednou dennì
+Pouitím tohoto kouzla získá Støíbrohvìzda odolnost na veškerou magii. Kouzlo propùjèuje 2% odolnost za kadou úroveò knìze a do maxima 40% na 20. úrovni. V pøípadì, e cíl bude mít magickou odolnost vyšší, ne mu mùe kouzlo udìlit, bude automaticky sníena na nastavenou hodnotu. Tento efekt pøetrvá po dobu trvání kouzla nebo do odèarování.
+-  Od 7. levelu mono zakouzlit Volnou akci jednou dennì, jako stejnojmenné knìské kouzlo ètvrté úrovnì
+-  Od 9. levelu mono zakouzlit Sluneèní paprsek jednou dennì, jako stejnojmenné mágovo kouzlo páté úrovnì
+-  Od 11. levelu mono zakouzlit Povolej vzdušného elementála jednou dennì, jako stejnojmenné mágovo kouzlo šesté úrovnì
+-  Od 14. levelu mono zakouzlit Ochranu pøed elementy jednou dennì, jako stejnojmenné mágovo kouzlu sedmé úrovnì.  
+
+Pøístup ke sférám:
+-  Úplnı pøístup ke sférám všeho, zvíøete, astrálna, souboje, vìštby, stráce, uzdravení, nekromancie, èísel, vyvolávání, slunce, poutníkù, poèasí
+-  Èásteènı pøístup ke sférám zmámení, ivlu, rostliny, ochran
+-  Bez pøístupu ke sférám chaosu, stvoøení, zákona, protekce, myšlenky, èasu, války~
+@10303 =~Palcát - 'Ruka mìsíce'~
+@10304 =~Ruka mìsíce je duševní zbraò Støíbrohvìzd Selune a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni nejvyššího mistrovství. Ruka mìsíce je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.~
+@10305 =~Støíbrohvìzda Selune~
+@10307 =~Mìsíèní štít~
+@10308 =~Mìsíèní štít (Úprava)
+Level: 5
+Sféra: Protekce
+Rozsah: Sesílatel
+Trvání: 3 kola + 1kolo/úroveò
+Délka sesílání: 1 kolo
+Oblast pùsobení: Sesílatel
+Záchranné hody: ádné
+
+Pouitím tohoto kouzla získá Støíbrohvìzda odolnost na veškerou magii. Kouzlo propùjèuje 2% odolnost za kadou úroveò knìze a do maxima 40% na 20. levelu. V pøípadì, e cíl bude mít magickou odolnost vyšší, ne mu mùe kouzlo udìlit, bude automaticky sníena na nastavenou hodnotu. Tento efektu pøetrvá po dobu trvání kouzla nebo do odèarování.~
+@10319 =~Svatı symbol Selune~
+@10320 =~Pouze ti nejvybranìjší a nejoddanìjší Støíbrohvìzdy Selune mohou bıt obdarováni tìmito mocnımi svatımi symboly.
+
+STATISTIKY: 
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Nepouitelnı:
+Knìí Zákonného nebo Zlého pøesvìdèení~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Nightcloak of Shar                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10600 =~Instaluj Nocni plast Shar Knezska Sada~
+@10601 =~Noèní pláš Shar~
+@10602 =~NOÈNÍ PLÁŠ SHAR: Shar je bohyní temnoty, noci, prohry a zapomnìní. Je uctívána tìmi, kteøí ijí a jednají v noci (jako zlodìji), kteøí nenávidí svìtlo (jako rasy goblinù a jejich spojencù) a tìmi, jejich srdce naplòuje hoøkost a ztráta. Jejím symbolem je èernı kotouè, lemovanı temnì fialovou linií.
+
+Úhlavním nepøítelem Shar je bohynì Selune, tyto dvì spolu bojují na mnoha úrovních jejich nesmrtelnıch ivotù. Kdy Shar nabude síly, propuká nekoneèná válka mezi Selune a jejími následovníky a vìrnımi svatımi bojovníky Shar. 
+
+Knìí Shar se nazıvají Noèní pláštì. ijí mimo klasickou chrámovou hierarchii. Nemají jeden hlavní chrám, namísto toho hrstku roztroušenıch komùrek a utajenıch míst skrz naskrz Øíšemi. Noèní pláštì Shar slouí jako kontakty, poslové a vymahaèi vùle Temné paní.   
+
+Noèními plášti Shar mohou bıt pouze osoby s pøesvìdèením Neutrální zlo, Zákonné zlo, Zmatené zlo a Pravı neutrál. 
+
+Vlastnosti: 
+-  Duševní zbraò: Chakram - 'Kotouè noci' jednou dennì 
+Kotouè noci je duchovní zbraò Noèních plášù, je povaován za návratnou vrhací šipku a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Chakram je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol. 
+-  Imunita na všechny formy Slepoty
+-  Od 7. levelu mono zakouzlit Zmatení jednou dennì, jak stejnojmenné mágovo kouzlo ètvrté úrovnì
+-  Od 9. levelu mono zakouzlit Slabomyslnost jednou dennì, jako stejnojmenné mágovo kouzlo páté úrovnì
+-  Od 11. levelu mono zakouzlit Neviditelnı stopaø, jako stejnojmenné mágovo kouzlo šesté úrovnì
+-  Od 14. levelu mono zakouzlit Mocné slovo - Omraè jednou dennì, jako stejnojmenné mágovo kouzlo sedmé úrovnì
+
+Pøístup ke sférám:
+-  Úplnı pøístup ke sférám všeho, zmámení, souboje, vìštby, stráce, nekromancie, protekce a myšlenky
+-  Èásteènı pøístup ke sférám stvoøení, ivlu a uzdravení
+-  Bez pøístupu ke sférám zvíøete, chaosu, zákonu, èísel, rostliny, vyvolávání, slunce, války, ochrany a poèasí~
+@10603 =~noèní pláš Shar~
+@10604 =~Prokletí Shar~
+@10605 =~Prokletí Shar (Oèarování/Zmámení)
+Level: Speciální
+Sféra: Zmámení
+Rozsah: Zorné pole sesílatele
+Trvání: Stálé
+Délka sesílaní: 3
+Oblast pùsobení: Cíl a kdokoliv v oblasti kruhu o polomìru 5 stop
+Záchrannı hod: zrušenı
+
+Mocné kouzlo, propùjèeno Shar jejím nejoddanìjším knìím, Prokletí Shar vysává inteligenci z jejich nepøátel, zanechávajíc je neschopnımi jakékoliv akce--vcelku vhodné prokletí od Paní prohry. Zasaení nepøátelé setrvají v tomto stavu do úspìšného rozptılení kouzla. Obì musí provést záchrannı hod proti kouzlu s postihem -4, aby se vyhnula úèinkùm kouzla. 
+
+Volba této schopnosti umoní sesílání kouzla jednou dennì pøirozenım zpùsobem. Tato monost mùe bıt zvolena jen jednou.~
+@10608 =~Chakram - 'Kotouè noci'~
+@10609 =~Chakram, Kotouè noci je Oblíbenou zbraní Shar. V pøípadì, e je tato  rotující kovová zbraò vrena, vrací se ke svému majiteli, jako vrhací šipka.  
+
+Shar obdarovala své nejoddanìjší duchovenstvo, Noèní pláštì, schopností vyvolat jednou dennì  tuto zbraò. Zbraò se stává tím silnìjší, èím více roste knìzova síla a vıznam v oèích Shar. Chakram je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše.~
+@10615 =~Svatı symbol Shar~
+@10616 =~Shar obdaruje své nejschopnìjší sluebníky Svatım symbolem - prstenem, nesoucím její znak èerného kotouèe s temnì purpurovım lemem. Symbol obohatí Noèní pláštì o sílu Shar, kdy je nošen. 
+
+STATISTIKY: 
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Pouitelnı:
+Noèními plášti Shar~
+@10617 =~Ochrana pøed Slepotou~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Holy Strategist of the Red Knight                \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10700 =~Instaluj Svateho Stratega Rude Rytirky Knezska Sada~
+@10701 =~Svatı Stratég Rudé Rytíøky~
+@10702 =~SVATİ STRATÉG RUDÉ RYTÍØKY: Svatı Stratég jest jméno, jakım je knìz Rudé Rytíøky nazıván, a vskutku jde o vıstinı titul. Kvùli své snaze dokonale zvládnout vojenskou taktiku a strategii mohou tito váleèní knìí vybrousit mysl i tìlo v nejnièivìjší zbraò ve Faerunu. Jejich reputace je natolik pùsobivá, e armády pøevyšující ty jejich a trojnásobnì se nìkdy vzdají, kdy se dozví o jejich pøítomnosti v armádì nepøítele.
+
+Spoleènì jsou knìí Rudé Rytíøky nazıváni Rudım Spoleèenstvem. Mnozí èlenové slouí jako vysoce postavení velitelé v armádách po celém Faerunu, èasto osobnì vedou elitní "speciální jednotky". Další, kteøí nejsou pøímo zamìstnáni v chrámu, slouí jako instruktoøi ve vojenskıch akademiích èi jako proviantní dùstojnící, jejich úkolem je udret vojáky pøední linie nakrmené a zásobené. Pokud zrovna nejsou v bitvì, nosí Svatí Stratégové volné èervené róby s bílımi doplòky.
+
+Svatí Stratégové Rudé Rytíøky mohou bıt jen zákonnì dobøí, zákonnì neutrální a zákonnì zlí.
+
+Vlastnosti:
+- Duševní zbraò: Dlouhı meè - 'Šach-mat' jednou dennì
+Šach-mat je duševní zbraò Svatıch Stratégù. Zpùsobuje základní zranìní 1d6 a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Šach-mat je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.
+- Mùe sesílat mágova kouzla infravize, jasnozøivost a èarodìjovo oko
+- Na 13. úrovni mohou Svatí Stratégové zbraní na blízko provést dva útoky za kolo.
+- Od 7. úrovnì mohou zakouzlit Spìch jednou dennì, jako stejnojmenné mágovo kouzlo tøetí úrovnì 
+- Od 9. úrovnì mohou zakouzlit Obrannou harmonii jednou dennì, jako stejnojmenné knìské kouzlo ètvrté úrovnì
+- Od 11. úrovnì mohou zakouzlit Hromadné léèení jednou dennì, jako stejnojmenné knìzovo kouzlo páté úrovnì
+- Od 14. úrovnì mohou zakouzlit Pláš jednou dennì, jako stejnojmenné mágovo kouzlo sedmé úrovnì
+
+Pøístup ke sférám:
+- Úplnı pøístup ke sférám všeho, zmámení, souboje, vìštby, stráce, léèení, zákona, ochrany, války
+- Èásteènı pøístup ke sférám stvoøení, nekromancie, vyvolávání, poutì, znamení
+- Bez pøístupu ke sférám zvíøete, astrálna, chaosu, ivlu, èísel, rostlin, slunce, myšlenky, èasu, poèasí~
+@10703 =~Šach-mat~
+@10704 =~Šachmat je obyèejnou zbraní na úrovních 1-5, +1 na úrovních 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25, a +5 na úrovni 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.~
+
+@10705 =~Svatı symbol Rudé Rytíøky~
+@10706 =~Rudá Rytíøka odmìòuje své nejmocnìjší sluebníky Svatım symbolem, prstenem nesoucím její osobní znamení šachové figurky rudého konì. Kdy je nošen, posiluje Svatého Stratéga mocí Rudé Rytíøky.
+
+STATISTIKY: 
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Nepouitelnı:
+Knìzi chaotického pøesvìdèení~
+@10714 =~svatı stratég Rudé Rytíøky~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Battleguard of Tempus                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10900 =~Instaluj Bojova straz Tempova Knezska Sada~
+@10901 =~Bojová strá Tempova~
+@10902 =~BOJOVÁ STRÁ TEMPOVA: Tempus je v Øíších bohem války, Pán bitvy, Drtiè nepøátel. Své oblíbence si vybírá náhodnì, jeho chaotická pøirozenost favorizuje všechny strany rovnomìrnì. Jeden den mùe stát na stranì armády a druhı den bıt proti. Taková je pøirozenost války, ztìlesnìná Tempem. 
+
+Úborem Tempovıch knìích je zbroj, obnošená a otluèená èetnımi boji. V civilizovanìjších oblastech byla zamìnìna za ocelovou helmici, sdìlení je však stále stejné - toto jsou knìí-váleèníci. Jejich místo je v zákopech po boku vojska, enoucí je kupøedu. Tempovi knìí lze nalézt na obou stranách bitvy, pøièem ádnı z nich neví, koho Tempus poctí svou pøízní.   
+
+Bojovou stráí Tempovou mùe bıt pouze osoba s pøesvìdèením Zmatenı neutrál, Zmatené dobro, Pravı neutrál a Zmatené zlo. 
+
+Vlastnosti: 
+-  Duševní zbraò: Bitevní sekera - 'Zruènost bitvy' jednou dennì
+Zruènost bitvy je duševní zbraò Bojové stráe a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Zruènost bitvy je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol. 
+-  Mono dvìma body zvıšit specializaci na jakoukoliv drtivou zbraò, kterou mùe knìz pouívat
+-  Mono propuknout v Bìsnìní bersekera jednou dennì
+-  Od 7. levelu mono zakouzlit Svatá síla jednou dennì, jako stejnojmenné knìské kouzlo ètvrté úrovnì
+-  Od 9. levelu mono zakouzlit Chaos jednou dennì, jako stejnojmenné mágovo kouzlo páté úrovnì
+-  Od 11. levelu mono zakouzlit Tenserova pøemìna jednou dennì, jako stejnojmenné mágovo kouzlo šesté úrovnì
+-  Od 14. levelu mono zakouzlit Sféra chaosu jednou dennì, jako stejnojmenné mágovo kouzlo sedmé úrovnì
+-  Není moná zdatnost ve støelnıch zbraních 
+
+Pøístup ke sférám: 
+-  Úplnı pøístup ke sférám zvíøete, souboje, chaosu, vìštby, ivlu, nekromancie, protekce a války   
+-  Èásteènı pøístup ke sférám všeho, stráce, uzdravení, vyvolávání, slunce, ochrany a poèasí
+-  Bez pøístupu ke sférám zmámení, stvoøení, zákonu, èísel, rostliny a myšlenky~
+@10903 =~Bitevní sekera - 'Zruènost bitvy'~
+@10904 =~Kráèíc vstøíc vìèné bitvì, vyvolil si Tempus za svou zbraò Zruènost bitvy. Obdaroval své nejhorlivìjší následovníky - Bojovou strá - schopností jednou dennì magicky vytváøet obdobnou zbraò, naplnìnou jeho silou. Toto je pøíklad této zbranì. Sekera je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše.~
+
+@10910 =~Svatı symbol Tempa~
+@10911 =~Tempus obdaruje své nejschopnìjší sluebníky Svatım symbolem - prstenem, nesoucím jeho znak planoucího støíbrného meèe na rudém štítu. Symbol obohatí Bojovou strá o sílu Tempa, kdy je nošen. 
+
+STATISTIKY: 
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Nepouitelnı:
+Zákonnımi knìími~
+@10912 =~Tempùv štít~
+@10913 =~Tempùv štít (Odvolání)
+Úroveò: Speciální
+Rozsah: 0
+Trvání: 4 kola
+Délka sesílání: 1
+Oblast pùsobení: Sesílatel
+Sféra: Souboj
+Záchrannı hod: ádnı
+
+Zvoláním Tempa za nepøíznì osudu s ádostí od zvıšení odolnosti, stává se Bojovı stráce chránìnı pøed vìtšinou fyzickıch zranìní. Kdy je kouzlo sesláno, udìluje celkovou nezranitelnost pøed všemi zbranìmi s vıjimkou tìch s oèarováním +5 a vyšším. Toto kouzlo je neuvìøitelnì mocné, proto je krátkého trvání. Pøesto je díky krátké dobì sesílání nesmírnì uiteèné v nejtuší bitevní vøavì, kde pár sekund navíc mùe znamenat rozdíl mezi ivotem a smrtí. Toto kouzlo vydrí po dobu trvání nebo do odèarování.~
+@10914 =~bojová strá Tempa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Painbearer of Ilmater                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@11200 =~Instaluj Ilmateruv trpitel Knezska Sada~
+@11201 =~Ilmaterùv trpitel~
+@11202 =~ILMATERÙV TRPITEL: Ilmater je Plaèící Bùh, bùh odolnosti, utrpení, muèednictví a vytrvalosti. On je tím, kdo nabízí pomoc a utìšující slova tìm, je jsou suováni bolestí, utlaèováni nebo v nouzi. Ochotnì se stane trpícím a pøevezme bøemeno suovaného, jeho bolest. On je bohem utlaèovanıch a tìch, se kterımi je špatnì zacházeno. V døívìjších èasech byl Ilmaterovım symbolem krví potøísnìnı stojan, pozdìji pár bìlostnıch rukou, spojenıch krvavì rudım provazem. Novìjší symbol vıraznì zvıšil Ilmaterovu popularitu ve svìtì. Ilmater pøebıvá v Bytopii.
+
+Následovníci Ilmatera jsou èasto chápáni jako nucenì trpící, avšak ve skuteènosti pouze nabízí po "èistì knìské" stránce uzdravení a obnovu tìm, kterım bylo ublíeno. Pøenechávají ostatním své místo, jsou sdílní a umí se vcítit do duchovní stránky ivota pøes hmotné tìlo. Ilmaterovi knìí se objeví, kdy je jich zapotøebí, co je vìtšinou v tìch nejhorších monıch situacích, vyslanci potøeb utlaèovanıch a chudıch. Odívají se do prosté šedi s šedou èapkou (vyšší hodnosti s krvavì rudou).     
+
+Ilmaterovi nositelé bolesti mohou bıt pouze osoby s pøesvìdèením Zákonné dobro, Neutrální dobro a Zákonnı neutrál.
+
+Vlastnosti:
+-  Duševní zbraò: Pìst - 'Ruka Ilmatera' jednou dennì
+Ruka Ilmatera je duševní zbraò Trpitelù. Zpùsobuje základní zranìní 1d6 a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Ruka Ilmatera je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.  
+-  Mono zakouzlit Pøiloení rukou jednou dennì
+-  Od 7. levelu mono zakouzlit Neutralizuj jed jednou dennì, jako stejnojmenné knìské kouzlo ètvrté úrovnì
+-  Od 9. levelu mono zakouzlit Ilmaterova odolnost jednou dennì
+Trpitel vyzve Ilmatera, aby mu pomohl vzít na svá bedra tíi zkoušek, kterım èelí. Knìz obdrí na 1 kolo za úroveò +2 k záchrannım hodùm, dvojnásobek HP, je imunní na paniku a chorobu a bude pevnì stát tváøí v tváø jakékoliv síle.     
+-  Od 11. levelu mono zakouzlit Uzdrav jednou dennì, jako stejnojmenné knìské kouzlo šesté úrovnì
+-  Od 14. levelu mono zakouzlit Regeneraci jednou dennì, jako stejnojmenné knìské kouzlo sedmé úrovnì 
+
+Pøístup ke sférám: 
+-  Úplnı pøístup ke sférám všeho, zmámení, stvoøení, stráce, uzdravení, zákonu, nekromancie, protekce a poutníkù
+-  Èásteènı pøístup ke sférám souboje, ivlu, vyvolávání, slunce, ochran a poèasí
+-  Bez pøístupu ke sférám zvíøete, astrálna, chaosu, vìštìní, èísel, rostliny, myšlenky, èasu a války~
+@11203 =~Ruka Ilmatera~
+@11204 =~Ruka Ilmatera je duševní zbraò Trpitelù. Zpùsobuje základní zranìní 1d6 a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Ruka Ilmatera je øadovou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol. ~
+@11205 =~Ilmaterova odolnost~
+@11206 =~Ilmaterova odolnost
+Sféra: Nekromancie, Protekce
+Rozsah: Dotyk
+Trvání: 1 kolo + 1 kolo/úroveò sesílatele
+Délka sesílání: 7
+Oblast pùsobení: Jedna osoba  
+Záchrannı hod: ádnı
+
+Toto kouzlo zdvojnásobí ivoty pøíjemce po dobu trvání oèarování. Všechna zranìní nejprve odeèítají tyto navıšené body a do jejich vyèerpání; následnì jsou ubírány skuteènì ivoty postiené osoby.
+
+Všechny záchranné hody obdrí +2 bonus. Navíc, všichni, kdo nejsou chránìni pøed Ilmaterovou odolností, mohou bıt odraeni, ušlapáni nebo udoláni. Chránìní jedinci mohou tyto efekty ustát.~
+@11207 =~Ilmaterùv Svatı symbol~
+@11208 =~Ilmater obdaruje své nejschopnìjší sluebníky Svatım symbolem - prstenem, nesoucím jeho znak bílıch rukou spojenıch krvavì rudım provazem. Symbol obohatí Trpitele o sílu Ilmatera, kdy je nošen. 
+
+STATISTIKY: 
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Nepouitelnı:
+Zmatenımi nebo Zlımi knìzi~
+@11209 =~ilmaterùv Trpitel~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Firewalker of Kossuth                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@11500 =~Instaluj Kossuthuv Ohnivec Knezska Sada~
+@11501 =~Cep - 'Plamennı vıhonek'~
+@11502 =~Ostnitı øetìz - 'Plamennı vıhonek'~
+@11503 =~Kossuthùv Ohnivec~
+@11504 =~KOSSUTHÙV OHNIVEC: Kossuth, Pán ohnì, tyran, obklopenı plameny, je pánem ivlu, jeho domovem jsou Elementární Plánì Ohnì. Je bezcitnı ke svım vìrnım, avšak posílí moc svıch knìí, pokud jejich uctívání posílí Kossuthovu moc v jeho domácí sféøe. Pro udrení jejich stálé zbonosti je ochotnı vìnovat drobnı zájem jejich problémùm jakoto smrtelníkùm a pøíleitostnì dá najevo svou pøítomnost, nikdy však jako avatar.
+
+Kossuthùv chrám je pestrı a chaotickı, díky jeho naprostému nezájmu o jeho architekturu. Vısledkem je soubor kultù, kde kadı má své vlastní zásady, mravy a uèení. Kossuthùv symbol se mìní z frakce na frakci, obecnì však vyobrazuje oheò. Vìøí se, e pokud by došlo ke sjednocení jeho následovníkù, stal by se velmi mocnou silou v Øíších, co by ostatní bohové jen velmi neradi vidìli. Ze všech ètyø Pánù ivlù jsou právì Kossuthovy kulty tìmi nejznámìjšími a nejobávanìjšími; a té velmi mocnımi v Thayi a zemích na vıchodì. 
+
+Kossuthovi Ohnivci mohou bıt jakéhokoliv pøesvìdèení, nejèastìji však Zlého, holdující nièivé síle ohnì. Mohou bıt pøíslušníky jakékoliv rasy. Jejich ošacením mùe bıt cokoliv, co jejich kult uzná za vhodné k reprezentaci jejich boha. Obvykle tím bıvají róby a dlouhé kápì v èervené, luté nebo oranové barvì.       
+
+Vlastnosti: 
+-  Duševní zbraò: Cep - 'Plamennı vıhonek' jednou dennì
+Cep je duševní zbraò Kossuthovıch Ohnivcù a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol. 
+-  Propùjèí 2% odolnost na oheò za kadou úroveò 
+-  Od 7. levelu mono zakouzlit Ohnivı štít: Èervenı jednou dennì, jako stejnojmenné mágovo kouzlo ètvrté úrovnì
+-  Od 9. levelu mono zakouzlit Sluneèní plamen jednou dennì, jako stejnojmenné mágovo kouzlo páté úrovnì
+-  Od 11. levelu mono zakouzlit Vyèaruj ohnivého elementála jednou dennì, jako stejnojmenné knìské kouzlo šesté úrovnì
+-  Od 14. levelu mono zakouzlit Zpodìná vıbušná ohnivá koule, jako stejnojmenné mágovo kouzlo sedmé úrovnì
+
+Pøístup ke sférám:
+-  Úplnı pøístup ke sférám všeho, souboje, ivlu ohnì, uzdravení, vyvolávání a slunce
+-  Èásteènı pøístup ke sférám vìštby, ivlu vzduchu, ivlu zemì, protekce a války
+-  Bez pøístupu ke sférám zvíøete, astrálna, zmámení, chaosu, stvoøení, ivlu vody, stráce, zákonu, nekromancie, èísel, rostliny, èasu, myšlenky, poutì, ochran a poèasí~
+@11505 =~Kossuthùv oèistnı dotek~
+@11506 =~Kossuthùv oèistnı dotek (Vzıvání)
+Úroveò: Quest
+Sféra: ivel ohnì
+Rozsah: Sesílatel
+Trvání: Okamité
+Délka sesílání: 3
+Oblast pùsobení: Speciální
+Záchrannı hod: 1/2
+
+Povoláním Jeho boského planoucího doteku, soustøedí Ohnivec nìco z Kossuthovy spalující energie skrz své tìlo. Obì sloky jeho ohnivé síly - jak nièivost, tak jeho oèistná schopnost, zde mají vıznam a jsou k uitku. Toto kouzlo zpùsobí 15d6 zranìní ohnìm (pøi úspìšném záchranném hodu proti kouzlu polovinu) všem nepøátelùm v okruhu 30 stop od sesílatele. Èlenové druiny nejsou ovlivnìni. Sesílatelovo tìlo je dále oèištìno svatımi plameny, stejnì jako efekt kouzla Uzdrav.
+
+Volba této schopnosti umoní sesílání kouzla jednou dennì pøirozenım zpùsobem. Tato monost mùe bıt zvolena jen jednou.~
+@11507 =~Kossuthùv svatı symbol~
+@11508 =~Kossuth obdaruje své nejschopnìjší sluebníky Svatım symbolem - prstenem, nesoucím jeho znak všespalujícího plamene. Symbol obohatí Ohnivce o sílu Kossutha, kdy je nošen.
+
+STATISTIKY: 
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Nepouitelnı:
+Kımkoliv jinım ne knìzem~
+@11509 =~kossuthùv ohnivec~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Authlim of Iyachtu Xvim                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+
+@11800 =~Instaluj Authlim Iyachtu Xvima Knezska Sada~
+@11801 =~Authlim Iyachtu Xvima~
+@11802 =~AUTHLIM IYACHTU XVIMA: Iyachtu Xvim je prı vısledkem svazku mezi Èernım Pánem, Banem, a vìtším, èili pravım tanar'ri a ilami mu tak koluje Banova krev. Jiná legenda vypráví, e je zplozencem Èerného Páns a padlého Paladina. Jinak také nazıvanı Boí syn nebo Syn Banùv, slouil Xvim jako Banùv nástroj v Øíších, plnící vùli svého otce. Zjevuje se jako vyhublı, nahı mu, tøímající ohromnı scimitar, èi jako èernı oblak se hnoucíma zelenıma oèima.
+
+V èasech Doby nesnází byl Xvim uvìznìn pod Zhentilskım sklepením, kde byl dren deset let. Osvobozen byl pøi pádu Zhentilu v prùbìhu Cyrinishadského fiaska, pøièem Cyricovi zcizil jeho portfeje Tyranie a Záštì. Nyní se snaí všemi silami pøevzít úlohu svého otce, Bana, a stal se tak úhlavním nepøítelem Cyrica. Jeho následovníci mají nejsilnìjší pozici na vıchodì, obzvláštì v Thayi, avšak jeho kult se mocnì rozrùstá ji po celıch Øíších. Xvimovi knìí si za svùj úbor zvolili èerné róby, lemované temnì zelenou linií. Té nosí èerné elezné rukavice s planoucíma zelenıma oèima, vyobrazenıma na èerném podkladu. Tyto rukavice jsou té svatımi symboly Xvimovıch knìích.  
+
+Xvimovımi Authlimy mohou bıt pøíslušníci jakékoliv rasy s pøesvìdèením Zákonné zlo, Zákonnı neutrál nebo Neutrální zlo.  
+
+Vlastnosti: 
+-  Duševní zbraò: Scimitar - 'Scimitar duší' jednou dennì. 
+Scimitar je duševní zbraò Xvimovıch Authlimù a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Zruènost bitvy je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol. 
+-  Imunita na Strach. 
+-  Od 7. levelu mono zakouzlit Nepøíjemnosti jednou dennì, jako stejnojmenné mágovo kouzlo ètvrté úrovnì
+-  Od 9. levelu mono zakouzlit Sni odolnost jednou dennì, jako stejnojmenné mágovo kouzlo páté úrovnì.
+-  Od 11. levelu mono zakouzlit Kouzlo smrti jednou dennì, jako stejnojmenné mágovo kouzlo šesté úrovnì
+-  Od 14. levelu mono zakouzlit Pláš jednou dennì, jako stejnojmenné mágovo kouzlo sedmé úrovnì
+-  Authlim smí svá uzdravující kouzla sesílat pouze na sebe. Xvim a jeho Authlimové pohrdají slabostí a odmítají pomoci tìm, kteøí ji potøebují.  
+
+Pøístup ke sférám:
+-  Úplnı pøístup ke sférám všeho, souboje, vìštby, stráce, uzdravení, nekromancie, vyvolávání a války
+-  Èásteènı pøístup ke sférám zmámení, stvoøení, ivlu a zákona
+-  Bez pøístupu ke sférám zvíøete, chaosu, èísel, rostliny, protekce, ochran a poèasí~
+@11803 =~Svatı symbol Iyachtu Xvima~
+@11804 =~Iyachtu Xvim obdaruje své nejschopnìjší sluebníky Svatım symbolem - oèarovanımi rukavicemi z èerného eleza s vyobrazením zelenıch oèí. Rukavice obohatí Authlima o Xvima, kdy je nošen. 
+
+STATISTIKY: 
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Nepouitelnı:
+Zmatenımi nebo Dobrımi knìími~
+@11805 =~'Scimitar duší'~
+@11806 =~Scimitar je duševní zbraò Xvimovıch Authlimù a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Scimitar duší je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol. ~
+@11807 =~Xvimovo vyvolání~
+@11808 =~Xvimovo vyvolání (Zaklínání,Vyvolávání)
+Úroveò: Quest
+Sféra: Všechno, Vyvolávání
+Rozsah: 40 yardù
+Trvání: 24 kol
+Délka sesílání: 5
+Oblast pùsobení: Speciální 
+Záchrannı hod: ádnı
+
+Pokud je kouzlo sesláno, pøetáhne na stranu sesílatele všechna zákonì zlá stvoøení. Kouzlo dále vyvolá od jednoho do ètyø Starších orbù.~
+@11809 =~authlim iyachtu xvima~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Lorekeeper of Oghma                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@12100 = ~Instaluj Oghmuv strazce ucenosti Knezska Sada~
+@12101 = ~Oghmùv Stráce uèenosti~
+@12102 = ~OGHMÙV STRÁCE UÈENOSTI: Oghma je bohem vzdìlání a vynalézavosti, schraòovaè vìdìní a patron bardù. Je nejmocnìjším bohem vzdìlání v Øíších (druhım nejmocnìjším, pokud povaujeme za vzdìlání i magické schopnosti, jejich patronem je Mystra). Jako Oghmovi informátoøi pracují Deneir a Milil a pøinášejí nové informace jemu a jeho vyvolenım. 
+
+Oghmovi následovníci vìøí, e vìdìní je nejsvrchovanìjší ideou, zvláštì ve své syrové formì. Myšlenka nic neváí, pøesto dokáe hıbat horami. Nemá vıšku, pøesto dokáe vést národ. Nemá hmotnou podstatu, pøesto dokáe pohnout øíšemi. Vìdìní je nejmocnìjší nástroj lidstva, pøevyšující cokoliv, co vytvoøily ruce smrtelníkù. Pøedtím, ne mùe cokoliv vzniknout, musí existovat myšlenka. 
+
+Ogmovımi stráci uèenosti mohou bıt jakékoliv rasy èi pøesvìdèení. 
+
+Vlastnosti: 
+-  Duševní zbraò: Dlouhı meè - 'Smrtící úder' jednou dennì
+Smrtící úder je duševní zbraò Oghmovıch Strácù uèenosti a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Zruènost bitvy je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.  
+-  Získává základ 10 bodù uèení za úroveò.
+-  Od 7. levelu mono zakouzlit Tajné slovo jednou dennì, jako stejnojmenné mágovo kouzlo ètvrté úrovnì
+-  Od 9. levelu mono zakouzlit Vìštba jednou dennì, jako stejnojmenné mágovo kouzlo páté úrovnì
+-  Od 11. levelu mono zakouzlit Mocné slovo: Ticho jednou dennì, jako stejnojmenné mágovo kouzlo páté úrovnì
+-  Od 14. levelu mono zakouzlit Rubínovı paprsek obratu jednou dennì, jako stejnojmenné mágovo kouzlo sedmé úrovnì
+
+Pøístup ke sférám:
+-  Úplnı pøístup ke sférám všeho, astrálna, souboje, zmámení, vìštby, ivlu, stráce, uzdravení, protekce, vyvolávání, myšlenky a cestování  
+-  Èásteènı pøístup ke sférám zvìøe, stvoøení, nekromancie, slunce a ochran
+-  Bez pøístupu ke sférám chaosu, zákona, èísel, rostliny, èasu, války a poèasí~
+@12103 = ~Dlouhı meè - Smrtcí úder~
+@12104 = ~Moudrost Oghmy~
+@12105 = ~Svatı symbol Oghmy~
+@12106 = ~Oghma obdaruje své nejschopnìjší sluebníky Svatım symbolem - prstenem, nesoucím jeho znak svitku èi pergamenu. Symbol obohatí Stráce uèenosti o sílu Oghmy, kdy je nošen. 
+
+STATISTIKY: 
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Nepouitelnı:
+Jakımkoliv jinım povoláním ne knìzem~
+@12107 = ~oghmùv stráce uèenosti~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Heartwarder of Sune Kit                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+
+@12400 =~Instaluj Sunin strazce srdci Knezska Sada~
+@12401 =~Sunin stráce srdcí~
+@12402 =~SUNIN STRÁCE SRDCÍ: Sune (vyslovuj sju-nı:) Ohnivı vlas je povaována za nejèestnìjší ze všech mocnıch sil. Zjevuje se jako ta nejnádhernìjší ena v Øíších, s oslnivì rudımi vlasy a ohromnım šarmem. Její víra je velmi populární zejména ve velkomìstskıch oblastech a mezi šlechtou. Ti, je milují umìní a literaturu, stejnì jako ti, je jsou zamilovaní nebo hledají svou celoivotní lásku, velmi èasto uctívají lady Ohnivı vlas.
+
+Sama Sune je prı velmi shovívavá a èasto i lehce rozmarná, pohybující se mezi hlubokım zaujetím èi pouhım povrchním flirtem. Èasto byla spojována s mnoha mocnımi silami Øíší, nikdy však neprokázala ani náznak lásky k bohùm vzteku, Talonì nebo Tempovu, jeliko jejich postavení pøedpokládá destrukci a nièení mnoha pøekrásnıch vìcí, jak ivoucích, tak umìlıch. V posledních dobách se traduje, e bıvá okouzlena spíše vznešenımi èiny Torma na Tantrasu v prùbìhu Doby nesnází.   
+
+Vlastní knìí Sune, známí jako Sunini Stráci srdcí, jsou estéty a poitkáøi, je aktivnì vyhledávají potìšení a krásu v kadém objektu a je dbají na vytváøení krásnıch a ušlechtilıch vìcí. Sdruují se ve velkıch mìstech ve spoleènosti kulturní elity. Mnozí z nich jsou patrony umìní a všichni hrají svou roli "dohazovaèù" osobám všech spoleèenskıch úrovní. Mnoho z nich pracují jako umìlci, øemeslníci, pøedstavitelé èi uèitelé, pøesto se najdou tací, kteøí pouze putují svìtem a podporují krásu a lásku. 
+
+Suninım Strácem srdcí mùe bıt jakákoliv postava s pøesvìdèením Neutrální dobro, Zmatené dobro a Zmatenı neutrál.  
+
+Vlastnosti:
+-  Duševní zbraò: 'Cep šoku' jednou dennì
+Cep šoku je duševní zbraò Suninıch Strácù srdcí a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Cep šoku je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.   
+-  +1 k charisma
+-  Od 7. levelu mono zakouzlit Emoce jednou dennì, jako stejnojmenné mágovo kouzlo ètvrté úrovnì
+-  Od 9. levelu mono zakouzlit Plamennı úder jednou dennì, jako stejnojmenné knìské kouzlo páté úrovnì
+-  Od 11. levelu mono zakouzlit Sple jednou dennì, jako stejnojmenné mágovo kouzlo šesté úrovnì
+-  Od 14. levelu mono zakouzlit Pláš jednou dennì, jako stejnojmenné mágovo kouzlo sedmé úrovnì
+
+Pøístup ke sférám:
+-  Úplnı pøístup ke sférám všeho, astrálna, zmámení, stvoøení, vìštby, stráce, uzdravení, protekce, slunce, myšlenky, èasu
+-  Èásteènı pøístup ke sférám souboje, ivlu, nekromancie, vyvolávání
+-  Bez pøístupu ke sférám zvíøete, chaosu, zákona, èísel, rostliny, cestovatelù, války, ochran, poèasí~
+@12403 =~Cep - 'Cep šoku'~
+@12404 =~Cep šoku je duševní zbraò Suninıch Strácù srdcí a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Cep šoku je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.~
+@12405 = ~Svatı symbol Sune~
+@12406 = ~Sune obdaruje své nejschopnìjší sluebníky Svatım symbolem - zlatım amuletem, vytvarovanım do podoby tváøe pøekrásné lidské panny. Symbol obohatí Stráce srdcí o sílu Sune, kdy je nošen. 
+
+
+STATISTIKY: 
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Nepouitelnı:
+Jakımkoliv jinım povoláním ne knìz~
+@12407 =~sunin stráce srdcí~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Feywarden of Corellon Kit                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@12700 =~Instaluj Strazce vize Corellona Knezska Sada~
+@12701 =~Stráce vize corellona~
+@12702 =~Stráce vize Corellona~
+@12703 =~STRÁCE VIZE CORELLONA: Vùdce elfího panteonu, Corellon Larethian (cor-ehlon la:-re-thi:-jan), je øeèenı zakladatel celé elfí rasy, pøesto je tato zásluha pøipisována té Sehanine a Angharradhovi. Elfové uctívají monumenty, je byly vystavìny Vznešenım lidem z kapek Corellanovy krve, které ronil v epickıch bitvách s Gruumushem, smíchanımi se slzami Sehane èi Angharradha. Stvoøitel Elfù ztìlesòuje nejvyšší ideály elfství a je patronem tìch nejvznešenìjších a nejestetiètìjších èinností, zahrnujících umìní, magii, hudbu, poezii a válku. Je uctíván všemi ze Vznešeného lidu vyjma drowy, a tìmi, je se obrátili k Loth, Ghaunadaurovi, Vhaeraunovi èi jinım temnım silám. Corellon je zvláštì oblíbenı mezi elfími a pùl-elfími mágy, hudebníky a básníky. 
+
+Obøadní roucho Corellonovıch knìích sestává z azurové róby, vytvoøené z pavuèin, a s vyšívanımi støíbrnımi pùlmìsíci. Na èele nosí vyrytı støíbrnı krouek se symbolem Ochránce. Svatım symbolem víry je støíbrnı nebo mitrilovı mìsíèní pøívìsek, zavìšenı na úzkém øetízku, povìšenı kolem krku. Kdy se vydávají za dobrodrustvím, volí Corellonovi knìí radìji tradièní elfské ošacení s vìdomım vyobrazením jejich boského patrona.  
+
+Corellonovım Strácem vize mùe bıt elf nebo pùl-elf s pøesvìdèením Zmatené dobro, Neutrální dobro nebo Zmatenı neutrál.  
+
+Vlastnosti: 
+-  Duševní zbraò: Dlouhı meè - 'Sahandrian' jednou dennì
+Sahandrian je duševní zbraò Corellonovıch Strácù vize a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Sahandrian je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol. 
+-  Mono pøidat 2 dovednostní body ve zbraních a maximum v bojovıch stylech
+-  Pøidá +1 bonus k záchrannım hodùm na smrt
+-  Od 7. levelu mono zakouzlit Vyèaruj zbraò jednou dennì, jako stejnojmenné mágovo kouzlo ètvrté úrovnì
+-  Od 9. levelu mono zakouzlit Odolnost proti kouzlu jednou dennì, jako stejnojmenné mágovo kouzlo páté úrovnì
+-  Od 11. levelu mono zakouzlit Ochrana pøed magickımi zbranìmi jednou dennì, jako stejnojmenné mágovo kouzlo šesté úrovnì
+-  Od 14. levelu mono zakouzlit Duhovou spršku jednou dennì, jako stejnojmenné mágovo kouzlo sedmé úrovnì
+
+Pøístup ke sférám:
+-  Úplnı pøístup ke sférám všeho, astrálna, zmámení, souboje, stvoøení, vìštby, stráce, uzdravení, nekromancie, protekce, slunce, války a ochran
+-  Èásteènı pøístup ke sférám zvíøete, chaosu, vyvolávání, rostliny a myšlenky
+-  Bez pøístupu ke sférám ivlu, zákona, èísel, èasu, cestovatelù a poèasí~
+@12704 =~Dlouhı meè - 'Sahandrian'~
+@12705 =~Sahandrian je duševní zbraò Strácù vize a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Zruènost bitvy je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.~
+@12706 =~Vylepšená Hbitost
+(Jakákoliv škola)
+Úroveò: 10
+Rozsah: Bez limitu
+Trvání: 2 kola
+Délka sesílání: 9
+Oblast pùsobení: Speciální
+Záchrannı hod: Speciální
+
+Vylepšená hbitost v podstatì eliminuje potøebu pauzy bìhem sesílání kouzel. Pod efektem kouzla mùe knìz zaèít sesílat nové kouzlo hned v tom momentì, jakmile je pøedchozí kouzlo dokonèeno. Tento efekt vydrí po 2 kola.
+
+Tato schopnost mùe bıt zvolena tøikrát.~
+@12707 =~Svatı symbol Corellona~
+@12708 =~Corellon obdaruje své nejschopnìjší sluebníky Svatım symbolem - prstenem, nesoucím jeho znak srpku mìsíce. Symbol obohatí Corellonovy Pastıøe víl o sílu a mocnou duši Corellona, kdy je nošen. 
+
+STATISTIKY: 
+     Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+
+Nepouitelnı:
+Jakımkoliv jinım povoláním ne knìz~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Strifeleader of Cyric Kit                        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@13000 = ~Dìsivı úder~
+@13001 =~Instaluj Cyrikuv Lzipan Knezska Sada~
+@13002 =~Cyrikùv Lipán~
+@13003 =~cyrikùv Lipán~
+@13004 =~CYRIKÙV LIPÁN: Cyrik (sí-ryk) je megalomanské bostvo se zástupem následovníkù. Je jedním ze tøí hlavních sil zla na Faerunu, malichernı a sebestøednı, uívá si matení jedincù všech pøesvìdèení, take vykonávají èiny, je jim nièí ivoty èi páchají fatální chyby. Pije slzy rozèarovanıch snílkù a milovníkù se zlomenımi srdci. Není mimo jakoukoliv alianci s jinım bostvem, dokud vìøí, e jej mùe zradit a pøedbìhnout.
+
+Cyrikova církev je zaslíbena šíøení svárù a všude vykonává vrady, aby pøimìla lid ke strachu z Temného slunce. Podporuje krutovládce, dopøává takovıch intrik, aby svìt nebyl zahalen válkami (a tak se pøiblíil moci Tempa). Církev je èasto zmítána vnitøními spory a zradou, ovšem konflikty v posledních letech ponìkud utichly, jeliko Cyrik získal lepší sebekontrolu a zkonsolidoval církve bohù je pøevzal.
+
+Lipáni nosí èerné a rùové róby. Na zápìstích mají støíbrné pásy jako symbol vlastního zotroèení Cyrikem. Lipáni Cyrika mohou bıt chaoticky neutralního èi jekéhokoliv zlého pøesvìdèení.
+
+Vlastnosti:
+-  Duševní zbraò: Dlouhı meè - 'Ostøí bøitvy' jednou dennì
+Ostøí bøitvy je duševní zbraò Lipánù Cyrika a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Ostøí bøitvy je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol. 
+-   Mùe jednou dennì za kadıch 6 úrovní ponoøit svou zbraò do jedu. Útoky vedené v dalším kole dopraví jed do cíle zpùsobuje zranìní 1 za kadou sekundu po 24 vteøin (prvních šest vteøin je zranìní 3). Úspìšnı záchranı hod omezuje celkové zranìní na 12. 
+-  Od úrovnì 7 mùe jednou dennì seslat Dìsivı úder
+Vystøelí paprsek negativní energie, jen uštìdøí zranìní za 4k8 ivotù +1 za kadou další úroveò (maximálnì +20) a na jedno kolo cíl zmate (se záchranım hodem -2 na odolání)
+-  Od úrovnì 9 mùe jednou dennì seslat Chaos, jako stejnojmenné mágovo kouzlo páte úrovnì
+-  Od úrovnì 11 mùe jednou dennì seslat Smrtící mlhu jako stejnojmenné mágovo kouzlo šesté úrovnì
+-  Od úrovnì 14 mùe jednou dennì seslat Kouli chaosu jako stejnojmenné mágovo kouzlo sedmé úrovnì
+
+Pøístup ke sférám:
+-  Úplnı pøístup ke sférám všeho, astralní, zmámení, boje, obrany, léèení, nekromancie, povolávání, slunce, èasu, války, poèasí
+-  Èásteènı pøístup ke sférám vìštìní, ivlù, èísel, ochrany
+-  Bez pøístupu ke sférám zvíøat, tvoøení, chaosu, zákonu, rostlin, myšlenek, èasu, oddìlování~
+@13005 =~Svatı symbol Cyrika~
+@13006 =~Cyrik obdaruje své nejschopnìjší sluebníky Svatım symbolem - postøíbøenımi chránièi nesoucími jeho znak: lebku na èerném slunci. Je viditelnım symbolem moci knìze jako i jeho totální podøízenosti Princovi lí, pokud jsou nošeny, ještì zvìtšují u tak strašidelnou moc Lipánù.
+
+STATISTIKY:
+
+Pøidává dodateèné kouzlo 6. a 7. úrovnì
+     5% ochrana proti magii, pokud je nošen
+     +1 k síle, pokud je nošen
+Nepouitelnı:
+ Kadım, kdo není knìz~
+@13007 =~Dlouhı meè - 'Ostøí bøitvy'~
+@13008 =~Ostøí bøitvy je duševní zbraò Lipán Cyrika a úèinkuje jako kdyby byl sesílatel s touto zbraní na úrovni velmistrovství. Ostøí bøitvy je obyèejnou zbraní na úrovni 1-5, +1 na úrovni 6-10, +2 na 11-15, +3 na 16-20, +4 na 21-25 a +5 na 26 a vıše. Duševní zbraò vydrí jedno kolo za kadou úroveò sesílatele, a do maxima 20 kol.~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Druid Remix                                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@20000 =~Druidùv remix~
+@20001 =~DRUID: Druid slouí úèelùm pøírody a neutrality; jeho spoleèností je divoèina. Pouívá své specifické síly k zachování rovnováhy ve svìtì.
+
+-  Druidi mají pøístup ke knìzovım kouzlùm ze sfér všech, elementálních, léèení, rostlin, slunce a poèasí od první úrovnì
+-  Od 7 úrovnì se mohou mìnit na vlky, hnìdé a èerné mìdvìdy
+-  Od 15 úrovvnì získávají imunitu na jedy
+-  Od 18 úrovnì získávají 10% bonus ke své odolnosti vùèi ivlùm, je se zvyšuje o dalších 10% na úrovni 21 a 24~
+@20002 =~Bojovník/ DRUID:  Tato postava smí pouívat dovednosti bojovníka a druida, ovšem ze zbraní jen ty, které mùe pouívat druid.~
+@20003 =~Lehké, ale pevné šupiny modrého draka poskytují dokonalou ochranu pøed zbranìmi a všemi formami elektøiny.
+
+VLASTNOSTI:
+ +90% odolnost vùèi bleskùm a útokùm elektøinou
+
+Obranné èíslo: -1
+Váha: 20
+Vyaduje: síla 15
+Nesmí uívat:
+ Bard
+ Druid
+ Mág
+ Zlodìj~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Oozemaster Druid kit                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@20301 =~Nainstaluj Vladce slizu druid kit~
+@20302 =~vládce slizu~
+@20303 =~Vládce slizu~
+@20304 =~VLÁDCE SLIZU: Z kadé praskliny a pukliny v podzemí prosakuje nìjaká hnusná, jednobarevná hmota, u ní si dobrodruzi pøejí, aby tam nebyla. Právì, kdy prochází okolo luté zeminy, ze stropu odkapává zelenı sliz. Docela èasto tyhle odpornosti vyrostou samy ale obèas jsou tam umístìny opatrnou rukou vládce slizu. 
+
+Vládce slizu není povolání pro nemìnné jedince. Znamená to spojovat vìci spojucící se s nièím. Narozdíl od spøíznìnıch stvoøení vìtšiny druidù nemají stvoøení spojená s vládcem slizu vùbec co øíct. Nikdo dosud nevyvinul kouzlo Mluv se slizem - anebo pokud ho nìkdo vyvinul, slizy neodpovídaly. Dáno tím, e vzbuzují cokoliv, jen ne dùvìru, tak mají velice málo soucitnıch pøátel a ještì ménì hostù. Tudí tíhnou k drmolení a samomluvì.
+
+Nicménì následování cesty vládce slizu skıtá urèité odmìny. Jak roste jejich síla, pøebírají mnoho z rysù svıch oblíbenıch stvoøení. Aèkoliv se jejich myšlení stává odlišnım a mají problémy se vztahy k ostatním, vìtšinou to nevnímají jako nevıhodu.
+
+Vıhody:
+-  Za kadıch 5 úrovní mùe jednou dennì pouít Ochromující dotyk. Toto kouzlo úèinkuje jako mágovo kouzlo druhé úrovnì Dotyk ghùla
+-  Od 5. úrovnì díky svému odlišnému metabolismu imunní vùèi jedu
+-  Od 7. úrovnì se mùe pøemìnit na rosol. Tato schopnost se dá pouít tøikrát dennì
+-  Od 9. úrovnì imunní vùèi kyselinì
+-  Od 11. úrovnì díky svému odlišnému metabolismu a tomu, e se se slizem stanou jedním a chybí jim rozeznatelné vnitøní orgány, imunní vùèi oslepení, spánku, ochromení, omráèení a kritickému zásahu
+
+Nevıhody:
+-  Nemá pøístup ke kouzlùm ze sféry zvíøe nebo rostlina
+-  Nedostává ádné další druidské zvláštní schopnosti (jako promìna ve vlka nebo medvìda, èi vysokoúrovòové odolnosti vùèi elementùm)
+-  Jak se postupnì vzdalují humanoidnímu myšlení a jak se jejich rysy deformují, utrpí penalizaci -1 k charisma na 1., 5., 7., 9., 11 a 15. úrovni~
+
+@20305 = ~Ochromující dotyk~
+@20306 = ~Pøemìna: Rosol~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Bowslinger Ranger Kit                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@40300 = ~Nainstaluj hranicarsky kit Odstrelovac~
+@40301 = ~odstøelovaè~
+@40302 = ~Odstøelovaè~  
+@40303 = ~ODSTØELOVAÈ: ODSTØELOVAÈ je ztìlesnìním elfí zruènosti s lukem. Pokud je tøeba obtínı vıstøel, vystøelí. A u je cíl zasaitelnı jenom proti silnému vìtru nebo je skrytı, ODSTØELOVAÈ si je jist svou schopností zasáhnout.
+
+Vıhody::
+-  +1 k THAC0 a zranìní jakoukoliv støelnou zbraní za kadé tøi úrovnì, od 18. úrovnì za kadıch pìt úrovní
+-  Mùe dosáhnout mistrovství (ètyøi body) v lucích
+-  Mùe jednou dennì za kadé ètyøi úrovnì (poèínaje ètvrtou úrovní) pouít schopnost "Znaèená støela". Pokud ji lukostøelec pouije, kadı vıstøel po dobu 20 sekund získá + k THAC0 a zranìní za kadé ètyøi úrovnì
+-  Mùe jednou dennì za kadıch osm úrovní (poèínaje osmou úrovní) pouít schopnost "Rychlá støela". Pouitím této schopnosti získá útok za kolo navíc po dobu pìti kol
+-  Za kadıch šest úrovní (poèínaje šestou úrovní) mùe jednou dennì seslat  "Odhal neviditelnost"
+
+Nevıhody:
+-  Nedostává zvláštní schopnost "Zmam zvíøe"
+-  -1 ke zranìní zbraní na blízko
+-  Mùe se stát pouze dovednım (jeden bod) v dlouhıch meèích, krátkıch meèích a dıkách
+-  Nemùe bıt dovednı v ádné jiné zbrani na blízko
+-  Nemùe nosit kovovou zbroj~
+@40304 = ~Rychlá støela~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Feralan Ranger Kit                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@40600 = ~Nainstaluj kit hranicare Divy clovek~
+@40601 = ~divı èlovìk~
+@40602 = ~Divı èlovìk~
+@40603 = ~DIVİ ÈLOVÌK: Co se stane s dìtmi, které se toulají divoèinou a nikdy nejsou nalezeny? Nebo hùøe, s tìmi, které jsou sem odloeny? Mnoho jich podlehne jejím nebezpeèím, ale o nìkolik šastnıch se postarají zvíøata a ony jsou vychovány jako èlenové lví nebo vlèí smeèky. Oddìleny od civilizace postupnì pøevezmou povahové rysy tvorù, které je adoptovaly, co v nich formuje jistı druh svornosti s duchem divoèiny. Postupem èasu se stávají divımi lidmi, stvoøeními, v nich se snoubí zuøivost zvíøat s rozumem èlovìka.
+
+Diví lidé nemohou bıt zákonnì dobrého pøesvìdèení.
+
+Vıhody:
+-  +10% ke schopnosti plíení
+-  +1 k obrannému èíslu kadıch pìt úrovní (poèínaje první úrovní)
+-  Jednou dennì za kadıch 10 úrovní mùe propadnout Divošské zuøivosti. Stav zuøivosti trvá 60 sekund a poskytuje bonus +2 k zásahu, zranìní a OÈ, imunitu na zmámení, zadrení, strach, labyrint, uvìznìní, omráèení a spánek. Rovnì získává 15 doèasnıch hit bodù
+-  Jednou dennì mùe seslat Volání divoèiny. To povolá zvíøecího spoleèníka, kterı bude za sesílatele bojovat 3 kola + 1 kolo za úroveò. Na vyšších úrovních jsou povolávána mocnìjší stvoøení
+
+Nevıhody:
+-  Po vypršení Divošské zuøivosti nemùe popadnout dech. V tu dobu má postih -2 na zásah, zranìní a OÈ
+-  Je omezen na jeden dovednostní bod v meèi bastardu, dlouhém meèi, krátkém meèi, obouruèním meèi, katanì, scimitaru, halapartnì, cepu a kuši
+-  Nemùe nosit ádnou zbroj, ani pouívat velké štíty
+-  Maximální Charisma je o 2 body niší ne u bìnıch èlenù rasy~
+@40604 = ~Divošská zuøivost~
+@40605 = ~Volání divoèiny~
+@40606 = ~Divokı pes~
+@40607 = ~Vlk~
+@40608 = ~Hroznı vlk~
+@40609 = ~Vùdce smeèky~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Forest Runner Ranger Kit                         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+
+@40900 = ~Nainstaluj kit hranicare Lesni posel~
+@40901 = ~lesni posel~
+@40902 = ~Lesní posel~
+@40903 = ~LESNÍ POSEL: Kdekoliv je u moci zkaenı nebo tyranskı reim, je zde i nutnost stát se lesním poslem. Lesní poslové se bouøí proti takovım reimùm, ijí na okrajích spoleènosti a èasto jeden krok pøed zákonem. Jsou zloèinci pouze v technickém slova smyslu, protoe se drí osobního kodexu nutícího je vést válku proti chamtivım šlechticùm a nespravedlivım panovníkùm. Zatímco mocnáøi ho vnímají jako buøièe, lid je vidí jako hrdiny a moná jejich nejvìtší nadìji vùèi tyranské vládì.
+
+Lesní poslové nemohou bıt zákonnì dobrého pøesvìdèení.
+
+Vıhody:
+-  +5% k plíení
+-  Mùe umístit tøi body v ovládání dlouhıch lukù, holí, dlouhıch meèù a dıkách
+-  Jednou za den mùe za kadıch šest úrovní (poèínaje první úrovní) pouít schopnost "Inspiruj". Tato zvláštní schopnost posílí morálku a zvıší hody na útok spoleèníkù lesního posla po dobu tøí kol.
+
+Nevıhody:
+-  Nemùe nosit kovovou zbroj
+-  Je omezen na jeden bod v ovládání sekery, obouruèních meèù, váleèného kladiva a kuší~
+@40904 = ~Inspiruj~
+@40905 = ~Inspirován~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Justifier Ranger Kit                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+
+@41200 = ~Nainstaluj hranicaruv kit Obrance~
+@41201 = ~obránce~
+@41202 = ~Obránce~
+@41203 = ~OBRÁNCE: Nìkteré vıpravy jsou jsou natolik nároèné a nìkteøí nepøátelé natolik nebezpeèní, e vyadují pozornost vysoce trénovaného odborníka, jeho bojové schopnosti podstatnì pøevyšují schopnosti bìného hranièáøe. Seznamte se s Obráncem, mistrem taktiky, jeho váleèné instinkty, bojová mnohostrannost a nervy z oceli jej øadí ke špièèe elitních váleèníkù.
+
+Pro odhodlaného Obránce není ádná práce pøíliš obtíná, ádnı nepøítel pøíliš hrozivı. V boji tìí ze své dovednosti se zbranìmi, avšak drobné nedostatky mají v magickém odvìtví, protoe jeho tréninku vìnují ménì èasu.
+
+Musí bıt zákonnì dobrého pøesvìdèení
+
+Vıhody:
+-  +10% k plíení
+-  +1 k zásahu a +1 k rychlostnímu faktoru za kadıch deset úrovní
+
+Nevıhody:
+-  Nedostává zvláštní schopnost "Zmam zvíøe"
+-  Sesílání kouzel je omezeno na:
+'Vyleè lehká zranìní' a 'Brnìní víry' jednou za den od 8. úrovnì
+'Štìstí' a 'Odstraò strach' jednou za den od 10. úrovnì
+'Posílení svatou mocí' jednou za den od 12. úrovnì~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Wilderness Runner Ranger Kit                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@41500 = ~Nainstaluj kit hranicare Posel divociny~
+@41501 = ~posel divociny~
+@41502 = ~Posel divoèiny~
+@41503 = ~POSEL DIVOÈINY: Jsou hranièáøi a hranièáøi. Elfové mají jedineèné spojení s rytmem lesù, nìkteøí víc ne ostatní. Pouze ti, kteøí se rozhodnou stát se hranièáøi mohou volit zcela se stát souèástí lesa a odhodit ozdoby elfí spoleènosti, aby mohli slouit potøebám lesa. Jsou nazıvání poslové divoèiny.
+
+Vıhody:
+-  +10% odolnost na nemagickı oheò a chlad
+-  Mohou umístit a 3 body do ovládání dlouhého luku a hole
+-  Jednou za den za kadé dvì úrovnì (poèínaje první úrovní) mùe pouít schopnost "Vylepšené zmámení zvíøete". Tato schopnost nahrazuje "Zmam zvíøe", má dvojnásobnou dobu trvání a ovlivòuje všechna zvíøata v dosahu
+-  Mùe pokládat pasti (zaèíná na 20% a zlepšuje se o 5% za úroveò)
+
+Nevıhody:
+-  Nemùe nosit tìší zbroj ne je pokovaná koená
+-  Mùe umístit pouze jeden bod do cepu, palcátu a váleèného kladiva
+-  Maximální charisma je o 2 body niší ne je u jeho rasy obvyklé~
+@41504 = ~Vylepšené zmámení zvíøete~
+
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Battleguard of Tempus kit for Branwen            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@60000 =~Nainstaluj pro Brannwen kit Bojová strá Tempova~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Change Jaheira to Neutral Good                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@60500 = ~Zmen Jaheirino presvedceni na Neutralni dobro~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Nightcloak of Shar kit for Viconia               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@61000 =~Nainstaluj pro Viconii kit Nocni plast Shar~
+@61001 =~Pøines mi Viconii, drowí knìku Shar.~

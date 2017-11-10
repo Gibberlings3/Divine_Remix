@@ -1,0 +1,72 @@
+/////                                                  \\\\\
+///// Adding ToB scripting stuff to SoA                \\\\\
+/////                                                  \\\\\
+
+// adding all ToB actions to action.ids unless already present
+APPEND ~action.ids~ ~31 SpellRES(S:RES*,O:Target*)~
+             UNLESS ~31 SpellRES(S:RES\*,O:Target\*)~
+APPEND ~action.ids~ ~95 SpellPointRES(S:RES*,P:Target*)~
+             UNLESS ~95 SpellPointRES(S:RES\*,P:Target\*)~
+APPEND ~action.ids~ ~113 ForceSpellRES(S:RES*,O:Target)~
+             UNLESS ~113 ForceSpellRES(S:RES\*,O:Target)~
+APPEND ~action.ids~ ~114 ForceSpellPointRES(S:RES*,P:Target)~
+             UNLESS ~114 ForceSpellPointRES(S:RES\*,P:Target)~
+APPEND ~action.ids~ ~147 RemoveSpellRES(S:Spell*)~
+             UNLESS ~147 RemoveSpellRES(S:Spell\*)~
+APPEND ~action.ids~ ~160 ApplySpellRES(S:RES*,O:Target)~
+             UNLESS ~160 ApplySpellRES(S:RES\*,O:Target)~
+APPEND ~action.ids~ ~181 ReallyForceSpellRES(S:RES*,O:Target)~
+             UNLESS ~181 ReallyForceSpellRES(S:RES\*,O:Target)~
+APPEND ~action.ids~ ~191 SpellNoDecRES(S:RES*,O:Target*)~
+             UNLESS ~191 SpellNoDecRES(S:RES\*,O:Target\*)~
+APPEND ~action.ids~ ~192 SpellPointNoDecRES(S:RES*,P:Target*)~
+             UNLESS ~192 SpellPointNoDecRES(S:RES\*,P:Target\*)~
+APPEND ~action.ids~ ~240 ReallyForceSpellDeadRES(S:RES*,O:Target)~
+             UNLESS ~240 ReallyForceSpellDeadRES(S:RES\*,O:Target)~
+APPEND ~action.ids~ ~318 ForceSpellRangeRES(S:RES*,O:Target)~
+             UNLESS ~318 ForceSpellRangeRES(S:RES\*,O:Target)~
+APPEND ~action.ids~ ~319 ForceSpellPointRangeRES(S:RES*,P:Target)~
+             UNLESS ~319 ForceSpellPointRangeRES(S:RES\*,P:Target)~
+APPEND ~action.ids~ ~337 ReallyForceSpellPointRES(S:RES*,P:Target*)~
+             UNLESS ~337 ReallyForceSpellPointRES(S:RES\*,P:Target\*)~
+COPY_EXISTING ~action.ids~ ~override~
+  REPLACE_TEXTUALLY ~^106 Shout(.*$~ ~106 Shout(I:ID*SHOUTIDS)~
+  BUT_ONLY_IF_IT_CHANGES
+
+// additional ToB triggers for SoA
+APPEND ~trigger.ids~ ~0x00A1 SpellCastOnMeRES(S:Spell*,O:Caster*)~
+              UNLESS ~0x00A1 SpellCastOnMeRES(S:Spell\*,O:Caster\*)~
+APPEND ~trigger.ids~ ~0x0091 SpellCastRES(S:Spell*,O:Object*)~
+              UNLESS ~0x0091 SpellCastRES(S:Spell\*,O:Object\*)~
+APPEND ~trigger.ids~ ~0x00A6 SpellCastPriestRES(S:Spell*,O:Object*)~
+              UNLESS ~0x00A6 SpellCastPriestRES(S:Spell\*,O:Object\*)~
+APPEND ~trigger.ids~ ~0x00A7 SpellCastInnateRES(S:Spell*,O:Object*)~
+              UNLESS ~0x00A7 SpellCastInnateRES(S:Spell\*,O:Object\*)~
+APPEND ~trigger.ids~ ~0x4031 HaveSpellRES(S:Spell*)~
+              UNLESS ~0x4031 HaveSpellRES(S:Spell\*)~
+APPEND ~trigger.ids~ ~0x40D5 ActuallyInCombat()~
+              UNLESS ~0x40D5 ActuallyInCombat()~
+              
+COPY_EXISTING ~trigger.ids~ ~override~
+  REPLACE_TEXTUALLY ~\bHeard(O:Object\*,I:ID\*)~
+                    ~Heard(O:Object*,I:ID*SHOUTIDS)~
+  BUT_ONLY_IF_IT_CHANGES
+
+// new state needed to fix Dead() triggers that don't use DVs
+APPEND ~state.ids~ ~0x00000FC0 STATE_REALLY_DEAD~ UNLESS ~0x00000FC0 STATE_REALLY_DEAD~
+
+// fixing kit.ids
+APPEND ~kit.ids~ ~0x4000 TRUECLASS~     UNLESS ~\bTRUECLASS\b~
+APPEND ~kit.ids~ ~0x40000000 BARBARIAN~ UNLESS ~\bBARBARIAN\b~
+APPEND ~kit.ids~ ~0x80000000 WILDMAGE~  UNLESS ~\bWILDMAGE\b~
+
+ACTION_IF NOT FILE_EXISTS_IN_GAME ~shoutids.ids~ THEN BEGIN
+  COPY ~divine_remix/ids/shoutids.ids~ ~override~
+END
+
+// couple of base bg2 spells that don't have IDS entries
+APPEND ~spell.ids~ ~1718 CLERIC_SYMBOL_STUN~  UNLESS ~CLERIC_SYMBOL_STUN~
+APPEND ~spell.ids~ ~1719 CLERIC_SYMBOL_DEATH~ UNLESS ~CLERIC_SYMBOL_DEATH~
+
+//force WeiDU to reload changed ids files
+CLEAR_IDS_MAP

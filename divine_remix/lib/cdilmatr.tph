@@ -1,0 +1,46 @@
+COPY ~divine_remix/2da/cdilmatr.2da~ ~override~
+
+COPY ~Divine_Remix/spl/cdilhnd.spl~ ~override~  // Hand of Ilmater (innate)
+  SAY NAME1 @11203
+  SAY NAME2 @11203
+  SAY UNIDENTIFIED_DESC @11204
+  SAY DESC @11204
+
+COPY ~Divine_Remix/bam/cdiilmtr.bam~ ~override~
+COPY ~Divine_Remix/itm/cdilfs0.itm~ ~override~  // Hand of Ilmater +0
+  SAY NAME1 @11203
+  SAY NAME2 @11203
+  SAY UNIDENTIFIED_DESC @11204
+  SAY DESC @11204
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~cdilfs0.itm~ ~override/cdilfs1.itm~  // hand of ilmater +1
+              ~cdilfs0.itm~ ~override/cdilfs2.itm~  // hand of ilmater +2
+              ~cdilfs0.itm~ ~override/cdilfs3.itm~  // hand of ilmater +3
+              ~cdilfs0.itm~ ~override/cdilfs4.itm~  // hand of ilmater +4
+              ~cdilfs0.itm~ ~override/cdilfs5.itm~  // hand of ilmater +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C "%weap_idx%"
+  PATCH_IF ("%weap_idx%" > 3) BEGIN
+    WRITE_SHORT 0x84 0
+  END ELSE BEGIN
+    WRITE_SHORT 0x84 (4 - "%weap_idx%")
+  END
+
+// change spells to innates as needed
+COPY_EXISTING ~sppr404.spl~ ~override/cdilnps.spl~ // neutralize poison
+              ~sppr607.spl~ ~override/cdilhel.spl~ // heal
+              ~sppr711.spl~ ~override/cdilrgn.spl~ // regeneration
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY ~Divine_Remix/bam/cdilenda.bam~ ~override~ // Ilmater's Endurance (innate)
+     ~Divine_Remix/bam/cdilendb.bam~ ~override~
+     ~Divine_Remix/bam/cdilendc.bam~ ~override~
+COPY ~Divine_Remix/spl/cdilend.spl~  ~override~
+  SAY NAME1 @11205
+  SAY NAME2 @11205
+  SAY UNIDENTIFIED_DESC @11206
+  SAY DESC @11206

@@ -1,0 +1,32 @@
+COPY ~divine_remix/2da/a#ogma.2da~ ~override~
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi419.spl~ ~override/a#og07.spl~ // secret word
+              ~spwi515.spl~ ~override/a#og09.spl~ // oracle
+              ~spwi612.spl~ ~override/a#og11.spl~ // power word silence
+              ~spwi704.spl~ ~override/a#og14.spl~ // ruby ray of reversal
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY ~Divine_Remix/spl/a#og0b.spl~ ~override~  // Lore boost (innate)
+
+COPY ~Divine_Remix/spl/a#og0a.spl~ ~override~  // Mortal Strike (innate)
+  SAY NAME1 @12103
+  SAY NAME2 @12103
+
+COPY ~Divine_Remix/bam/cdiogma.bam~ ~override~
+COPY ~Divine_Remix/itm/a#og00.itm~ ~override~  // Mortal Strike +0
+  SAY NAME1 @12103
+  SAY NAME2 @12103
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~a#og00.itm~ ~override/a#og01.itm~  // mortal strike +1
+              ~a#og00.itm~ ~override/a#og02.itm~  // mortal strike +2
+              ~a#og00.itm~ ~override/a#og03.itm~  // mortal strike +3
+              ~a#og00.itm~ ~override/a#og04.itm~  // mortal strike +4
+              ~a#og00.itm~ ~override/a#og05.itm~  // mortal strike +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C "%weap_idx%"
+  WRITE_SHORT 0x84 (5 - "%weap_idx%")

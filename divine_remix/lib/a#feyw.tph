@@ -1,0 +1,52 @@
+COPY ~divine_remix/2da/A#feyw.2DA~ ~override~
+
+//save vs.death bonus
+COPY ~Divine_Remix/spl/a#fey0a.spl~ ~override~
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi417.spl~ ~override/a#fey07.spl~ // enchanted weapon
+              ~spwi510.spl~ ~override/a#fey09.spl~ // spell immunity
+              ~spwi611.spl~ ~override/a#fey11.spl~ // protection from magical weapons
+              ~spwi714.spl~ ~override/a#fey14.spl~ // prismatic spray
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY ~Divine_Remix/spl/a#fey0b.spl~ ~override~  // Sahandrian (innate)
+  SAY NAME1 @12704
+  SAY NAME2 @12704
+  SAY UNIDENTIFIED_DESC @12705
+  SAY DESC @12705
+
+COPY ~Divine_Remix/bam/a#ifey.bam~  ~override~
+COPY ~Divine_Remix/itm/a#fey00.itm~ ~override~  // Sahandrian +0
+  SAY NAME1 @12704
+  SAY NAME2 @12704
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~a#fey00.itm~ ~override/a#fey01.itm~  // sahandrian +1
+              ~a#fey00.itm~ ~override/a#fey02.itm~  // sahandrian +2
+              ~a#fey00.itm~ ~override/a#fey03.itm~  // sahandrian +3
+              ~a#fey00.itm~ ~override/a#fey04.itm~  // sahandrian +4
+              ~a#fey00.itm~ ~override/a#fey05.itm~  // sahandrian +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C "%weap_idx%"
+  WRITE_SHORT 0x84 (5 - "%weap_idx%")
+
+ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+
+  COPY_EXISTING ~spwi921.spl~ ~override/a#hlaal.spl~ //Improved Alacrity
+    SAY IDENTIFIED_DESC @12706
+    SAY UNIDENTIFIED_DESC @12706
+    READ_LONG  0x64 "abil_off" ELSE 0
+    READ_SHORT 0x68 "abil_num" ELSE 0
+    READ_ASCII ("%abil_off%" + 0x04) "bam" (8) // reads the bam filename from ability
+    WRITE_SHORT 0x1c 4                         // sets spell type to innate (4)
+    WRITE_LONG  0x34 1                         // sets spell level to 1 to avoid scripting issues
+    WRITE_EVALUATED_ASCII 0x3a "%bam%" #8      // writes the bam filename from abilities to spell icon
+    FOR (index = 0 ; index < abil_num ; index = index + 1) BEGIN
+      WRITE_SHORT ("%abil_off%" + 0x02 + (0x28 * "%index%")) 4 // changes ability icon location to innate (4)
+    END
+
+END

@@ -1,0 +1,42 @@
+COPY ~divine_remix/2da/a#koss.2da~ ~override~
+
+COPY ~Divine_Remix/spl/a#kos0a.spl~ ~override~  // Tendril of Flame (innate)
+  SAY NAME1 @11501
+  SAY NAME2 @11501
+
+COPY ~Divine_Remix/bam/cdikoss.bam~ ~override~
+COPY ~Divine_Remix/itm/a#koss00.itm~ ~override~  // Tendril of Flame
+  SAY NAME1 @11502
+  SAY NAME2 @11502
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~a#koss00.itm~ ~override/a#koss01.itm~ // tendril of flame +1
+              ~a#koss00.itm~ ~override/a#koss02.itm~ // tendril of flame +2
+              ~a#koss00.itm~ ~override/a#koss03.itm~ // tendril of flame +3
+              ~a#koss00.itm~ ~override/a#koss04.itm~ // tendril of flame +4
+              ~a#koss00.itm~ ~override/a#koss05.itm~ // tendril of flame +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C ("%weap_idx%" + 1)
+  WRITE_SHORT 0x84 (7 - "%weap_idx%")
+
+COPY ~Divine_Remix/spl/a#kos0c.spl~ ~override~
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi418.spl~ ~override/a#kos07.spl~ // fire shield (red)
+              ~spwi523.spl~ ~override/a#kos09.spl~ // sunfire
+              ~sppr605.spl~ ~override/a#kos11.spl~ // conjure fire elemental
+              ~spwi712.spl~ ~override/a#kos14.spl~ // delayed blast fireball
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+
+  COPY ~Divine_Remix/spl/a#koss20.spl~ ~override~ //Kossuth's Purifying Touch
+    SAY NAME1 @11505
+    SAY NAME2 @11505
+    SAY UNIDENTIFIED_DESC @11506
+    SAY DESC @11506
+
+END

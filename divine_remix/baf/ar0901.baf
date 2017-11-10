@@ -1,0 +1,64 @@
+IF
+        Global("CDWorkingForLathander","GLOBAL",1)
+        OR(2)
+          !Global("TelwynSpawn","GLOBAL",2)
+          !Global("CDSpawnOisig","GLOBAL",3)
+THEN
+        RESPONSE #100
+                SetGlobal("TelwynSpawn","GLOBAL",2)
+                SetGlobal("CDSpawnOisig","GLOBAL",3)
+                ActionOverride("SCTELWYN",DestroySelf())
+                ActionOverride("Oisig",DestroySelf())
+END
+
+IF
+        Global("CDSpawnOisig","GLOBAL",1)
+        Global("CDWorkingForLathander","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("CDSpawnOisig","GLOBAL",2)
+    CreateCreature("BHOISIG",[690.565],2)
+END    
+
+IF
+	Global("TelwynSpawn","GLOBAL",0)
+	Global("CDWorkingForLathander","GLOBAL",0)
+        OR(3)
+          Alignment(Player1,MASK_LAWFUL)
+          Alignment(Player1,NEUTRAL)
+          Kit(Player1,GODHELM)
+	OR(6)
+	  Class(Player1,CLERIC)
+	  Class(Player1,FIGHTER_CLERIC)
+	  Class(Player1,CLERIC_MAGE)
+	  Class(Player1,CLERIC_THIEF)
+	  Class(Player1,FIGHTER_MAGE_CLERIC)
+	  Class(Player1,CLERIC_RANGER)
+	!Kit(Player1,GODLATHANDER)
+	!Kit(Player1,GODTALOS)
+THEN
+	RESPONSE #100
+		SetGlobal("TelwynSpawn","GLOBAL",1)
+		CreateCreature("SCTELWYN",[705.711],4) // Guardian Telwyn
+END
+
+IF
+	Global("TelwynSpawn","GLOBAL",0)
+        !Class(Player1,CLERIC)
+	!Class(Player1,FIGHTER_CLERIC)
+	!Class(Player1,CLERIC_MAGE)
+	!Class(Player1,CLERIC_THIEF)
+	!Class(Player1,FIGHTER_MAGE_CLERIC)
+	!Class(Player1,CLERIC_RANGER)
+THEN
+	RESPONSE #100
+		SetGlobal("TelwynSpawn","GLOBAL",1)
+		CreateCreature("SCTELWYN",[705.711],4) // Guardian Telwyn
+END
+
+IF // this block prevents the existing or Oversigt-replaced blocks from spawning Telwyn
+	Global("TelwynSpawn","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("TelwynSpawn","GLOBAL",2)
+END

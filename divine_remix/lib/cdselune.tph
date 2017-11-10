@@ -1,0 +1,48 @@
+COPY ~divine_remix/2da/cdselune.2da~ ~override~
+
+COPY ~Divine_Remix/spl/cdslmce.spl~ ~override~  // moon's hand (innate)
+  SAY NAME1 @10303
+  SAY NAME2 @10303
+  SAY UNIDENTIFIED_DESC @10304
+  SAY DESC @10304
+
+COPY ~Divine_Remix/bam/cdislune.bam~ ~override~
+COPY ~Divine_Remix/itm/cdslmc0.itm~ ~override~  // Moon Mace +0
+  SAY NAME1 @10303
+  SAY NAME2 @10303
+  SAY UNIDENTIFIED_DESC @10304
+  SAY DESC @10304
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~cdslmc0.itm~ ~override/cdslmc1.itm~  // moon mace +1
+              ~cdslmc0.itm~ ~override/cdslmc2.itm~  // moon mace +2
+              ~cdslmc0.itm~ ~override/cdslmc3.itm~  // moon mace +3
+              ~cdslmc0.itm~ ~override/cdslmc4.itm~  // moon mace +4
+              ~cdslmc0.itm~ ~override/cdslmc5.itm~  // moon mace +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C ("%weap_idx%" + 1)
+  WRITE_SHORT 0x84 (8 - "%weap_idx%")
+
+COPY ~Divine_Remix/spl/cdslinf.spl~ ~override~  // infravision (permanent innate spell)
+
+COPY ~Divine_Remix/spl/cdslmsd.spl~ ~override~  // Moon Shield (innate spell)
+  SAY NAME1 @10307
+  SAY NAME2 @10307
+  SAY UNIDENTIFIED_DESC @10308
+  SAY DESC @10308
+
+// change spells to innates as needed
+COPY_EXISTING ~sppr403.spl~  ~override/cdslfre.spl~ // free action (innate)
+              ~spwi523.spl~  ~override/cdslsun.spl~ // sunfire (innate)
+              ~spwi621.spl~  ~override/cdslair.spl~ // conjure air elemental (innate)
+              ~spwi702.spl~  ~override/cdslpfe.spl~ // protection from the elements (innate)
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY_EXISTING ~spwi702.spl~ ~override~ // make innate/arcane PftE unstackable
+  LPF CLONE_EFFECT STR_VAR match_resource = spwi702 resource = cdslpfe insert = above END // picks up 321 for ee games, 206 for non-ee
+
+COPY_EXISTING ~cdslpfe.spl~ ~override~ // make innate/arcane PftE unstackable
+  LPF CLONE_EFFECT STR_VAR match_resource = spwi702 resource = cdslpfe insert = below END // picks up 321 for ee games, 206 for non-ee

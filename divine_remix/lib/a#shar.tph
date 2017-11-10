@@ -1,0 +1,61 @@
+COPY ~divine_remix/2da/a#shar.2da~ ~override~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~viconia.bcs~ THEN BEGIN
+
+  COPY_EXISTING ~viconia.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~ForceSpellRES("cdshar2",Myself)~ ~ForceSpellRES("a#sha0b",Myself)~
+    END
+
+END
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi401.spl~ ~override/a#sha07.spl~
+              ~spwi509.spl~ ~override/a#sha09.spl~
+              ~spwi601.spl~ ~override/a#sha11.spl~
+              ~spwi715.spl~ ~override/a#sha14.spl~
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES
+
+COPY ~Divine_Remix/bam/a#sha01.bam~ ~override~ // bams for Chakram
+     ~Divine_Remix/bam/a#sha02.bam~ ~override~
+
+COPY ~Divine_Remix/spl/a#sha0c.spl~ ~override~ // Prot. from Blindness.
+  WRITE_LONG NAME1 `0
+  WRITE_LONG NAME2 `0
+
+COPY ~Divine_Remix/spl/a#sha0b.spl~ ~override~  // chakram (innate)
+  SAY NAME1 @10608
+  SAY NAME2 @10608
+  SAY UNIDENTIFIED_DESC @10608
+  SAY DESC @10608
+
+COPY ~Divine_Remix/itm/a#sha00.itm~ ~override~  // Chakram +0
+  SAY NAME1 @10608
+  SAY NAME2 @10608
+  SAY DESC  @10609
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~a#sha00.itm~ ~override/a#sha01.itm~  // chakram +1
+              ~a#sha00.itm~ ~override/a#sha02.itm~  // chakram +2
+              ~a#sha00.itm~ ~override/a#sha03.itm~  // chakram +3
+              ~a#sha00.itm~ ~override/a#sha04.itm~  // chakram +4
+              ~a#sha00.itm~ ~override/a#sha05.itm~  // chakram +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C "%weap_idx%"
+  PATCH_IF ("%weap_idx%" > 2) BEGIN
+    WRITE_SHORT 0x84 0
+  END ELSE BEGIN
+    WRITE_SHORT 0x84 (3 - "%weap_idx%")
+  END
+
+ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+
+  COPY ~Divine_Remix/spl/a#sha71.spl~ ~override~  // Shar's Curse
+    SAY NAME1 @10604
+    SAY NAME2 @10604
+    SAY UNIDENTIFIED_DESC @10605
+    
+END

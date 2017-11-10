@@ -1,0 +1,51 @@
+ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ THEN BEGIN
+
+  COPY ~divine_remix/2da/a#temp.2da~ ~override/ohtempus.2da~
+
+END ELSE BEGIN
+
+  COPY ~divine_remix/2da/a#temp.2da~ ~override~
+
+END
+
+ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+
+  COPY ~Divine_Remix/spl/a#tem71.spl~ ~override~  // Tempus' Shield
+    SAY NAME1 @10912
+    SAY NAME2 @10912
+    SAY UNIDENTIFIED_DESC @10913
+
+END
+
+COPY ~Divine_Remix/spl/a#tem0b.spl~ ~override~  // Battle prowess (innate)
+  SAY NAME1 @10903
+  SAY NAME2 @10903
+  SAY UNIDENTIFIED_DESC @10904
+  SAY DESC @10904
+
+COPY ~Divine_Remix/bam/cditmpus.bam~ ~override~
+COPY ~Divine_Remix/itm/a#tem00.itm~  ~override~  // Battle Prowess +0
+  SAY NAME1 @10903
+  SAY NAME2 @10903
+  SAY UNIDENTIFIED_DESC @10904
+  SAY DESC @10904
+  SET "weap_idx" = 0
+
+COPY_EXISTING ~a#tem00.itm~ ~override/a#tem01.itm~  // Battle Prowess +1
+              ~a#tem00.itm~ ~override/a#tem02.itm~  // Battle Prowess +2
+              ~a#tem00.itm~ ~override/a#tem03.itm~  // Battle Prowess +3
+              ~a#tem00.itm~ ~override/a#tem04.itm~  // Battle Prowess +4
+              ~a#tem00.itm~ ~override/a#tem05.itm~  // Battle Prowess +5
+  SET "weap_idx" = ("%weap_idx%" + 1)
+  WRITE_LONG  0x60 "%weap_idx%"
+  WRITE_SHORT 0x86 "%weap_idx%"
+  WRITE_SHORT 0x8C ("%weap_idx%" + 1)
+  WRITE_SHORT 0x84 (7 - "%weap_idx%")
+
+// change spells to innates as needed
+COPY_EXISTING ~sppr412.spl~ ~override/a#tem07.spl~ // holy power
+              ~spwi508.spl~ ~override/a#tem09.spl~ // chaos
+              ~spwi603.spl~ ~override/a#tem11.spl~ // tenser's transformation
+              ~spwi711.spl~ ~override/a#tem14.spl~ // sphere of chaos
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+  BUT_ONLY_IF_IT_CHANGES

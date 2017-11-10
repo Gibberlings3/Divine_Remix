@@ -1,0 +1,85 @@
+IF // sends Lathander clerics and LG, NG, CG trueclass clerics to Lathander
+        Global("GaalSpoke","AR0900",1)
+        OR(2)
+          Alignment(Player1,MASK_GOOD)
+          Kit(Player1,GODLATHANDER)
+	OR(6)
+	  Class(Player1,CLERIC)
+	  Class(Player1,FIGHTER_CLERIC)
+	  Class(Player1,CLERIC_MAGE)
+	  Class(Player1,CLERIC_THIEF)
+	  Class(Player1,FIGHTER_MAGE_CLERIC)
+	  Class(Player1,CLERIC_RANGER)
+	!Kit(Player1,GODHELM)
+	!Kit(Player1,GODTALOS)
+THEN
+	RESPONSE #100
+		Wait(2)
+		CreateCreature("bharval",[3077.1630],2) // High Mornmaster Arval
+		SetGlobal("GoodMask","AR0900",1)
+		SetGlobal("GaalSpoke","AR0900",2)
+END
+
+IF // sends Helm clerics and LN, TN, LE trueclass clerics to Helm
+        Global("GaalSpoke","AR0900",1)
+        OR(4)
+          Alignment(Player1,LAWFUL_NEUTRAL)
+          Alignment(Player1,NEUTRAL)
+          Alignment(Player1,LAWFUL_EVIL)
+          Kit(Player1,GODHELM)
+	OR(6)
+	  Class(Player1,CLERIC)
+	  Class(Player1,FIGHTER_CLERIC)
+	  Class(Player1,CLERIC_MAGE)
+	  Class(Player1,CLERIC_THIEF)
+	  Class(Player1,FIGHTER_MAGE_CLERIC)
+	  Class(Player1,CLERIC_RANGER)
+	!Kit(Player1,GODLATHANDER)
+	!Kit(Player1,GODTALOS)
+THEN
+	RESPONSE #100
+		Wait(2)
+		CreateCreature("bhoisig",[3077.1630],2) // High Watcher Oisig
+		SetGlobal("NeutralMask","AR0900",1)
+		SetGlobal("GaalSpoke","AR0900",2)
+END
+
+IF // sends Talos clerics and CN, NE, CE trueclass clerics to Talos
+        Global("GaalSpoke","AR0900",1)
+        OR(4)
+          Alignment(Player1,CHAOTIC_NEUTRAL)
+          Alignment(Player1,NEUTRAL_EVIL)
+          Alignment(Player1,CHAOTIC_EVIL)
+          Kit(Player1,GODTALOS)
+	OR(6)
+	  Class(Player1,CLERIC)
+	  Class(Player1,FIGHTER_CLERIC)
+	  Class(Player1,CLERIC_MAGE)
+	  Class(Player1,CLERIC_THIEF)
+	  Class(Player1,FIGHTER_MAGE_CLERIC)
+	  Class(Player1,CLERIC_RANGER)
+	!Kit(Player1,GODLATHANDER)
+	!Kit(Player1,GODHELM)
+THEN
+	RESPONSE #100
+		Wait(2)
+		CreateCreature("bhnalla",[3077.1630],2) // Stormherald Nallabir
+		SetGlobal("EvilMask","AR0900",1)
+		SetGlobal("GaalSpoke","AR0900",2)
+END
+
+IF // if not a cleric at all
+        Global("GaalSpoke","AR0900",1)
+        !Class(Player1,CLERIC)
+	!Class(Player1,FIGHTER_CLERIC)
+	!Class(Player1,CLERIC_MAGE)
+	!Class(Player1,CLERIC_THIEF)
+	!Class(Player1,FIGHTER_MAGE_CLERIC)
+	!Class(Player1,CLERIC_RANGER)
+THEN
+	RESPONSE #100
+		Wait(2)
+		CreateCreature("bhoisig",[3077.1630],2) // High Watcher Oisig
+		SetGlobal("NeutralMask","AR0900",1)
+		SetGlobal("GaalSpoke","AR0900",2)
+END

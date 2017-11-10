@@ -1,0 +1,184 @@
+IF
+  See(NearestEnemyOf(Myself))
+  Global("Prep","LOCALS",0)
+THEN
+  RESPONSE #100
+    ApplySpell(Myself,WIZARD_STONE_SKIN)
+    ApplySpell(Myself,WIZARD_SPELL_TRAP)
+    SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  StateCheck(Myself,STATE_SILENCED)
+  HaveSpell(WIZARD_VOCALIZE)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_VOCALIZE)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  Detect([PC])
+  !See(LastSeenBy(Myself))
+  HaveSpell(WIZARD_TRUE_SIGHT)
+THEN
+  RESPONSE #100
+    Spell(Myself,WIZARD_TRUE_SIGHT)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !HasBounceEffects(Myself)
+  !HasImmunityEffects(Myself)
+  Global("spellTurn","LOCALS",0)
+THEN
+  RESPONSE #100
+    ForceSpell(Myself,BEHOLDER_SPELL_TURNING)
+    SetGlobal("spellTurn","LOCALS",1)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  CheckStatLT(Myself,1,STONESKINS)
+  HitBy([ANYONE],CRUSHING)
+  Global("Prep2","LOCALS",0)
+  !StateCheck(Myself,STATE_REALLY_DEAD)
+THEN
+  RESPONSE #100
+    ApplySpell(Myself,WIZARD_STONE_SKIN)
+    SetGlobal("Prep2","LOCALS",1)
+END
+
+IF
+  Global("BeholderBehavior","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  HPGT(Myself,65)
+THEN
+  RESPONSE #100
+    FaceObject(NearestEnemyOf(Myself))
+    ForceSpell(NearestEnemyOf(Myself),BEHOLDER_CAUSE_SERIOUS_WOUNDS)
+    Wait(1)
+    Continue()
+END
+
+IF
+  Global("BeholderBehavior","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  HPGT(Myself,55)
+THEN
+  RESPONSE #100
+    FaceObject(SecondNearest(NearestEnemyOf(Myself)))
+    ForceSpell(SecondNearest(NearestEnemyOf(Myself)),BEHOLDER_DEATH_RAY)
+    Continue()
+END
+
+IF
+  Global("BeholderBehavior","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  !See(LeastDamagedOf(Myself))
+  HPGT(Myself,45)
+THEN
+  RESPONSE #100
+    FaceObject(NearestEnemyOf(Myself))
+    ForceSpell(NearestEnemyOf(Myself),BEHOLDER_CAUSE_SERIOUS_WOUNDS)
+    Continue()
+END
+
+IF
+  Global("BeholderBehavior","LOCALS",0)
+  See(NearestEnemyOf(Myself))
+  HPGT(Myself,25)
+THEN
+  RESPONSE #100
+    FaceObject(ThirdNearest(NearestEnemyOf(Myself)))
+    ForceSpell(ThirdNearest(NearestEnemyOf(Myself)),BEHOLDER_FLESH_TO_STONE)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Global("SpellTrigger","LOCALS",0)
+THEN
+  RESPONSE #100
+    DisplayString(Myself,39968) // Spell Trigger - Fired
+    DisplayString(Myself,40248) // Spell Trigger - True Sight
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_TRUE_SIGHT)
+    DisplayString(Myself,40249) // Spell Trigger - Dispel Magic
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_DISPEL_MAGIC)
+    DisplayString(Myself,40250) // Spell Trigger - Fireball
+    ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_FIREBALL)
+    SetGlobal("SpellTrigger","LOCALS",1)
+END
+
+IF
+  Global("BeholderBehavior","LOCALS",1)
+  See(NearestEnemyOf(Myself))
+  HPGT(Myself,15)
+THEN
+  RESPONSE #100
+    FaceObject(NearestEnemyOf(Myself))
+    ForceSpell(NearestEnemyOf(Myself),BEHOLDER_DOMINATION)
+    Continue()
+END
+
+IF
+  Global("BeholderBehavior","LOCALS",1)
+  See(NearestEnemyOf(Myself))
+  HPGT(Myself,35)
+THEN
+  RESPONSE #100
+    FaceObject(SecondNearest(NearestEnemyOf(Myself)))
+    ForceSpell(SecondNearest(NearestEnemyOf(Myself)),BEHOLDER_SLOW)
+    Wait(2)
+    Continue()
+END
+
+IF
+  Global("BeholderBehavior","LOCALS",1)
+  See(NearestEnemyOf(Myself))
+  HPGT(Myself,5)
+THEN
+  RESPONSE #100
+    FaceObject(ThirdNearest(NearestEnemyOf(Myself)))
+    ForceSpell(ThirdNearest(NearestEnemyOf(Myself)),BEHOLDER_CAUSE_SERIOUS_WOUNDS)
+    Continue()
+END
+
+IF
+  Global("BeholderBehavior","LOCALS",1)
+  See(NearestEnemyOf(Myself))
+  !See(LeastDamagedOf(Myself))
+THEN
+  RESPONSE #100
+    FaceObject(NearestEnemyOf(Myself))
+    ForceSpell(NearestEnemyOf(Myself),BEHOLDER_DEATH_RAY)
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_IMPRISONMENT)
+THEN
+  RESPONSE #100
+    Spell(NearestEnemyOf(Myself),WIZARD_IMPRISONMENT)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_MAZE)
+THEN
+  RESPONSE #100
+    Spell(NearestEnemyOf(Myself),WIZARD_MAZE)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  HaveSpell(WIZARD_POWER_WORD_KILL)
+  HPLT(LastSeenBy(Myself),60)
+THEN
+  RESPONSE #100
+    Spell(NearestEnemyOf(Myself),WIZARD_POWER_WORD_KILL)
+END
+
+

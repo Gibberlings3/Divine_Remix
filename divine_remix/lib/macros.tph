@@ -1,0 +1,2003 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// heavy lifting of sphere generation               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_ACTION_MACRO CD_BUILD_SPHERE BEGIN
+
+  ACTION_PHP_EACH cd_spheres AS symbol => sphere BEGIN
+
+    LAUNCH_ACTION_MACRO SPELL_LOOKUP
+    
+    ACTION_IF ((FILE_EXISTS ~divine_remix/languages/%LANGUAGE%/utf8_kit_sphere.tra~) OR (FILE_EXISTS ~divine_remix/languages/%LANGUAGE%/kit_sphere.tra~)) THEN BEGIN
+
+      OUTER_SPRINT macro_lang "%LANGUAGE%"
+
+    END ELSE BEGIN
+
+      OUTER_SPRINT macro_lang "english"
+    
+    END
+  
+    ACTION_IF FILE_EXISTS ~divine_remix/languages/%macro_lang%/utf8_kit_sphere.tra~ THEN BEGIN
+
+      LOAD_TRA ~divine_remix/languages/%macro_lang%/utf8_kit_sphere.tra~
+
+    END ELSE BEGIN
+
+      LOAD_TRA ~divine_remix/languages/%macro_lang%/kit_sphere.tra~
+
+    END
+
+    OUTER_SPRINT sphere_match @2026
+    OUTER_SPRINT level_match  @2027
+    OUTER_SPRINT sphere_text  @2028
+
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "al" = 0) BEGIN OUTER_SPRINT sph_text @2001 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "an" = 0) BEGIN OUTER_SPRINT sph_text @2002 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "as" = 0) BEGIN OUTER_SPRINT sph_text @2003 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "cs" = 0) BEGIN OUTER_SPRINT sph_text @2004 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "cm" = 0) BEGIN OUTER_SPRINT sph_text @2005 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "co" = 0) BEGIN OUTER_SPRINT sph_text @2006 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "cr" = 0) BEGIN OUTER_SPRINT sph_text @2007 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "di" = 0) BEGIN OUTER_SPRINT sph_text @2008 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ex" = 0) BEGIN OUTER_SPRINT sph_text @2009 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ea" = 0) BEGIN OUTER_SPRINT sph_text @2010 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ee" = 0) BEGIN OUTER_SPRINT sph_text @2011 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ef" = 0) BEGIN OUTER_SPRINT sph_text @2012 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ew" = 0) BEGIN OUTER_SPRINT sph_text @2013 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "gu" = 0) BEGIN OUTER_SPRINT sph_text @2018 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "he" = 0) BEGIN OUTER_SPRINT sph_text @2019 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "lw" = 0) BEGIN OUTER_SPRINT sph_text @2020 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ne" = 0) BEGIN OUTER_SPRINT sph_text @2021 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ne" = 0) BEGIN OUTER_SPRINT sph_text @2021 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "nu" = 0) BEGIN OUTER_SPRINT sph_text @2022 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "pl" = 0) BEGIN OUTER_SPRINT sph_text @2029 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "pr" = 0) BEGIN OUTER_SPRINT sph_text @2023 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "su" = 0) BEGIN OUTER_SPRINT sph_text @2025 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "sn" = 0) BEGIN OUTER_SPRINT sph_text @2024 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "th" = 0) BEGIN OUTER_SPRINT sph_text @2014 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ti" = 0) BEGIN OUTER_SPRINT sph_text @2035 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "tr" = 0) BEGIN OUTER_SPRINT sph_text @2015 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "wa" = 0) BEGIN OUTER_SPRINT sph_text @2016 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "wd" = 0) BEGIN OUTER_SPRINT sph_text @2030 END ELSE
+    ACTION_IF ("%sphere%" STRING_COMPARE_CASE "we" = 0) BEGIN OUTER_SPRINT sph_text @2017 END ELSE BEGIN
+                                                              OUTER_SPRINT sph_text "" END
+
+    ACTION_IF ((FILE_EXISTS_IN_GAME ~%spell_file%~) AND ("%sph_text%" STRING_COMPARE_CASE "")) BEGIN // only if spell exists, sphere is legit
+  
+      COPY_EXISTING ~%spell_file%~ ~override~
+        READ_LONG 0x34 level
+        READ_BYTE 0x1e flags
+        PATCH_IF ((flags  BAND BIT0) = 0) THEN BEGIN SET allow_chaotic = 1   END ELSE BEGIN SET allow_chaotic = 0   END
+        PATCH_IF ((flags  BAND BIT1) = 0) THEN BEGIN SET allow_evil = 1      END ELSE BEGIN SET allow_evil = 0      END
+        PATCH_IF ((flags  BAND BIT2) = 0) THEN BEGIN SET allow_good = 1      END ELSE BEGIN SET allow_good = 0      END
+        PATCH_IF ((flags  BAND BIT3) = 0) THEN BEGIN SET allow_geneutral = 1 END ELSE BEGIN SET allow_geneutral = 0 END
+        PATCH_IF ((flags  BAND BIT4) = 0) THEN BEGIN SET allow_lawful = 1    END ELSE BEGIN SET allow_lawful = 0    END
+        PATCH_IF ((flags  BAND BIT5) = 0) THEN BEGIN SET allow_lcneutral = 1 END ELSE BEGIN SET allow_lcneutral = 0 END
+        PATCH_IF ((allow_chaotic + allow_evil + allow_good + allow_geneutral + allow_lawful + allow_lcneutral) = 6) THEN BEGIN
+          SET allow_all = 1
+        END ELSE BEGIN
+          SET allow_all = 0
+        END
+        WRITE_BYTE 0x21 (THIS BOR (BIT6 + BIT7)) // don't show up automatically in spellbooks
+        PATCH_IF (sphere_descript != 0) BEGIN
+          PATCH_FOR_EACH offset IN 0x50 BEGIN
+            READ_LONG ~%offset%~ desc_strref
+            PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
+              READ_STRREF ~%offset%~ desc
+              INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+                PATCH_IF (sphere_descript = 1) BEGIN // replace existing/create new line
+                  PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP ~%sphere_match%~) THEN BEGIN // description lacks sphere line
+                    REPLACE_TEXTUALLY ~%level_match%~ ~\1\2
+%sphere_text% %sph_text%~
+                  END ELSE BEGIN // sphere line exists
+                    REPLACE_TEXTUALLY ~%sphere_match%~ ~%sphere_text% %sph_text%~
+                  END
+                END ELSE
+                PATCH_IF (sphere_descript = 2) BEGIN // supplement existing
+                  REPLACE_TEXTUALLY ~%sphere_match%~ ~\1, %sph_text%~
+                END
+              END
+            END
+          END
+        END
+        BUT_ONLY
+
+      ACTION_IF (sphere_descript != 0) THEN BEGIN
+  
+        STRING_SET_EVALUATE desc_strref "%desc%"
+      
+      END
+
+      ACTION_IF (hla = 0) THEN BEGIN // regular old divine spells
+
+        ACTION_IF allow_all = 1 THEN BEGIN
+
+           APPEND ~spellbook_%sphere%_%level%_all.2da~ ~sppr%working%~
+
+         END ELSE BEGIN
+
+           ACTION_IF allow_evil = 1 THEN BEGIN
+
+             APPEND ~spellbook_%sphere%_%level%_evil.2da~ ~sppr%working%~
+
+           END
+
+           ACTION_IF allow_good = 1 THEN BEGIN
+
+             APPEND ~spellbook_%sphere%_%level%_good.2da~ ~sppr%working%~
+
+           END
+
+           ACTION_IF allow_geneutral = 1 THEN BEGIN
+
+             APPEND ~spellbook_%sphere%_%level%_geneutral.2da~ ~sppr%working%~
+
+           END
+
+           ACTION_IF allow_lawful = 1 THEN BEGIN
+
+             APPEND ~spellbook_%sphere%_%level%_lawful.2da~ ~sppr%working%~
+
+           END
+
+           ACTION_IF allow_chaotic = 1 THEN BEGIN
+
+             APPEND ~spellbook_%sphere%_%level%_chaotic.2da~ ~sppr%working%~
+
+           END
+
+           ACTION_IF allow_lcneutral = 1 THEN BEGIN
+
+             APPEND ~spellbook_%sphere%_%level%_lcneutral.2da~ ~sppr%working%~
+
+           END
+
+         END
+
+        // if spell has good/evil, lawful/chaotic restrictions then retain those
+        ACTION_IF allow_all = 0 THEN BEGIN
+
+          COPY ~divine_remix/spheres/template.eff~ ~override/cddr%working%.eff~
+            WRITE_ASCIIE 0x30 ~sppr%working%~ #8
+
+        END
+
+        COPY_EXISTING ~cddr%sphere%%level%.spl~ ~override~
+          PATCH_IF (allow_all = 1) THEN BEGIN
+            LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = EVAL ~sppr%working%~ END
+          END ELSE BEGIN
+            PATCH_IF (allow_evil = 1) BEGIN
+              PATCH_IF ((allow_chaotic = 1) AND (allow_lcneutral = 1) AND (allow_lawful = 1)) BEGIN
+                LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 3 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END // mask evil
+              END ELSE BEGIN
+                PATCH_IF (allow_chaotic = 1) BEGIN
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 51 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF (allow_lcneutral = 1) BEGIN
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 35 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF (allow_lawful = 1) BEGIN
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 19 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+              END
+            END
+            PATCH_IF (allow_geneutral = 1) BEGIN
+              PATCH_IF ((allow_chaotic = 1) AND (allow_lcneutral = 1) AND (allow_lawful = 1)) BEGIN
+                LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 2 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END // mask g/e neutral
+              END ELSE BEGIN
+                PATCH_IF (allow_chaotic = 1) BEGIN
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 50 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF (allow_lcneutral = 1) BEGIN
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 34 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF (allow_lawful = 1) BEGIN
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 18 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+              END
+            END
+            PATCH_IF (allow_good = 1) BEGIN
+              PATCH_IF ((allow_chaotic = 1) AND (allow_lcneutral = 1) AND (allow_lawful = 1)) BEGIN
+                LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 1 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END // mask good
+              END ELSE BEGIN
+                PATCH_IF (allow_chaotic = 1) BEGIN
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 49 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF (allow_lcneutral = 1) BEGIN
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 33 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF (allow_lawful = 1) BEGIN
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 17 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+              END
+            END
+          END
+
+      END ELSE BEGIN // hlas
+
+        ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN // sanity check
+
+          COPY ~divine_remix/spheres/hla_%sphere%.2da~ ~divine_remix/spheres/hla_%sphere%.2da~
+            APPEND_FILE ~divine_remix/spheres/template.2da~
+            REPLACE_TEXTUALLY ~newline \*\*\*\*~ ~CD_HLA%working%~
+          
+          ACTION_IF NOT FILE_CONTAINS_EVALUATED (~divine_remix/spheres/hla_master.2da~ ~GA_%spell_res%~) THEN BEGIN // if not on master hla list yet
+           
+            // defaults in case not it's not found in hla tables
+            OUTER_SPRINT ABILITY            "GA_%spell_res%"
+            OUTER_SPRINT ICON               "*"
+            OUTER_SPRINT STRREF             "*"
+            OUTER_SPRINT MIN_LEV            "1"
+            OUTER_SPRINT MAX_LEVEL          "99"
+            OUTER_SPRINT NUM_ALLOWED        "1"
+            OUTER_SPRINT PREREQUISITE       "*"
+            OUTER_SPRINT EXCLUDED_BY        "*"
+            OUTER_SPRINT ALIGNMENT_RESTRICT "*"
+
+            ACTION_FOR_EACH hlat IN dr0 cl0 BEGIN
+
+              ACTION_IF FILE_EXISTS_IN_GAME ~lu%hlat%.2da~ THEN BEGIN
+
+                ACTION_IF FILE_CONTAINS_EVALUATED (~lu%hlat%.2da~ ~GA_%spell_res%~) THEN BEGIN
+
+                  COPY_EXISTING ~lu%hlat%.2da~ ~override~
+                    COUNT_2DA_ROWS 10 rows
+                    FOR (index = 0 ; index < rows ; ++index) BEGIN
+                      READ_2DA_ENTRY index 1 10 ABILITY
+                      PATCH_IF ("%ABILITY%" STRING_COMPARE_CASE "GA_%spell_res%" = 0) BEGIN
+                        READ_2DA_ENTRY index 2 10 ICON
+                        READ_2DA_ENTRY index 3 10 STRREF
+                        READ_2DA_ENTRY index 4 10 MIN_LEV
+                        READ_2DA_ENTRY index 5 10 MAX_LEVEL
+                        READ_2DA_ENTRY index 6 10 NUM_ALLOWED
+                        READ_2DA_ENTRY index 7 10 PREREQUISITE
+                        READ_2DA_ENTRY index 8 10 EXCLUDED_BY
+                        READ_2DA_ENTRY index 9 10 ALIGNMENT_RESTRICT
+                        SET index = rows // kill loop
+                      END
+                    END
+                    BUT_ONLY
+
+                END
+
+              END
+
+            END
+
+            COPY ~divine_remix/spheres/hla_master.2da~ ~divine_remix/spheres/hla_master.2da~
+              APPEND_FILE ~divine_remix/spheres/hla_append.2da~ EVALUATE_BUFFER
+
+          END
+
+        END
+
+      END
+
+    END
+
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// cd_spellbook                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// purges known spells in illegal spheres - for non-joinables, this is no problem; joinables get spellbook on joining
+// replaces illegal memorized spells with random legal spell
+
+DEFINE_PATCH_FUNCTION cd_spellbook
+  STR_VAR clab = clabpr01
+  BEGIN
+
+  SET sb_delta = 0
+//  SPRINT creature ~%SOURCE_FILE%~
+  PATCH_IF FILE_EXISTS_IN_GAME ~%clab%.2da~ BEGIN
+    READ_BYTE 0x27b align
+    READ_LONG 0x2A0 sb_off
+    READ_LONG 0x2A4 sb_num
+    READ_LONG 0x2B0 ms_off
+    READ_LONG 0x2B4 ms_num
+    PATCH_IF ((align != 17) AND
+              (align != 18) AND
+              (align != 19) AND
+              (align != 33) AND
+              (align != 34) AND
+              (align != 35) AND
+              (align != 49) AND
+              (align != 50) AND
+              (align != 51)) BEGIN
+      SET align = 0
+    END
+    FOR (index = 0 ; index < ms_num ; ++index) BEGIN // memorized spell adjustments
+      READ_ASCII (ms_off +        (index * 0x0c)) spell
+      PATCH_IF ("%spell%" STRING_COMPARE_REGEXP ~sppr[1-7][0-9][0-9]~ = 0) BEGIN // don't mess with non-cleric spells
+        READ_BYTE (ms_off + 0x04 + (index * 0x0c)) lev
+        SET lev -= 0x30
+        PATCH_IF ((!FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%clab%_%lev%_%align%.2da~ ~%spell%~)) AND  // if not an allowed spell
+                  (!FILE_CONTAINS_EVALUATED (~divine_remix/spheres/hla_master.2da~ ~GA_%spell%~))) BEGIN                // and not an HLA
+          INNER_ACTION BEGIN
+
+            COPY ~divine_remix/spheres/spellbook_%clab%_%lev%_%align%.2da~ ~divine_remix/spheres/spellbook_%clab%_%lev%_%align%.2da~
+              COUNT_2DA_ROWS 1 rows
+              PATCH_IF (rows = 0) BEGIN // sanity check - in case there are no allowed replacements, leave alone
+                SPRINT replace "%spell%"
+              END ELSE BEGIN
+                SET select = (RANDOM (0 (rows - 1)))
+                READ_2DA_ENTRY select 0 1 replace // randomly pick replacement
+//                PATCH_PRINT ~ == %creature%: replacing memorized %spell% with %replace%~
+              END
+              BUT_ONLY
+
+          END
+          WRITE_ASCIIE (ms_off +        (index * 0x0c)) "%replace%" #8
+        END
+      END
+    END
+    FOR (index = sb_num ; index > 0 ; --index) BEGIN // spellbook adjustments
+      READ_ASCII (sb_off +        ((index - 1) * 0x0c)) spell
+      PATCH_IF ("%spell%" STRING_COMPARE_REGEXP ~sppr[1-7][0-9][0-9]~ = 0) BEGIN // don't mess with non-cleric spells
+        READ_BYTE (sb_off + 0x04 + ((index - 1) * 0x0c)) lev
+        SET lev -= 0x30
+        PATCH_IF ((!FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%clab%_%lev%_%align%.2da~ ~%spell%~)) AND  // if not an allowed spell
+                  (!FILE_CONTAINS_EVALUATED (~divine_remix/spheres/hla_master.2da~ ~GA_%spell%~))) BEGIN                // and not an HLA
+          DELETE_BYTES ("%sb_off%" + (("%index%" - 1) * 0x0C)) 0x0C
+          SET "sb_delta" -= 1
+        END
+      END
+    END
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// cd_spellbook_wrapup                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// supplement to cd_spellbook that just fixes offsets for deleted spells
+
+DEFINE_PATCH_FUNCTION cd_spellbook_wrapup BEGIN
+
+  PATCH_IF (sb_delta < 0) BEGIN
+    WRITE_LONG 0x2A4 (sb_num + sb_delta)
+    PATCH_FOR_EACH offset IN 0x2a8 0x2b0 0x2b8 0x2bc 0x2c4 BEGIN
+      READ_LONG offset off
+      PATCH_IF off > sb_off BEGIN
+        WRITE_LONG offset (THIS + (sb_delta * 0x0C))
+      END
+    END
+  END
+  SET sb_delta = 0
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// hla string replace                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// used for patching original kit descriptions
+
+DEFINE_PATCH_MACRO cd_hla_descript BEGIN
+
+  READ_STRREF 0x50 desc
+  SPRINT warrior @10151
+  SPRINT rogue   @10152
+  SPRINT priest  @10134
+  SPRINT warrior @10153
+  INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+    REPLACE_TEXTUALLY ~%warrior%~ ~%priest%~
+    REPLACE_TEXTUALLY ~%rogue%~   ~%priest%~
+    REPLACE_TEXTUALLY ~%ranger%~  ~%priest%~
+  END
+  SAY 0x50 ~%desc%~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// cd_descript_replace                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// used for patching original kit descriptions
+
+DEFINE_PATCH_MACRO cd_descript_replace BEGIN
+
+  PATCH_FOR_EACH col IN 2 3 BEGIN
+    READ_2DA_ENTRY index col 8 strref
+    GET_STRREF strref desc
+    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+      REPLACE_TEXTUALLY ~%mixed_match%~ ~%mixed_replace%~
+      REPLACE_TEXTUALLY ~%lower_match%~ ~%lower_replace%~
+    END
+    INNER_ACTION BEGIN
+      STRING_SET_EVALUATE ~%strref%~ ~%desc%~
+    END
+  END
+  READ_2DA_ENTRY index 4 8 strref
+  GET_STRREF strref desc
+  INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+    REPLACE_TEXTUALLY ~%upper_match%~ ~%upper_replace%~
+  END
+  INNER_ACTION BEGIN
+    STRING_SET_EVALUATE ~%strref%~ ~%desc%~
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// SPELL_LOOKUP                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// returns full file name and res for a spell.ids symbol; available as both action and patch
+
+DEFINE_ACTION_MACRO SPELL_LOOKUP BEGIN
+
+  OUTER_SET working = (IDS_OF_SYMBOL (~spell~ ~%symbol%~))
+  
+  ACTION_IF ((working > 999) AND (working < 2000)) THEN BEGIN
+
+    OUTER_SPRINT spell_type "priest"
+    OUTER_SPRINT prefix "sppr"
+    OUTER_SET working -= 1000
+  
+  END ELSE
+  
+  ACTION_IF ((working > 1999) AND (working < 3000)) THEN BEGIN
+  
+    OUTER_SPRINT spell_type "wizard"
+    OUTER_SPRINT prefix "spwi"
+    OUTER_SET working -= 2000
+  
+  END ELSE
+
+  ACTION_IF ((working > 2999) AND (working < 4000)) THEN BEGIN
+
+    OUTER_SPRINT spell_type "innate"
+    OUTER_SPRINT prefix "spin"
+    OUTER_SET working -= 3000
+
+  END ELSE
+  
+  ACTION_IF ((working > 3999) AND (working < 5000)) THEN BEGIN
+
+    OUTER_SPRINT spell_type "innate"
+    OUTER_SPRINT prefix "spcl"
+    OUTER_SET working -= 4000
+  
+  END ELSE BEGIN
+  
+    OUTER_SPRINT spell_type ""
+    OUTER_SPRINT prefix ""
+    OUTER_SET working = 0
+  
+  END
+
+  OUTER_SPRINT spell_file "%prefix%%working%.spl"
+  OUTER_SPRINT spell_res "%prefix%%working%"
+
+END  
+
+DEFINE_PATCH_MACRO SPELL_LOOKUP BEGIN
+
+  SET working = (IDS_OF_SYMBOL (~spell~ ~%symbol%~))
+  
+  PATCH_IF ((working > 999) AND (working < 2000)) BEGIN
+
+    SPRINT spell_type "priest"
+    SPRINT prefix "sppr"
+    SET working -= 1000
+  
+  END ELSE
+  
+  PATCH_IF ((working > 1999) AND (working < 3000)) BEGIN
+  
+    SPRINT spell_type "wizard"
+    SPRINT prefix "spwi"
+    SET working -= 2000
+  
+  END ELSE
+  
+  PATCH_IF ((working > 2999) AND (working < 4000)) BEGIN
+  
+    SPRINT spell_type "innate"
+    SPRINT prefix "spin"
+    SET working -= 3000
+
+  END ELSE
+
+  PATCH_IF ((working > 3999) AND (working < 5000)) BEGIN
+
+    SPRINT spell_type "innate"
+    SPRINT prefix "spcl"
+    SET working -= 4000
+  
+  END ELSE BEGIN
+  
+    SPRINT spell_type ""
+    SPRINT prefix ""
+    SET working = 0
+  
+  END
+
+  SPRINT spell_file "%prefix%%working%.spl"
+  SPRINT spell_res "%prefix%%working%"
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// spell_to_innate                                  \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// converts spell to innate and lowers casting time by two
+
+DEFINE_PATCH_MACRO ~spell_to_innate~ BEGIN
+
+  READ_LONG  0x64 abil_off ELSE 0
+  READ_SHORT 0x68 abil_num ELSE 0
+  READ_ASCII (abil_off + 0x04) bam (8) // reads the bam filename from ability
+  WRITE_SHORT 0x1C 4                         // sets spell type to innate (4)
+  WRITE_LONG  0x34 1                         // sets spell level to 1 to avoid scripting issues
+  WRITE_ASCIIE 0x3A "%bam%" #8      // writes the bam filename from abilities to spell icon
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+    WRITE_SHORT (abil_off + 0x02 + (0x28 * index)) 4 // changes ability icon location to innate (4)
+    READ_SHORT  (abil_off + 0x12 + (0x28 * index)) speed // reads casting speed
+    PATCH_IF (speed > 3) BEGIN
+      WRITE_SHORT  (abil_off + 0x12 + (0x28 * index)) (speed - 2) // reduces casting speed
+    END ELSE BEGIN
+      WRITE_SHORT  (abil_off + 0x12 + (0x28 * index)) 0 // makes instant
+    END
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// reindex_clab                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_PATCH_MACRO ~reindex_clab~ BEGIN
+  SET "ability" = 0
+  REPLACE_EVALUATE ~^\(newline\)\|\(ABILITY[0-9A-Z]+\)[ %TAB%]~ BEGIN
+    SET "ability" = ("%ability%" + 1)
+  END
+  ~ABILITY%ability% ~
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// remove_blank_lines_from_eof                      \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_PATCH_MACRO ~remove_blank_lines_from_eof~ BEGIN
+  SET "size" = (SOURCE_SIZE - 1)
+  READ_BYTE ("%size%") "eof"
+  WHILE ((%size% > 0) AND (("%eof%" = 0x0a) OR ("%eof%" = 0x0d))) BEGIN // removes any empty lines at the end of the file
+    DELETE_BYTES "%size%" 0x01
+    SET "size" = ("%size%" - 1)
+    READ_BYTE ("%size%") "eof"
+  END
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// extend_clab_to_level_50                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_PATCH_MACRO ~extend_clab_to_level_50~ BEGIN
+
+  REPLACE_TEXTUALLY ~[%WNL%%MNL%]+~ ~%LNL%~
+  REPLACE_TEXTUALLY ~\(1[ %TAB%]+2[ %TAB%]+3[ %TAB%]+4[ %TAB%]+5[ %TAB%]+6[ %TAB%]+7[ %TAB%]+8[ %TAB%]+9[ %TAB%]+10[ %TAB%]+11[ %TAB%]+12[ %TAB%]+13[ %TAB%]+14[ %TAB%]+15[ %TAB%]+16[ %TAB%]+17[ %TAB%]+18[ %TAB%]+19[ %TAB%]+20[ %TAB%]+21[ %TAB%]+22[ %TAB%]+23[ %TAB%]+24[ %TAB%]+25[ %TAB%]+26[ %TAB%]+27[ %TAB%]+28[ %TAB%]+29[ %TAB%]+30[ %TAB%]+31[ %TAB%]+32[ %TAB%]+33[ %TAB%]+34[ %TAB%]+35[ %TAB%]+36[ %TAB%]+37[ %TAB%]+38[ %TAB%]+39\)\([ %TAB%]+\)40[ %TAB%]*~
+    ~\1\240\241\242\243\244\245\246\247\248\249\250~
+  REPLACE_TEXTUALLY ~^\(ABILITY[0-9A-Z]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+\)\([ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%%lnl%]+\)[ %TAB%]*$~
+    ~\1\2\2~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// cd_kit_sphere                                    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_ACTION_FUNCTION cd_kit_sphere
+  STR_VAR
+    table                   = clabpr01
+    class                   = cleric
+    all                     = none
+    animal                  = none
+    astral                  = none
+    chaos                   = none
+    charm                   = none
+    combat                  = none
+    creation                = none
+    divination              = none
+    elemental               = none
+    elemental_air           = none
+    elemental_earth         = none
+    elemental_fire          = none
+    elemental_water         = none
+    guardian                = none
+    healing                 = none
+    law                     = none
+    necromantic             = none
+    necromantic_restorative = none
+    numbers                 = none
+    plant                   = none
+    protection              = none
+    summoning               = none
+    sun                     = none
+    thoughts                = none
+    time                    = none
+    travelers               = none
+    war                     = none
+    wards                   = none
+    weather                 = none
+  BEGIN
+  
+  ACTION_IF FILE_EXISTS_IN_GAME ~%table%.2da~ THEN BEGIN
+
+    ACTION_IF NOT FILE_CONTAINS_EVALUATED (~%table%.2da~ ~[ %TAB%]CDDR[a-z][a-z][1-7][ %TAB%]~) THEN BEGIN // don't mess with it if spell sphere spells already exist
+        
+      ACTION_FOR_EACH restrict IN all good evil geneutral lawful chaotic lcneutral BEGIN
+
+        OUTER_FOR (index = 1 ; index < 4 ; ++index) BEGIN // minor access
+
+          COPY ~divine_remix/spheres/spellbook_template.2da~ ~divine_remix/spheres/spellbook_%table%_%index%_%restrict%.2da~
+            PATCH_IF ("%all%" STRING_COMPARE_CASE "none")                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_al_%index%_%restrict%.2da~ END
+            PATCH_IF ("%animal%" STRING_COMPARE_CASE "none")                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_an_%index%_%restrict%.2da~ END
+            PATCH_IF ("%astral%" STRING_COMPARE_CASE "none")                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_as_%index%_%restrict%.2da~ END
+            PATCH_IF ("%chaos%" STRING_COMPARE_CASE "none")                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_cs_%index%_%restrict%.2da~ END
+            PATCH_IF ("%charm%" STRING_COMPARE_CASE "none")                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_cm_%index%_%restrict%.2da~ END
+            PATCH_IF ("%combat%" STRING_COMPARE_CASE "none")                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_co_%index%_%restrict%.2da~ END
+            PATCH_IF ("%creation%" STRING_COMPARE_CASE "none")                THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_cr_%index%_%restrict%.2da~ END
+            PATCH_IF ("%divination%" STRING_COMPARE_CASE "none")              THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_di_%index%_%restrict%.2da~ END
+            PATCH_IF ("%elemental%" STRING_COMPARE_CASE "none")               THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ex_%index%_%restrict%.2da~ END
+            PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "none")           THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ea_%index%_%restrict%.2da~ END
+            PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "none")         THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ee_%index%_%restrict%.2da~ END
+            PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "none")          THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ef_%index%_%restrict%.2da~ END
+            PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "none")         THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ew_%index%_%restrict%.2da~ END
+            PATCH_IF ("%guardian%" STRING_COMPARE_CASE "none")                THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_gu_%index%_%restrict%.2da~ END
+            PATCH_IF ("%healing%" STRING_COMPARE_CASE "none")                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_he_%index%_%restrict%.2da~ END
+            PATCH_IF ("%law%" STRING_COMPARE_CASE "none")                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_lw_%index%_%restrict%.2da~ END
+            PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "none")             THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ne_%index%_%restrict%.2da~ 
+                                                                                         APPEND_FILE ~divine_remix/spheres/spellbook_nr_%index%_%restrict%.2da~ END
+            PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "none") THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_nr_%index%_%restrict%.2da~ END
+            PATCH_IF ("%numbers%" STRING_COMPARE_CASE "none")                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_nu_%index%_%restrict%.2da~ END
+            PATCH_IF ("%plant%" STRING_COMPARE_CASE "none")                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_pl_%index%_%restrict%.2da~ END
+            PATCH_IF ("%protection%" STRING_COMPARE_CASE "none")              THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_pr_%index%_%restrict%.2da~ END
+            PATCH_IF ("%summoning%" STRING_COMPARE_CASE "none")               THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_su_%index%_%restrict%.2da~ END
+            PATCH_IF ("%sun%" STRING_COMPARE_CASE "none")                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_sn_%index%_%restrict%.2da~ END
+            PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "none")                THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_th_%index%_%restrict%.2da~ END
+            PATCH_IF ("%time%" STRING_COMPARE_CASE "none")                    THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ti_%index%_%restrict%.2da~ END
+            PATCH_IF ("%travelers%" STRING_COMPARE_CASE "none")               THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_tr_%index%_%restrict%.2da~ END
+            PATCH_IF ("%war%" STRING_COMPARE_CASE "none")                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_wa_%index%_%restrict%.2da~ END
+            PATCH_IF ("%wards%" STRING_COMPARE_CASE "none")                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_wd_%index%_%restrict%.2da~ END
+            PATCH_IF ("%weather%" STRING_COMPARE_CASE "none")                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_we_%index%_%restrict%.2da~ END
+          
+        END
+
+        OUTER_FOR (index = 4 ; index < 8 ; ++index) BEGIN // major access
+
+          COPY ~divine_remix/spheres/spellbook_template.2da~ ~divine_remix/spheres/spellbook_%table%_%index%_%restrict%.2da~
+            PATCH_IF ("%all%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_al_%index%_%restrict%.2da~ END
+            PATCH_IF ("%animal%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_an_%index%_%restrict%.2da~ END
+            PATCH_IF ("%astral%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_as_%index%_%restrict%.2da~ END
+            PATCH_IF ("%chaos%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_cs_%index%_%restrict%.2da~ END
+            PATCH_IF ("%charm%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_cm_%index%_%restrict%.2da~ END
+            PATCH_IF ("%combat%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_co_%index%_%restrict%.2da~ END
+            PATCH_IF ("%creation%" STRING_COMPARE_CASE "major" = 0)                THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_cr_%index%_%restrict%.2da~ END
+            PATCH_IF ("%divination%" STRING_COMPARE_CASE "major" = 0)              THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_di_%index%_%restrict%.2da~ END
+            PATCH_IF ("%elemental%" STRING_COMPARE_CASE "major" = 0)               THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ex_%index%_%restrict%.2da~ END
+            PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ea_%index%_%restrict%.2da~ END
+            PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ee_%index%_%restrict%.2da~ END
+            PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ef_%index%_%restrict%.2da~ END
+            PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ew_%index%_%restrict%.2da~ END
+            PATCH_IF ("%guardian%" STRING_COMPARE_CASE "major" = 0)                THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_gu_%index%_%restrict%.2da~ END
+            PATCH_IF ("%healing%" STRING_COMPARE_CASE "major" = 0)                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_he_%index%_%restrict%.2da~ END
+            PATCH_IF ("%law%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_lw_%index%_%restrict%.2da~ END
+            PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ne_%index%_%restrict%.2da~ 
+                                                                                         APPEND_FILE ~divine_remix/spheres/spellbook_nr_%index%_%restrict%.2da~ END
+            PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "major" = 0) THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_nr_%index%_%restrict%.2da~ END
+            PATCH_IF ("%numbers%" STRING_COMPARE_CASE "major" = 0)                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_nu_%index%_%restrict%.2da~ END
+            PATCH_IF ("%plant%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_pl_%index%_%restrict%.2da~ END
+            PATCH_IF ("%protection%" STRING_COMPARE_CASE "major" = 0)              THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_pr_%index%_%restrict%.2da~ END
+            PATCH_IF ("%summoning%" STRING_COMPARE_CASE "major" = 0)               THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_su_%index%_%restrict%.2da~ END
+            PATCH_IF ("%sun%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_sn_%index%_%restrict%.2da~ END
+            PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "major" = 0)                THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_th_%index%_%restrict%.2da~ END
+            PATCH_IF ("%time%" STRING_COMPARE_CASE "major" = 0)                    THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_ti_%index%_%restrict%.2da~ END
+            PATCH_IF ("%travelers%" STRING_COMPARE_CASE "major" = 0)               THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_tr_%index%_%restrict%.2da~ END
+            PATCH_IF ("%war%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_wa_%index%_%restrict%.2da~ END
+            PATCH_IF ("%wards%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_wd_%index%_%restrict%.2da~ END
+            PATCH_IF ("%weather%" STRING_COMPARE_CASE "major" = 0)                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/spellbook_we_%index%_%restrict%.2da~ END
+        
+        END
+
+      END
+
+      // now, build specific, per-alignment allowed tables
+      OUTER_FOR (index = 1 ; index < 8 ; ++index) BEGIN
+
+        // create zero alignment tables
+        COPY ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%table%_%index%_0.2da~
+
+        COPY ~divine_remix/spheres/spellbook_%table%_%index%_all.2da~ ~divine_remix/spheres/spellbook_%table%_%index%_all.2da~
+          COUNT_2DA_ROWS 1 rows
+          FOR (index2 = 0 ; index2 < rows ; ++index2) BEGIN
+            READ_2DA_ENTRY index2 0 1 spell
+            INNER_ACTION BEGIN
+              APPEND ~spellbook_%table%_%index%_0.2da~ ~%spell%~ UNLESS ~%spell%~
+            END
+          END
+          BUT_ONLY
+
+        COPY_EXISTING ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_17.2da~ // lawful good
+                      ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_18.2da~ // lawful neutral
+                      ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_19.2da~ // lawful evil
+                      ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_33.2da~ // neutral good
+                      ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_34.2da~ // true neutral
+                      ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_35.2da~ // neutral evil
+                      ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_49.2da~ // chaotic good
+                      ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_50.2da~ // chaotic neutral
+                      ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_51.2da~ // chaotic evil
+        
+        COPY ~divine_remix/spheres/spellbook_%table%_%index%_lawful.2da~ ~divine_remix/spheres/spellbook_%table%_%index%_lawful.2da~
+          COUNT_2DA_ROWS 1 rows
+          FOR (index2 = 0 ; index2 < rows ; ++index2) BEGIN
+            READ_2DA_ENTRY index2 0 1 spell
+            PATCH_IF FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%table%_%index%_good.2da~ ~%spell%~) BEGIN
+              INNER_ACTION BEGIN
+                APPEND ~spellbook_%table%_%index%_17.2da~ ~%spell%~ UNLESS ~%spell%~ // lg
+              END
+            END
+            PATCH_IF FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%table%_%index%_geneutral.2da~ ~%spell%~) BEGIN
+              INNER_ACTION BEGIN
+                APPEND ~spellbook_%table%_%index%_18.2da~ ~%spell%~ UNLESS ~%spell%~ // ln
+              END
+            END
+            PATCH_IF FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%table%_%index%_evil.2da~ ~%spell%~) BEGIN
+              INNER_ACTION BEGIN
+                APPEND ~spellbook_%table%_%index%_19.2da~ ~%spell%~ UNLESS ~%spell%~ // le
+              END
+            END
+          END
+          BUT_ONLY
+        
+        COPY ~divine_remix/spheres/spellbook_%table%_%index%_lcneutral.2da~ ~divine_remix/spheres/spellbook_%table%_%index%_lcneutral.2da~
+          COUNT_2DA_ROWS 1 rows
+          FOR (index2 = 0 ; index2 < rows ; ++index2) BEGIN
+            READ_2DA_ENTRY index2 0 1 spell
+            PATCH_IF FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%table%_%index%_good.2da~ ~%spell%~) BEGIN
+              INNER_ACTION BEGIN
+                APPEND ~spellbook_%table%_%index%_33.2da~ ~%spell%~ UNLESS ~%spell%~ // ng
+              END
+            END
+            PATCH_IF FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%table%_%index%_geneutral.2da~ ~%spell%~) BEGIN
+              INNER_ACTION BEGIN
+                APPEND ~spellbook_%table%_%index%_34.2da~ ~%spell%~ UNLESS ~%spell%~ // tn
+              END
+            END
+            PATCH_IF FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%table%_%index%_evil.2da~ ~%spell%~) BEGIN
+              INNER_ACTION BEGIN
+                APPEND ~spellbook_%table%_%index%_35.2da~ ~%spell%~ UNLESS ~%spell%~ // ne
+              END
+            END
+          END
+          BUT_ONLY
+        
+        COPY ~divine_remix/spheres/spellbook_%table%_%index%_chaotic.2da~ ~divine_remix/spheres/spellbook_%table%_%index%_chaotic.2da~
+          COUNT_2DA_ROWS 1 rows
+          FOR (index2 = 0 ; index2 < rows ; ++index2) BEGIN
+            READ_2DA_ENTRY index2 0 1 spell
+            PATCH_IF FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%table%_%index%_good.2da~ ~%spell%~) BEGIN
+              INNER_ACTION BEGIN
+                APPEND ~spellbook_%table%_%index%_49.2da~ ~%spell%~ UNLESS ~%spell%~ // cg
+              END
+            END
+            PATCH_IF FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%table%_%index%_geneutral.2da~ ~%spell%~) BEGIN
+              INNER_ACTION BEGIN
+                APPEND ~spellbook_%table%_%index%_50.2da~ ~%spell%~ UNLESS ~%spell%~ // cn
+              END
+            END
+            PATCH_IF FILE_CONTAINS_EVALUATED (~divine_remix/spheres/spellbook_%table%_%index%_evil.2da~ ~%spell%~) BEGIN
+              INNER_ACTION BEGIN
+                APPEND ~spellbook_%table%_%index%_51.2da~ ~%spell%~ UNLESS ~%spell%~ // ce
+              END
+            END
+          END
+          BUT_ONLY
+
+        MOVE ~override/spellbook_%table%_%index%_0.2da~  ~divine_remix/spheres~ // no alignment
+             ~override/spellbook_%table%_%index%_17.2da~ ~divine_remix/spheres~ // lawful good
+             ~override/spellbook_%table%_%index%_18.2da~ ~divine_remix/spheres~ // lawful neutral
+             ~override/spellbook_%table%_%index%_19.2da~ ~divine_remix/spheres~ // lawful evil
+             ~override/spellbook_%table%_%index%_33.2da~ ~divine_remix/spheres~ // neutral good
+             ~override/spellbook_%table%_%index%_34.2da~ ~divine_remix/spheres~ // true neutral
+             ~override/spellbook_%table%_%index%_35.2da~ ~divine_remix/spheres~ // neutral evil
+             ~override/spellbook_%table%_%index%_49.2da~ ~divine_remix/spheres~ // chaotic good
+             ~override/spellbook_%table%_%index%_50.2da~ ~divine_remix/spheres~ // chaotic neutral
+             ~override/spellbook_%table%_%index%_51.2da~ ~divine_remix/spheres~ // chaotic evil
+
+      END
+
+      COPY_EXISTING ~%table%.2da~ ~override~
+        LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove eof blank lines
+        LAUNCH_PATCH_MACRO ~extend_clab_to_level_50~     // extends CLAB to level 50
+        PATCH_IF ("%all%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_al_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_al.2da~ END
+        PATCH_IF ("%animal%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_an_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_an.2da~ END
+        PATCH_IF ("%astral%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_as_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_as.2da~ END
+        PATCH_IF ("%chaos%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_cs_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_cs.2da~ END
+        PATCH_IF ("%charm%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_cm_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_cm.2da~ END
+        PATCH_IF ("%combat%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_co_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_co.2da~ END
+        PATCH_IF ("%creation%" STRING_COMPARE_CASE "major" = 0)                THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_cr_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_cr.2da~ END
+        PATCH_IF ("%divination%" STRING_COMPARE_CASE "major" = 0)              THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_di_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_di.2da~ END
+        PATCH_IF ("%elemental%" STRING_COMPARE_CASE "major" = 0)               THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ex_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_ex.2da~ END
+        PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ea_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_ea.2da~ END
+        PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ee_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_ee.2da~ END
+        PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ef_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_ef.2da~ END
+        PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ew_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_ew.2da~ END
+        PATCH_IF ("%guardian%" STRING_COMPARE_CASE "major" = 0)                THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_gu_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_gu.2da~ END
+        PATCH_IF ("%healing%" STRING_COMPARE_CASE "major" = 0)                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_he_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_he.2da~ END
+        PATCH_IF ("%law%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_lw_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_lw.2da~ END
+        PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ne_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_ne.2da~
+                                                                                          APPEND_FILE ~divine_remix/spheres/%class%_nr_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_nr.2da~ END
+        PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "major" = 0) THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_nr_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_nr.2da~ END
+        PATCH_IF ("%numbers%" STRING_COMPARE_CASE "major" = 0)                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_nu_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_nu.2da~ END
+        PATCH_IF ("%plant%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_pl_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_pl.2da~ END
+        PATCH_IF ("%protection%" STRING_COMPARE_CASE "major" = 0)              THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_pr_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_pr.2da~ END
+        PATCH_IF ("%summoning%" STRING_COMPARE_CASE "major" = 0)               THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_su_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_su.2da~ END
+        PATCH_IF ("%sun%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_sn_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_sn.2da~ END
+        PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "major" = 0)                THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_th_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_th.2da~ END
+        PATCH_IF ("%time%" STRING_COMPARE_CASE "major" = 0)                    THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ti_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_ti.2da~ END
+        PATCH_IF ("%travelers%" STRING_COMPARE_CASE "major" = 0)               THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_tr_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_tr.2da~ END
+        PATCH_IF ("%war%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_wa_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_wa.2da~ END
+        PATCH_IF ("%wards%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_wd_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_wd.2da~ END
+        PATCH_IF ("%weather%" STRING_COMPARE_CASE "major" = 0)                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_we_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_we.2da~ END
+        PATCH_IF ("%all%" STRING_COMPARE_CASE "minor" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_al_minor.2da~ END
+        PATCH_IF ("%animal%" STRING_COMPARE_CASE "minor" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_an_minor.2da~ END
+        PATCH_IF ("%astral%" STRING_COMPARE_CASE "minor" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_as_minor.2da~ END
+        PATCH_IF ("%chaos%" STRING_COMPARE_CASE "minor" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_cs_minor.2da~ END
+        PATCH_IF ("%charm%" STRING_COMPARE_CASE "minor" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_cm_minor.2da~ END
+        PATCH_IF ("%combat%" STRING_COMPARE_CASE "minor" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_co_minor.2da~ END
+        PATCH_IF ("%creation%" STRING_COMPARE_CASE "minor" = 0)                THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_cr_minor.2da~ END
+        PATCH_IF ("%divination%" STRING_COMPARE_CASE "minor" = 0)              THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_di_minor.2da~ END
+        PATCH_IF ("%elemental%" STRING_COMPARE_CASE "minor" = 0)               THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ex_minor.2da~ END
+        PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "minor" = 0)           THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ea_minor.2da~ END
+        PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "minor" = 0)         THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ee_minor.2da~ END
+        PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "minor" = 0)          THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ef_minor.2da~ END
+        PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "minor" = 0)         THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ew_minor.2da~ END
+        PATCH_IF ("%guardian%" STRING_COMPARE_CASE "minor" = 0)                THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_gu_minor.2da~ END
+        PATCH_IF ("%healing%" STRING_COMPARE_CASE "minor" = 0)                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_he_minor.2da~ END
+        PATCH_IF ("%law%" STRING_COMPARE_CASE "minor" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_lw_minor.2da~ END
+        PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "minor" = 0)             THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ne_minor.2da~ APPEND_FILE ~divine_remix/spheres/%class%_nr_minor.2da~ END
+        PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "minor" = 0) THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_nr_minor.2da~ END
+        PATCH_IF ("%numbers%" STRING_COMPARE_CASE "minor" = 0)                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_nu_minor.2da~ END
+        PATCH_IF ("%plant%" STRING_COMPARE_CASE "minor" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_pl_minor.2da~ END
+        PATCH_IF ("%protection%" STRING_COMPARE_CASE "minor" = 0)              THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_pr_minor.2da~ END
+        PATCH_IF ("%summoning%" STRING_COMPARE_CASE "minor" = 0)               THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_su_minor.2da~ END
+        PATCH_IF ("%sun%" STRING_COMPARE_CASE "minor" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_sn_minor.2da~ END
+        PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "minor" = 0)                THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_th_minor.2da~ END
+        PATCH_IF ("%time%" STRING_COMPARE_CASE "minor" = 0)                    THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_ti_minor.2da~ END
+        PATCH_IF ("%travelers%" STRING_COMPARE_CASE "minor" = 0)               THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_tr_minor.2da~ END
+        PATCH_IF ("%war%" STRING_COMPARE_CASE "minor" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_wa_minor.2da~ END
+        PATCH_IF ("%wards%" STRING_COMPARE_CASE "minor" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_wd_minor.2da~ END
+        PATCH_IF ("%weather%" STRING_COMPARE_CASE "minor" = 0)                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_we_minor.2da~ END
+        PATCH_IF ((!GAME_IS ~tob bg2ee bgt~) OR                       // if no hlas, clean up
+                  ("%class%" STRING_COMPARE_CASE "paladin" = 0) OR    // paladins don't get casting hlas
+                  ("%class%" STRING_COMPARE_CASE "ranger" = 0)) BEGIN // neither do rangers
+          REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]CD_HLA[0-9][0-9][0-9][ %TAB%]+.+$~ ~~ // delete temp placeholders
+        END
+        LAUNCH_PATCH_MACRO ~reindex_clab~ // get ABLITYx in order
+        PRETTY_PRINT_2DA
+
+      ACTION_IF ((FILE_EXISTS ~divine_remix/languages/%LANGUAGE%/utf8_kit_sphere.tra~) OR (FILE_EXISTS ~divine_remix/languages/%LANGUAGE%/kit_sphere.tra~)) THEN BEGIN
+
+        ACTION_IF FILE_EXISTS ~divine_remix/languages/%LANGUAGE%/utf8_kit_sphere.tra~ THEN BEGIN
+  
+          LOAD_TRA ~divine_remix/languages/%LANGUAGE%/utf8_kit_sphere.tra~
+  
+        END ELSE BEGIN
+  
+          LOAD_TRA ~divine_remix/languages/%LANGUAGE%/kit_sphere.tra~
+  
+        END
+  
+        OUTER_SPRINT sphere_header @2031 // header line
+        OUTER_SPRINT sphere_major  @2032 // major access; will be added to below
+        OUTER_SPRINT sphere_minor  @2033 // major access; will be added to below
+        OUTER_SPRINT sphere_none   @2034 // no access; will be added to below
+        OUTER_SPRINT sphere_major_orig  @2032 // used to check that major sphere listing contains something
+        OUTER_SPRINT sphere_minor_orig  @2033 // used to check that minor sphere listing contains something
+        OUTER_SPRINT sphere_none_orig   @2034 // used to check that none sphere listing contains something
+        OUTER_SPRINT sphere_major_none  @2037 // replacement string for no major sphere access
+        OUTER_SPRINT sphere_minor_none  @2038 // replacement string for no minor sphere access
+        OUTER_SPRINT sphere_al     @2001 // All
+        OUTER_SPRINT sphere_an     @2002 // Animal
+        OUTER_SPRINT sphere_as     @2003 // Astral
+        OUTER_SPRINT sphere_cs     @2004 // Chaos
+        OUTER_SPRINT sphere_cm     @2005 // Charm
+        OUTER_SPRINT sphere_co     @2006 // Combat
+        OUTER_SPRINT sphere_cr     @2007 // Creation
+        OUTER_SPRINT sphere_di     @2008 // Divination
+        OUTER_SPRINT sphere_ex     @2009 // Elemental
+        OUTER_SPRINT sphere_ea     @2010 // Elemental Air
+        OUTER_SPRINT sphere_ee     @2011 // Elemental Earth
+        OUTER_SPRINT sphere_ef     @2012 // Elemental Fire
+        OUTER_SPRINT sphere_ew     @2013 // Elemental Water
+        OUTER_SPRINT sphere_th     @2014 // Thought
+        OUTER_SPRINT sphere_tr     @2015 // Travelers
+        OUTER_SPRINT sphere_wa     @2016 // War
+        OUTER_SPRINT sphere_we     @2017 // Weather
+        OUTER_SPRINT sphere_gu     @2018 // Guardian
+        OUTER_SPRINT sphere_he     @2019 // Healing
+        OUTER_SPRINT sphere_lw     @2020 // Law
+        OUTER_SPRINT sphere_ne     @2021 // Necromantic
+        OUTER_SPRINT sphere_nr     @2036 // Necromantic (restorative only)
+        OUTER_SPRINT sphere_nu     @2022 // Numbers
+        OUTER_SPRINT sphere_pr     @2023 // Protection
+        OUTER_SPRINT sphere_sn     @2024 // Sun
+        OUTER_SPRINT sphere_su     @2025 // Summoning
+        OUTER_SPRINT sphere_pl     @2029 // Plant
+        OUTER_SPRINT sphere_wd     @2030 // Wards
+        OUTER_SPRINT sphere_ti     @2035 // Time
+
+        COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
+          COUNT_2DA_ROWS 6 rows
+          SET help = 0
+          FOR (index = 0 ; index < rows ; ++index) BEGIN
+            READ_2DA_ENTRY index 5 5 val
+            PATCH_IF ("%val%" STRING_COMPARE_CASE "%table%" = 0) BEGIN
+              READ_2DA_ENTRY index 4 5 help
+              SET index = rows // kill loop
+            END
+          END
+          PATCH_IF help != 0 BEGIN
+            GET_STRREF help desc
+            PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP "%sphere_header%") BEGIN
+              INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+                PATCH_IF ("%all%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_al%" END
+                PATCH_IF ("%animal%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_an%" END
+                PATCH_IF ("%astral%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_as%" END
+                PATCH_IF ("%chaos%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_cs%" END
+                PATCH_IF ("%charm%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_cm%" END
+                PATCH_IF ("%combat%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_co%" END
+                PATCH_IF ("%creation%" STRING_COMPARE_CASE "major" = 0)        THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_cr%" END
+                PATCH_IF ("%divination%" STRING_COMPARE_CASE "major" = 0)      THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_di%" END
+                PATCH_IF ("%elemental%" STRING_COMPARE_CASE "major" = 0)       THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ex%" END
+                PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "major" = 0)   THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ea%" END
+                PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "major" = 0) THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ee%" END
+                PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "major" = 0)  THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ef%" END
+                PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "major" = 0) THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ew%" END
+                PATCH_IF ("%guardian%" STRING_COMPARE_CASE "major" = 0)        THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_gu%" END
+                PATCH_IF ("%healing%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_he%" END
+                PATCH_IF ("%law%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_lw%" END
+                PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "major" = 0)     THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ne%" END
+                PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "major" = 0)     THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_nr%" END
+                PATCH_IF ("%numbers%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_nu%" END
+                PATCH_IF ("%plant%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_pl%" END
+                PATCH_IF ("%protection%" STRING_COMPARE_CASE "major" = 0)      THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_pr%" END
+                PATCH_IF ("%summoning%" STRING_COMPARE_CASE "major" = 0)       THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_su%" END
+                PATCH_IF ("%sun%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_sn%" END
+                PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "major" = 0)        THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_th%" END
+                PATCH_IF ("%time%" STRING_COMPARE_CASE "major" = 0)            THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ti%" END
+                PATCH_IF ("%travelers%" STRING_COMPARE_CASE "major" = 0)       THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_tr%" END
+                PATCH_IF ("%war%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_wa%" END
+                PATCH_IF ("%wards%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_wd%" END
+                PATCH_IF ("%weather%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_we%" END
+                PATCH_IF ("%all%" STRING_COMPARE_CASE "minor" = 0)             THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_al%" END
+                PATCH_IF ("%animal%" STRING_COMPARE_CASE "minor" = 0)          THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_an%" END
+                PATCH_IF ("%astral%" STRING_COMPARE_CASE "minor" = 0)          THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_as%" END
+                PATCH_IF ("%chaos%" STRING_COMPARE_CASE "minor" = 0)           THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_cs%" END
+                PATCH_IF ("%charm%" STRING_COMPARE_CASE "minor" = 0)           THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_cm%" END
+                PATCH_IF ("%combat%" STRING_COMPARE_CASE "minor" = 0)          THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_co%" END
+                PATCH_IF ("%creation%" STRING_COMPARE_CASE "minor" = 0)        THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_cr%" END
+                PATCH_IF ("%divination%" STRING_COMPARE_CASE "minor" = 0)      THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_di%" END
+                PATCH_IF ("%elemental%" STRING_COMPARE_CASE "minor" = 0)       THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ex%" END
+                PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "minor" = 0)   THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ea%" END
+                PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "minor" = 0) THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ee%" END
+                PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "minor" = 0)  THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ef%" END
+                PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "minor" = 0) THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ew%" END
+                PATCH_IF ("%guardian%" STRING_COMPARE_CASE "minor" = 0)        THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_gu%" END
+                PATCH_IF ("%healing%" STRING_COMPARE_CASE "minor" = 0)         THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_he%" END
+                PATCH_IF ("%law%" STRING_COMPARE_CASE "minor" = 0)             THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_lw%" END
+                PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "minor" = 0)     THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ne%" END
+                PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "minor" = 0)     THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_nr%" END
+                PATCH_IF ("%numbers%" STRING_COMPARE_CASE "minor" = 0)         THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_nu%" END
+                PATCH_IF ("%plant%" STRING_COMPARE_CASE "minor" = 0)           THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_pl%" END
+                PATCH_IF ("%protection%" STRING_COMPARE_CASE "minor" = 0)      THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_pr%" END
+                PATCH_IF ("%summoning%" STRING_COMPARE_CASE "minor" = 0)       THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_su%" END
+                PATCH_IF ("%sun%" STRING_COMPARE_CASE "minor" = 0)             THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_sn%" END
+                PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "minor" = 0)        THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_th%" END
+                PATCH_IF ("%time%" STRING_COMPARE_CASE "minor" = 0)            THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ti%" END
+                PATCH_IF ("%travelers%" STRING_COMPARE_CASE "minor" = 0)       THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_tr%" END
+                PATCH_IF ("%war%" STRING_COMPARE_CASE "minor" = 0)             THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_wa%" END
+                PATCH_IF ("%wards%" STRING_COMPARE_CASE "minor" = 0)           THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_wd%" END
+                PATCH_IF ("%weather%" STRING_COMPARE_CASE "minor" = 0)         THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_we%" END
+                PATCH_IF ("%all%" STRING_COMPARE_CASE "none" = 0)             THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_al%" END
+                PATCH_IF ("%animal%" STRING_COMPARE_CASE "none" = 0)          THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_an%" END
+                PATCH_IF ("%astral%" STRING_COMPARE_CASE "none" = 0)          THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_as%" END
+                PATCH_IF ("%chaos%" STRING_COMPARE_CASE "none" = 0)           THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_cs%" END
+                PATCH_IF ("%charm%" STRING_COMPARE_CASE "none" = 0)           THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_cm%" END
+                PATCH_IF ("%combat%" STRING_COMPARE_CASE "none" = 0)          THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_co%" END
+                PATCH_IF ("%creation%" STRING_COMPARE_CASE "none" = 0)        THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_cr%" END
+                PATCH_IF ("%divination%" STRING_COMPARE_CASE "none" = 0)      THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_di%" END
+                PATCH_IF ("%elemental%" STRING_COMPARE_CASE "none" = 0)       THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ex%" END
+                PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "none" = 0)   THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ea%" END
+                PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "none" = 0) THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ee%" END
+                PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "none" = 0)  THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ef%" END
+                PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "none" = 0) THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ew%" END
+                PATCH_IF ("%guardian%" STRING_COMPARE_CASE "none" = 0)        THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_gu%" END
+                PATCH_IF ("%healing%" STRING_COMPARE_CASE "none" = 0)         THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_he%" END
+                PATCH_IF ("%law%" STRING_COMPARE_CASE "none" = 0)             THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_lw%" END
+                PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "none" = 0)     THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ne%" END
+                PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "none" = 0)     THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_nr%" END
+                PATCH_IF ("%numbers%" STRING_COMPARE_CASE "none" = 0)         THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_nu%" END
+                PATCH_IF ("%plant%" STRING_COMPARE_CASE "none" = 0)           THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_pl%" END
+                PATCH_IF ("%protection%" STRING_COMPARE_CASE "none" = 0)      THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_pr%" END
+                PATCH_IF ("%summoning%" STRING_COMPARE_CASE "none" = 0)       THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_su%" END
+                PATCH_IF ("%sun%" STRING_COMPARE_CASE "none" = 0)             THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_sn%" END
+                PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "none" = 0)        THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_th%" END
+                PATCH_IF ("%time%" STRING_COMPARE_CASE "none" = 0)            THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ti%" END
+                PATCH_IF ("%travelers%" STRING_COMPARE_CASE "none" = 0)       THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_tr%" END
+                PATCH_IF ("%war%" STRING_COMPARE_CASE "none" = 0)             THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_wa%" END
+                PATCH_IF ("%wards%" STRING_COMPARE_CASE "none" = 0)           THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_wd%" END
+                PATCH_IF ("%weather%" STRING_COMPARE_CASE "none" = 0)         THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_we%" END
+                REPLACE_TEXTUALLY ~\(\(.\|%LNL%\|%MNL%\|%WNL%\)+\)~ ~\1
+    
+  %sphere_header%
+  %sphere_major%
+  %sphere_minor%
+  %sphere_none%~
+                REPLACE_TEXTUALLY ~^%sphere_major_orig%$~ ~%sphere_major_none%~
+                REPLACE_TEXTUALLY ~^%sphere_minor_orig%$~ ~%sphere_minor_none%~
+                REPLACE_TEXTUALLY ~^%sphere_none_orig%$~ ~~
+                REPLACE_TEXTUALLY ~%sphere_ne%, %sphere_nr%~ ~%sphere_ne%~
+                REPLACE_TEXTUALLY ~%sphere_ex%, %sphere_ea%, %sphere_ee%, %sphere_ef%, %sphere_ew%~ ~%sphere_ex%~
+                REPLACE_TEXTUALLY ~CD_REPLACEME, ~ ~~
+              END
+            END
+          END
+          BUT_ONLY
+        
+        ACTION_IF (help != 0) BEGIN
+          STRING_SET_EVALUATE help "%desc%"
+        END
+      
+      END
+    
+    END
+
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// kit sphere descript                              \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_ACTION_FUNCTION cd_kit_sphere_descript
+  INT_VAR 
+    string                  = 0
+  STR_VAR
+    all                     = none
+    animal                  = none
+    astral                  = none
+    chaos                   = none
+    charm                   = none
+    combat                  = none
+    creation                = none
+    divination              = none
+    elemental               = none
+    elemental_air           = none
+    elemental_earth         = none
+    elemental_fire          = none
+    elemental_water         = none
+    guardian                = none
+    healing                 = none
+    law                     = none
+    necromantic             = none
+    necromantic_restorative = none
+    numbers                 = none
+    plant                   = none
+    protection              = none
+    summoning               = none
+    sun                     = none
+    thoughts                = none
+    time                    = none
+    travelers               = none
+    war                     = none
+    wards                   = none
+    weather                 = none
+  BEGIN
+
+  ACTION_IF ((string != 0) AND ((FILE_EXISTS ~divine_remix/languages/%LANGUAGE%/utf8_kit_sphere.tra~) OR (FILE_EXISTS ~divine_remix/languages/%LANGUAGE%/kit_sphere.tra~))) THEN BEGIN
+
+    ACTION_IF FILE_EXISTS ~divine_remix/languages/%LANGUAGE%/utf8_kit_sphere.tra~ THEN BEGIN
+  
+      LOAD_TRA ~divine_remix/languages/%LANGUAGE%/utf8_kit_sphere.tra~
+  
+    END ELSE BEGIN
+  
+      LOAD_TRA ~divine_remix/languages/%LANGUAGE%/kit_sphere.tra~
+  
+    END
+  
+    OUTER_SPRINT sphere_header @2031 // header line
+    OUTER_SPRINT sphere_major  @2032 // major access; will be added to below
+    OUTER_SPRINT sphere_minor  @2033 // major access; will be added to below
+    OUTER_SPRINT sphere_none   @2034 // no access; will be added to below
+    OUTER_SPRINT sphere_major_orig  @2032 // used to check that major sphere listing contains something
+    OUTER_SPRINT sphere_minor_orig  @2033 // used to check that minor sphere listing contains something
+    OUTER_SPRINT sphere_none_orig   @2034 // used to check that none sphere listing contains something
+    OUTER_SPRINT sphere_major_none  @2037 // replacement string for no major sphere access
+    OUTER_SPRINT sphere_minor_none  @2038 // replacement string for no minor sphere access
+    OUTER_SPRINT sphere_al     @2001 // All
+    OUTER_SPRINT sphere_an     @2002 // Animal
+    OUTER_SPRINT sphere_as     @2003 // Astral
+    OUTER_SPRINT sphere_cs     @2004 // Chaos
+    OUTER_SPRINT sphere_cm     @2005 // Charm
+    OUTER_SPRINT sphere_co     @2006 // Combat
+    OUTER_SPRINT sphere_cr     @2007 // Creation
+    OUTER_SPRINT sphere_di     @2008 // Divination
+    OUTER_SPRINT sphere_ex     @2009 // Elemental
+    OUTER_SPRINT sphere_ea     @2010 // Elemental Air
+    OUTER_SPRINT sphere_ee     @2011 // Elemental Earth
+    OUTER_SPRINT sphere_ef     @2012 // Elemental Fire
+    OUTER_SPRINT sphere_ew     @2013 // Elemental Water
+    OUTER_SPRINT sphere_th     @2014 // Thought
+    OUTER_SPRINT sphere_tr     @2015 // Travelers
+    OUTER_SPRINT sphere_wa     @2016 // War
+    OUTER_SPRINT sphere_we     @2017 // Weather
+    OUTER_SPRINT sphere_gu     @2018 // Guardian
+    OUTER_SPRINT sphere_he     @2019 // Healing
+    OUTER_SPRINT sphere_lw     @2020 // Law
+    OUTER_SPRINT sphere_ne     @2021 // Necromantic
+    OUTER_SPRINT sphere_nr     @2036 // Necromantic (restorative only)
+    OUTER_SPRINT sphere_nu     @2022 // Numbers
+    OUTER_SPRINT sphere_pr     @2023 // Protection
+    OUTER_SPRINT sphere_sn     @2024 // Sun
+    OUTER_SPRINT sphere_su     @2025 // Summoning
+    OUTER_SPRINT sphere_pl     @2029 // Plant
+    OUTER_SPRINT sphere_wd     @2030 // Wards
+    OUTER_SPRINT sphere_ti     @2035 // Time
+
+    ACTION_GET_STRREF string desc
+    ACTION_IF ("%desc%" STRING_CONTAINS_REGEXP "%sphere_header%") BEGIN
+
+      OUTER_INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+        PATCH_IF ("%all%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_al%" END
+        PATCH_IF ("%animal%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_an%" END
+        PATCH_IF ("%astral%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_as%" END
+        PATCH_IF ("%chaos%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_cs%" END
+        PATCH_IF ("%charm%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_cm%" END
+        PATCH_IF ("%combat%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_co%" END
+        PATCH_IF ("%creation%" STRING_COMPARE_CASE "major" = 0)        THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_cr%" END
+        PATCH_IF ("%divination%" STRING_COMPARE_CASE "major" = 0)      THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_di%" END
+        PATCH_IF ("%elemental%" STRING_COMPARE_CASE "major" = 0)       THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ex%" END
+        PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "major" = 0)   THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ea%" END
+        PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "major" = 0) THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ee%" END
+        PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "major" = 0)  THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ef%" END
+        PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "major" = 0) THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ew%" END
+        PATCH_IF ("%guardian%" STRING_COMPARE_CASE "major" = 0)        THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_gu%" END
+        PATCH_IF ("%healing%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_he%" END
+        PATCH_IF ("%law%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_lw%" END
+        PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "major" = 0)     THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ne%" END
+        PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "major" = 0)     THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_nr%" END
+        PATCH_IF ("%numbers%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_nu%" END
+        PATCH_IF ("%plant%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_pl%" END
+        PATCH_IF ("%protection%" STRING_COMPARE_CASE "major" = 0)      THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_pr%" END
+        PATCH_IF ("%summoning%" STRING_COMPARE_CASE "major" = 0)       THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_su%" END
+        PATCH_IF ("%sun%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_sn%" END
+        PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "major" = 0)        THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_th%" END
+        PATCH_IF ("%time%" STRING_COMPARE_CASE "major" = 0)            THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_ti%" END
+        PATCH_IF ("%travelers%" STRING_COMPARE_CASE "major" = 0)       THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_tr%" END
+        PATCH_IF ("%war%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_wa%" END
+        PATCH_IF ("%wards%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_wd%" END
+        PATCH_IF ("%weather%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_we%" END
+        PATCH_IF ("%all%" STRING_COMPARE_CASE "minor" = 0)             THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_al%" END
+        PATCH_IF ("%animal%" STRING_COMPARE_CASE "minor" = 0)          THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_an%" END
+        PATCH_IF ("%astral%" STRING_COMPARE_CASE "minor" = 0)          THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_as%" END
+        PATCH_IF ("%chaos%" STRING_COMPARE_CASE "minor" = 0)           THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_cs%" END
+        PATCH_IF ("%charm%" STRING_COMPARE_CASE "minor" = 0)           THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_cm%" END
+        PATCH_IF ("%combat%" STRING_COMPARE_CASE "minor" = 0)          THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_co%" END
+        PATCH_IF ("%creation%" STRING_COMPARE_CASE "minor" = 0)        THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_cr%" END
+        PATCH_IF ("%divination%" STRING_COMPARE_CASE "minor" = 0)      THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_di%" END
+        PATCH_IF ("%elemental%" STRING_COMPARE_CASE "minor" = 0)       THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ex%" END
+        PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "minor" = 0)   THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ea%" END
+        PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "minor" = 0) THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ee%" END
+        PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "minor" = 0)  THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ef%" END
+        PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "minor" = 0) THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ew%" END
+        PATCH_IF ("%guardian%" STRING_COMPARE_CASE "minor" = 0)        THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_gu%" END
+        PATCH_IF ("%healing%" STRING_COMPARE_CASE "minor" = 0)         THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_he%" END
+        PATCH_IF ("%law%" STRING_COMPARE_CASE "minor" = 0)             THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_lw%" END
+        PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "minor" = 0)     THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ne%" END
+        PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "minor" = 0)     THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_nr%" END
+        PATCH_IF ("%numbers%" STRING_COMPARE_CASE "minor" = 0)         THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_nu%" END
+        PATCH_IF ("%plant%" STRING_COMPARE_CASE "minor" = 0)           THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_pl%" END
+        PATCH_IF ("%protection%" STRING_COMPARE_CASE "minor" = 0)      THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_pr%" END
+        PATCH_IF ("%summoning%" STRING_COMPARE_CASE "minor" = 0)       THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_su%" END
+        PATCH_IF ("%sun%" STRING_COMPARE_CASE "minor" = 0)             THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_sn%" END
+        PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "minor" = 0)        THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_th%" END
+        PATCH_IF ("%time%" STRING_COMPARE_CASE "minor" = 0)            THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_ti%" END
+        PATCH_IF ("%travelers%" STRING_COMPARE_CASE "minor" = 0)       THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_tr%" END
+        PATCH_IF ("%war%" STRING_COMPARE_CASE "minor" = 0)             THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_wa%" END
+        PATCH_IF ("%wards%" STRING_COMPARE_CASE "minor" = 0)           THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_wd%" END
+        PATCH_IF ("%weather%" STRING_COMPARE_CASE "minor" = 0)         THEN BEGIN SPRINT sphere_minor "%sphere_minor%, %sphere_we%" END
+        PATCH_IF ("%all%" STRING_COMPARE_CASE "none" = 0)             THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_al%" END
+        PATCH_IF ("%animal%" STRING_COMPARE_CASE "none" = 0)          THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_an%" END
+        PATCH_IF ("%astral%" STRING_COMPARE_CASE "none" = 0)          THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_as%" END
+        PATCH_IF ("%chaos%" STRING_COMPARE_CASE "none" = 0)           THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_cs%" END
+        PATCH_IF ("%charm%" STRING_COMPARE_CASE "none" = 0)           THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_cm%" END
+        PATCH_IF ("%combat%" STRING_COMPARE_CASE "none" = 0)          THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_co%" END
+        PATCH_IF ("%creation%" STRING_COMPARE_CASE "none" = 0)        THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_cr%" END
+        PATCH_IF ("%divination%" STRING_COMPARE_CASE "none" = 0)      THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_di%" END
+        PATCH_IF ("%elemental%" STRING_COMPARE_CASE "none" = 0)       THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ex%" END
+        PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "none" = 0)   THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ea%" END
+        PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "none" = 0) THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ee%" END
+        PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "none" = 0)  THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ef%" END
+        PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "none" = 0) THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ew%" END
+        PATCH_IF ("%guardian%" STRING_COMPARE_CASE "none" = 0)        THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_gu%" END
+        PATCH_IF ("%healing%" STRING_COMPARE_CASE "none" = 0)         THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_he%" END
+        PATCH_IF ("%law%" STRING_COMPARE_CASE "none" = 0)             THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_lw%" END
+        PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "none" = 0)     THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ne%" END
+        PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "none" = 0)     THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_nr%" END
+        PATCH_IF ("%numbers%" STRING_COMPARE_CASE "none" = 0)         THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_nu%" END
+        PATCH_IF ("%plant%" STRING_COMPARE_CASE "none" = 0)           THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_pl%" END
+        PATCH_IF ("%protection%" STRING_COMPARE_CASE "none" = 0)      THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_pr%" END
+        PATCH_IF ("%summoning%" STRING_COMPARE_CASE "none" = 0)       THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_su%" END
+        PATCH_IF ("%sun%" STRING_COMPARE_CASE "none" = 0)             THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_sn%" END
+        PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "none" = 0)        THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_th%" END
+        PATCH_IF ("%time%" STRING_COMPARE_CASE "none" = 0)            THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ti%" END
+        PATCH_IF ("%travelers%" STRING_COMPARE_CASE "none" = 0)       THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_tr%" END
+        PATCH_IF ("%war%" STRING_COMPARE_CASE "none" = 0)             THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_wa%" END
+        PATCH_IF ("%wards%" STRING_COMPARE_CASE "none" = 0)           THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_wd%" END
+        PATCH_IF ("%weather%" STRING_COMPARE_CASE "none" = 0)         THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_we%" END
+        REPLACE_TEXTUALLY ~\(\(.\|%LNL%\|%MNL%\|%WNL%\)+\)~ ~\1
+  
+%sphere_header%
+%sphere_major%
+%sphere_minor%
+%sphere_none%~
+        REPLACE_TEXTUALLY ~^%sphere_major_orig%$~ ~%sphere_major_none%~
+        REPLACE_TEXTUALLY ~^%sphere_minor_orig%$~ ~%sphere_minor_none%~
+        REPLACE_TEXTUALLY ~^%sphere_none_orig%$~ ~~
+        REPLACE_TEXTUALLY ~%sphere_ne%, %sphere_nr%~ ~%sphere_ne%~
+        REPLACE_TEXTUALLY ~%sphere_ex%, %sphere_ea%, %sphere_ee%, %sphere_ef%, %sphere_ew%~ ~%sphere_ex%~
+        REPLACE_TEXTUALLY ~CD_REPLACEME, ~ ~~
+      END
+      
+//      PRINT ~%desc%~
+  
+      STRING_SET_EVALUATE string "%desc%"
+    
+    END
+
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// mod kit remover                                  \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_ACTION_FUNCTION cd_mkr
+  INT_VAR remove_orig = 0
+  STR_VAR class = "c"
+  BEGIN
+
+  ACTION_IF remove_orig = 1 THEN BEGIN
+
+    OUTER_SET last_kit = 0
+  
+  END ELSE BEGIN
+
+    COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
+      COUNT_2DA_ROWS 9 rows
+      SET last_kit = 0
+      FOR (index = 2 ; index < rows ; ++index) BEGIN
+        READ_2DA_ENTRY index 1 8 name
+        PATCH_IF (("%name%" STRING_COMPARE_CASE "OHTYR" = 0) OR // bg2ee
+                  ("%name%" STRING_COMPARE_CASE "SUN_SOUL" = 0) OR // bgee
+                  ("%name%" STRING_COMPARE_CASE "OHTEMPUS" = 0) OR // iwdee
+                  ("%name%" STRING_COMPARE_CASE "BARBARIAN" = 0)) BEGIN // bg2/bgt/tutu
+          READ_2DA_ENTRY index 0 8 last_kit
+        END
+      END
+      BUT_ONLY
+
+  END
+
+  ACTION_FOR_EACH race IN d e g h he hl ho BEGIN
+  
+    ACTION_IF FILE_EXISTS_IN_GAME ~k_%class%_%race%.2da~ THEN BEGIN
+  
+      COPY_EXISTING ~k_%class%_%race%.2da~ ~override~
+        REPLACE_EVALUATE ~\([%LNL%%MNL%%WNL%]*[0-9]+[ %TAB%]+\)\([0-9]+\)~ BEGIN
+          PATCH_IF (MATCH2 > last_kit) BEGIN
+            SPRINT replace ""
+          END ELSE BEGIN
+            SPRINT replace "%MATCH1%%MATCH2%"
+          END
+        END
+        ~%replace%~
+        BUT_ONLY
+
+    END
+
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// clone effect (delete when weidu is v237)         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_PATCH_FUNCTION CLONE_EFFECT
+
+  // defines what we're going to check
+  INT_VAR check_globals       = 1
+          check_headers       = 1      
+          header              = "-1"   
+          header_type         = "-1"
+          multi_match         = 999
+          debug               = 0
+
+  // variables for finding the effect to match
+          match_opcode        = "-1"   
+          match_target        = "-1"
+          match_power         = "-1"   
+          match_parameter1    = "-1"   
+          match_parameter2    = "-1"   
+          match_timing        = "-1"   
+          match_resist_dispel = "-1"   
+          match_duration      = "-1"   
+          match_duration_high = "-1"   
+          match_probability1  = "-1"   
+          match_probability2  = "-1"
+          match_dicenumber    = "-1"   
+          match_dicesize      = "-1"   
+          match_savingthrow   = "-1"
+          match_savebonus     = "-11"
+          match_special       = "-1"
+
+  // variables for the new effect
+          opcode              = "-1"   
+          target              = "-1"   
+          power               = "-1"   
+          parameter1          = "-1"   
+          parameter2          = "-1"   
+          timing              = "-1"   
+          resist_dispel       = "-1"   
+          duration            = "-1"   
+          duration_high       = "-1"   
+          probability1        = "-1"   
+          probability2        = "-1"   
+          dicenumber          = "-1"   
+          dicesize            = "-1"
+          savingthrow         = "-1"
+          savebonus           = "-11"
+          special             = "-1"
+
+  // same for match and new STR_VAR
+  STR_VAR match_resource      = "SAME"
+          resource            = "SAME"
+          insert              = "above"
+
+BEGIN
+
+  // set variables and offsets based on the file type
+  SET new_fx = 0
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.spl" = 0) BEGIN
+    READ_LONG   0x6a fx_off   ELSE 0
+    SET counter_offset = 0x70
+    SET abil_length    = 0x28
+    SET fx_type        = 0
+    SET min_size       = 0x72
+    PATCH_IF (check_headers = 0) BEGIN
+      SET abil_num = 0
+    END ELSE BEGIN
+      READ_LONG   0x64 abil_off ELSE 0
+      READ_SHORT  0x68 abil_num ELSE 0
+    END
+  END ELSE
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.itm" = 0) BEGIN
+    READ_LONG   0x6a fx_off   ELSE 0
+    SET counter_offset = 0x70
+    SET abil_length    = 0x38
+    SET fx_type        = 0
+    SET min_size       = 0x72
+    PATCH_IF (check_headers = 0) BEGIN
+      SET abil_num = 0
+    END ELSE BEGIN
+      READ_LONG   0x64 abil_off ELSE 0
+      READ_SHORT  0x68 abil_num ELSE 0
+    END
+  END ELSE
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.cre" = 0) BEGIN // creature effects treated like they're a single, global loop
+    SET abil_off = 0 // basically prevents the ability effect loop
+    SET abil_num = 0
+    READ_LONG  0x2c4 fx_off ELSE 0
+    SET counter_offset = 0x2c8
+    SET abil_length = 0
+    READ_BYTE 0x33 fx_type ELSE 2
+    SET min_size = 0x2d4
+    SET check_globals = 1
+  END ELSE BEGIN
+    SET min_size = "-1" // kill macro as the file type is not recognized
+  END
+  PATCH_IF (SOURCE_SIZE >= min_size) BEGIN // sanity check
+    FOR (index = (0 - check_globals) ; index < abil_num ; ++index) BEGIN // we start at -1 for global effects
+      PATCH_IF (index < 0) BEGIN // if loop through globals needed
+        SET abil_fx_idx = 0  // start with effect 0 since we're in the global loop
+        SET abil_type = "-1" // basically, ignore header type checks for global loop
+      END ELSE BEGIN // otherwise normal ability
+        READ_SHORT  (abil_off +        (abil_length * index)) abil_type
+        SET counter_offset = (abil_off + 0x1e + (abil_length * index))
+        WRITE_SHORT (abil_off + 0x20 + (abil_length * index)) (THIS + new_fx) // update index with previously added effects
+        READ_SHORT  (abil_off + 0x20 + (abil_length * index)) abil_fx_idx
+      END
+      READ_SHORT counter_offset counter // fx_num on global loop, otherwise abil_fx_num
+      PATCH_IF (((abil_type = header_type) OR (abil_type < 0) OR (header_type < 0)) AND // only look on the right header types, if specified...
+                ((header = index) OR (header < 0))) BEGIN                               // and only on the right # header, if specified
+        SET last = 0                              // and only on the right # header, if specified
+        SET local_multi = multi_match
+        FOR (index2 = 0 ; index2 < (counter - last) ; ++index2) BEGIN
+
+          // read the variables from the current effect
+          READ_SHORT (fx_off        + (0x08 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_opcode
+          READ_BYTE  (fx_off + 0x02 + (0x0a * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_target
+          READ_BYTE  (fx_off + 0x03 + (0x0d * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_power
+          READ_LONG  (fx_off + 0x04 + (0x10 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_parameter1
+          READ_LONG  (fx_off + 0x08 + (0x10 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_parameter2
+          READ_BYTE  (fx_off + 0x0c + (0x10 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_timing
+          READ_BYTE  (fx_off + 0x0d + (0x47 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_resist_dispel
+          READ_LONG  (fx_off + 0x0e + (0x12 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_duration
+          READ_BYTE  (fx_off + 0x12 + (0x12 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_probability1
+          READ_BYTE  (fx_off + 0x13 + (0x13 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_probability2
+          READ_ASCII (fx_off + 0x14 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_resource
+          READ_LONG  (fx_off + 0x1c + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_dicenumber
+          READ_LONG  (fx_off + 0x20 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_dicesize
+          READ_LONG  (fx_off + 0x24 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_savingthrow
+          READ_LONG  (fx_off + 0x28 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_savebonus
+          READ_LONG  (fx_off + 0x2c + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_special
+
+          // match ALL these variables, if specified
+          PATCH_IF (((match_opcode        = o_opcode)        OR (match_opcode < 0))        AND
+                    ((match_target        = o_target)        OR (match_target < 0))        AND
+                    ((match_power         = o_power)         OR (match_power < 0))         AND
+                    ((match_parameter1    = o_parameter1)    OR (match_parameter1 < 0))    AND
+                    ((match_parameter2    = o_parameter2)    OR (match_parameter2 < 0))    AND
+                    ((match_timing        = o_timing)        OR (match_timing < 0))        AND
+                    ((match_resist_dispel = o_resist_dispel) OR (match_resist_dispel < 0)) AND
+                    ((match_duration      = o_duration)      OR (match_duration < 0))      AND
+                    ((match_probability1  = o_probability1)  OR (match_probability1 < 0))  AND
+                    ((match_probability2  = o_probability2)  OR (match_probability2 < 0))  AND
+                    ((match_dicenumber    = o_dicenumber)    OR (match_dicenumber < 0))    AND
+                    ((match_dicesize      = o_dicesize)      OR (match_dicesize < 0))      AND
+                    ((match_savingthrow   = o_savingthrow)   OR (match_savingthrow < 0))   AND
+                    ((match_savebonus     = o_savebonus)     OR (match_savebonus < "-10")) AND
+                    ((match_special       = o_special)       OR (match_special < 0))       AND
+                    (("%match_resource%" STRING_COMPARE_CASE "%o_resource%" = 0) OR ("%match_resource%" STRING_COMPARE_CASE "SAME" = 0))) BEGIN
+
+            // now that we've got a match, read-and-clone it:
+            READ_ASCII   (fx_off        + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) clone (0x30 + (0xd8 * fx_type))
+            PATCH_IF ("%insert%" STRING_COMPARE_CASE "below" = 0) BEGIN
+              SET base = (fx_off        + ((abil_fx_idx + index2 + 1) * (0x30 + (0xd8 * fx_type))))
+            END ELSE
+            PATCH_IF ("%insert%" STRING_COMPARE_CASE "first" = 0) BEGIN
+              SET base = (fx_off        + (abil_fx_idx * (0x30 + (0xd8 * fx_type))))
+            END ELSE
+            PATCH_IF ("%insert%" STRING_COMPARE_CASE "last" = 0) BEGIN
+              SET base = (fx_off        + ((abil_fx_idx + counter) * (0x30 + (0xd8 * fx_type))))
+            END ELSE BEGIN
+              SET base = (fx_off        + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type))))
+            END
+            INSERT_BYTES base (0x30 + (0xd8 * fx_type))
+            WRITE_ASCIIE base "%clone%"
+
+            // overwrite the cloned effect with the new variables, if specified
+            PATCH_IF (opcode >= 0)        BEGIN WRITE_SHORT (base        + (0x08 * fx_type)) opcode        END
+            PATCH_IF (target >= 0)        BEGIN WRITE_BYTE  (base + 0x02 + (0x0a * fx_type)) target        END
+            PATCH_IF (power >= 0)         BEGIN WRITE_BYTE  (base + 0x03 + (0x0d * fx_type)) power         END
+            PATCH_IF (parameter1 >= 0)    BEGIN WRITE_LONG  (base + 0x04 + (0x10 * fx_type)) parameter1    END
+            PATCH_IF (parameter2 >= 0)    BEGIN WRITE_LONG  (base + 0x08 + (0x10 * fx_type)) parameter2    END
+            PATCH_IF (timing >= 0)        BEGIN WRITE_BYTE  (base + 0x0c + (0x10 * fx_type)) timing        END
+            PATCH_IF (resist_dispel >= 0) BEGIN WRITE_BYTE  (base + 0x0d + (0x47 * fx_type)) resist_dispel END
+            PATCH_IF (duration >= 0)      BEGIN WRITE_LONG  (base + 0x0e + (0x12 * fx_type)) duration      END
+            PATCH_IF (probability1 >= 0)  BEGIN WRITE_BYTE  (base + 0x12 + (0x12 * fx_type)) probability1  END
+            PATCH_IF (probability2 >= 0)  BEGIN WRITE_BYTE  (base + 0x13 + (0x13 * fx_type)) probability2  END
+            PATCH_IF (dicenumber >= 0)    BEGIN WRITE_LONG  (base + 0x1c + (0x14 * fx_type)) dicenumber    END
+            PATCH_IF (dicesize >= 0)      BEGIN WRITE_LONG  (base + 0x20 + (0x14 * fx_type)) dicesize      END
+            PATCH_IF (savingthrow >= 0)   BEGIN WRITE_LONG  (base + 0x24 + (0x14 * fx_type)) savingthrow   END
+            PATCH_IF (savebonus >= "-10") BEGIN WRITE_LONG  (base + 0x28 + (0x14 * fx_type)) savebonus     END
+            PATCH_IF (special >= 0)       BEGIN WRITE_LONG  (base + 0x2c + (0x14 * fx_type)) special       END
+            PATCH_IF ("%resource%" STRING_COMPARE_CASE "SAME" != 0) BEGIN
+              WRITE_ASCIIE (base + 0x14 + (0x14 * fx_type)) "%resource%" #8
+            END
+
+            // update the tracking vars
+            SET new_fx += 1
+            SET counter += 1
+            PATCH_IF (local_multi < 2) BEGIN  // kill loop if we only want one match
+              SET index2 = counter
+            END ELSE BEGIN // otherwise bump vars and keep going
+              SET local_multi  -= 1
+              PATCH_IF ("%insert%" STRING_COMPARE_CASE "last" = 0) BEGIN
+                SET last += 1
+              END ELSE BEGIN
+                SET index2 += 1
+              END
+            END
+
+          END // end patch_if for a matched effect
+        END // end of the for loop through effects
+      END // end patch_if for matched/specified headers
+      WRITE_SHORT counter_offset counter // fx_num on global loop, otherwise abil_fx_num
+    END // end loop through effects on ability
+  END // end ability loop
+
+  // now adjust offsets for creature files
+  PATCH_IF (("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.cre" = 0) AND (new_fx > 0)) BEGIN // fix offsets for cre files if fx inserted
+    SET inserted = ((0x30 + (0xd8 * fx_type)) * new_fx)
+    PATCH_FOR_EACH offset IN 0x2a0 0x2a8 0x2b0 0x2b8 0x2bc BEGIN
+      READ_LONG offset off
+      PATCH_IF (fx_off < off) BEGIN
+        WRITE_LONG offset (off + inserted)
+      END
+    END
+  END
+
+  // spit out some info if debug is set
+  PATCH_IF (debug = 1) BEGIN
+    READ_LONG 0x0c strref
+    PATCH_IF ((strref > 0) AND (strref < 200000)) BEGIN
+      READ_STRREF 0x0c name
+    END ELSE BEGIN
+      READ_STRREF 0x08 name
+    END
+    PATCH_IF (new_fx = 0) BEGIN
+      PATCH_PRINT "  Warning: No effects added to %SOURCE_FILE% (%name%)"
+    END ELSE BEGIN
+      PATCH_PRINT "              ~%SOURCE_FILE%~   ~override~ // %name%, %new_fx% effect(s) added"
+    END
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// delete effect (delete when weidu is v237)        \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_PATCH_FUNCTION DELETE_EFFECT
+
+  // defines what we're going to check
+  INT_VAR check_globals       = 1      
+          check_headers       = 1      
+          header              = "-1"   
+          header_type         = "-1"
+          multi_match         = 999
+          debug               = 0
+
+  // variables for finding the effect to match
+          match_opcode        = "-1"   
+          match_target        = "-1"   
+          match_power         = "-1"   
+          match_parameter1    = "-1"   
+          match_parameter2    = "-1"   
+          match_timing        = "-1"   
+          match_resist_dispel = "-1"   
+          match_duration      = "-1"   
+          match_duration_high = "-1"   
+          match_probability1  = "-1"   
+          match_probability2  = "-1"   
+          match_dicenumber    = "-1"   
+          match_dicesize      = "-1"
+          match_savingthrow   = "-1"
+          match_savebonus     = "-11"
+          match_special       = "-1"
+
+  // same for match and new STR_VAR
+  STR_VAR match_resource      = "SAME"
+
+BEGIN
+
+  // set variables and offsets based on the file type
+  SET new_fx = 0
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.spl" = 0) BEGIN
+    READ_LONG   0x6a fx_off   ELSE 0
+    SET counter_offset = 0x70
+    SET abil_length    = 0x28
+    SET fx_type        = 0
+    SET min_size       = 0x72
+    PATCH_IF (check_headers = 0) BEGIN
+      SET abil_num = 0
+    END ELSE BEGIN
+      READ_LONG   0x64 abil_off ELSE 0
+      READ_SHORT  0x68 abil_num ELSE 0
+    END
+  END ELSE
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.itm" = 0) BEGIN
+    READ_LONG   0x6a fx_off   ELSE 0
+    SET counter_offset = 0x70
+    SET abil_length    = 0x38
+    SET fx_type        = 0
+    SET min_size       = 0x72
+    PATCH_IF (check_headers = 0) BEGIN
+      SET abil_num = 0
+    END ELSE BEGIN
+      READ_LONG   0x64 abil_off ELSE 0
+      READ_SHORT  0x68 abil_num ELSE 0
+    END
+  END ELSE
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.cre" = 0) BEGIN // creature effects treated like they're a single, global loop
+    SET abil_off = 0 // basically prevents the ability effect loop
+    SET abil_num = 0
+    READ_LONG  0x2c4 fx_off ELSE 0
+    SET counter_offset = 0x2c8
+    SET abil_length = 0
+    READ_BYTE 0x33 fx_type ELSE 2
+    SET min_size = 0x2d4
+    SET check_globals = 1
+  END ELSE BEGIN
+    SET min_size = "-1" // kill macro as the file type is not recognized
+  END
+  PATCH_IF (SOURCE_SIZE >= min_size) BEGIN // sanity check
+    FOR (index = (0 - check_globals) ; index < abil_num ; ++index) BEGIN // we start at -1 for global effects
+      PATCH_IF (index < 0) BEGIN // if loop through globals needed
+        SET abil_fx_idx = 0  // start with effect 0 since we're in the global loop
+        SET abil_type = "-1" // basically, ignore header type checks for global loop
+      END ELSE BEGIN // otherwise normal ability
+        READ_SHORT  (abil_off +        (abil_length * index)) abil_type
+        SET counter_offset = (abil_off + 0x1e + (abil_length * index))
+        WRITE_SHORT (abil_off + 0x20 + (abil_length * index)) (THIS + new_fx) // update index with previously added effects
+        READ_SHORT  (abil_off + 0x20 + (abil_length * index)) abil_fx_idx
+      END
+      READ_SHORT counter_offset counter // fx_num on global loop, otherwise abil_fx_num
+      PATCH_IF (((abil_type = header_type) OR (abil_type < 0) OR (header_type < 0)) AND // only look on the right header types, if specified...
+                ((header = index) OR (header < 0))) BEGIN                               // and only on the right # header, if specified
+        SET local_multi = multi_match
+        FOR (index2 = 0 ; index2 < counter ; ++index2) BEGIN
+
+          // read the variables from the current effect
+          READ_SHORT (fx_off        + (0x08 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_opcode
+          READ_BYTE  (fx_off + 0x02 + (0x0a * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_target
+          READ_BYTE  (fx_off + 0x03 + (0x0d * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_power
+          READ_LONG  (fx_off + 0x04 + (0x10 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_parameter1
+          READ_LONG  (fx_off + 0x08 + (0x10 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_parameter2
+          READ_BYTE  (fx_off + 0x0c + (0x10 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_timing
+          READ_BYTE  (fx_off + 0x0d + (0x47 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_resist_dispel
+          READ_LONG  (fx_off + 0x0e + (0x12 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_duration
+          READ_BYTE  (fx_off + 0x12 + (0x12 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_probability1
+          READ_BYTE  (fx_off + 0x13 + (0x13 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_probability2
+          READ_ASCII (fx_off + 0x14 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_resource
+          READ_LONG  (fx_off + 0x1c + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_dicenumber
+          READ_LONG  (fx_off + 0x20 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_dicesize
+          READ_LONG  (fx_off + 0x24 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_savingthrow
+          READ_LONG  (fx_off + 0x28 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_savebonus
+          READ_LONG  (fx_off + 0x2c + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_special
+
+          // match ALL these variables, if specified
+          PATCH_IF (((match_opcode        = o_opcode)        OR (match_opcode < 0))        AND
+                    ((match_target        = o_target)        OR (match_target < 0))        AND
+                    ((match_power         = o_power)         OR (match_power < 0))         AND
+                    ((match_parameter1    = o_parameter1)    OR (match_parameter1 < 0))    AND
+                    ((match_parameter2    = o_parameter2)    OR (match_parameter2 < 0))    AND
+                    ((match_timing        = o_timing)        OR (match_timing < 0))        AND
+                    ((match_resist_dispel = o_resist_dispel) OR (match_resist_dispel < 0)) AND
+                    ((match_duration      = o_duration)      OR (match_duration < 0))      AND
+                    ((match_probability1  = o_probability1)  OR (match_probability1 < 0))  AND
+                    ((match_probability2  = o_probability2)  OR (match_probability2 < 0))  AND
+                    ((match_dicenumber    = o_dicenumber)    OR (match_dicenumber < 0))    AND
+                    ((match_dicesize      = o_dicesize)      OR (match_dicesize < 0))      AND
+                    ((match_savingthrow   = o_savingthrow)   OR (match_savingthrow < 0))   AND
+                    ((match_savebonus     = o_savebonus)     OR (match_savebonus < "-10")) AND
+                    ((match_special       = o_special)       OR (match_special < 0))       AND
+                    (("%match_resource%" STRING_COMPARE_CASE "%o_resource%" = 0) OR ("%match_resource%" STRING_COMPARE_CASE "SAME" = 0))) BEGIN
+
+            // now that we've got a match, read-and-clone it:
+            DELETE_BYTES   (fx_off        + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) (0x30 + (0xd8 * fx_type))
+
+            // update the tracking vars
+            SET new_fx -= 1
+            SET counter -= 1
+            SET index2 -= 1
+            PATCH_IF (local_multi < 2) BEGIN  // kill loop if we only want one match
+              SET index2 = counter
+            END ELSE BEGIN // otherwise bump vars and keep going
+              SET local_multi  -= 1
+            END
+
+          END // end patch_if for a matched effect
+        END // end of the for loop through effects
+      END // end patch_if for matched/specified headers
+      WRITE_SHORT counter_offset counter // fx_num on global loop, otherwise abil_fx_num
+    END // end loop through effects on ability
+  END // end ability loop
+
+  // now adjust offsets for creature files
+  PATCH_IF (("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.cre" = 0) AND (new_fx != 0)) BEGIN // fix offsets for cre files if fx inserted
+    SET inserted = ((0x30 + (0xd8 * fx_type)) * new_fx)
+    PATCH_FOR_EACH offset IN 0x2a0 0x2a8 0x2b0 0x2b8 0x2bc BEGIN
+      READ_LONG offset off
+      PATCH_IF (fx_off < off) BEGIN
+        WRITE_LONG offset (off + inserted)
+      END
+    END
+  END
+
+  // spit out some info if debug is set
+  PATCH_IF (debug = 1) BEGIN
+    READ_LONG 0x0c strref
+    PATCH_IF ((strref > 0) AND (strref < 200000)) BEGIN
+      READ_STRREF 0x0c name
+    END ELSE BEGIN
+      READ_STRREF 0x08 name
+    END
+    PATCH_IF (new_fx = 0) BEGIN
+      PATCH_PRINT "  Warning: No effects added to %SOURCE_FILE% (%name%)"
+    END ELSE BEGIN
+      PATCH_PRINT "              ~%SOURCE_FILE%~   ~override~ // %name%, %new_fx% effect(s) deleted"
+    END
+  END
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// alter effect (delete when weidu is v237)         \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_PATCH_FUNCTION ALTER_EFFECT
+
+  // defines what we're going to check
+  INT_VAR check_globals       = 1      
+          check_headers       = 1
+          header              = "-1"   
+          header_type         = "-1"
+          multi_match         = 999
+          debug               = 0
+
+  // variables for finding the effect to match
+          match_opcode        = "-1"   
+          match_target        = "-1"   
+          match_power         = "-1"   
+          match_parameter1    = "-1"   
+          match_parameter2    = "-1"   
+          match_timing        = "-1"
+          match_resist_dispel = "-1"   
+          match_duration      = "-1"   
+          match_duration_high = "-1"   
+          match_probability1  = "-1"   
+          match_probability2  = "-1"   
+          match_dicenumber    = "-1"   
+          match_dicesize      = "-1"
+          match_savingthrow   = "-1"
+          match_savebonus     = "-11"
+          match_special       = "-1"
+
+  // variables for the new effect
+          opcode              = "-1"   
+          target              = "-1"   
+          power               = "-1"   
+          parameter1          = "-1"   
+          parameter2          = "-1"
+          timing              = "-1"   
+          resist_dispel       = "-1"   
+          duration            = "-1"   
+          duration_high       = "-1"   
+          probability1        = "-1"   
+          probability2        = "-1"
+          dicenumber          = "-1"   
+          dicesize            = "-1"
+          savingthrow         = "-1"   
+          savebonus           = "-11"
+          special             = "-1"
+
+  // same for match and new STR_VAR
+  STR_VAR match_resource      = "SAME"
+          resource            = "SAME"
+
+BEGIN
+
+  // set variables and offsets based on the file type
+  SET alter = 0
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.spl" = 0) BEGIN
+    READ_LONG   0x6a fx_off   ELSE 0
+    SET counter_offset = 0x70
+    SET abil_length    = 0x28
+    SET fx_type        = 0
+    SET min_size       = 0x72
+    PATCH_IF (check_headers = 0) BEGIN
+      SET abil_num = 0
+    END ELSE BEGIN
+      READ_LONG   0x64 abil_off ELSE 0
+      READ_SHORT  0x68 abil_num ELSE 0
+    END
+  END ELSE
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.itm" = 0) BEGIN
+    READ_LONG   0x6a fx_off   ELSE 0
+    SET counter_offset = 0x70
+    SET abil_length    = 0x38
+    SET fx_type        = 0
+    SET min_size       = 0x72
+    PATCH_IF (check_headers = 0) BEGIN
+      SET abil_num = 0
+    END ELSE BEGIN
+      READ_LONG   0x64 abil_off ELSE 0
+      READ_SHORT  0x68 abil_num ELSE 0
+    END
+  END ELSE
+  PATCH_IF ("%SOURCE_FILE%" STRING_COMPARE_REGEXP "^.+\.cre" = 0) BEGIN // creature effects treated like they're a single, global loop
+    SET abil_off = 0 // basically prevents the ability effect loop
+    SET abil_num = 0
+    READ_LONG  0x2c4 fx_off ELSE 0
+    SET counter_offset = 0x2c8
+    SET abil_length = 0
+    READ_BYTE 0x33 fx_type ELSE 2
+    SET min_size = 0x2d4
+    SET check_globals = 1
+  END ELSE BEGIN
+    SET min_size = "-1" // kill macro as the file type is not recognized
+  END
+  PATCH_IF (SOURCE_SIZE >= min_size) BEGIN // sanity check
+    FOR (index = (0 - check_globals) ; index < abil_num ; ++index) BEGIN // we start at -1 for global effects
+      PATCH_IF (index < 0) BEGIN // if loop through globals needed
+        SET abil_fx_idx = 0  // start with effect 0 since we're in the global loop
+        SET abil_type = "-1" // basically, ignore header type checks for global loop
+      END ELSE BEGIN // otherwise normal ability
+        READ_SHORT  (abil_off +        (abil_length * index)) abil_type
+        SET counter_offset = (abil_off + 0x1e + (abil_length * index))
+        READ_SHORT  (abil_off + 0x20 + (abil_length * index)) abil_fx_idx
+      END
+      READ_SHORT counter_offset counter // fx_num on global loop, otherwise abil_fx_num
+      PATCH_IF (((abil_type = header_type) OR (abil_type < 0) OR (header_type < 0)) AND // only look on the right header types, if specified...
+                ((header = index) OR (header < 0))) BEGIN                               // and only on the right # header, if specified
+        SET local_multi = multi_match
+        FOR (index2 = 0 ; index2 < counter ; ++index2) BEGIN
+
+          // read the variables from the current effect
+          READ_SHORT (fx_off        + (0x08 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_opcode
+          READ_BYTE  (fx_off + 0x02 + (0x0a * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_target
+          READ_BYTE  (fx_off + 0x03 + (0x0d * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_power
+          READ_LONG  (fx_off + 0x04 + (0x10 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_parameter1
+          READ_LONG  (fx_off + 0x08 + (0x10 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_parameter2
+          READ_BYTE  (fx_off + 0x0c + (0x10 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_timing
+          READ_BYTE  (fx_off + 0x0d + (0x47 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_resist_dispel
+          READ_LONG  (fx_off + 0x0e + (0x12 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_duration
+          READ_BYTE  (fx_off + 0x12 + (0x12 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_probability1
+          READ_BYTE  (fx_off + 0x13 + (0x13 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_probability2
+          READ_ASCII (fx_off + 0x14 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_resource
+          READ_LONG  (fx_off + 0x1c + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_dicenumber
+          READ_LONG  (fx_off + 0x20 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_dicesize
+          READ_LONG  (fx_off + 0x24 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_savingthrow
+          READ_LONG  (fx_off + 0x28 + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_savebonus
+          READ_LONG  (fx_off + 0x2c + (0x14 * fx_type) + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type)))) o_special
+
+          // match ALL these variables, if specified
+          PATCH_IF (((match_opcode        = o_opcode)        OR (match_opcode < 0))        AND
+                    ((match_target        = o_target)        OR (match_target < 0))        AND
+                    ((match_power         = o_power)         OR (match_power < 0))         AND
+                    ((match_parameter1    = o_parameter1)    OR (match_parameter1 < 0))    AND
+                    ((match_parameter2    = o_parameter2)    OR (match_parameter2 < 0))    AND
+                    ((match_timing        = o_timing)        OR (match_timing < 0))        AND
+                    ((match_resist_dispel = o_resist_dispel) OR (match_resist_dispel < 0)) AND
+                    ((match_duration      = o_duration)      OR (match_duration < 0))      AND
+                    ((match_probability1  = o_probability1)  OR (match_probability1 < 0))  AND
+                    ((match_probability2  = o_probability2)  OR (match_probability2 < 0))  AND
+                    ((match_dicenumber    = o_dicenumber)    OR (match_dicenumber < 0))    AND
+                    ((match_dicesize      = o_dicesize)      OR (match_dicesize < 0))      AND
+                    ((match_savingthrow   = o_savingthrow)   OR (match_savingthrow < 0))   AND
+                    ((match_savebonus     = o_savebonus)     OR (match_savebonus < "-10")) AND
+                    ((match_special       = o_special)       OR (match_special < 0))       AND
+                    (("%match_resource%" STRING_COMPARE_CASE "%o_resource%" = 0) OR ("%match_resource%" STRING_COMPARE_CASE "SAME" = 0))) BEGIN
+
+            // lazily re-use code
+            SET base = (fx_off        + ((abil_fx_idx + index2) * (0x30 + (0xd8 * fx_type))))
+
+            // overwrite the cloned effect with the new variables, if specified
+            PATCH_IF (opcode >= 0)        BEGIN WRITE_SHORT (base        + (0x08 * fx_type)) opcode        END
+            PATCH_IF (target >= 0)        BEGIN WRITE_BYTE  (base + 0x02 + (0x0a * fx_type)) target        END
+            PATCH_IF (power >= 0)         BEGIN WRITE_BYTE  (base + 0x03 + (0x0d * fx_type)) power         END
+            PATCH_IF (parameter1 >= 0)    BEGIN WRITE_LONG  (base + 0x04 + (0x10 * fx_type)) parameter1    END
+            PATCH_IF (parameter2 >= 0)    BEGIN WRITE_LONG  (base + 0x08 + (0x10 * fx_type)) parameter2    END
+            PATCH_IF (timing >= 0)        BEGIN WRITE_BYTE  (base + 0x0c + (0x10 * fx_type)) timing        END
+            PATCH_IF (resist_dispel >= 0) BEGIN WRITE_BYTE  (base + 0x0d + (0x47 * fx_type)) resist_dispel END
+            PATCH_IF (duration >= 0)      BEGIN WRITE_LONG  (base + 0x0e + (0x12 * fx_type)) duration      END
+            PATCH_IF (probability1 >= 0)  BEGIN WRITE_BYTE  (base + 0x12 + (0x12 * fx_type)) probability1  END
+            PATCH_IF (probability2 >= 0)  BEGIN WRITE_BYTE  (base + 0x13 + (0x13 * fx_type)) probability2  END
+            PATCH_IF (dicenumber >= 0)    BEGIN WRITE_LONG  (base + 0x1c + (0x14 * fx_type)) dicenumber    END
+            PATCH_IF (dicesize >= 0)      BEGIN WRITE_LONG  (base + 0x20 + (0x14 * fx_type)) dicesize      END
+            PATCH_IF (savingthrow >= 0)   BEGIN WRITE_LONG  (base + 0x24 + (0x14 * fx_type)) savingthrow   END
+            PATCH_IF (savebonus >= "-10") BEGIN WRITE_LONG  (base + 0x28 + (0x14 * fx_type)) savebonus     END
+            PATCH_IF (special >= 0)       BEGIN WRITE_LONG  (base + 0x2c + (0x14 * fx_type)) special       END
+            PATCH_IF ("%resource%" STRING_COMPARE_CASE "SAME" != 0) BEGIN
+              WRITE_ASCIIE (base + 0x14 + (0x14 * fx_type)) "%resource%" #8
+            END
+
+            // update the tracking vars
+            SET alter += 1
+            PATCH_IF (local_multi < 2) BEGIN  // kill loop if we only want one match
+              SET index2 = counter
+            END ELSE BEGIN // otherwise bump vars and keep going
+              SET local_multi  -= 1
+            END
+
+          END // end patch_if for a matched effect
+        END // end of the for loop through effects
+      END // end patch_if for matched/specified headers
+    END // end loop through effects on ability
+  END // end ability loop
+
+  // spit out some info if debug is set
+  PATCH_IF (debug = 1) BEGIN
+    READ_LONG 0x0c strref
+    PATCH_IF ((strref > 0) AND (strref < 200000)) BEGIN
+      READ_STRREF 0x0c name
+    END ELSE BEGIN
+      READ_STRREF 0x08 name
+    END
+    PATCH_IF (alter = 0) BEGIN
+      PATCH_PRINT "  Warning: No effects altered on %SOURCE_FILE% (%name%)"
+    END ELSE BEGIN
+      PATCH_PRINT "              ~%SOURCE_FILE%~   ~override~ // %name%, %alter% effect(s) altered"
+    END
+  END
+
+END

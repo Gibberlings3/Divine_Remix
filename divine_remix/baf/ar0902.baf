@@ -1,0 +1,48 @@
+IF
+        Global("CDWorkingForHelm","GLOBAL",1)
+        OR(2)
+          !Global("SainSpawn","GLOBAL",2)
+          !Global("CDSpawnArval","GLOBAL",3)
+THEN
+        RESPONSE #100
+                SetGlobal("SainSpawn","GLOBAL",2)
+                SetGlobal("CDSpawnArval","GLOBAL",3)
+                ActionOverride("SCSAIN",DestroySelf())
+                ActionOverride("Arval",DestroySelf())
+END
+
+IF
+        Global("CDSpawnArval","GLOBAL",1)
+        Global("CDWorkingForHelm","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("CDSpawnArval","GLOBAL",2)
+    CreateCreature("BHARVAL",[577.650],14)
+END
+
+IF
+	Global("SainSpawn","GLOBAL",0)
+        OR(2)
+          Alignment(Player1,MASK_GOOD)
+          Kit(Player1,GODLATHANDER)
+	OR(6)
+	  Class(Player1,CLERIC)
+	  Class(Player1,FIGHTER_CLERIC)
+	  Class(Player1,CLERIC_MAGE)
+	  Class(Player1,CLERIC_THIEF)
+	  Class(Player1,FIGHTER_MAGE_CLERIC)
+	  Class(Player1,CLERIC_RANGER)
+	!Kit(Player1,GODHELM)
+	!Kit(Player1,GODTALOS)
+THEN
+	RESPONSE #100
+		SetGlobal("SainSpawn","GLOBAL",1)
+		CreateCreature("SCSAIN",[642.627],0) // Dawnbringer Sain
+END
+
+IF // this block prevents the existing or Oversight-replaced blocks from spawning Sain
+	Global("SainSpawn","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("SainSpawn","GLOBAL",2)
+END
