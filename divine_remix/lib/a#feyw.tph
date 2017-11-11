@@ -34,7 +34,7 @@ COPY_EXISTING ~a#fey00.itm~ ~override/a#fey01.itm~  // sahandrian +1
   WRITE_SHORT 0x8C "%weap_idx%"
   WRITE_SHORT 0x84 (5 - "%weap_idx%")
 
-ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN
 
   COPY_EXISTING ~spwi921.spl~ ~override/a#hlaal.spl~ //Improved Alacrity
     SAY IDENTIFIED_DESC @12706

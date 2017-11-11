@@ -8,7 +8,7 @@ END ELSE BEGIN
 
 END
 
-ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN
 
   COPY ~Divine_Remix/spl/a#tem71.spl~ ~override~  // Tempus' Shield
     SAY NAME1 @10912

@@ -27,7 +27,7 @@ COPY_EXISTING ~cdxvsc0.itm~ ~override/cdxvsc1.itm~  // scimitar of souls +1
 
 COPY ~Divine_Remix/spl/CDXVFEAR.spl~ ~override~  // immunity to fear (permanent innate spell)
 
-ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN
 
   ACTION_IF !FILE_EXISTS_IN_GAME ~beheld01.cre~ THEN BEGIN
     

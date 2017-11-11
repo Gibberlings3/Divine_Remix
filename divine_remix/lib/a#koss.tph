@@ -31,7 +31,7 @@ COPY_EXISTING ~spwi418.spl~ ~override/a#kos07.spl~ // fire shield (red)
   LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
   BUT_ONLY_IF_IT_CHANGES
 
-ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN
 
   COPY ~Divine_Remix/spl/a#koss20.spl~ ~override~ //Kossuth's Purifying Touch
     SAY NAME1 @11505

@@ -1,6 +1,6 @@
 APPEND CHALCY01
 
-IF WEIGHT #-1 ~Kit(Player1,"A#CYRIC")
+IF WEIGHT #-1 ~Kit(Player1,A#CYRIC)
 Global("BeginChallenge4","GLOBAL",3)~ THEN BEGIN a1
   SAY @13026
     = @13027
