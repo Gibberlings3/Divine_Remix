@@ -11,11 +11,14 @@ tmp/
 Thumbs.db
 ehthumbs.db
 
+*.7z
+*.rar
+*.zip
+*.tar.gz
+
 .DS_Store
 .AppleDouble
 .LSOverride
 .AppleDB
 .AppleDesktop
 .apdisk
-
-
