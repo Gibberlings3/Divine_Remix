@@ -79,7 +79,7 @@ Casting Time: 5
 Area of Effect: Creature touched
 Saving Throw: None
 
-This spell provides a subject with a better resistance to acid, corrosives, and caustic substances of all kinds, such as black dragon breath, Melfís acid arrow, and the natural attacks of various puddings, oozes, slimes, and jellies. Such substances inflict only half the normal damage on the protected character.~
+This spell provides a subject with a better resistance to acid, corrosives, and caustic substances of all kinds, such as black dragon breath, Melf‚Äôs acid arrow, and the natural attacks of various puddings, oozes, slimes, and jellies. Such substances inflict only half the normal damage on the protected character.~
 @175 = ~Strength of Stone~
 @176 = ~Strength of Stone (Invocation/Evocation)
 Level: 1
@@ -317,13 +317,13 @@ After witnessing the eyeless priest's speech, I was approached by a cleric of La
 @10171 =~STORMLORD OF TALOS: Talos is the evil god of storms, destruction, and rebellion. Clerics of the Stormlord warn that Talos must be appeased or he will rain destruction upon the land.
 
 Advantages:
-ñ May cast Lightning Bolt once per day every 5 levels of the caster (starts at 1st level with one use).
-ñ May cast Storm Shield once per day every 10 levels of the caster (starts at 1st level with one use).
+‚Äì May cast Lightning Bolt once per day every 5 levels of the caster (starts at 1st level with one use).
+‚Äì May cast Storm Shield once per day every 10 levels of the caster (starts at 1st level with one use).
 
 STORM SHIELD: This spell lasts 1 round per level of the caster. It protects the caster from lightning, fire, cold, and normal missiles.
 
 Disadvantages:
-ñ Alignment restricted to neutral evil, chaotic evil, and chaotic neutral.~
+‚Äì Alignment restricted to neutral evil, chaotic evil, and chaotic neutral.~
 
 
 @10176 =~Evasion
@@ -344,7 +344,7 @@ STORM SHIELD:  This spell lasts 6 seconds per level of the caster.  It protects 
 - From level 14 can cast Earthquake once per day, as seventh level cleric spell of the same name
 
 Disadvantages:
-ñ Alignment restricted to neutral evil, chaotic evil, and chaotic neutral.~
+‚Äì Alignment restricted to neutral evil, chaotic evil, and chaotic neutral.~
 // this is the sphere-enabled kit description. Spheres will be added automatically via patching
 @10178 =~PRIEST OF LATHANDER: Lathander is the good god of renewal, creativity, and youth, and is celebrated nearly everywhere. His followers are very popular throughout the Realms, and there are numerous wealthy temples devoted to him.
 
@@ -360,18 +360,18 @@ BOON OF LATHANDER:  This spell lasts for 6 seconds per level of the caster.  It 
 - From level 14 can cast Greater Restoration once per day, as seventh level cleric spell of the same name
 
 Disadvantages:
-ñ Alignment restricted to lawful good, neutral good, chaotic good, and true neutral.~
+‚Äì Alignment restricted to lawful good, neutral good, chaotic good, and true neutral.~
 // this is the generic kit description with 'PRIEST' changed to 'MORNINGLORD'
 @10179 =~PRIEST OF LATHANDER: Lathander is the good god of renewal, creativity, and youth, and is celebrated nearly everywhere. His followers are very popular throughout the Realms, and there are numerous wealthy temples devoted to him.
 
 Advantages:
-ñ May cast Hold Undead once per day every 5 levels of the caster (starts at 1st level with one use).
-ñ May cast Boon of Lathander every 10 levels of the caster (starts at 1st level with one use), as detailed below. 
+‚Äì May cast Hold Undead once per day every 5 levels of the caster (starts at 1st level with one use).
+‚Äì May cast Boon of Lathander every 10 levels of the caster (starts at 1st level with one use), as detailed below. 
 
 BOON OF LATHANDER: This spell lasts 1 round per level of the caster. It gives the caster a +1 bonus to attack and damage rolls, a +1 bonus to all Saving Throws, and 1 extra attack per round. It also protects the recipient from level drain.
 
 Disadvantages:
-ñ Alignment restricted to lawful good, neutral good, chaotic good, and true neutral.~
+‚Äì Alignment restricted to lawful good, neutral good, chaotic good, and true neutral.~
 @10180 =~Mace - 'Dawn's Embrace'~
 @10181 =~The mace is the spiritual weapon of Morninglords of Lathander, and is wielded as if the caster had grand mastery in the weapon. The mace is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above.~
 @10182 =~Only the most worthy and devoted servants of the Storm Lord are granted these powerful holy symbols.
@@ -392,13 +392,13 @@ STATISTICS:
 @10184 =~WATCHER OF HELM: Followers of the neutral god of watchers and protectors are warriors in their own right and are often seen as defenders of the innocent.
 
 Advantages:
-ñ May cast True Sight once per day every 5 levels (starts at 1st level with one use).
-ñ May cast Seeking Sword once per day every 10 levels (starts at 1st level with one use), as detailed below.
+‚Äì May cast True Sight once per day every 5 levels (starts at 1st level with one use).
+‚Äì May cast Seeking Sword once per day every 10 levels (starts at 1st level with one use), as detailed below.
 
 SEEKING SWORD: This spell creates a sword in the Cleric's hand (that cannot be dropped or unequipped). The sword is considered a +4 weapon for purposes of determining what it can hit (but this bonus does not apply to attack or damage rolls), and it deals out 2d4 damage to any target it hits. The weapon sets the number of attacks of the Cleric to 3. It lasts for 1 round per level of the caster. When equipped, the wielder cannot cast further spells.
 
 Disadvantages:
-ñ Alignment restricted to lawful good, lawful neutral, lawful evil, and true neutral.~
+‚Äì Alignment restricted to lawful good, lawful neutral, lawful evil, and true neutral.~
 @10185 =~Bastard Sword - 'Ever Watchful'~
 @10186 =~The bastard sword is the spiritual weapon of Watchers of Helm, and is wielded as if the caster had grand mastery in the weapon. The bastard sword is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
 @10187 =~Only those most worthy and devoted servants of the Watcher are granted these powerful holy symbols.
@@ -435,22 +435,22 @@ SPRITUAL WEAPON: The bastard sword is the spiritual weapon of Watchers of Helm, 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// Silverstar of Sel˚ne                             \\\\\
+///// Silverstar of Sel√ªne                             \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@10301 =~Silverstar of Sel˚ne~
+@10301 =~Silverstar of Sel√ªne~
 // this is the sphere-enabled kit description. Spheres will be added automatically via patching
-@10302 =~SILVERSTAR OF SEL€NE: Sel˚ne (pronounced: seh-loon-ay), Our Lady of Silver, is the goddess of the moon, the stars, and those who use them to navigate. Her eternal foe is the evil Shar, goddess of darkness, night, loss, and forgetfulness. Sel˚ne is often called the Moonmaiden for her connection to the silver moon that orbits Faerun. She is the goddess of the moon and travelers. Sel˚ne's home plane is The Gates of the Moon with her home a shining hall of silver called Argentil.
+@10302 =~SILVERSTAR OF SEL√õNE: Sel√ªne (pronounced: seh-loon-ay), Our Lady of Silver, is the goddess of the moon, the stars, and those who use them to navigate. Her eternal foe is the evil Shar, goddess of darkness, night, loss, and forgetfulness. Sel√ªne is often called the Moonmaiden for her connection to the silver moon that orbits Faerun. She is the goddess of the moon and travelers. Sel√ªne's home plane is The Gates of the Moon with her home a shining hall of silver called Argentil.
 
-Non-evil lycanthropes honor Sel˚ne as the master of their fate as do astrologers and fortune tellers. Sel˚ne is also growing popular among alewives, laundresses, seamstresses and servants with the message of female empowerment. She is also worshiped by female spellcasters, navigators and sailors.
+Non-evil lycanthropes honor Sel√ªne as the master of their fate as do astrologers and fortune tellers. Sel√ªne is also growing popular among alewives, laundresses, seamstresses and servants with the message of female empowerment. She is also worshiped by female spellcasters, navigators and sailors.
 
-Sel˚ne's clerics, called Silverstars of Sel˚ne, are dedicated advocates of freedom and tolerance, wanderers on the path of truth and absolute foes of Shar. They seek to build harmony among lycanthropes and non-shapechangers, and they protect the weak and the oppressed everywhere. They cannot abide slavery, and they hate most undead. They rarely settle in one place for long, instead moving along when seized by wanderlust or enticed by a new cause or mission. They deal with lunar energies and phenomena and are, to a limited degree, able to wield the power of the moon, bringing its fierce, pure white light to Toril to advance the goddess's wishes.
+Sel√ªne's clerics, called Silverstars of Sel√ªne, are dedicated advocates of freedom and tolerance, wanderers on the path of truth and absolute foes of Shar. They seek to build harmony among lycanthropes and non-shapechangers, and they protect the weak and the oppressed everywhere. They cannot abide slavery, and they hate most undead. They rarely settle in one place for long, instead moving along when seized by wanderlust or enticed by a new cause or mission. They deal with lunar energies and phenomena and are, to a limited degree, able to wield the power of the moon, bringing its fierce, pure white light to Toril to advance the goddess's wishes.
 
 Abilities:
 - Spiritual Weapon: Mace - 'Moon's Hand' once per day
-SPIRITUAL WEAPON: The Moon's Hand is the spiritual weapon of Silverstars of Sel˚ne, and is wielded as if the caster had grand mastery in the weapon. The Moon's Mace is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
+SPIRITUAL WEAPON: The Moon's Hand is the spiritual weapon of Silverstars of Sel√ªne, and is wielded as if the caster had grand mastery in the weapon. The Moon's Mace is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
 - Infravision
 - Can cast Moon Shield once per day
 MOON SHIELD: Upon casting this spell, the Silverstar receives a resistance to all magic. The resistance conferred is 2% per level of the cleric up to a maximum of 40% at 20th level. This resistance is set so if the target already has more magic resistance than the cleric would confer, it will actually lower it to the set value. This effect will last for the duration of the spell or until dispelled.
@@ -460,10 +460,10 @@ MOON SHIELD: Upon casting this spell, the Silverstar receives a resistance to al
 - From level 14 can cast Protection From The Elements once per day, as seventh level mage spell of the same name
 
 Disadvantages:
-ñ Alignment restricted to chaotic good, neutral good, and chaotic neutral.~
+‚Äì Alignment restricted to chaotic good, neutral good, and chaotic neutral.~
 @10303 =~Mace - 'Moon's Hand'~
-@10304 =~The Moon's Hand is the spiritual weapon of Silverstars of Sel˚ne, and is wielded as if the caster had grand mastery in the weapon. The Moon's Hand is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
-@10305 =~silverstar of Sel˚ne~
+@10304 =~The Moon's Hand is the spiritual weapon of Silverstars of Sel√ªne, and is wielded as if the caster had grand mastery in the weapon. The Moon's Hand is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
+@10305 =~silverstar of Sel√ªne~
 @10307 =~Moon Shield~
 @10308 =~Moon Shield (Alteration)
 Level: 5
@@ -475,33 +475,33 @@ Area of Effect: Caster
 Saving Throw: None
 
 Upon casting this spell, the Silverstar receives a resistance to all magic.  The resistance conferred is 2% per level of the cleric up to a maximum of 40% at 20th level.  This resistance is set so if the target already has more magic resistance than the cleric would confer, it will actually lower it to the set value.  This effect will last for the duration of the spell or until dispelled.~
-@10319 =~Holy Symbol of Sel˚ne~
-@10320 =~Only the most worthy and devoted Silverstars of Sel˚ne are granted these powerful holy symbols.
+@10319 =~Holy Symbol of Sel√ªne~
+@10320 =~Only the most worthy and devoted Silverstars of Sel√ªne are granted these powerful holy symbols.
 
 STATISTICS:
 
    Grants an additional 6th and 7th level spell.
    5% Magic Resistance while worn
    +1 to Strength while worn~
-@10321 =~SILVERSTAR OF SEL€NE: Sel˚ne (pronounced: seh-loon-ay), Our Lady of Silver, is the goddess of the moon, the stars, and those who use them to navigate. Her eternal foe is the evil Shar, goddess of darkness, night, loss, and forgetfulness. Sel˚ne is often called the Moonmaiden for her connection to the silver moon that orbits Faerun. She is the goddess of the moon and travelers. Sel˚ne's home plane is The Gates of the Moon with her home a shining hall of silver called Argentil.
+@10321 =~SILVERSTAR OF SEL√õNE: Sel√ªne (pronounced: seh-loon-ay), Our Lady of Silver, is the goddess of the moon, the stars, and those who use them to navigate. Her eternal foe is the evil Shar, goddess of darkness, night, loss, and forgetfulness. Sel√ªne is often called the Moonmaiden for her connection to the silver moon that orbits Faerun. She is the goddess of the moon and travelers. Sel√ªne's home plane is The Gates of the Moon with her home a shining hall of silver called Argentil.
 
-Non-evil lycanthropes honor Sel˚ne as the master of their fate as do astrologers and fortune tellers. Sel˚ne is also growing popular among alewives, laundresses, seamstresses and servants with the message of female empowerment. She is also worshiped by female spellcasters, navigators and sailors.
+Non-evil lycanthropes honor Sel√ªne as the master of their fate as do astrologers and fortune tellers. Sel√ªne is also growing popular among alewives, laundresses, seamstresses and servants with the message of female empowerment. She is also worshiped by female spellcasters, navigators and sailors.
 
-Sel˚ne's clerics, called Silverstars of Sel˚ne, are dedicated advocates of freedom and tolerance, wanderers on the path of truth and absolute foes of Shar. They seek to build harmony among lycanthropes and non-shapechangers, and they protect the weak and the oppressed everywhere. They cannot abide slavery, and they hate most undead. They rarely settle in one place for long, instead moving along when seized by wanderlust or enticed by a new cause or mission. They deal with lunar energies and phenomena and are, to a limited degree, able to wield the power of the moon, bringing its fierce, pure white light to Toril to advance the goddess's wishes.
+Sel√ªne's clerics, called Silverstars of Sel√ªne, are dedicated advocates of freedom and tolerance, wanderers on the path of truth and absolute foes of Shar. They seek to build harmony among lycanthropes and non-shapechangers, and they protect the weak and the oppressed everywhere. They cannot abide slavery, and they hate most undead. They rarely settle in one place for long, instead moving along when seized by wanderlust or enticed by a new cause or mission. They deal with lunar energies and phenomena and are, to a limited degree, able to wield the power of the moon, bringing its fierce, pure white light to Toril to advance the goddess's wishes.
 
 Advantages:
-ñ May cast Free Action once per day every 5 levels (starts at 1st level with one use).
-ñ May cast Moon Shield once per day every 10 levels (starts at 1st level with one use), as detailed below.
+‚Äì May cast Free Action once per day every 5 levels (starts at 1st level with one use).
+‚Äì May cast Moon Shield once per day every 10 levels (starts at 1st level with one use), as detailed below.
 
 MOON SHIELD: Upon casting this spell, the Silverstar receives a resistance to all magic. The resistance conferred is 2% per level of the cleric up to a maximum of 40% at 20th level. This resistance is set so if the target already has more magic resistance than the cleric would confer, it will actually lower it to the set value. This effect will last for the duration of the spell or until dispelled.
 
 Disadvantages:
-ñ Alignment restricted to chaotic good, neutral good, and chaotic neutral.~
+‚Äì Alignment restricted to chaotic good, neutral good, and chaotic neutral.~
 // iwdee bio
-@10322 = ~Less than a fortnight after your initiation ceremony into the Temple of Sel˚ne, you were summoned before the Silverbrow of your order. In warm words fitting for a follower of Our Lady of Silver, she gave you your first assignment as a member of the clergy: to travel to the frontier towns of the North and bring the guidance of the Moonmaiden to the people that make the harsh environments their home. Almost as an afterthought, she spoke to you of portents and omens concerning events transpiring in the North, and it was the belief of the temple that a representative of their interests there might serve to soothe potential troubles in the region.
+@10322 = ~Less than a fortnight after your initiation ceremony into the Temple of Sel√ªne, you were summoned before the Silverbrow of your order. In warm words fitting for a follower of Our Lady of Silver, she gave you your first assignment as a member of the clergy: to travel to the frontier towns of the North and bring the guidance of the Moonmaiden to the people that make the harsh environments their home. Almost as an afterthought, she spoke to you of portents and omens concerning events transpiring in the North, and it was the belief of the temple that a representative of their interests there might serve to soothe potential troubles in the region.
 
-Though these missions to the untamed wilderness are often considered an unwanted chore by the less optimistic members of your order, you found yourself eager to accept the task. It seemed to be a chance to bring hope and light to the people of the North, a chance to do some real good rather than settling into weekly services delivered for the templeís casual worshipers in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and the wisdom of the Moonmaiden in your heart.~
-@10323 =~Sel˚ne has long been a friend to the Morninglords.  I would ask your service for a time, in exchange for the favor of Lathander.~
+Though these missions to the untamed wilderness are often considered an unwanted chore by the less optimistic members of your order, you found yourself eager to accept the task. It seemed to be a chance to bring hope and light to the people of the North, a chance to do some real good rather than settling into weekly services delivered for the temple‚Äôs casual worshipers in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and the wisdom of the Moonmaiden in your heart.~
+@10323 =~Sel√ªne has long been a friend to the Morninglords.  I would ask your service for a time, in exchange for the favor of Lathander.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -514,7 +514,7 @@ Though these missions to the untamed wilderness are often considered an unwanted
 @10601 =~Nightcloak of Shar~
 @10602 =~NIGHTCLOAK OF SHAR: Shar is the goddess of darkness, night, loss, and forgetfulness. Her main aspect is worshipped by those who deal in the night (such as thieves), who hate the light (such as goblin races and their allies), and who feel bitterness and loss. Her symbol is a black disk with a border of deep purple.
 
-Shar's mortal enemy is the goddess Sel˚ne and the two fight on a number of levels throughout their immortal lives. There is a continual war between the two faiths and jihads against Sel˚ne and her followers are common where Shar is strong.
+Shar's mortal enemy is the goddess Sel√ªne and the two fight on a number of levels throughout their immortal lives. There is a continual war between the two faiths and jihads against Sel√ªne and her followers are common where Shar is strong.
 
 Clerics of Shar are called Nightcloaks. They exist outside the standard church hierarchy. Shar has no main temple, but instead has a scattering of cells and secretive places throughout the Realms. The Nightcloaks of Shar serve as contacts, messengers, and enforcers of the Dark Lady's will.
 
@@ -560,22 +560,22 @@ Nightcloak of Shar~
 @10618 =~Protection from Blindness~
 @10619 =~NIGHTCLOAK OF SHAR: Shar is the goddess of darkness, night, loss, and forgetfulness. Her main aspect is worshipped by those who deal in the night (such as thieves), who hate the light (such as goblin races and their allies), and who feel bitterness and loss. Her symbol is a black disk with a border of deep purple.
 
-Shar's mortal enemy is the goddess Sel˚ne and the two fight on a number of levels throughout their immortal lives. There is a continual war between the two faiths and jihads against Sel˚ne and her followers are common where Shar is strong.
+Shar's mortal enemy is the goddess Sel√ªne and the two fight on a number of levels throughout their immortal lives. There is a continual war between the two faiths and jihads against Sel√ªne and her followers are common where Shar is strong.
 
 Clerics of Shar are called Nightcloaks. They exist outside the standard church hierarchy. Shar has no main temple, but instead has a scattering of cells and secretive places throughout the Realms. The Nightcloaks of Shar serve as contacts, messengers, and enforcers of the Dark Lady's will.
 
 Advantages:
-ñ May cast Confusion once per day every 5 levels (starts at 1st level with one use).
-ñ May cast Dark Bolt once per day every 10 levels (starts at 1st level with one use), as detailed below.
+‚Äì May cast Confusion once per day every 5 levels (starts at 1st level with one use).
+‚Äì May cast Dark Bolt once per day every 10 levels (starts at 1st level with one use), as detailed below.
 
 DARK BOLT: This spell creates small chakrams in the casters hand (one per level of the caster). These chakrams can be hurled, causing silence on a failed save vs. spell on the target creature and causing 2d4 cold damage. Undead creatures must also make a save vs. paralyzation or be held for one round.
 
 Disadvantages:
-ñ Alignment restricted to neutral evil, lawful evil, chaotic evil, and true neutral.~
+‚Äì Alignment restricted to neutral evil, lawful evil, chaotic evil, and true neutral.~
 //iwdee bio
 @10620 = ~Less than a fortnight after your secret acceptance into the the local order of Nightcloaks, you were summoned before the leader of your cell. In a quiet, if somewhat brief meeting, you were assigned your first duty by your Sister Night: to make a pilgrimage to the North and see if you could estblish a small organization in the frontier towns. Almost as an afterthought, he mentioned portents and omens concerning events transpiring in the North that might be of interest to the Lady of Loss; it was the belief of the temple that having a direct line of information on the potential troubles in the region was needed.
 
-Though these pilgrimages are often considered an unwanted duty by the more politically minded clergymen of your order, you found yourself eager to accept the task. It seemed to be a chance to do the Nightsingerís will in a practical way, an opportunity to escape the routine of long nights skulking in the dark alleyways in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday you set out on your journey, armed only with a staff in your hand and the promise of unearthed secrets.~
+Though these pilgrimages are often considered an unwanted duty by the more politically minded clergymen of your order, you found yourself eager to accept the task. It seemed to be a chance to do the Nightsinger‚Äôs will in a practical way, an opportunity to escape the routine of long nights skulking in the dark alleyways in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday you set out on your journey, armed only with a staff in your hand and the promise of unearthed secrets.~
 @10621 = ~Dark Bolt~
 @10622 = ~Dark Bolt 
 This spell creates small chakrams in the casters hand (one per level of the caster). These chakrams can be hurled, causing silence on a failed save vs. spell on the target creature and causing 2d4 cold damage. Undead creatures must also make a save vs. paralyzation or be held for one round.~
@@ -605,7 +605,7 @@ The Checkmate is the spiritual weapon of Holy Strategists, and is wielded as if 
 - From level 14 can cast Mantle once per day, as seventh level mage spell of the same name
 
 Disadvantages:
-ñ Alignment restricted to lawful good, lawful neutral, and lawful evil.~
+‚Äì Alignment restricted to lawful good, lawful neutral, and lawful evil.~
 @10703 =~The Checkmate~
 @10704 =~The Checkmate is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
 
@@ -623,12 +623,12 @@ STATISTICS:
 Collectively, the clerics of the Red Knight are referred to as the Red Fellowship. Many members serve as high-ranking commanders in armies throughout Faerun, often personally leading elite "special forces" units. Others who are not directly in the employ of the church serve as instructors at military academies or as quartermasters in charge of keeping the troops on the front line fed and supplied. When they are not in battle, Holy Strategists wear flowing robes of red accented with white.
 
 Advantages:
-ñ May cast Haste once per day every 5 levels (starts at 1st level with one use).
+‚Äì May cast Haste once per day every 5 levels (starts at 1st level with one use).
 - At 13th level, Holy Strategists can make two melee attacks per round.
 
 Disadvantages:
-ñ Alignment restricted to lawful good, lawful neutral, and lawful evil.~
-@10716 = ~Less than a fortnight after your initiation into the order of the Red Knight, you were summoned before the Knight Commander. In a cordial, if somewhat hurried meeting, you were assigned your first duty as a full member of the temple: to make a pilgrimage to the North and see if you could spread the faith to the frontier towns. Almost as an afterthought, he informed you of his ìconcernsî over portents and omens concerning events transpiring in the North, and it was the belief of the temple that a representative of their interests there might serve to maintain peace in the region.
+‚Äì Alignment restricted to lawful good, lawful neutral, and lawful evil.~
+@10716 = ~Less than a fortnight after your initiation into the order of the Red Knight, you were summoned before the Knight Commander. In a cordial, if somewhat hurried meeting, you were assigned your first duty as a full member of the temple: to make a pilgrimage to the North and see if you could spread the faith to the frontier towns. Almost as an afterthought, he informed you of his ‚Äúconcerns‚Äù over portents and omens concerning events transpiring in the North, and it was the belief of the temple that a representative of their interests there might serve to maintain peace in the region.
 
 Though these pilgrimages are often considered an unwanted duty by the more politically minded clergymen of your order, you found yourself eager to accept the task. It seemed to be a chance to bring order to the people of the North, a chance to do some good rather than falling into a routine and simply presiding over the usual services within the temple. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and the doctrines of your faith firmly etched in your mind.~
 @10717 = ~The Red Knight truly understands Helm's unbending commitment to his charge. I would ask your service for a time, in exchange for the favor of Helm.~
@@ -660,7 +660,7 @@ The Battle Prowess battleaxe is the spiritual weapon of Battleguards, and is wie
 - From level 14 can cast Sphere of Chaos once per day, as seventh level mage spell of the same name
 
 Disadvantages:
-ñ Alignment restricted to chaotic neutral, chaotic good, true neutral, and chaotic evil.
+‚Äì Alignment restricted to chaotic neutral, chaotic good, true neutral, and chaotic evil.
 - Cannot be proficient in ranged weapons~
 @10903 =~Battleaxe - 'Battle Prowess'~
 @10904 =~Striding into eternal battle, Tempus' favored weapon is his axe 'Battle Prowess'. He gifts his most ardent followers the Battleguards the ability to magically create a similar weapon imbued with his strength once per day. This is an example of such a weapon. The axe is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above.~
@@ -691,13 +691,13 @@ The dress of the priest of Tempus is armor, battle-worn and battered. In more ci
 
 Advantages:
 - Can specialize (two points) in any melee weapon that a cleric can use
-ñ May cast Holy Power once per day every 5 levels (starts at 1st level with one use).
-ñ May use Rage once per day every 10 levels (starts at 1st level with one use), as detailed below.
+‚Äì May cast Holy Power once per day every 5 levels (starts at 1st level with one use).
+‚Äì May use Rage once per day every 10 levels (starts at 1st level with one use), as detailed below.
 
 RAGE: The enraged state lasts for 1 turn. While enraged, a Battleguard gains a bonus of +2 to <PRO_HISHER> attack and damage rolls as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The Battleguard also gains 15 temporary Hit Points which are taken away at the end of <PRO_HISHER> berserk spree, possibly knocking <PRO_HIMHER> unconscious.
 
 Disadvantages:
-ñ Alignment restricted to chaotic neutral, chaotic good, true neutral, and chaotic evil.
+‚Äì Alignment restricted to chaotic neutral, chaotic good, true neutral, and chaotic evil.
 - Cannot be proficient in ranged weapons.~
 @10916 =~Battleguards are skilled in battle and destruction. Be our vassal of wrath for the Stormlord!~
 
@@ -728,7 +728,7 @@ The Painbearer draws upon Ilmater to be able to shoulder the burden of trials ah
 - From level 14 can cast Regeneration once per day, as seventh level cleric spell of the same name
 
 Disadvantages:
-ñ Alignment restricted to lawful good, neutral good, and lawful neutral.~
+‚Äì Alignment restricted to lawful good, neutral good, and lawful neutral.~
 @11203 =~The Hand of Ilmater~
 @11204 =~The Hand of Ilmater is the spiritual weapon of Painbearers. The Hand of Ilmater does 1d6 base damage and is treated as if the caster is a grand master. The Hand of Ilmater is treated as a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 25 and above. The Hand of Ilmater lasts for one round per level of the caster, up to 20 rounds.~
 @11205 =~Endurance of Ilmater~
@@ -757,16 +757,16 @@ Grants an additional 6th and 7th level spell.
 The followers of Ilmater are often perceived as being intentional sufferers, but in reality they offer a great deal along the "pure clerical" nature of healing and recovery to those who have been hurt. They put others ahead of themselves, are sharing, and emphasize the spiritual nature of life over the gross material body. Ilmater's priests are found where they are needed, which is usually in the worst possible conditions, ministering to the needs of the oppressed, and the poor. They dress simply in gray, with gray skullcaps (blood red for the higher ranks).
 
 Advantages:
-ñ May cast Lay on Hands once per day every 5 levels (starts at 1st level with one use).
-ñ May use Ilmater's Endurance once per day every 10 levels (starts at 1st level with one use), as detailed below.
+‚Äì May cast Lay on Hands once per day every 5 levels (starts at 1st level with one use).
+‚Äì May use Ilmater's Endurance once per day every 10 levels (starts at 1st level with one use), as detailed below.
 
 ILMATER'S ENDURANCE: The Painbearer draws upon Ilmater to be able to shoulder the burden of trials ahead. For 1 round per level of the Painbearer, the cleric gains +2 to saves, doubles HP, is immune to panic and disease, and will stand firm in the face of any charge or force.
 
 Disadvantages:
-ñ Alignment restricted to lawful good, neutral good, and lawful neutral.~
+‚Äì Alignment restricted to lawful good, neutral good, and lawful neutral.~
 @11211 = ~Less than a fortnight after your initiation ceremony into the Temple of Ilmater, you were summoned before the Revered Mother of your order. In plain words fitting for a follower of the Crying God, she gave you your first assignment as a member of the clergy: to travel to the frontier towns of the North and bring an end to the suffering to the people that make the harsh environments their home. Almost as an afterthought, she spoke to you of portents and omens concerning events transpiring in the North, and it was the belief of the temple that a representative of their interests there might serve to soothe potential troubles in the region.
 
-Though these missions to the untamed wilderness are often considered an unwanted chore by the less optimistic members of your order, you found yourself eager to accept the task. It seemed to be a chance to bring hope and relief to the people of the North, a chance to do some real good rather than settling into weekly services delivered for the templeís casual worshipers in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and the endurance of the Broken God in your heart.~
+Though these missions to the untamed wilderness are often considered an unwanted chore by the less optimistic members of your order, you found yourself eager to accept the task. It seemed to be a chance to bring hope and relief to the people of the North, a chance to do some real good rather than settling into weekly services delivered for the temple‚Äôs casual worshipers in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and the endurance of the Broken God in your heart.~
 @11212 =~The crying god has much in common with Lathander. I ask a boon of you in exchange for the favor of the temple and Lathander.~
 @11213 =~Ilmater and Helm share many interests. I ask a service for the Temple of Helm.~
 
@@ -797,7 +797,7 @@ The flail is the spiritual weapon of Firewalkers of Kossuth, and is wielded as i
 - From level 14 can cast Delayed Blast Fireball once per day, as the seventh level mage spell of the same name
 
 Disadvantages:
-ñ None.~
+‚Äì None.~
 @11505 =~Kossuth's Purifying Touch~
 @11506 =~Kossuth's Purifying Touch (Invocation)
 Level: Quest
@@ -827,14 +827,14 @@ Kossuth's church is varied and chaotic since he takes no interest in its structu
 Firewalkers of Kossuth can be of any alignment, but most are evil, reveling in the destructive power of fire. They can be members of any race. They dress in whatever their faction deems appropriate for the representation of their god. This is usually robes and long capes in reds, yellows, and oranges.
 
 Advantages:
-ñ May cast Sunfire once per day every 5 levels (starts at 1st level with one use).
+‚Äì May cast Sunfire once per day every 5 levels (starts at 1st level with one use).
 - Gains 2% fire resistance per level.
 
 Disadvantages:
-ñ None.~
+‚Äì None.~
 @11511 = ~Less than a fortnight after your initiation ceremony into the Temple of Kossuth, you were summoned before the Flamesister of your temple. In a cordial, if somewhat formal meeting, you were assigned your first duty as a Promised: to make a pilgrimage to the North and see if you could kindle the fires of Kossuth's faith in the frontier towns. Almost as an afterthought, he mentioned portents and omens concerning events transpiring in the North that might be of interest to the Lord of Flames; it was the belief of the temple that a representative of Kossuth might serve to bring his swift, brutal justice to the region.
 
-Though these pilgrimages are often considered an unwanted duty and the rigid heirarchy of your faith brooks no dissension, you found yourself eager to accept the task. It seemed to be a chance to do the Firelordís will in a practical way, an opportunity to escape the routine of plots and scehemes in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday you set out on your journey, armed only with a staff in your hand and fire in your heart.~
+Though these pilgrimages are often considered an unwanted duty and the rigid heirarchy of your faith brooks no dissension, you found yourself eager to accept the task. It seemed to be a chance to do the Firelord‚Äôs will in a practical way, an opportunity to escape the routine of plots and scehemes in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday you set out on your journey, armed only with a staff in your hand and fire in your heart.~
 @11512 =~You are a Firewalker of Kossuth, are you not? It is not often one such as you walks the path of light.~
 @11513 =~Nonetheless, in this endeavour our goals are aligned. I ask your assistance in exchange for the favor of the temple.~
 @11514 =~Unleash your powers, Firewalker, as our vassal! You must deliver retribution in the name of the Stormlord!~
@@ -865,7 +865,7 @@ The scimitar is the spiritual weapon of the Authlim of Iyachtu Xvim, and is wiel
 - From level 14 can cast Mantle once per day, as seventh level mage spell of the same name
 
 Disadvantages:
-ñ Alignment restricted to lawful evil, lawful neutral or neutral evil.~
+‚Äì Alignment restricted to lawful evil, lawful neutral or neutral evil.~
 @11803 =~Holy Symbol of Iyachtu Xvim~
 @11804 =~Iyachtu Xvim rewards his most powerful servants with a Holy Symbol, enchanted black iron gauntlets bearing green eyes. When worn, the gauntlets empower the Authlim with Iyachtu Xvim's power.
 
@@ -894,14 +894,14 @@ When cast, this spell will draw powerful lawful evil creatures to fight by the s
 Xvim was imprisoned under Zhentil Keep during the Time of Troubles, where he was held for ten years. He managed to free himself when Zhentil Keep fell during the Cyrinishad fiasco, where he also managed to steal the portfolios of Tyranny and Hatred away from Cyric. He is now the god of Fear, Hatred, Malice, and Tyranny. He is working toward fully taking the place of his father, Bane, which makes him a bitter enemy of Cyric. His following is strongest in the East, particularly in Thay, but his priesthood is rapidly spreading throughout the Realms. His priests favor black robes trimmed with dark green. They also wear black iron gauntlets with glowing green eyes painted on the back of the hand. These gauntlets are actually the priests' holy symbols of Xvim.
 
 Advantages:
-ñ May cast Greater Malison once per day every 5 levels (starts at 1st level with one use).
-ñ Immune to Fear
+‚Äì May cast Greater Malison once per day every 5 levels (starts at 1st level with one use).
+‚Äì Immune to Fear
 
 Disadvantages:
-ñ Alignment restricted to lawful evil, lawful neutral or neutral evil.~
+‚Äì Alignment restricted to lawful evil, lawful neutral or neutral evil.~
 @11811 = ~Less than a fortnight after becoming vermin in the following of Iyachtu Xvim, you were summoned before the Ruinlord of your temple. In a brief, if somewhat cold meeting, you were assigned your first duty as an Authlim: to make a pilgrimage to the North and see if you could gather more stength for the Cruel Master from the frontier towns. Almost as an afterthought, he mentioned portents and omens concerning events transpiring in the North that might be of interest to Iyachtu Xvim; it was the belief of the temple that a representative of the Godson might serve to exploit the potential troubles in the region.
 
-Though these pilgrimages are often considered an unwanted duty by the more politically minded clergymen of your order, you found yourself eager to accept the task. It seemed to be a chance to do the Cruel Masterís will in a practical way, an opportunity to escape the routine of following fruitless leads from your temple superiors. Without hesitation, you agreed to make the pilgrimage, and within a tenday you set out on your journey, armed only with a staff in your hand and power on your mind.~
+Though these pilgrimages are often considered an unwanted duty by the more politically minded clergymen of your order, you found yourself eager to accept the task. It seemed to be a chance to do the Cruel Master‚Äôs will in a practical way, an opportunity to escape the routine of following fruitless leads from your temple superiors. Without hesitation, you agreed to make the pilgrimage, and within a tenday you set out on your journey, armed only with a staff in your hand and power on your mind.~
 @11812=~While consorting with the followers of Xvim fills me with some trepidation, I feel I have no choice in this matter. As a servant of order, albeit a twisted one, I would call on you for your aid.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -928,7 +928,7 @@ The longsword is the spiritual weapon of Lorekeepers of Oghma, and is wielded as
 - From level 14 can cast Ruby Ray of Reversal once per day, as seventh level mage spell of the same name
 
 Disadvantages:
-ñ None~
+‚Äì None~
 @12103 = ~Longsword - Mortal Strike~
 @12104 = ~Wisdom of Oghma~
 @12105 = ~Holy Symbol of Oghma~
@@ -945,12 +945,12 @@ Grants an additional 6th and 7th level spell.
 Oghma's followers believe that knowledge is most supreme, particularly in its raw form, the idea. An idea has no weight but can move mountains. It has no height but it can dominate a nation. It has no mass but it can push aside empires. Knowledge is the greatest tool of humankind, outweighing anything made by mortal hands. Before anything can exist, the idea must exist.
 
 Advantages:
-ñ May cast Secret Word once per day every 5 levels (starts at 1st level with one use).
+‚Äì May cast Secret Word once per day every 5 levels (starts at 1st level with one use).
 - Gain a base of 10 lore/level.
 
 Disadvantages:
-ñ None~
-@12109 = ~Less than a fortnight after your initiation into the Temple of Oghma, you were summoned before the Atlar of your order. In a cordial, if somewhat brief meeting, you were assigned your first duty as a Loremaster: to make a pilgrimage to the North to seek knowledge amongst the frontier towns. Almost as an afterthought, he informed you of his ìconcernsî over portents and omens concerning events transpiring in the North, and it was the belief of the temple that not enough was known about the affairs in the region.
+‚Äì None~
+@12109 = ~Less than a fortnight after your initiation into the Temple of Oghma, you were summoned before the Atlar of your order. In a cordial, if somewhat brief meeting, you were assigned your first duty as a Loremaster: to make a pilgrimage to the North to seek knowledge amongst the frontier towns. Almost as an afterthought, he informed you of his ‚Äúconcerns‚Äù over portents and omens concerning events transpiring in the North, and it was the belief of the temple that not enough was known about the affairs in the region.
 
 Though these pilgrimages are often considered an unwanted duty by the more bookish clergymen of your order, you found yourself eager to accept the task. It seemed to be a chance to explore and learn on the ragged edges of civilization, a chance to contribute to some tomes rather than copy them. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and your eyes open, questing for new knowledge.~
 @12110 =~As a Lorekeeper, you can appreciate our desire to investigate this matter.~
@@ -981,7 +981,7 @@ The Shock Flail is the spiritual weapon of Heartwarders of Sune, and is wielded 
 - From level 14 can cast Mantle once per day, as seventh level mage spell of the same name
 
 Disadvantages:
-ñ Alignment restricted to neutral good, chaotic good, and chaotic neutral.~
+‚Äì Alignment restricted to neutral good, chaotic good, and chaotic neutral.~
 @12403 =~Flail - 'Shock Flail'~
 @12404 =~The Shock Flail is the spiritual weapon of Heartwarders of Sune, and is wielded as if the caster had grand mastery in the weapon. The Shock Flail is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
 @12405 = ~Holy Symbol of Sune~
@@ -1002,19 +1002,19 @@ Sune's speciality priests, known as Heartwarders of Sune, are aesthetes and hedo
 
 Advantages:
 - +1 Charisma
-ñ May cast Emotion: Hoplessness once per day every 5 levels (starts at 1st level with one use).
-ñ May use Veil of Djalice once per day every 10 levels (starts at 1st level with one use), as detailed below.
+‚Äì May cast Emotion: Hoplessness once per day every 5 levels (starts at 1st level with one use).
+‚Äì May use Veil of Djalice once per day every 10 levels (starts at 1st level with one use), as detailed below.
 
 VEIL OF DJALICE: The Heartwarder temporarily augments <PRO_HISHER> beauty to unearthly levels, boosting effective charisma to 20 and forcing any hostiles to save vs. spell at -2 or be dire charmed for six rounds.
 
 Disadvantages:
-ñ Alignment restricted to neutral good, chaotic good, and chaotic neutral.~
+‚Äì Alignment restricted to neutral good, chaotic good, and chaotic neutral.~
 @12409 = ~Veil of Djalice~
 @12410 = ~Veil of Djalice
 The Heartwarder temporarily augments <PRO_HISHER> beauty to unearthly levels, boosting effective charisma to 20 and forcing any hostiles to save vs. spell at -2 or be dire charmed for six rounds.~
 @12411 = ~Less than a fortnight after your initiation ceremony into the Temple of Sune, you were summoned before the leader of your order. In warm words fitting for a follower of Sune, she gave you your first assignment as a member of the clergy: to travel to the frontier towns of the North and spread the love of Lady Firehair to the people that make the harsh environments their home. Almost as an afterthought, she spoke to you of portents and omens concerning events transpiring in the North, and it was the belief of the temple that a representative of their interests there might serve to soothe potential troubles in the region.
 
-Though these missions to the untamed wilderness are often considered an unwanted chore by the less optimistic members of your order, you found yourself eager to accept the opportunity. It seemed to be a chance to bring love and kindle passion in the cold North, a chance to do some real good rather than settling into weekly services delivered for the templeís casual worshipers in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and the love of Lady Firehair in your breast.~
+Though these missions to the untamed wilderness are often considered an unwanted chore by the less optimistic members of your order, you found yourself eager to accept the opportunity. It seemed to be a chance to bring love and kindle passion in the cold North, a chance to do some real good rather than settling into weekly services delivered for the temple‚Äôs casual worshipers in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and the love of Lady Firehair in your breast.~
 @12412 =~Sune has long been a friend to the Morninglord.  I would ask your service for a time, in exchange for the favor of Lathander.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1042,8 +1042,8 @@ Sahandrian is the spiritual weapon of Feywardens of Corellon, and is wielded as 
 - From level 14 can cast Prismatic Spray once per day, as seventh level mage spell of the same name
 
 Disadvantages:
-ñ Race restricted to elf and half-elf.
-ñ Alignment restricted to chaotic good, neutral good or chaotic neutral.~
+‚Äì Race restricted to elf and half-elf.
+‚Äì Alignment restricted to chaotic good, neutral good or chaotic neutral.~
 @12704 =~Longsword - 'Sahandrian'~
 @12705 =~Sahandrian is the spiritual weapon of Feywardens of Corellon, and is wielded as if the caster had grand mastery in the weapon. Sahandrian is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
 @12706 =~Improved Alacrity
@@ -1072,13 +1072,13 @@ Grants an additional 6th and 7th level spell.
 Ceremonial vestments for priests of Corellon consist of azure robes made of gossamer and embroidered with silver quarter moons. Silver circlets engraved with the Protector's symbol are worn on the brow. The holy symbol of the faith is a silver or mithral lunate pendant worn on a slender chain hung from the neck. When adventuring, Corellon's priests generally favor traditionally elven equipment in conscious imitation of their divine patron.
 
 Advantages:
-ñ May cast Spell Immunity once per day every 5 levels (starts at 1st level with one use).
+‚Äì May cast Spell Immunity once per day every 5 levels (starts at 1st level with one use).
 - May place up to 2 proficiency points in weapons and maximum in fighting styles
 - Gains a +1 bonus to saves vs. death
 
 Disadvantages:
-ñ Race restricted to elf and half-elf.
-ñ Alignment restricted to chaotic good, neutral good or chaotic neutral.~
+‚Äì Race restricted to elf and half-elf.
+‚Äì Alignment restricted to chaotic good, neutral good or chaotic neutral.~
 @12710 = ~Less than a fortnight after your initiation into the temple of Correllon, you were summoned by the Syolkiir of your order. In a ceremony observed by veterans of your faith, you were given your first assignment as a full Feywarden: to venture to the Spine of the World and seek answers to ancient wounds of the Fair Folk. Almost as an afterthought, she spoke to you of portents and omens concerning events transpiring in the North, and it was the belief of the temple that a representative of their interests there might provide furhter insight into your investigation.
 
 Though these missions to the cold North are often considered an unwanted chore by the less enthusiastic members of your order, you found yourself eager to accept the task. It seemed to be a chance to bring hope and merriment to the people of the North, a chance to do some real good rather and find new inspiration for your next work. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and the fresh questions in your mind.~
@@ -1132,16 +1132,16 @@ Cyric's church is pledged to spread strife and work murder everywhere in order t
 Strifeleaders wear black and purple robes. Silver bands, the symbol of their enslavement to Cyric, are worn on their wrists. 
 
 Advantages:
-ñ May coat <PRO_HISHER> weapon once per day every 5 levels (starts at 1st level with one use), as detailed below
+‚Äì May coat <PRO_HISHER> weapon once per day every 5 levels (starts at 1st level with one use), as detailed below
 
 POISON WEAPON: Attacks made in the next round with that weapon will inject the poison into the target, dealing out 1 damage per second for 24 seconds (3 damage for the first 6 seconds).  A saving throw vs. poison limits damage to 12 total.
 
-ñ May use Dread Blast once per day every 10 levels (starts at 1st level with one use), as detailed below.
+‚Äì May use Dread Blast once per day every 10 levels (starts at 1st level with one use), as detailed below.
 
 DREAD BLAST: Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and confuses target for one round (save vs. spell at -2 to negate confusion)
 
 Disadvantages:
-ñ Alignment restricted to chaotic neutral or any evil.~
+‚Äì Alignment restricted to chaotic neutral or any evil.~
 @13010 = ~Dread Blast
 Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and confuses target for one round (save vs. spell at -2 to negate confusion)~
 @13011 = ~~
@@ -1225,7 +1225,7 @@ Advantages:
 - May cast 'Detect Invisibility' once a day per six levels (starting at 6th level)
 
 Disadvantages:
-ñ Race restricted to elf and half-elf.
+‚Äì Race restricted to elf and half-elf.
 - Does not gain 'Charm Animal' as an innate ability
 - -1 to damage with any melee weapon
 - Can only become proficient (one point) in long swords, short swords and daggers
@@ -1336,7 +1336,7 @@ Advantages:
 - Can set snares (starts at 20% and improves by 5% per level)
 
 Disadvantages:
-ñ Race restricted to elf.
+‚Äì Race restricted to elf.
 - May not wear any armor greater that studded leather
 - Can only become proficient (one point) in flails, morningstars and warhammers
 - Maximum Charisma is 2 points lower than a standard member of the race~
