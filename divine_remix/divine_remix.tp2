@@ -13,8 +13,7 @@ ALWAYS
 
     INCLUDE ~divine_remix/lib/ids_stuff.tph~             // ids fixes
 
-    // Borrowed from Edwin Romance: convert strings to UTF-8 for BGEE/BG2EE
-    INCLUDE ~%MOD_FOLDER%/lib/handle_charsets.tpa~
+    // Borrowed from Edwin Romance (outdated example): convert strings to UTF-8 for BGEE/BG2EE
     ACTION_DEFINE_ARRAY cdnoconvert BEGIN setup END
     ACTION_DEFINE_ARRAY cdreload BEGIN divine_remix kit_sphere END
     LAF HANDLE_CHARSETS
