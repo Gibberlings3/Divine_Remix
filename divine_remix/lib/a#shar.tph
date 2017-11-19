@@ -51,7 +51,7 @@ COPY_EXISTING ~a#sha00.itm~ ~override/a#sha01.itm~  // chakram +1
     WRITE_SHORT 0x84 (3 - "%weap_idx%")
   END
 
-ACTION_IF GAME_IS ~tob bg2ee bgt~ THEN BEGIN
+ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN
 
   COPY ~Divine_Remix/spl/a#sha71.spl~ ~override~  // Shar's Curse
     SAY NAME1 @10604
