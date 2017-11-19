@@ -1297,9 +1297,9 @@ COPY ~divine_remix/spl/a#og0b.spl~ ~override~  // Lore boost (innate)
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#ogma.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~a#og07~ // lay on hands as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~a#og07~ // lay on hands as 1/5
   FOR (index = 1 ; index < 51 ; ++index) BEGIN
-    SET_2DA_ENTRY 1 index 50 ~AP_a#og07~
+    SET_2DA_ENTRY 1 index 50 ~AP_a#og0b~
   END
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
@@ -1660,7 +1660,7 @@ COPY ~divine_remix/spl/a#cyr07.spl~ ~override~
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#cyric.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL423~ // poison weapon as 1/5
-  REPLACE_TEXTUALLY ~KITBIL1~ ~a#cyr07~ // dread blast as 1/10
+  REPLACE_TEXTUALLY ~KITBIL2~ ~a#cyr07~ // dread blast as 1/10
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
