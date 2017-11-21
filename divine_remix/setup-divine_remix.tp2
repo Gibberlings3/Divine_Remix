@@ -582,12 +582,15 @@ COPY ~divine_remix/spl/cdshar2.spl~ ~override~  // dark bolt
   SAY NAME2 @10621
   SAY UNIDENTIFIED_DESC @10622
   SAY DESC @10622
-  LPF ALTER_EFFECT INT_VAR match_opcode = 215 STR_VAR resource = SPCRTWPN END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 timing = 0 duration = 4 STR_VAR resource = SPCRTWPN END
 
 COPY ~divine_remix/bam/a#sha01.bam~ ~override~ // bams for dark bolt
      ~divine_remix/bam/a#sha02.bam~ ~override~
 
 COPY ~divine_remix/itm/cdshar2.itm~ ~override~  // dark bolt
+  WRITE_BYTE 0x18 (THIS BAND 0b11110011)
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 233 target = 1 parameter1 = 2 parameter2 = 109 timing = 2 END
+  LPF ALTER_ITEM_HEADER INT_VAR header_type = 2 damage_type = 4 charges = 1 flag_strength = 0 END
   SAY NAME1 @10621
   SAY NAME2 @10621
   SAY UNIDENTIFIED_DESC @10622
@@ -704,7 +707,7 @@ COPY_EXISTING ~spwi305.spl~ ~override/a#re07.spl~ // haste
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#red.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~ // free action as 1/5
-  REPLACE_TEXTUALLY ~KITBIL2~ ~****   ~ // nothing as 1/10
+  REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
   SET_2DA_ENTRY 2 14 50 ~AP_a#re0b~     // extra attack
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
@@ -1066,7 +1069,7 @@ COPY_EXISTING ~spwi523.spl~ ~override/a#kos09.spl~ // sunfire
 COPY ~divine_remix/2da/generic.2da~ ~override/a#koss.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#kos09~ // lay on hands as 1/5
   FOR (index = 1 ; index < 51 ; ++index) BEGIN
-    SET_2DA_ENTRY 1 index 50 ~AP_a#kos0c~
+    SET_2DA_ENTRY 2 index 50 ~AP_a#kos0c~
   END
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
@@ -1297,9 +1300,9 @@ COPY ~divine_remix/spl/a#og0b.spl~ ~override~  // Lore boost (innate)
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#ogma.2da~
-  REPLACE_TEXTUALLY ~KITBIL2~ ~a#og07~ // lay on hands as 1/5
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#og07~ // lay on hands as 1/5
   FOR (index = 1 ; index < 51 ; ++index) BEGIN
-    SET_2DA_ENTRY 1 index 50 ~AP_a#og0b~
+    SET_2DA_ENTRY 2 index 50 ~AP_a#og0b~
   END
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
@@ -1549,8 +1552,8 @@ COPY_EXISTING ~spwi510.spl~ ~override/a#fey09.spl~ // spell immunity
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#feyw.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#fey09~ // emotion as 1/5
-  REPLACE_TEXTUALLY ~GA_KITBIL1~ ~****   ~ // nothing as 1/10
-  SET_2DA_ENTRY 2 2 50 ~AP_a#fey0a~     // save bonus
+  REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
+  SET_2DA_ENTRY 2 1 50 ~AP_a#fey0a~     // save bonus
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
@@ -1869,12 +1872,16 @@ COPY ~divine_remix/spl/a#ooze3.spl~ ~override~
 COPY ~divine_remix/spl/a#ooze3a.spl~ ~override~
 
 COPY ~divine_remix/spl/a#ooze2.spl~ ~override~ //immune to poison
-     ~divine_remix/spl/a#ooze4.spl~ ~override~ //immune to acid
      ~divine_remix/spl/a#ooze5.spl~ ~override~ //immune to disease
      ~divine_remix/spl/a#ooze6.spl~ ~override~ //immune to blindness, sleep, paralysis, stunning and critical hits
      ~divine_remix/spl/a#ooze7.spl~ ~override~ //charisma drop
   SAY NAME1 #-1
   SAY NAME2 #-1
+COPY ~divine_remix/spl/a#ooze4.spl~ ~override~ //immune to acid
+  LPF ALTER_EFFECT INT_VAR resist_dispel = 0 END
+  SAY NAME1 #-1
+  SAY NAME2 #-1
+
 
 ADD_KIT ~A#OOZE~
   ~A#OOZE                  0           0           1           1           0           1           0           0~
@@ -1911,6 +1918,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
     BUT_ONLY_IF_IT_CHANGES
 
 END
+
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
