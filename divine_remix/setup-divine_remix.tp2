@@ -1919,9 +1919,6 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
 
 END
 
-  ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze4.spl~ BEGIN
-	COPY_EXISTING ~a#ooze4.spl~ ~override~
- END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
