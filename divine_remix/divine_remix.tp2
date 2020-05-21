@@ -1,9 +1,9 @@
-BACKUP   ~divine_remix/backup~    // location to store files for uninstall purposes
-//AUTHOR   ~pcamagna@yahoo.com~  // email address displayed if install fails
-SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=29~
+ BACKUP ~divine_remix/backup~    // location to store files for uninstall purposes
+SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=29~ //displayed if install fails //AUTHOR   ~pcamagna@yahoo.com~
+VERSION ~8.1~
+ README ~divine_remix/readme-divine_remix.html~
 
 ALWAYS
-
   INCLUDE ~divine_remix/lib/macros.tph~ // defines patch macro
   INCLUDE ~divine_remix/lib/fl#add_kit_ee.tpa~         // for ee kit features
   OUTER_SET bio = "-1"
@@ -26,18 +26,13 @@ ALWAYS
         noconvert_array = cdnoconvert
         reload_array = cdreload
     END
-  
   END
-
 END
-
-VERSION  ~8.1~
-
-README   ~divine_remix/readme-divine_remix.html~
 
 ASK_EVERY_COMPONENT
 
 AUTO_TRA ~divine_remix/languages/%s~
+
 LANGUAGE
   ~English~
   ~english~
@@ -218,7 +213,6 @@ ACTION_IF NOT FILE_CONTAINS_EVALUATED (~alignment.2da~ ~^LATHANDER[ %TAB%]+1[ %T
     EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/ar0904.baf~
 
   END
-
 END
 
 // new descripts
@@ -277,20 +271,20 @@ ACTION_IF GAME_IS ~bgt tob bg2ee eet~ THEN BEGIN // holy symbols
                 ~clabpr04.2da~ ~override~
     REPLACE_TEXTUALLY ~AP_SPCl93[123] ~ ~AP_CDHLYSYM~
     BUT_ONLY_IF_IT_CHANGES
-  
+
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_holy_symbol BEGIN
     GODHELM      => BELT13
     GODLATHANDER => BELT12
     GODTALOS     => BELT14
   END
-  
+
   ACTION_PHP_EACH cd_holy_symbol AS kit => symbol BEGIN
-  
+
     OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-  
+
       EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
       EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-  
+
     END
 
   END
@@ -352,14 +346,13 @@ ACTION_FOR_EACH creature IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos nalla
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 
-    COPY_EXISTING ~%creature%.cre~ ~override~  
+    COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
 //    WRITE_BYTE    0x247 0x40
       BUT_ONLY
 
   END
-
 END
 
 OUTER_SET kit = 20 // helm
@@ -367,14 +360,13 @@ ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig 
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 
-    COPY_EXISTING ~%creature%.cre~ ~override~  
+    COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
 //    WRITE_BYTE    0x247 0x40
       BUT_ONLY
 
   END
-
 END
 
 OUTER_SET kit = 21 // lathander
@@ -382,14 +374,13 @@ ACTION_FOR_EACH creature IN acolyte2 amtcle01 amtcler0 arenthis arval bharval c6
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 
-    COPY_EXISTING ~%creature%.cre~ ~override~  
+    COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
 //    WRITE_BYTE    0x247 0x40
       BUT_ONLY
 
   END
-
 END
 
 ACTION_IF ohtyr != 0 THEN BEGIN
@@ -408,7 +399,6 @@ ACTION_IF ohtyr != 0 THEN BEGIN
     END
 
   END
-
 END
 
 ACTION_IF "%a#temp%" != 0 THEN BEGIN
@@ -427,13 +417,12 @@ ACTION_IF "%a#temp%" != 0 THEN BEGIN
     END
 
   END
-
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// Silverstar of Selûne                             \\\\\
+///// Silverstar of Selï¿½ne                             \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -730,7 +719,7 @@ ADD_KIT ~A#RED~
   SAY @10714
   SAY @10701
   SAY @10715
-  
+
 LAF fl#add_kit_ee
   INT_VAR
     biography = bio
@@ -739,7 +728,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 63 47 25 80~
 END
 
-  
+
 ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
 
   COPY_EXISTING ~weapprof.2da~ ~override~
@@ -827,7 +816,7 @@ ADD_KIT ~A#TEMP~
   SAY @10914
   SAY @10901
   SAY @10915
-  
+
 LAF fl#add_kit_ee
   STR_VAR
     kit_name = ~a#temp~
@@ -898,7 +887,6 @@ ACTION_FOR_EACH creature IN kpchap01 everard accalia BEGIN
       BUT_ONLY
 
   END
-
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -959,7 +947,7 @@ ADD_KIT ~CDILMATR~
   SAY @11209
   SAY @11201
   SAY @11210
-  
+
 LAF fl#add_kit_ee
   INT_VAR
     biography = bio
@@ -1030,7 +1018,6 @@ ACTION_FOR_EACH creature IN _priilm _priilmu priilm priilmu slilmat wilmat BEGIN
       BUT_ONLY
 
   END
-
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1092,7 +1079,7 @@ ADD_KIT ~A#KOSS~
   SAY @11509
   SAY @11503
   SAY @11510
-  
+
 LAF fl#add_kit_ee
   INT_VAR
     biography = bio
@@ -1399,7 +1386,6 @@ ACTION_FOR_EACH creature IN doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma po
       BUT_ONLY
 
   END
-
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1418,7 +1404,7 @@ REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 COPY_EXISTING ~spwi411.spl~ ~override/nmsun07.spl~ // emotion
   LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
   BUT_ONLY_IF_IT_CHANGES
-  
+
 COPY ~divine_remix/spl/cdsune2.spl~ ~override~
   PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
     PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
@@ -1758,7 +1744,6 @@ ACTION_FOR_EACH creature IN ar18prie mvpries slapri dcleric BEGIN
       BUT_ONLY
 
   END
-
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2224,7 +2209,6 @@ ACTION_FOR_EACH creature IN branwe branwe5 _branwe _branwe5 ttbran BEGIN
       BUT_ONLY
 
   END
-
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2302,7 +2286,6 @@ ACTION_FOR_EACH creature IN viconi6 viconi8 viconi9 viconi11 viconi13 viconi16 v
       BUT_ONLY
 
   END
-
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#sha0b.spl~ THEN BEGIN OUTER_SPRINT vic_spell "a#sha0b" END ELSE BEGIN OUTER_SPRINT vic_spell "cdshar2" END
@@ -2330,7 +2313,7 @@ REQUIRE_PREDICATE (NOT ENGINE_IS ~bgee bg2ee iwdee~) ~This component is not comp
 /////                                                  \\\\\
 
 LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // generic cleric
-  INT_VAR 
+  INT_VAR
     string          = 9559
   STR_VAR
     all             = major
@@ -2360,7 +2343,7 @@ LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // ranger
   END
 
 LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // paladin
-  INT_VAR 
+  INT_VAR
     string          = 9558
   STR_VAR
     combat          = major
@@ -2370,7 +2353,7 @@ LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // paladin
   END
 
 LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // druid
-  INT_VAR 
+  INT_VAR
     string          = 9560
   STR_VAR
     all             = major
@@ -2497,15 +2480,14 @@ COPY_EXISTING ~cdtlsp0.itm~ ~override/cdtlsp1.itm~  // half-spear +1
   END ELSE BEGIN
     WRITE_SHORT 0x84 (3 - "%weap_idx%")
   END
-  
+
 ACTION_FOR_EACH kts IN cdselune ~a#shar~ ~a#red~ ~a#temp~ ohtempus cdilmatr ~a#koss~ cdxvim ~a#ogma~ nmsune ~A#feyw~ ~A#Cyric~ BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%kts%.2da~ THEN BEGIN
-    
-    INCLUDE ~divine_remix/lib/%kts%.tph~
-  
-  END
 
+    INCLUDE ~divine_remix/lib/%kts%.tph~
+
+  END
 END
 
 /////                                                  \\\\\
@@ -2574,7 +2556,7 @@ END
 ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%table%.2da~ THEN BEGIN
-  
+
     COPY ~divine_remix/spheres/template.2da~ ~divine_remix/spheres/%class%.2da~
 
     COPY_EXISTING ~%table%.2da~ ~override~
@@ -2590,7 +2572,7 @@ ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
 
               COPY ~divine_remix/spheres/%class%.2da~ ~divine_remix/spheres/%class%.2da~
                 SET_2DA_ENTRY 0 level 50 ~CDREPLACE%index%~
-            
+
             END
           END
         END
@@ -2598,7 +2580,6 @@ ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
       BUT_ONLY
 
   END
-
 END
 
 ACTION_IF NOT FILE_EXISTS ~divine_remix/spheres/druid.2da~ THEN BEGIN
@@ -2638,13 +2619,13 @@ COPY ~divine_remix/spheres/hla_blank.2da~ ~divine_remix/spheres/hla_master.2da~
 ACTION_FOR_EACH sphere IN al an as cs cm co cr di ex ea ee ef ew gu he lw ne nr nu pl pr su sn th ti tr wa wd we BEGIN
 
   ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
-  
+
     COPY ~divine_remix/spheres/%class%.2da~ ~divine_remix/spheres/%class%_%sphere%_major.2da~
       REPLACE_TEXTUALLY ~CDREPLACE\([1-7]\)~ ~AP_CDDR%sphere%\1~
-  
+
     COPY ~divine_remix/spheres/%class%_%sphere%_major.2da~ ~divine_remix/spheres/%class%_%sphere%_minor.2da~
       REPLACE_TEXTUALLY ~AP_CDDR%sphere%[4-7]~ ~****~ // delete levels 4-7 for minor access
-                 
+
     COPY ~divine_remix/spheres/hla_blank.2da~ ~divine_remix/spheres/hla_%sphere%.2da~
 
     OUTER_FOR (index = 1 ; index < 8 ; ++index) BEGIN
@@ -2657,11 +2638,10 @@ ACTION_FOR_EACH sphere IN al an as cs cm co cr di ex ea ee ef ew gu he lw ne nr 
            ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%sphere%_%index%_lawful.2da~
            ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%sphere%_%index%_geneutral.2da~
            ~divine_remix/spheres/spellbook_template.2da~ ~override/spellbook_%sphere%_%index%_lcneutral.2da~
-    
-    END
-  
-  END
 
+    END
+
+  END
 END
 
 /////                                                  \\\\\
@@ -2671,7 +2651,7 @@ END
 // array sets primary sphere assignments
 ACTION_CLEAR_ARRAY cd_spheres
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
-  
+
   // default bg2 spells
   CLERIC_ARMOR_OF_FAITH                 => pr
   CLERIC_BLESS                          => al
@@ -2869,7 +2849,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_WHEEL_OF_BONES                 => cr
 END
 
-OUTER_SET sphere_descript = 1 
+OUTER_SET sphere_descript = 1
 OUTER_SET hla = 0
 LAUNCH_ACTION_MACRO CD_BUILD_SPHERE
 
@@ -2897,13 +2877,13 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_MOONBLADE                      => sn
   CLERIC_IMPERVIOUS_SANCTITY_OF_MIND    => th
   CLERIC_IMPREGNABLE_MIND               => th
-  
+
   //iwdee
   CLERIC_FAVOR_OF_ILMATER               => pr
   CLERIC_STORM_SHELL                    => we
   CLERIC_CIRCLE_OF_BONES                => gu
   CLERIC_WALL_OF_MOONLIGHT              => sn
-  
+
   //galc
   CLERIC_PRODUCE_FLAME                  => ef
   CLERIC_PRODUCE_ICE                    => ew
@@ -2979,9 +2959,8 @@ ACTION_FOR_EACH sphere IN al an as cs cm co cr di ex ea ee ef ew gu he lw ne nr 
          ~override/spellbook_%sphere%_%index%_lawful.2da~    ~divine_remix/spheres~
          ~override/spellbook_%sphere%_%index%_geneutral.2da~ ~divine_remix/spheres~
          ~override/spellbook_%sphere%_%index%_lcneutral.2da~ ~divine_remix/spheres~
-  
-  END
 
+  END
 END
 
 /////                                                  \\\\\
@@ -3090,7 +3069,7 @@ LAUNCH_ACTION_FUNCTION cd_kit_sphere // tyr
     war             = major
     wards           = major
   END
-  
+
 ACTION_FOR_EACH tempus IN ~ohtempus~ ~a#temp~ BEGIN
 
   LAUNCH_ACTION_FUNCTION cd_kit_sphere // tempus
@@ -3118,7 +3097,6 @@ ACTION_FOR_EACH tempus IN ~ohtempus~ ~a#temp~ BEGIN
       wards           = minor
       weather         = major
     END
-
 END
 
 LAUNCH_ACTION_FUNCTION cd_kit_sphere // selune
@@ -3408,7 +3386,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_mod_kits BEGIN
   clabdr01 => 11
 END
 
-// because cd_kit_sphere won't apply itself to already patched clabs, any unique sphere alignments 
+// because cd_kit_sphere won't apply itself to already patched clabs, any unique sphere alignments
 // taken care of prior to this step will be preserved.
 ACTION_PHP_EACH cd_mod_kits AS clab => class_check BEGIN
 
@@ -3482,7 +3460,6 @@ ACTION_PHP_EACH cd_mod_kits AS clab => class_check BEGIN
       END
 
   END
-
 END
 
 /////                                                  \\\\\
@@ -3497,9 +3474,8 @@ ACTION_FOR_EACH align IN 0 17 18 19 33 34 35 49 50 51 BEGIN
     COPY ~divine_remix/spheres/spellbook_clabpr01_%index%_%align%.2da~ ~divine_remix/spheres/spellbook_clericranger_%index%_%align%.2da~
       LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove eof blank lines
       APPEND_FILE ~divine_remix/spheres/spellbook_clabpr01_%index%_%align%.2da~
-  
-  END
 
+  END
 END
 
 ACTION_CLEAR_ARRAY cd_cleric_kits
@@ -3691,7 +3667,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
 
   // patch hla table to exlude quest-level spells from disallowed spheres
   ACTION_FOR_EACH table IN lucr0 BEGIN // cleric-ranger; patch separate since two potential sources of allowed hlas
-  
+
     COPY_EXISTING ~%table%.2da~ ~override~
       LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove blank lines at end of file
       REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%][0-9]+[ %TAB%]+\*[ %TAB%]+.+$~ ~~ // delete empty ability lines
@@ -3722,11 +3698,11 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
       BUT_ONLY
 
   END
-  
+
   ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ THEN BEGIN
 
     COPY_EXISTING ~ludr0.2da~ ~override/lua#ooze.2da~
-  
+
   END
 
   // patch hla table to exlude quest-level spells from disallowed spheres
@@ -3758,11 +3734,11 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     ~cdcler~    => ~clabpr01~ // keep last as its used as template for others
 
   END
-  
+
   ACTION_PHP_EACH cd_sphere_hla_match AS table => clab BEGIN
 
     ACTION_IF FILE_EXISTS_IN_GAME ~%clab%.2da~ THEN BEGIN
-      
+
       ACTION_IF FILE_EXISTS_IN_GAME ~lu%table%.2da~ THEN BEGIN
 
         OUTER_SPRINT source_table ~lu%table%~
@@ -3834,7 +3810,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
         BUT_ONLY
 
     END
-    
+
   END
 
   ACTION_PHP_EACH cd_sphere_hla_match AS table => clab BEGIN
@@ -3849,5 +3825,4 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     END
 
   END
-
 END
