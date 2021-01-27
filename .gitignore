@@ -5,7 +5,12 @@ temp/
 tmp/
 
 .*
-!/.git*
+!/.gitattributes
+!/.gitconfig
+!/.github
+!/.gitignore
+!/.gitmodules
+!/.bgforge.yml
 
 *.bak
 *.bat
