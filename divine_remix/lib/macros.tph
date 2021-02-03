@@ -1999,5 +1999,4 @@ BEGIN
       PATCH_PRINT "              ~%SOURCE_FILE%~   ~override~ // %name%, %alter% effect(s) altered"
     END
   END
-
 END
