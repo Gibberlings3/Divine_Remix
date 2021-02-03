@@ -355,6 +355,16 @@ DEFINE_PATCH_FUNCTION cd_spellbook
         END
       END
     END
+	PATCH_IF (sb_delta < 0) BEGIN
+      WRITE_LONG 0x2A4 (sb_num + sb_delta)
+      PATCH_FOR_EACH offset IN 0x2a8 0x2b0 0x2b8 0x2bc 0x2c4 BEGIN
+        READ_LONG offset off
+        PATCH_IF off > sb_off BEGIN
+          WRITE_LONG offset (THIS + (sb_delta * 0x0C))
+        END
+      END
+    END
+	SET sb_delta = 0
   END
 
 END
@@ -860,7 +870,7 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
 
       COPY_EXISTING ~%table%.2da~ ~override~
         LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove eof blank lines
-        LAUNCH_PATCH_MACRO ~extend_clab_to_level_50~     // extends CLAB to level 50
+        //LAUNCH_PATCH_MACRO ~extend_clab_to_level_50~     // extends CLAB to level 50
         PATCH_IF ("%all%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_al_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_al.2da~ END
         PATCH_IF ("%animal%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_an_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_an.2da~ END
         PATCH_IF ("%astral%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_as_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_as.2da~ END
@@ -991,7 +1001,7 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
           END
           PATCH_IF help != 0 BEGIN
             GET_STRREF help desc
-            PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP "%sphere_header%") BEGIN
+			PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP "%sphere_header%") BEGIN
               INNER_PATCH_SAVE desc ~%desc%~ BEGIN
                 PATCH_IF ("%all%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_al%" END
                 PATCH_IF ("%animal%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_an%" END
@@ -1080,12 +1090,12 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
                 PATCH_IF ("%war%" STRING_COMPARE_CASE "none" = 0)             THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_wa%" END
                 PATCH_IF ("%wards%" STRING_COMPARE_CASE "none" = 0)           THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_wd%" END
                 PATCH_IF ("%weather%" STRING_COMPARE_CASE "none" = 0)         THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_we%" END
-                REPLACE_TEXTUALLY ~\(\(.\|%LNL%\|%MNL%\|%WNL%\)+\)~ ~\1
+				REPLACE_TEXTUALLY ~\(\(.\|%LNL%\|%MNL%\|%WNL%\)+\)~ ~\1
     
-  %sphere_header%
-  %sphere_major%
-  %sphere_minor%
-  %sphere_none%~
+%sphere_header%
+%sphere_major%
+%sphere_minor%
+%sphere_none%~
                 REPLACE_TEXTUALLY ~^%sphere_major_orig%$~ ~%sphere_major_none%~
                 REPLACE_TEXTUALLY ~^%sphere_minor_orig%$~ ~%sphere_minor_none%~
                 REPLACE_TEXTUALLY ~^%sphere_none_orig%$~ ~~
@@ -1094,9 +1104,9 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
                 REPLACE_TEXTUALLY ~CD_REPLACEME, ~ ~~
               END
             END
-          END
-          BUT_ONLY
-        
+		  END
+		  BUT_ONLY
+        //PRINT ~%desc%~
         ACTION_IF (help != 0) BEGIN
           STRING_SET_EVALUATE help "%desc%"
         END
@@ -1999,4 +2009,5 @@ BEGIN
       PATCH_PRINT "              ~%SOURCE_FILE%~   ~override~ // %name%, %alter% effect(s) altered"
     END
   END
+
 END

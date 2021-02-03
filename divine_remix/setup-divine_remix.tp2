@@ -1,61 +1,58 @@
- BACKUP ~divine_remix/backup~    // location to store files for uninstall purposes
-SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=29~ //displayed if install fails //AUTHOR   ~pcamagna@yahoo.com~
-VERSION ~8.1~
- README ~divine_remix/readme-divine_remix.html~
+BACKUP   ~divine_remix/backup~    // location to store files for uninstall purposes
+//AUTHOR   ~pcamagna@yahoo.com~  // email address displayed if install fails
+SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=29~
+VERSION  ~8.1~
+
+README   ~divine_remix/readme-divine_remix.html~
 
 ALWAYS
-  INCLUDE ~divine_remix/lib/macros.tph~ // defines patch macro
-  INCLUDE ~divine_remix/lib/fl#add_kit_ee.tpa~         // for ee kit features
-  OUTER_SET bio = "-1"
 
-  ACTION_IF NOT VARIABLE_IS_SET cd_always THEN BEGIN
+    INCLUDE ~divine_remix/lib/macros.tph~ // defines patch macro
+    INCLUDE ~divine_remix/lib/fl#add_kit_ee.tpa~         // for ee kit features
+    OUTER_SET bio = "-1"
 
-    OUTER_SET cd_always = 1 // just do this part once per install
+    ACTION_IF NOT VARIABLE_IS_SET cd_always THEN BEGIN
 
-    INCLUDE ~divine_remix/lib/ids_stuff.tph~             // ids fixes
+        OUTER_SET cd_always = 1 // just do this part once per install
 
-    // Borrowed from Edwin Romance (outdated example): convert strings to UTF-8 for BGEE/BG2EE
-    ACTION_DEFINE_ARRAY cdnoconvert BEGIN setup END
-    ACTION_DEFINE_ARRAY cdreload BEGIN divine_remix kit_sphere END
-    LAF HANDLE_CHARSETS
-      INT_VAR
-        infer_charset = 1
-      STR_VAR
-        tra_path = EVAL ~%MOD_FOLDER%/languages~
-        // charset_table = cdcharsets // Included for illustrative purposes.
-        noconvert_array = cdnoconvert
-        reload_array = cdreload
+        INCLUDE ~divine_remix/lib/ids_stuff.tph~             // ids fixes
+
+        // Borrowed from Edwin Romance (outdated example): convert strings to UTF-8 for BGEE/BG2EE
+        ACTION_DEFINE_ARRAY cdnoconvert BEGIN setup END
+        ACTION_DEFINE_ARRAY cdreload BEGIN divine_remix kit_sphere END
+        LAF HANDLE_CHARSETS
+        INT_VAR
+            infer_charset = 1
+        STR_VAR
+            tra_path = EVAL ~%MOD_FOLDER%/languages~
+            // charset_table = cdcharsets // Included for illustrative purposes.
+            noconvert_array = cdnoconvert
+            reload_array = cdreload
+        END
     END
-  END
 END
 
 ASK_EVERY_COMPONENT
 
 AUTO_TRA ~divine_remix/languages/%s~
 
-LANGUAGE
-  ~English~
-  ~english~
-  ~divine_remix/languages/english/setup.tra~
-  ~divine_remix/languages/english/divine_remix.tra~
-LANGUAGE
-  ~Francais (by Sanctifer)~
-  ~french~
-  ~divine_remix/languages/english/setup.tra~
-  ~divine_remix/languages/english/divine_remix.tra~
-  ~divine_remix/languages/french/setup.tra~
-  ~divine_remix/languages/french/divine_remix.tra~
+LANGUAGE ~English~ ~english~
+    ~divine_remix/languages/english/setup.tra~
+    ~divine_remix/languages/english/divine_remix.tra~
+LANGUAGE ~Francais (by Sanctifer)~ ~french~
+    ~divine_remix/languages/english/setup.tra~
+    ~divine_remix/languages/english/divine_remix.tra~
+    ~divine_remix/languages/french/setup.tra~
+    ~divine_remix/languages/french/divine_remix.tra~
 /*
 LANGUAGE
-  ~Polski (by yarpen)~
-  ~polski~
-  ~divine_remix/languages/english/setup.tra~
-  ~divine_remix/languages/polski/setup.tra~
+    ~Polski (by yarpen)~ ~polski~
+    ~divine_remix/languages/english/setup.tra~
+    ~divine_remix/languages/polski/setup.tra~
 LANGUAGE
-  ~Czech (by Neferit, Katie, and Ondrej)~
-  ~czech~
-  ~divine_remix/languages/english/setup.tra~
-  ~divine_remix/languages/czech/setup.tra~
+    ~Czech (by Neferit, Katie, and Ondrej)~ ~czech~
+    ~divine_remix/languages/english/setup.tra~
+    ~divine_remix/languages/czech/setup.tra~
 */
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -213,6 +210,7 @@ ACTION_IF NOT FILE_CONTAINS_EVALUATED (~alignment.2da~ ~^LATHANDER[ %TAB%]+1[ %T
     EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/ar0904.baf~
 
   END
+
 END
 
 // new descripts
@@ -353,6 +351,7 @@ ACTION_FOR_EACH creature IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos nalla
       BUT_ONLY
 
   END
+
 END
 
 OUTER_SET kit = 20 // helm
@@ -367,6 +366,7 @@ ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig 
       BUT_ONLY
 
   END
+
 END
 
 OUTER_SET kit = 21 // lathander
@@ -381,6 +381,7 @@ ACTION_FOR_EACH creature IN acolyte2 amtcle01 amtcler0 arenthis arval bharval c6
       BUT_ONLY
 
   END
+
 END
 
 ACTION_IF ohtyr != 0 THEN BEGIN
@@ -399,6 +400,7 @@ ACTION_IF ohtyr != 0 THEN BEGIN
     END
 
   END
+
 END
 
 ACTION_IF "%a#temp%" != 0 THEN BEGIN
@@ -417,6 +419,7 @@ ACTION_IF "%a#temp%" != 0 THEN BEGIN
     END
 
   END
+
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -887,6 +890,7 @@ ACTION_FOR_EACH creature IN kpchap01 everard accalia BEGIN
       BUT_ONLY
 
   END
+
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1018,6 +1022,7 @@ ACTION_FOR_EACH creature IN _priilm _priilmu priilm priilmu slilmat wilmat BEGIN
       BUT_ONLY
 
   END
+
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1386,6 +1391,7 @@ ACTION_FOR_EACH creature IN doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma po
       BUT_ONLY
 
   END
+
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1744,6 +1750,7 @@ ACTION_FOR_EACH creature IN ar18prie mvpries slapri dcleric BEGIN
       BUT_ONLY
 
   END
+
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2209,6 +2216,7 @@ ACTION_FOR_EACH creature IN branwe branwe5 _branwe _branwe5 ttbran BEGIN
       BUT_ONLY
 
   END
+
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2286,6 +2294,7 @@ ACTION_FOR_EACH creature IN viconi6 viconi8 viconi9 viconi11 viconi13 viconi16 v
       BUT_ONLY
 
   END
+
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#sha0b.spl~ THEN BEGIN OUTER_SPRINT vic_spell "a#sha0b" END ELSE BEGIN OUTER_SPRINT vic_spell "cdshar2" END
@@ -2488,6 +2497,8 @@ ACTION_FOR_EACH kts IN cdselune ~a#shar~ ~a#red~ ~a#temp~ ohtempus cdilmatr ~a#k
     INCLUDE ~divine_remix/lib/%kts%.tph~
 
   END
+
+
 END
 
 /////                                                  \\\\\
@@ -2580,6 +2591,7 @@ ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
       BUT_ONLY
 
   END
+
 END
 
 ACTION_IF NOT FILE_EXISTS ~divine_remix/spheres/druid.2da~ THEN BEGIN
@@ -2642,6 +2654,7 @@ ACTION_FOR_EACH sphere IN al an as cs cm co cr di ex ea ee ef ew gu he lw ne nr 
     END
 
   END
+
 END
 
 /////                                                  \\\\\
@@ -2961,6 +2974,7 @@ ACTION_FOR_EACH sphere IN al an as cs cm co cr di ex ea ee ef ew gu he lw ne nr 
          ~override/spellbook_%sphere%_%index%_lcneutral.2da~ ~divine_remix/spheres~
 
   END
+
 END
 
 /////                                                  \\\\\
@@ -3074,7 +3088,7 @@ ACTION_FOR_EACH tempus IN ~ohtempus~ ~a#temp~ BEGIN
 
   LAUNCH_ACTION_FUNCTION cd_kit_sphere // tempus
     STR_VAR
-      table           = EVAL ~%tempus%~
+      table           = tempus
       class           = cleric
       all             = minor
       animal          = major
@@ -3097,6 +3111,7 @@ ACTION_FOR_EACH tempus IN ~ohtempus~ ~a#temp~ BEGIN
       wards           = minor
       weather         = major
     END
+
 END
 
 LAUNCH_ACTION_FUNCTION cd_kit_sphere // selune
@@ -3460,6 +3475,7 @@ ACTION_PHP_EACH cd_mod_kits AS clab => class_check BEGIN
       END
 
   END
+
 END
 
 /////                                                  \\\\\
@@ -3476,6 +3492,7 @@ ACTION_FOR_EACH align IN 0 17 18 19 33 34 35 49 50 51 BEGIN
       APPEND_FILE ~divine_remix/spheres/spellbook_clabpr01_%index%_%align%.2da~
 
   END
+
 END
 
 ACTION_CLEAR_ARRAY cd_cleric_kits
@@ -3520,10 +3537,15 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   SET "CDXVIM" = 0
   SET "NMSUNE" = 0
   SET "OHTYR" = 0
+  SET "A#OOZE" = 0
   COUNT_2DA_ROWS 9 rows
   FOR (index = rows ; index > 31 ; --index) BEGIN
     READ_2DA_ENTRY index 5 9 clab
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#SHAR" = 0) BEGIN
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#OOZE" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 "A#OOZE"
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#OOZE%" => "%clab%" END
+    END
+	PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#SHAR" = 0) BEGIN
       READ_2DA_ENTRY index 0 9 "A#SHAR"
       DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#SHAR%" => "%clab%" END
     END
@@ -3543,10 +3565,10 @@ COPY_EXISTING ~kitlist.2da~ ~override~
       READ_2DA_ENTRY index 0 9 "A#TEMP"
       DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#TEMP%" => "%clab%" END
     END
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "OHTEMPUS" = 0) BEGIN
+    /*PATCH_IF ("%clab%" STRING_COMPARE_CASE "OHTEMPUS" = 0) BEGIN
       READ_2DA_ENTRY index 0 9 "A#TEMP"
       DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#TEMP%" => "%clab%" END
-    END
+    END*/
     PATCH_IF ("%clab%" STRING_COMPARE_CASE "CDILMATR" = 0) BEGIN
       READ_2DA_ENTRY index 0 9 CDILMATR
       DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%CDILMATR%" => "%clab%" END
@@ -3648,7 +3670,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     ~a#red~       => ~a#red~
     ~a#shar~      => ~a#shar~
     ~a#temp~      => ~a#temp~
-    ~cdilmatr~    => ~cdilma~
+    ~cdilmatr~    => ~cdilmatr~
     ~cdselune~    => ~cdselu~
     ~cdxvim~      => ~cdxvim~
     ~nmsune~      => ~nmsune~
@@ -3687,12 +3709,12 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
       COUNT_2DA_ROWS 10 rows
       FOR (index = 0 ; index < rows ; ++index) BEGIN
         PATCH_IF (index < 24) BEGIN
-          SET_2DA_ENTRY index 1 10 (index + 1) // re-number rows
+          SET_2DA_ENTRY index 0 10 (index + 1) // re-number rows
         END ELSE BEGIN
-          SET_2DA_ENTRY index 1 10 DELETE_ROW
+          SET_2DA_ENTRY index 0 10 DELETE_ROW
         END
       END
-      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW.+$~ ~~ // delete lines past 24
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW+.+$~ ~~ // delete lines past 24
       REPLACE_TEXTUALLY ~AP_CDDR[0-9][0-9][0-9]~ ~*         ~ // delete temp placeholders
       PRETTY_PRINT_2DA
       BUT_ONLY
@@ -3707,7 +3729,6 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
 
   // patch hla table to exlude quest-level spells from disallowed spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_sphere_hla_match BEGIN
-
     ~a#cyri~ => ~a#cyric~
     ~a#feyw~ => ~a#feyw~
     ~a#koss~ => ~a#koss~
@@ -3716,6 +3737,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     ~a#red~  => ~a#red~
     ~a#shar~ => ~a#shar~
     ~a#temp~ => ~a#temp~
+    ~cdilmatr~ => ~cdilmatr~
     ~cdselu~ => ~cdselune~
     ~cdxvim~ => ~cdxvim~
     ~nmsune~ => ~nmsune~
@@ -3723,7 +3745,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     ~cdhelm~ => ~clabpr03~
     ~cdlath~ => ~clabpr04~
     ~cdtyr~  => ~ohtyr~
-    ~a#temp~ => ~ohtempus~
+    ~ohtempus~ => ~a#temp~
     ~cm0~    => ~clabpr01~ // cleric-mages
     ~ct0~    => ~clabpr01~ // cleric-thief
     ~dr0~    => ~clabdr01~ // druid
@@ -3783,7 +3805,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
             READ_2DA_ENTRY index 9 10 ALIGNMENT_RESTRICT
             INNER_ACTION BEGIN
 
-              COPY ~override/lu%table%.2da~ ~override/lu%table%.2da~
+                COPY ~override/lu%table%.2da~ ~override/lu%table%.2da~
                 APPEND_FILE ~divine_remix/spheres/hla_append.2da~ EVALUATE_BUFFER
 
             END
@@ -3791,7 +3813,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
         END
         BUT_ONLY
 
-      COPY_EXISTING ~override/lu%table%.2da~ ~override/lu%table%.2da~
+        COPY_EXISTING ~override/lu%table%.2da~ ~override/lu%table%.2da~
         PATCH_IF FILE_EXISTS ~divine_remix/2da/hla_%table%.2da~ BEGIN
           APPEND_FILE ~divine_remix/2da/hla_%table%.2da~
         END
@@ -3804,7 +3826,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
             SET_2DA_ENTRY index 0 10 DELETE_ROW
           END
         END
-        REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW.+$~ ~~ // delete lines past 24
+        REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW+.+$~ ~~ // delete lines past 24
         REPLACE_TEXTUALLY ~AP_CDDR[0-9][0-9][0-9]~ ~*         ~ // delete temp placeholders
         PRETTY_PRINT_2DA
         BUT_ONLY
@@ -3825,4 +3847,5 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     END
 
   END
+
 END
