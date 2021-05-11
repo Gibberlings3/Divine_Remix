@@ -9,11 +9,40 @@ ACTION_IF FILE_EXISTS_IN_GAME ~viconia.bcs~ THEN BEGIN
 
 END
 
+COPY ~divine_remix/spl/cdshar2.spl~ ~override~  // dark bolt
+  // temp to get some strings into the game
+  PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
+    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
+      SAY NAME1 @10620
+      READ_LONG NAME1 bio
+    END ELSE BEGIN // bgee/bg2ee bio
+      PATCH_IF GAME_IS ~bg2ee eet~ BEGIN // bg2ee
+        SET bio = "-1"
+      END ELSE BEGIN // bgee
+        SET bio  = 15884
+      END
+    END
+  END
+  SAY NAME1 @10621
+  SAY NAME2 @10621
+  SAY UNIDENTIFIED_DESC @10622
+  SAY DESC @10622
+  LPF ALTER_EFFECT INT_VAR match_opcode = 215 timing = 0 duration = 4 STR_VAR resource = SPCRTWPN END
+  
+COPY ~divine_remix/itm/cdshar2.itm~ ~override~  // dark bolt
+  WRITE_BYTE 0x18 (THIS BAND 0b11110011)
+  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 233 target = 1 parameter1 = 2 parameter2 = 109 timing = 2 END
+  LPF ALTER_ITEM_HEADER INT_VAR header_type = 2 damage_type = 4 charges = 1 flag_strength = 0 END
+  SAY NAME1 @10621
+  SAY NAME2 @10621
+  SAY UNIDENTIFIED_DESC @10622
+  SAY DESC @10622
+  
 // change spells to innates as needed
-COPY_EXISTING ~spwi401.spl~ ~override/a#sha07.spl~
-              ~spwi509.spl~ ~override/a#sha09.spl~
-              ~spwi601.spl~ ~override/a#sha11.spl~
-              ~spwi715.spl~ ~override/a#sha14.spl~
+COPY_EXISTING ~spwi401.spl~ ~override/a#sha07.spl~ // Confusion
+              ~spwi509.spl~ ~override/a#sha09.spl~ // Feeblemind
+              ~spwi601.spl~ ~override/a#sha11.spl~ // Invisible Stalker
+              ~spwi715.spl~ ~override/a#sha14.spl~ // Power Word, Stun
   LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
   BUT_ONLY_IF_IT_CHANGES
 
@@ -21,18 +50,19 @@ COPY ~Divine_Remix/bam/a#sha01.bam~ ~override~ // bams for Chakram
      ~Divine_Remix/bam/a#sha02.bam~ ~override~
 
 COPY ~Divine_Remix/spl/a#sha0c.spl~ ~override~ // Prot. from Blindness.
-  WRITE_LONG NAME1 `0
-  WRITE_LONG NAME2 `0
-
+  SAY NAME1 @10618
+  SAY NAME2 @10618 
+  
 COPY ~Divine_Remix/spl/a#sha0b.spl~ ~override~  // chakram (innate)
   SAY NAME1 @10608
   SAY NAME2 @10608
-  SAY UNIDENTIFIED_DESC @10608
-  SAY DESC @10608
+  SAY UNIDENTIFIED_DESC @10609
+  SAY DESC @10609
 
 COPY ~Divine_Remix/itm/a#sha00.itm~ ~override~  // Chakram +0
   SAY NAME1 @10608
   SAY NAME2 @10608
+  SAY UNIDENTIFIED_DESC @10609
   SAY DESC  @10609
   SET "weap_idx" = 0
 

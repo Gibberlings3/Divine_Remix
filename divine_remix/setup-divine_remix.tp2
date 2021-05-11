@@ -31,7 +31,7 @@ ALWAYS
 
 END
 
-VERSION  ~8.1~
+VERSION  ~8.3~
 
 README   ~divine_remix/readme-divine_remix.html~
 
@@ -223,7 +223,7 @@ END
 
 // new descripts
 COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
-  SPRINT mixed_match @10133 // Priest
+  SPRINT mixed_match @10154 // Priest
   SPRINT lower_match @10134 // priest
   SPRINT upper_match @10135 // PRIEST
   COUNT_2DA_ROWS 9 rows
@@ -348,22 +348,29 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   BUT_ONLY_IF_IT_CHANGES
 
 OUTER_SET kit = 19 // talos
-ACTION_FOR_EACH creature IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos nalla scyarryl talmiss talvilon vvpriest yssold16 BEGIN
+ACTION_FOR_EACH creature IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos nalla scyarryl talmiss talmiss2 talvilon vvpriest yssold16 BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
-
-    COPY_EXISTING ~%creature%.cre~ ~override~  
+	
+    COPY_EXISTING ~%creature%.cre~ ~override~ 
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
 //    WRITE_BYTE    0x247 0x40
-      BUT_ONLY
-
+	  READ_BYTE 0x234 "Lv"
+	  READ_SHORT NAME1 "priestG"
+	  GET_STRREF priestG "name" 
+	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Talos" = 0) OR ("%name%" STRING_COMPARE_CASE "Cleric of Talos" = 0)) AND ("%Lv%">=5)) BEGIN
+	   SAY NAME1 @10188 //Stormlord of Talos
+	   SAY NAME2 @10188
+	  END
+	  BUT_ONLY
+	  
   END
 
 END
 
 OUTER_SET kit = 20 // helm
-ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig sctelwyn BEGIN
+ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig sctelwyn nalin shugod01 shugod02 shugar01 ntprihel s#helm01 BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 
@@ -371,6 +378,13 @@ ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig 
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
 //    WRITE_BYTE    0x247 0x40
+	  READ_SHORT NAME1 "priestG"
+	  READ_BYTE 0x234 "Lv"
+	  GET_STRREF priestG "name" 
+	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Helm" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Helm" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Helm" = 0)) AND ("%Lv%">=5)) BEGIN
+	  SAY NAME1 @10189 //Watcher of Helm
+	  SAY NAME2 @10189
+	  END
       BUT_ONLY
 
   END
@@ -378,7 +392,7 @@ ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig 
 END
 
 OUTER_SET kit = 21 // lathander
-ACTION_FOR_EACH creature IN acolyte2 amtcle01 amtcler0 arenthis arval bharval c6cler1 cllatp01 cscleric dawnmas latlara scsain BEGIN
+ACTION_FOR_EACH creature IN acolyte2 amtcle01 amtcler0 arenthis arval ~b!gavin~ bharval blane bran c6cler1 cllatp01 cscleric dawnmas dsblane dsjetla dsjetla2 dsjetla4 dsjetla6 latlara scsain keldda BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 
@@ -386,6 +400,13 @@ ACTION_FOR_EACH creature IN acolyte2 amtcle01 amtcler0 arenthis arval bharval c6
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
 //    WRITE_BYTE    0x247 0x40
+	  READ_SHORT NAME1 "priestG"
+	  READ_BYTE 0x234 "Lv"
+	  GET_STRREF priestG "name" 
+	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Lathander" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Lathander" = 0)) AND ("%Lv%">=5)) BEGIN
+	  SAY NAME1 @10190 //Morninglord of Lathander
+	  SAY NAME2 @10190
+	  END
       BUT_ONLY
 
   END
@@ -422,7 +443,13 @@ ACTION_IF "%a#temp%" != 0 THEN BEGIN
         WRITE_SHORT   0x244 0
         WRITE_SHORT   0x246 0x4000 + "%kit%"
   //    WRITE_BYTE    0x247 0x40
-        BUT_ONLY
+	    READ_SHORT NAME1 "priestG"
+	    GET_STRREF priestG "name" 
+	    PATCH_IF ("%name%" STRING_COMPARE_CASE "Priest of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Tempus" = 0) BEGIN
+	    SAY NAME1 @10191 //Battleguard of Tempus 
+	    SAY NAME2 @10191
+	    END        
+		BUT_ONLY
 
     END
 
@@ -547,6 +574,34 @@ ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold st
 
 END
 
+
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = "%CDSelune%" // selune
+ACTION_FOR_EACH creature IN bstq007 ysselune BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~
+      WRITE_SHORT   0x244 0
+	  WRITE_SHORT   0x273 3
+      WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
+	  READ_SHORT NAME1 "priestG"
+	  READ_BYTE 0x234 "Lv"
+	  GET_STRREF priestG "name" 
+	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Selune" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Selune" = 0) OR ("%name%" STRING_COMPARE_CASE "Priestess of Selune" = 0)) AND ("%Lv%">=5)) BEGIN
+	  SAY NAME1 @10301 // Silverstar of Selûne 
+	  SAY NAME2 @10301
+	  END
+      BUT_ONLY
+
+  END
+
+END
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -598,7 +653,7 @@ COPY ~divine_remix/itm/cdshar2.itm~ ~override~  // dark bolt
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#shar.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~a#sha09~ // free action as 1/5
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#sha09~ // Confusion as 1/5
   REPLACE_TEXTUALLY ~KITBIL2~ ~cdshar2~ // dark bolt as 1/10
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
@@ -706,7 +761,7 @@ COPY_EXISTING ~spwi305.spl~ ~override/a#re07.spl~ // haste
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#red.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~ // free action as 1/5
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~ // haste as 1/5
   REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
   SET_2DA_ENTRY 2 14 50 ~AP_a#re0b~     // extra attack
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
@@ -804,7 +859,7 @@ COPY_EXISTING ~sppr412.spl~ ~override/a#tem07.spl~ // holy power
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#temp.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~a#tem07~ // free action as 1/5
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#tem07~ // Holy Power as 1/5
   REPLACE_TEXTUALLY ~KITBIL2~ ~spcl321~ // enrage as 1/10
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
@@ -812,7 +867,7 @@ COPY ~divine_remix/2da/generic.2da~ ~override/a#temp.2da~
 
 ADD_KIT ~A#TEMP~
   ~A#TEMP                  0           0           1           1           0           1           0           0~
-  ~A#TEMP 0 0 0 0 2 2 0 0 0 0 0 0 0 0 0 0 2 2 0 0 2 2 2 0 0 0 0 0 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#TEMP 0 0 0 0 2 2 0 0 0 0 0 0 0 0 0 0 2 2 0 0 2 2 2 0 0 0 0 0 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
   ~A#TEMP	        0       0       0       0       9       0~
   ~A#TEMP		0	0	0	0	0	0~
   ~A#TEMP		0	0	0	0	17	0~
@@ -895,6 +950,13 @@ ACTION_FOR_EACH creature IN kpchap01 everard accalia BEGIN
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
 //    WRITE_BYTE    0x247 0x40
+	  READ_SHORT NAME1 "priestG"
+	  READ_BYTE 0x234 "Lv"
+	  GET_STRREF priestG "name" 
+	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Tempus" = 0)) AND ("%Lv%">=5)) BEGIN
+	  SAY NAME1 @10191 //Battleguard of Tempus 
+	  SAY NAME2 @10191
+	  END
       BUT_ONLY
 
   END
@@ -1019,7 +1081,7 @@ END
 /////                                                  \\\\\
 
 OUTER_SET kit = "%CDILMATR%" // ilmater
-ACTION_FOR_EACH creature IN _priilm _priilmu priilm priilmu slilmat wilmat BEGIN
+ACTION_FOR_EACH creature IN _priilm _priilmu priilm priilmu slilmat wilmat s#ilmat1 ja#pill1 BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 
@@ -1027,6 +1089,13 @@ ACTION_FOR_EACH creature IN _priilm _priilmu priilm priilmu slilmat wilmat BEGIN
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
 //    WRITE_BYTE    0x247 0x40
+	  READ_SHORT NAME1 "priestG"
+	  READ_BYTE 0x234 "Lv"
+	  GET_STRREF priestG "name" 
+	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Ilmater" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Ilmater" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Ilmater" = 0)) AND ("%Lv%">=5)) BEGIN
+	  SAY NAME1 @11201 // Painbearer of Ilmater  
+	  SAY NAME2 @11201 
+	  END
       BUT_ONLY
 
   END
@@ -1067,7 +1136,7 @@ COPY_EXISTING ~spwi523.spl~ ~override/a#kos09.spl~ // sunfire
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#koss.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~a#kos09~ // lay on hands as 1/5
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#kos09~ // Sunfire as 1/5
   FOR (index = 1 ; index < 51 ; ++index) BEGIN
     SET_2DA_ENTRY 2 index 50 ~AP_a#kos0c~
   END
@@ -1300,7 +1369,7 @@ COPY ~divine_remix/spl/a#og0b.spl~ ~override~  // Lore boost (innate)
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#ogma.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~a#og07~ // lay on hands as 1/5
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#og07~ // secret word as 1/5
   FOR (index = 1 ; index < 51 ; ++index) BEGIN
     SET_2DA_ENTRY 2 index 50 ~AP_a#og0b~
   END
@@ -1348,8 +1417,8 @@ END
 
 ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
 
-  OUTER_SPRINT kit    ~CDXvim~
-  OUTER_SPRINT symbol ~cdxvhly~
+  OUTER_SPRINT kit    ~a#ogma~
+  OUTER_SPRINT symbol ~a#og25~
   OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
 
     EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
@@ -1388,7 +1457,7 @@ END
 /////                                                  \\\\\
 
 OUTER_SET kit = "%A#OGMA%" // oghma
-ACTION_FOR_EACH creature IN doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma poghma3 poghma4 poghma5 poghma6 poghma7 poghma8 _poghm10 _poghm3 _poghm6 _poghm8 _poghm9 _poghma _poghma3 _poghma4 _poghma5 _poghma6 _poghma7 _poghma8 BEGIN
+ACTION_FOR_EACH creature IN doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma poghma3 poghma4 poghma5 poghma6 poghma7 poghma8 _poghm10 _poghm3 _poghm6 _poghm8 _poghm9 _poghma _poghma3 _poghma4 _poghma5 _poghma6 _poghma7 _poghma8 ja#oghm1 BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 
@@ -1396,7 +1465,14 @@ ACTION_FOR_EACH creature IN doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma po
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
 //    WRITE_BYTE    0x247 0x40
-      BUT_ONLY
+      READ_SHORT NAME1 "priestG"
+	  READ_BYTE 0x234 "Lv"
+	  GET_STRREF priestG "name" 
+	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Oghma" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Oghma" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Oghma" = 0)) AND ("%Lv%">=3)) BEGIN
+	  SAY NAME1 @12101  //Lorekeeper of Oghma
+	  SAY NAME2 @12101 
+	  END
+	  BUT_ONLY
 
   END
 
@@ -1418,7 +1494,7 @@ REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 COPY_EXISTING ~spwi411.spl~ ~override/nmsun07.spl~ // emotion
   LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
   BUT_ONLY_IF_IT_CHANGES
-  
+COPY ~divine_remix/spl/nmsun0A.spl~ ~override~ //+1 Charisma 
 COPY ~divine_remix/spl/cdsune2.spl~ ~override~
   PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
     PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
@@ -1440,7 +1516,8 @@ COPY ~divine_remix/spl/cdsune2.spl~ ~override~
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/nmsune.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~nmsun07~ // emotion as 1/5
-  REPLACE_TEXTUALLY ~KITBIL2~ ~cdsune2~ // lay on hands as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~cdsune2~ // Veil of Djalice as 1/10
+  INSERT_2DA_ROW 3 50 ~ABILITY3    AP_nmsun0A  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~//+1 charisma
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
@@ -1449,7 +1526,7 @@ ADD_KIT ~NMSUNE~
   ~NMSUNE                0           0           1           1           0           1           0           0~
   ~NMSUNE 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
   ~NMSUNE                0       0       0       0       9       0~
-  ~NMSUNE                0       0       0       0       0       1~
+  ~NMSUNE                0       0       0       0       0       0~
   ~NMSUNE                0       0       0       0       17      0~
   ~NMSUNE                0       0       0       0       15      0~
   ~NMSUNE                0       0       0       1       0       0       1       1       0~
@@ -1515,6 +1592,31 @@ ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold st
   COMPILE ~Divine_Remix/dlg/sune.d~
 
 END
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = "%NMSUNE%" // sune
+ACTION_FOR_EACH creature IN isnfxps YxYve1 BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+
+    COPY_EXISTING ~%creature%.cre~ ~override~
+      WRITE_SHORT   0x244 0
+      WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
+	  READ_SHORT NAME1 "priestG"
+	  READ_BYTE 0x234 "Lv"
+	  GET_STRREF priestG "name" 
+	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Sune" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Sune" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Sune" = 0)) AND ("%Lv%">=5)) BEGIN
+	  SAY NAME1 @12401 //Heartwarder of Sune 
+	  SAY NAME2 @12401
+	  END
+      BUT_ONLY
+
+  END
+
+END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1551,7 +1653,7 @@ COPY_EXISTING ~spwi510.spl~ ~override/a#fey09.spl~ // spell immunity
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#feyw.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~a#fey09~ // emotion as 1/5
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#fey09~ // Spell Immunity as 1/5
   REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
   SET_2DA_ENTRY 2 1 50 ~AP_a#fey0a~     // save bonus
   PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
@@ -1747,7 +1849,7 @@ END
 /////                                                  \\\\\
 
 OUTER_SET kit = "%A#CYRIC%" // cyric
-ACTION_FOR_EACH creature IN ar18prie mvpries slapri dcleric BEGIN
+ACTION_FOR_EACH creature IN ar18prie hghprmod mvpries prcdmod prcmod slapri Z#pri1 Z#pri2 dcleric O#Tiax O#Tiax25 pptiax pptiax2 tiax tiax4 tiax6 dot#tiax lamalh bassil mulahe BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 
@@ -1755,7 +1857,14 @@ ACTION_FOR_EACH creature IN ar18prie mvpries slapri dcleric BEGIN
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
 //    WRITE_BYTE    0x247 0x40
-      BUT_ONLY
+	  READ_SHORT NAME1 "priestG"
+	  READ_BYTE 0x234 "Lv"
+	  GET_STRREF priestG "name" 
+	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Cyric" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Cyric" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Cyric" = 0)) AND ("%Lv%">=5)) BEGIN
+	  SAY NAME1 @13003 //Strifeleader of Cyric 
+	  SAY NAME2 @13003
+	  END      
+	  BUT_ONLY
 
   END
 
@@ -1875,12 +1984,12 @@ COPY ~divine_remix/spl/a#ooze2.spl~ ~override~ //immune to poison
      ~divine_remix/spl/a#ooze5.spl~ ~override~ //immune to disease
      ~divine_remix/spl/a#ooze6.spl~ ~override~ //immune to blindness, sleep, paralysis, stunning and critical hits
      ~divine_remix/spl/a#ooze7.spl~ ~override~ //charisma drop
-  SAY NAME1 #-1
-  SAY NAME2 #-1
+  SAY NAME1 @20307
+  SAY NAME2 @20307
 COPY ~divine_remix/spl/a#ooze4.spl~ ~override~ //immune to acid
   LPF ALTER_EFFECT INT_VAR resist_dispel = 0 END
-  SAY NAME1 #-1
-  SAY NAME2 #-1
+  SAY NAME1 @20308
+  SAY NAME2 @20308
 
 
 ADD_KIT ~A#OOZE~
@@ -1895,7 +2004,7 @@ ADD_KIT ~A#OOZE~
   ~divine_remix/2da/a#ooze.2da~
   ~K_D_H    K_D_D   K_D_G   K_D_E   K_D_HE   K_D_HL   K_D_HO~
   ~0x00004000 11~
-  ~Cl0~
+  ~dr0~
   ~LEAT20 * HELM19 BAG27 RING06 RING31 CLCK02 BOOT01 AMUL19 BRAC14 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
   SAY @20302
   SAY @20303
@@ -1933,7 +2042,7 @@ GROUP @13
 
 ADD_KIT NMRNBSLN // ROWNAME in KITLIST.2da
   ~NMRNBSLN                1           1           1           1           1           1           1           1~ // CLASWEAP.2DA (weapons class can use)
-  ~NMRNBSLN 1 1 1 0 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 5 5 5 2 2 1 1 1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~ // WEAPPROF (proficiency points this kit can place)
+  ~NMRNBSLN 1 1 1 0 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 4 4 4 2 2 1 1 1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~ // WEAPPROF (proficiency points this kit can place)
   ~NMRNBSLN                13      13      14      0       14      15~ // ABCLASRQ.2da (minimum stats)
   ~NMRNBSLN                0       0       0       0       0       0~ // ABCLSMOD.2da (stat modifiers)
   ~NMRNBSLN                17      17      0       0       17      0~ // ABDCDSRQ.2da (minimum stats needed to dual-class from this class)
@@ -1943,7 +2052,7 @@ ADD_KIT NMRNBSLN // ROWNAME in KITLIST.2da
   ~divine_remix/2da/nmrnbsln.2da~ // CLAB****.2da (abilities file)
   ~K_R_E K_R_HE~ // K_B_H.2da, K_B_HE.2da, etc (class/race restrictions)
   ~0x00008000 12~ // UNUSABLE in KITLIST.2da (item restriction flag this kit uses)
-  ~Ra2~ // LuBa0.2da, LuBa1.2da, etc (high level abilities file)
+  ~Ra0~ // LuBa0.2da, LuBa1.2da, etc (high level abilities file)
   ~LEAT20 DART03,40 HELM07 BAG26 RING06 RING31 CLCK27 BOOT01 AMUL19 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 BOW11 BOW19 XBOW06~ // ToB starting equipment (PC only)
   SAY @40301 // Kit name without capitals
   SAY @40302 // Kit name with capitals
@@ -1961,6 +2070,8 @@ COPY ~divine_remix/spl/nmrnbs1.spl~ ~override~ // -1 to damage with melee
 COPY ~divine_remix/spl/nmrnbs3.spl~ ~override~ // Speed Shot
   SAY NAME1 @40304
   SAY NAME2 @40304
+  SAY UNIDENTIFIED_DESC  @40305
+  SAY DESC  @40305
 
 // change spells to innates as needed
 COPY_EXISTING ~spwi203.spl~ ~override/nmrnbs4.spl~ // detect invisibility
@@ -1983,13 +2094,13 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~a#feral.2da~ @9
 // shapeshifters get locked out of all armor, either by the druid flag or their individual kit flag
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_BYTE 0x1C "type" ELSE 0 // skips invalid files
-  PATCH_IF (("%type%" = 2) OR (("%type%" > 59) AND ("%type%" < 68))) BEGIN
+  PATCH_IF (("%type%" = 2) OR (("%type%" > 59) AND ("%type%" < 69))) BEGIN // add scale mail to check
     READ_BYTE 0x21 "druid"
     READ_BYTE 0x29 "shapeshifter"
     PATCH_IF (("%druid%" BAND 0b01000000) = 0b01000000) BEGIN // if unusable by druids
-      WRITE_BYTE 0x29 ("%shapeshifter%" BAND 0b11101111) // remove redundant shapeshifter restriction; shapeshifters can't use it 'coz of druid flag
+      WRITE_BYTE 0x29 ("%shapeshifter%" BOR 0b00010000) // remove redundant shapeshifter restriction; shapeshifters can't use it 'coz of druid flag //it is a ranger kit and not a druid kit, so we need to keep them
     END ELSE BEGIN
-      WRITE_BYTE 0x29 ("%shapeshifter%" BOR  0b00010000) // making unusable by shapeshifters
+      WRITE_BYTE 0x29 ("%shapeshifter%" BOR 0b00010000) // making unusable by shapeshifters
     END
   END
   BUT_ONLY_IF_IT_CHANGES
@@ -1999,6 +2110,9 @@ COPY_EXISTING ~spcl321.spl~ ~override/a#fera02.spl~ // 'Feral Rage' innate
 
 COPY ~divine_remix/spl/A#fera03.spl~ ~override~ // 'Call of the Wild' innate
   SAY NAME1 @40605
+  SAY NAME2 @40605
+  SAY UNIDENTIFIED_DESC  @40610
+  SAY DESC  @40610
 
 COPY ~divine_remix/cre/a#fera01.cre~ ~override~ // Wild Dog
   SAY NAME1 @40606
@@ -2069,7 +2183,7 @@ ADD_KIT NMRNFRRN // ROWNAME in KITLIST.2da
   ~divine_remix/2da/nmrnfrrn.2da~ // CLAB****.2da (abilities file)
   ~K_R_E K_R_H K_R_HE~ // K_B_H.2da, K_B_HE.2da, etc (class/race restrictions)
   ~0x00008000 12~ // UNUSABLE in KITLIST.2da (item restriction flag this kit uses)
-  ~Ra4~ // LuBa0.2da, LuBa1.2da, etc (high level abilities file)
+  ~Ra0~ // LuBa0.2da, LuBa1.2da, etc (high level abilities file)
   ~LEAT20 DART03,40 HELM07 BAG26 RING06 RING31 CLCK27 BOOT01 AMUL19 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 BOW11 BOW19 XBOW06~ // ToB starting equipment (PC only)
   SAY @40901 // Kit name without capitals
   SAY @40902 // Kit name with capitals
@@ -2087,6 +2201,8 @@ COPY ~divine_remix/spl/nmrnfr2.spl~ ~override~ // 'Inspire' innate
   SAY NAME1 @40904
   SAY NAME2 @40904
   SAY 0xfe  @40905
+  SAY UNIDENTIFIED_DESC  @40906
+  SAY DESC  @40906
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2160,7 +2276,7 @@ ADD_KIT NMRNWLRN // ROWNAME in KITLIST.2da
   ~divine_remix/2da/nmrnwlrn.2da~ // CLAB****.2da (abilities file)
   ~K_R_E~ // K_B_H.2da, K_B_HE.2da, etc (class/race restrictions)
   ~0x00010000 12~ // UNUSABLE in KITLIST.2da (item restriction flag this kit uses)
-  ~Ra3~ // LuBa0.2da, LuBa1.2da, etc (high level abilities file)
+  ~Ra0~ // LuBa0.2da, LuBa1.2da, etc (high level abilities file)
   ~LEAT20 DART03,40 HELM07 BAG26 RING06 RING31 CLCK27 BOOT01 AMUL19 BRAC10 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 BOW11 BOW19 XBOW06~ // ToB starting equipment (PC only)
   SAY @41501 // Kit name without capitals
   SAY @41502 // Kit name with capitals
@@ -2175,6 +2291,8 @@ END
 COPY ~divine_remix/spl/nmrnwr1.spl~ ~override~ // 'Enhanced Charm Animal' innate
   SAY NAME1 @41504
   SAY NAME2 @41504
+  SAY UNIDENTIFIED_DESC @41505
+  SAY DESC @41505
 
 COPY_EXISTING ~spcl412.spl~ ~override/nmrnwr2.spl~ // Set Snare
 
@@ -2213,7 +2331,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   BUT_ONLY_IF_IT_CHANGES
 
 OUTER_SET kit = "%A#TEMP%" // tempus
-ACTION_FOR_EACH creature IN branwe branwe5 _branwe _branwe5 ttbran BEGIN
+ACTION_FOR_EACH creature IN branwe branwe5 _branwe _branwe5  O#Bran o#bran25 o#branv ttbran BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 
@@ -2281,7 +2399,7 @@ END
 // find shar kit in kitlist
 COPY_EXISTING ~kitlist.2da~ ~override~
   COUNT_2DA_ROWS ~9~ "rows"
-  FOR ( index = 31 ; index < rows ; index = index + 1 ) BEGIN
+  FOR ( index = 31 ; index <= rows ; index = index + 1 ) BEGIN
     READ_2DA_ENTRY "%index%" 5 9 "clab"
     PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#SHAR" = 0) BEGIN
       SET "A#SHAR" = "%index%"
@@ -2290,7 +2408,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   END
   BUT_ONLY_IF_IT_CHANGES
 
-OUTER_SET kit = "%A#SHAR%" // tempus
+OUTER_SET kit = "%A#SHAR%" // shar
 ACTION_FOR_EACH creature IN viconi6 viconi8 viconi9 viconi11 viconi13 viconi16 viconi4 viconi viconi61 viconi6_ BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
@@ -2324,6 +2442,7 @@ COPY_EXISTING ~viconia.bcs~ ~override~
 BEGIN @2000 DESIGNATED 1000
 GROUP @10 GROUP @11 GROUP @13 // GROUP @12
 REQUIRE_PREDICATE (NOT ENGINE_IS ~bgee bg2ee iwdee~) ~This component is not compatible with EE engine.~
+REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 
 /////                                                  \\\\\
 ///// add sphere descripts to base classes             \\\\\
@@ -2422,6 +2541,7 @@ COPY_EXISTING ~spwi324.spl~ ~override/cdlthun.spl~ // hold undead innate
   LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
   BUT_ONLY_IF_IT_CHANGES
 
+COPY ~Divine_Remix/BAM/cdilath.bam~ ~override~
 COPY ~Divine_Remix/spl/cdltmac.spl~ ~override~  // Lathander's Mace (innate spell)
   SAY NAME1 @10180
   SAY NAME2 @10180
@@ -2446,6 +2566,7 @@ COPY_EXISTING ~cdltmc0.itm~ ~override/cdltmc1.itm~  // lathander's mace +1
   WRITE_SHORT 0x8C ("%weap_idx%" + 1)
   WRITE_SHORT 0x84 (7 - "%weap_idx%")
 
+COPY ~Divine_Remix/BAM/cdihelm.bam~ ~override~
 COPY ~Divine_Remix/spl/cdhmbst.spl~ ~override~  // Bastard Sword of Helm (innate spell)
   SAY NAME1 @10185
   SAY NAME2 @10185
@@ -2470,6 +2591,7 @@ COPY_EXISTING ~cdhmbs0.itm~ ~override/cdhmbs1.itm~  // bastard sword +1
   WRITE_SHORT 0x8C "%weap_idx%"
   WRITE_SHORT 0x84 (8 - "%weap_idx%")
 
+COPY ~Divine_Remix/BAM/cditalos.bam~ ~override~
 COPY ~Divine_Remix/spl/cdtlspr.spl~ ~override~  // Half-Spear of Talos (innate spell)
   SAY NAME1 @10167
   SAY NAME2 @10167
@@ -2506,56 +2628,7 @@ ACTION_FOR_EACH kts IN cdselune ~a#shar~ ~a#red~ ~a#temp~ ohtempus cdilmatr ~a#k
   
   END
 
-END
 
-/////                                                  \\\\\
-///// adjust kits to prep for spheres                  \\\\\
-/////                                                  \\\\\
-
-// new descripts
-COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
-  SPRINT mixed_match @10133 // Priest
-  SPRINT lower_match @10134 // priest
-  SPRINT upper_match @10135 // PRIEST
-  COUNT_2DA_ROWS 9 rows
-  FOR (index = rows ; index > 0 ; --index) BEGIN
-    READ_2DA_ENTRY index 5 8 clab
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr02" = 0) BEGIN // talos
-      READ_2DA_ENTRY index 4 8 talos_sphere
-    END
-    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "clabpr03" = 0) BEGIN // helm
-      READ_2DA_ENTRY index 4 8 helm_sphere
-    END
-    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "clabpr04" = 0) BEGIN // lathander
-      READ_2DA_ENTRY index 4 8 lathander_sphere
-    END
-    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "ohtempus" = 0) BEGIN // tempus
-      READ_2DA_ENTRY index 4 8 tempus_sphere
-    END
-    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "ohtyr" = 0) BEGIN // tyr
-      READ_2DA_ENTRY index 4 8 tyr_sphere
-    END
-  END
-  BUT_ONLY
-
-ACTION_IF VARIABLE_IS_SET talos_sphere THEN BEGIN
-  STRING_SET_EVALUATE ~%talos_sphere%~ @10171
-END
-
-ACTION_IF VARIABLE_IS_SET helm_sphere THEN BEGIN
-  STRING_SET_EVALUATE ~%helm_sphere%~ @10184
-END
-
-ACTION_IF VARIABLE_IS_SET lathander_sphere THEN BEGIN
-  STRING_SET_EVALUATE ~%lathander_sphere%~ @10179
-END
-
-ACTION_IF VARIABLE_IS_SET tempus_sphere THEN BEGIN
-  STRING_SET_EVALUATE ~%tempus_sphere%~ @10902
-END
-
-ACTION_IF VARIABLE_IS_SET tyr_sphere THEN BEGIN
-//  STRING_SET_EVALUATE ~%tyr_sphere%~ @10171
 END
 
 /////                                                  \\\\\
@@ -2926,8 +2999,9 @@ OUTER_SET sphere_descript = 2
 LAUNCH_ACTION_MACRO CD_BUILD_SPHERE
 
 // now primary spheres of hlas
-ACTION_CLEAR_ARRAY cd_spheres
-ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
+ACTION_IF NOT MOD_IS_INSTALLED ~SETUP-STRATAGEMS.TP2~ ~4240~ THEN BEGIN
+  ACTION_CLEAR_ARRAY cd_spheres
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_ENERGY_BLADES                  => cr
   CLERIC_STORM_OF_VENGEANCE             => wa
   CLERIC_ELEMENTAL_SWARM                => ex
@@ -2940,7 +3014,23 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_AURA_OF_FLAMING_DEATH          => ef
   CLERIC_ELEMENTAL_TRANSFORMATION_FIRE  => co
   CLERIC_ELEMENTAL_TRANSFORMATION_EARTH => co
-  CLERIC_MASS_RAISE_DEAD                => nr
+  END
+END ELSE BEGIN
+  ACTION_CLEAR_ARRAY cd_spheres
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
+  CLERIC_ELEMENTAL_TRANSFORMATION_FIRE  => co
+  CLERIC_ELEMENTAL_TRANSFORMATION_EARTH => co
+  HLA_CLERIC_ENERGY_BLADES              => cr
+  HLA_CLERIC_STORM_OF_VENGEANCE         => wa
+  HLA_CLERIC_ELEMENTAL_SWARM            => ex
+  HLA_CLERIC_GREATER_ELEMENTAL_SWARM    => ex
+  HLA_CLERIC_GLOBE_OF_BLADES            => cr
+  HLA_CLERIC_SUMMON_DEVA                => al
+  HLA_CLERIC_SUMMON_FALLEN_DEVA         => al
+  HLA_CLERIC_IMPLOSION                  => co
+  HLA_CLERIC_MASS_RAISE_DEAD            => nr
+  HLA_CLERIC_AURA_OF_FLAMING_DEATH      => ef
+  END
 END
 
 // build hla framework
@@ -2949,8 +3039,9 @@ OUTER_SET hla = 1
 LAUNCH_ACTION_MACRO CD_BUILD_SPHERE
 
 // now secondary spheres of hlas
-ACTION_CLEAR_ARRAY cd_spheres
-ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
+ACTION_IF NOT MOD_IS_INSTALLED ~SETUP-STRATAGEMS.TP2~ ~4240~ THEN BEGIN
+  ACTION_CLEAR_ARRAY cd_spheres
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_ENERGY_BLADES                  => co
   CLERIC_STORM_OF_VENGEANCE             => we
   CLERIC_ELEMENTAL_SWARM                => su
@@ -2962,6 +3053,22 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_AURA_OF_FLAMING_DEATH          => pr
   CLERIC_ELEMENTAL_TRANSFORMATION_FIRE  => ef
   CLERIC_ELEMENTAL_TRANSFORMATION_EARTH => ee
+  END
+END ELSE BEGIN
+  ACTION_CLEAR_ARRAY cd_spheres
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
+  CLERIC_ELEMENTAL_TRANSFORMATION_FIRE  => ef
+  CLERIC_ELEMENTAL_TRANSFORMATION_EARTH => ee
+  HLA_CLERIC_ENERGY_BLADES              => co
+  HLA_CLERIC_STORM_OF_VENGEANCE         => we
+  HLA_CLERIC_ELEMENTAL_SWARM            => su
+  HLA_CLERIC_GREATER_ELEMENTAL_SWARM    => su
+  HLA_CLERIC_GLOBE_OF_BLADES            => gu
+  HLA_CLERIC_SUMMON_DEVA                => su
+  HLA_CLERIC_SUMMON_FALLEN_DEVA         => su
+  HLA_CLERIC_IMPLOSION                  => nu
+  HLA_CLERIC_AURA_OF_FLAMING_DEATH      => pr
+  END
 END
 
 OUTER_SET sphere_descript = 2
@@ -2982,6 +3089,129 @@ ACTION_FOR_EACH sphere IN al an as cs cm co cr di ex ea ee ef ew gu he lw ne nr 
   
   END
 
+END
+
+/////                                                  \\\\\
+///// adjust kits to prep for spheres                  \\\\\
+/////                                                  \\\\\
+
+// new descripts
+COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
+  SPRINT mixed_match @10154 // Priest
+  SPRINT lower_match @10134 // priest
+  SPRINT upper_match @10135 // PRIEST
+  COUNT_2DA_ROWS 9 rows
+  FOR (index = rows ; index > 0 ; --index) BEGIN
+    READ_2DA_ENTRY index 5 8 clab
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr02" = 0) BEGIN // talos
+      READ_2DA_ENTRY index 4 8 talos_sphere
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "clabpr03" = 0) BEGIN // helm
+      READ_2DA_ENTRY index 4 8 helm_sphere
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "clabpr04" = 0) BEGIN // lathander
+      READ_2DA_ENTRY index 4 8 lathander_sphere
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "ohtempus" = 0) BEGIN // tempus
+      READ_2DA_ENTRY index 4 8 tempus_sphere
+    END
+    PATCH_IF  ("%clab%" STRING_COMPARE_CASE "ohtyr" = 0) BEGIN // tyr
+      READ_2DA_ENTRY index 4 8 tyr_sphere
+    END
+	PATCH_IF  ("%clab%" STRING_COMPARE_CASE "CDSelune" = 0) BEGIN // selune
+      READ_2DA_ENTRY index 4 8 selune_sphere
+    END
+	PATCH_IF  ("%clab%" STRING_COMPARE_CASE "A#SHAR" = 0) BEGIN // shar
+      READ_2DA_ENTRY index 4 8 shar_sphere
+    END
+	PATCH_IF  ("%clab%" STRING_COMPARE_CASE "A#RED" = 0) BEGIN // Red Knight
+      READ_2DA_ENTRY index 4 8 red_sphere
+    END
+	PATCH_IF  ("%clab%" STRING_COMPARE_CASE "A#TEMP" = 0) BEGIN // tempus
+      READ_2DA_ENTRY index 4 8 tempus_sphere
+    END
+	PATCH_IF  ("%clab%" STRING_COMPARE_CASE "CDILMATR" = 0) BEGIN // ilmater
+      READ_2DA_ENTRY index 4 8 ilmatr_sphere
+    END
+	PATCH_IF  ("%clab%" STRING_COMPARE_CASE "A#KOSS" = 0) BEGIN // kossuth
+      READ_2DA_ENTRY index 4 8 koss_sphere
+    END
+	PATCH_IF  ("%clab%" STRING_COMPARE_CASE "CDXvim" = 0) BEGIN // Xvim
+      READ_2DA_ENTRY index 4 8 xvim_sphere
+    END
+	PATCH_IF  ("%clab%" STRING_COMPARE_CASE "A#OGMA" = 0) BEGIN // Oghma
+      READ_2DA_ENTRY index 4 8 ogma_sphere
+    END
+		PATCH_IF  ("%clab%" STRING_COMPARE_CASE "NMSUNE" = 0) BEGIN // sune
+      READ_2DA_ENTRY index 4 8 sune_sphere
+    END
+		PATCH_IF  ("%clab%" STRING_COMPARE_CASE "A#FEYW" = 0) BEGIN // Corellon
+      READ_2DA_ENTRY index 4 8 feyw_sphere
+    END
+		PATCH_IF  ("%clab%" STRING_COMPARE_CASE "A#CYRIC" = 0) BEGIN // cyric
+      READ_2DA_ENTRY index 4 8 cyric_sphere
+    END
+  END
+  BUT_ONLY
+
+ACTION_IF VARIABLE_IS_SET talos_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%talos_sphere%~ @10177
+END
+
+ACTION_IF VARIABLE_IS_SET helm_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%helm_sphere%~ @10194
+END
+
+ACTION_IF VARIABLE_IS_SET lathander_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%lathander_sphere%~ @10178
+END
+
+ACTION_IF VARIABLE_IS_SET tempus_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%tempus_sphere%~ @10902
+END
+
+ACTION_IF VARIABLE_IS_SET tyr_sphere THEN BEGIN
+//  STRING_SET_EVALUATE ~%tyr_sphere%~ @10171
+END
+
+ACTION_IF VARIABLE_IS_SET selune_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%selune_sphere%~ @10302
+END
+
+ACTION_IF VARIABLE_IS_SET shar_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%shar_sphere%~ @10602
+END
+
+ACTION_IF VARIABLE_IS_SET red_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%red_sphere%~ @10702
+END
+
+ACTION_IF VARIABLE_IS_SET ilmatr_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%ilmatr_sphere%~ @11202
+END
+
+ACTION_IF VARIABLE_IS_SET koss_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%koss_sphere%~ @11504
+END
+
+ACTION_IF VARIABLE_IS_SET xvim_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%xvim_sphere%~ @11802
+END
+
+ACTION_IF VARIABLE_IS_SET ogma_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%ogma_sphere%~ @12102
+END
+
+ACTION_IF VARIABLE_IS_SET sune_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%sune_sphere%~ @12402
+END
+
+ACTION_IF VARIABLE_IS_SET feyw_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%feyw_sphere%~ @12703
+END
+
+ACTION_IF VARIABLE_IS_SET cyric_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%cyric_sphere%~ @13004
 END
 
 /////                                                  \\\\\
@@ -3118,7 +3348,6 @@ ACTION_FOR_EACH tempus IN ~ohtempus~ ~a#temp~ BEGIN
       wards           = minor
       weather         = major
     END
-
 END
 
 LAUNCH_ACTION_FUNCTION cd_kit_sphere // selune
@@ -3388,7 +3617,7 @@ LAUNCH_ACTION_FUNCTION cd_kit_sphere // oozemaster - normal druid minus animal a
 
 COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
   COUNT_2DA_ROWS 9 rows
-  FOR (index = 2 ; index < rows ; ++index) BEGIN
+  FOR (index = 2 ; index <= rows ; ++index) BEGIN
     READ_2DA_ENTRY index 8 8 class
     PATCH_IF ((class = 6) OR (class = 12) OR (class = 11) OR (class = 3)) BEGIN
       READ_2DA_ENTRY index 5 8 clab
@@ -3399,8 +3628,11 @@ COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
     END
   END
   BUT_ONLY
+// ACTION_IF clab = ~clabpr02~ OR clab = ~clabpr03~ OR clab = clabpr04 OR clab = othyr OR clab = ohtempus OR clab = a#temp OR clab = cdselune OR clab = a#shar OR clab = a#red OR clab = cdilmatr OR clab = cdxvim OR clab = a#ogma OR clab = nmsune OR clab = a#feyw OR clab = a#cyric OR clab = a#ooze THEN BEGIN
+ //END ELSE BEGIN
 
 // add generic classes to array
+
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_mod_kits BEGIN
   clabpr01 => 3
   clabpa01 => 6
@@ -3410,6 +3642,7 @@ END
 
 // because cd_kit_sphere won't apply itself to already patched clabs, any unique sphere alignments 
 // taken care of prior to this step will be preserved.
+
 ACTION_PHP_EACH cd_mod_kits AS clab => class_check BEGIN
 
   ACTION_IF class_check = 3 THEN BEGIN // clerics
@@ -3483,8 +3716,8 @@ ACTION_PHP_EACH cd_mod_kits AS clab => class_check BEGIN
 
   END
 
-END
-
+ END
+  
 /////                                                  \\\\\
 ///// special: cleric-rangers                          \\\\\
 /////                                                  \\\\\
@@ -3501,6 +3734,10 @@ ACTION_FOR_EACH align IN 0 17 18 19 33 34 35 49 50 51 BEGIN
   END
 
 END
+
+/////                                                  \\\\\
+/////   spellbooks update	                           \\\\\
+/////                                                  \\\\\
 
 ACTION_CLEAR_ARRAY cd_cleric_kits
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN
@@ -3544,10 +3781,15 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   SET "CDXVIM" = 0
   SET "NMSUNE" = 0
   SET "OHTYR" = 0
+  SET "A#OOZE" = 0
   COUNT_2DA_ROWS 9 rows
   FOR (index = rows ; index > 31 ; --index) BEGIN
     READ_2DA_ENTRY index 5 9 clab
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#SHAR" = 0) BEGIN
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#OOZE" = 0) BEGIN
+      READ_2DA_ENTRY index 0 9 "A#OOZE"
+      DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#OOZE%" => "%clab%" END
+    END
+	PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#SHAR" = 0) BEGIN
       READ_2DA_ENTRY index 0 9 "A#SHAR"
       DEFINE_ASSOCIATIVE_ARRAY cd_cleric_kits BEGIN "%A#SHAR%" => "%clab%" END
     END
@@ -3625,7 +3867,7 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
       END
     END
   END
-  LPF cd_spellbook_wrapup END
+  //LPF cd_spellbook_wrapup END
   BUT_ONLY
 
 /////                                                  \\\\\
@@ -3672,7 +3914,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     ~a#red~       => ~a#red~
     ~a#shar~      => ~a#shar~
     ~a#temp~      => ~a#temp~
-    ~cdilmatr~    => ~cdilma~
+    ~cdilmatr~    => ~cdilmatr~
     ~cdselune~    => ~cdselu~
     ~cdxvim~      => ~cdxvim~
     ~nmsune~      => ~nmsune~
@@ -3711,23 +3953,18 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
       COUNT_2DA_ROWS 10 rows
       FOR (index = 0 ; index < rows ; ++index) BEGIN
         PATCH_IF (index < 24) BEGIN
-          SET_2DA_ENTRY index 1 10 (index + 1) // re-number rows
+          SET_2DA_ENTRY index 0 10 (index + 1) // re-number rows
         END ELSE BEGIN
-          SET_2DA_ENTRY index 1 10 DELETE_ROW
+          SET_2DA_ENTRY index 0 10 DELETE_ROW
         END
       END
-      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW.+$~ ~~ // delete lines past 24
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW+.+$~ ~~ // delete lines past 24
       REPLACE_TEXTUALLY ~AP_CDDR[0-9][0-9][0-9]~ ~*         ~ // delete temp placeholders
       PRETTY_PRINT_2DA
       BUT_ONLY
 
   END
   
-  ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ THEN BEGIN
-
-    COPY_EXISTING ~ludr0.2da~ ~override/lua#ooze.2da~
-  
-  END
 
   // patch hla table to exlude quest-level spells from disallowed spheres
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_sphere_hla_match BEGIN
@@ -3740,6 +3977,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     ~a#red~  => ~a#red~
     ~a#shar~ => ~a#shar~
     ~a#temp~ => ~a#temp~
+    ~cdilmatr~ => ~cdilmatr~
     ~cdselu~ => ~cdselune~
     ~cdxvim~ => ~cdxvim~
     ~nmsune~ => ~nmsune~
@@ -3747,16 +3985,28 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     ~cdhelm~ => ~clabpr03~
     ~cdlath~ => ~clabpr04~
     ~cdtyr~  => ~ohtyr~
-    ~a#temp~ => ~ohtempus~
+    ~ohtempus~ => ~a#temp~
     ~cm0~    => ~clabpr01~ // cleric-mages
     ~ct0~    => ~clabpr01~ // cleric-thief
     ~dr0~    => ~clabdr01~ // druid
+	~dr2~    => ~clabdr02~ // created only to make corrections to TOTEMIC_DRUID table
+	~dr3~    => ~clabdr03~ // created only to make corrections to SHAPESHIFTER table
+	~dr4~    => ~clabdr04~ // created only to make corrections to BEAST_FRIEND	table
     ~fc0~    => ~clabpr01~ // fighter-cleric
     ~fd0~    => ~clabdr01~ // fighter-druid
     ~fmc~    => ~clabpr01~ // fighter-mage-cleric
 //    ~cr0~    => ~clabpr01~ // cleric-ranger; special, handled above
     ~cdcler~    => ~clabpr01~ // keep last as its used as template for others
 
+  END
+  
+  ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ THEN BEGIN
+
+    COPY_EXISTING ~ludr0.2da~ ~override/lua#ooze.2da~
+				  ~ludr0.2da~ ~override/ludr2.2da~
+				  ~ludr0.2da~ ~override/ludr3.2da~
+				  ~ludr0.2da~ ~override/ludr4.2da~
+  
   END
   
   ACTION_PHP_EACH cd_sphere_hla_match AS table => clab BEGIN
@@ -3778,7 +4028,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
         REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%][0-9]+[ %TAB%]+\*[ %TAB%]+.+$~ ~~ // delete empty ability lines
         REPLACE_TEXTUALLY ~%TAB%~ ~ ~
         // delete quest spells not available
-        REPLACE_EVALUATE ~\([%LNL%%MNL%%WNL%][0-9]+ +GA_SPPR\)\([1-7][0-9][0-9]\)\( .+\)$~ BEGIN
+        REPLACE_EVALUATE ~\([%LNL%%MNL%%WNL%][0-9]+ +GA_SPPR\)\([1-7][0-9][0-9]\)\( .+\)\([%LNL%%MNL%%WNL%][0-9]+ +GA_SPCL\)\([1-7][0-9][0-9]\)\( .+\)$~ BEGIN
           // if clab lakes AP_spell, delete line
           PATCH_IF !FILE_CONTAINS_EVALUATED (~%clab%.2da~ ~CD_HLA%MATCH2%[ %TAB%]+~) BEGIN
             SPRINT replace ""
@@ -3793,7 +4043,8 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
         FOR (index = 0 ; index < rows ; ++index) BEGIN
           READ_2DA_ENTRY index 1 10 ABILITY
           INNER_PATCH_SAVE ABIL_SHORT ~%ABILITY%~ BEGIN
-            REPLACE_TEXTUALLY ~GA_SPPR~ ~CD_HLA~
+            REPLACE_TEXTUALLY ~GA_SPCL~ ~CD_HLA~
+			REPLACE_TEXTUALLY ~GA_SPPR~ ~CD_HLA~
           END
           PATCH_IF ((!FILE_CONTAINS_EVALUATED (~override/lu%table%.2da~ ~%ABILITY%~)) AND // hla on master table that's not in the current hla table
                      (FILE_CONTAINS_EVALUATED (~%clab%.2da~ ~%ABIL_SHORT%[ %TAB%]+~))) BEGIN // and is allowed per the clab
@@ -3828,17 +4079,13 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
             SET_2DA_ENTRY index 0 10 DELETE_ROW
           END
         END
-        REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW.+$~ ~~ // delete lines past 24
+        REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW+.+$~ ~~ // delete lines past 24
         REPLACE_TEXTUALLY ~AP_CDDR[0-9][0-9][0-9]~ ~*         ~ // delete temp placeholders
         PRETTY_PRINT_2DA
         BUT_ONLY
 
     END
     
-  END
-
-  ACTION_PHP_EACH cd_sphere_hla_match AS table => clab BEGIN
-
     ACTION_IF FILE_EXISTS_IN_GAME ~%clab%.2da~ THEN BEGIN
 
       // clean up generic class tables

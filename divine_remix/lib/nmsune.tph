@@ -8,6 +8,12 @@ COPY_EXISTING ~spwi411.spl~ ~override/nmsun07.spl~ // emotion
   LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
   BUT_ONLY_IF_IT_CHANGES
 
+COPY ~Divine_Remix/spl/nmsun0a.spl~ ~override~  // +1 Charisma
+COPY ~Divine_Remix/spl/cdsune2.spl~ ~override~  // Veil of Djalice
+  SAY NAME1 @12409
+  SAY NAME2 @12409
+  SAY UNIDENTIFIED_DESC @12410
+  SAY DESC @12410
 COPY ~Divine_Remix/spl/nmsun0b.spl~ ~override~  // Shock Flail (innate)
   SAY NAME1 @12403
   SAY NAME2 @12403

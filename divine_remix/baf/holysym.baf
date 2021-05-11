@@ -1,5 +1,5 @@
 IF
-  Kit(Player1,%kit%)
+  Kit(Player%index%,%kit%)
   HasItem("CDHLYSYM",Player%index%)
 THEN 
 RESPONSE #100
