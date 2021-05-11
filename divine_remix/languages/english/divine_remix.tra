@@ -22,9 +22,7 @@ Saving Throw: None
 Faerie Fire outlines the target creature with a pale glow, making its position and movements easily visible. The net effect is an armor class penalty of -2 to the target.~
 
 // translator note--you can just use your language's cure disease description and remove the part about curing blindness or deafness
-@125 = ~Cure Disease
-(Abjuration)
-
+@125 = ~Cure Disease (Abjuration)
 Level: 3
 Sphere: Healing
 Range: Touch
@@ -279,13 +277,13 @@ This ability allows a priest to create low and mid level spell scrolls. The scro
 @10129=~Before you depart, I have a proposal for you. I know of you; your actions prove you not as loyal to good as you could be, though you give thought to either side of an argument.~
 @10130 =~Investigate and destroy the Cult of the Eyeless.
 
-After witnessing the eyeless priest's speech, I was approached by a priest of Helm who expressed a need to investigate this new cult further.  He asked me to follow him to the temple of Helm to discuss the matter further. He also mentioned we could assist the Lathander temple.~
+After witnessing the eyeless priest's speech, I was approached by a watcher of Helm who expressed a need to investigate this new cult further.  He asked me to follow him to the temple of Helm to discuss the matter further. He also mentioned we could assist the Lathander temple.~
 @10131 =~Or perhaps you follow the word of Helm.  If so, you should hurry to his temple.  It matters not which of us you undertake this mission for, as long as you see to it quickly.~
 @10132 =~Perhaps you would wish to serve Lathander in this matter. It makes little difference, so long as this threat is quickly addressed.~
 @10133 =~Investigate and destroy the Cult of the Eyeless.
 
 After witnessing the eyeless priest's speech, I was approached by a cleric of Lathander who bade me to come to the temple of Lathander to speak with him further regarding performing a service for the temple and investigating this new cult. He also mentioned we could help the Helm temple.~
-@10133 = ~Priest~
+@10154 = ~Priest~
 @10134 = ~priest~
 @10135 = ~PRIEST~
 @10136 = ~Stormlord~
@@ -333,7 +331,7 @@ Powerful clerics may call upon their deity to watch over them from harm, sliding
 
 Abilities:
 - Spiritual Weapon: Half-Spear - 'Fury of Talos' once per day
-SPRITIUAL WEAPON: The Half-Spear is the spiritual weapon of Stormlords of Talos, and is wielded as if the caster had grand mastery in the weapon. The Half-Spear is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds and can be used once per day.
+SPIRITIUAL WEAPON: The Half-Spear is the spiritual weapon of Stormlords of Talos, and is wielded as if the caster had grand mastery in the weapon. The Half-Spear is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds and can be used once per day.
 - Innate electrical resistance of 1% per level
 - Destructive Blow once per day
 DESTRUCTIVE BLOW: Once per day, a Stormlord can focus the destructive wrath of Talos in combat. This spell grants the Stormlord +2 to damage and +2 to hit for one round per level, up to 20 rounds.
@@ -345,8 +343,15 @@ STORM SHIELD:  This spell lasts 6 seconds per level of the caster.  It protects 
 
 Disadvantages:
 – Alignment restricted to neutral evil, chaotic evil, and chaotic neutral.~
+@10182 =~Only the most worthy and devoted servants of the Storm Lord are granted these powerful holy symbols.
+
+STATISTICS:
+
+   Grants an additional 6th and 7th level spell.
+   5% Magic Resistance while worn
+   +1 to Strength while worn~
 // this is the sphere-enabled kit description. Spheres will be added automatically via patching
-@10178 =~PRIEST OF LATHANDER: Lathander is the good god of renewal, creativity, and youth, and is celebrated nearly everywhere. His followers are very popular throughout the Realms, and there are numerous wealthy temples devoted to him.
+@10178 =~MORNINGLORD OF LATHANDER: Lathander is the good god of renewal, creativity, and youth, and is celebrated nearly everywhere. His followers are very popular throughout the Realms, and there are numerous wealthy temples devoted to him.
 
 Abilities:
 
@@ -362,7 +367,7 @@ BOON OF LATHANDER:  This spell lasts for 6 seconds per level of the caster.  It 
 Disadvantages:
 – Alignment restricted to lawful good, neutral good, chaotic good, and true neutral.~
 // this is the generic kit description with 'PRIEST' changed to 'MORNINGLORD'
-@10179 =~PRIEST OF LATHANDER: Lathander is the good god of renewal, creativity, and youth, and is celebrated nearly everywhere. His followers are very popular throughout the Realms, and there are numerous wealthy temples devoted to him.
+@10179 =~MORNINGLORD OF LATHANDER: Lathander is the good god of renewal, creativity, and youth, and is celebrated nearly everywhere. His followers are very popular throughout the Realms, and there are numerous wealthy temples devoted to him.
 
 Advantages:
 – May cast Hold Undead once per day every 5 levels of the caster (starts at 1st level with one use).
@@ -374,13 +379,6 @@ Disadvantages:
 – Alignment restricted to lawful good, neutral good, chaotic good, and true neutral.~
 @10180 =~Mace - 'Dawn's Embrace'~
 @10181 =~The mace is the spiritual weapon of Morninglords of Lathander, and is wielded as if the caster had grand mastery in the weapon. The mace is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above.~
-@10182 =~Only the most worthy and devoted servants of the Storm Lord are granted these powerful holy symbols.
-
-STATISTICS:
-
-   Grants an additional 6th and 7th level spell.
-   5% Magic Resistance while worn
-   +1 to Strength while worn~
 @10183 =~Only the most worthy and devoted servants of the Dawnbringer are granted these powerful holy symbols.
 
 STATISTICS:
@@ -401,7 +399,7 @@ Disadvantages:
 – Alignment restricted to lawful good, lawful neutral, lawful evil, and true neutral.~
 @10185 =~Bastard Sword - 'Ever Watchful'~
 @10186 =~The bastard sword is the spiritual weapon of Watchers of Helm, and is wielded as if the caster had grand mastery in the weapon. The bastard sword is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
-@10187 =~Only those most worthy and devoted servants of the Watcher are granted these powerful holy symbols.
+@10187 =~Only the most worthy and devoted servants of the Watcher are granted these powerful holy symbols.
 
 STATISTICS:
 
@@ -418,7 +416,7 @@ STATISTICS:
 
 Abilities:
 - Spiritual Weapon: Bastard Sword - 'Ever Watchful' once per day
-SPRITUAL WEAPON: The bastard sword is the spiritual weapon of Watchers of Helm, and is wielded as if the caster had grand mastery in the weapon. The bastard sword is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
+SPIRITUAL WEAPON: The bastard sword is the spiritual weapon of Watchers of Helm, and is wielded as if the caster had grand mastery in the weapon. The bastard sword is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
 - Glyph of Warding once per day, as third level cleric spell of the same name
 - From level 7 can cast Farsight once per day, as fourth level cleric spell of the same name
 - From level 9 can cast Protection From Normal Weapons once per day, as fifth level mage spell of the same name
@@ -524,6 +522,8 @@ Abilities:
 - Spiritual Weapon: Chakram - 'Disc of Night' once per day
 The Disc of Night is the spiritual weapon of Nightcloaks. The chakram is treated as a returning dart and is wielded as if the caster had grand mastery in the weapon. The chakram is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
 - Immune to all forms of Blindness.
+- Can cast Dark Bolt once per day.
+This spell creates small chakrams in the casters hand (one per level of the caster). These chakrams can be hurled, causing silence on a failed save vs. spell on the target creature and causing 2d4 cold damage. Undead creatures must also make a save vs. paralyzation or be held for one round.
 - From level 7 can cast Confusion once per day, as fourth level mage spell of the same name
 - From level 9 can cast Feeblemind once per day, as fifth level mage spell of the same name
 - From level 11 can cast Invisible Stalker once per day, as sixth level mage spell of the same name
@@ -531,7 +531,7 @@ The Disc of Night is the spiritual weapon of Nightcloaks. The chakram is treated
 @10603 =~nightcloak of shar~
 @10604 =~Shar's Curse~
 @10605 =~Shar's Curse (Enchantment/Charm)
-Level: Special
+Level: Quest
 Sphere: Charm
 Range: Visual range of the caster
 Duration: Permanent
@@ -645,7 +645,7 @@ Though these pilgrimages are often considered an unwanted duty by the more polit
 @10901 =~Battleguard of Tempus~
 @10902 =~BATTLEGUARD OF TEMPUS: Tempus is the Realms' god of war, the Lord of Battle, the Foehammer. He is random in his favors, yet his chaotic nature favors all sides equally. He may be on an army's side on one day and against them the next. Such is the nature of war as embodied by Tempus.
 
-The dress of the priest of Tempus is armor, battle-worn and battered. In more civilized regions this has been replaced by a steel skullcap, but the message is the same--these are warrior priests. Their place is in the trenches with the troops, urging them onwards. Priests of Tempus may be found on both sides of a conflict, as none can ever truly know who the war god will favor.
+The dress of the Battleguard of Tempus is armor, battle-worn and battered. In more civilized regions this has been replaced by a steel skullcap, but the message is the same--these are warrior priests. Their place is in the trenches with the troops, urging them onwards. Battleguards of Tempus may be found on both sides of a conflict, as none can ever truly know who the war god will favor.
 
 Battleguards of Tempus can only be of Chaotic Neutral, Chaotic Good, True Neutral, and Chaotic Evil alignments
 
@@ -675,19 +675,19 @@ Grants an additional 6th and 7th level spell.
 +1 to Strength while worn~
 @10912 =~Tempus' Shield~
 @10913 =~Tempus' Shield (Abjuration)
-Level: Special
+Level: Quest
+Sphere: Combat
 Range: 0
 Duration: 4 rounds
 Casting Time: 1
 Area of Effect: Caster
-Sphere: Combat
 Saving Throw: None
 
 Calling upon Tempus for endurance in adversity, the Battleguard becomes protected from most physical harm. When the spell is cast, it confers complete invulnerability to all weapons except for those of greater than +5 enchantment. This spell is incredibly powerful, hence the short duration. However the casting time is also very short making this spell incredibly useful in the thick of combat where buying a few seconds can mean the difference between life or death. This spell lasts for the duration or until dispelled.~
 @10914 =~battleguard of tempus~
 @10915 =~BATTLEGUARD OF TEMPUS: Tempus is the Realms' god of war, the Lord of Battle, the Foehammer. He is random in his favors, yet his chaotic nature favors all sides equally. He may be on an army's side on one day and against them the next. Such is the nature of war as embodied by Tempus.
 
-The dress of the priest of Tempus is armor, battle-worn and battered. In more civilized regions this has been replaced by a steel skullcap, but the message is the same--these are warrior priests. Their place is in the trenches with the troops, urging them onwards. Priests of Tempus may be found on both sides of a conflict, as none can ever truly know who the war god will favor.
+The dress of the Battleguard of Tempus is armor, battle-worn and battered. In more civilized regions this has been replaced by a steel skullcap, but the message is the same--these are warrior priests. Their place is in the trenches with the troops, urging them onwards. Battleguards of Tempus may be found on both sides of a conflict, as none can ever truly know who the war god will favor.
 
 Advantages:
 - Can specialize (two points) in any melee weapon that a cleric can use
@@ -780,6 +780,7 @@ Though these missions to the untamed wilderness are often considered an unwanted
 
 @11501 =~Flail - 'Tendril of Flame'~
 @11502 =~Spiked Chain - 'Tendril of Flame'~
+@11516 =~The flail is the spiritual weapon of Firewalkers of Kossuth, and is wielded as if the caster had grand mastery in the weapon. The flail is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
 @11503 =~Firewalker of Kossuth~
 @11504 =~FIREWALKER OF KOSSUTH: Kossuth, Firelord, the Tyrant among Fire, is an Elemental Lord from the Elemental Plane of Fire. He is generally uncaring to his faithful, but continues to grant his priests their powers since their worship increases his power on his home plane. To maintain continued worship he does take a limited interest in his followers' mortal problems, and occasionally makes his presence known with a manifestation, but never an avatar.
 
@@ -877,8 +878,7 @@ Grants an additional 6th and 7th level spell.
 @11805 =~'Scimitar of Souls'~
 @11806 =~The Scimitar of Souls is the spiritual weapon of Authlim of Iyachtu Xvim, and is wielded as if the caster had grand mastery in the weapon. The Scimitar of Souls is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
 @11807 =~Xvim's Summoning~
-@11808 =~Xvim's Summoning
-(Conjuration/Summoning)
+@11808 =~Xvim's Summoning (Conjuration/Summoning)
 Level: Quest
 Sphere: All, Summoning
 Range: 40 yards
@@ -930,6 +930,7 @@ The longsword is the spiritual weapon of Lorekeepers of Oghma, and is wielded as
 Disadvantages:
 – None~
 @12103 = ~Longsword - Mortal Strike~
+@12112 = ~The longsword is the spiritual weapon of Lorekeepers of Oghma, and is wielded as if the caster had grand mastery in the weapon. The sword is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
 @12104 = ~Wisdom of Oghma~
 @12105 = ~Holy Symbol of Oghma~
 @12106 = ~Oghma rewards his most powerful servants with a Holy Symbol, a ring bearing his personal device of an scroll of parchment. When worn, the symbol empowers the Lorekeeper with Oghma's power.
@@ -974,8 +975,10 @@ Sune's speciality priests, known as Heartwarders of Sune, are aesthetes and hedo
 Abilities:
 - Spiritual Weapon: Flail - 'Shock Flail' once per day
 The Shock Flail is the spiritual weapon of Heartwarders of Sune, and is wielded as if the caster had grand mastery in the weapon. The Shock Flail is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
-- +1 Charisma
-- From level 7 can cast Emotion once per day, as fourth level mage spell of the same name
+- +1 charisma bonus
+- Can cast Veil of Djalice once per day
+The Heartwarder temporarily augments <PRO_HISHER> beauty to unearthly levels, boosting effective charisma to 20 and forcing any hostiles to save vs. spell at -2 or be dire charmed for six rounds.
+- From level 7 can cast Emotion: Hoplessness once per day, as fourth level mage spell of the same name
 - From level 9 can cast Flamestrike once per day, as fifth level cleric spell of the same name
 - From level 11 can cast Mislead once per day, as sixth level mage spell of the same name
 - From level 14 can cast Mantle once per day, as seventh level mage spell of the same name
@@ -1001,7 +1004,7 @@ Sune herself is said to be benevolent and sometimes whimsical, alternating betwe
 Sune's speciality priests, known as Heartwarders of Sune, are aesthetes and hedonists who actively seek out pleasure and beauty in all things, and who nurture the creation of beautiful objects.  They are typically found in large cities in the company of the cultural elite.  Most are active patrons of the arts, and all play the role of matchmaker for persons in all levels of society.  Many are employed as artists, crafters, performers, or instructors, though a few travel the world to promote beauty and love.
 
 Advantages:
-- +1 Charisma
+- +1 charisma bonus
 – May cast Emotion: Hoplessness once per day every 5 levels (starts at 1st level with one use).
 – May use Veil of Djalice once per day every 10 levels (starts at 1st level with one use), as detailed below.
 
@@ -1046,9 +1049,9 @@ Disadvantages:
 – Alignment restricted to chaotic good, neutral good or chaotic neutral.~
 @12704 =~Longsword - 'Sahandrian'~
 @12705 =~Sahandrian is the spiritual weapon of Feywardens of Corellon, and is wielded as if the caster had grand mastery in the weapon. Sahandrian is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
-@12706 =~Improved Alacrity
-(Any School)
-Level: 10
+@12706 =~Improved Alacrity (Any School)
+Level: Quest
+Sphere: All
 Range: Unlimited
 Duration: 2 rounds
 Casting Time: 9
@@ -1103,17 +1106,13 @@ Strifeleaders wear black and purple robes. Silver bands, the symbol of their ens
 Abilities:
 - Spiritual Weapon: Long Sword - 'Razor's Edge' once per day
 Razor's Edge is the spiritual weapon of Strifeleaders of Cyric, and is wielded as if the caster had grand mastery in the weapon. The Razor's Edge is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
--  May coat his weapon in poison once per day per 6 levels.  Attacks made in the next round with that weapon will inject the poison into the target, dealing out 1 damage per second for 24 seconds (3 damage for the first 6 seconds).  A saving throw vs. poison limits damage to 12 total.
+- May coat his weapon in poison once per day per 6 levels.  
+Attacks made in the next round with that weapon will inject the poison into the target, dealing out 1 damage per second for 24 seconds (3 damage for the first 6 seconds).  A saving throw vs. poison limits damage to 12 total.
 - From level 7 can cast Dread Blast once per day
 Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and confuses target for 1 round (save vs. spell at -2 to negate confusion)
 - From level 9 can cast Chaos once per day, as fifth level mage spell of the same name
 - From level 11 can cast Death Fog once per day, as sixth level mage spell of the same name
-- From level 14 can cast Sphere of Chaos once per day, as seventh level mage spell of the same name
-
-Sphere Access:
-- Major access to the spheres of all, astral, charm, combat, guardian, healing, necromantic, summoning, sun, time, war, weather
-- Minor access to the spheres of divination, elemental, numbers, protection
-- No access to the spheres of animal, creation, chaos, law, plant, thought, travel, wards~
+- From level 14 can cast Sphere of Chaos once per day, as seventh level mage spell of the same name~
 @13005 =~Holy Symbol of Cyric~
 @13006 =~Cyric grants his most powerful servants with a Holy Symbol, silvered bracers inscribed with his device: a skull in front of a dark sun. As well as being a visible symbol of the priest's obvious power, these bracers represent his enslavement to the Prince of Lies. When worn, the symbol enhances the Strifeleader's already fearsome power.
 
@@ -1133,11 +1132,9 @@ Strifeleaders wear black and purple robes. Silver bands, the symbol of their ens
 
 Advantages:
 – May coat <PRO_HISHER> weapon once per day every 5 levels (starts at 1st level with one use), as detailed below
-
 POISON WEAPON: Attacks made in the next round with that weapon will inject the poison into the target, dealing out 1 damage per second for 24 seconds (3 damage for the first 6 seconds).  A saving throw vs. poison limits damage to 12 total.
 
 – May use Dread Blast once per day every 10 levels (starts at 1st level with one use), as detailed below.
-
 DREAD BLAST: Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and confuses target for one round (save vs. spell at -2 to negate confusion)
 
 Disadvantages:
@@ -1204,6 +1201,8 @@ Disadvantages:
 
 @20305 = ~Paralytic Touch~
 @20306 = ~Shapeshift: Mustard Jelly~
+@20307 = ~Charisma -1~ 
+@20308 = ~Immune to Acid~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1232,6 +1231,7 @@ Disadvantages:
 - Can not even be proficient in any other melee weapon
 - Cannot wear any metal armor~
 @40304 = ~Speed Shot~
+@40305 = ~When the bowslinger activates this ability, he makes one extra attack per round for five rounds.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1256,10 +1256,11 @@ Advantages:
 Disadvantages:
 - Becomes winded after Feral Rage. While he's winded he receives -2 to hit, -2 to damage and a +2 penalty to armor class
 - Can only become proficient (one point) in bastard swords, long swords, short swords, two-handed swords, katanas, scimitars, halberds, flails and crossbows
-- Cannot wear any armor or use large shields
+- Cannot wear any armor
 - Maximum Charisma is 2 points lower than a standard member of the race~
 @40604 = ~Feral Rage~
 @40605 = ~Call of the Wild~
+@40610 = ~This unique ability summons an animal companion who will fight for the caster for 3 rounds + 1 round/level.  More powerful creatures are summoned at higher levels.~
 @40606 = ~Wild Dog~
 @40607 = ~Wolf~
 @40608 = ~Dire Wolf~
@@ -1289,6 +1290,7 @@ Disadvantages:
 - Can only become proficient (one point) in axes, two-handed swords, warhammers, and crossbows~
 @40904 = ~Inspire~
 @40905 = ~Inspired~
+@40906 = ~This unique ability boosts the morale and attack rolls of the Forest Runner's companions for 3 rounds.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1341,6 +1343,24 @@ Disadvantages:
 - Can only become proficient (one point) in flails, morningstars and warhammers
 - Maximum Charisma is 2 points lower than a standard member of the race~
 @41504 = ~Enhanced Charm Animal~
+@41505 = ~Charm Person or Mammal (Enchantment/Charm)
+Level: 2
+Sphere: Animal 
+Range: Visual range of caster 
+Duration: 2 turn
+Casting Time: 5 
+Area of Effect: 1 person or mammal 
+Saving Throw: Neg. 
+
+This spell affects any single person it is cast upon. The term person includes any bipedal human, demihuman, or humanoid of man-size or smaller, such as: brownies, dryads, dwarves, elves, gnolls, gnomes, goblins, half-elves, halflings, half-orcs, hobgoblins, humans, kobolds, lizard men, nixies, orcs, pixies, sprites, troglodytes, and others. Thus, a 10th-level fighter could be charmed, but an ogre could not. The person receives a saving throw vs. spell to avoid the effect (with a +3 modifier), with any adjustment due to Wisdom.
+
+If the spell recipient fails his saving throw, he regards the caster as a trusted friend and ally to be heeded and protected. The caster may give him orders, and the charmed individual will carry them out as quickly as possible.
+
+If the caster harms, or attempts to harm, the charmed person by some overt action, or if a dispel magic spell is successfully cast upon the charmed person, the charm spell is broken.
+
+If two or more charm effects simultaneously affect a creature, the most recent charm takes precedence. Note that the subject has full memory of the events that took place while he was charmed.
+
+Also note that you cannot have a charmed creature leave the area where he was charmed.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

@@ -1,14 +1,18 @@
 COPY ~divine_remix/2da/a#koss.2da~ ~override~
 
-COPY ~Divine_Remix/spl/a#kos0a.spl~ ~override~  // Tendril of Flame (innate)
+COPY ~Divine_Remix/spl/a#kos0b.spl~ ~override~  // Tendril of Flame (innate)
   SAY NAME1 @11501
   SAY NAME2 @11501
+  SAY UNIDENTIFIED_DESC @11516
+  SAY DESC @11516
 
 COPY ~Divine_Remix/bam/cdikoss.bam~ ~override~
 COPY ~Divine_Remix/itm/a#koss00.itm~ ~override~  // Tendril of Flame
   SAY NAME1 @11502
   SAY NAME2 @11502
   SET "weap_idx" = 0
+  SAY UNIDENTIFIED_DESC @11516
+  SAY DESC @11516
 
 COPY_EXISTING ~a#koss00.itm~ ~override/a#koss01.itm~ // tendril of flame +1
               ~a#koss00.itm~ ~override/a#koss02.itm~ // tendril of flame +2
@@ -21,7 +25,7 @@ COPY_EXISTING ~a#koss00.itm~ ~override/a#koss01.itm~ // tendril of flame +1
   WRITE_SHORT 0x8C ("%weap_idx%" + 1)
   WRITE_SHORT 0x84 (7 - "%weap_idx%")
 
-COPY ~Divine_Remix/spl/a#kos0c.spl~ ~override~
+COPY ~Divine_Remix/spl/a#kos0c.spl~ ~override~ //fire res
 
 // change spells to innates as needed
 COPY_EXISTING ~spwi418.spl~ ~override/a#kos07.spl~ // fire shield (red)

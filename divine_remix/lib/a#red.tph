@@ -1,18 +1,36 @@
 COPY ~divine_remix/2da/a#red.2da~ ~override~
 
 COPY ~Divine_Remix/spl/a#re0b.spl~ ~override~  // Additional Attack per round (innate)
-COPY ~Divine_Remix/spl/a#re0c.spl~ ~override~  // Infravision (spell)
-COPY ~Divine_Remix/spl/a#re0d.spl~ ~override~  // Clairvoyance (spell)
-COPY ~Divine_Remix/spl/a#re0e.spl~ ~override~  // Wizard Eye (spell)
+
+COPY_EXISTING ~spwi111.spl~ ~override/a#re0c.spl~  // Infravision (spell)
+			  ~spwi301.spl~ ~override/a#re0d.spl~  // Clairvoyance (spell)
+			  ~spwi425.spl~ ~override/a#re0e.spl~  // Wizard Eye (spell)
+	WRITE_SHORT 0x1c 2
+
+//COPY ~Divine_Remix/spl/a#re0c.spl~ ~override~  // Infravision (spell)
+//COPY ~Divine_Remix/spl/a#re0d.spl~ ~override~  // Clairvoyance (spell)
+//COPY ~Divine_Remix/spl/a#re0e.spl~ ~override~  // Wizard Eye (spell)
+
+// change spells to innates as needed
+COPY_EXISTING ~spwi305.spl~ ~override/a#re07.spl~ // haste
+              ~sppr406.spl~ ~override/a#re09.spl~ // defensive harmony
+              ~sppr514.spl~ ~override/a#re11.spl~ // mass cure
+              ~spwi708.spl~ ~override/a#re14.spl~ // mantle
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+ BUT_ONLY_IF_IT_CHANGES
 
 COPY ~Divine_Remix/spl/a#redw0a.spl~ ~override~  // Checkmate (innate)
   SAY NAME1 @10703
   SAY NAME2 @10703
+  SAY UNIDENTIFIED_DESC @10704
+  SAY DESC @10704
 
 COPY ~Divine_Remix/bam/a#redw.bam~ ~override~
 COPY ~Divine_Remix/itm/a#redw00.itm~ ~override~  // Checkmate +0
   SAY NAME1 @10703
   SAY NAME2 @10703
+  SAY UNIDENTIFIED_DESC @10704
+  SAY DESC @10704
   SET "weap_idx" = 0
 
 COPY_EXISTING ~a#redw00.itm~ ~override/a#redw01.itm~  // Checkmate +1
@@ -26,10 +44,5 @@ COPY_EXISTING ~a#redw00.itm~ ~override/a#redw01.itm~  // Checkmate +1
   WRITE_SHORT 0x8C "%weap_idx%"
   WRITE_SHORT 0x84 (5 - "%weap_idx%")
 
-// change spells to innates as needed
-COPY_EXISTING ~spwi305.spl~ ~override/a#re07.spl~ // haste
-              ~sppr406.spl~ ~override/a#re09.spl~ // defensive harmony
-              ~sppr514.spl~ ~override/a#re11.spl~ // mass cure
-              ~spwi708.spl~ ~override/a#re14.spl~ // mantle
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
+
+ 
