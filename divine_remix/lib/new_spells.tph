@@ -342,13 +342,24 @@ END
 
 ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CONJURE_AIR_ELEMENTAL~)) < 0)) BEGIN // only if not present or overwrite selected
 
-  COPY_EXISTING ~spwi621.spl~ ~override~
+  COPY_EXISTING ~spwi622.spl~ ~override~
 
-  ADD_SPELL ~override/spwi621.spl~ 1 7 CLERIC_CONJURE_AIR_ELEMENTAL
+  ADD_SPELL ~override/spwi622.spl~ 1 7 CLERIC_CONJURE_AIR_ELEMENTAL // Don't ask me why... but it works not with air elemental copy, add to be earth elemental
     WRITE_SHORT 0x1c 2
     WRITE_SHORT 0x1e 0
     WRITE_SHORT 0x34 7
-    LPF ALTER_EFFECT INT_VAR match_power = 6 power = 7 END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 165 END // removing the mental combat visual effect for priest
+	LPF DELETE_EFFECT INT_VAR match_opcode = 215 END // removing the mental combat visual effect for priest
+	LPF DELETE_EFFECT INT_VAR match_opcode = 142 END // removing the mental combat visual effect for priest
+	REPLACE_TEXTUALLY SPEART1 DRAIR1 (8)
+    REPLACE_TEXTUALLY SPEART2 DRAIR2 (8)
+    REPLACE_TEXTUALLY SPEART3 DRAIR3 (8)
+	REPLACE_TEXTUALLY CASE_INSENSITIVE SPWI622A SPWI621A (8)
+    REPLACE_TEXTUALLY CASE_INSENSITIVE SPWI622B SPWI621B (8)
+    REPLACE_TEXTUALLY CASE_INSENSITIVE SPWI622C SPWI621C (8)
+	WRITE_LONG 0x8 24839
+	WRITE_LONG 0x50 24840
+	LPF ALTER_EFFECT INT_VAR match_power = 6 power = 7 END
     PATCH_FOR_EACH offset IN 0x50 BEGIN
       READ_LONG ~%offset%~ desc_strref
       PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
@@ -359,6 +370,18 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CONJURE_AIR_ELEME
       END
       SAY_EVALUATED offset ~%desc%~
     END
+
+// Cretaing the new creatuers to remove the mental combat script for priest
+	COPY_EXISTING "SPAIR1.EFF" "override/DRAIR1.EFF" WRITE_ASCIIE 0x30 DRAIRPR2 (8)
+    COPY_EXISTING "SPAIR2.EFF" "override/DRAIR2.EFF" WRITE_ASCIIE 0x30 DRAIRPR3 (8)
+    COPY_EXISTING "SPAIR3.EFF" "override/DRAIR3.EFF" WRITE_ASCIIE 0x30 DRAIRPR4 (8)
+    
+	COPY_EXISTING "ELAIRSU2.CRE" "override/DRAIRPR2.cre"
+	  WRITE_ASCII 0x248 "None" #8
+	COPY_EXISTING "ELAIRSU3.CRE" "override/DRAIRPR3.cre"
+	  WRITE_ASCII 0x248 "None" #8
+	COPY_EXISTING "ELAIRSU4.CRE" "override/DRAIRPR4.cre"
+	  WRITE_ASCII 0x248 "None" #8
 
 END
 
