@@ -2488,6 +2488,11 @@ LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // paladin
     protection      = major
   END
 
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // Special case : inquisitor
+  INT_VAR 
+    string          = 25207
+  END
+
 LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // druid
   INT_VAR 
     string          = 9560
@@ -3628,8 +3633,6 @@ COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
     END
   END
   BUT_ONLY
-// ACTION_IF clab = ~clabpr02~ OR clab = ~clabpr03~ OR clab = clabpr04 OR clab = othyr OR clab = ohtempus OR clab = a#temp OR clab = cdselune OR clab = a#shar OR clab = a#red OR clab = cdilmatr OR clab = cdxvim OR clab = a#ogma OR clab = nmsune OR clab = a#feyw OR clab = a#cyric OR clab = a#ooze THEN BEGIN
- //END ELSE BEGIN
 
 // add generic classes to array
 
