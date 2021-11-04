@@ -355,7 +355,6 @@ ACTION_FOR_EACH creature IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos nalla
     COPY_EXISTING ~%creature%.cre~ ~override~ 
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
 	  READ_BYTE 0x234 "Lv"
 	  READ_SHORT NAME1 "priestG"
 	  GET_STRREF priestG "name" 
@@ -377,7 +376,6 @@ ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig 
     COPY_EXISTING ~%creature%.cre~ ~override~  
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -399,7 +397,6 @@ ACTION_FOR_EACH creature IN acolyte2 amtcle01 amtcler0 arenthis arval ~b!gavin~ 
     COPY_EXISTING ~%creature%.cre~ ~override~  
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -423,7 +420,6 @@ ACTION_IF ohtyr != 0 THEN BEGIN
       COPY_EXISTING ~%creature%.cre~ ~override~
         WRITE_SHORT   0x244 0
         WRITE_SHORT   0x246 0x4000 + "%kit%"
-  //    WRITE_BYTE    0x247 0x40
         BUT_ONLY
 
     END
@@ -442,7 +438,6 @@ ACTION_IF "%a#temp%" != 0 THEN BEGIN
       COPY_EXISTING ~%creature%.cre~ ~override~
         WRITE_SHORT   0x244 0
         WRITE_SHORT   0x246 0x4000 + "%kit%"
-  //    WRITE_BYTE    0x247 0x40
 	    READ_SHORT NAME1 "priestG"
 	    GET_STRREF priestG "name" 
 	    PATCH_IF ("%name%" STRING_COMPARE_CASE "Priest of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Tempus" = 0) BEGIN
@@ -588,7 +583,6 @@ ACTION_FOR_EACH creature IN bstq007 ysselune BEGIN
       WRITE_SHORT   0x244 0
 	  WRITE_SHORT   0x273 3
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -949,7 +943,6 @@ ACTION_FOR_EACH creature IN kpchap01 everard accalia BEGIN
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -1088,7 +1081,6 @@ ACTION_FOR_EACH creature IN _priilm _priilmu priilm priilmu slilmat wilmat s#ilm
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -1464,7 +1456,6 @@ ACTION_FOR_EACH creature IN doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma po
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
       READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -1604,7 +1595,6 @@ ACTION_FOR_EACH creature IN isnfxps YxYve1 BEGIN
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -1856,7 +1846,6 @@ ACTION_FOR_EACH creature IN ar18prie hghprmod mvpries prcdmod prcmod slapri Z#pr
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -2338,7 +2327,6 @@ ACTION_FOR_EACH creature IN branwe branwe5 _branwe _branwe5  O#Bran o#bran25 o#b
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
       BUT_ONLY
 
   END
@@ -2416,7 +2404,6 @@ ACTION_FOR_EACH creature IN viconi6 viconi8 viconi9 viconi11 viconi13 viconi16 v
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
       BUT_ONLY
 
   END
@@ -2488,7 +2475,7 @@ LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // paladin
     protection      = major
   END
 
-LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // Special case : inquisitor
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_descript // Special case: inquisitor
   INT_VAR 
     string          = 25207
   END
@@ -2917,8 +2904,8 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_STORM_SHELL                    => pr
   CLERIC_SUMMON_INSECTS                 => an
   CLERIC_SUNSCORCH                      => sn
-  CLERIC_SYMBOL_OF_HOPELESSNESS         => gu
-  CLERIC_SYMBOL_OF_PAIN                 => gu
+  CLERIC_SYMBOL_HOPELESSNESS 	        => gu
+  CLERIC_SYMBOL_PAIN 	                => gu
   CLERIC_THORN_SPRAY                    => pl
   CLERIC_UNDEAD_WARD                    => wd
   CLERIC_UNFAILING_ENDURANCE            => nr
@@ -2945,6 +2932,31 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_SPACE_WARP                     => nu
   CLERIC_WALL_OF_FIRE                   => cr
   CLERIC_WHEEL_OF_BONES                 => cr
+
+  // mih_sp
+  CLERIC_STRIKING                		=> co
+  CLERIC_SEEKING                		=> nu
+  CLERIC_RESIST_ACID_CORROSION          => pr
+  CLERIC_PROTECTION_FROM_COLD           => pr
+  CLERIC_STICKS_TO_SNAKES           	=> cr
+  CLERIC_HEROISM                		=> co
+  CLERIC_REPEL_INSECTS           		=> an
+  CLERIC_ICE_STORM           			=> we
+  CLERIC_LIGHTNING_STORM           		=> we
+  CLERIC_INFERNO           				=> ef
+  CLERIC_BREAK_ENCHANTMENT          	=> pr
+  CLERIC_HALLOW							=> al
+  CLERIC_UNHALLOW						=> al
+  CLERIC_SUPERHEROISM                	=> co
+  CLERIC_CELESTIAL_PROTECTION           => pr
+  CLERIC_CIRCLE_OF_PROTECTION           => pr
+  CLERIC_CONJURE_WATER_ELEMENTAL		=> ew
+  CLERIC_MASS_NEGATIVE_PLANE_PROTECTION	=> ne
+  CLERIC_AURA_OF_VITALITY				=> he
+  CLERIC_ANIMAL_FRIENDSHIP           	=> an
+  CLERIC_ENDURE_HEAT_COLD          		=> pr
+  CLERIC_CURE_BLIND_DEAF     			=> ne
+
 END
 
 OUTER_SET sphere_descript = 1 
@@ -2988,6 +3000,13 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_REINCARNATION                  => nr
   CLERIC_WALL_OF_FIRE                   => ef
   CLERIC_WHEEL_OF_BONES                 => ne
+   
+  //mih_sp 
+  CLERIC_STICKS_TO_SNAKES           	=> pl
+  CLERIC_PROTECTION_FROM_COLD           => ew
+  CLERIC_ICE_STORM           			=> ew
+  CLERIC_CIRCLE_PROTECTION           	=> co
+  CLERIC_CURE_BLIND_DEAF     			=> he
 END
 
 OUTER_SET sphere_descript = 2
@@ -3917,7 +3936,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     ~a#red~       => ~a#red~
     ~a#shar~      => ~a#shar~
     ~a#temp~      => ~a#temp~
-    ~cdilmatr~    => ~cdilmatr~
+    ~cdilmatr~    => ~cdilma~
     ~cdselune~    => ~cdselu~
     ~cdxvim~      => ~cdxvim~
     ~nmsune~      => ~nmsune~
@@ -3968,10 +3987,21 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
 
   END
   
+  ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ THEN BEGIN
+
+    COPY_EXISTING ~ludr0.2da~ ~override/lua#ooze.2da~
+  
+  END
 
   // patch hla table to exlude quest-level spells from disallowed spheres
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_sphere_hla_match BEGIN
+  ACTION_FOR_EACH class IN ~ohtempus~ ~a#temp~ BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~%class%.2da~ THEN BEGIN
+	  OUTER_TEXT_SPRINT "tempus" "%class%"
+	END
+  END
 
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_sphere_hla_match BEGIN
+  
     ~a#cyri~ => ~a#cyric~
     ~a#feyw~ => ~a#feyw~
     ~a#koss~ => ~a#koss~
@@ -3979,8 +4009,8 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     ~a#ooze~ => ~a#ooze~
     ~a#red~  => ~a#red~
     ~a#shar~ => ~a#shar~
-    ~a#temp~ => ~a#temp~
-    ~cdilmatr~ => ~cdilmatr~
+    ~a#temp~ => ~%tempus%~
+    ~cdilma~ => ~cdilmatr~
     ~cdselu~ => ~cdselune~
     ~cdxvim~ => ~cdxvim~
     ~nmsune~ => ~nmsune~
@@ -3988,28 +4018,15 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
     ~cdhelm~ => ~clabpr03~
     ~cdlath~ => ~clabpr04~
     ~cdtyr~  => ~ohtyr~
-    ~ohtempus~ => ~a#temp~
     ~cm0~    => ~clabpr01~ // cleric-mages
     ~ct0~    => ~clabpr01~ // cleric-thief
     ~dr0~    => ~clabdr01~ // druid
-	~dr2~    => ~clabdr02~ // created only to make corrections to TOTEMIC_DRUID table
-	~dr3~    => ~clabdr03~ // created only to make corrections to SHAPESHIFTER table
-	~dr4~    => ~clabdr04~ // created only to make corrections to BEAST_FRIEND	table
     ~fc0~    => ~clabpr01~ // fighter-cleric
     ~fd0~    => ~clabdr01~ // fighter-druid
     ~fmc~    => ~clabpr01~ // fighter-mage-cleric
 //    ~cr0~    => ~clabpr01~ // cleric-ranger; special, handled above
     ~cdcler~    => ~clabpr01~ // keep last as its used as template for others
 
-  END
-  
-  ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ THEN BEGIN
-
-    COPY_EXISTING ~ludr0.2da~ ~override/lua#ooze.2da~
-				  ~ludr0.2da~ ~override/ludr2.2da~
-				  ~ludr0.2da~ ~override/ludr3.2da~
-				  ~ludr0.2da~ ~override/ludr4.2da~
-  
   END
   
   ACTION_PHP_EACH cd_sphere_hla_match AS table => clab BEGIN
