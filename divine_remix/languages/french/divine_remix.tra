@@ -9,7 +9,8 @@
 @101 = ~Vous ne pouvez pas lancer ce sort jusqu'à ce que l'enchantement précédemment lancé se dissipe.~
 
 @112 = ~Lueur féérique~
-@113 = ~Lueur féérique (Évocation)
+@113 = ~Lueur féérique 
+(Évocation)
 Niveau : 1
 Sphère : Climat
 Portée : champ de vision du lanceur
@@ -20,7 +21,8 @@ Jet de sauvegarde : Aucun
 
 Ce sort crée une pâle lueur qui entoure la cible, signalant sa position et la rendant plus visible, lui infligeant un malus de -2 à la classe d'armure.~
 
-@125 = ~Guérison des maladies (Abjuration)
+@125 = ~Guérison des maladies 
+(Abjuration)
 Niveau : 3
 Sphère : Guérison
 Portée : Contact
@@ -32,7 +34,8 @@ Jet de sauvegarde : Aucun
 En imposant les mains sur une personne souffrante, le lanceur de ce sort peut guérir presque toutes les maladies connues. La guérison est permanente mais n'accorde pas à son bénéficiaire une quelconque immunité magique contre de futures affections. Ce sort annule également l'effet d'un sort de débilité mentale. Certaines maladies magiques ne sont pas sujettes à ce sort.~
 
 @166 = ~Carapace Divine~
-@167 = ~Carapace Divine (Abjuration)
+@167 = ~Carapace Divine 
+(Abjuration)
 Niveau : 6
 Sphère : Chaos
 Portée : Lanceur du sort
@@ -42,7 +45,8 @@ Zone d'effet : Lanceur du sort
 Jet de sauvegarde : Aucun
 
 Ce sort enveloppe le lanceur d'une carapace formée d'énergie qui bloque ou dévie la plupart des attaques. Le lanceur reçoit un bonus de 2 à la classe d'armure et aux jets de sauvegarde, 10 % de résistance aux dégâts élémentaires (froid, feu, électricité et acide) ainsi qu'une immunité aux projectiles non-magiques.~
-@168 = ~Ordres chaotiques (Enchantement/Charme)
+@168 = ~Ordres chaotiques 
+(Enchantement/Charme)
 Niveau : 5
 Sphère : Chaos
 Portée : champ visuel du lanceur
@@ -55,7 +59,8 @@ Ce sort immunise la cible contre les ordres magiques, comme par exemple Injoncti
 
 
 @171 = ~Esprit inexpugnable~
-@172 = ~Esprit inexpugnable (Enchantement/Charme)
+@172 = ~Esprit inexpugnable 
+(Enchantement/Charme)
 Niveau : 5
 Sphère : Protection, Pensée
 Portée : contact
@@ -66,7 +71,8 @@ Jet de sauvegarde : Aucun
 
 Ce sortilège protège la cible contre les attaques magiques ou psioniques affectant l'esprit. Cela comprend les sorts d'Immobilisation des personnes, Obstination bornée, Confusion, Domination et effets similaires,  de même que la plupart des facultés psioniques appartenant à la discipline de la télépathie.~
 @173 = ~Résistance à l'Acide et à la Corrosion~
-@174 = ~Résistance à l'Acide et à la Corrosion (Abjuration)
+@174 = ~Résistance à l'Acide et à la Corrosion 
+(Abjuration)
 Niveau : 2
 Sphère : Protection
 Portée : contact
@@ -77,7 +83,8 @@ Jet de sauvegarde : Aucun
 
 Ce sortilège offre à la cible une meilleure protection contre l'acide et les substances caustiques ou corrosives de toutes sortes, ce qui comprend le souffle d'un Dragon Noir, les Flèches Acides de Melf ainsi que les attaques naturelles de divers limons, vases, gelées et poudings. Ces attaques n'infligent que la moitié des dégâts au personnage ainsi protégé.~
 @175 = ~Force de la Pierre~
-@176 = ~Force de la Pierre (Invocation/Évocation)
+@176 = ~Force de la Pierre 
+(Invocation/Évocation)
 Niveau : 1
 Sphère : Élémentaire (terre)
 Portée : Contact
@@ -92,7 +99,8 @@ Cette faculté permet au prêtre de puiser dans la puissance de sa divinité pour c
 @178 = ~Pistage
 Grâce à son intime connaissance de son environnement et des créatures qui y vivent, un prêtre peut utiliser cette faculté pour avoir une idée générale des créatures présentes dans une zone donnée, ainsi que de la direction dans laquelle on peut les trouver. Des flèches rouges indiquent à l'écran la direction générale des créatures de la zone.~
 @179 = ~Guérison de la cécité/surdité~
-@180 = ~Guérison de la cécité/surdité (Abjuration)
+@180 = ~Guérison de la cécité/surdité 
+(Abjuration)
 Niveau : 3
 Sphère : Guérison
 Portée : contact
@@ -103,7 +111,8 @@ Jet de sauvegarde : Spécial
 
 Par simple contact, le prêtre peut soigner certaines formes de cécité ou de surdité affectant la cible.~
 @181 = ~Cécité/Surdité~
-@182 = ~Cécité/Surdité (Abjuration)
+@182 = ~Cécité/Surdité 
+(Abjuration)
 Niveau : 3
 Sphère : Guérison
 Portée : contact
@@ -116,7 +125,8 @@ Ce sort requiert d'entrer en contact direct avec la cible (jet d'attaque réussi)
 
 Une créature assourdie a 50 % de chances d'échouer à incanter ses sorts. Une créature aveuglée subit un malus de -4 à ses jets d'attaque et une pénalité de +4 à sa classe d'armure.~
 @184 = ~Maladie~
-@185 = ~Maladie (Abjuration)
+@185 = ~Maladie 
+(Abjuration)
 Niveau : 3
 Sphère : Guérison
 Portée : contact
@@ -130,7 +140,8 @@ Ce sort inocule l'une de deux formes de maladie à la victime (50 % de chances ch
 
 
 @194 = ~Détection du Bien~
-@195 = ~Détection du Bien (Divination)
+@195 = ~Détection du Bien 
+(Divination)
 Niveau : 1
 Sphère : Divination
 Portée : champ visuel du lanceur
@@ -141,7 +152,8 @@ Jet de sauvegarde : Aucun
 
 Ce sort permet de découvrir l'aura de Bien de n'importe quelle créature. Toute créature d'alignement bon à portée du sort se met à luire pendant un bref instant d'une couleur verte.~
 @196 = ~Protection contre le Bien~
-@197 = ~Protection contre le Bien (Abjuration)
+@197 = ~Protection contre le Bien 
+(Abjuration)
 Niveau : 1
 Sphère : Protection
 Portée : contact
@@ -152,7 +164,8 @@ Jet de sauvegarde : Aucun
 
 Grâce à ce sort, une barrière magique se crée autour de la cible à 30 cm de distance. La barrière se déplace avec le bénéficiaire et a deux effets majeurs : d'abord, toute créature d'alignement bon ou sujette à un enchantement d'alignement bon lançant une attaque contre la cible protégée reçoit un malus de -2 au jet d'attaque, et la cible bénéficie d'un bonus de +2 sur ses jets de sauvegarde contre de telles attaques.~
 @198 = ~Protection contre le Bien sur 3 mètres~
-@199 = ~Protection contre le Bien sur 3 mètres (Abjuration)
+@199 = ~Protection contre le Bien sur 3 mètres 
+(Abjuration)
 Niveau : 3
 Sphère : Protection
 Portée : contact
@@ -164,7 +177,8 @@ Jet de sauvegarde : Aucun
 Lorsque le prêtre lance ce sort, toutes les créatures se trouvant à moins de 3 mètres de lui sont affectées individuellement par Protection contre le Bien. Ce sort crée autour de chaque bénéficiaire une barrière magique à 30 cm de distance, et qui se déplace avec lui. Cette protection a deux effets majeurs. Premièrement, les créatures d'alignement bon ou sujettes à un enchantement d'alignement bon reçoivent une pénalité de -2 à leurs attaques contre les cibles. Deuxièmement, elle confère un bonus de +2 aux jets de sauvegarde contre les attaques causées par de telles créatures.~
 @201 = ~Protégé contre le Bien~
 @204 = ~Blessure intermédiaire~
-@205 = ~Blessure intermédiaire (Nécromancie)
+@205 = ~Blessure intermédiaire 
+(Nécromancie)
 Niveau : 5
 Sphère : Guérison
 Portée : contact
@@ -180,7 +194,8 @@ Ce sort est l'inverse du sort de Soins des blessures moyennes. Au lieu de guérir
 @208 = ~Protégé contre le Bien~
 
 
-@214 = ~Convocation d'Elémentaire d'Air (Conjuration/Convocation)
+@214 = ~Convocation d'Elémentaire d'Air 
+(Conjuration/Convocation)
 Sphère : Élémentaire (air)
 Niveau : 7
 Portée : champ visuel du lanceur
@@ -190,7 +205,8 @@ Zone d'effet : spéciale
 Jet de sauvegarde : Aucun
 
 Ce sort ouvre un portail vers le plan élémentaire de l'Air, invoquant un élémentaire d'air au voisinage du jeteur de sorts. Il y a 60 % de chances qu'un élémentaire de 12 dés de vie apparaisse, 35 % qu'un élémentaire de 16 dés de vie réponde à l'appel et 5 % qu'un élémentaire de 24 dés de vie vienne faire le ménage. Ce sort requiert une concentration intense après l'incantation afin d'implanter le contrôle, et ce pendant 3 rounds (il y a 15 % de chances de perdre le contrôle). Cependant, à la fin de cette période, l'élémentaire sera aux ordres du lanceur jusqu'à la fin de la durée du sortilège ou son trépas. Tous les ordres donnés à la créature le sont par télépathie, ce qui élimine les pertes de temps dues à des problèmes de compréhension ainsi que le besoin de connaître le langage de la créature.~
-@215 = ~Absorption d'énergie (Nécromancie)
+@215 = ~Absorption d'énergie 
+(Nécromancie)
 Niveau : 7
 Sphère : Nécromancie
 Portée : contact
@@ -239,11 +255,11 @@ Ce sort ouvre un canal entre le Plan du lanceur et le Plan de l'Énergie Négative
 @10001 = ~J'ai été mandaté par le temple du Seigneur de l'Aube ! Tout ceci prendra fin ici et maintenant !~
 
 @10002 = ~seigneur des tempêtes de talos~
-@10003 = ~vigilant de heaum~
+@10003 = ~sentinelle de heaum~
 @10004 = ~seigneur de l'aube de lathandre~
 
 
-@10101 = ~Guerrier / Vigilant de Heaum~
+@10101 = ~Guerrier / Sentinelle de Heaum~
 @10102 = ~Écriture de parchemins
 Cette faculté autorise le prêtre à recréer des parchemins magiques contenant des sorts de niveau moyen ou peu élevé. Les parchemins créés sont choisis aléatoirement dans la liste ci-dessous :
  1) Soins des blessures graves
@@ -282,15 +298,15 @@ Après avoir assisté au sermon du prêtre sans yeux, j'ai été contacté par un cler
 @10136 = ~Seigneur des Tempêtes~
 @10137 = ~seigneur des tempêtes~
 @10138 = ~SEIGNEUR DES TEMPÊTES~
-@10139 = ~Vigilant~
-@10140 = ~vigilant~
-@10141 = ~VIGILANT~
+@10139 = ~Sentinellet~
+@10140 = ~sentinelle~
+@10141 = ~SENTINELLE~
 @10142 = ~Seigneur de l'Aube~
 @10143 = ~seigneur de l'aube~
 @10144 = ~SEIGNEUR DE L'AUBE~
-@10145 = ~Aumônier de Guerre~
-@10146 = ~aumônier de guerre~
-@10147 = ~AUMÔNIER DE GUERRE~
+@10145 = ~Guerroyeur~
+@10146 = ~guerroyeur~
+@10147 = ~GUERROYEUR~
 @10148 = ~Justicier Divin~
 @10149 = ~justicier divin~
 @10150 = ~JUSTICIER DIVIN~
@@ -322,7 +338,7 @@ Les prêtres les plus puissants peuvent faire appel à leur divinité pour les prot
 
 Capacités :
 - Arme spirituelle : demi-pique - 'Furie de Talos' une fois par jour.
-ARME SPIRITUELLE : la demi-pique est l'arme spirituelle des Seigneurs des Tempêtes de Talos, et se manie comme si le lanceur en avait la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure un round par niveau de lanceur, jusqu'à un maximum de 20 rounds, et ne peut être utilisée qu'une fois par jour.
+la demi-pique est l'arme spirituelle des Seigneurs des Tempêtes de Talos, et se manie comme si le lanceur en avait la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure un round par niveau de lanceur, jusqu'à un maximum de 20 rounds, et ne peut être utilisée qu'une fois par jour.
 - Résistance innée à l'électricité, 1 % par niveau.
 - 'Coup destructeur' une fois par jour.
 COUP DESTRUCTEUR : une fois par jour, un Seigneur des Tempêtes peut concentrer la fureur de Talos au combat. Ce sort lui confère des bonus de +2 aux jets d'attaque et de dégâts pendant un round par niveau (20 rounds maximum).
@@ -338,7 +354,7 @@ Désavantages :
 
 Capacités :
 - Arme spirituelle : masse - 'Oraison de l'Aube' une fois par jour.
-ARME SPIRITUELLE : cette masse est l'arme spirituelle des Seigneurs de l'Aube de Lathandre. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+cette masse est l'arme spirituelle des Seigneurs de l'Aube de Lathandre. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
 - 'Don de Lathandre' tous les 10 niveaux (une utilisation au 1er niveau).
 DON DE LATHANDRE : ce sort dure 6 secondes par niveau du lanceur. Il lui procure un bonus de +1 au toucher, aux dégâts et aux jets de sauvegarde, et lui confère une attaque supplémentaire par round. Il le protège aussi du drain de niveau.
 - 'Immobilisation des Morts-Vivants' une fois par jour à partir du niveau 7 (comme le sort de mage de niveau 3).
@@ -374,7 +390,7 @@ PARAMÈTRES :
  Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
  +5 % de Résistance à la magie
  +1 en Force~
-@10184 =~VIGILANT DE HEAUM : les fidèles du dieu neutre des Sentinelles et des Protecteurs sont des guerriers à part entière. Ils sont souvent considérés comme les défenseurs des innocents.
+@10184 =~SENTINELLE DE HEAUM : les fidèles du dieu neutre des Sentinelles et des Protecteurs sont des guerriers à part entière. Ils sont souvent considérés comme les défenseurs des innocents.
 
 Avantages : 
 - Vision Véritable, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
@@ -395,15 +411,15 @@ PARAMÈTRES :
  +5 % de Résistance à la magie
  +1 en Force~
 @10188 = ~Seigneur des Tempêtes de Talos~
-@10189 = ~Vigilant de Heaum~
+@10189 = ~Sentinelle de Heaum~
 @10190 = ~Seigneur de l'Aube de Lathandre~
 @10192 = ~Renouveau de Lathandre~
 @10193 = ~Accordé aux Seigneurs de l'Aube de Lathandre les plus puissants, ce sort permet de soigner tous les membres du groupe et de les guérir de tous les effets suivants : drain de niveau, maladie, confusion, cécité, surdité et débilité mentale. Le groupe acquiert en outre une régénération correspondant à un point de vie par seconde pendant 20 rounds.~
-@10194 = ~VIGILANT DE HEAUM : les fidèles du dieu neutre des Sentinelles et des Protecteurs sont des guerriers à part entière. Ils sont souvent considérés comme les défenseurs des innocents.
+@10194 = ~SENTINELLE DE HEAUM : les fidèles du dieu neutre des Sentinelles et des Protecteurs sont des guerriers à part entière. Ils sont souvent considérés comme les défenseurs des innocents.
 
 Capacités :
 - Arme spirituelle : épée bâtarde - 'Éternelle Vigilance' une fois par jour.
-ARME SPIRITUELLE : cette épée bâtarde est l'arme spirituelle des Vigilants de Heaum. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25, et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+cette épée bâtarde est l'arme spirituelle des Vigilants de Heaum. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25, et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
 - 'Glyphe de Garde' une fois par jour, comme le sort de clerc de niveau 3 du même nom.
 - 'Vision Lointaine' une fois par jour à partir du niveau 7, comme le sort de clerc de niveau 4 du même nom.
 - 'Protection contre les Armes Non-Magiques' une fois par jour à partir du niveau 9, comme le sort de mage de niveau 5 du même nom.
@@ -433,7 +449,7 @@ Les prêtres de Séluné se font appeler les Étoiles d'Argent. Ce sont d'ardents dé
 
 Capacités :
 - Arme spirituelle : masse - 'Main Lunaire' une fois par jour.
-ARME SPIRITUELLE : la Main Lunaire est l'arme spirituelle des Étoiles d'Argent de Séluné. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à un maximum de 20 rounds.
+la Main Lunaire est l'arme spirituelle des Étoiles d'Argent de Séluné. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à un maximum de 20 rounds.
 - Infravision.
 - 'Bouclier Lunaire' une fois par jour.
 BOUCLIER LUNAIRE : avec ce sort, l'Étoile d'Argent reçoit une résistance à la magie à hauteur de 2 % par niveau de clerc (maximum 40 % au niveau 20). Si la cible disposait déjà d'une résistance à la magie supérieure, celle-ci peut se retrouver diminuée par ce sort. L'effet persiste jusqu'à la fin du sort, ou jusqu'à dissipation.
@@ -506,7 +522,7 @@ Les Manteaux de la Nuit de Shar peuvent uniquement être d'alignement Neutre Mauv
 
 Capacités :
 - Arme spirituelle : chakram - 'Disque de la Nuit' une fois par jour.
-ARME SPIRITUELLE : le chakram est l'arme spirituelle des Manteaux de la Nuit. Le chakram est équivalent à une fléchette de retour et s'utilise comme si le lanceur en avait la grande maîtrise. Le chakram est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+le chakram est l'arme spirituelle des Manteaux de la Nuit. Le chakram est équivalent à une fléchette de retour et s'utilise comme si le lanceur en avait la grande maîtrise. Le chakram est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
 - Immunité à toute forme de cécité.
 - 'Disques Ténébreux' une fois par jour.
 Ce sort crée des petits chakrams dans la main du lanceur (un par niveau du lanceur de sorts). Ces chakrams peuvent être lancés, provoquant le silence sur les cibles ratant leur jet de sauvegarde contre les sorts, ainsi que 2d4 dégâts de froid. Les morts-vivants doivent également réussir un jds contre la paralysie ou être immobilisés  pendant un round.
@@ -583,7 +599,7 @@ Publiquement, l'ensemble des prêtres de la Cavalière Rouge est surnommé "la Comm
 
 Capacités : 
 - Arme spirituelle : épée longue - 'Échec et Mat' une fois par jour.
-ARME SPIRITUELLE : Échec et Mat est l'arme spirituelle des Stratèges Divins et se manie comme si le lanceur en avait la grande maîtrise. Echec et Mat est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+Échec et Mat est l'arme spirituelle des Stratèges Divins et se manie comme si le lanceur en avait la grande maîtrise. Echec et Mat est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
 - Peut lancer les sorts de mage suivants : 'Infravision', 'Clairvoyance' et 'Oeil de Magicien'.
 - Au niveau 13, un Stratège Divin peut effectuer deux attaques de mêlée par round.
 - 'Hâte' une fois par jour à partir du niveau 7 (comme le sort de mage de niveau 3).
@@ -630,16 +646,16 @@ Bien que ces missions dans des contrées sauvages soient souvent vues comme des c
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 @10900 = ~Installer le kit de clerc d'Aumonier de Guerre de Tempus~
-@10901 = ~Aumônier de Guerre de Tempus~
-@10902 = ~AUMÔNIER DE GUERRE DE TEMPUS : Tempus est le dieu de la guerre des Royaumes, le Seigneur des Batailles, le Marteleur d'Ennemis. Il distribue ses faveurs au hasard, et pourtant sa nature chaotique fait qu'il favorise chaque camp de façon équitable. Il peut soutenir une armée un jour, puis ses adversaires le lendemain. Telle est la nature de la guerre incarnée par Tempus.
+@10901 = ~Guerroyeur de Tempus~
+@10902 = ~GUERROYEUR DE TEMPUS : Tempus est le dieu de la guerre des Royaumes, le Seigneur des Batailles, le Marteleur d'Ennemis. Il distribue ses faveurs au hasard, et pourtant sa nature chaotique fait qu'il favorise chaque camp de façon équitable. Il peut soutenir une armée un jour, puis ses adversaires le lendemain. Telle est la nature de la guerre incarnée par Tempus.
 
-Les Aumôniers de Guerre de Tempus revêtent des armures usées et cabossées. Dans les régions civilisées, cela a été remplacé par une calotte d'acier, mais le message reste le même : ce sont des prêtres combattants. Leur place est au beau milieu de la bataille, à haranguer les troupes. Lors d'un conflit, on peut trouver des Aumôniers de Guerre de Tempus dans les deux camps car nul ne peut vraiment savoir qui le dieu de la guerre choisira de soutenir.
+Les Guerroyeur de Tempus revêtent des armures usées et cabossées. Dans les régions civilisées, cela a été remplacé par une calotte d'acier, mais le message reste le même : ce sont des prêtres combattants. Leur place est au beau milieu de la bataille, à haranguer les troupes. Lors d'un conflit, on peut trouver des Guerroyeur de Tempus dans les deux camps car nul ne peut vraiment savoir qui le dieu de la guerre choisira de soutenir.
 
-Les Aumôniers de Guerre de Tempus peuvent uniquement être d'alignement Chaotique Neutre, Chaotique Bon, Neutre Strict et Chaotique Mauvais.
+Les Guerroyeur de Tempus peuvent uniquement être d'alignement Chaotique Neutre, Chaotique Bon, Neutre Strict et Chaotique Mauvais.
 
 Capacités :
 - Arme spirituelle : hache d'armes - 'Prouesse Martiale' une fois par jour.
-ARME SPIRITUELLE : Prouesse Martiale est l'arme spirituelle des Aumôniers de Guerre de Tempus, et se manie comme si l'utilisateur en avait la grande maîtrise. Prouesse martiale est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+Prouesse Martiale est l'arme spirituelle des Guerroyeur de Tempus, et se manie comme si l'utilisateur en avait la grande maîtrise. Prouesse martiale est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
 - Peut se spécialiser (deux étoiles) dans toutes les armes de mêlée qu'un prêtre peut utiliser.
 - Peut entrer en Rage Berserk une fois par jour.
 - 'Puissance Sacrée' une fois par jour à partir du niveau 7 (comme le sort de prêtre du niveau 4).
@@ -651,10 +667,10 @@ Désavantages :
 – Alignement restreint à chaotique neutre, chaotique bon, neutre strict et chaotique mauvais.
 - Ne peut placer de point de spécialisation dans les armes à distance.~
 @10903 = ~Hache d'Armes : 'Prouesse Martiale'~
-@10904 = ~Utilisée dans une bataille sans fin, la hache 'Prouesse Martiale' est l'arme favorite de Tempus. Il offre à ses suivants les plus ardents, les Aumôniers de Guerre, la capacité de créer une arme similaire enchantée par sa force une fois par jour. Ceci est un exemple d'une telle arme. La hache est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs.~
+@10904 = ~Utilisée dans une bataille sans fin, la hache 'Prouesse Martiale' est l'arme favorite de Tempus. Il offre à ses suivants les plus ardents, les Guerroyeur, la capacité de créer une arme similaire enchantée par sa force une fois par jour. Ceci est un exemple d'une telle arme. La hache est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs.~
 
 @10910 = ~Symbole Sacré de Tempus~
-@10911 = ~Tempus récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : une épée argentée en forme d'éclair sur un bouclier rouge. Le symbole accorde à l'Aumônier de Guerre la puissance de Tempus.
+@10911 = ~Tempus récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : une épée argentée en forme d'éclair sur un bouclier rouge. Le symbole accorde à l'Guerroyeur la puissance de Tempus.
 
 PARAMÈTRES :
 
@@ -671,23 +687,23 @@ Zone d'effet : lanceur
 Sphère : Combat
 Jet de sauvegarde : non
 
-En faisant appel à l'endurance de Tempus dans l'adversité, l'Aumônier de Guerre se protège de la plupart des dégâts physiques. Lorsqu'il lance ce sort, il reçoit une invulnérabilité complète à toutes les armes, hormis celles qui disposent d'un enchantement supérieur à +5. Ce sort incroyablement puissant ne dure que très peu de temps. Cependant, le temps d'incantation très court en fait un sort incroyablement utile dans le feu de l'action, où quelques secondes de répit peuvent faire la différence entre la vie et la mort. Ce sort dure 4 rounds ou jusqu'à ce qu'il soit dissipé.~
-@10914 = ~aumônier de guerre de tempus~
-@10915 =~AUMÔNIER DE GUERRE DE TEMPUS : Tempus est le dieu de la guerre des Royaumes, le Seigneur des Batailles, le Marteleur d'Ennemis. Il distribue ses faveurs au hasard, et pourtant sa nature chaotique fait qu'il favorise chaque camp de façon équitable. Il peut soutenir une armée un jour, puis ses adversaires le lendemain. Telle est la nature de la guerre incarnée par Tempus.
+En faisant appel à l'endurance de Tempus dans l'adversité, l'Guerroyeur se protège de la plupart des dégâts physiques. Lorsqu'il lance ce sort, il reçoit une invulnérabilité complète à toutes les armes, hormis celles qui disposent d'un enchantement supérieur à +5. Ce sort incroyablement puissant ne dure que très peu de temps. Cependant, le temps d'incantation très court en fait un sort incroyablement utile dans le feu de l'action, où quelques secondes de répit peuvent faire la différence entre la vie et la mort. Ce sort dure 4 rounds ou jusqu'à ce qu'il soit dissipé.~
+@10914 = ~guerroyeur de tempus~
+@10915 =~GUERROYEUR DE  DE TEMPUS : Tempus est le dieu de la guerre des Royaumes, le Seigneur des Batailles, le Marteleur d'Ennemis. Il distribue ses faveurs au hasard, et pourtant sa nature chaotique fait qu'il favorise chaque camp de façon équitable. Il peut soutenir une armée un jour, puis ses adversaires le lendemain. Telle est la nature de la guerre incarnée par Tempus.
 
-Les Aumôniers de Guerre de Tempus revêtent des armures usées et cabossées. Dans les régions civilisées, cela a été remplacé par une calotte d'acier, mais le message reste le même : ce sont des prêtres combattants. Leur place est au beau milieu de la bataille, à haranguer les troupes. Lors d'un conflit, on peut trouver des Aumôniers de Guerre de Tempus dans les deux camps car nul ne peut vraiment savoir qui le dieu de la guerre choisira de soutenir.
+Les Guerroyeur de Tempus revêtent des armures usées et cabossées. Dans les régions civilisées, cela a été remplacé par une calotte d'acier, mais le message reste le même : ce sont des prêtres combattants. Leur place est au beau milieu de la bataille, à haranguer les troupes. Lors d'un conflit, on peut trouver des Guerroyeur de Tempus dans les deux camps car nul ne peut vraiment savoir qui le dieu de la guerre choisira de soutenir.
 
 Avantages : 
 - Peut se spécialiser (deux étoiles) dans toutes les armes de mêlée qu'un prêtre peut utiliser.
 - Puissance Sacrée, une fois par jour tous les 5 niveaux (une utilisation au 1er niveau)
 - Peut utiliser la Rage, une fois par jour tous les 10 niveaux (une utilisation au 1er niveau)
 
-RAGE : L'état enragé dure 1 tour. Un Aumônier de Guerre enragé gagne un bonus de +2 à ses jets d'attaque et de dégâts, ainsi qu'à sa classe d'armure, et devient immunisé au charme, à la confusion, la peur, la débilité mentale, l'immobilisation, l'emprisonnement, l'absorption de niveau, au sort de labyrinthe, à l'étourdissement et au sommeil. L'Aumônier de Guerre gagne également 15 pv temporaires qui lui seront retirés à la fin de sa rage berserk, donc avec le risque de l'assommer.
+RAGE : L'état enragé dure 1 tour. Un Guerroyeur enragé gagne un bonus de +2 à ses jets d'attaque et de dégâts, ainsi qu'à sa classe d'armure, et devient immunisé au charme, à la confusion, la peur, la débilité mentale, l'immobilisation, l'emprisonnement, l'absorption de niveau, au sort de labyrinthe, à l'étourdissement et au sommeil. L'Guerroyeur gagne également 15 pv temporaires qui lui seront retirés à la fin de sa rage berserk, donc avec le risque de l'assommer.
 
 Désavantages :
 – Alignement restreint à chaotique neutre, chaotique bon, neutre strict et chaotique mauvais.
 - Ne peut placer de point de spécialisation dans les armes à distance.~
-@10916 =~Les Aumôniers de Guerre connaissent bien le combat et la destruction. Soyez le messager de la fureur du Seigneur des Tempêtes !~ ~Les Aumôniers de Guerre connaissent bien le combat et la destruction. Soyez la messagère de la fureur du Seigneur des Tempêtes !~
+@10916 =~Les Guerroyeur connaissent bien le combat et la destruction. Soyez le messager de la fureur du Seigneur des Tempêtes !~ ~Les Guerroyeur connaissent bien le combat et la destruction. Soyez la messagère de la fureur du Seigneur des Tempêtes !~
 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -708,7 +724,7 @@ Les Nobles Martyrs d'Ilmater peuvent uniquement être d'alignement Loyal Bon, Neu
 
 Capacités :
 - Arme spirituelle : poing - 'Main d'Ilmater' une fois par jour.
-ARME SPIRITUELLE : la Main d'Ilmater est l'arme spirituelle des Nobles Martyrs d'Ilmater. La Main d'Ilmater totalise 1d6 points de dégâts de base et se manie comme si l'utilisateur en avait la grande maîtrise. La Main d'Ilmater est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. La Main d'Ilmater dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+la Main d'Ilmater est l'arme spirituelle des Nobles Martyrs d'Ilmater. La Main d'Ilmater totalise 1d6 points de dégâts de base et se manie comme si l'utilisateur en avait la grande maîtrise. La Main d'Ilmater est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. La Main d'Ilmater dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
 - 'Guérison par Imposition des Mains' une fois par jour.
 - 'Neutralisation du Poison' une fois par jour à partir du niveau 7 (comme le sort de prêtre de niveau 4).
 - 'Endurance d'Ilmater' une fois par jour à partir du niveau 9.
@@ -840,8 +856,8 @@ Bien que ces missions dans des contrées sauvages soient souvent vues comme des c
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@11801 = ~Tyran d'Iyachtu Xvim~
-@11802 = ~TYRAN D'IYACHTU XVIM : Il est dit qu'Iyachtu Xvim est le fruit de l'union entre le Seigneur Noir, Baine, et une tanar'ri majeure ou vénérable. C'est ainsi que le sang de Baine coule dans ses veines. D'autres histoires disent qu'il est le rejeton du Seigneur Noir et d'une paladine corrompue. Aussi appelé l'Enfant-Dieu et le Fils de Baine, Xvim a servi ce dernier en tant qu'émissaire dans les Royaumes, accomplissant la volonté de son père. Il peut apparaître sous la forme d'un homme nu et décharné portant un gigantesque cimeterre ou un nuage noir avec des yeux brillants verts.
+@11801 = ~Authlim d'Iyachtu Xvim~
+@11802 = ~AUTHLIM D'IYACHTU XVIM : Il est dit qu'Iyachtu Xvim est le fruit de l'union entre le Seigneur Noir, Baine, et une tanar'ri majeure ou vénérable. C'est ainsi que le sang de Baine coule dans ses veines. D'autres histoires disent qu'il est le rejeton du Seigneur Noir et d'une paladine corrompue. Aussi appelé l'Enfant-Dieu et le Fils de Baine, Xvim a servi ce dernier en tant qu'émissaire dans les Royaumes, accomplissant la volonté de son père. Il peut apparaître sous la forme d'un homme nu et décharné portant un gigantesque cimeterre ou un nuage noir avec des yeux brillants verts.
 
 Xvim a été emprisonné sous Château-Zhentil durant le Temps des Troubles, où il a été retenu captif pendant dix ans. Il a finalement réussi à s'enfuir lors de la chute de Château-Zhentil durant le fiasco de la Cyrinishad, où il a pu dérober à Cyric les attributions de la Tyrannie et de la Haine. Il est maintenant connu comme étant le dieu de la Peur, de la Haine, du Mal et de la Tyrannie. Il est en ce moment en train de travailler à récupérer la place de son défunt père, Baine, ce qui fait de lui un ennemi de Cyric. Il est particulièrement populaire dans l'Est, et plus particulièrement à Thay, mais son culte se développe rapidement dans les Royaumes. Ses prêtres portent habituellement des robes noires à motifs vert foncé. Ils portent aussi des gantelets de fer noir décorés d'un oeil vert au dos de la main. Il s'agit en fait du symbole sacré des prêtres de Xvim.
 
@@ -869,7 +885,8 @@ PARAMÈTRES :
 @11805 = ~Cimeterre : 'Cimeterre des Âmes'~
 @11806 = ~Le Cimeterre des Âmes est l'arme spirituelle des Tyrans d'Iyachtu Xvim. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Le Cimeterre des Âmes est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
 @11807 = ~Invocation de Xvim~
-@11808 = ~Invocation de Xvim (Conjuration/Convocation)
+@11808 = ~Invocation de Xvim 
+(Conjuration/Convocation)
 Niveau : Quête
 Sphère : Générale, Convocation
 Portée : 35 mètres
@@ -879,8 +896,8 @@ Zone d'effet : spéciale
 Jet de sauvegarde : non
 
 Ce sort invoque de puissantes créatures d'alignement loyal-mauvais pour combattre aux côtés du lanceur. Ce sort peut invoquer un à quatre tyrannoeils orbes anciens.~
-@11809 = ~tyran d'iyachtu xvim~
-@11810 =~TYRAN D'IYACHTU XVIM : Il est dit qu'Iyachtu Xvim est le fruit de l'union entre le Seigneur Noir, Baine, et une tanar'ri majeure ou vénérable. C'est ainsi que le sang de Baine coule dans ses veines. D'autres histoires disent qu'il est le rejeton du Seigneur Noir et d'une paladine corrompue. Aussi appelé l'Enfant-Dieu et le Fils de Baine, Xvim a servi ce dernier en tant qu'émissaire dans les Royaumes, accomplissant la volonté de son père. Il peut apparaître sous la forme d'un homme nu et décharné portant un gigantesque cimeterre ou un nuage noir avec des yeux brillants verts.
+@11809 = ~authlim d'iyachtu xvim~
+@11810 =~AUTHLIM D'IYACHTU XVIM : Il est dit qu'Iyachtu Xvim est le fruit de l'union entre le Seigneur Noir, Baine, et une tanar'ri majeure ou vénérable. C'est ainsi que le sang de Baine coule dans ses veines. D'autres histoires disent qu'il est le rejeton du Seigneur Noir et d'une paladine corrompue. Aussi appelé l'Enfant-Dieu et le Fils de Baine, Xvim a servi ce dernier en tant qu'émissaire dans les Royaumes, accomplissant la volonté de son père. Il peut apparaître sous la forme d'un homme nu et décharné portant un gigantesque cimeterre ou un nuage noir avec des yeux brillants verts.
 
 Xvim a été emprisonné sous Château-Zhentil durant le Temps des Troubles, où il a été retenu captif pendant dix ans. Il a finalement réussi à s'enfuir lors de la chute de Château-Zhentil durant le fiasco de la Cyrinishad, où il a pu dérober à Cyric les attributions de la Tyrannie et de la Haine. Il est maintenant connu comme étant le dieu de la Peur, de la Haine, du Mal et de la Tyrannie. Il est en ce moment en train de travailler à récupérer la place de son défunt père, Baine, ce qui fait de lui un ennemi de Cyric. Il est particulièrement populaire dans l'Est, et plus particulièrement à Thay, mais son culte se développe rapidement dans les Royaumes. Ses prêtres portent habituellement des robes noires à motifs vert foncé. Ils portent aussi des gantelets de fer noir décorés d'un oeil vert au dos de la main. Il s'agit en fait du symbole sacré des prêtres de Xvim.
 
@@ -967,7 +984,7 @@ Les prêtres de Sunie, connus sous le titre de Gardes du Coeur, sont des esthètes
 
 Capacités :
 - Arme spirituelle : fléau 'Fléau de Choc' une fois par jour.
-ARME SPIRITUELLE : Fléau de Choc est l'arme spirituelle des Gardes du Coeur de Sunie. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Le Fléau de Choc est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
+Fléau de Choc est l'arme spirituelle des Gardes du Coeur de Sunie. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Le Fléau de Choc est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.
 - +1 en Charisme
 - 'Voile de Djalice' une fois par jour.
 Le Garde du Coeur augmente temporairement sa beauté à un niveau surhumain, montant son charisme jusqu'à 20 et forçant les créatures hostiles à réussir un jds contre les sorts à -2, sous peine d'être sous l'effet du sort de Charme Néfaste pendant 6 rounds.
@@ -1042,7 +1059,8 @@ Désavantages :
 - Alignement restreint à chaotique bon, neutre bon et chaotique neutre.~
 @12704 = ~Épée Longue : 'Sahandrian'~
 @12705 = ~Sahandrian est l'arme spirituelle des Protecteurs Féériques de Corellon. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Sahandrian est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
-@12706 = ~Enchaînement (toutes écoles)
+@12706 = ~Enchaînement 
+(toutes écoles)
 Niveau : Quête
 Portée : illimitée
 Durée : 2 rounds
@@ -1087,9 +1105,9 @@ Bien que ces missions dans des contrées sauvages soient souvent vues comme des c
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 @13000 = ~Décharge Terrifiante~
-@13002 = ~maître des conflits de cyric~
-@13003 = ~Maître des Conflits de Cyric~
-@13004 = ~MAÎTRE DES CONFLITS DE CYRIC : Cyric est un dieu mégalomane dont le culte est largement répandu, ainsi que l'une des trois plus grandes puissances maléfiques de Féérune. Mesquin et égocentrique, il n'aime rien tant que de mener des individus de tous bords à commettre des actes qui ruinent leur vie entière ou à leur faire faire des erreurs fatales. Il boit à la source des larmes des rêveurs qui ont perdu leurs illusions et des coeurs brisés. Il est tout à fait capable de s'allier à une autre divinité pourvu qu'il puisse la trahir et s'en sortir.
+@13002 = ~semeur de discorde de cyric~
+@13003 = ~Semeur de discorde de Cyric~
+@13004 = ~SEMEUR DE DISCORDE DE CYRIC : Cyric est un dieu mégalomane dont le culte est largement répandu, ainsi que l'une des trois plus grandes puissances maléfiques de Féérune. Mesquin et égocentrique, il n'aime rien tant que de mener des individus de tous bords à commettre des actes qui ruinent leur vie entière ou à leur faire faire des erreurs fatales. Il boit à la source des larmes des rêveurs qui ont perdu leurs illusions et des coeurs brisés. Il est tout à fait capable de s'allier à une autre divinité pourvu qu'il puisse la trahir et s'en sortir.
 
 Les prêtres du Soleil Noir font le voeu de propager le conflit et le meurtre afin d'accroître la peur et la croyance en Cyric. Ils soutiennent les dirigeants ayant un goût prononcé pour la cruauté, mais agissent de telle façon qu'ils évitent que le monde entier ne plonge dans une guerre de grande envergure (ce qui renforcerait le pouvoir de Tempus). Dans les faits, les fidèles de Cyric passent le plus clair de leur temps à comploter et à se trahir les uns les autres, mais de tels conflits se font de plus en plus rares récemment, Cyric ayant acquis un plus grand contrôle de lui-même et ayant consolidé son influence parmi les fidèles des divinités dont il a pris les attributions.
 
@@ -1105,7 +1123,7 @@ Cette capacité permet de lancer un rayon d'énergie négative qui inflige 4d8 poin
 - 'Brume Mortelle' une fois par jour à partir du niveau 11 (comme le sort de mage du niveau 6).
 - 'Sphère de Chaos' une fois par jour à partir du niveau 14 (comme le sort de mage du niveau 7).~
 @13005 = ~Symbole Sacré de Cyric~
-@13006 = ~Cyric récompense ses serviteurs les plus puissants avec un Symbole Sacré, des bracelets argentés représentant ses armoiries : un crâne devant un soleil de teinte sombre. En plus d'être un signe visible de la puissance du prêtre, ces bracelets représentent sa dévotion inconditionnelle au Prince des Mensonges. Utilisés, ces bracelets améliorent les pouvoirs déjà terrifiants du Maître des Conflits.
+@13006 = ~Cyric récompense ses serviteurs les plus puissants avec un Symbole Sacré, des bracelets argentés représentant ses armoiries : un crâne devant un soleil de teinte sombre. En plus d'être un signe visible de la puissance du prêtre, ces bracelets représentent sa dévotion inconditionnelle au Prince des Mensonges. Utilisés, ces bracelets améliorent les pouvoirs déjà terrifiants du Semeur de discorde.
 
 PARAMÈTRES :
 
@@ -1114,7 +1132,7 @@ PARAMÈTRES :
  +1 en Force~
 @13007 = ~Épée Longue : 'Lame de Rasoir'~
 @13008 = ~Lame de Rasoir est l'arme spirituelle des Maîtres des Conflits de Cyric. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Lame de Rasoir est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
-@13009 =~MAÎTRE DES CONFLITS DE CYRIC : Cyric est un dieu mégalomane dont le culte est largement répandu, ainsi que l'une des trois plus grandes puissances maléfiques de Féérune. Mesquin et égocentrique, il n'aime rien tant que de mener des individus de tous bords à commettre des actes qui ruinent leur vie entière ou à leur faire faire des erreurs fatales. Il boit à la source des larmes des rêveurs qui ont perdu leurs illusions et des coeurs brisés. Il est tout à fait capable de s'allier à une autre divinité pourvu qu'il puisse la trahir et s'en sortir.
+@13009 =~SEMEUR DE DISCORDE DE CYRIC : Cyric est un dieu mégalomane dont le culte est largement répandu, ainsi que l'une des trois plus grandes puissances maléfiques de Féérune. Mesquin et égocentrique, il n'aime rien tant que de mener des individus de tous bords à commettre des actes qui ruinent leur vie entière ou à leur faire faire des erreurs fatales. Il boit à la source des larmes des rêveurs qui ont perdu leurs illusions et des coeurs brisés. Il est tout à fait capable de s'allier à une autre divinité pourvu qu'il puisse la trahir et s'en sortir.
 
 Les prêtres du Soleil Noir font le voeu de propager le conflit et le meurtre afin d'accroître la peur et la croyance en Cyric. Ils soutiennent les dirigeants ayant un goût prononcé pour la cruauté, mais agissent de telle façon qu'ils évitent que le monde entier ne plonge dans une guerre de grande envergure (ce qui renforcerait le pouvoir de Tempus). Dans les faits, les fidèles de Cyric passent le plus clair de leur temps à comploter et à se trahir les uns les autres, mais de tels conflits se font de plus en plus rares récemment, Cyric ayant acquis un plus grand contrôle de lui-même et ayant consolidé son influence parmi les fidèles des divinités dont il a pris les attributions.
 
@@ -1134,7 +1152,7 @@ Désavantages :
 @13010 = ~Décharge Terrifiante
 Cette capacité permet de lancer un rayon d'énergie négative qui inflige 4d8 points de dégâts +1 par niveau (+20 maximum) et qui rend la cible confuse pendant un round (un jet de sauvegarde contre les sorts à -2 réussi annule la confusion).~
 @13011 = ~~
-@13012 =~Le Prince des Mensonges nous envoie un Maître des Conflits ? Même s'il n'est pas aussi terrifiant que le tout-puissant Talos, votre seigneur Cyric doit sans doute vouloir nous porter assistance dans notre lutte contre les infidèles !~
+@13012 =~Le Prince des Mensonges nous envoie un Semeur de discorde ? Même s'il n'est pas aussi terrifiant que le tout-puissant Talos, votre seigneur Cyric doit sans doute vouloir nous porter assistance dans notre lutte contre les infidèles !~
 @13013 =~Les choses commencent à se résoudre d'elles-mêmes, et il ne reste plus qu'une poignée d'enfants de Bhaal. Ils sont comme toi... très puissants, ce sont des mortels pleins de ressources. Comme je l'étais autrefois. Je pense que tu peux comprendre mon inquiétude, hein ?~
 @13014= ~Tu penses que je vais te défier pour récupérer l'attribution divine du Meurtre.~
 @13015= ~Tu veux t'assurer que ce soit l'un de tes suivants qui remporte la mise.~
