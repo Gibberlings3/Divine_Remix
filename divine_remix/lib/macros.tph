@@ -940,9 +940,9 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
         PATCH_IF ("%war%" STRING_COMPARE_CASE "minor" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_wa_minor.2da~ END
         PATCH_IF ("%wards%" STRING_COMPARE_CASE "minor" = 0)                   THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_wd_minor.2da~ END
         PATCH_IF ("%weather%" STRING_COMPARE_CASE "minor" = 0)                 THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_we_minor.2da~ END
-        PATCH_IF ((!GAME_IS ~tob bg2ee eet bgt~) OR                       // if no hlas, clean up
-                  ("%class%" STRING_COMPARE_CASE "paladin" = 0) OR    // paladins don't get casting hlas
-                  ("%class%" STRING_COMPARE_CASE "ranger" = 0)) BEGIN // neither do rangers
+        PATCH_IF (!(GAME_IS ~tob bg2ee eet bgt~) OR                       // if no hlas, clean up
+                  !("%class%" STRING_COMPARE_CASE "paladin" = 0) OR    // paladins don't get casting hlas
+                  !("%class%" STRING_COMPARE_CASE "ranger" = 0)) BEGIN // neither do rangers
           REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]CD_HLA[0-9][0-9][0-9][ %TAB%]+.+$~ ~~ // delete temp placeholders
         END
         LAUNCH_PATCH_MACRO ~reindex_clab~ // get ABLITYx in order

@@ -1,0 +1,11 @@
+IF
+	InParty(Myself)
+	CombatCounter(0)
+	HasItem("NMSUHLY",Myself)  // Holy Symbol of Sune
+	Global("YvetteSymbolSune","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("YvetteSymbolSune","LOCALS",1)
+		GiveItemCreate("YxSymb",Myself,0,0,0)  // Symbol of Sune
+		DestroyItem("NMSUHLY")  // Holy Symbol of Sune
+END

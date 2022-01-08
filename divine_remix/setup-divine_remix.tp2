@@ -899,7 +899,7 @@ COPY ~divine_remix/2da/generic.2da~ ~override/a#temp.2da~
 
 ADD_KIT ~A#TEMP~
   ~A#TEMP                  0           0           1           1           0           1           0           0~
-  ~A#TEMP 0 0 0 0 2 2 0 0 0 0 0 0 0 0 0 0 2 2 0 0 2 2 2 0 0 0 0 0 2 2 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#TEMP 0 0 0 0 2 2 0 0 0 0 0 0 0 0 0 0 2 2 0 0 2 2 2 0 0 0 0 0 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
   ~A#TEMP	        0       0       0       0       9       0~
   ~A#TEMP		0	0	0	0	0	0~
   ~A#TEMP		0	0	0	0	17	0~
@@ -1629,7 +1629,7 @@ END
 /////                                                  \\\\\
 
 OUTER_SET kit = "%NMSUNE%" // sune
-ACTION_FOR_EACH creature IN isnfxps YxYve1 BEGIN
+ACTION_FOR_EACH creature IN isnfxps /*YxYve1*/ BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 
@@ -1649,6 +1649,29 @@ ACTION_FOR_EACH creature IN isnfxps YxYve1 BEGIN
   END
 
 END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~YxYve1.cre~ THEN BEGIN
+	
+	  COPY_EXISTING ~yxyve.bcs~ 	override
+	  DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AddKit(yxkit)~ ~AddKit(nmsune)~
+	  END	
+    BUT_ONLY
+	
+	EXTEND_BOTTOM ~yxyve.bcs~   ~divine_remix/baf/yxyve.baf~
+
+	  COPY_EXISTING ~YxYv25.bcs~ 	override
+	  DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~LevelGT(Myself,22)~ 
+~HasItem("NMSUHLY",Myself)~
+      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~GiveItemCreate("YxSymb",Myself,0,0,0)~ 
+~GiveItemCreate("YxSymb",Myself,0,0,0)
+		DestroyItem("NMSUHLY")~
+	  END	
+    BUT_ONLY
+
+END
+
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
