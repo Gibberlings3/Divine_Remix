@@ -31,7 +31,7 @@ ALWAYS
 
 END
 
-VERSION  ~8.3~
+VERSION  ~8.1~
 
 README   ~divine_remix/readme-divine_remix.html~
 
@@ -190,6 +190,7 @@ LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = r END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @10000 DESIGNATED 100
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~BG2FIXPACK/SETUP-BG2FIXPACK.TP2~ ~0~ OR ENGINE_IS ~bgee bg2ee iwdee eet~) ~This component is not compatible without BG2 fixpack~ // Fixpack is needed
 GROUP @10
 
 COPY ~divine_remix/2da/mxsplprs.2da~ ~override~
@@ -313,6 +314,28 @@ ACTION_IF GAME_IS ~bgt tob bg2ee eet~ THEN BEGIN // holy symbols
     READ_BYTE  0x1E "use1"
     WRITE_BYTE 0x1E (("%use1%" BAND 0b11110111) BOR 0b00010000) // unusable by lawful and good alignments
 
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN // Change the way the script works to avoid usable issues with holy symbols. It is mostly for Chaotic neutral and lawful evil clerics - BG2 fixpack is needed.
+  COPY_EXISTING ~baldur.bcs~ 	override
+				~baldur25.bcs~	override
+	  DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH
+		~Alignment(Player%index%,MASK_GENEUTRAL)~ 
+		~OR(2)
+	  Alignment(Player%index%,MASK_GENEUTRAL)
+	  Alignment(Player%index%,MASK_LAWFUL)
+	!Alignment(Player%index%,MASK_GOOD)
+	!Alignment(Player%index%,MASK_CHAOTIC)~
+      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH
+		~Alignment(Player%index%,MASK_EVIL)~
+		~OR(2)
+	  Alignment(Player%index%,MASK_EVIL)
+	  Alignment(Player%index%,MASK_CHAOTIC)
+	!Alignment(Player%index%,MASK_GOOD)
+	!Alignment(Player%index%,MASK_LAWFUL)~ // idem
+	  END	
+    BUT_ONLY
+  END
+
 END
 
 /////                                                  \\\\\
@@ -348,13 +371,14 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   BUT_ONLY_IF_IT_CHANGES
 
 OUTER_SET kit = 19 // talos
-ACTION_FOR_EACH creature IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos nalla scyarryl talmiss talmiss2 talvilon vvpriest yssold16 BEGIN
+ACTION_FOR_EACH creature IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos /*nalla*/ scyarryl talmiss talmiss2 talvilon vvpriest yssold16 BEGIN // nalla is a bard, not a priest...
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
 	
     COPY_EXISTING ~%creature%.cre~ ~override~ 
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
 	  READ_BYTE 0x234 "Lv"
 	  READ_SHORT NAME1 "priestG"
 	  GET_STRREF priestG "name" 
@@ -368,6 +392,15 @@ ACTION_FOR_EACH creature IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos nalla
 
 END
 
+// Stormherald Nallabir
+
+ACTION_IF MOD_IS_INSTALLED "song_and_silence.tp2" 3 BEGIN
+    COPY_EXISTING ~nalla.cre~ ~override~ 
+      WRITE_LONG   0x244 (IDS_OF_SYMBOL (~KIT~ ~A!CHORISTER~))
+	  BUT_ONLY
+END
+
+
 OUTER_SET kit = 20 // helm
 ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig sctelwyn nalin shugod01 shugod02 shugar01 ntprihel s#helm01 BEGIN
 
@@ -376,6 +409,7 @@ ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig 
     COPY_EXISTING ~%creature%.cre~ ~override~  
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -397,6 +431,7 @@ ACTION_FOR_EACH creature IN acolyte2 amtcle01 amtcler0 arenthis arval ~b!gavin~ 
     COPY_EXISTING ~%creature%.cre~ ~override~  
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -420,6 +455,7 @@ ACTION_IF ohtyr != 0 THEN BEGIN
       COPY_EXISTING ~%creature%.cre~ ~override~
         WRITE_SHORT   0x244 0
         WRITE_SHORT   0x246 0x4000 + "%kit%"
+  //    WRITE_BYTE    0x247 0x40
         BUT_ONLY
 
     END
@@ -438,11 +474,12 @@ ACTION_IF "%a#temp%" != 0 THEN BEGIN
       COPY_EXISTING ~%creature%.cre~ ~override~
         WRITE_SHORT   0x244 0
         WRITE_SHORT   0x246 0x4000 + "%kit%"
+  //    WRITE_BYTE    0x247 0x40
 	    READ_SHORT NAME1 "priestG"
 	    GET_STRREF priestG "name" 
 	    PATCH_IF ("%name%" STRING_COMPARE_CASE "Priest of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Tempus" = 0) BEGIN
-	    SAY NAME1 @10191 //Battleguard of Tempus 
-	    SAY NAME2 @10191
+	      SAY NAME1 @10191 //Battleguard of Tempus 
+	      SAY NAME2 @10191
 	    END        
 		BUT_ONLY
 
@@ -583,12 +620,13 @@ ACTION_FOR_EACH creature IN bstq007 ysselune BEGIN
       WRITE_SHORT   0x244 0
 	  WRITE_SHORT   0x273 3
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
 	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Selune" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Selune" = 0) OR ("%name%" STRING_COMPARE_CASE "Priestess of Selune" = 0)) AND ("%Lv%">=5)) BEGIN
-	  SAY NAME1 @10301 // Silverstar of Selûne 
-	  SAY NAME2 @10301
+	    SAY NAME1 @10301 // Silverstar of Selûne 
+	    SAY NAME2 @10301
 	  END
       BUT_ONLY
 
@@ -943,6 +981,7 @@ ACTION_FOR_EACH creature IN kpchap01 everard accalia BEGIN
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -1081,6 +1120,7 @@ ACTION_FOR_EACH creature IN _priilm _priilmu priilm priilmu slilmat wilmat s#ilm
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -1456,6 +1496,7 @@ ACTION_FOR_EACH creature IN doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma po
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
       READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -1595,6 +1636,7 @@ ACTION_FOR_EACH creature IN isnfxps YxYve1 BEGIN
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -1846,6 +1888,7 @@ ACTION_FOR_EACH creature IN ar18prie hghprmod mvpries prcdmod prcmod slapri Z#pr
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
 	  READ_SHORT NAME1 "priestG"
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
@@ -2327,6 +2370,7 @@ ACTION_FOR_EACH creature IN branwe branwe5 _branwe _branwe5  O#Bran o#bran25 o#b
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
       BUT_ONLY
 
   END
@@ -2404,6 +2448,7 @@ ACTION_FOR_EACH creature IN viconi6 viconi8 viconi9 viconi11 viconi13 viconi16 v
     COPY_EXISTING ~%creature%.cre~ ~override~
       WRITE_SHORT   0x244 0
       WRITE_SHORT   0x246 0x4000 + "%kit%"
+//    WRITE_BYTE    0x247 0x40
       BUT_ONLY
 
   END
