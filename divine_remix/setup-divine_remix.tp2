@@ -3707,6 +3707,7 @@ LAUNCH_ACTION_FUNCTION cd_kit_sphere // oozemaster - normal druid minus animal a
 ///// generic sphere assignments                       \\\\\
 /////                                                  \\\\\
 
+
 COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
   COUNT_2DA_ROWS 9 rows
   FOR (index = 2 ; index <= rows ; ++index) BEGIN
@@ -3721,8 +3722,9 @@ COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
   END
   BUT_ONLY
 
-// add generic classes to array
+PRINT "%cd_mod_kits%"
 
+// add generic classes to array
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_mod_kits BEGIN
   clabpr01 => 3
   clabpa01 => 6
@@ -3804,6 +3806,11 @@ ACTION_PHP_EACH cd_mod_kits AS clab => class_check BEGIN
         weather         = major
       END
 
+  END
+
+  ACTION_IF class_check = 3 OR class_check = 11 THEN BEGIN // Remove cd_hla for custom priests/druids kit
+	COPY_EXISTING ~%clab%.2da~ ~override~
+	  REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]CD_HLA[0-9][0-9][0-9][ %TAB%]+.+$~ ~~ // delete temp placeholders
   END
 
  END
@@ -4056,9 +4063,7 @@ ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN // hlas
   END
   
   ACTION_IF FILE_EXISTS_IN_GAME ~a#ooze.2da~ THEN BEGIN
-
     COPY_EXISTING ~ludr0.2da~ ~override/lua#ooze.2da~
-  
   END
 
   // patch hla table to exlude quest-level spells from disallowed spheres
