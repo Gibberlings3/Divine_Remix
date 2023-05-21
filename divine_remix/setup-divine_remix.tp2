@@ -1841,7 +1841,7 @@ ADD_KIT ~A#CYRIC~
   ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
   SAY @13002
   SAY @13003
-  SAY @13004
+  SAY @13009
 
 LAF fl#add_kit_ee
   INT_VAR
@@ -1944,6 +1944,8 @@ OUTER_INNER_PATCH_SAVE desc ~%desc%~ BEGIN
   REPLACE_TEXTUALLY ~%old_wep%~ ~%new_wep%~
 END
 
+COPY ~divine_remix/2da/mxsplprs.2da~ ~override/mxspldru.2da~
+
 STRING_SET_EVALUATE 9579 ~%desc%~
 
 ACTION_IF FILE_EXISTS_IN_GAME ~jahei14.cre~ THEN BEGIN
@@ -1978,6 +1980,25 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
     END
   END
   BUT_ONLY_IF_IT_CHANGES
+
+ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN // Tutu
+
+  COPY_EXISTING ~_b1-3.itm~    ~override~ // adds magical flag to misc weapons
+                ~_b2-16.itm~   ~override~
+                ~_b1-20.itm~   ~override~
+                ~_drizzts.itm~ ~override~
+                ~_fblade.itm~  ~override~
+                ~_s1-10.itm~   ~override~
+                ~_s1-12.itm~   ~override~
+                ~_s2-16.itm~   ~override~
+                ~_sarevo.itm~  ~override~
+    PATCH_IF (SOURCE_SIZE > 0x71) THEN BEGIN // protects against invalid files
+      READ_BYTE  0x18 "flags"
+      WRITE_BYTE 0x18 ("%flags%" BOR 0b01000000)
+    END
+    BUT_ONLY
+
+END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2801,6 +2822,14 @@ END
 ///// assign spells to sphere spells                   \\\\\
 /////                                                  \\\\\
 
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~CLERIC_CAUSE_CRITICAL_WOUNDS_IWD~)) < 0 BEGIN
+  OUTER_SPRINT "CLERIC_CAUSE_SERIOUS_WOUNDS" "CLERIC_CAUSE_SERIOUS_WOUNDS"
+  OUTER_SPRINT "CLERIC_CAUSE_CRITICAL_WOUNDS" "CLERIC_CAUSE_CRITICAL_WOUNDS"
+END ELSE BEGIN
+  OUTER_SPRINT "CLERIC_CAUSE_SERIOUS_WOUNDS" "CLERIC_CAUSE_SERIOUS_WOUNDS_IWD"
+  OUTER_SPRINT "CLERIC_CAUSE_CRITICAL_WOUNDS" "CLERIC_CAUSE_CRITICAL_WOUNDS_IWD"
+END
+
 // array sets primary sphere assignments
 ACTION_CLEAR_ARRAY cd_spheres
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
@@ -2862,7 +2891,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_POISON                         => he
   CLERIC_HOLY_POWER                     => co
   CLERIC_NEGATIVE_PLANE_PROTECTION      => nr
-  CLERIC_CAUSE_SERIOUS_WOUNDS           => he
+  "%CLERIC_CAUSE_SERIOUS_WOUNDS%"       => he
   CLERIC_FAR_SIGHT                      => di
   CLERIC_CLOAK_OF_FEAR                  => cm
   CLERIC_LESSER_RESTORATION             => nr
@@ -2875,7 +2904,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_CHAMPIONS_STRENGTH             => lw
   CLERIC_CHAOTIC_COMMANDS               => cs
   CLERIC_MAGIC_RESISTANCE               => pr
-  CLERIC_CAUSE_CRITICAL_WOUNDS          => he
+  "%CLERIC_CAUSE_CRITICAL_WOUNDS%"      => he
   CLERIC_SLAY_LIVING                    => ne
   CLERIC_GREATER_COMMAND                => cm
   CLERIC_RIGHTEOUS_MAGIC                => co
@@ -2938,6 +2967,8 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_CAUSE_DISEASE                  => he
   CLERIC_CAUSE_LIGHT_WOUNDS             => he
   CLERIC_CAUSE_MODERATE_WOUNDS          => he
+  CLERIC_CAUSE_SERIOUS_WOUNDS_IWD       => he
+  CLERIC_CAUSE_CRITICAL_WOUNDS_IWD      => he
   CLERIC_CIRCLE_OF_BONES                => cr
   CLERIC_CLOUD_OF_PESTILENCE            => co
   CLERIC_CLOUDBURST                     => ew
@@ -2980,6 +3011,8 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres BEGIN
   CLERIC_WALL_OF_MOONLIGHT              => pr
   CLERIC_WHIRLWIND                      => ea
   CLERIC_WITHER                         => he
+
+  
 
   // galctygon
   CLERIC_ADAMANTITE_MACE                => ee
@@ -3721,8 +3754,6 @@ COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
     END
   END
   BUT_ONLY
-
-PRINT "%cd_mod_kits%"
 
 // add generic classes to array
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_mod_kits BEGIN
