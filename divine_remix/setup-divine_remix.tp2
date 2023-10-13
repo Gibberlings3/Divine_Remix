@@ -492,7 +492,7 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// Silverstar of Selûne                             \\\\\
+///// Silverstar of SelÃ»ne                             \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -625,7 +625,7 @@ ACTION_FOR_EACH creature IN bstq007 ysselune BEGIN
 	  READ_BYTE 0x234 "Lv"
 	  GET_STRREF priestG "name" 
 	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Selune" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Selune" = 0) OR ("%name%" STRING_COMPARE_CASE "Priestess of Selune" = 0)) AND ("%Lv%">=5)) BEGIN
-	    SAY NAME1 @10301 // Silverstar of Selûne 
+	    SAY NAME1 @10301 // Silverstar of SelÃ»ne 
 	    SAY NAME2 @10301
 	  END
       BUT_ONLY
@@ -2478,7 +2478,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~
   FOR ( index = 31 ; index <= rows ; index = index + 1 ) BEGIN
     READ_2DA_ENTRY "%index%" 5 9 "clab"
     PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#SHAR" = 0) BEGIN
-      SET "A#SHAR" = "%index%"
+      READ_2DA_ENTRY "%index%" 0 9 "A#SHAR"
       SET "rows" = 0
     END
   END
