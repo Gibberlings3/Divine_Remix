@@ -397,7 +397,7 @@ END
 ACTION_IF MOD_IS_INSTALLED "song_and_silence.tp2" 3 BEGIN
     COPY_EXISTING ~nalla.cre~ ~override~ 
       WRITE_LONG   0x244 (IDS_OF_SYMBOL (~KIT~ ~A!CHORISTER~))
-	  BUT_ONLY
+	  BUT_ONLY IF_EXISTS
 END
 
 
