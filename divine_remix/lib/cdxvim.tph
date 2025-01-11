@@ -1,5 +1,11 @@
 COPY ~divine_remix/2da/cdxvim.2da~ ~override~
-
+  
+COPY_EXISTING ~spwi605.spl~ ~override/cdxvdth.spl~ // Death Spell (innate)
+			  ~spwi514.spl~ ~override/cdxvlrs.spl~ // Lower Resistance (innate)
+			  ~spwi708.spl~ ~override/cdxvmtl.spl~ // Mantle (innate)
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+BUT_ONLY_IF_IT_CHANGES
+  
 COPY ~Divine_Remix/spl/cdxvscm.spl~ ~override~  // Scimitar of Souls (innate)
   SAY NAME1 @11805
   SAY NAME2 @11805

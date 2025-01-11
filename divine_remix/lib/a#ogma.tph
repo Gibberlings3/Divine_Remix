@@ -13,12 +13,16 @@ COPY ~Divine_Remix/spl/a#og0b.spl~ ~override~  // Lore boost (innate)
 COPY ~Divine_Remix/spl/a#og0a.spl~ ~override~  // Mortal Strike (innate)
   SAY NAME1 @12103
   SAY NAME2 @12103
+  SAY UNIDENTIFIED_DESC @12112
+  SAY DESC @12112 
 
 COPY ~Divine_Remix/bam/cdiogma.bam~ ~override~
 COPY ~Divine_Remix/itm/a#og00.itm~ ~override~  // Mortal Strike +0
   SAY NAME1 @12103
   SAY NAME2 @12103
   SET "weap_idx" = 0
+  SAY UNIDENTIFIED_DESC @12112
+  SAY DESC @12112  
 
 COPY_EXISTING ~a#og00.itm~ ~override/a#og01.itm~  // mortal strike +1
               ~a#og00.itm~ ~override/a#og02.itm~  // mortal strike +2

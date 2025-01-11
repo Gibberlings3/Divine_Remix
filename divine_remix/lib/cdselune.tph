@@ -36,7 +36,6 @@ COPY ~Divine_Remix/spl/cdslmsd.spl~ ~override~  // Moon Shield (innate spell)
 // change spells to innates as needed
 COPY_EXISTING ~sppr403.spl~  ~override/cdslfre.spl~ // free action (innate)
               ~spwi523.spl~  ~override/cdslsun.spl~ // sunfire (innate)
-              ~spwi621.spl~  ~override/cdslair.spl~ // conjure air elemental (innate)
               ~spwi702.spl~  ~override/cdslpfe.spl~ // protection from the elements (innate)
   LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
   BUT_ONLY_IF_IT_CHANGES
@@ -46,3 +45,56 @@ COPY_EXISTING ~spwi702.spl~ ~override~ // make innate/arcane PftE unstackable
 
 COPY_EXISTING ~cdslpfe.spl~ ~override~ // make innate/arcane PftE unstackable
   LPF CLONE_EFFECT STR_VAR match_resource = spwi702 resource = cdslpfe insert = below END // picks up 321 for ee games, 206 for non-ee
+  
+// conjure air elemental (innate)
+ACTION_IF !((IDS_OF_SYMBOL (~spell~ ~CLERIC_CONJURE_AIR_ELEMENTAL~)) < 0) BEGIN // only if not present
+  OUTER_SET airel = (IDS_OF_SYMBOL (~spell~ ~CLERIC_CONJURE_AIR_ELEMENTAL~) - 1000)
+
+  COPY_EXISTING ~sppr%airel%.spl~ ~override/cdslair.spl~	
+   LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+   BUT_ONLY_IF_IT_CHANGES
+
+END ELSE BEGIN
+
+  COPY_EXISTING ~spwi622.spl~ ~override/cdslair.spl~
+  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
+    WRITE_SHORT 0x1c 2
+    WRITE_SHORT 0x1e 0
+    WRITE_SHORT 0x34 7
+    LPF DELETE_EFFECT INT_VAR match_opcode = 165 END // removing the mental combat visual effect for priest
+	LPF DELETE_EFFECT INT_VAR match_opcode = 215 END // removing the mental combat visual effect for priest
+	LPF DELETE_EFFECT INT_VAR match_opcode = 142 END // removing the mental combat visual effect for priest
+	REPLACE_TEXTUALLY SPEART1 DRAIR1 (8)
+    REPLACE_TEXTUALLY SPEART2 DRAIR2 (8)
+    REPLACE_TEXTUALLY SPEART3 DRAIR3 (8)
+	REPLACE_TEXTUALLY CASE_INSENSITIVE SPWI622A SPWI621A (8)
+    REPLACE_TEXTUALLY CASE_INSENSITIVE SPWI622B SPWI621B (8)
+    REPLACE_TEXTUALLY CASE_INSENSITIVE SPWI622C SPWI621C (8)
+	WRITE_LONG 0x8 24839
+	WRITE_LONG 0x50 24840
+	LPF ALTER_EFFECT INT_VAR match_power = 6 power = 7 END
+    PATCH_FOR_EACH offset IN 0x50 BEGIN
+      READ_LONG ~%offset%~ desc_strref
+      PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
+        READ_STRREF ~%offset%~ desc
+        INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+          REPLACE_TEXTUALLY ~Level: 6~ ~Level: 7~ // change level in description to 7
+        END
+      END
+      SAY_EVALUATED offset ~%desc%~
+    END
+  BUT_ONLY_IF_IT_CHANGES
+// Cretaing the new creatuers to remove the mental combat script for priest
+	COPY_EXISTING "SPAIR1.EFF" "override/DRAIR1.EFF" WRITE_ASCIIE 0x30 DRAIRPR2 (8)
+    COPY_EXISTING "SPAIR2.EFF" "override/DRAIR2.EFF" WRITE_ASCIIE 0x30 DRAIRPR3 (8)
+    COPY_EXISTING "SPAIR3.EFF" "override/DRAIR3.EFF" WRITE_ASCIIE 0x30 DRAIRPR4 (8)
+    
+	COPY_EXISTING "ELAIRSU2.CRE" "override/DRAIRPR2.cre"
+	  WRITE_ASCII 0x248 "None" #8
+	COPY_EXISTING "ELAIRSU3.CRE" "override/DRAIRPR3.cre"
+	  WRITE_ASCII 0x248 "None" #8
+	COPY_EXISTING "ELAIRSU4.CRE" "override/DRAIRPR4.cre"
+	  WRITE_ASCII 0x248 "None" #8
+
+END
+

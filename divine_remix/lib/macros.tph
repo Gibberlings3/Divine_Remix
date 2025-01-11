@@ -106,7 +106,7 @@ DEFINE_ACTION_MACRO CD_BUILD_SPHERE BEGIN
           END
         END
         BUT_ONLY
-
+	//PRINT ~%desc%~
       ACTION_IF (sphere_descript != 0) THEN BEGIN
   
         STRING_SET_EVALUATE desc_strref "%desc%"
@@ -355,6 +355,16 @@ DEFINE_PATCH_FUNCTION cd_spellbook
         END
       END
     END
+	PATCH_IF (sb_delta < 0) BEGIN
+      WRITE_LONG 0x2A4 (sb_num + sb_delta)
+      PATCH_FOR_EACH offset IN 0x2a8 0x2b0 0x2b8 0x2bc 0x2c4 BEGIN
+        READ_LONG offset off
+        PATCH_IF off > sb_off BEGIN
+          WRITE_LONG offset (THIS + (sb_delta * 0x0C))
+        END
+      END
+    END
+	SET sb_delta = 0
   END
 
 END
@@ -626,8 +636,7 @@ DEFINE_PATCH_MACRO ~extend_clab_to_level_50~ BEGIN
   REPLACE_TEXTUALLY ~\(1[ %TAB%]+2[ %TAB%]+3[ %TAB%]+4[ %TAB%]+5[ %TAB%]+6[ %TAB%]+7[ %TAB%]+8[ %TAB%]+9[ %TAB%]+10[ %TAB%]+11[ %TAB%]+12[ %TAB%]+13[ %TAB%]+14[ %TAB%]+15[ %TAB%]+16[ %TAB%]+17[ %TAB%]+18[ %TAB%]+19[ %TAB%]+20[ %TAB%]+21[ %TAB%]+22[ %TAB%]+23[ %TAB%]+24[ %TAB%]+25[ %TAB%]+26[ %TAB%]+27[ %TAB%]+28[ %TAB%]+29[ %TAB%]+30[ %TAB%]+31[ %TAB%]+32[ %TAB%]+33[ %TAB%]+34[ %TAB%]+35[ %TAB%]+36[ %TAB%]+37[ %TAB%]+38[ %TAB%]+39\)\([ %TAB%]+\)40[ %TAB%]*~
     ~\1\240\241\242\243\244\245\246\247\248\249\250~
   REPLACE_TEXTUALLY ~^\(ABILITY[0-9A-Z]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+\)\([ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%%lnl%]+\)[ %TAB%]*$~
-    ~\1\2\2~
-
+    ~\1\2\2~ 
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -674,8 +683,19 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
   BEGIN
   
   ACTION_IF FILE_EXISTS_IN_GAME ~%table%.2da~ THEN BEGIN
-
-    ACTION_IF NOT FILE_CONTAINS_EVALUATED (~%table%.2da~ ~[ %TAB%]CDDR[a-z][a-z][1-7][ %TAB%]~) THEN BEGIN // don't mess with it if spell sphere spells already exist
+   
+   COPY_EXISTING ~%table%.2da~ ~override~ // extends CLAB to level 50 if needed
+        PATCH_IF (SOURCE_SIZE > 0) BEGIN
+          REPLACE_TEXTUALLY ~[%WNL%%MNL%]+~ ~%LNL%~
+          REPLACE_TEXTUALLY ~\(1[ %TAB%]+2[ %TAB%]+3[ %TAB%]+4[ %TAB%]+5[ %TAB%]+6[ %TAB%]+7[ %TAB%]+8[ %TAB%]+9[ %TAB%]+10[ %TAB%]+11[ %TAB%]+12[ %TAB%]+13[ %TAB%]+14[ %TAB%]+15[ %TAB%]+16[ %TAB%]+17[ %TAB%]+18[ %TAB%]+19[ %TAB%]+20[ %TAB%]+21[ %TAB%]+22[ %TAB%]+23[ %TAB%]+24[ %TAB%]+25[ %TAB%]+26[ %TAB%]+27[ %TAB%]+28[ %TAB%]+29[ %TAB%]+30[ %TAB%]+31[ %TAB%]+32[ %TAB%]+33[ %TAB%]+34[ %TAB%]+35[ %TAB%]+36[ %TAB%]+37[ %TAB%]+38[ %TAB%]+39\)\([ %TAB%]+\)40[ %TAB%]*~
+            ~\1\240\241\242\243\244\245\246\247\248\249\250~
+          REPLACE_TEXTUALLY ~^\(ABILITY[0-9A-Z]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+\)\([ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%%LNL%]+\)[ %TAB%]*$~
+            ~\1\2\2~
+        END
+    UNLESS ~41[ %TAB%]+42[ %TAB%]+43[ %TAB%]+44[ %TAB%]+45[ %TAB%]+46[ %TAB%]+47[ %TAB%]+48[ %TAB%]+49[ %TAB%]+50~
+   BUT_ONLY
+		
+    ACTION_IF NOT FILE_CONTAINS_EVALUATED (~%table%.2da~ ~[ %TAB%]AP_CDDR[a-z][a-z][1-7][ %TAB%]~) THEN BEGIN // don't mess with it if spell sphere spells already exist
         
       ACTION_FOR_EACH restrict IN all good evil geneutral lawful chaotic lcneutral BEGIN
 
@@ -767,7 +787,7 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
               APPEND ~spellbook_%table%_%index%_0.2da~ ~%spell%~ UNLESS ~%spell%~
             END
           END
-          BUT_ONLY
+        BUT_ONLY
 
         COPY_EXISTING ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_17.2da~ // lawful good
                       ~spellbook_%table%_%index%_0.2da~ ~override/spellbook_%table%_%index%_18.2da~ // lawful neutral
@@ -799,7 +819,7 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
               END
             END
           END
-          BUT_ONLY
+        BUT_ONLY
         
         COPY ~divine_remix/spheres/spellbook_%table%_%index%_lcneutral.2da~ ~divine_remix/spheres/spellbook_%table%_%index%_lcneutral.2da~
           COUNT_2DA_ROWS 1 rows
@@ -821,7 +841,7 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
               END
             END
           END
-          BUT_ONLY
+        BUT_ONLY
         
         COPY ~divine_remix/spheres/spellbook_%table%_%index%_chaotic.2da~ ~divine_remix/spheres/spellbook_%table%_%index%_chaotic.2da~
           COUNT_2DA_ROWS 1 rows
@@ -843,7 +863,7 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
               END
             END
           END
-          BUT_ONLY
+        BUT_ONLY
 
         MOVE ~override/spellbook_%table%_%index%_0.2da~  ~divine_remix/spheres~ // no alignment
              ~override/spellbook_%table%_%index%_17.2da~ ~divine_remix/spheres~ // lawful good
@@ -860,7 +880,7 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
 
       COPY_EXISTING ~%table%.2da~ ~override~
         LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove eof blank lines
-        LAUNCH_PATCH_MACRO ~extend_clab_to_level_50~     // extends CLAB to level 50
+        //LAUNCH_PATCH_MACRO ~extend_clab_to_level_50~     // extends CLAB to level 50
         PATCH_IF ("%all%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_al_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_al.2da~ END
         PATCH_IF ("%animal%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_an_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_an.2da~ END
         PATCH_IF ("%astral%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN APPEND_FILE ~divine_remix/spheres/%class%_as_major.2da~ APPEND_FILE ~divine_remix/spheres/hla_as.2da~ END
@@ -991,7 +1011,7 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
           END
           PATCH_IF help != 0 BEGIN
             GET_STRREF help desc
-            PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP "%sphere_header%") BEGIN
+			PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP "%sphere_header%") BEGIN
               INNER_PATCH_SAVE desc ~%desc%~ BEGIN
                 PATCH_IF ("%all%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_al%" END
                 PATCH_IF ("%animal%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN SPRINT sphere_major "%sphere_major%, %sphere_an%" END
@@ -1080,12 +1100,12 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
                 PATCH_IF ("%war%" STRING_COMPARE_CASE "none" = 0)             THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_wa%" END
                 PATCH_IF ("%wards%" STRING_COMPARE_CASE "none" = 0)           THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_wd%" END
                 PATCH_IF ("%weather%" STRING_COMPARE_CASE "none" = 0)         THEN BEGIN SPRINT sphere_none "%sphere_none%, %sphere_we%" END
-                REPLACE_TEXTUALLY ~\(\(.\|%LNL%\|%MNL%\|%WNL%\)+\)~ ~\1
+				REPLACE_TEXTUALLY ~\(\(.\|%LNL%\|%MNL%\|%WNL%\)+\)~ ~\1
     
-  %sphere_header%
-  %sphere_major%
-  %sphere_minor%
-  %sphere_none%~
+%sphere_header%
+%sphere_major%
+%sphere_minor%
+%sphere_none%~
                 REPLACE_TEXTUALLY ~^%sphere_major_orig%$~ ~%sphere_major_none%~
                 REPLACE_TEXTUALLY ~^%sphere_minor_orig%$~ ~%sphere_minor_none%~
                 REPLACE_TEXTUALLY ~^%sphere_none_orig%$~ ~~
@@ -1094,9 +1114,9 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere
                 REPLACE_TEXTUALLY ~CD_REPLACEME, ~ ~~
               END
             END
-          END
-          BUT_ONLY
-        
+		  END
+		  BUT_ONLY
+        //PRINT ~%desc%~
         ACTION_IF (help != 0) BEGIN
           STRING_SET_EVALUATE help "%desc%"
         END
