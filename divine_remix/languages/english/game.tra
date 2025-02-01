@@ -1190,16 +1190,17 @@ This spell functions in the same manner to the second level mage spell Ghoul Tou
 - From level 7, may shapeshift to the form of a mustard jelly. This ability is useable 3 times per day
 - From level 9, oozemasters become immune to acid
 - From level 11, the oozemaster's alien metabolism renders them immune to disease
-- From level 15, oozemasters become immune to blindness, sleep, paralysis, stunning and critical hits as they become one with the ooze and lack a discernable internal anatomy
+- From level 15, oozemasters become immune to blindness, sleep, paralysis, and stun as they become one with the ooze and lack a discernable internal anatomy
 
 Disadvantages:
 - Do not gain other standard druidic special abilities (such as shapeshifting into wolves or bears, or the elemental resistance gained at high levels)
 - Suffers a -1 penalty to Charisma at levels 1, 5, 7, 9, 11 and 15 as they become increasingly separated from a humanoid mindset and their features continue to distort~
 
 @20305 = ~Paralytic Touch~
-@20306 = ~Shapeshift: Mustard Jelly~
+//@20306 = ~Shapeshift: Mustard Jelly~
 @20307 = ~Charisma -1~ 
 @20308 = ~Immune to Acid~
+@20309 = ~This spell functions in the same manner to the second level mage spell Ghoul Touch~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

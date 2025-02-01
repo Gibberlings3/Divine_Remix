@@ -1770,57 +1770,37 @@ REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~200~ @8
 COPY_EXISTING ~spwi218.spl~ ~override/a#ooze1.spl~ //Ghoul Touch
   SAY NAME1 @20305
   SAY NAME2 @20305
-  READ_LONG  0x64 "abil_off" ELSE 0
-  READ_SHORT 0x68 "abil_num" ELSE 0
-  READ_LONG  0x6A "fx_off" ELSE 0
-  READ_ASCII ("%abil_off%" + 0x04) "bam" (8) // reads the bam filename from ability
-  WRITE_SHORT 0x1C 4                         // sets spell type to innate (4)
-  WRITE_LONG  0x34 1                         // sets spell level to 1 to avoid scripting issues
-  WRITE_EVALUATED_ASCII 0x3A "%bam%" #8      // writes the bam filename from abilities to spell icon
-  FOR ( index = 0 ; index < abil_num ; index = index + 1 ) BEGIN
-    WRITE_SHORT ("%abil_off%" + 0x02 + (0x28 * "%index%")) 4 // changes ability icon location to innate (4)
-    READ_SHORT  ("%abil_off%" + 0x12 + (0x28 * "%index%")) "speed" // reads casting speed
-    PATCH_IF ("%speed%" > 3) BEGIN
-      WRITE_SHORT  ("%abil_off%" + 0x12 + (0x28 * "%index%")) ("%speed%" - 2) // reduces casting speed
-    END ELSE BEGIN
-      WRITE_SHORT  ("%abil_off%" + 0x12 + (0x28 * "%index%")) 0 // makes instant
-    END
-    READ_SHORT  ("%abil_off%" + 0x1e + (0x28 * "%index%")) "abil_fx_num" ELSE 0
-    READ_SHORT  ("%abil_off%" + 0x20 + (0x28 * "%index%")) "abil_fx_idx" ELSE 0
-    FOR ( index2 = 0 ; index2 < abil_fx_num ; index2 = index2 + 1 ) BEGIN // loops through and changes item created
-      READ_SHORT ("%fx_off%" +        (0x30 * ("%abil_fx_idx%" + "%index2%" - 1))) "opcode" ELSE 0
-      READ_ASCII ("%fx_off%" + 0x14 + (0x30 * ("%abil_fx_idx%" + "%index2%" - 1))) "item" ELSE 0
-      PATCH_IF (("%opcode%" = 111) AND ("%item%" STRING_COMPARE_CASE "ghoult" = 0)) BEGIN
-        WRITE_ASCII ("%fx_off%" + 0x14 + (0x30 * ("%abil_fx_idx%" + "%index2%" - 1))) ~a#oozet~ #8
-      END
-    END
-  END
+  SAY 0x50  @20309
+  SAY 0x54  @20309
+  WRITE_SHORT  0x1c 4                  // sets spell type to innate (4)
+  WRITE_LONG   0x34 1                  // sets spell level to 1 to avoid scripting issues
+  READ_LONG    0x64 abil_off ELSE 0
+  READ_ASCII   abil_off + 0x04 bam (8) // reads the bam filename from ability
+  WRITE_ASCIIE 0x3a "%bam%" #8         // writes the bam filename from abilities to spell icon
+  LPF ALTER_HEADER INT_VAR type = 4 speed = 0 END
+  LPF ALTER_EFFECT INT_VAR match_opcode = 111 STR_VAR resource = ~a#oozet~ END 
   BUT_ONLY_IF_IT_CHANGES
 
 //Renaming called item
 COPY_EXISTING ~ghoult.itm~ ~override/a#oozet.itm~
   SAY NAME1 @20305
   SAY NAME2 @20305
-
-//Shapeshift to mustard jelly
-COPY ~divine_remix/spl/a#ooze3.spl~ ~override~
-  SAY NAME1 @20306
-  SAY NAME2 @20306
-
-// shapeshift to nat form
-COPY ~divine_remix/spl/a#ooze3a.spl~ ~override~
+  
+COPY_EXISTING ~spwi490.spl~ ~override/a#ooze3a.spl~ //natural form
+  LPF DELETE_EFFECT STR_VAR match_resource = spwi490 END 
+COPY_EXISTING ~spwi496.spl~ ~override/a#ooze3.spl~ //mustard jelly
+  LPF ALTER_EFFECT INT_VAR match_opcode = 171 STR_VAR match_resource = spwi496 resource = ~a#ooze3a~ END 
+  LPF CLONE_EFFECT INT_VAR match_opcode = 171 opcode = 172 timing = 1 duration = 0 STR_VAR match_resource = ~a#ooze3a~ END 
 
 COPY ~divine_remix/spl/a#ooze2.spl~ ~override~ //immune to poison
      ~divine_remix/spl/a#ooze5.spl~ ~override~ //immune to disease
-     ~divine_remix/spl/a#ooze6.spl~ ~override~ //immune to blindness, sleep, paralysis, stunning and critical hits
-     ~divine_remix/spl/a#ooze7.spl~ ~override~ //charisma drop
-  SAY NAME1 @20307
-  SAY NAME2 @20307
+     ~divine_remix/spl/a#ooze6.spl~ ~override~ //immune to blindness, sleep, paralysis, stun
+     
+COPY ~divine_remix/spl/a#ooze7.spl~ ~override~ //charisma drop
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF(@20307) END
+  
 COPY ~divine_remix/spl/a#ooze4.spl~ ~override~ //immune to acid
-  LPF ALTER_EFFECT INT_VAR resist_dispel = 0 END
-  SAY NAME1 @20308
-  SAY NAME2 @20308
-
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF(@20308) END
 
 ADD_KIT ~A#OOZE~
   ~A#OOZE                  0           0           1           1           0           1           0           0~

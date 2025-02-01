@@ -1473,3 +1473,13 @@ END ELSE BEGIN // if aoe is not installed, make this a blank function
   DEFINE_ACTION_FUNCTION cd_aoe_compat BEGIN END
   
 END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// alter_header                                     \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+INCLUDE ~divine_remix/lib/alter_header.tpa~
