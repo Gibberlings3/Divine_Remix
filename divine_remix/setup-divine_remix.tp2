@@ -365,21 +365,7 @@ OUTER_SPRINT kitname @10136 // ~Stormlord~
 ACTION_FOR_EACH cre IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos /*nalla*/ scyarryl talmiss talmiss2 talvilon vvpriest yssold16 BEGIN // nalla is a bard, not a priest...
 	
   COPY_EXISTING ~%cre%.cre~ ~override~ 
-    WRITE_LONG  0x244 0
-    WRITE_SHORT 0x246 kit
-    READ_BYTE  0x234 level
-    PATCH_IF level > 4 BEGIN 
-      PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
-        READ_STRREF off name
-        PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
-          INNER_PATCH_SAVE name ~%name%~ BEGIN
-            REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'stormlord'
-            REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'stormlord'
-          END
-          SAY_EVALUATED off ~%name%~ // write changes
-        END
-      END   
-    END  
+    LPM cd_assign_kit_to_cre
     BUT_ONLY IF_EXISTS
 
 END
@@ -397,21 +383,7 @@ OUTER_SPRINT kitname @10139 // ~Watcher~
 ACTION_FOR_EACH cre IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig sctelwyn nalin shugod01 shugod02 shugar01 ntprihel s#helm01 BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~ 
-    WRITE_LONG  0x244 0
-    WRITE_SHORT 0x246 kit
-    READ_BYTE  0x234 level
-    PATCH_IF level > 4 BEGIN 
-      PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
-        READ_STRREF off name
-        PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
-          INNER_PATCH_SAVE name ~%name%~ BEGIN
-            REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Watcher'
-            REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Watcher'
-          END
-          SAY_EVALUATED off ~%name%~ // write changes
-        END
-      END   
-    END  
+    LPM cd_assign_kit_to_cre
     BUT_ONLY IF_EXISTS
 
 END
@@ -421,21 +393,7 @@ OUTER_SPRINT kitname @10142 // ~Morninglord~
 ACTION_FOR_EACH cre IN acolyte2 amtcle01 amtcler0 arenthis arval bharval c6cler1 cllatp01 cscleric dawnmas latlara scsain BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~ 
-    WRITE_LONG  0x244 0
-    WRITE_SHORT 0x246 kit
-    READ_BYTE  0x234 level
-    PATCH_IF level > 4 BEGIN 
-      PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
-        READ_STRREF off name
-        PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
-          INNER_PATCH_SAVE name ~%name%~ BEGIN
-            REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Morninglord'
-            REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Morninglord'
-          END
-          SAY_EVALUATED off ~%name%~ // write changes
-        END
-      END   
-    END  
+    LPM cd_assign_kit_to_cre
     BUT_ONLY IF_EXISTS
 
 END
@@ -448,21 +406,7 @@ ACTION_IF kit > 0 THEN BEGIN
   ACTION_FOR_EACH cre IN ohdcru01 ohdcru02 ohdlufc1 ohdlumc1 ohdneo03 ohdneo04 ohdppe01 ohdppe02 ohdrdef ohdtree1 BEGIN
 
     COPY_EXISTING ~%cre%.cre~ ~override~ 
-      WRITE_LONG  0x244 0
-      WRITE_SHORT 0x246 kit
-      READ_BYTE  0x234 level
-      PATCH_IF level > 4 BEGIN 
-        PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
-          READ_STRREF off name
-          PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
-            INNER_PATCH_SAVE name ~%name%~ BEGIN
-              REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Holy Justice'
-              REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Holy Justice'
-            END
-            SAY_EVALUATED off ~%name%~ // write changes
-          END
-        END   
-      END  
+      LPM cd_assign_kit_to_cre
       BUT_ONLY IF_EXISTS
 
   END
@@ -478,21 +422,7 @@ ACTION_IF kit > 0 THEN BEGIN
   ACTION_FOR_EACH cre IN kpchap01 everard accalia BEGIN
 
     COPY_EXISTING ~%cre%.cre~ ~override~ 
-      WRITE_LONG  0x244 0
-      WRITE_SHORT 0x246 kit
-      READ_BYTE  0x234 level
-      PATCH_IF level > 4 BEGIN 
-        PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
-          READ_STRREF off name
-          PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
-            INNER_PATCH_SAVE name ~%name%~ BEGIN
-              REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Battleguard'
-              REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Battleguard'
-            END
-            SAY_EVALUATED off ~%name%~ // write changes
-          END
-        END   
-      END  
+      LPM cd_assign_kit_to_cre
       BUT_ONLY IF_EXISTS
 
   END
@@ -511,37 +441,33 @@ BEGIN @10300 DESIGNATED 103 // component 103
 GROUP @10
 REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 
-COPY ~divine_remix/bam/CDMNSHLB.bam~ ~override~ /// use spell shield BAM for moon shield
+ACTION_IF game_is_iwdee BEGIN 
+  OUTER_SET bio = RESOLVE_STR_REF(@10322)
+END ELSE
+ACTION_IF game_is_bgee BEGIN 
+  OUTER_SET bio = 15884
+END  
 
-COPY ~divine_remix/spl/cdslmsd.spl~ ~override~  // Moon Shield (innate spell)
-  // temp to get some strings into the game
-  PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
-    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
-      SAY NAME1 @10322
-      READ_LONG NAME1 bio
-    END ELSE BEGIN // bgee/bg2ee bio
-      PATCH_IF GAME_IS ~bg2ee eet~ BEGIN // bg2ee
-        SET bio = "-1"
-      END ELSE BEGIN // bgee
-        SET bio  = 15884
-      END
-    END
-  END
+ACTION_IF FILE_EXISTS_IN_GAME ~spwi801b.bam~ BEGIN // use spell shield BAM for moon shield
+  COPY_EXISTING ~spwi801b.bam~ ~override/cdmnshlb.bam~ 
+END ELSE BEGIN
+  COPY ~divine_remix/bam/cdmnshlb.bam~ ~override~
+END
+
+COPY ~divine_remix/spl/cdslmsd.spl~  ~override~ // Moon Shield (innate spell)
   SAY NAME1 @10307
   SAY NAME2 @10307
   SAY UNIDENTIFIED_DESC @10308
   SAY DESC @10308
-
-// change spells to innates as needed
-COPY_EXISTING ~sppr403.spl~  ~override/cdslfre.spl~ // free action (innate)
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
+  
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr403 destination = ~cdslfre~   RET_ARRAY cd_clone_spell_array END // free action
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/cdselune.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~cdslfre~ // free action as 1/5
   REPLACE_TEXTUALLY ~KITBIL2~ ~cdslmsd~ // moon shield as 1/10
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -583,7 +509,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~J#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
 
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    CDSelune
   OUTER_SPRINT symbol cdslhly
@@ -601,14 +527,20 @@ ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // h
     SAY NAME2 @10319
     SAY UNIDENTIFIED_DESC @10320
     SAY DESC @10320
+    PATCH_IF enhanced_edition BEGIN
+      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 power = 1 parameter1 = (0x4000 + CDSelune) parameter2 = 9 timing = 2 special = RESOLVE_STR_REF(@10305) END
+      WRITE_LONG 0x1e 0 // clear existing race/class flags since 319 does the work
+    END     
 
 END
+
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 /////                                                  \\\\\
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/Selune_ar0900.baf~
   EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/Selune_ar0902.baf~
@@ -616,31 +548,20 @@ ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold st
 
 END
 
-
 /////                                                  \\\\\
 ///// assign kits                                      \\\\\
 /////                                                  \\\\\
 
-OUTER_SET kit = "%CDSelune%" // selune
-ACTION_FOR_EACH creature IN bstq007 ysselune BEGIN
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
-
-    COPY_EXISTING ~%creature%.cre~ ~override~
-      WRITE_SHORT   0x244 0
-	  WRITE_SHORT   0x273 3
-      WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
-	  READ_SHORT NAME1 "priestG"
-	  READ_BYTE 0x234 "Lv"
-	  GET_STRREF priestG "name" 
-	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Selune" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Selune" = 0) OR ("%name%" STRING_COMPARE_CASE "Priestess of Selune" = 0)) AND ("%Lv%">=5)) BEGIN
-	    SAY NAME1 @10301 // Silverstar of Selûne 
-	    SAY NAME2 @10301
-	  END
-      BUT_ONLY
-
-  END
+OUTER_SPRINT name_cleric @10155 // Cleric
+OUTER_SPRINT name_priest @10156 // Priest/Priestess
+  
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~CDSelune~)) // talos
+OUTER_SPRINT kitname @10324 // ~Silverstar~
+ACTION_FOR_EACH cre IN bstq007 ysselune BEGIN
+	
+  COPY_EXISTING ~%cre%.cre~ ~override~ 
+    LPM cd_assign_kit_to_cre
+    BUT_ONLY IF_EXISTS
 
 END
 
@@ -656,48 +577,35 @@ BEGIN @10600 DESIGNATED 106 // component 106
 GROUP @10
 REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 
-// change spells to innates as needed
-COPY_EXISTING ~spwi401.spl~ ~override/a#sha09.spl~ // confusion
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
-
-COPY ~divine_remix/spl/cdshar2.spl~ ~override~  // dark bolt
-  // temp to get some strings into the game
-  PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
-    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
-      SAY NAME1 @10620
-      READ_LONG NAME1 bio
-    END ELSE BEGIN // bgee/bg2ee bio
-      PATCH_IF GAME_IS ~bg2ee eet~ BEGIN // bg2ee
-        SET bio = "-1"
-      END ELSE BEGIN // bgee
-        SET bio  = 15884
-      END
-    END
-  END
-  SAY NAME1 @10621
-  SAY NAME2 @10621
-  SAY UNIDENTIFIED_DESC @10622
-  SAY DESC @10622
-  LPF ALTER_EFFECT INT_VAR match_opcode = 215 timing = 0 duration = 4 STR_VAR resource = SPCRTWPN END
+ACTION_IF game_is_iwdee BEGIN 
+  OUTER_SET bio = RESOLVE_STR_REF(@10620)
+END ELSE
+ACTION_IF game_is_bgee BEGIN 
+  OUTER_SET bio = 15884
+END  
+  
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi401 destination = ~a#sha09~ RET_ARRAY cd_clone_spell_array END // confusion
 
 COPY ~divine_remix/bam/a#sha01.bam~ ~override~ // bams for dark bolt
      ~divine_remix/bam/a#sha02.bam~ ~override~
-
-COPY ~divine_remix/itm/cdshar2.itm~ ~override~  // dark bolt
-  WRITE_BYTE 0x18 (THIS BAND 0b11110011)
-  LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 233 target = 1 parameter1 = 2 parameter2 = 109 timing = 2 END
-  LPF ALTER_ITEM_HEADER INT_VAR header_type = 2 damage_type = 4 charges = 1 flag_strength = 0 END
+COPY ~divine_remix/spl/cdshar2.spl~ ~override~  // dark bolt spell
   SAY NAME1 @10621
   SAY NAME2 @10621
   SAY UNIDENTIFIED_DESC @10622
   SAY DESC @10622
+  
+COPY ~divine_remix/itm/cdshar2.itm~ ~override~  // dark bolt item
+  SAY NAME1 @10621
+  SAY NAME2 @10621
+  SAY UNIDENTIFIED_DESC @10624
+  SAY DESC @10624
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#shar.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#sha09~ // Confusion as 1/5
   REPLACE_TEXTUALLY ~KITBIL2~ ~cdshar2~ // dark bolt as 1/10
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -739,7 +647,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
 
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    ~A#SHAR~
   OUTER_SPRINT symbol ~a#sha25~
@@ -754,14 +662,20 @@ ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // h
     SAY NAME1 @10615
     SAY NAME2 @10615
     SAY DESC  @10616
+    PATCH_IF enhanced_edition BEGIN
+      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 power = 1 parameter1 = (0x4000 + CDSelune) parameter2 = 9 timing = 2 special = RESOLVE_STR_REF(@10305) END
+      WRITE_LONG 0x1e 0 // clear existing race/class flags since 319 does the work
+    END     
 
 END
+
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 /////                                                  \\\\\
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/Shar_ar0900.baf~
   EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/Shar_ar0904.baf~

@@ -513,7 +513,7 @@ Casting Time: 1 round
 Area of Effect: Caster
 Saving Throw: None
 
-Upon casting this spell, the Silverstar receives a resistance to all magic.  The resistance conferred is 2% per level of the cleric up to a maximum of 40% at 20th level.  This resistance is set so if the target already has more magic resistance than the cleric would confer, it will actually lower it to the set value.  This effect will last for the duration of the spell or until dispelled.~
+Upon casting this spell, the Silverstar receives resistance to all magic.  The resistance conferred is 2% per level of the cleric up to a maximum of 40% at 20th level.  This resistance is set so if the target already has more magic resistance than the cleric would confer, it will actually lower it to the set value.  This effect will last for the duration of the spell or until dispelled.~
 @10319 =~Holy Symbol of Selûne~
 @10320 =~Only the most worthy and devoted Silverstars of Selûne are granted these powerful holy symbols.
 
@@ -529,8 +529,8 @@ Non-evil lycanthropes honor Selûne as the master of their fate as do astrologers
 Selûne's clerics, called Silverstars of Selûne, are dedicated advocates of freedom and tolerance, wanderers on the path of truth and absolute foes of Shar. They seek to build harmony among lycanthropes and non-shapechangers, and they protect the weak and the oppressed everywhere. They cannot abide slavery, and they hate most undead. They rarely settle in one place for long, instead moving along when seized by wanderlust or enticed by a new cause or mission. They deal with lunar energies and phenomena and are, to a limited degree, able to wield the power of the moon, bringing its fierce, pure white light to Toril to advance the goddess's wishes.
 
 Advantages:
-– May cast Free Action once per day every 5 levels (starts at 1st level with one use).
-– May cast Moon Shield once per day every 10 levels (starts at 1st level with one use), as detailed below.
+– May cast Free Action once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
+– May cast Moon Shield once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
 
 MOON SHIELD: Upon casting this spell, the Silverstar receives a resistance to all magic. The resistance conferred is 2% per level of the cleric up to a maximum of 40% at 20th level. This resistance is set so if the target already has more magic resistance than the cleric would confer, it will actually lower it to the set value. This effect will last for the duration of the spell or until dispelled.
 
@@ -541,6 +541,7 @@ Disadvantages:
 
 Though these missions to the untamed wilderness are often considered an unwanted chore by the less optimistic members of your order, you found yourself eager to accept the task. It seemed to be a chance to bring hope and light to the people of the North, a chance to do some real good rather than settling into weekly services delivered for the temple’s casual worshipers in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and the wisdom of the Moonmaiden in your heart.~
 @10323 =~Selûne has long been a friend to the Morninglords.  I would ask your service for a time, in exchange for the favor of Lathander.~
+@10324 = ~Silverstar~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -606,8 +607,8 @@ Shar's mortal enemy is the goddess Selûne and the two fight on a number of level
 Clerics of Shar are called Nightcloaks. They exist outside the standard church hierarchy. Shar has no main temple, but instead has a scattering of cells and secretive places throughout the Realms. The Nightcloaks of Shar serve as contacts, messengers, and enforcers of the Dark Lady's will.
 
 Advantages:
-– May cast Confusion once per day every 5 levels (starts at 1st level with one use).
-– May cast Dark Bolt once per day every 10 levels (starts at 1st level with one use), as detailed below.
+– May cast Confusion once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
+– May cast Dark Bolt once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
 
 DARK BOLT: This spell creates small chakrams in the casters hand (one per level of the caster). These chakrams can be hurled, causing silence on a failed save vs. spell on the target creature and causing 2d4 cold damage. Undead creatures must also make a save vs. paralyzation or be held for one round.
 
@@ -621,6 +622,7 @@ Though these pilgrimages are often considered an unwanted duty by the more polit
 @10622 = ~Dark Bolt 
 This spell creates small chakrams in the casters hand (one per level of the caster). These chakrams can be hurled, causing silence on a failed save vs. spell on the target creature and causing 2d4 cold damage. Undead creatures must also make a save vs. paralyzation or be held for one round.~
 @10623 =~Shar has often been our ally. I offer you a chance to deliver vengeance for the Stormlord!~
+@10624 = ~Created by the Dark Bolt spell. When thrown at opponents they cause 2d4 points of cold damage as well as causing silence on a failed save vs. spell. Undead creatures must also make a save vs. paralyzation or be held for one round. Energy blades are used as a weapon.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
