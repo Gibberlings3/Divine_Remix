@@ -981,35 +981,31 @@ BEGIN @11500 DESIGNATED 115
 GROUP @10
 REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 
-COPY ~divine_remix/spl/a#kos0c.spl~ ~override~
-  PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
-    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
-      SAY NAME1 @11511
-      READ_LONG NAME1 bio
-      WRITE_LONG 0x08 `0
-    END ELSE BEGIN // bgee/bg2ee bio
-      PATCH_IF GAME_IS ~bg2ee eet~ BEGIN // bg2ee
-        SET bio = "-1"
-      END ELSE BEGIN // bgee
-        SET bio  = 15884
-      END
-    END
-  END
+ACTION_IF game_is_iwdee BEGIN 
+  OUTER_SET bio = RESOLVE_STR_REF(@11511)
+END ELSE
+ACTION_IF game_is_bgee BEGIN 
+  OUTER_SET bio = 15884
+END  
 
-// change spells to innates as needed
-COPY_EXISTING ~spwi523.spl~ ~override/a#kos09.spl~ // sunfire
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
+COPY ~divine_remix/spl/a#kos0c.spl~ ~override/a#kos0d.spl~
+COPY ~divine_remix/spl/a#kos0c.spl~ ~override~
+  LPF DELETE_EFFECT INT_VAR match_opcode = 142 END 
+  
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi523 destination = ~a#kos09~   RET_ARRAY cd_clone_spell_array END // sunfire
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#koss.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#kos09~ // Sunfire as 1/5
-  FOR (index = 1 ; index < 51 ; ++index) BEGIN
-    SET_2DA_ENTRY 2 index 50 ~AP_a#kos0c~
+  SET_2DA_ENTRY 2 1 50 ~AP_a#kos0d~ // first level gets the prtrait icon
+  FOR (index = 2 ; index < 51 ; ++index) BEGIN
+    SET_2DA_ENTRY 2 index 50 ~AP_a#kos0c~ // all other levels just the +2% fire resistance
   END
   PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
+  PRETTY_PRINT_2DA
 
 ADD_KIT ~A#KOSS~
   ~A#KOSS                  0           0           1           1           0           1           0           0~
@@ -1041,24 +1037,24 @@ LAF cd_aoe_compat INT_VAR column = (22 + "%A#KOSS%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
-  OUTER_SPRINT kit    ~a#koss~
-  OUTER_SPRINT symbol ~a#koss25~
-  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-
-    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-
-  END
-
   COPY ~divine_remix/bam/a#ikos25.bam~ ~override~ // holy symbol
   COPY ~divine_remix/bam/a#pkos25.bam~ ~override~
-  COPY ~divine_remix/itm/a#koss25.itm~ ~override~
-    SAY NAME1 @11507
-    SAY NAME2 @11507
-    SAY UNIDENTIFIED_DESC @11508
-    SAY DESC @11508
+  LAF cd_create_holy_symbol
+  INT_VAR 
+    name = RESOLVE_STR_REF(@11507)
+    desc = RESOLVE_STR_REF(@11508)
+    kit  = ~A#KOSS~
+    kit319s = RESOLVE_STR_REF(@11503)
+    kitbits = 0 // no alignment restrictions
+  STR_VAR
+    symbol = ~a#koss25~
+    iicon  = ~a#ikos25~
+    cicon  = ~a#pkos25~
+  END     
 
 END
+
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 /////                                                  \\\\\
 ///// Stronghold fixes                                 \\\\\
