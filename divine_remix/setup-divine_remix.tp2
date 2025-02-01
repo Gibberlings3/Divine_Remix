@@ -1864,7 +1864,12 @@ LAF fl#add_kit_ee
 END
 
 COPY ~divine_remix/spl/nmrnbs1.spl~ ~override~ // -1 to damage with melee
-     ~divine_remix/spl/nmrnbs2.spl~ ~override~ // Called Shot
+
+COPY ~divine_remix/spl/nmrnbs2.spl~ ~override~ // Steady Shot
+  SAY NAME1 @40306
+  SAY NAME2 @40306
+  SAY UNIDENTIFIED_DESC  @40307
+  SAY DESC  @40307
 
 COPY ~divine_remix/spl/nmrnbs3.spl~ ~override~ // Speed Shot
   SAY NAME1 @40304
@@ -1872,11 +1877,10 @@ COPY ~divine_remix/spl/nmrnbs3.spl~ ~override~ // Speed Shot
   SAY UNIDENTIFIED_DESC  @40305
   SAY DESC  @40305
 
-// change spells to innates as needed
-COPY_EXISTING ~spwi203.spl~ ~override/nmrnbs4.spl~ // detect invisibility
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
-
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi203 destination = ~nmrnbs4~ RET_ARRAY cd_clone_spell_array END // detect invisibility
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
