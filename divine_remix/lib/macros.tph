@@ -1385,19 +1385,16 @@ END
 DEFINE_PATCH_MACRO cd_assign_kit_to_cre BEGIN
   WRITE_LONG  0x244 0
   WRITE_SHORT 0x246 kit
-  READ_BYTE  0x234 level
-  PATCH_IF level > 4 BEGIN 
-    PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
-      READ_STRREF off name
-      PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
-        INNER_PATCH_SAVE name ~%name%~ BEGIN
-          REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Morninglord'
-          REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Morninglord'
-        END
-        SAY_EVALUATED off ~%name%~ // write changes
+  PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
+    READ_STRREF off name
+    PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+      INNER_PATCH_SAVE name ~%name%~ BEGIN
+        REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Morninglord'
+        REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Morninglord'
       END
-    END   
-  END  
+      SAY_EVALUATED off ~%name%~ // write changes
+    END
+  END 
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

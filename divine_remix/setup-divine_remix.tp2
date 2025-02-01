@@ -1186,25 +1186,17 @@ BEGIN @12100 DESIGNATED 121
 GROUP @10
 REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 
-// change spells to innates as needed
-COPY_EXISTING ~spwi419.spl~ ~override/a#og07.spl~ // secret word
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
+ACTION_IF game_is_iwdee BEGIN 
+  OUTER_SET bio = RESOLVE_STR_REF(@12109)
+END ELSE
+ACTION_IF game_is_bgee BEGIN 
+  OUTER_SET bio = 15884
+END  
+  
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi419 destination = ~a#og07~ RET_ARRAY cd_clone_spell_array END // secret word
 
 COPY ~divine_remix/spl/a#og0b.spl~ ~override~  // Lore boost (innate)
-  PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
-    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
-      SAY NAME1 @12109
-      READ_LONG NAME1 bio
-      WRITE_LONG 0x08 `0
-    END ELSE BEGIN // bgee/bg2ee bio
-      PATCH_IF GAME_IS ~bg2ee eet~ BEGIN // bg2ee
-        SET bio = "-1"
-      END ELSE BEGIN // bgee
-        SET bio  = 15884
-      END
-    END
-  END
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#ogma.2da~
@@ -1234,8 +1226,6 @@ ADD_KIT ~A#OGMA~
   SAY @12101
   SAY @12108
 
-LAF cd_aoe_compat INT_VAR column = (22 + "%A#OGMA%") END
-
 LAF fl#add_kit_ee
   INT_VAR
     biography = bio
@@ -1244,28 +1234,28 @@ LAF fl#add_kit_ee
     clascolr = ~35 66 66 25 80~
 END
 
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#OGMA%") END
+
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
-
-  OUTER_SPRINT kit    ~a#ogma~
-  OUTER_SPRINT symbol ~a#og25~
-  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-
-    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-
-  END
 
   COPY ~divine_remix/bam/cdioghly.bam~   ~override~ // holy symbol
        ~divine_remix/bam/cdpoghly.bam~   ~override~
-  COPY ~divine_remix/itm/a#koss25.itm~ ~override/a#og25.itm~// This is ok because they have the same alignment restrictions... Yeh.
-    SAY NAME1 @12105
-    SAY NAME2 @12105
-    SAY UNIDENTIFIED_DESC @12106
-    SAY DESC @12106
-    WRITE_ASCII 0x3a ~cdioghly~
-    WRITE_ASCII 0x58 ~cdpoghly~
+  LAF cd_create_holy_symbol
+  INT_VAR 
+    name = RESOLVE_STR_REF(@12105)
+    desc = RESOLVE_STR_REF(@12106)
+    kit  = ~A#OGMA~
+    kit319s = RESOLVE_STR_REF(@12101)
+    kitbits = 0 // no alignment restrictions
+  STR_VAR
+    symbol = ~a#og25~
+    iicon  = ~cdioghly~
+    cicon  = ~cdpoghly~
+  END     
 
 END
+
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 /////                                                  \\\\\
 ///// Stronghold fixes                                 \\\\\
@@ -1284,26 +1274,17 @@ END
 /////                                                  \\\\\
 ///// assign kits                                      \\\\\
 /////                                                  \\\\\
+  
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#OGMA~)) // oghma
+OUTER_SPRINT kitname @12112 // ~Lorekeeper~
+ACTION_FOR_EACH cre IN 
+  doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma poghma3 poghma4 poghma5 poghma6 poghma7 poghma8 _poghm10 
+  _poghm3 _poghm6 _poghm8 _poghm9 _poghma _poghma3 _poghma4 _poghma5 _poghma6 _poghma7 _poghma8 ja#oghm1 
+BEGIN
 
-OUTER_SET kit = "%A#OGMA%" // oghma
-ACTION_FOR_EACH creature IN doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma poghma3 poghma4 poghma5 poghma6 poghma7 poghma8 _poghm10 _poghm3 _poghm6 _poghm8 _poghm9 _poghma _poghma3 _poghma4 _poghma5 _poghma6 _poghma7 _poghma8 ja#oghm1 BEGIN
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
-
-    COPY_EXISTING ~%creature%.cre~ ~override~
-      WRITE_SHORT   0x244 0
-      WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
-      READ_SHORT NAME1 "priestG"
-	  READ_BYTE 0x234 "Lv"
-	  GET_STRREF priestG "name" 
-	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Oghma" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Oghma" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Oghma" = 0)) AND ("%Lv%">=3)) BEGIN
-	  SAY NAME1 @12101  //Lorekeeper of Oghma
-	  SAY NAME2 @12101 
-	  END
-	  BUT_ONLY
-
-  END
+  COPY_EXISTING ~%cre%.cre~ ~override~ 
+    LPM cd_assign_kit_to_cre
+    BUT_ONLY IF_EXISTS
 
 END
 
