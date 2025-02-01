@@ -21,8 +21,8 @@ END ELSE BEGIN
   
   OUTER_SPRINT tra_path ~weidu_external/divine_remix/languages~
 
-  ACTION_DEFINE_ARRAY cdnoconvert BEGIN setup END
-  ACTION_DEFINE_ARRAY cdreload BEGIN divine_remix kit_sphere END
+  ACTION_DEFINE_ARRAY cdnoconvert BEGIN weidu game_ee END
+  ACTION_DEFINE_ARRAY cdreload BEGIN game END
   LAF HANDLE_CHARSETS
     INT_VAR
       infer_charsets = 1
@@ -32,6 +32,8 @@ END ELSE BEGIN
       noconvert_array = cdnoconvert
       reload_array = cdreload
   END
+  
+  LOAD_TRA ~divine_remix/languages/%LANGUAGE%/game_ee.tra~
 
 END  
 

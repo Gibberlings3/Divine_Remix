@@ -18,30 +18,30 @@ AUTO_TRA ~%tra_path%/%s~
 LANGUAGE
   ~English~
   ~english~
-  ~divine_remix/languages/english/setup.tra~
-  ~divine_remix/languages/english/divine_remix.tra~
+  ~divine_remix/languages/english/weidu.tra~
+  ~divine_remix/languages/english/game.tra~
 LANGUAGE
   ~Francais (by Sanctifer)~
   ~french~
-  ~divine_remix/languages/english/setup.tra~
-  ~divine_remix/languages/english/divine_remix.tra~
-  ~divine_remix/languages/french/setup.tra~
-  ~divine_remix/languages/french/divine_remix.tra~
+  ~divine_remix/languages/english/weidu.tra~
+  ~divine_remix/languages/english/game.tra~
+  ~divine_remix/languages/french/weidu.tra~
+  ~divine_remix/languages/french/game.tra~
 /*
 LANGUAGE
   ~Polski (by yarpen)~
   ~polski~
-  ~divine_remix/languages/english/setup.tra~
-  ~divine_remix/languages/english/divine_remix.tra~
-  ~divine_remix/languages/english/setup.tra~
-  ~divine_remix/languages/polski/setup.tra~
+  ~divine_remix/languages/english/weidu.tra~
+  ~divine_remix/languages/english/game.tra~
+  ~divine_remix/languages/polski/weidu.tra~
+  ~divine_remix/languages/polski/game.tra~
 LANGUAGE
   ~Czech (by Neferit, Katie, and Ondrej)~
   ~czech~
-  ~divine_remix/languages/english/setup.tra~
-  ~divine_remix/languages/english/divine_remix.tra~
-  ~divine_remix/languages/english/setup.tra~
-  ~divine_remix/languages/czech/setup.tra~
+  ~divine_remix/languages/english/weidu.tra~
+  ~divine_remix/languages/english/game.tra~
+  ~divine_remix/languages/czech/weidu.tra~
+  ~divine_remix/languages/czech/game.tra~
 */
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
