@@ -695,32 +695,24 @@ BEGIN @10700 DESIGNATED 107 // component 107
 GROUP @10
 REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 
-COPY ~divine_remix/spl/a#re0b.spl~ ~override~  // Additional Attack per round (innate)
-  PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
-    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
-      SAY NAME1 @10716
-      READ_LONG NAME1 bio
-      WRITE_LONG NAME1 `0
-    END ELSE BEGIN // bgee/bg2ee bio
-      PATCH_IF GAME_IS ~bg2ee eet~ BEGIN // bg2ee
-        SET bio = "-1"
-      END ELSE BEGIN // bgee
-        SET bio  = 15884
-      END
-    END
-  END
+ACTION_IF game_is_iwdee BEGIN 
+  OUTER_SET bio = RESOLVE_STR_REF(@10716)
+END ELSE
+ACTION_IF game_is_bgee BEGIN 
+  OUTER_SET bio = 15884
+END  
+  
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi305 destination = ~a#re07~ RET_ARRAY cd_clone_spell_array END // haste
 
-// change spells to innates as needed
-COPY_EXISTING ~spwi305.spl~ ~override/a#re07.spl~ // haste
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
+COPY ~divine_remix/spl/a#re0b.spl~ ~override~  // Additional Attack per round (innate)
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#red.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~ // haste as 1/5
   REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
   SET_2DA_ENTRY 2 14 50 ~AP_a#re0b~     // extra attack
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -749,7 +741,6 @@ LAF fl#add_kit_ee
     kit_name = ~a#red~
     clascolr = ~35 63 47 25 80~
 END
-
   
 ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
 
@@ -763,7 +754,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
 
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    ~A#RED~
   OUTER_SPRINT symbol ~a#red25~
@@ -783,11 +774,13 @@ ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // h
 
 END
 
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
+
 /////                                                  \\\\\
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/red_ar0900.baf~
   EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/red_ar0901.baf~
@@ -807,17 +800,15 @@ BEGIN @10900 DESIGNATED 109// component 109
 GROUP @10
 REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~ohtempus.2da~ @14
-
-// change spells to innates as needed
-COPY_EXISTING ~sppr412.spl~ ~override/a#tem07.spl~ // holy power
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
+  
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr412 destination = ~a#tem07~ RET_ARRAY cd_clone_spell_array END // holy power
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#temp.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#tem07~ // Holy Power as 1/5
   REPLACE_TEXTUALLY ~KITBIL2~ ~spcl321~ // enrage as 1/10
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -860,7 +851,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
 
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    ~A#temp~
   OUTER_SPRINT symbol ~a#tem25~
@@ -881,11 +872,13 @@ ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // h
 
 END
 
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
+
 /////                                                  \\\\\
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/tempus_ar0900.baf~
   EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/tempus_ar0904.baf~
@@ -897,25 +890,16 @@ END
 ///// assign kits                                      \\\\\
 /////                                                  \\\\\
 
-OUTER_SET kit = "%A#TEMP%" // tempus
-ACTION_FOR_EACH creature IN kpchap01 everard accalia BEGIN
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
-
-    COPY_EXISTING ~%creature%.cre~ ~override~
-      WRITE_SHORT   0x244 0
-      WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
-	  READ_SHORT NAME1 "priestG"
-	  READ_BYTE 0x234 "Lv"
-	  GET_STRREF priestG "name" 
-	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Tempus" = 0)) AND ("%Lv%">=5)) BEGIN
-	  SAY NAME1 @10191 //Battleguard of Tempus 
-	  SAY NAME2 @10191
-	  END
-      BUT_ONLY
-
-  END
+OUTER_SPRINT name_cleric @10155 // Cleric
+OUTER_SPRINT name_priest @10156 // Priest/Priestess
+  
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#TEMP~))
+OUTER_SPRINT kitname @10917 // ~Battleguard~
+ACTION_FOR_EACH cre IN kpchap01 everard accalia BEGIN
+	
+  COPY_EXISTING ~%cre%.cre~ ~override~ 
+    LPM cd_assign_kit_to_cre
+    BUT_ONLY IF_EXISTS
 
 END
 
@@ -956,7 +940,7 @@ COPY ~divine_remix/spl/cdilend.spl~  ~override~
 COPY ~divine_remix/2da/generic.2da~ ~override/cdilmatr.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL211~ // lay on hands as 1/5
   REPLACE_TEXTUALLY ~KITBIL2~ ~cdilend~ // ilmater's endurance as 1/10
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -998,7 +982,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
 
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    ~CDILMATR~
   OUTER_SPRINT symbol ~cdilhly~
@@ -1023,7 +1007,7 @@ END
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/ilmater_ar0900.baf~
   EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/ilmater_ar0901.baf~
@@ -1096,7 +1080,7 @@ COPY ~divine_remix/2da/generic.2da~ ~override/a#koss.2da~
   FOR (index = 1 ; index < 51 ; ++index) BEGIN
     SET_2DA_ENTRY 2 index 50 ~AP_a#kos0c~
   END
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -1138,7 +1122,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
 
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    ~a#koss~
   OUTER_SPRINT symbol ~a#koss25~
@@ -1163,7 +1147,7 @@ END
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/kossuth_ar0900.baf~
   EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/kossuth_ar0901.baf~
@@ -1216,7 +1200,7 @@ COPY ~divine_remix/2da/generic.2da~ ~override/cdxvim.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~cdxvgml~ // greater malison as 1/5
   REPLACE_TEXTUALLY ~ABILITY2    GA_KITBIL2 ~ ~ABILITY2    AP_CDXVFEAR~ // no 1/10
   REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****      ~ // no 1/10
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -1258,7 +1242,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
 
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    ~CDXvim~
   OUTER_SPRINT symbol ~cdxvhly~
@@ -1283,7 +1267,7 @@ END
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/xvim_ar0900.baf~
   EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/xvim_ar0901.baf~
@@ -1329,7 +1313,7 @@ COPY ~divine_remix/2da/generic.2da~ ~override/a#ogma.2da~
   FOR (index = 1 ; index < 51 ; ++index) BEGIN
     SET_2DA_ENTRY 2 index 50 ~AP_a#og0b~
   END
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -1371,7 +1355,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 66 66 25 80~
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    ~a#ogma~
   OUTER_SPRINT symbol ~a#og25~
@@ -1398,7 +1382,7 @@ END
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/oghma_ar0900.baf~
   EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/oghma_ar0901.baf~
@@ -1474,7 +1458,7 @@ COPY ~divine_remix/2da/generic.2da~ ~override/nmsune.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~nmsun07~ // emotion as 1/5
   REPLACE_TEXTUALLY ~KITBIL2~ ~cdsune2~ // Veil of Djalice as 1/10
   INSERT_2DA_ROW 3 50 ~ABILITY3    AP_nmsun0A  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~//+1 charisma
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -1516,7 +1500,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
 
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    ~NMSUNE~
   OUTER_SPRINT symbol ~nmsuhly~
@@ -1541,7 +1525,7 @@ END
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   EXTEND_TOP ~ar0900.bcs~   ~Divine_Remix/baf/sune_ar0900.baf~
   EXTEND_TOP ~ar0902.bcs~   ~Divine_Remix/baf/sune_ar0902.baf~
@@ -1635,7 +1619,7 @@ COPY ~divine_remix/2da/generic.2da~ ~override/a#feyw.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~a#fey09~ // Spell Immunity as 1/5
   REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
   SET_2DA_ENTRY 2 1 50 ~AP_a#fey0a~     // save bonus
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -1678,7 +1662,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
     BUT_ONLY_IF_IT_CHANGES
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    ~A#FEYWARDEN~
   OUTER_SPRINT symbol ~a#feyhly~
@@ -1702,7 +1686,7 @@ END
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/Corellon_ar0900.baf~
   EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/Corellon_ar0902.baf~
@@ -1745,7 +1729,7 @@ COPY ~divine_remix/spl/a#cyr07.spl~ ~override~
 COPY ~divine_remix/2da/generic.2da~ ~override/a#cyric.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL423~ // poison weapon as 1/5
   REPLACE_TEXTUALLY ~KITBIL2~ ~a#cyr07~ // dread blast as 1/10
-  PATCH_IF NOT FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN
+  PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
@@ -1786,7 +1770,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is
     BUT_ONLY_IF_IT_CHANGES
 END
 
-ACTION_IF FILE_CONTAINS_EVALUATED (~clabpr02.2da~ ~AP_CDHLYSYM~) THEN BEGIN // holy symbols
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   OUTER_SPRINT kit    ~A#CYRIC~
   OUTER_SPRINT symbol ~a#cyr25~
@@ -1809,7 +1793,7 @@ END
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
   ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN //Compile dialogue alteration for Cyric in the Pocket Plane
 

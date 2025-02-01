@@ -356,8 +356,8 @@ After witnessing the eyeless priest's speech, I was approached by a cleric of La
 @10171 =~STORMLORD OF TALOS: Talos is the evil god of storms, destruction, and rebellion. Clerics of the Stormlord warn that Talos must be appeased or he will rain destruction upon the land.
 
 Advantages:
-– May cast Lightning Bolt once per day every 5 levels of the caster (starts at 1st level with one use).
-– May cast Storm Shield once per day every 10 levels of the caster (starts at 1st level with one use).
+– May cast Lightning Bolt once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
+– May cast Storm Shield once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
 
 STORM SHIELD: This spell lasts 1 round per level of the caster. It protects the caster from lightning, fire, cold, and normal missiles.
 
@@ -411,8 +411,8 @@ Disadvantages:
 @10179 =~MORNINGLORD OF LATHANDER: Lathander is the good god of renewal, creativity, and youth, and is celebrated nearly everywhere. His followers are very popular throughout the Realms, and there are numerous wealthy temples devoted to him.
 
 Advantages:
-– May cast Hold Undead once per day every 5 levels of the caster (starts at 1st level with one use).
-– May cast Boon of Lathander every 10 levels of the caster (starts at 1st level with one use), as detailed below. 
+– May cast Hold Undead once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
+– May cast Boon of Lathander once per day. Gains one use at level 1 and an additional use every 10 levels thereafter. 
 
 BOON OF LATHANDER: This spell lasts 1 round per level of the caster. It gives the caster a +1 bonus to attack and damage rolls, a +1 bonus to all Saving Throws, and 1 extra attack per round. It also protects the recipient from level drain.
 
@@ -431,8 +431,8 @@ STATISTICS:
 @10184 =~WATCHER OF HELM: Followers of the neutral god of watchers and protectors are warriors in their own right and are often seen as defenders of the innocent.
 
 Advantages:
-– May cast True Sight once per day every 5 levels (starts at 1st level with one use).
-– May cast Seeking Sword once per day every 10 levels (starts at 1st level with one use), as detailed below.
+– May cast True Sight once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
+– May cast Seeking Sword once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
 
 SEEKING SWORD: This spell creates a sword in the Cleric's hand (that cannot be dropped or unequipped). The sword is considered a +4 weapon for purposes of determining what it can hit (but this bonus does not apply to attack or damage rolls), and it deals out 2d4 damage to any target it hits. The weapon sets the number of attacks of the Cleric to 3. It lasts for 1 round per level of the caster. When equipped, the wielder cannot cast further spells.
 
@@ -666,7 +666,7 @@ STATISTICS:
 Collectively, the clerics of the Red Knight are referred to as the Red Fellowship. Many members serve as high-ranking commanders in armies throughout Faerun, often personally leading elite "special forces" units. Others who are not directly in the employ of the church serve as instructors at military academies or as quartermasters in charge of keeping the troops on the front line fed and supplied. When they are not in battle, Holy Strategists wear flowing robes of red accented with white.
 
 Advantages:
-– May cast Haste once per day every 5 levels (starts at 1st level with one use).
+– May cast Haste once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
 - At 13th level, Holy Strategists can make two melee attacks per round.
 
 Disadvantages:
@@ -734,8 +734,8 @@ The dress of the Battleguard of Tempus is armor, battle-worn and battered. In mo
 
 Advantages:
 - Can specialize (two points) in any melee weapon that a cleric can use
-– May cast Holy Power once per day every 5 levels (starts at 1st level with one use).
-– May use Rage once per day every 10 levels (starts at 1st level with one use), as detailed below.
+– May cast Holy Power once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
+– May use Rage once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
 
 RAGE: The enraged state lasts for 1 turn. While enraged, a Battleguard gains a bonus of +2 to <PRO_HISHER> attack and damage rolls as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The Battleguard also gains 15 temporary Hit Points which are taken away at the end of <PRO_HISHER> berserk spree, possibly knocking <PRO_HIMHER> unconscious.
 
@@ -743,6 +743,7 @@ Disadvantages:
 – Alignment restricted to chaotic neutral, chaotic good, true neutral, and chaotic evil.
 - Cannot be proficient in ranged weapons.~
 @10916 =~Battleguards are skilled in battle and destruction. Be our vassal of wrath for the Stormlord!~
+@10917 =~Battleguard~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -800,8 +801,8 @@ Grants an additional 6th and 7th level spell.
 The followers of Ilmater are often perceived as being intentional sufferers, but in reality they offer a great deal along the "pure clerical" nature of healing and recovery to those who have been hurt. They put others ahead of themselves, are sharing, and emphasize the spiritual nature of life over the gross material body. Ilmater's priests are found where they are needed, which is usually in the worst possible conditions, ministering to the needs of the oppressed, and the poor. They dress simply in gray, with gray skullcaps (blood red for the higher ranks).
 
 Advantages:
-– May cast Lay on Hands once per day every 5 levels (starts at 1st level with one use).
-– May use Ilmater's Endurance once per day every 10 levels (starts at 1st level with one use), as detailed below.
+– May cast Lay on Hands once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
+– May use Ilmater's Endurance once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
 
 ILMATER'S ENDURANCE: The Painbearer draws upon Ilmater to be able to shoulder the burden of trials ahead. For 1 round per level of the Painbearer, the cleric gains +2 to saves, doubles HP, is immune to panic and disease, and will stand firm in the face of any charge or force.
 
@@ -871,7 +872,7 @@ Kossuth's church is varied and chaotic since he takes no interest in its structu
 Firewalkers of Kossuth can be of any alignment, but most are evil, reveling in the destructive power of fire. They can be members of any race. They dress in whatever their faction deems appropriate for the representation of their god. This is usually robes and long capes in reds, yellows, and oranges.
 
 Advantages:
-– May cast Sunfire once per day every 5 levels (starts at 1st level with one use).
+– May cast Sunfire once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
 - Gains 2% fire resistance per level.
 
 Disadvantages:
@@ -938,7 +939,7 @@ When cast, this spell will draw powerful lawful evil creatures to fight by the s
 Xvim was imprisoned under Zhentil Keep during the Time of Troubles, where he was held for ten years. He managed to free himself when Zhentil Keep fell during the Cyrinishad fiasco, where he also managed to steal the portfolios of Tyranny and Hatred away from Cyric. He is now the god of Fear, Hatred, Malice, and Tyranny. He is working toward fully taking the place of his father, Bane, which makes him a bitter enemy of Cyric. His following is strongest in the East, particularly in Thay, but his priesthood is rapidly spreading throughout the Realms. His priests favor black robes trimmed with dark green. They also wear black iron gauntlets with glowing green eyes painted on the back of the hand. These gauntlets are actually the priests' holy symbols of Xvim.
 
 Advantages:
-– May cast Greater Malison once per day every 5 levels (starts at 1st level with one use).
+– May cast Greater Malison once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
 – Immune to Fear
 
 Disadvantages:
@@ -990,7 +991,7 @@ Grants an additional 6th and 7th level spell.
 Oghma's followers believe that knowledge is most supreme, particularly in its raw form, the idea. An idea has no weight but can move mountains. It has no height but it can dominate a nation. It has no mass but it can push aside empires. Knowledge is the greatest tool of humankind, outweighing anything made by mortal hands. Before anything can exist, the idea must exist.
 
 Advantages:
-– May cast Secret Word once per day every 5 levels (starts at 1st level with one use).
+– May cast Secret Word once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
 - Gain a base of 10 lore/level.
 
 Disadvantages:
@@ -1049,8 +1050,8 @@ Sune's speciality priests, known as Heartwarders of Sune, are aesthetes and hedo
 
 Advantages:
 - +1 charisma bonus
-– May cast Emotion: Hoplessness once per day every 5 levels (starts at 1st level with one use).
-– May use Veil of Djalice once per day every 10 levels (starts at 1st level with one use), as detailed below.
+– May cast Emotion: Hoplessness once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
+– May use Veil of Djalice once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
 
 VEIL OF DJALICE: The Heartwarder temporarily augments <PRO_HISHER> beauty to unearthly levels, boosting effective charisma to 20 and forcing any hostiles to save vs. spell at -2 or be dire charmed for six rounds.
 
@@ -1120,7 +1121,7 @@ Grants an additional 6th and 7th level spell.
 Ceremonial vestments for priests of Corellon consist of azure robes made of gossamer and embroidered with silver quarter moons. Silver circlets engraved with the Protector's symbol are worn on the brow. The holy symbol of the faith is a silver or mithral lunate pendant worn on a slender chain hung from the neck. When adventuring, Corellon's priests generally favor traditionally elven equipment in conscious imitation of their divine patron.
 
 Advantages:
-– May cast Spell Immunity once per day every 5 levels (starts at 1st level with one use).
+– May cast Spell Immunity once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
 - May place up to 2 proficiency points in weapons and maximum in fighting styles
 - Gains a +1 bonus to saves vs. death
 
@@ -1176,10 +1177,10 @@ Cyric's church is pledged to spread strife and work murder everywhere in order t
 Strifeleaders wear black and purple robes. Silver bands, the symbol of their enslavement to Cyric, are worn on their wrists. 
 
 Advantages:
-– May coat <PRO_HISHER> weapon once per day every 5 levels (starts at 1st level with one use), as detailed below
+– May coat <PRO_HISHER> weapon once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
 POISON WEAPON: Attacks made in the next round with that weapon will inject the poison into the target, dealing out 1 damage per second for 24 seconds (3 damage for the first 6 seconds).  A saving throw vs. poison limits damage to 12 total.
 
-– May use Dread Blast once per day every 10 levels (starts at 1st level with one use), as detailed below.
+– May use Dread Blast once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
 DREAD BLAST: Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and confuses target for one round (save vs. spell at -2 to negate confusion)
 
 Disadvantages:
