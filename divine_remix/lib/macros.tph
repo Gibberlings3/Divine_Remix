@@ -1399,3 +1399,80 @@ DEFINE_PATCH_MACRO cd_assign_kit_to_cre BEGIN
     END   
   END  
 END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// cd_create_holy_symbol                            \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_ACTION_FUNCTION cd_create_holy_symbol
+  INT_VAR 
+    name    = "-1"
+    desc    = "-1"
+    kit     = "-1"
+    kit319s = "-1"
+    kitbits = "-1"
+  STR_VAR
+    symbol = ""
+    iicon  = ""
+    cicon  = ""
+BEGIN
+
+  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
+
+    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
+
+  END
+  
+  COPY ~divine_remix/itm/generic_holy_symbol.itm~ ~override/%symbol%.itm~
+    WRITE_LONG 0x08 name
+    WRITE_LONG 0x0c name
+    WRITE_LONG 0x50 desc
+    WRITE_LONG 0x54 desc
+    WRITE_ASCIIE 0x3a "%iicon%" #8
+    WRITE_ASCIIE 0x58 "%cicon%" #8
+    PATCH_IF enhanced_edition BEGIN
+      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 power = 1 parameter1 = (0x4000 + kit) parameter2 = 9 timing = 2 special = kit319s END
+    END ELSE BEGIN     
+      WRITE_LONG 0x1e (kitbits + BIT6 + BIT11 + BIT12 + BIT13 + BIT16 + BIT17 + BIT18 + BIT19 + BIT20 + BIT21 + BIT22 + BIT29 + BIT30)
+    END  
+    
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// cd_aoe_compat                                    \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
+
+  DEFINE_ACTION_FUNCTION cd_aoe_compat
+    INT_VAR column = "-1"
+            pips   = 1
+  BEGIN
+
+    COPY_EXISTING ~weapprof.2da~ ~override~
+      FOR (row = 2; row < (45 - (10 * pips)) ; row = row + 1) BEGIN // go to row 35 if pips = 1, 25 if pips = 2
+        SET_2DA_ENTRY_LATER ~aoe~ row column ~%pips%~
+      END
+      PATCH_IF pips = 2 BEGIN
+        SET_2DA_ENTRY_LATER ~aoe~ 4 column ~0~
+        SET_2DA_ENTRY_LATER ~aoe~ 9 column ~0~
+      END
+      SET_2DA_ENTRIES_NOW ~aoe~ 1
+      BUT_ONLY
+
+  END
+
+END ELSE BEGIN // if aoe is not installed, make this a blank function
+
+  DEFINE_ACTION_FUNCTION cd_aoe_compat BEGIN END
+  
+END

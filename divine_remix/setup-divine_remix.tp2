@@ -497,40 +497,24 @@ LAF fl#add_kit_ee
     clascolr = ~35 21 58 25 80~
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~J#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%CDSelune%")
-    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
-    END
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%CDSelune%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
-  OUTER_SPRINT kit    CDSelune
-  OUTER_SPRINT symbol cdslhly
-  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-
-    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-
-  END
-
   COPY ~divine_remix/bam/cdislhly.bam~ ~override~ // holy symbol
   COPY ~divine_remix/bam/cdpslhly.bam~ ~override~
-  COPY ~divine_remix/itm/cdslhly.itm~ ~override~
-    SAY NAME1 @10319
-    SAY NAME2 @10319
-    SAY UNIDENTIFIED_DESC @10320
-    SAY DESC @10320
-    PATCH_IF enhanced_edition BEGIN
-      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 power = 1 parameter1 = (0x4000 + CDSelune) parameter2 = 9 timing = 2 special = RESOLVE_STR_REF(@10305) END
-      WRITE_LONG 0x1e 0 // clear existing race/class flags since 319 does the work
-    END     
+  LAF cd_create_holy_symbol
+  INT_VAR 
+    name = RESOLVE_STR_REF(@10319)
+    desc = RESOLVE_STR_REF(@10320)
+    kit  = CDSelune
+    kit319s = RESOLVE_STR_REF(@10305)
+    kitbits = (BIT1 + BIT4)
+  STR_VAR
+    symbol = cdslhly
+    iicon  = cdislhly
+    cicon  = cdpslhly
+  END     
 
 END
 
@@ -635,37 +619,22 @@ LAF fl#add_kit_ee
     clascolr = ~35 66 60 25 80~
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%A#SHAR%")
-    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
-    END
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#SHAR%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
-  OUTER_SPRINT kit    ~A#SHAR~
-  OUTER_SPRINT symbol ~a#sha25~
-  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-
-    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-
-  END
-
-  COPY ~divine_remix/itm/a#sha25.itm~ ~override~  // holy symbol
-    SAY NAME1 @10615
-    SAY NAME2 @10615
-    SAY DESC  @10616
-    PATCH_IF enhanced_edition BEGIN
-      LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 319 target = 1 power = 1 parameter1 = (0x4000 + CDSelune) parameter2 = 9 timing = 2 special = RESOLVE_STR_REF(@10305) END
-      WRITE_LONG 0x1e 0 // clear existing race/class flags since 319 does the work
-    END     
+  LAF cd_create_holy_symbol
+  INT_VAR 
+    name = RESOLVE_STR_REF(@10615)
+    desc = RESOLVE_STR_REF(@10616)
+    kit  = ~A#SHAR~
+    kit319s = RESOLVE_STR_REF(@10601)
+    kitbits = BIT2
+  STR_VAR
+    symbol = ~a#sha25~
+    iicon = d0shar
+    cicon = cmisc6n
+  END  
 
 END
 
@@ -741,36 +710,25 @@ LAF fl#add_kit_ee
     kit_name = ~a#red~
     clascolr = ~35 63 47 25 80~
 END
-  
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
 
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%A#RED%")
-    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
-    END
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#RED%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
-  OUTER_SPRINT kit    ~A#RED~
-  OUTER_SPRINT symbol ~a#red25~
-  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-
-    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-
-  END
-
   COPY ~divine_remix/bam/cdirdhly.bam~ ~override~ // holy symbol
   COPY ~divine_remix/bam/cdprdhly.bam~ ~override~
-  COPY ~divine_remix/itm/a#red25.itm~  ~override~
-    SAY NAME1 @10710
-    SAY NAME2 @10710
-    SAY DESC  @10711
+  LAF cd_create_holy_symbol
+  INT_VAR 
+    name = RESOLVE_STR_REF(@10710)
+    desc = RESOLVE_STR_REF(@10711)
+    kit  = ~A#RED~
+    kit319s = RESOLVE_STR_REF(@10701)
+    kitbits = BIT0 // no chaotic
+  STR_VAR
+    symbol = ~a#red25~
+    iicon = cdirdhly
+    cicon = cdprdhly
+  END  
 
 END
 
@@ -837,38 +795,24 @@ LAF fl#add_kit_ee
     clswpbon = ~1 0 3~
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%A#TEMP%")
-    FOR (row = 2; row < 25 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~2~
-    END
-    SET_2DA_ENTRY_LATER ~aoe~ 4 column ~0~
-    SET_2DA_ENTRY_LATER ~aoe~ 9 column ~0~
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#TEMP%") pips = 2 END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
-  OUTER_SPRINT kit    ~A#temp~
-  OUTER_SPRINT symbol ~a#tem25~
-  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-
-    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-
-  END
-
   COPY ~divine_remix/bam/cditmhly.bam~ ~override~ // holy symbol
   COPY ~divine_remix/bam/cdptmhly.bam~ ~override~
-  COPY ~divine_remix/itm/a#tem25.itm~  ~override~
-    SAY NAME1 @10910
-    SAY NAME2 @10910
-    SAY UNIDENTIFIED_DESC @10911
-    SAY DESC @10911
+  LAF cd_create_holy_symbol
+  INT_VAR 
+    name = RESOLVE_STR_REF(@10910)
+    desc = RESOLVE_STR_REF(@10911)
+    kit  = ~%A#TEMP%~
+    kit319s = RESOLVE_STR_REF(@10901)
+    kitbits = BIT4 // no lawful
+  STR_VAR
+    symbol = ~a#tem25~
+    iicon = cditmhly
+    cicon = cdptmhly
+  END  
 
 END
 
@@ -970,17 +914,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 67 67 25 80~
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%CDILMATR%")
-    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
-    END
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%CDILMATR%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
@@ -1110,17 +1044,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 46 47 25 80~
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%A#KOSS%")
-    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
-    END
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#KOSS%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
@@ -1230,17 +1154,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 52 66 25 80~
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%CDXvim%")
-    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
-    END
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%CDXvim%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
@@ -1335,17 +1249,7 @@ ADD_KIT ~A#OGMA~
   SAY @12101
   SAY @12108
 
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%A#OGMA%")
-    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
-    END
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#OGMA%") END
 
 LAF fl#add_kit_ee
   INT_VAR
@@ -1488,17 +1392,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 49 46 25 80~
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%NMSUNE%")
-    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
-    END
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%NMSUNE%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
@@ -1649,18 +1543,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 21 57 25 80~
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%A#FEYWARDEN%")
-    FOR (row = 2; row < 25 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~2~
-    END
-    SET_2DA_ENTRY_LATER ~aoe~ 4 column ~0~
-    SET_2DA_ENTRY_LATER ~aoe~ 9 column ~0~
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#FEYWARDEN%") pips = 2 END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
@@ -1759,16 +1642,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 67 67 25 80~
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%A#CYRIC%")
-    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
-    END
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-END
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#CYRIC%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
@@ -2000,18 +1874,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 67 67 25 80~
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
-
-  COPY_EXISTING ~weapprof.2da~ ~override~
-    SET "column" = (22 + "%A#OOZE%")
-    FOR (row = 2; row < 35 ; row = row + 1) BEGIN
-      SET_2DA_ENTRY_LATER ~aoe~ row column ~1~
-    END
-    SET_2DA_ENTRIES_NOW ~aoe~ 1
-    BUT_ONLY_IF_IT_CHANGES
-
-END
-
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#OOZE%") END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
