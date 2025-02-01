@@ -1,1 +1,11 @@
 // encode this file as utf-8 since these strings will be used exclusively for ee games
+
+// this is the statistics block that is used for ALL holy symbols; copy from BG2 belt12, 13, or 14
+@216 = ~PARAMÈTRES :
+
+Capacités d'équipement :
+- Force : +1
+- Résistance à la magie : +5 %
+- Permet de mémoriser un sort de clerc supplémentaire de 6e et 7e niveau.
+
+Poids : 0~

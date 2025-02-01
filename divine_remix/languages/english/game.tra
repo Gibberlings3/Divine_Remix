@@ -222,6 +222,13 @@ Area of Effect: 1 Creature
 Saving Throw: None
 
 The casting of this spell opens a channel between the caster's plane and the Negative Energy plane.  The caster of the spell acts as a conduit between the two planes, sucking life from a victim and transferring it to the Negative energy plane, draining him of 2 levels of experience.  The target of this spell loses levels, Hit Dice, hit points, and abilities permanently.  These levels can only be restored by a priest's restoration spell.~
+// this is the statistics block that is used for ALL holy symbols; copy from BG2 belt12, 13, or 14
+@216 = ~STATISTICS:
+
+   Grants an additional 6th and 7th level spell.
+   5% Magic Resistance while worn
+   +1 to Strength while worn~
+
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -386,11 +393,7 @@ Disadvantages:
 – Alignment restricted to neutral evil, chaotic evil, and chaotic neutral.~
 @10182 =~Only the most worthy and devoted servants of the Storm Lord are granted these powerful holy symbols.
 
-STATISTICS:
-
-   Grants an additional 6th and 7th level spell.
-   5% Magic Resistance while worn
-   +1 to Strength while worn~
+%holy_symbol_stats%~
 // this is the sphere-enabled kit description. Spheres will be added automatically via patching
 @10178 =~MORNINGLORD OF LATHANDER: Lathander is the good god of renewal, creativity, and youth, and is celebrated nearly everywhere. His followers are very popular throughout the Realms, and there are numerous wealthy temples devoted to him.
 
@@ -422,11 +425,7 @@ Disadvantages:
 @10181 =~The mace is the spiritual weapon of Morninglords of Lathander, and is wielded as if the caster had grand mastery in the weapon. The mace is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above.~
 @10183 =~Only the most worthy and devoted servants of the Dawnbringer are granted these powerful holy symbols.
 
-STATISTICS:
-
-   Grants an additional 6th and 7th level spell.
-   5% Magic Resistance while worn
-   +1 to Strength while worn~
+%holy_symbol_stats%~
 // this is the generic kit description with 'PRIEST' changed to 'WATCHER'
 @10184 =~WATCHER OF HELM: Followers of the neutral god of watchers and protectors are warriors in their own right and are often seen as defenders of the innocent.
 
@@ -442,11 +441,7 @@ Disadvantages:
 @10186 =~The bastard sword is the spiritual weapon of Watchers of Helm, and is wielded as if the caster had grand mastery in the weapon. The bastard sword is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
 @10187 =~Only the most worthy and devoted servants of the Watcher are granted these powerful holy symbols.
 
-STATISTICS:
-
-   Grants an additional 6th and 7th level spell.
-   5% Magic Resistance while worn
-   +1 to Strength while worn~
+%holy_symbol_stats%~
 @10188 =~Stormlord of Talos~
 @10189 =~Watcher of Helm~
 @10190 =~Morninglord of Lathander~
@@ -517,11 +512,7 @@ Upon casting this spell, the Silverstar receives resistance to all magic.  The r
 @10319 =~Holy Symbol of Selûne~
 @10320 =~Only the most worthy and devoted Silverstars of Selûne are granted these powerful holy symbols.
 
-STATISTICS:
-
-   Grants an additional 6th and 7th level spell.
-   5% Magic Resistance while worn
-   +1 to Strength while worn~
+%holy_symbol_stats%~
 @10321 =~SILVERSTAR OF SELÛNE: Selûne (pronounced: seh-loon-ay), Our Lady of Silver, is the goddess of the moon, the stars, and those who use them to navigate. Her eternal foe is the evil Shar, goddess of darkness, night, loss, and forgetfulness. Selûne is often called the Moonmaiden for her connection to the silver moon that orbits Faerun. She is the goddess of the moon and travelers. Selûne's home plane is The Gates of the Moon with her home a shining hall of silver called Argentil.
 
 Non-evil lycanthropes honor Selûne as the master of their fate as do astrologers and fortune tellers. Selûne is also growing popular among alewives, laundresses, seamstresses and servants with the message of female empowerment. She is also worshiped by female spellcasters, navigators and sailors.
@@ -591,14 +582,7 @@ Shar has gifted the most devout of her clergy, the Nightcloaks, with the ability
 @10615 =~Holy Symbol of Shar~
 @10616 =~Shar rewards her most powerful servants with a Holy Symbol, a ring bearing her personal device of a black circle lined with purple. When worn, the symbol empowers the Nightcloak with Shar's power.
 
-STATISTICS:
-
-Grants an additional 6th and 7th level spell.
-5% Magic Resistance while worn
-+1 to Strength while worn
-
-Usable By:
-Nightcloak of Shar~
+%holy_symbol_stats%~
 @10618 =~Protection from Blindness~
 @10619 =~NIGHTCLOAK OF SHAR: Shar is the goddess of darkness, night, loss, and forgetfulness. Her main aspect is worshipped by those who deal in the night (such as thieves), who hate the light (such as goblin races and their allies), and who feel bitterness and loss. Her symbol is a black disk with a border of deep purple.
 
@@ -655,11 +639,7 @@ Disadvantages:
 @10710 =~Holy Symbol of the Red Knight~
 @10711 =~The Red Knight rewards her most powerful servants with a Holy Symbol, a ring bearing her personal device of a red knight chess piece. When worn, the symbol empowers the Holy Strategist with the Red Knight's power.
 
-STATISTICS:
-
-   Grants an additional 6th and 7th level spell.
-   5% Magic Resistance while worn
-   +1 to Strength while worn~
+%holy_symbol_stats%~
 @10714 =~holy strategist of the Red Knight~ // using mixed case so text is made smaller and fits in chargen screen
 @10715 =~HOLY STRATEGIST OF THE RED KNIGHT: Holy Strategist is the name by which a cleric of the Red Knight is known, and it is an apt title indeed. By devoting themselves to mastering military tactics and strategy, these militant clerics hone their minds and bodies into the deadliest weapons in Faerun. So impressive is their reputation that armies outnumbering their foes three to one have been known to surrender upon learning that a Holy Strategist leads the opposing force.
 
@@ -711,11 +691,7 @@ Disadvantages:
 @10910 =~Holy Symbol of Tempus~
 @10911 =~Tempus rewards his most powerful servants with a Holy Symbol, a ring bearing his personal device of a blazing silver sword on a red shield. When worn, the symbol empowers the Battleguard with Tempus' power.
 
-STATISTICS:
-
-Grants an additional 6th and 7th level spell.
-5% Magic Resistance while worn
-+1 to Strength while worn~
+%holy_symbol_stats%~
 @10912 =~Tempus' Shield~
 @10913 =~Tempus' Shield (Abjuration)
 Level: Quest
@@ -786,15 +762,11 @@ Saving Throw: None
 
 This spell doubles the hit points of the spell recipient for the spell duration. Any damage suffered is taken first from these phantom hit points until they are all exhausted; damage is then taken from the real hit points of the affected being.
 
-All saving throws receive a +2 bonus. In addition, no being protected by Endurance of Ilmater can be knocked over, trampled, ridden down, or overthrown; all protected beings can stand firm against all charges.~
+All saving throws receive a +2 bonus and the target is immune to fear and disease. In addition, no being protected by Endurance of Ilmater can be knocked over, trampled, ridden down, or overthrown; all protected beings can stand firm against all charges.~
 @11207 =~Holy Symbol of Ilmater~
 @11208 =~Ilmater rewards his most powerful servants with a Holy Symbol, a ring bearing his personal device of white hands bound by a blood red cord. When worn, the symbol empowers the Painbearer with Ilmater's power.
 
-STATISTICS:
-
-Grants an additional 6th and 7th level spell.
-5% Magic Resistance while worn
-+1 to Strength while worn~
+%holy_symbol_stats%~
 @11209 =~painbearer of ilmater~
 @11210 =~PAINBEARER OF ILMATER: Ilmater is the Crying God, the god of endurance, suffering, martyrdom, and perseverance. It is he who offers succor and calming words to those who are in pain, oppressed, or in great need. He is the willing sufferer, the one who takes the place of another to heft the other's burden, to take the other's pain. He is the god of the oppressed and unjustly treated. In early days Ilmater's symbol was a blood stained rack, but of late a set of white hands bound by a blood red cord is used. The latter symbol has increased Ilmater's popularity in the world at large. Ilmater dwells in the Twin Paradises.
 
@@ -813,6 +785,7 @@ Disadvantages:
 Though these missions to the untamed wilderness are often considered an unwanted chore by the less optimistic members of your order, you found yourself eager to accept the task. It seemed to be a chance to bring hope and relief to the people of the North, a chance to do some real good rather than settling into weekly services delivered for the temple’s casual worshipers in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday, you embarked on your journey North, with only a staff in hand and the endurance of the Broken God in your heart.~
 @11212 =~The crying god has much in common with Lathander. I ask a boon of you in exchange for the favor of the temple and Lathander.~
 @11213 =~Ilmater and Helm share many interests. I ask a service for the Temple of Helm.~
+@11214 =~Painbearer~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -859,11 +832,7 @@ Choosing this allows the casting of the spell once per day as an innate ability.
 @11507 =~Holy Symbol of Kossuth~
 @11508 =~Kossuth rewards his most powerful servants with a Holy Symbol, a ring bearing his personal device of an all - consuming flame. When worn, the symbol empowers the Firewalker with Kossuth's power.
 
-STATISTICS:
-
-Grants an additional 6th and 7th level spell.
-5% Magic Resistance while worn
-+1 to Strength while worn~
+%holy_symbol_stats%~
 @11509 =~firewalker of kossuth~
 @11510 =~FIREWALKER OF KOSSUTH: Kossuth, Firelord, the Tyrant among Fire, is an Elemental Lord from the Elemental Plane of Fire. He is generally uncaring to his faithful, but continues to grant his priests their powers since their worship increases his power on his home plane. To maintain continued worship he does take a limited interest in his followers' mortal problems, and occasionally makes his presence known with a manifestation, but never an avatar.
 
@@ -914,11 +883,7 @@ Disadvantages:
 @11803 =~Holy Symbol of Iyachtu Xvim~
 @11804 =~Iyachtu Xvim rewards his most powerful servants with a Holy Symbol, enchanted black iron gauntlets bearing green eyes. When worn, the gauntlets empower the Authlim with Iyachtu Xvim's power.
 
-STATISTICS:
-
-Grants an additional 6th and 7th level spell.
-5% Magic Resistance while worn
-+1 to Strength while worn~
+%holy_symbol_stats%~
 @11805 =~'Scimitar of Souls'~
 @11806 =~The Scimitar of Souls is the spiritual weapon of Authlim of Iyachtu Xvim, and is wielded as if the caster had grand mastery in the weapon. The Scimitar of Souls is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
 @11807 =~Xvim's Summoning~
@@ -980,11 +945,7 @@ Disadvantages:
 @12105 = ~Holy Symbol of Oghma~
 @12106 = ~Oghma rewards his most powerful servants with a Holy Symbol, a ring bearing his personal device of an scroll of parchment. When worn, the symbol empowers the Lorekeeper with Oghma's power.
 
-STATISTICS:
-
-Grants an additional 6th and 7th level spell.
-5% Magic Resistance while worn
-+1 to Strength while worn~
+%holy_symbol_stats%~
 @12107 = ~lorekeeper of oghma~
 @12108 = ~LOREKEEPER OF OGHMA: Oghma is the god of knowledge and invention, the Binder of What is Known, and the Patron of Bards. He is the most powerful god of knowledge in the Realms (second if you consider magical ability as knowledge, with Mystra at its head). Deneir and Milil both act as intercessors for Oghma, carrying new information both to him and to those whom Oghma favors.
 
@@ -1035,12 +996,7 @@ Disadvantages:
 @12405 = ~Holy Symbol of Sune~
 @12406 = ~Sune rewards her most powerful servants with a Holy Symbol, a golden amulet molded into the face of a beautiful human maiden. When worn, the symbol empowers the Heartwarder with Sune's power.
 
-
-STATISTICS:
-
-Grants an additional 6th and 7th level spell.
-5% Magic Resistance while worn
-+1 to Strength while worn~
+%holy_symbol_stats%~
 @12407 =~heartwarder of sune~
 @12408 =~HEARTWARDER OF SUNE: Sune (pronounced: sue-nee) Firehair is said to be the fairest of all the powers. When she is represented, she is shown as the most beautiful woman in the Realms, with sweeping, radiant, red hair and incredible charms. The Sunite faith is a popular one in large metropolitan areas and among the nobility. Those of a literary or artistic bent, as well as people falling in love or looking for lifemates, often venerate the Lady Firehair.
 
@@ -1110,12 +1066,7 @@ This ability may be chosen up to 3 times.~
 @12707 =~Holy Symbol of Corellon~
 @12708 =~Corellon rewards his most powerful servants with a Holy Symbol, a ring bearing his symbol of a crescent moon. When worn, the symbol empowers the Feywaren with Corellon's power and strong spirit.
 
-
-STATISTICS:
-
-Grants an additional 6th and 7th level spell.
-5% Magic Resistance while worn
-+1 to Strength while worn~
+%holy_symbol_stats%~
 @12709 =~FEYWARDEN OF CORELLON: The leader of the elven pantheon, Corellon Larethian (CORE-ehlon Lah-RETH-ee-yen) is said to have given birth to the entire elven race, although sometimes Sehanine or Angharradh are given credit as well. Elven lore states that the Fair Folk sprang from drops of blood Corellon shed in epic battles with Gruumsh mingled with Sehanine's (or Angharradh's) tears. The Creator of the Elves embodies the highest ideals of elvenkind, and he is the patron of most aesthetic endeavors, including art, magic, music, poetry, and warfare. He is venerated by all the Fair Folk, except the drow and those who have turned to Lolth, Ghaunadaur, Vhaeraun, and other dark powers. Corellon is especially popular with elf and half-elf mages, musicians, and poets.
 
 Ceremonial vestments for priests of Corellon consist of azure robes made of gossamer and embroidered with silver quarter moons. Silver circlets engraved with the Protector's symbol are worn on the brow. The holy symbol of the faith is a silver or mithral lunate pendant worn on a slender chain hung from the neck. When adventuring, Corellon's priests generally favor traditionally elven equipment in conscious imitation of their divine patron.
@@ -1162,12 +1113,7 @@ Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and conf
 @13005 =~Holy Symbol of Cyric~
 @13006 =~Cyric grants his most powerful servants with a Holy Symbol, silvered bracers inscribed with his device: a skull in front of a dark sun. As well as being a visible symbol of the priest's obvious power, these bracers represent his enslavement to the Prince of Lies. When worn, the symbol enhances the Strifeleader's already fearsome power.
 
-
-STATISTICS:
-
-Grants an additional 6th and 7th level spell.
-5% Magic Resistance while worn
-+1 to Strength while worn~
+%holy_symbol_stats%~
 @13007 =~Long Sword - 'Razor's Edge'~
 @13008 =~Razor's Edge is the spiritual weapon of Strifeleaders of Cyric, and is wielded as if the caster had grand mastery in the weapon. Razor's Edge is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
 @13009 =~STRIFELEADER OF CYRIC: Cyric (seer-ick) is a megalomaniacal deity with an immense following. One of the three greater powers of evil on Faerun, he is petty and self-centered, and enjoys misleading individuals of all inclinations so that they perform acts that ruin their lives or so that they make fatal mistakes. He drinks the tears of disillusioned dreamers and broken-hearted lovers. He is not above an alliance with another deity as long as he thinks he can betray the other divine power and come out ahead.

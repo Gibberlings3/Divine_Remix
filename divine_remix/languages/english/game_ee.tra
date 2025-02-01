@@ -1,4 +1,15 @@
 // encode this file as utf-8 since these strings will be used exclusively for ee games
+
+// this is the statistics block that is used for ALL holy symbols; copy from BG2 belt12, 13, or 14
+@216 = ~STATISTICS:
+
+Equipped abilities:
+– Strength: +1
+– Magic Resistance: +5%
+– Can memorize one extra 6th- and 7th-level Cleric spell
+
+Weight: 0~
+
 @10308 =~Moon Shield 
 (Alteration)
 
@@ -11,27 +22,8 @@ Area of Effect: The caster
 Saving Throw: None
 
 Upon casting this spell, the Silverstar receives resistance to all magic.  The resistance conferred is 2% per level of the cleric up to a maximum of 40% at 20th level.  This resistance is set so if the target already has more magic resistance than the cleric would confer, it will actually lower it to the set value.  This effect will last for the duration of the spell or until dispelled.~
-@10320 =~Only the most worthy and devoted Silverstars of Selûne are granted these powerful holy symbols.
 
-STATISTICS:
 
-Equipped abilities:
-– Strength: +1
-– Magic Resistance: +5%
-– Can memorize one extra 6th- and 7th-level Cleric spell
-
-Weight: 0~
-
-@10616 =~Shar rewards her most powerful servants with a Holy Symbol, a ring bearing her personal device of a black circle lined with purple. When worn, the symbol empowers the Nightcloak with Shar's power.
-
-STATISTICS:
-
-Equipped abilities:
-– Strength: +1
-– Magic Resistance: +5%
-– Can memorize one extra 6th- and 7th-level Cleric spell
-
-Weight: 0~
 @10624 = ~Created by the Dark Bolt spell. When thrown at opponents they cause 2d4 points of cold damage as well as causing silence on a failed save vs. spell. Undead creatures must also make a save vs. paralyzation or be held for one round. 
 
 STATISTICS:
@@ -44,23 +36,18 @@ THAC0: +2
 Damage: 2d4 (cold)
 
 Weight: 0~
-@10711 =~The Red Knight rewards her most powerful servants with a Holy Symbol, a ring bearing her personal device of a red knight chess piece. When worn, the symbol empowers the Holy Strategist with the Red Knight's power.
 
-STATISTICS:
+@11206 = ~Endurance of Ilmater
+(Necromancy)
 
-Equipped abilities:
-– Strength: +1
-– Magic Resistance: +5%
-– Can memorize one extra 6th- and 7th-level Cleric spell
+Level: 1
+Sphere: Necromantic, Protection
+Range: Touch
+Duration: 1 round + 1 round/level
+Casting Time: 7
+Area of Effect: 1 creature
+Saving Throw: None
 
-Weight: 0~
-@10911 =~Tempus rewards his most powerful servants with a Holy Symbol, a ring bearing his personal device of a blazing silver sword on a red shield. When worn, the symbol empowers the Battleguard with Tempus' power.
+This spell doubles the hit points of the spell recipient for the spell duration. Any damage suffered is taken first from these phantom hit points until they are all exhausted; damage is then taken from the real hit points of the affected being.
 
-STATISTICS:
-
-Equipped abilities:
-– Strength: +1
-– Magic Resistance: +5%
-– Can memorize one extra 6th- and 7th-level Cleric spell
-
-Weight: 0~
+All saving throws receive a +2 bonus. In addition, no being protected by Endurance of Ilmater can be knocked over, trampled, ridden down, or overthrown; all protected beings can stand firm against all charges.~

@@ -216,7 +216,13 @@ Zone d'effet : 1 créature
 Jet de sauvegarde : Aucun
 
 Ce sort ouvre un canal entre le Plan du lanceur et le Plan de l'Énergie Négative. Le lanceur devient alors un conduit entre ces plans, absorbant l'énergie de la victime et la transférant dans le Plan Négatif, lui drainant ainsi 2 niveaux d'expérience. La cible perd ses niveaux et toutes les capacités associées, définitivement. Seul le sort de prêtre Restauration peut les lui faire récupérer.~
+// this is the statistics block that is used for ALL holy symbols; copy from BG2 belt12, 13, or 14
+@216 = ~PARAMÈTRES :
 
+ Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
+ +5 % de Résistance à la magie
+ +1 en Force~
+ 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
@@ -403,18 +409,10 @@ Désavantages :
 @10181 = ~Cette masse est l'arme spirituelle des Seigneurs de l'Aube de Lathandre. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau de lanceur, jusqu'à 20 rounds.~
 @10182 = ~Seuls les plus fidèles et les plus dévoués serviteurs du Seigneur des Tempêtes reçoivent un de ces puissants symboles sacrés.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @10183 = ~Seuls les plus fidèles et les plus dévoués serviteurs du Seigneur de l'Aube reçoivent un de ces puissants symboles sacrés.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @10184 =~SENTINELLE DE HEAUM : les fidèles du dieu neutre des Sentinelles et des Protecteurs sont des guerriers à part entière. Ils sont souvent considérés comme les défenseurs des innocents.
 
 Avantages : 
@@ -430,11 +428,7 @@ Désavantages :
 @10186 = ~Cette épée bâtarde est l'arme spirituelle des Vigilants de Heaum. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Il s'agit d'une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à un maximum de 20 rounds.~
 @10187 = ~Seuls les plus fidèles et les plus dévoués serviteurs du Vigilant reçoivent un de ces puissants symboles sacrés.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @10188 = ~Seigneur des Tempêtes de Talos~
 @10189 = ~Sentinelle de Heaum~
 @10190 = ~Seigneur de l'Aube de Lathandre~
@@ -502,11 +496,7 @@ Avec ce sort, l'Étoile d'Argent reçoit une résistance à la magie à hauteur de 2 
 @10319 = ~Symbole Sacré de Séluné~
 @10320 = ~Seuls les plus fidèles et les plus dévouées Étoiles d'Argent reçoivent un de ces puissants symboles sacrés.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @10321 =~ÉTOILE D'ARGENT DE SÉLUNÉ : Séluné, Notre Dame d'Argent, est la déesse de la lune, des étoiles et de ceux qui les utilisent pour naviguer. Son ennemie éternelle est la déesse maléfique Shar, qui préside aux ténèbres, à la nuit, au sentiment de perte et à l'oubli. L'on surnomme souvent Séluné la Vierge Lunaire à cause de sa connexion à la lune argentée qui tourne en orbite autour de Féérune. Elle est la déesse de la lune et des voyageurs, et réside sur le plan des Portes de la Lune, dans un palais argenté nommé Argentil.
 
 Les lycanthropes d'alignement non-mauvais rendent hommage à Séluné car elle est la maîtresse de leur destinée, ainsi que les astrologues et les diseuses de bonne aventure. Depuis quelques temps, Séluné a gagné en popularité auprès des servantes, des lingères, des cuisinières et des femmes de ménage grâce à son message prônant la libération des femmes. Elle est aussi révérée par les lanceuses de sorts, les navigateurs et les marins.
@@ -576,14 +566,7 @@ Shar offre à ses plus fidèles dévots, les Manteaux de la Nuit, la capacité d'inv
 @10615 = ~Symbole Sacré de Shar~
 @10616 = ~Shar récompense les plus puissants serviteurs avec un Symbole Sacré, un anneau portant ses armoiries : un anneau noir cerclé de violet. Utilisé, le symbole accorde au Manteau de la Nuit la puissance de Shar.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force
-
-Utilisable uniquement par :
- Manteau de la Nuit de Shar~
+%holy_symbol_stats%~
 @10618 = ~Protection contre la cécité~
 @10619 = ~MANTEAU DE LA NUIT DE SHAR : Shar est la déesse des ténèbres, de la nuit, de la perte et de l'oubli. Ses principales attributions correspondent à ceux qui agissent la nuit (tels que les voleurs), qui haïssent la lumière (tels que les races gobelinoïdes et leurs alliés), ainsi que par ceux qui ont un fort sentiment d'amertume et de perte. Son symbole est un disque noir cerclé de violet foncé.
 
@@ -640,11 +623,7 @@ Désavantages :
 @10710 = ~Symbole Sacré de la Cavalière Rouge~
 @10711 = ~La Cavalière Rouge récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : une pièce d'échiquier de cavalier rouge. Le symbole accorde au Stratège Divin la puissance de la Cavalière Rouge.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @10714 = ~stratège divin de la Cavalière Rouge~
 @10715 = ~STRATÈGE DIVIN DE LA CAVALIÈRE ROUGE : Stratège Divin est la dénomination donnée aux prêtres de la Cavalière Rouge ; dénomination qui s'avère justifiée. En dévouant leur vie à la maîtrise des stratégies et tactiques militaires, ces prêtres volontaires font de leur corps et de leur esprit l'arme la plus mortelle de Féérune. Leur réputation est telle qu'il est arrivé que des armées se battant en supériorité numérique de trois contre un se rendent à leurs adversaires dès qu'ils apprirent qu'un Stratège Divin menait l'armée adverse.
 
@@ -697,11 +676,7 @@ Désavantages :
 @10910 = ~Symbole Sacré de Tempus~
 @10911 = ~Tempus récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : une épée argentée en forme d'éclair sur un bouclier rouge. Le symbole accorde à l'Guerroyeur la puissance de Tempus.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @10912 = ~Bouclier de Tempus~
 @10913 = ~Bouclier de Tempus (Abjuration)
 Niveau : Quête
@@ -776,11 +751,7 @@ La cible reçoit un bonus de +2 aux jets de sauvegarde. En outre, une créature so
 @11207 = ~Symbole Sacré d'Ilmater~
 @11208 = ~Ilmater récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : une paire de mains blanches liées par une corde rouge sang. Le symbole accorde au Noble Martyr la puissance d'Ilmater.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @11209 = ~noble martyr d'ilmater~
 @11210 =~NOBLE MARTYR D'ILMATER : Ilmater est le Dieu Qui Pleure, le dieu de l'Endurance, de la souffrance, des martyrs et de la persévérance. Il est celui qui offre secours et réconfort à ceux qui souffrent, aux oppressés ou aux nécessiteux. Il souffre volontairement ; il est celui qui porte le fardeau des autres, qui ressent leur souffrance à leur place. Il est le dieu des opprimés et de ceux qui sont traités injustement. Le symbole d'Ilmater était jadis un chevalet de torture ensanglanté, mais actuellement on utilise plutôt une représentation de deux mains reliées entre elles par une cordelette rouge sang. Ce dernier symbole a grandement amélioré la popularité d'Ilmater. Ilmater réside dans les Paradis Jumeaux.
 
@@ -846,11 +817,7 @@ Cette capacité donne droit à une utilisation quotidienne du sort en tant que cap
 @11507 = ~Symbole Sacré de Kossuth~
 @11508 = ~Kossuth récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : une flamme qui consume tout. Le symbole accorde à l'Adepte des Flammes la puissance de Kossuth.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @11509 = ~adepte des flammes de kossuth~
 @11510 =~ADEPTE DES FLAMMES DE KOSSUTH : Kossuth, le Seigneur du Feu, le Tyran des Flammes, est un Seigneur Elémentaire originaire du Plan Elémentaire du Feu. De façon générale il ne porte aucune attention à ses croyants, mais il continue à conférer des pouvoirs à ses prêtres ; en effet, leur dévotion augmente son pouvoir dans son plan de résidence. Afin de maintenir ce niveau de dévotion, il lui arrive de s'intéresser un minimum aux problèmes de ses dévots mortels et à l'occasion il peut lui arriver de montrer sa présence via une manifestation, mais jamais un avatar.
 
@@ -902,11 +869,7 @@ Désavantages :
 @11803 = ~Symbole sacré d'Iyachtu Xvim~
 @11804 = ~Iyachtu Xvim récompense ses serviteurs les plus puissants avec un Symbole Sacré, une paire de gantelets noirs avec des yeux verts. Utilisé, le symbole accorde au Tyran la puissance d'Iyachtu Xvim.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @11805 = ~Cimeterre : 'Cimeterre des Âmes'~
 @11806 = ~Le Cimeterre des Âmes est l'arme spirituelle des Tyrans d'Iyachtu Xvim. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Le Cimeterre des Âmes est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
 @11807 = ~Invocation de Xvim~
@@ -969,11 +932,7 @@ Désavantages :
 @12105 = ~Symbole Sacré d'Oghma~
 @12106 = ~Oghma récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : un parchemin vierge. Utilisé, le symbole accorde au Gardien du Savoir la puissance d'Oghma.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @12107 = ~gardien du savoir d'oghma~
 @12108 = ~GARDIEN DU SAVOIR D'OGHMA : Oghma est le dieu de la connaissance, l'Archiviste de ce qui est Connu, ainsi que le Patron des bardes. Il est la plus puissante des divinités du savoir des Royaumes (second derrière Mystra si l'on considère que la magie est une forme de savoir). Déneïr et Milil font office d'intermédiaires pour Oghma. Ces derniers lui apportent des informations, ainsi qu'à ceux qui obtiennent ses faveurs.
 
@@ -1025,11 +984,7 @@ Désavantages :
 @12405 = ~Symbole Sacré de Sunie~
 @12406 = ~Sunie récompense ses serviteurs les plus puissants avec un Symbole Sacré : une amulette dorée en forme de visage d'une très belle femme. Utilisé, le symbole accorde au Garde du Coeur la puissance de Sunie.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @12407 = ~garde du coeur de sunie~
 @12408 = ~GARDE DU COEUR DE SUNIE : Sunie, la déesse aux Cheveux de Feu est, parait-il, la plus douce de toutes les déesses. Elle est représentée sous les traits de la plus belle femme des Royaumes avec une chevelure rousse légère et resplendissante et au charme incroyable. La foi Sunite est très populaire parmi les nobles et dans les grandes villes. Ceux qui possèdent un don dans les arts ou la littérature, ainsi que les amoureux ou ceux qui cherchent l'amour vénèrent souvent la Dame aux Cheveux de Feu.
 
@@ -1099,11 +1054,7 @@ Cette capacité peut être choisie 3 fois.~
 @12707 = ~Symbole Sacré de Corellon~
 @12708 = ~Corellon récompense ses serviteurs les plus puissants avec un Symbole Sacré, un anneau portant ses armoiries : un croissant de lune. Utilisé, le symbole accorde au Protecteur Féérique la puissance de Corellon.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @12709 =~PROTECTEUR FÉÉRIQUE DE CORELLON : Corellon Larethian est le leader du panthéon elfe. Il paraîtrait même qu'il est le créateur de la race des elfes, même si Séhanine ou Angharradh sont créditées du même exploit. Les légendes elfiques racontent que le Peuple Fée est né du sang que Corellon aurait versé au cours de batailles épiques contre Gruumsh, où il se serait mêlé aux larmes de Séhanine (ou d'Angharradh). Le Créateur des Elfes incarne les plus nobles idéaux elfiques, et il gouverne la plupart des activités esthétiques : l'art, la magie, la musique, la poésie et la guerre. Le Peuple Fée dans son intégralité rend hommage à Corellon, hormis les drows qui se sont tournés vers Llolth, Ghaunadaur, Vhaeraun et autres puissances de l'ombre. Corellon est particulièrement révéré parmi les magiciens, les musiciens et les poètes elfes ou demi-elfes.
 
 Les habits de cérémonie des prêtres de Corellon incluent des robes azurées faites de tissus très légers et décorés de croissants de lune argentés. Les prêtres portent souvent des anneaux d'argent gravés du symbole du Protecteur sur l'arcade sourcilière. Le symbole sacré de Corellon consiste en un croissant de lune en argent ou en mithril pendant à une fine chaîne portée autour du cou. Lorsqu'ils partent à l'aventure, les prêtres de Corellon préfèrent généralement utiliser de l'équipement elfique, soucieux d'imiter leur divinité patronne.
@@ -1150,11 +1101,7 @@ Cette capacité permet de lancer un rayon d'énergie négative qui inflige 4d8 poin
 @13005 = ~Symbole Sacré de Cyric~
 @13006 = ~Cyric récompense ses serviteurs les plus puissants avec un Symbole Sacré, des bracelets argentés représentant ses armoiries : un crâne devant un soleil de teinte sombre. En plus d'être un signe visible de la puissance du prêtre, ces bracelets représentent sa dévotion inconditionnelle au Prince des Mensonges. Utilisés, ces bracelets améliorent les pouvoirs déjà terrifiants du Semeur de discorde.
 
-PARAMÈTRES :
-
- Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
- +5 % de Résistance à la magie
- +1 en Force~
+%holy_symbol_stats%~
 @13007 = ~Épée Longue : 'Lame de Rasoir'~
 @13008 = ~Lame de Rasoir est l'arme spirituelle des Maîtres des Conflits de Cyric. L'arme se manie comme si le lanceur disposait de la grande maîtrise. Lame de Rasoir est une arme normale aux niveaux 1 à 5, +1 aux niveaux 6 à 10, +2 aux niveaux 11 à 15, +3 aux niveaux 16 à 20, +4 aux niveaux 21 à 25 et +5 aux niveaux 26 et supérieurs. L'arme spirituelle dure pendant un round par niveau du lanceur, jusqu'à 20 rounds.~
 @13009 =~SEMEUR DE DISCORDE DE CYRIC : Cyric est un dieu mégalomane dont le culte est largement répandu, ainsi que l'une des trois plus grandes puissances maléfiques de Féérune. Mesquin et égocentrique, il n'aime rien tant que de mener des individus de tous bords à commettre des actes qui ruinent leur vie entière ou à leur faire faire des erreurs fatales. Il boit à la source des larmes des rêveurs qui ont perdu leurs illusions et des coeurs brisés. Il est tout à fait capable de s'allier à une autre divinité pourvu qu'il puisse la trahir et s'en sortir.

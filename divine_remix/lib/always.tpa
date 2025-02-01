@@ -37,4 +37,8 @@ END ELSE BEGIN
 
 END  
 
+OUTER_SPRINT name_cleric @10155 // Cleric - used for name replacements on creatures
+OUTER_SPRINT name_priest @10156 // Priest/Priestess - used for name replacements on creatures
+OUTER_SPRINT holy_symbol_stats @216 // used to fill out holy symbol descriptions
+
 CLEAR_IDS_MAP
