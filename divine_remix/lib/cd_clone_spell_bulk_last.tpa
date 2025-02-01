@@ -7,6 +7,7 @@
 see notes in cd_clone_spell_bulk_first.tpa
 
 used:
+  Divine Remix, as divine_remix/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
   P&P Celestials, as celestials/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
   G3 Community Item Pack as g3cip/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
 

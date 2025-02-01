@@ -16,6 +16,7 @@ if you clone Magic Missile into a new spell, the Shield spell and amulet
 are updated to block the clone as well. 
 
 used:
+  Divine Remix, as divine_remix/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
   P&P Celestials, as celestials/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
   G3 Community Item Pack as g3cip/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
 
@@ -23,7 +24,8 @@ platform:
   bg2-based engines
  
 version history: 
-  unknown
+  * inception: unknown
+  * 2/1/25: oBG2 using 206s to block stacking would also block new 206 when creating clone; make an exception for it now
 
 */
 
@@ -92,7 +94,11 @@ COPY_EXISTING ~%source%.spl~ ~override/%destination%.spl~
             READ_ASCII   (fx_off +        (0x30 * (index2 + abil_fx_idx))) clone (48)
             INSERT_BYTES (fx_off +        (0x30 * (index2 + abil_fx_idx))) 48
               WRITE_ASCIIE (fx_off +        (0x30 * (index2 + abil_fx_idx))) ~%clone%~ #48
-              WRITE_ASCIIE (fx_off + 0x14 + (0x30 * (index2 + abil_fx_idx))) ~%destination%~ #8
+              PATCH_IF (opcode = 206) AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN   // special exception for oBG2 spell stacking
+                WRITE_ASCIIE (fx_off + 0x14 + (0x30 * (index2 + abil_fx_idx + 1))) ~%destination%~ #8 // otherwise old 206 blocks new 206
+              END ELSE BEGIN   
+                WRITE_ASCIIE (fx_off + 0x14 + (0x30 * (index2 + abil_fx_idx))) ~%destination%~ #8
+              END  
             SET delta += 1
             SET abil_fx_num += 1
             SET index2 += 1

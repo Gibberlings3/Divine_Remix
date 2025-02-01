@@ -1082,31 +1082,27 @@ BEGIN @11800 DESIGNATED 118
 GROUP @10
 REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 
-COPY ~divine_remix/spl/CDXVFEAR.spl~ ~override~  // immunity to fear (permanent innate spell)
-  PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
-    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
-      SAY NAME1 @11811
-      READ_LONG NAME1 bio
-      WRITE_LONG 0x08 `0
-    END ELSE BEGIN // bgee/bg2ee bio
-      PATCH_IF GAME_IS ~bg2ee eet~ BEGIN // bg2ee
-        SET bio = "-1"
-      END ELSE BEGIN // bgee
-        SET bio  = 15884
-      END
-    END
-  END
+ACTION_IF game_is_iwdee BEGIN 
+  OUTER_SET bio = RESOLVE_STR_REF(@11811)
+END ELSE
+ACTION_IF game_is_bgee BEGIN 
+  OUTER_SET bio = 15884
+END  
 
-// change spells to innates as needed
-COPY_EXISTING ~spwi412.spl~ ~override/cdxvgml.spl~ // greater malison (innate)
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
-
-COPY_EXISTING ~spwi412.spl~ ~override~ // make innate/arcane GMs unstackable
-  LPF CLONE_EFFECT STR_VAR match_resource = spwi412 resource = cdxvgml insert = above END // picks up 321 for ee games, 206 for non-ee
-
-COPY_EXISTING ~cdxvgml.spl~ ~override~ // make innate/arcane GMs unstackable
-  LPF CLONE_EFFECT STR_VAR match_resource = spwi412 resource = cdxvgml insert = below END // picks up 321 for ee games, 206 for non-ee
+COPY ~divine_remix/spl/cdxvfear.spl~ ~override~  // immunity to fear (permanent innate spell)
+  PATCH_IF game_is_bgee BEGIN // bgee has different fear and disease strings
+    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 20568 END // Morale Failure: Panic
+    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 25818 END // Panic
+  END ELSE   
+  PATCH_IF game_is_iwdee BEGIN // iwdee has different fear and disease strings
+    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 20568 END // Morale Failure: Panic
+    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 17427 END // Panic
+    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 35483 END // Panic
+    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 35484 END // Panic
+  END    
+  
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi412 destination = ~cdxvgml~ RET_ARRAY cd_clone_spell_array END // greater malison
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/cdxvim.2da~
@@ -1147,24 +1143,24 @@ LAF cd_aoe_compat INT_VAR column = (22 + "%CDXvim%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
-  OUTER_SPRINT kit    ~CDXvim~
-  OUTER_SPRINT symbol ~cdxvhly~
-  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-
-    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-
-  END
-
   COPY ~divine_remix/bam/cdixvhly.bam~ ~override~ // holy symbol
        ~divine_remix/bam/cdpxvhly.bam~ ~override~
-  COPY ~divine_remix/itm/cdxvhly.itm~  ~override~
-    SAY NAME1 @11803
-    SAY NAME2 @11803
-    SAY UNIDENTIFIED_DESC @11804
-    SAY DESC @11804
+  LAF cd_create_holy_symbol
+  INT_VAR 
+    name = RESOLVE_STR_REF(@11803)
+    desc = RESOLVE_STR_REF(@11804)
+    kit  = CDXvim
+    kit319s = RESOLVE_STR_REF(@11801)
+    kitbits = (BIT0 + BIT2) // chaotic, good
+  STR_VAR
+    symbol = cdxvhly
+    iicon  = cdixvhly
+    cicon  = cdpxvhly
+  END     
 
 END
+
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 /////                                                  \\\\\
 ///// Stronghold fixes                                 \\\\\
