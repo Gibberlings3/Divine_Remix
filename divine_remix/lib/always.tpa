@@ -9,6 +9,19 @@ APPEND ~spell.ids~ ~1718 CLERIC_SYMBOL_STUN~  UNLESS ~CLERIC_SYMBOL_STUN~
 APPEND ~spell.ids~ ~1719 CLERIC_SYMBOL_DEATH~ UNLESS ~CLERIC_SYMBOL_DEATH~
 
 ACTION_IF !enhanced_edition BEGIN 
+
+  // eefixpack spell immunity states
+  OUTER_SET charm_immunity     = "-1"
+  OUTER_SET confusion_immunity = "-1"
+  OUTER_SET death_immunity     = "-1"
+  OUTER_SET entangle_immunity  = "-1"
+  OUTER_SET haste_immunity     = "-1"
+  OUTER_SET hold_immunity      = "-1"
+  OUTER_SET panic_immunity     = "-1"
+  OUTER_SET silence_immunity   = "-1"
+  OUTER_SET sleep_immunity     = "-1"
+  OUTER_SET slow_immunity      = "-1"
+  OUTER_SET web_immunity       = "-1"
   
   OUTER_SPRINT tra_path ~divine_remix/languages~
   
@@ -18,6 +31,19 @@ ACTION_IF !enhanced_edition BEGIN
   END
   
 END ELSE BEGIN  
+
+   // eefixpack spell immunity states
+  OUTER_SET charm_immunity     = IDS_OF_SYMBOL (~splstate~ ~CHARM_IMMUNITY~)
+  OUTER_SET confusion_immunity = IDS_OF_SYMBOL (~splstate~ ~CONFUSION_IMMUNITY~)
+  OUTER_SET death_immunity     = IDS_OF_SYMBOL (~splstate~ ~DEATH_IMMUNITY~)
+  OUTER_SET entangle_immunity  = IDS_OF_SYMBOL (~splstate~ ~ENTANGLE_IMMUNITY~)
+  OUTER_SET haste_immunity     = IDS_OF_SYMBOL (~splstate~ ~HASTE_IMMUNITY~)
+  OUTER_SET hold_immunity      = IDS_OF_SYMBOL (~splstate~ ~HOLD_IMMUNITY~)
+  OUTER_SET panic_immunity     = IDS_OF_SYMBOL (~splstate~ ~PANIC_IMMUNITY~)
+  OUTER_SET silence_immunity   = IDS_OF_SYMBOL (~splstate~ ~SILENCE_IMMUNITY~)
+  OUTER_SET sleep_immunity     = IDS_OF_SYMBOL (~splstate~ ~SLEEP_IMMUNITY~)
+  OUTER_SET slow_immunity      = IDS_OF_SYMBOL (~splstate~ ~SLOW_IMMUNITY~)
+  OUTER_SET web_immunity       = IDS_OF_SYMBOL (~splstate~ ~WEB_IMMUNITY~)
   
   OUTER_SPRINT tra_path ~weidu_external/divine_remix/languages~
 
@@ -36,6 +62,40 @@ END ELSE BEGIN
   LOAD_TRA ~divine_remix/languages/%LANGUAGE%/game_ee.tra~
 
 END  
+
+ACTION_IF NOT VARIABLE_IS_SET charm_immunity THEN BEGIN // ee fixpack immunity spellstates
+
+  ACTION_IF enhanced_edition BEGIN
+
+    OUTER_SET charm_immunity     = IDS_OF_SYMBOL (~splstate~ ~CHARM_IMMUNITY~)
+    OUTER_SET confusion_immunity = IDS_OF_SYMBOL (~splstate~ ~CONFUSION_IMMUNITY~)
+    OUTER_SET death_immunity     = IDS_OF_SYMBOL (~splstate~ ~DEATH_IMMUNITY~)
+    OUTER_SET entangle_immunity  = IDS_OF_SYMBOL (~splstate~ ~ENTANGLE_IMMUNITY~)
+    OUTER_SET haste_immunity     = IDS_OF_SYMBOL (~splstate~ ~HASTE_IMMUNITY~)
+    OUTER_SET hold_immunity      = IDS_OF_SYMBOL (~splstate~ ~HOLD_IMMUNITY~)
+    OUTER_SET panic_immunity     = IDS_OF_SYMBOL (~splstate~ ~PANIC_IMMUNITY~)
+    OUTER_SET silence_immunity   = IDS_OF_SYMBOL (~splstate~ ~SILENCE_IMMUNITY~)
+    OUTER_SET sleep_immunity     = IDS_OF_SYMBOL (~splstate~ ~SLEEP_IMMUNITY~)
+    OUTER_SET slow_immunity      = IDS_OF_SYMBOL (~splstate~ ~SLOW_IMMUNITY~)
+    OUTER_SET web_immunity       = IDS_OF_SYMBOL (~splstate~ ~WEB_IMMUNITY~)
+
+  END ELSE BEGIN
+
+    OUTER_SET charm_immunity     = "-1"
+    OUTER_SET confusion_immunity = "-1"
+    OUTER_SET death_immunity     = "-1"
+    OUTER_SET entangle_immunity  = "-1"
+    OUTER_SET haste_immunity     = "-1"
+    OUTER_SET hold_immunity      = "-1"
+    OUTER_SET panic_immunity     = "-1"
+    OUTER_SET silence_immunity   = "-1"
+    OUTER_SET sleep_immunity     = "-1"
+    OUTER_SET slow_immunity      = "-1"
+    OUTER_SET web_immunity       = "-1"
+
+  END
+
+END
 
 OUTER_SPRINT name_cleric @10155 // Cleric - used for name replacements on creatures
 OUTER_SPRINT name_priest @10156 // Priest/Priestess - used for name replacements on creatures

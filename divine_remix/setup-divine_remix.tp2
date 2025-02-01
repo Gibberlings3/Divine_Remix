@@ -1544,6 +1544,9 @@ COPY ~divine_remix/spl/a#cyr07.spl~ ~override~
   SAY NAME2 @13000
   SAY 0x50 @13010
   SAY 0x54 @13010
+  PATCH_IF (confusion_immunity > 0) BEGIN // if eefixpack immunity states
+    LPF CLONE_EFFECT INT_VAR match_opcode = 128 opcode = 324 parameter1 = confusion_immunity parameter2 = 110 timing = 0 duration = 0 resist_dispel = 0 savingthrow = 0 STR_VAR insert = above resource = EVAL ~%SOURCE_RES%~ END
+  END
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/a#cyric.2da~
