@@ -516,7 +516,7 @@ Désavantages :
 
 Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les moins enthousiastes, il vous fallut peu de temps pour accepter cette tâche, cette chance d’apporter l’espoir et la lumière aux habitants du Nord, cette chance de répandre réellement le bien plutôt que s’étioler à servir les banals fidèles des villes. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et la sagesse de la Vierge Lunaire dans le coeur.~
 @10323 =~Séluné a toujours été l'amie du Seigneur de l'Aube. J'aimerais que vous nous aidiez, en échange des faveurs de Lathandre.~
-
+@10324 =~Étoile d'Argent~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -770,7 +770,7 @@ Désavantages :
 Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les moins enthousiastes, il vous fallut peu de temps pour accepter cette tâche, cette chance d’apporter l’espoir et le repos aux habitants du Nord, cette chance de répandre réellement le bien plutôt que s’étioler à servir les banals fidèles des villes. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et l’endurance du Dieu Brisé dans le coeur.~
 @11212 =~Le Dieu Brisé a beaucoup de choses en commun avec Lathandre. J'aimerais vous demander un service en échange des faveurs du temple et de Lathandre.~
 @11213 =~Ilmater et Heaum ont beaucoup d'intérêts en commun. J'aimerais vous demander un service pour le compte du temple de Heaum.~
-
+@11214 = ~Noble Martyr~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -949,7 +949,7 @@ Désavantages :
 Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les plus studieux, il vous fallut peu de temps pour accepter cette tâche, cette chance d’apprendre et d’explorer les confins de la civilisation, cette chance de contribuer à écrire un ouvrage plutôt qu’à le recopier. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et les yeux grands ouverts, avides de nouvelles connaissances.~
 @12110 =~En tant que Gardien du Savoir, je suis sûr que vous pouvez comprendre notre volonté d'enquêter à ce sujet.~
 @12111 =~Malgré vos atours de Gardien du Savoir, je vois le maelström de Talos dans votre coeur. Soyez le bras armé de la vengeance du Seigneur des Tempêtes !~
-
+@12112 = ~Gardien du Savoir~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1008,7 +1008,7 @@ Le Garde du Coeur augmente temporairement sa beauté à un niveau surhumain, monta
 
 Bien que ces missions dans des contrées sauvages soient souvent vues comme des corvées indésirables par les membres de votre ordre les moins enthousiastes, il vous fallut peu de temps pour accepter cette tâche, cette chance d’apporter l’amour et la passion aux habitants du Nord, cette chance de répandre réellement le bien plutôt que s’étioler à servir les banals fidèles des villes. Sans hésitation, vous acceptâtes d’effectuer ce pèlerinage, et en quelques jours vous fûtes à bord d’un bateau en direction du Nord, avec pour seuls bagages un bâton dans les mains, et l’amour de la Dame aux Cheveux de Feu dans la poitrine.~
 @12412 =~Sunie a toujours été une amie pour le Seigneur de l'Aube. J'aimerais que vous nous rendiez un service, en échange des faveurs de Lathandre.~
-
+@12413 = ~Garde du Coeur~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -1113,7 +1113,7 @@ Les maîtres des Conflits portent des robes noires et violettes. Ils portent des 
 Avantages :
 - Peut enduire son arme de poison une fois par jour par tranche de 5 niveaux.
 
-ARME EMPOISONNÉE : les attaques effectuées durant le round suivant empoisonneront la cible, qui subira un point de dégâts par seconde pendant 24 secondes (3 points de dégâts pendant les 6 premières secondes). Un jet de sauvegarde contre le poison réussi limitera les dégâts à 12 points.
+%cyric_poison_weapon%
 
 - Peut utiliser Décharge Terrifiante, une fois par jour tous les 10 niveaux (une utilisation au 1er niveau)
 
@@ -1140,6 +1140,10 @@ Cette capacité permet de lancer un rayon d'énergie négative qui inflige 4d8 poin
 @13025= ~Donc, <CHARNAME>, es-tu digne de mes faveurs ? C'est par le conflit que l'on apprend ce que l'on vaut vraiment. Maintenant, il est temps de tester ton courage face à certains de mes autres favoris. Peut-être nous reverrons-nous. Je te conseille de bien te préparer.~
 @13026= ~Oui, bien sûr que tu sais qui je suis. Tu sens mon regard sur toi à chacune de tes prières nocturnes.~
 @13027= ~J'ai été guéri récemment d'un léger accès de folie... pour constater en me réveillant que les enfants de mon prédécesseur avaient poussé un peu partout comme de mauvaises herbes.~
+@13028 = ~Semeur de discorde~
+
+// this string is taken from strref 25213; ees change this ability which is why it gets broken out
+@13029 = ~ARME EMPOISONNÉE : les attaques effectuées durant le round suivant empoisonneront la cible, qui subira un point de dégâts par seconde pendant 24 secondes (3 points de dégâts pendant les 6 premières secondes). Un jet de sauvegarde contre le poison réussi limitera les dégâts à 12 points.~ 
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

@@ -828,7 +828,7 @@ END
 /////                                                  \\\\\
 
 OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#TEMP~))
-OUTER_SPRINT kitname @10917 // ~Battleguard~
+OUTER_SPRINT kitname @10145 // ~Battleguard~
 ACTION_FOR_EACH cre IN kpchap01 everard accalia BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
@@ -1531,20 +1531,15 @@ BEGIN @13001 DESIGNATED 130
 GROUP @10
 REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 
+ACTION_IF game_is_iwdee BEGIN
+  OUTER_SET bio = RESOLVE_STR_REF(@13011)
+END ELSE
+ACTION_IF game_is_bgee BEGIN
+  OUTER_SET bio = 15884
+END
+
 //Dread Blast innate
 COPY ~divine_remix/spl/a#cyr07.spl~ ~override~
-  PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
-    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
-      SAY NAME1 @13011
-      READ_LONG NAME1 bio
-    END ELSE BEGIN // bgee/bg2ee bio
-      PATCH_IF GAME_IS ~bg2ee eet~ BEGIN // bg2ee
-        SET bio = "-1"
-      END ELSE BEGIN // bgee
-        SET bio  = 15884
-      END
-    END
-  END
   SAY NAME1 @13000
   SAY NAME2 @13000
   SAY 0x50 @13010
@@ -1558,6 +1553,7 @@ COPY ~divine_remix/2da/generic.2da~ ~override/a#cyric.2da~
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
 
+OUTER_SPRINT cyric_poison_weapon @13029 // EEs change what assassin poison does, so have to fork description
 ADD_KIT ~A#CYRIC~
   ~A#CYRIC                  0           0           1           1           0           1           0           0~
   ~A#CYRIC 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
@@ -1588,20 +1584,18 @@ LAF cd_aoe_compat INT_VAR column = (22 + "%A#CYRIC%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
-  OUTER_SPRINT kit    ~A#CYRIC~
-  OUTER_SPRINT symbol ~a#cyr25~
-  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-
-    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-
+  LAF cd_create_holy_symbol
+  INT_VAR
+    name = RESOLVE_STR_REF(@13005)
+    desc = RESOLVE_STR_REF(@13006)
+    kit  = "%A#CYRIC%"
+    kit319s = RESOLVE_STR_REF(@13003)
+    kitbits = BIT2 // good
+  STR_VAR
+    symbol = ~a#cyr25~
+    iicon  = imisc85
+    cicon  = cmisc85
   END
-
-  COPY ~divine_remix/itm/a#cyr25.itm~ ~override~
-    SAY NAME1 @13005
-    SAY NAME2 @13005
-    SAY UNIDENTIFIED_DESC @13006
-    SAY DESC @13006
 
 END
 
@@ -1609,13 +1603,13 @@ END
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
+ACTION_IF game_includes_tob THEN BEGIN // Compile dialogue alteration for Cyric in the Pocket Plane
+
+  COMPILE ~divine_remix/dlg/cyricpp.d~
+
+END
+
 ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
-
-  ACTION_IF GAME_IS ~tob bg2ee eet bgt~ THEN BEGIN //Compile dialogue alteration for Cyric in the Pocket Plane
-
-    COMPILE ~divine_remix/dlg/cyricpp.d~
-
-  END
 
   EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/cyric_ar0900.baf~
   EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/cyric_ar0904.baf~
@@ -1627,25 +1621,15 @@ END
 ///// assign kits                                      \\\\\
 /////                                                  \\\\\
 
-OUTER_SET kit = "%A#CYRIC%" // cyric
-ACTION_FOR_EACH creature IN ar18prie hghprmod mvpries prcdmod prcmod slapri Z#pri1 Z#pri2 dcleric O#Tiax O#Tiax25 pptiax pptiax2 tiax tiax4 tiax6 dot#tiax lamalh bassil mulahe BEGIN
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~%A#CYRIC%~)) // talos
+OUTER_SPRINT kitname @13028 // ~Strifeleader~
+ACTION_FOR_EACH cre IN 
+  ar18prie hghprmod mvpries prcdmod prcmod slapri Z#pri1 Z#pri2 dcleric O#Tiax O#Tiax25 pptiax pptiax2 tiax tiax4 tiax6 dot#tiax lamalh bassil mulahe 
+BEGIN
 
-  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
-
-    COPY_EXISTING ~%creature%.cre~ ~override~
-      WRITE_SHORT   0x244 0
-      WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
-    READ_SHORT NAME1 "priestG"
-    READ_BYTE 0x234 "Lv"
-    GET_STRREF priestG "name"
-    PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Cyric" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Cyric" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Cyric" = 0)) AND ("%Lv%">=5)) BEGIN
-    SAY NAME1 @13003 //Strifeleader of Cyric
-    SAY NAME2 @13003
-    END
-    BUT_ONLY
-
-  END
+  COPY_EXISTING ~%cre%.cre~ ~override~
+    LPM cd_assign_kit_to_cre
+    BUT_ONLY IF_EXISTS
 
 END
 

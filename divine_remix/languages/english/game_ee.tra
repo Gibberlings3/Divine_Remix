@@ -51,3 +51,13 @@ Saving Throw: None
 This spell doubles the hit points of the spell recipient for the spell duration. Any damage suffered is taken first from these phantom hit points until they are all exhausted; damage is then taken from the real hit points of the affected being.
 
 All saving throws receive a +2 bonus and the target is immune to fear and disease. In addition, no being protected by Endurance of Ilmater can be knocked over, trampled, ridden down, or overthrown; all protected beings can stand firm against all charges.~
+
+// this string is taken from strref 25213; ees change this ability which is why it gets broken out
+@13029 = ~
+Poison Weapon
+Each successful hit within the next 5 rounds will inject poison into the target. Each target can only be affected once per round. The amount of poison damage depends on the character's level:
+
+1st - Target suffers 1 poison damage per second for 6 seconds (Save vs. Death at +1 negates)
+5th - Target suffers 1 poison damage per second for 12 seconds (Save vs. Death negates), and also immediately suffers 2 poison damage (no save)
+9th - Target suffers 1 poison damage per second for 18 seconds (Save vs. Death at -1 negates), and also immediately suffers 4 poison damage (no save)
+13th - Target suffers 1 poison damage per second for 24 seconds (Save vs. Death at -2 negates), and also immediately suffers 6 poison damage (no save)~ 
