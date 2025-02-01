@@ -1,43 +1,20 @@
-BACKUP   ~divine_remix/backup~    // location to store files for uninstall purposes
-//AUTHOR   ~pcamagna@yahoo.com~  // email address displayed if install fails
-SUPPORT ~http://gibberlings3.net/forums/index.php?showforum=29~
+BACKUP   ~weidu_external/divine_remix/backup~    // location to store files for uninstall purposes
+SUPPORT ~https://www.gibberlings3.net/forum/29-divine-remix/~
 
 ALWAYS
-
-  INCLUDE ~divine_remix/lib/macros.tph~ // defines patch macro
-  INCLUDE ~divine_remix/lib/fl#add_kit_ee.tpa~         // for ee kit features
   OUTER_SET bio = "-1"
-
-  ACTION_IF NOT VARIABLE_IS_SET cd_always THEN BEGIN
-
-    OUTER_SET cd_always = 1 // just do this part once per install
-
-    INCLUDE ~divine_remix/lib/ids_stuff.tph~             // ids fixes
-
-    // Borrowed from Edwin Romance (outdated example): convert strings to UTF-8 for BGEE/BG2EE
-    ACTION_DEFINE_ARRAY cdnoconvert BEGIN setup END
-    ACTION_DEFINE_ARRAY cdreload BEGIN divine_remix kit_sphere END
-    LAF HANDLE_CHARSETS
-      INT_VAR
-        infer_charsets = 1
-      STR_VAR
-        tra_path = EVAL ~%MOD_FOLDER%/languages~
-        // charset_table = cdcharsets // Included for illustrative purposes.
-        noconvert_array = cdnoconvert
-        reload_array = cdreload
-    END
-  
+  ACTION_IF NOT VARIABLE_IS_SET cd_divine_remix_always THEN BEGIN
+    INCLUDE ~divine_remix/lib/always.tpa~ // defines patch macro
   END
-
 END
 
-VERSION  ~8.1~
+VERSION  ~v8 (Beta)~
 
 README   ~divine_remix/readme-divine_remix.html~
 
 ASK_EVERY_COMPONENT
 
-AUTO_TRA ~divine_remix/languages/%s~
+AUTO_TRA ~%tra_path%/%s~
 LANGUAGE
   ~English~
   ~english~
@@ -55,10 +32,14 @@ LANGUAGE
   ~Polski (by yarpen)~
   ~polski~
   ~divine_remix/languages/english/setup.tra~
+  ~divine_remix/languages/english/divine_remix.tra~
+  ~divine_remix/languages/english/setup.tra~
   ~divine_remix/languages/polski/setup.tra~
 LANGUAGE
   ~Czech (by Neferit, Katie, and Ondrej)~
   ~czech~
+  ~divine_remix/languages/english/setup.tra~
+  ~divine_remix/languages/english/divine_remix.tra~
   ~divine_remix/languages/english/setup.tra~
   ~divine_remix/languages/czech/setup.tra~
 */

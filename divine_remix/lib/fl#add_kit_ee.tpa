@@ -5,7 +5,7 @@
  * Date: 2017-10-21
  */
 
-OUTER_SPRINT fl#add_kit_ee#version "1.1.4"
+OUTER_SPRINT fl#add_kit_ee#version "1.1.5"
 
 DEFINE_ACTION_FUNCTION fl#add_kit_ee#get_row
   STR_VAR
@@ -63,7 +63,7 @@ DEFINE_ACTION_FUNCTION fl#add_kit_ee#add_row
 BEGIN
   ACTION_IF "%input%" STR_CMP "" BEGIN
     OUTER_SPRINT append "%kit_name% %input%"
-    APPEND "%file%.2da" "%append%" UNLESS "%kit_name%"
+    APPEND "%file%.2da" "%append%" UNLESS "[ %TAB%]+%kit_name%[ %TAB%]+"
   END ELSE ACTION_IF "%clone%" STR_CMP "" BEGIN
     LAF fl#add_kit_ee#get_row
       STR_VAR
@@ -73,7 +73,7 @@ BEGIN
         row
     END
     OUTER_SPRINT append "%kit_name% %row%"
-    APPEND "%file%.2da" "%append%" UNLESS "%kit_name%"
+    APPEND "%file%.2da" "%append%" UNLESS "[ %TAB%]+%kit_name%[ %TAB%]+"
   END
 END
 
@@ -86,7 +86,8 @@ DEFINE_ACTION_FUNCTION fl#add_kit_ee#add_column
 BEGIN
   ACTION_IF "%input%" STR_CMP "" BEGIN
     OUTER_SPRINT append "$ $ %kit_name% %input%"
-    APPEND_COL "%file%.2da" "%append%" UNLESS "%kit_name%"
+    APPEND_COL "%file%.2da" "%append%"
+      UNLESS "[ %TAB%%WNL%]+%kit_name%[ %TAB%%WNL%]+"
   END ELSE ACTION_IF "%clone%" STR_CMP "" BEGIN
     LAF fl#add_kit_ee#get_column
       STR_VAR
@@ -96,7 +97,8 @@ BEGIN
         column
     END
     OUTER_SPRINT append "$ $ %kit_name% %column%"
-    APPEND_COL "%file%.2da" "%append%" UNLESS "%kit_name%"
+    APPEND_COL "%file%.2da" "%append%"
+      UNLESS "[ %TAB%%WNL%]+%kit_name%[ %TAB%%WNL%]+"
   END
 END
 
@@ -167,15 +169,29 @@ DEFINE_ACTION_FUNCTION fl#add_kit_ee#validate
     sneakatt
     crippstr
 BEGIN
-  ACTION_IF kit_class != 4 AND ("%backstab%" STR_CMP "" OR
-                                "%thiefskl%" STR_CMP "" OR
-                                "%traplimt%" STR_CMP "" OR
-                                "%sneakatt%" STR_CMP "" OR
-                                "%crippstr%" STR_CMP "")
+  ACTION_IF kit_class != 4 AND // THIEF
+            kit_class != 9 AND // FIGHTER_THIEF
+            kit_class != 10 AND // FIGHTER_MAGE_THIEF
+            kit_class != 13 AND // MAGE_THIEF
+            kit_class != 15 AND // CLERIC_THIEF
+            kit_class != 20 AND // MONK
+            "%thiefskl%" STR_CMP ""
+  BEGIN
+    WARN ~WARNING: the argument thiefskl should only be provided for thief and monk kits~
+    OUTER_SPRINT thiefskl ""
+  END
+  ACTION_IF kit_class != 4 AND // THIEF
+            kit_class != 9 AND // FIGHTER_THIEF
+            kit_class != 10 AND // FIGHTER_MAGE_THIEF
+            kit_class != 13 AND // MAGE_THIEF
+            kit_class != 15 AND // CLERIC_THIEF
+            ("%backstab%" STR_CMP "" OR
+             "%traplimt%" STR_CMP "" OR
+             "%sneakatt%" STR_CMP "" OR
+             "%crippstr%" STR_CMP "")
   BEGIN
     WARN ~WARNING: the arguments for thief-only 2DAs should only be provided for thief kits~
     OUTER_SPRINT backstab ""
-    OUTER_SPRINT thiefskl ""
     OUTER_SPRINT traplimt ""
     OUTER_SPRINT sneakatt ""
     OUTER_SPRINT crippstr ""
@@ -234,7 +250,7 @@ DEFINE_PATCH_MACRO fl#add_kit_ee#validate_kitlist_values BEGIN
 END
 
 DEFINE_PATCH_MACRO fl#add_kit_ee#validate_kitids_value BEGIN
-  PATCH_IF !"%number%" STRING_MATCHES_REGEXP "0x\([0-9]+\)" = 0 BEGIN
+  PATCH_IF !"%number%" STRING_MATCHES_REGEXP "0x\([0-9a-f]+\)" = 0 BEGIN
     PATCH_FAIL ~ERROR: fl#add_kit_ee could not read a valid kit number for %kit_name% from kit.ids~
   END
 END
@@ -330,13 +346,14 @@ BEGIN
         BUT_ONLY
       END
       INNER_PATCH_SAVE kitids "%number%" BEGIN
-        REPLACE_TEXTUALLY "0x\([0-9]+\)" "0x0000\1"
+        REPLACE_TEXTUALLY "0x\([0-9a-f]+\)" "0x0000\1"
       END
       SPRINT w "[ %TAB%]+"
       SPRINT ow "[ %TAB%]*"
       SPRINT d "[0-9]+"
-      SPRINT h "[0-9x]+"
-      REPLACE_TEXTUALLY ~\(%d%%w%%kit_name%%w%%d%%w%%d%%w%%d%%w%.+%w%%d%%w%%h%%w%%d%%ow%$\)~ ~\1 %kitids%~
+      SPRINT h "0x[0-9a-f]+"
+      REPLACE_TEXTUALLY ~\(%d%%w%%kit_name%%w%%d%%w%%d%%w%%d%%w%.+%w%%d%%w%%h%%w%%d%%ow%$\)~
+                        ~\1 %kitids%~
     BUT_ONLY
 
     OUTER_PATCH 0 BEGIN
@@ -346,7 +363,9 @@ BEGIN
     ACTION_IF biography < "-1" OR briefdesc < "-1" OR fallen_notice < "-1" BEGIN
       COPY_EXISTING clastext.2da override
         PATCH_FOR_EACH column IN biography briefdesc fallen_notice BEGIN
-          PATCH_IF EVAL "%column%" < "-1" AND FILE_CONTAINS_EVALUATED (clastext.2da "%column%") BEGIN
+          PATCH_IF EVAL "%column%" < "-1" AND
+                   FILE_CONTAINS_EVALUATED (clastext.2da "%column%")
+          BEGIN
             LPF fl#add_kit_ee#get_2da_value
               STR_VAR
                 row = EVAL "%class%"
@@ -386,16 +405,29 @@ BEGIN
       BUT_ONLY
     END
 
-    OUTER_SPRINT clastext "%kit_name% %kit_class% %kit_number% %kit_lower% %kit_desc% %kit_mixed% %biography% %fallen% %briefdesc%"
+    OUTER_SPRINT clastext ""
+    ACTION_FOR_EACH var IN kit_name
+                           kit_class
+                           kit_number
+                           kit_lower
+                           kit_desc
+                           kit_mixed
+                           biography
+                           fallen
+                           briefdesc
+    BEGIN
+      OUTER_SPRINT clastext EVAL "%clastext% %%var%%"
+    END
 
     ACTION_IF FILE_CONTAINS_EVALUATED (clastext.2da "FALLEN_NOTICE") BEGIN
       OUTER_SPRINT clastext "%clastext% %fallen_notice%"
     END
 
-    APPEND clastext.2da "%clastext%" UNLESS "%kit_name%"
-    
+    APPEND clastext.2da "%clastext%" UNLESS "[ %TAB%]+%kit_name%[%TAB%]+"
+
     ACTION_IF FILE_EXISTS_IN_GAME ~%sod_clastext%.2da~ BEGIN
-      APPEND ~%sod_clastext%.2da~ "%clastext%" UNLESS "%kit_name%"
+      APPEND ~%sod_clastext%.2da~ "%clastext%"
+        UNLESS "[ %TAB%]+%kit_name%[ %TAB%]+"
     END
 
     ACTION_DEFINE_ARRAY row_files BEGIN
@@ -419,7 +451,9 @@ BEGIN
 
     ACTION_PHP_EACH row_files AS _ => item BEGIN
       ACTION_IF FILE_EXISTS_IN_GAME "%item%.2da" BEGIN
-        ACTION_IF FILE_CONTAINS_EVALUATED ("%item%.2da" "^[ %TAB%]*%class%[ %TAB%]+") BEGIN
+        ACTION_IF FILE_CONTAINS_EVALUATED ("%item%.2da"
+                                           "^[ %TAB%]*%class%[ %TAB%]+")
+        BEGIN
           OUTER_SPRINT clone "%class%"
         END ELSE BEGIN
           OUTER_SPRINT clone ""
@@ -462,8 +496,15 @@ BEGIN
       END
     END
 
-    ACTION_DEFINE_ARRAY cleanup BEGIN kitlist END
-    OUTER_SET index = 1
+    OUTER_SET index = 0
+    ACTION_FOR_EACH file IN kitlist
+                            clastext
+                            "%sod_clastext%"
+                            "%sod_stweapon%"
+    BEGIN
+      OUTER_SPRINT $cleanup("%index%") "%file%"
+      OUTER_SET ++index
+    END
 
     ACTION_PHP_EACH row_files AS _ => file BEGIN
       OUTER_SPRINT $cleanup("%index%") "%file%"
@@ -473,8 +514,6 @@ BEGIN
       OUTER_SPRINT $cleanup("%index%") "%file%"
       OUTER_SET ++index
     END
-    OUTER_SPRINT $cleanup("%index%") "%sod_stweapon%"
-    OUTER_SET ++index
 
     ACTION_PHP_EACH cleanup AS _ => file BEGIN
       ACTION_IF FILE_EXISTS_IN_GAME "%file%.2da" BEGIN

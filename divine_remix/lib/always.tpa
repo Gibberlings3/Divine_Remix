@@ -1,0 +1,38 @@
+OUTER_SET cd_divine_remix_always = 1 // just do this part once per install
+
+INCLUDE ~divine_remix/lib/game_checks.tpa~ // sets game_is variables
+INCLUDE ~divine_remix/lib/macros.tph~        // defines patch macro
+INCLUDE ~divine_remix/lib/fl#add_kit_ee.tpa~ // for ee kit features
+
+APPEND ~state.ids~ ~0x00000FC0 STATE_REALLY_DEAD~ UNLESS ~0x00000FC0 STATE_REALLY_DEAD~
+APPEND ~spell.ids~ ~1718 CLERIC_SYMBOL_STUN~  UNLESS ~CLERIC_SYMBOL_STUN~
+APPEND ~spell.ids~ ~1719 CLERIC_SYMBOL_DEATH~ UNLESS ~CLERIC_SYMBOL_DEATH~
+
+ACTION_IF !enhanced_edition BEGIN 
+  
+  OUTER_SPRINT tra_path ~divine_remix/languages~
+  
+  INCLUDE ~divine_remix/lib/kit_ids_fixer.tpa~ // for ee kit features
+  ACTION_IF !game_contains_tob BEGIN 
+    INCLUDE ~divine_remix/lib/tob2soa.tpa~ // for ee kit features
+  END
+  
+END ELSE BEGIN  
+  
+  OUTER_SPRINT tra_path ~weidu_external/divine_remix/languages~
+
+  ACTION_DEFINE_ARRAY cdnoconvert BEGIN setup END
+  ACTION_DEFINE_ARRAY cdreload BEGIN divine_remix kit_sphere END
+  LAF HANDLE_CHARSETS
+    INT_VAR
+      infer_charsets = 1
+    STR_VAR
+      tra_path = ~divine_remix/languages~
+      out_path = ~weidu_external/divine_remix/languages~
+      noconvert_array = cdnoconvert
+      reload_array = cdreload
+  END
+
+END  
+
+CLEAR_IDS_MAP
