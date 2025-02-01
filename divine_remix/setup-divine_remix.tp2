@@ -1300,34 +1300,33 @@ BEGIN @12400 DESIGNATED 124
 GROUP @10
 REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
 
-// change spells to innates as needed
-COPY_EXISTING ~spwi411.spl~ ~override/nmsun07.spl~ // emotion
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
-COPY ~divine_remix/spl/nmsun0A.spl~ ~override~ //+1 Charisma 
+ACTION_IF game_is_iwdee BEGIN 
+  OUTER_SET bio = RESOLVE_STR_REF(@12411)
+END ELSE
+ACTION_IF game_is_bgee BEGIN 
+  OUTER_SET bio = 15884
+END  
+  
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi411 destination = ~nmsun07~ RET_ARRAY cd_clone_spell_array END // emotion
+
 COPY ~divine_remix/spl/cdsune2.spl~ ~override~
-  PATCH_IF ((GAME_IS ~bgee bg2ee eet~) OR (FILE_EXISTS_IN_GAME ~howparty.2da~)) BEGIN
-    PATCH_IF FILE_EXISTS_IN_GAME ~howparty.2da~ BEGIN // iwdee
-      SAY NAME1 @12411
-      READ_LONG NAME1 bio
-    END ELSE BEGIN // bgee/bg2ee bio
-      PATCH_IF GAME_IS ~bg2ee eet~ BEGIN // bg2ee
-        SET bio = "-1"
-      END ELSE BEGIN // bgee
-        SET bio  = 15884
-      END
-    END
-  END
   SAY NAME1 @12409
   SAY NAME2 @12409
   SAY UNIDENTIFIED_DESC @12410
   SAY DESC @12410
+  // (half-)elven charm immunity
+  PATCH_IF enhanced_edition BEGIN // kids, don't use fixed insert_point values. Only doing it here because it's a known quantity from the mod itself. 
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 2 opcode = 324 target = 2 parameter2 = 19 probability1 = 29 STR_VAR resource = cdsune2 END // half-elves
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 2 opcode = 324 target = 2 parameter2 = 15 probability1 = 89 STR_VAR resource = cdsune2 END // elves
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 2 opcode = 324 target = 2 parameter1 = 1 parameter2 = 113 STR_VAR resource = cdsune2 END // general non-humanoid immunity
+  END     
 
 // build 2da from generic ability schedule
 COPY ~divine_remix/2da/generic.2da~ ~override/nmsune.2da~
   REPLACE_TEXTUALLY ~KITBIL1~ ~nmsun07~ // emotion as 1/5
   REPLACE_TEXTUALLY ~KITBIL2~ ~cdsune2~ // Veil of Djalice as 1/10
-  INSERT_2DA_ROW 3 50 ~ABILITY3    AP_nmsun0A  ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****        ****~//+1 charisma
   PATCH_IF !game_includes_tob THEN BEGIN
     REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
   END
@@ -1335,10 +1334,10 @@ COPY ~divine_remix/2da/generic.2da~ ~override/nmsune.2da~
 ADD_KIT ~NMSUNE~
   ~NMSUNE                0           0           1           1           0           1           0           0~
   ~NMSUNE 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-  ~NMSUNE                0       0       0       0       9       0~
-  ~NMSUNE                0       0       0       0       0       0~
+  ~NMSUNE                0       0       0       0       9      10~ // min 10 chr
+  ~NMSUNE                0       0       0       0       0       1~ // +1 chr bonus
   ~NMSUNE                0       0       0       0       17      0~
-  ~NMSUNE                0       0       0       0       15      0~
+  ~NMSUNE                0       0       0       0       15     10~
   ~NMSUNE                0       0       0       1       0       0       1       1       0~
   ~NMSUNE                1       0       1       1       0       1~
   ~override/nmsune.2da~
@@ -1362,24 +1361,24 @@ LAF cd_aoe_compat INT_VAR column = (22 + "%NMSUNE%") END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
-  OUTER_SPRINT kit    ~NMSUNE~
-  OUTER_SPRINT symbol ~nmsuhly~
-  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-
-    EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-    EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-
-  END
-
   COPY ~divine_remix/bam/nmisuhly.bam~ ~override~ // holy symbol
-  COPY ~divine_remix/bam/nmpsuhly.bam~ ~override~
-  COPY ~divine_remix/itm/nmsuhly.itm~  ~override~
-    SAY NAME1 @12405
-    SAY NAME2 @12405
-    SAY UNIDENTIFIED_DESC @12406
-    SAY DESC @12406
+       ~divine_remix/bam/nmpsuhly.bam~ ~override~
+  LAF cd_create_holy_symbol
+  INT_VAR 
+    name = RESOLVE_STR_REF(@12405)
+    desc = RESOLVE_STR_REF(@12406)
+    kit  = NMSUNE
+    kit319s = RESOLVE_STR_REF(@12401)
+    kitbits = (BIT1 + BIT4) // evil, lawful
+  STR_VAR
+    symbol = nmsuhly
+    iicon  = nmisuhly
+    cicon  = nmpsuhly
+  END     
 
 END
+
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 /////                                                  \\\\\
 ///// Stronghold fixes                                 \\\\\
@@ -1396,50 +1395,34 @@ END
 ///// assign kits                                      \\\\\
 /////                                                  \\\\\
 
-OUTER_SET kit = "%NMSUNE%" // sune
-ACTION_FOR_EACH creature IN isnfxps /*YxYve1*/ BEGIN
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~NMSUNE~)) // sune
+OUTER_SPRINT kitname @12413 // ~Heartwarder~
+ACTION_FOR_EACH cre IN isnfxps /*YxYve1*/ BEGIN
 
-  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
-
-    COPY_EXISTING ~%creature%.cre~ ~override~
-      WRITE_SHORT   0x244 0
-      WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
-	  READ_SHORT NAME1 "priestG"
-	  READ_BYTE 0x234 "Lv"
-	  GET_STRREF priestG "name" 
-	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Sune" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Sune" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Sune" = 0)) AND ("%Lv%">=5)) BEGIN
-	  SAY NAME1 @12401 //Heartwarder of Sune 
-	  SAY NAME2 @12401
-	  END
-      BUT_ONLY
-
-  END
+  COPY_EXISTING ~%cre%.cre~ ~override~ 
+    LPM cd_assign_kit_to_cre
+    BUT_ONLY IF_EXISTS
 
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~YxYve1.cre~ THEN BEGIN
 	
-	  COPY_EXISTING ~yxyve.bcs~ 	override
+  COPY_EXISTING ~yxyve.bcs~ 	override
 	  DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AddKit(yxkit)~ ~AddKit(nmsune)~
+      APPEND_FILE ~divine_remix/baf/yxyve.baf~
 	  END	
     BUT_ONLY
-	
-	EXTEND_BOTTOM ~yxyve.bcs~   ~divine_remix/baf/yxyve.baf~
 
-	  COPY_EXISTING ~YxYv25.bcs~ 	override
+	COPY_EXISTING ~YxYv25.bcs~ 	override
 	  DECOMPILE_AND_PATCH BEGIN
-      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~LevelGT(Myself,22)~ 
-~HasItem("NMSUHLY",Myself)~
+      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~LevelGT(Myself,22)~ ~HasItem("NMSUHLY",Myself)~
       REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~GiveItemCreate("YxSymb",Myself,0,0,0)~ 
-~GiveItemCreate("YxSymb",Myself,0,0,0)
-		DestroyItem("NMSUHLY")~
+        ~GiveItemCreate("YxSymb",Myself,0,0,0) DestroyItem("NMSUHLY")~
 	  END	
-    BUT_ONLY
+    BUT_ONLY IF_EXISTS
 
 END
-
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
