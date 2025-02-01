@@ -65,8 +65,7 @@ SetGlobal("CDWorkingForLathander","GLOBAL",1)~
 ADD_TRANS_ACTION BHARVAL BEGIN 22 END BEGIN 3 END ~EraseJournalEntry(@10133) EraseJournalEntry(@10130)~
 
 EXTEND_BOTTOM BHARVAL 2 // vanilla LG & TN vanilla/Kossuth/Oghma/Ilmater clerics an option for Helm
-IF ~!Kit(Player1,GODLATHANDER)
-    OR(2)
+IF ~OR(2)
       Alignment(Player1,LAWFUL_GOOD)
       Alignment(Player1,NEUTRAL)
     !Kit(Player1,GODLATHANDER)
@@ -136,15 +135,46 @@ END
 ///// Stuff for Borinall (thief of the dawn ring)      \\\\\
 /////                                                  \\\\\
 
-ADD_TRANS_TRIGGER BORINALL 8 ~False()~ DO 0 1 3 // eliminates existing responses
+REPLACE BORINALL
 
-EXTEND_BOTTOM BORINALL 8 // replaces them with new triggers
-  IF ~Global("Stripped","GLOBAL",0) Kit(PLAYER1,GODTALOS)~ THEN REPLY #37576 GOTO 9
-  IF ~OR(2) !Global("Stripped","GLOBAL",0) !Kit(PLAYER1,GODTALOS)~ THEN REPLY #37576 DO ~SetGlobal("TalosStrike","LOCALS",1)~ EXIT
-  IF ~Global("Stripped","GLOBAL",0) Kit(PLAYER1,GODLATHANDER)~ THEN REPLY #37579 GOTO 11
-  IF ~OR(2) !Global("Stripped","GLOBAL",0) !Kit(PLAYER1,GODLATHANDER)~ THEN REPLY @10001 GOTO 11
+  // replaced so we can keep the response order the same
+  IF ~~ THEN BEGIN 8 SAY #37575
+     // legit talos
+    IF ~OR(4)
+          Alignment(Player1,CHAOTIC_NEUTRAL)
+          Alignment(Player1,NEUTRAL_EVIL)
+          Alignment(Player1,CHAOTIC_EVIL)
+          Kit(Player1,GODTALOS)
+        Global("Stripped","GLOBAL",0)~ THEN REPLY #37577 GOTO 9
+
+    // was legit talos, but no longer
+    IF ~OR(4)
+          Alignment(Player1,CHAOTIC_NEUTRAL)
+          Alignment(Player1,NEUTRAL_EVIL)
+          Alignment(Player1,CHAOTIC_EVIL)
+          Kit(Player1,GODTALOS)
+        !Global("Stripped","GLOBAL",0)~ THEN REPLY #37577 DO ~SetGlobal("TalosStrike","LOCALS",1)~ EXIT
+
+    // pretending to be talos
+    IF ~!Alignment(Player1,CHAOTIC_NEUTRAL)
+        !Alignment(Player1,NEUTRAL_EVIL)
+        !Alignment(Player1,CHAOTIC_EVIL)
+        !Kit(Player1,GODTALOS)~ THEN REPLY #37577 DO ~SetGlobal("TalosStrike","LOCALS",1)~ EXIT
+
+    // generic copout
+    IF ~~ THEN REPLY #37578 GOTO 10
+
+    // angry lathander dude
+    IF ~Global("Stripped","GLOBAL",0)
+        Kit(PLAYER1,GODLATHANDER)~ THEN REPLY #37579 GOTO 11
+
+    // slightly different response for someone who's only working for lathander
+    IF ~OR(2)
+          !Global("Stripped","GLOBAL",0) 
+          !Kit(PLAYER1,GODLATHANDER)~ THEN REPLY @10001 GOTO 11
+  END
+
 END
-
 
 /////                                                  \\\\\
 ///// Stuff for Nallabir (Talos)                       \\\\\
@@ -176,6 +206,7 @@ REPLACE_STATE_TRIGGER BHNALLA 3
   Kit(Player1,GODTALOS)
   Global("CDFakeSharT","GLOBAL",1)
   Global("CDFakeTempusT","GLOBAL",1)
+InPartySlot(LastTalkedToBy,0)
 OR(6)
   Class(Player1,CLERIC)
   Class(Player1,FIGHTER_CLERIC)
@@ -218,6 +249,7 @@ REPLACE_STATE_TRIGGER BHOISIG 5
   Class(Player1,CLERIC_THIEF)
   Class(Player1,FIGHTER_MAGE_CLERIC)
   Class(Player1,CLERIC_RANGER)
+InPartySlot(LastTalkedToBy,0)
 ReputationLT(Player1,15)
 OR(3)
   Alignment(Player1,MASK_LAWFUL)
@@ -234,6 +266,7 @@ REPLACE_STATE_TRIGGER BHOISIG 6
 !Class(Player1,CLERIC_THIEF)
 !Class(Player1,FIGHTER_MAGE_CLERIC)
 !Class(Player1,CLERIC_RANGER)
+InPartySlot(LastTalkedToBy,0)
 ReputationGT(Player1,14)
 Global("BeholderPlot","GLOBAL",0)
 Global("NoHelpBeholder","GLOBAL",0)~
@@ -263,8 +296,7 @@ IF ~Class(Player1,CLERIC_RANGER)~ THEN GOTO 1
 END
 
 EXTEND_BOTTOM BHOISIG 3 // gives vanilla LG & TN vanilla/Kossuth/Oghma/Ilmater clerics an option for Lathander
-IF ~!Kit(Player1,GODHELM)
-    OR(2)
+IF ~OR(2)
       Alignment(Player1,LAWFUL_GOOD)
       Alignment(Player1,NEUTRAL)
     !Kit(Player1,GODHELM)

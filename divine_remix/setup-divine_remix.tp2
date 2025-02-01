@@ -88,6 +88,7 @@ INCLUDE ~divine_remix/lib/new_spells.tph~
 
 BEGIN @5000 DESIGNATED 50
 SUBCOMPONENT @5002
+REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
 
 LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = c END
@@ -98,6 +99,7 @@ LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = c END
 
 BEGIN @5001
 SUBCOMPONENT @5002
+REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
 
 LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = c END
@@ -108,6 +110,7 @@ LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = c END
 
 BEGIN @5000
 SUBCOMPONENT @5003
+REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
 
 LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = d END
@@ -118,6 +121,7 @@ LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = d END
 
 BEGIN @5001
 SUBCOMPONENT @5003
+REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
 
 LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = d END
@@ -128,6 +132,7 @@ LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = d END
 
 BEGIN @5000
 SUBCOMPONENT @5004
+REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
 
 LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = p END
@@ -138,6 +143,7 @@ LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = p END
 
 BEGIN @5001
 SUBCOMPONENT @5004
+REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
 
 LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = p END
@@ -148,6 +154,7 @@ LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = p END
 
 BEGIN @5000
 SUBCOMPONENT @5005
+REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
 
 LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = r END
@@ -158,6 +165,7 @@ LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = r END
 
 BEGIN @5001
 SUBCOMPONENT @5005
+REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
 
 LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = r END
@@ -171,7 +179,7 @@ LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = r END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @10000 DESIGNATED 100
-REQUIRE_PREDICATE (MOD_IS_INSTALLED ~BG2FIXPACK/SETUP-BG2FIXPACK.TP2~ ~0~ OR ENGINE_IS ~bgee bg2ee iwdee eet~) ~This component is not compatible without BG2 fixpack~ // Fixpack is needed
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~BG2FIXPACK/SETUP-BG2FIXPACK.TP2~ ~0~ OR GAME_IS ~bgee bg2ee iwdee eet~) @17 // Fixpack is needed
 GROUP @10
 
 COPY ~divine_remix/2da/mxsplprs.2da~ ~override~
@@ -190,14 +198,37 @@ ACTION_IF NOT FILE_CONTAINS_EVALUATED (~alignment.2da~ ~^LATHANDER[ %TAB%]+1[ %T
     PRETTY_PRINT_2DA
     BUT_ONLY
 
-  ACTION_IF GAME_IS ~soa bg2 tob bg2ee eet bgt~ THEN BEGIN // temple stronghold stuff
+  ACTION_IF GAME_IS ~soa bg2 tob bgt~ THEN BEGIN // temple stronghold stuff - accounting for changed alignments for temple kits
 
     COMPILE ~divine_remix/dlg/temple.d~
-
-    EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/ar0900.baf~
-    EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/ar0901.baf~
-    EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/ar0902.baf~
-    EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/ar0904.baf~
+    
+    COPY_EXISTING ~ar0900.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN 
+        REPLACE_TEXTUALLY ~Global("GaalSpoke","AR0900",1)~ ~False()~ // disable existing spawns
+        APPEND_FILE ~divine_remix/baf/ar0900.baf~                    // add new spawns
+      END
+      BUT_ONLY      
+    
+    COPY_EXISTING ~ar0901.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN 
+        REPLACE_TEXTUALLY ~Global("TelwynSpawn","GLOBAL",0)~ ~False()~ // disable existing spawns
+        APPEND_FILE ~divine_remix/baf/ar0901.baf~                      // add new spawns
+      END
+      BUT_ONLY       
+    
+    COPY_EXISTING ~ar0902.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN 
+        REPLACE_TEXTUALLY ~Global("SainSpawn","GLOBAL",0)~ ~False()~ // disable existing spawns
+        APPEND_FILE ~divine_remix/baf/ar0902.baf~                    // add new spawns
+      END
+      BUT_ONLY       
+    
+    COPY_EXISTING ~ar0904.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN 
+        REPLACE_TEXTUALLY ~Global("YarrylSpawn","GLOBAL",0)~ ~False()~ // disable existing spawns
+        APPEND_FILE ~divine_remix/baf/ar0904.baf~                      // add new spawns
+      END
+      BUT_ONLY      
 
   END
 
@@ -216,25 +247,25 @@ COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
       SPRINT lower_replace @10137 // stormlord
       SPRINT upper_replace @10138 // STORMLORD
       LAUNCH_PATCH_MACRO cd_descript_replace
-    END
+    END ELSE
     PATCH_IF  ("%clab%" STRING_COMPARE_CASE "clabpr03" = 0) BEGIN // helm
       SPRINT mixed_replace @10139 // Watcher
       SPRINT lower_replace @10140 // watcher
       SPRINT upper_replace @10141 // WATCHER
       LAUNCH_PATCH_MACRO cd_descript_replace
-    END
+    END ELSE
     PATCH_IF  ("%clab%" STRING_COMPARE_CASE "clabpr04" = 0) BEGIN // lathander
       SPRINT mixed_replace @10142 // Morninglord
       SPRINT lower_replace @10143 // morninglord
       SPRINT upper_replace @10144 // MORNINGLORD
       LAUNCH_PATCH_MACRO cd_descript_replace
-    END
+    END ELSE
     PATCH_IF  ("%clab%" STRING_COMPARE_CASE "ohtempus" = 0) BEGIN // tempus
       SPRINT mixed_replace @10145 // Battleguard
       SPRINT lower_replace @10146 // battleguard
       SPRINT upper_replace @10147 // BATTLEGUARD
       LAUNCH_PATCH_MACRO cd_descript_replace
-    END
+    END ELSE
     PATCH_IF  ("%clab%" STRING_COMPARE_CASE "ohtyr" = 0) BEGIN // tyr
       SPRINT mixed_replace @10148 // Holy Justice
       SPRINT lower_replace @10149 // holy justice
@@ -248,74 +279,68 @@ COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
 ///// Changes to HLAs and holy symbols for ToB         \\\\\
 /////                                                  \\\\\
 
-ACTION_IF GAME_IS ~bgt tob bg2ee eet~ THEN BEGIN // holy symbols
-
-  COPY ~divine_remix/spl/CDHLYSYM.spl~ ~override~
-       ~divine_remix/spl/CDHLYSY2.spl~ ~override~
-       ~divine_remix/itm/CDHLYSYM.itm~ ~override~
-
-  COPY_EXISTING ~clabpr02.2da~ ~override~
-                ~clabpr03.2da~ ~override~
-                ~clabpr04.2da~ ~override~
-    REPLACE_TEXTUALLY ~AP_SPCl93[123] ~ ~AP_CDHLYSYM~
-    BUT_ONLY_IF_IT_CHANGES
-  
-  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_holy_symbol BEGIN
-    GODHELM      => BELT13
-    GODLATHANDER => BELT12
-    GODTALOS     => BELT14
-  END
-  
-  ACTION_PHP_EACH cd_holy_symbol AS kit => symbol BEGIN
-  
-    OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN
-  
-      EXTEND_TOP ~baldur.bcs~   ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-      EXTEND_TOP ~baldur25.bcs~ ~divine_remix/baf/holysym.baf~ EVALUATE_BUFFER
-  
-    END
-
-  END
+ACTION_IF !enhanced_edition AND game_includes_tob THEN BEGIN // ees already do this so only proceed for obg2
 
   COPY_EXISTING ~belt12.itm~ ~override~ // Lathander Holy symbol
     SAY UNIDENTIFIED_DESC @10183
     SAY DESC @10183
-    READ_BYTE  0x1E "use1"
-    WRITE_BYTE 0x1E ("%use1%" BAND 0b11110111) // unusable by evil alignments
+    WRITE_BYTE 0x1e ((THIS BAND 0b11000000) BOR BIT1) // preserve bard/cleric flags, blank alignment restrictions except no evil
 
   COPY_EXISTING ~belt13.itm~ ~override~ // Helm Holy Symbol
     SAY UNIDENTIFIED_DESC @10187
     SAY DESC @10187
-    READ_BYTE  0x1E "use1"
-    WRITE_BYTE 0x1E (("%use1%" BAND 0b11111001) BOR 0b00000001) // unusable by chaotic alignments
+    WRITE_BYTE 0x1e ((THIS BAND 0b11000000) BOR BIT0) // preserve bard/cleric flags, blank alignment restrictions except no chaotic
 
   COPY_EXISTING ~belt14.itm~ ~override~ // Talos holy symbol
     SAY UNIDENTIFIED_DESC @10182
     SAY DESC @10182
-    READ_BYTE  0x1E "use1"
-    WRITE_BYTE 0x1E (("%use1%" BAND 0b11110111) BOR 0b00010000) // unusable by lawful and good alignments
+    WRITE_BYTE 0x1e ((THIS BAND 0b11000000) BOR (BIT2 + BIT4)) // preserve bard/cleric flags, blank alignment restrictions except no lawful/good
 
-  OUTER_FOR (index = 1 ; index < 7 ; ++index) BEGIN // Change the way the script works to avoid usable issues with holy symbols. It is mostly for Chaotic neutral and lawful evil clerics - BG2 fixpack is needed.
-  COPY_EXISTING ~baldur.bcs~ 	override
-				~baldur25.bcs~	override
-	  DECOMPILE_AND_PATCH BEGIN
-      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH
-		~Alignment(Player%index%,MASK_GENEUTRAL)~ 
-		~OR(2)
-	  Alignment(Player%index%,MASK_GENEUTRAL)
-	  Alignment(Player%index%,MASK_LAWFUL)
-	!Alignment(Player%index%,MASK_GOOD)
-	!Alignment(Player%index%,MASK_CHAOTIC)~
-      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH
-		~Alignment(Player%index%,MASK_EVIL)~
-		~OR(2)
-	  Alignment(Player%index%,MASK_EVIL)
-	  Alignment(Player%index%,MASK_CHAOTIC)
-	!Alignment(Player%index%,MASK_GOOD)
-	!Alignment(Player%index%,MASK_LAWFUL)~ // idem
-	  END	
+  // Change the way the script works to avoid usable issues with holy symbols. It is mostly for 
+  // Chaotic neutral and lawful evil clerics - BG2 fixpack is needed.
+  COPY_EXISTING ~baldur.bcs~ 	 ~override~
+                ~baldur25.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_EVALUATE CASE_INSENSITIVE // updating helm
+        ~\(Alignment(Player\)\([1-6]\)\(,MASK_GENEUTRAL)\)[ %TAB%%LNL%%MNL%%WNL%]+\(HasItem("CDHLYSYM",Player[1-6])\)~ 
+      BEGIN 
+        PATCH_IF MATCH2 = 1 BEGIN 
+          SPRINT p1check ~GlobalGT("CDWorkingForHelm","GLOBAL",0)~
+        END ELSE BEGIN   
+          SPRINT p1check ~False()~
+        END
+      END ~%MATCH4%
+           !Kit(Player%MATCH2%,GODLATHANDER)
+           OR(5)
+             %p1check%
+             Alignment(Player%MATCH2%,LAWFUL_NEUTRAL)
+             Alignment(Player%MATCH2%,NEUTRAL)
+             Alignment(Player%MATCH2%,LAWFUL_EVIL)
+             Kit(Player%MATCH2%,GODHELM)~               
+      REPLACE_EVALUATE CASE_INSENSITIVE // updating lathander
+        ~\(Alignment(Player\)\([1-6]\)\(,MASK_GOOD)\)[ %TAB%%LNL%%MNL%%WNL%]+\(HasItem("CDHLYSYM",Player[1-6])\)~ 
+      BEGIN 
+        PATCH_IF MATCH2 = 1 BEGIN 
+          SPRINT p1check ~GlobalGT("CDWorkingForLathander","GLOBAL",0)~
+        END ELSE BEGIN   
+          SPRINT p1check ~False()~
+        END
+      END ~%MATCH4%
+           !Kit(Player%MATCH2%,GODHELM)
+           OR(3)
+             %p1check%
+             Alignment(Player%MATCH2%,MASK_GOOD)
+             Kit(Player%MATCH2%,GODLATHANDER)~    
+      REPLACE_TEXTUALLY CASE_INSENSITIVE // updating talos (no special p1 case here
+        ~\(Alignment(Player\)\([1-6]\)\(,MASK_EVIL)\)[ %TAB%%LNL%%MNL%%WNL%]+\(HasItem("CDHLYSYM",Player[1-6])\)~ 
+        ~\4 
+         OR(4)
+           Alignment(Player\2,CHAOTIC_NEUTRAL)
+           Alignment(Player\2,NEUTRAL_EVIL)
+           Alignment(Player\2,CHAOTIC_EVIL)
+           Kit(Player\2,GODTALOS)~
+    END	
     BUT_ONLY
-  END
 
 END
 
@@ -324,147 +349,151 @@ END
 /////                                                  \\\\\
 
 // added at Idobek's request for NPC Kit compatibility
-ACTION_IF FILE_EXISTS_IN_GAME ~ikitano1.spl~ THEN BEGIN
-
-  COPY_EXISTING ~ikitano1.spl~ ~override~
-    SAY 0x9e @10101
-
-END
+COPY_EXISTING ~ikitano1.spl~ ~override~
+  SAY 0x9e @10101
+  IF_EXISTS
 
 /////                                                  \\\\\
 ///// assign kits                                      \\\\\
 /////                                                  \\\\\
 
-// find tempus, tyr kit in kitlist
-COPY_EXISTING ~kitlist.2da~ ~override~
-  SET ohtyr    = 0
-  SET ~a#temp~ = 0
-  COUNT_2DA_ROWS ~9~ "rows"
-  FOR (index = rows ; index > 31 ; --index) BEGIN
-    READ_2DA_ENTRY index 5 9 clab
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "OHTEMPUS" = 0) BEGIN
-      READ_2DA_ENTRY index 0 9 ~a#temp~
-    END
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "OHTYR" = 0) BEGIN
-      READ_2DA_ENTRY index 0 9 ohtyr
-    END
-  END
-  BUT_ONLY_IF_IT_CHANGES
-
-OUTER_SET kit = 19 // talos
-ACTION_FOR_EACH creature IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos /*nalla*/ scyarryl talmiss talmiss2 talvilon vvpriest yssold16 BEGIN // nalla is a bard, not a priest...
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+OUTER_SPRINT name_cleric @10155 // Cleric
+OUTER_SPRINT name_priest @10156 // Priest/Priestess
+  
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~GODTALOS~)) // talos
+OUTER_SPRINT kitname @10136 // ~Stormlord~
+ACTION_FOR_EACH cre IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos /*nalla*/ scyarryl talmiss talmiss2 talvilon vvpriest yssold16 BEGIN // nalla is a bard, not a priest...
 	
-    COPY_EXISTING ~%creature%.cre~ ~override~ 
-      WRITE_SHORT   0x244 0
-      WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
-	  READ_BYTE 0x234 "Lv"
-	  READ_SHORT NAME1 "priestG"
-	  GET_STRREF priestG "name" 
-	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Talos" = 0) OR ("%name%" STRING_COMPARE_CASE "Cleric of Talos" = 0)) AND ("%Lv%">=5)) BEGIN
-	   SAY NAME1 @10188 //Stormlord of Talos
-	   SAY NAME2 @10188
-	  END
-	  BUT_ONLY
-	  
-  END
+  COPY_EXISTING ~%cre%.cre~ ~override~ 
+    WRITE_LONG  0x244 0
+    WRITE_SHORT 0x246 kit
+    READ_BYTE  0x234 level
+    PATCH_IF level > 4 BEGIN 
+      PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
+        READ_STRREF off name
+        PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE name ~%name%~ BEGIN
+            REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'stormlord'
+            REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'stormlord'
+          END
+          SAY_EVALUATED off ~%name%~ // write changes
+        END
+      END   
+    END  
+    BUT_ONLY IF_EXISTS
 
 END
 
 // Stormherald Nallabir
-
 ACTION_IF MOD_IS_INSTALLED "song_and_silence.tp2" 3 BEGIN
-    COPY_EXISTING ~nalla.cre~ ~override~ 
-      WRITE_LONG   0x244 (IDS_OF_SYMBOL (~KIT~ ~A!CHORISTER~))
-	  BUT_ONLY IF_EXISTS
+  COPY_EXISTING ~nalla.cre~ ~override~ 
+    WRITE_LONG  0x244 0
+    WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~KIT~ ~A!CHORISTER~))
+    BUT_ONLY IF_EXISTS
 END
 
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~GODHELM~)) // helm
+OUTER_SPRINT kitname @10139 // ~Watcher~
+ACTION_FOR_EACH cre IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig sctelwyn nalin shugod01 shugod02 shugar01 ntprihel s#helm01 BEGIN
 
-OUTER_SET kit = 20 // helm
-ACTION_FOR_EACH creature IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig sctelwyn nalin shugod01 shugod02 shugar01 ntprihel s#helm01 BEGIN
+  COPY_EXISTING ~%cre%.cre~ ~override~ 
+    WRITE_LONG  0x244 0
+    WRITE_SHORT 0x246 kit
+    READ_BYTE  0x234 level
+    PATCH_IF level > 4 BEGIN 
+      PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
+        READ_STRREF off name
+        PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE name ~%name%~ BEGIN
+            REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Watcher'
+            REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Watcher'
+          END
+          SAY_EVALUATED off ~%name%~ // write changes
+        END
+      END   
+    END  
+    BUT_ONLY IF_EXISTS
 
-  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+END
 
-    COPY_EXISTING ~%creature%.cre~ ~override~  
-      WRITE_SHORT   0x244 0
-      WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
-	  READ_SHORT NAME1 "priestG"
-	  READ_BYTE 0x234 "Lv"
-	  GET_STRREF priestG "name" 
-	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Helm" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Helm" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Helm" = 0)) AND ("%Lv%">=5)) BEGIN
-	  SAY NAME1 @10189 //Watcher of Helm
-	  SAY NAME2 @10189
-	  END
-      BUT_ONLY
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~GODLATHANDER~)) // Lathander
+OUTER_SPRINT kitname @10142 // ~Morninglord~
+ACTION_FOR_EACH cre IN acolyte2 amtcle01 amtcler0 arenthis arval bharval c6cler1 cllatp01 cscleric dawnmas latlara scsain BEGIN
+
+  COPY_EXISTING ~%cre%.cre~ ~override~ 
+    WRITE_LONG  0x244 0
+    WRITE_SHORT 0x246 kit
+    READ_BYTE  0x234 level
+    PATCH_IF level > 4 BEGIN 
+      PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
+        READ_STRREF off name
+        PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE name ~%name%~ BEGIN
+            REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Morninglord'
+            REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Morninglord'
+          END
+          SAY_EVALUATED off ~%name%~ // write changes
+        END
+      END   
+    END  
+    BUT_ONLY IF_EXISTS
+
+END
+
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~OHTYR~)) // tyr
+OUTER_SPRINT kitname @10148 // ~Holy Justice~
+
+ACTION_IF kit > 0 THEN BEGIN
+
+  ACTION_FOR_EACH cre IN ohdcru01 ohdcru02 ohdlufc1 ohdlumc1 ohdneo03 ohdneo04 ohdppe01 ohdppe02 ohdrdef ohdtree1 BEGIN
+
+    COPY_EXISTING ~%cre%.cre~ ~override~ 
+      WRITE_LONG  0x244 0
+      WRITE_SHORT 0x246 kit
+      READ_BYTE  0x234 level
+      PATCH_IF level > 4 BEGIN 
+        PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
+          READ_STRREF off name
+          PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+            INNER_PATCH_SAVE name ~%name%~ BEGIN
+              REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Holy Justice'
+              REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Holy Justice'
+            END
+            SAY_EVALUATED off ~%name%~ // write changes
+          END
+        END   
+      END  
+      BUT_ONLY IF_EXISTS
 
   END
 
 END
 
-OUTER_SET kit = 21 // lathander
-ACTION_FOR_EACH creature IN acolyte2 amtcle01 amtcler0 arenthis arval ~b!gavin~ bharval blane bran c6cler1 cllatp01 cscleric dawnmas dsblane dsjetla dsjetla2 dsjetla4 dsjetla6 latlara scsain keldda BEGIN
 
-  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~OHTEMPUS~)) // tempus
+OUTER_SPRINT kitname @10145 // ~Battleguard~
 
-    COPY_EXISTING ~%creature%.cre~ ~override~  
-      WRITE_SHORT   0x244 0
-      WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
-	  READ_SHORT NAME1 "priestG"
-	  READ_BYTE 0x234 "Lv"
-	  GET_STRREF priestG "name" 
-	  PATCH_IF ((("%name%" STRING_COMPARE_CASE "Priest of Lathander" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Lathander" = 0)) AND ("%Lv%">=5)) BEGIN
-	  SAY NAME1 @10190 //Morninglord of Lathander
-	  SAY NAME2 @10190
-	  END
-      BUT_ONLY
+ACTION_IF kit > 0 THEN BEGIN
 
-  END
+  ACTION_FOR_EACH cre IN kpchap01 everard accalia BEGIN
 
-END
-
-ACTION_IF ohtyr != 0 THEN BEGIN
-
-  OUTER_SET kit = "%ohtyr%" // tyr
-  ACTION_FOR_EACH creature IN ohdcru01 ohdcru02 ohdlufc1 ohdlumc1 ohdneo03 ohdneo04 ohdppe01 ohdppe02 ohdrdef ohdtree1 BEGIN
-
-    ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
-
-      COPY_EXISTING ~%creature%.cre~ ~override~
-        WRITE_SHORT   0x244 0
-        WRITE_SHORT   0x246 0x4000 + "%kit%"
-  //    WRITE_BYTE    0x247 0x40
-        BUT_ONLY
-
-    END
-
-  END
-
-END
-
-ACTION_IF "%a#temp%" != 0 THEN BEGIN
-
-  OUTER_SET kit = "%a#temp%" // tempus
-  ACTION_FOR_EACH creature IN kpchap01 everard accalia BEGIN
-
-    ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
-
-      COPY_EXISTING ~%creature%.cre~ ~override~
-        WRITE_SHORT   0x244 0
-        WRITE_SHORT   0x246 0x4000 + "%kit%"
-  //    WRITE_BYTE    0x247 0x40
-	    READ_SHORT NAME1 "priestG"
-	    GET_STRREF priestG "name" 
-	    PATCH_IF ("%name%" STRING_COMPARE_CASE "Priest of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Cleric of Tempus" = 0) OR  ("%name%" STRING_COMPARE_CASE "Priestess of Tempus" = 0) BEGIN
-	      SAY NAME1 @10191 //Battleguard of Tempus 
-	      SAY NAME2 @10191
-	    END        
-		BUT_ONLY
-
-    END
+    COPY_EXISTING ~%cre%.cre~ ~override~ 
+      WRITE_LONG  0x244 0
+      WRITE_SHORT 0x246 kit
+      READ_BYTE  0x234 level
+      PATCH_IF level > 4 BEGIN 
+        PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
+          READ_STRREF off name
+          PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+            INNER_PATCH_SAVE name ~%name%~ BEGIN
+              REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Battleguard'
+              REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Battleguard'
+            END
+            SAY_EVALUATED off ~%name%~ // write changes
+          END
+        END   
+      END  
+      BUT_ONLY IF_EXISTS
 
   END
 

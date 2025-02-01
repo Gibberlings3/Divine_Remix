@@ -323,7 +323,6 @@ After witnessing the eyeless priest's speech, I was approached by a watcher of H
 @10133 =~Investigate and destroy the Cult of the Eyeless.
 
 After witnessing the eyeless priest's speech, I was approached by a cleric of Lathander who bade me to come to the temple of Lathander to speak with him further regarding performing a service for the temple and investigating this new cult. He also mentioned we could help the Helm temple.~
-@10154 = ~Priest~
 @10134 = ~priest~
 @10135 = ~PRIEST~
 @10136 = ~Stormlord~
@@ -344,7 +343,9 @@ After witnessing the eyeless priest's speech, I was approached by a cleric of La
 @10151 = ~warrior~
 @10152 = ~rogue~
 @10153 = ~Ranger~
-
+@10154 = ~Priest~
+@10155 = ~Cleric~
+@10156 = ~Priest\|Priestess~
 
 @10166 =~Electrical Resistance~
 @10167 =~Half-Spear - 'Fury of Talos'~

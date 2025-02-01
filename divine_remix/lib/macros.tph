@@ -436,8 +436,8 @@ DEFINE_PATCH_MACRO cd_descript_replace BEGIN
     READ_2DA_ENTRY index col 8 strref
     GET_STRREF strref desc
     INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-      REPLACE_TEXTUALLY ~%mixed_match%~ ~%mixed_replace%~
-      REPLACE_TEXTUALLY ~%lower_match%~ ~%lower_replace%~
+      REPLACE_TEXTUALLY CASE_SENSITIVE ~%mixed_match%~ ~%mixed_replace%~
+      REPLACE_TEXTUALLY CASE_SENSITIVE ~%lower_match%~ ~%lower_replace%~
     END
     INNER_ACTION BEGIN
       STRING_SET_EVALUATE ~%strref%~ ~%desc%~

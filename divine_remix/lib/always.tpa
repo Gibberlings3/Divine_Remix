@@ -1,6 +1,6 @@
 OUTER_SET cd_divine_remix_always = 1 // just do this part once per install
 
-INCLUDE ~divine_remix/lib/game_checks.tpa~ // sets game_is variables
+INCLUDE ~divine_remix/lib/game_checks.tpa~   // sets game_is variables
 INCLUDE ~divine_remix/lib/macros.tph~        // defines patch macro
 INCLUDE ~divine_remix/lib/fl#add_kit_ee.tpa~ // for ee kit features
 
@@ -13,7 +13,7 @@ ACTION_IF !enhanced_edition BEGIN
   OUTER_SPRINT tra_path ~divine_remix/languages~
   
   INCLUDE ~divine_remix/lib/kit_ids_fixer.tpa~ // for ee kit features
-  ACTION_IF !game_contains_tob BEGIN 
+  ACTION_IF !game_includes_tob BEGIN 
     INCLUDE ~divine_remix/lib/tob2soa.tpa~ // for ee kit features
   END
   
