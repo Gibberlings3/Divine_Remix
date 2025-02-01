@@ -1095,11 +1095,11 @@ ACTION_IF game_is_bgee BEGIN
 END
 
 COPY ~divine_remix/spl/cdxvfear.spl~ ~override~  // immunity to fear (permanent innate spell)
-  PATCH_IF game_is_bgee BEGIN // bgee has different fear and disease strings
+  PATCH_IF game_is_bgee BEGIN // bgee has different fear strings
     LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 20568 END // Morale Failure: Panic
     LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 25818 END // Panic
   END ELSE
-  PATCH_IF game_is_iwdee BEGIN // iwdee has different fear and disease strings
+  PATCH_IF game_is_iwdee BEGIN // iwdee has different fear strings
     LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 20568 END // Morale Failure: Panic
     LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 17427 END // Panic
     LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 35483 END // Panic
@@ -1793,8 +1793,19 @@ COPY_EXISTING ~spwi496.spl~ ~override/a#ooze3.spl~ //mustard jelly
   LPF CLONE_EFFECT INT_VAR match_opcode = 171 opcode = 172 timing = 1 duration = 0 STR_VAR match_resource = ~a#ooze3a~ END 
 
 COPY ~divine_remix/spl/a#ooze2.spl~ ~override~ //immune to poison
-     ~divine_remix/spl/a#ooze5.spl~ ~override~ //immune to disease
      ~divine_remix/spl/a#ooze6.spl~ ~override~ //immune to blindness, sleep, paralysis, stun
+     
+COPY ~divine_remix/spl/a#ooze5.spl~ ~override~ //immune to disease
+  PATCH_IF game_is_bgee BEGIN // bgee has different fear and disease strings
+    LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 39752 parameter1 = 26453 END // Stricken by a foul disease
+    LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 54337 parameter1 = 31238 END // Diseased
+  END ELSE
+  PATCH_IF game_is_iwdee BEGIN // iwdee has different fear and disease strings
+    LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 39752 parameter1 = 35594 END // Stricken by a foul disease
+    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 54337 parameter1 = 34528 END // Diseased
+    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 54337 parameter1 = 35593 END // Diseased
+    LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 54337 parameter1 = 17398 END // Diseased
+  END
      
 COPY ~divine_remix/spl/a#ooze7.spl~ ~override~ //charisma drop
   LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF(@20307) END
