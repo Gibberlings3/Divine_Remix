@@ -1,32 +1,13 @@
+ACTION_IF game_is_iwdee BEGIN OUTER_SET level_cap = 30 END ELSE BEGIN OUTER_SET level_cap = 20 END
+INCLUDE ~divine_remix/lib/cd_extend-o-matic.tpa~
+ACTION_CLEAR_ARRAY cd_spell_sub
+ACTION_CLEAR_ARRAY cd_spell_new
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spell_sub BEGIN END // for spellbook updates
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN END // for spellbook updates
+
 /////                                                  \\\\\
 ///// changes to existing spells                       \\\\\
 /////                                                  \\\\\
-   
-ACTION_IF ((FILE_EXISTS ~divine_remix/languages/%LANGUAGE%/utf8_kit_sphere.tra~) OR (FILE_EXISTS ~divine_remix/languages/%LANGUAGE%/kit_sphere.tra~)) THEN BEGIN
-
-  OUTER_SPRINT macro_lang "%LANGUAGE%"
-
-END ELSE BEGIN
-
-  OUTER_SPRINT macro_lang "english"
-
-END
-
-ACTION_IF FILE_EXISTS ~divine_remix/languages/%macro_lang%/utf8_kit_sphere.tra~ THEN BEGIN
-
-  LOAD_TRA ~divine_remix/languages/%macro_lang%/utf8_kit_sphere.tra~
-
-END ELSE BEGIN
-
-  LOAD_TRA ~divine_remix/languages/%macro_lang%/kit_sphere.tra~
-
-END
-
-ACTION_IF NOT FILE_EXISTS_IN_GAME ~eff_p32.wav~ THEN BEGIN
-
-  COPY ~divine_remix/wav/eff_p32.wav~ ~override~
-
-END
 
 COPY_EXISTING ~sppr317.spl~ ~override~ // cure disease - no longer cures blindness or deafness (DR change)
   SAY UNIDENTIFIED_DESC @125
@@ -41,6 +22,7 @@ OUTER_SPRINT level_match  @2027 // needed to change descripts, below
 // move protection from evil 10' to level 3
 COPY_EXISTING ~sppr408.spl~ ~override~
 ADD_SPELL ~override/sppr408.spl~ 1 3 CLERIC_PROTECTION_FROM_EVIL_10_FOOT
+  DEFINE_ASSOCIATIVE_ARRAY cd_spell_sub BEGIN ~%DEST_RES%~, 3, 2, sppr406 => sppr408 END // for spellbook updates
   WRITE_LONG 0x34 3
   LPF ALTER_EFFECT INT_VAR match_power = 4 power = 3 END
   PATCH_FOR_EACH offset IN 0x50 BEGIN
@@ -58,6 +40,7 @@ STRING_SET_EVALUATE desc_strref "%desc%" // change default descript
 // move negative plane protection to level 3
 COPY_EXISTING ~sppr413.spl~ ~override~
 ADD_SPELL ~override/sppr413.spl~ 1 3 CLERIC_NEGATIVE_PLANE_PROTECTION
+  DEFINE_ASSOCIATIVE_ARRAY cd_spell_sub BEGIN ~%DEST_RES%~, 3, 2, sppr403 => sppr413 END // for spellbook updates
   WRITE_LONG 0x34 3
   LPF ALTER_EFFECT INT_VAR match_power = 4 power = 3 END
   PATCH_FOR_EACH offset IN 0x50 BEGIN
@@ -82,60 +65,11 @@ COPY ~divine_remix/spl/sppr508.spl~ ~override~ // chaotic commands - major chang
 /////                                                  \\\\\
 ///// new spells                                       \\\\\
 /////                                                  \\\\\
-  
-ACTION_IF ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CAUSE_MEDIUM_WOUNDS~)) < 0) BEGIN // because this is a mainline iwdee spell, no overwrite option
-
-  ADD_SPELL ~divine_remix/spl/cdcausmw.spl~ 1 1 CLERIC_CAUSE_MEDIUM_WOUNDS // cause medium wounds
-    SAY NAME1 @204
-    SAY NAME2 @204
-    SAY UNIDENTIFIED_DESC @205
-    SAY DESC @205
-  
-  COPY ~divine_remix/itm/cdcausmw.itm~ ~override~
-    SAY NAME1 @204
-    SAY NAME2 @204
-    SAY UNIDENTIFIED_DESC @205
-    SAY DESC @205
-
-  COPY ~divine_remix/bam/cdcausma.bam~ ~override~
-       ~divine_remix/bam/cdcausmb.bam~ ~override~
-       ~divine_remix/bam/cdcausmc.bam~ ~override~
-       ~divine_remix/bam/sppr414a.bam~ ~override~
-       ~divine_remix/bam/sppr414b.bam~ ~override~
-       ~divine_remix/bam/sppr414c.bam~ ~override~
-       ~divine_remix/bam/sppr510a.bam~ ~override~
-       ~divine_remix/bam/sppr510b.bam~ ~override~
-       ~divine_remix/bam/sppr510c.bam~ ~override~
-
-  COPY_EXISTING ~critical.itm~ ~override~ // adjusts BAMs for existing 'Cause X Wounds' items
-    WRITE_ASCII 0x3A ~sppr510b~
-    READ_SHORT 0x68 "abil_num"
-    READ_LONG  0x6A "abil_off"
-    FOR (index = 0 ; index < abil_num ; index = index + 1) BEGIN
-      WRITE_ASCII (0x04 + "%abil_off%" + ("%index%" * 0x38)) ~sppr510b~
-    END
-  
-  COPY_EXISTING ~serious.itm~  ~override~ // adjusts BAMs for existing 'Cause X Wounds' items
-    WRITE_ASCII 0x3A ~sppr414b~
-    READ_SHORT 0x68 "abil_num"
-    READ_LONG  0x6A "abil_off"
-    FOR (index = 0 ; index < abil_num ; index = index + 1) BEGIN
-      WRITE_ASCII (0x04 + "%abil_off%" + ("%index%" * 0x38)) ~sppr414b~
-    END
-  
-  COPY_EXISTING ~harm.itm~     ~override~ // adjusts BAMs for existing 'Cause X Wounds' items
-    WRITE_ASCII 0x3A ~sppr608b~
-    READ_SHORT 0x68 "abil_num"
-    READ_LONG  0x6A "abil_off"
-    FOR (index = 0 ; index < abil_num ; index = index + 1) BEGIN
-      WRITE_ASCII (0x04 + "%abil_off%" + ("%index%" * 0x38)) ~sppr608b~
-    END
-
-END
 
 ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CAUSE_BLINDNESS_OR_DEAFNESS~)) < 0)) BEGIN  // only if not present or overwrite selected
 
   ADD_SPELL ~divine_remix/spl/nmcausbd.spl~ 1 3 CLERIC_CAUSE_BLINDNESS_OR_DEAFNESS // cause blindness or deafness
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 3 END // for spellbook updates
     SAY NAME1 @181
     SAY NAME2 @181
     SAY UNIDENTIFIED_DESC @182
@@ -147,9 +81,23 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CAUSE_BLINDNESS_O
 
 END
 
-ACTION_IF (((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CURE_BLINDNESS_OR_DEAFNESS~)) < 0)) AND ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CURE_BLIND_DEAF~)< 0))) BEGIN // only if not present or overwrite selected
+// CLERIC_CURE_BLIND_DEAF has a spell.ids entry, but no spell, so the check is a bit more complicated
+OUTER_SET install_nmcurebd = 0
+ACTION_IF overwrite BEGIN 
+  OUTER_SET install_nmcurebd = 1 // if we're in overwrite mode, install anyway
+END ELSE BEGIN
+  ACTION_IF IDS_OF_SYMBOL (~spell~ ~CLERIC_CURE_BLIND_DEAF~) < 0 BEGIN
+    OUTER_SET install_nmcurebd = 1 // if no spell.ids entry, install
+  END ELSE BEGIN  
+    LAF RES_NAME_OF_SPELL_NUM INT_VAR spell_num = IDS_OF_SYMBOL (~spell~ ~CLERIC_CURE_BLIND_DEAF~) RET spell_res END
+    ACTION_IF !FILE_EXISTS_IN_GAME ~%spell_res%.spl~ BEGIN OUTER_SET install_nmcurebd = 1 END // if existing spell.ids entry but no actual spell, install
+  END
+END  
 
-  ADD_SPELL ~divine_remix/spl/nmcurebd.spl~ 1 3 CLERIC_CURE_BLINDNESS_OR_DEAFNESS  // cure blindness or deafness
+ACTION_IF install_nmcurebd BEGIN // only if not present or overwrite selected
+
+  ADD_SPELL ~divine_remix/spl/nmcurebd.spl~ 1 3 CLERIC_CURE_BLIND_DEAF  // cure blindness or deafness
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 3 END // for spellbook updates
     SAY NAME1 @179
     SAY NAME2 @179
     SAY UNIDENTIFIED_DESC @180
@@ -163,11 +111,23 @@ END
 
 ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_DETECT_GOOD~)) < 0)) BEGIN // only if not present or overwrite selected
 
-  ADD_SPELL ~divine_remix/spl/cddtgood.spl~ 1 1 CLERIC_DETECT_GOOD  // detect good
+  COPY_EXISTING ~sppr104.spl~ ~override~
+  ADD_SPELL ~override/sppr104.spl~ 1 1 CLERIC_DETECT_GOOD  // detect good
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 1 END // for spellbook updates
     SAY NAME1 @194
     SAY NAME2 @194
     SAY UNIDENTIFIED_DESC @195
     SAY DESC @195
+    WRITE_ASCII 0x3a cddtgooc #8
+    LPF ALTER_HEADER STR_VAR icon = cddtgoob END
+    // bg2fp and ee route the actual alignment detection to a subspell so that MR works, so have to account for both methods here
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 146 STR_VAR match_resource = cddetevl resource = cddetgod END // if ee/bg2fp
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 115 match_parameter2 = 0 parameter2 = 2 END                   // if old
+    
+  ACTION_IF FILE_EXISTS_IN_GAME ~cddetevl.spl~ BEGIN
+    COPY_EXISTING ~cddetevl.spl~ ~override/cddetgod.spl~
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 115 match_parameter2 = 0 parameter2 = 2 END
+  END 
 
   COPY ~divine_remix/bam/cddtgooa.bam~ ~override~
        ~divine_remix/bam/cddtgoob.bam~ ~override~
@@ -177,11 +137,33 @@ END
 
 ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_DIVINE_SHELL~)) < 0)) BEGIN // only if not present or overwrite selected
 
+  // use existing pfnm as a base for projectile blocking so that we don't have to account for ee vs. obg2 with or without 1pp
+  COPY_EXISTING ~spwi311.spl~ ~override~
+    READ_LONG  0x64 abil_off
+    READ_SHORT 0x68 abil_num
+    READ_LONG  0x6a fx_off
+    FOR (index = 0 ; index < abil_num ; ++index) BEGIN
+      READ_SHORT (abil_off + 0x1e + (0x28 * index)) abil_fx_num
+      READ_SHORT (abil_off + 0x20 + (0x28 * index)) abil_fx_idx
+      FOR (index2 = 0 ; index2 < abil_fx_num ; ++index2) BEGIN
+        READ_SHORT (fx_off + 0x00 + (0x30 * (abil_fx_idx + index2))) op
+        PATCH_IF op = 83 BEGIN // immunity to projectile
+          READ_LONG (fx_off + 0x08 + (0x30 * (abil_fx_idx + index2))) proj
+          DEFINE_ASSOCIATIVE_ARRAY cd_pfnm BEGIN ~%proj%~ => 0 END
+        END
+      END
+    END
+    BUT_ONLY    
+    
   ADD_SPELL ~divine_remix/spl/cddshel.spl~ 1 6 CLERIC_DIVINE_SHELL  // divine shell
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 6 END // for spellbook updates
     SAY NAME1 @166
     SAY NAME2 @166
     SAY UNIDENTIFIED_DESC @167
     SAY DESC @167
+    PATCH_PHP_EACH cd_pfnm AS proj => foo BEGIN
+      LPF CLONE_EFFECT INT_VAR match_opcode = 0 opcode = 83 parameter1 = 0 parameter2 = proj END
+    END  
 
   COPY ~divine_remix/bam/cddshela.bam~ ~override~
        ~divine_remix/bam/cddshelb.bam~ ~override~
@@ -192,10 +174,12 @@ END
 ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_FAERIE_FIRE~)) < 0)) BEGIN // only if not present or overwrite selected
 
   ADD_SPELL ~divine_remix/spl/cdfaerie.spl~ 1 1 CLERIC_FAERIE_FIRE  // faerie fire
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 1 END // for spellbook updates
     SAY NAME1 @112
     SAY NAME2 @112
     SAY UNIDENTIFIED_DESC @113
     SAY DESC @113
+    LPF CD_EXTEND-O-MATIC INT_VAR step_dur = 6 dur_special = 1 step_size = 5 level_cap END
 
   COPY ~divine_remix/bam/cdfaeria.bam~ ~override~
        ~divine_remix/bam/cdfaerib.bam~ ~override~
@@ -206,10 +190,12 @@ END
 ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_IMPREGNABLE_MIND~)) < 0)) BEGIN // only if not present or overwrite selected
 
   ADD_SPELL ~divine_remix/spl/nmimpreg.spl~ 1 5 CLERIC_IMPREGNABLE_MIND
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 5 END // for spellbook updates
     SAY NAME1 @171
     SAY NAME2 @171
     SAY UNIDENTIFIED_DESC @172
     SAY DESC @172
+    LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 60 step_dur = 6 step_size = 1 level_cap END // 1 turn + 1 round/level
 
   COPY ~divine_remix/bam/nmimprea.bam~ ~override~
        ~divine_remix/bam/nmimpreb.bam~ ~override~
@@ -222,92 +208,52 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_PROTECT_FROM_GOOD
   COPY_EXISTING ~sppr107.spl~ ~override~
 
   ADD_SPELL ~override/sppr107.spl~ 1 1 CLERIC_PROTECT_FROM_GOOD
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 1 END // for spellbook updates
     SAY NAME1 @196
     SAY NAME2 @196
     SAY UNIDENTIFIED_DESC @197
     SAY DESC @197
-    WRITE_ASCII 0x3a ~cdprgooc~
-    READ_LONG   0x64 "abil_off"
-    READ_SHORT  0x68 "abil_num"
-    READ_LONG   0x6a "fx_off"
-    READ_SHORT  0x70 "fx_num"
-    READ_SHORT ("%abil_off%" + 0x1e + (("%abil_num%" - 1) * 0x28)) "abil_fx_num"
-    READ_SHORT ("%abil_off%" + 0x20 + (("%abil_num%" - 1) * 0x28)) "abil_fx_idx"
-    FOR (index = 0 ; index < (abil_fx_num + abil_fx_idx) ; index = index + 1) BEGIN
-      READ_SHORT ("%fx_off%" + (0x30 * "%index%")) "opcode"
-      PATCH_IF ("%opcode%" = 139) BEGIN
-        SAY ("%fx_off%" + 0x04 + (0x30 * "%index%")) @201
-      END ELSE
-      PATCH_IF ("%opcode%" = 219) BEGIN
-        WRITE_LONG ("%fx_off%" + 0x04 + (0x30 * "%index%")) 1
-      END ELSE
-      PATCH_IF ("%opcode%" = 233) BEGIN
-        WRITE_LONG ("%fx_off%" + 0x04 + (0x30 * "%index%")) 2 // for detectable spells
-      END ELSE
-      PATCH_IF ("%opcode%" = 100) BEGIN
-        WRITE_LONG ("%fx_off%" + 0x04 + (0x30 * "%index%")) 156
-        WRITE_LONG ("%fx_off%" + 0x08 + (0x30 * "%index%")) 4
-      END
-    END
-    FOR (index2 = 0 ; index2 < abil_num ; index2 = index2 + 1) BEGIN
-      WRITE_ASCII ("%abil_off%" + 0x04 + ("%index2%" * 0x28)) ~cdprgoob~
-    END
+    WRITE_ASCII 0x3a cdprgooc #8
+    LPF ALTER_HEADER STR_VAR icon = cdprgoob END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF(@201) END // "protected from good"
+    LPF ALTER_EFFECT INT_VAR match_opcode = 219 parameter1 = 1 END                     // change alignment for attack penalty
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 END          // for ds, if present
+    LPF ALTER_EFFECT INT_VAR match_opcode = 100 parameter1 = 156 parameter2 = 4 END    // protection from demons > solars
 
   COPY ~divine_remix/bam/cdprgooa.bam~ ~override~
        ~divine_remix/bam/cdprgoob.bam~ ~override~
        ~divine_remix/bam/cdprgooc.bam~ ~override~
 
   COPY_EXISTING ~statdesc.2da~ ~override~ // changes Protected from Evil icon description to Protection from Alignment
-    REPLACE_TEXTUALLY ~^9[ %TAB%].+$~ ~9 CDREPLACE~
-    REPLACE ~CDREPLACE~ @206
+    SET newtext = RESOLVE_STR_REF(@206)
+    REPLACE_TEXTUALLY ~^9[ %TAB%]+[0-9]+~ ~9 %newtext%~
     PRETTY_PRINT_2DA
 
 END
 
 ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_PROTECTION_FROM_GOOD_10_FOOT~)) < 0)) BEGIN // only if not present or overwrite selected
 
-  COPY_EXISTING ~sppr408.spl~ ~override~
-
-  ADD_SPELL ~override/sppr408.spl~ 1 3 CLERIC_PROTECTION_FROM_GOOD_10_FOOT
+  ADD_SPELL ~override/sppr408.spl~ 1 3 CLERIC_PROTECTION_FROM_GOOD_10_FOOT // copied above, so already know it's in the override
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 3 END // for spellbook updates
     SAY NAME1 @198
     SAY NAME2 @198
     SAY UNIDENTIFIED_DESC @199
     SAY DESC @199
-    WRITE_ASCII 0x3A ~cdprgd1c~
-    WRITE_LONG  0x34 3
-    READ_LONG   0x64 "abil_off"
-    READ_SHORT  0x68 "abil_num"
-    READ_LONG   0x6a "fx_off"
-    READ_SHORT  0x70 "fx_num"
-    READ_SHORT ("%abil_off%" + 0x1e + (("%abil_num%" - 1) * 0x28)) "abil_fx_num"
-    READ_SHORT ("%abil_off%" + 0x20 + (("%abil_num%" - 1) * 0x28)) "abil_fx_idx"
-    FOR (index = 0 ; index < (abil_fx_num + abil_fx_idx) ; index = index + 1) BEGIN
-      READ_SHORT ("%fx_off%" + (0x30 * "%index%")) "opcode"
-      PATCH_IF ("%opcode%" = 139) BEGIN
-        SAY ("%fx_off%" + 0x04 + (0x30 * "%index%")) @201
-      END ELSE
-      PATCH_IF ("%opcode%" = 219) BEGIN
-        WRITE_LONG ("%fx_off%" + 0x04 + (0x30 * "%index%")) 1
-      END ELSE
-      PATCH_IF ("%opcode%" = 233) BEGIN
-        WRITE_LONG ("%fx_off%" + 0x04 + (0x30 * "%index%")) 2 // for detectable spells
-      END ELSE
-      PATCH_IF ("%opcode%" = 100) BEGIN
-        WRITE_LONG ("%fx_off%" + 0x04 + (0x30 * "%index%")) 156
-        WRITE_LONG ("%fx_off%" + 0x08 + (0x30 * "%index%")) 4
-      END
-    END
-    FOR (index2 = 0 ; index2 < abil_num ; index2 = index2 + 1) BEGIN
-      WRITE_ASCII ("%abil_off%" + 0x04 + ("%index2%" * 0x28)) ~cdprgd1b~
-    END
+    WRITE_LONG  0x34 3 // level 3
+    WRITE_ASCII 0x3a cdprgd1c #8
+    LPF ALTER_HEADER STR_VAR icon = cdprgd1b END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF(@201) END // "protected from good"
+    LPF ALTER_EFFECT INT_VAR match_opcode = 219 parameter1 = 1 END                     // change alignment for attack penalty
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 END          // for ds, if present
+    LPF ALTER_EFFECT INT_VAR match_opcode = 100 parameter1 = 156 parameter2 = 4 END    // protection from demons > solars
 
   COPY ~divine_remix/bam/cdprgd1a.bam~ ~override~
        ~divine_remix/bam/cdprgd1b.bam~ ~override~
        ~divine_remix/bam/cdprgd1c.bam~ ~override~
 
   COPY_EXISTING ~statdesc.2da~ ~override~ // changes Protected from Evil icon description to Protection from Alignment
-    REPLACE_TEXTUALLY ~^9[ %TAB%].+$~ ~9 CDREPLACE~
-    REPLACE ~CDREPLACE~ @206
+    SET newtext = RESOLVE_STR_REF(@206)
+    REPLACE_TEXTUALLY ~^9[ %TAB%]+[0-9]+~ ~9 %newtext%~
     PRETTY_PRINT_2DA
 
 END
@@ -315,10 +261,12 @@ END
 ACTION_IF (((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_RESIST_ACID_AND_CORROSION~)) < 0)) AND ((IDS_OF_SYMBOL (~spell~ ~CLERIC_RESIST_ACID_CORROSION~)) < 0)) BEGIN // only if not present or overwrite selected
 
   ADD_SPELL ~divine_remix/spl/nmresacd.spl~ 1 2 CLERIC_RESIST_ACID_AND_CORROSION
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 2 END // for spellbook updates
     SAY NAME1 @173
     SAY NAME2 @173
     SAY UNIDENTIFIED_DESC @174
     SAY DESC @174
+    LPF CD_EXTEND-O-MATIC INT_VAR step_dur = 6 step_size = 1 level_cap END // 1 round/level
 
   COPY ~divine_remix/bam/nmresaca.bam~ ~override~
        ~divine_remix/bam/nmresacb.bam~ ~override~
@@ -329,10 +277,12 @@ END
 ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_STRENGTH_OF_STONE~)) < 0)) BEGIN // only if not present or overwrite selected
 
   ADD_SPELL ~divine_remix/spl/nmstrstn.spl~ 1 1 CLERIC_STRENGTH_OF_STONE
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 1 END // for spellbook updates
     SAY NAME1 @175
     SAY NAME2 @175
     SAY UNIDENTIFIED_DESC @176
     SAY DESC @176
+    LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 18 step_dur = 6 step_size = 1 level_cap END // 3 rounds + 1 round/level
 
   COPY ~divine_remix/bam/nmstrsta.bam~ ~override~
        ~divine_remix/bam/nmstrstb.bam~ ~override~
@@ -342,24 +292,21 @@ END
 
 ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CONJURE_AIR_ELEMENTAL~)) < 0)) BEGIN // only if not present or overwrite selected
 
-  COPY_EXISTING ~spwi622.spl~ ~override~
+  COPY_EXISTING ~spwi621.spl~ ~override~
 
-  ADD_SPELL ~override/spwi622.spl~ 1 7 CLERIC_CONJURE_AIR_ELEMENTAL // Don't ask me why... but it works not with air elemental copy, add to be earth elemental
-    WRITE_SHORT 0x1c 2
-    WRITE_SHORT 0x1e 0
-    WRITE_SHORT 0x34 7
+  ADD_SPELL ~override/spwi621.spl~ 1 7 CLERIC_CONJURE_AIR_ELEMENTAL 
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 7 END // for spellbook updates
+    SPRINT drbase ~%DEST_RES%~
+    WRITE_SHORT 0x1c 2 // change to divine spell
+    WRITE_SHORT 0x1e 0 // remove exclusion
+    WRITE_SHORT 0x34 7 // change level
     LPF DELETE_EFFECT INT_VAR match_opcode = 165 END // removing the mental combat visual effect for priest
-	LPF DELETE_EFFECT INT_VAR match_opcode = 215 END // removing the mental combat visual effect for priest
-	LPF DELETE_EFFECT INT_VAR match_opcode = 142 END // removing the mental combat visual effect for priest
-	REPLACE_TEXTUALLY SPEART1 DRAIR1 (8)
-    REPLACE_TEXTUALLY SPEART2 DRAIR2 (8)
-    REPLACE_TEXTUALLY SPEART3 DRAIR3 (8)
-	REPLACE_TEXTUALLY CASE_INSENSITIVE SPWI622A SPWI621A (8)
-    REPLACE_TEXTUALLY CASE_INSENSITIVE SPWI622B SPWI621B (8)
-    REPLACE_TEXTUALLY CASE_INSENSITIVE SPWI622C SPWI621C (8)
-	WRITE_LONG 0x8 24839
-	WRITE_LONG 0x50 24840
-	LPF ALTER_EFFECT INT_VAR match_power = 6 power = 7 END
+    LPF DELETE_EFFECT INT_VAR match_opcode = 215 END // removing the mental combat visual effect for priest
+    LPF DELETE_EFFECT INT_VAR match_opcode = 142 END // removing the mental combat visual effect for priest
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_power = 6 power = 7 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair1 resource = EVAL ~%drbase%1~ END // change elemental calls
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair2 resource = EVAL ~%drbase%2~ END // change elemental calls
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair3 resource = EVAL ~%drbase%3~ END // change elemental calls
     PATCH_FOR_EACH offset IN 0x50 BEGIN
       READ_LONG ~%offset%~ desc_strref
       PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
@@ -371,28 +318,40 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CONJURE_AIR_ELEME
       SAY_EVALUATED offset ~%desc%~
     END
 
-// Cretaing the new creatuers to remove the mental combat script for priest
-	COPY_EXISTING "SPAIR1.EFF" "override/DRAIR1.EFF" WRITE_ASCIIE 0x30 DRAIRPR2 (8)
-    COPY_EXISTING "SPAIR2.EFF" "override/DRAIR2.EFF" WRITE_ASCIIE 0x30 DRAIRPR3 (8)
-    COPY_EXISTING "SPAIR3.EFF" "override/DRAIR3.EFF" WRITE_ASCIIE 0x30 DRAIRPR4 (8)
+  // Cretaing the new creatuers to remove the mental combat script for priest
+  COPY_EXISTING "SPAIR1.EFF" "override/%drbase%1.EFF" WRITE_ASCIIE 0x30 ~%drbase%2~ (8)
+  COPY_EXISTING "SPAIR2.EFF" "override/%drbase%2.EFF" WRITE_ASCIIE 0x30 ~%drbase%3~ (8)
+  COPY_EXISTING "SPAIR3.EFF" "override/%drbase%3.EFF" WRITE_ASCIIE 0x30 ~%drbase%4~ (8)
     
-	COPY_EXISTING "ELAIRSU2.CRE" "override/DRAIRPR2.cre"
-	  WRITE_ASCII 0x248 "None" #8
-	COPY_EXISTING "ELAIRSU3.CRE" "override/DRAIRPR3.cre"
-	  WRITE_ASCII 0x248 "None" #8
-	COPY_EXISTING "ELAIRSU4.CRE" "override/DRAIRPR4.cre"
-	  WRITE_ASCII 0x248 "None" #8
+  COPY_EXISTING "ELAIRSU2.CRE" "override/%drbase%2.cre"
+                "ELAIRSU3.CRE" "override/%drbase%3.cre"
+                "ELAIRSU4.CRE" "override/%drbase%4.cre"
+    WRITE_ASCII 0x248 "" #8
 
 END
 
-ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_ENERGY_DRAIN~)) < 0)) BEGIN // only if not present or overwrite selected
+// CLERIC_ENERGY_DRAIN has a spell.ids entry, but no spell, so the check is a bit more complicated
+OUTER_SET install_nmcurebd = 0
+ACTION_IF overwrite BEGIN 
+  OUTER_SET install_nmcurebd = 1 // if we're in overwrite mode, install anyway
+END ELSE BEGIN
+  ACTION_IF IDS_OF_SYMBOL (~spell~ ~CLERIC_ENERGY_DRAIN~) < 0 BEGIN
+    OUTER_SET install_nmcurebd = 1 // if no spell.ids entry, install
+  END ELSE BEGIN  
+    LAF RES_NAME_OF_SPELL_NUM INT_VAR spell_num = IDS_OF_SYMBOL (~spell~ ~CLERIC_ENERGY_DRAIN~) RET spell_res END
+    ACTION_IF !FILE_EXISTS_IN_GAME ~%spell_res%.spl~ BEGIN OUTER_SET install_nmcurebd = 1 END // if existing spell.ids entry but no actual spell, install
+  END
+END  
+
+ACTION_IF install_nmcurebd BEGIN 
 
   COPY_EXISTING ~spwi914.spl~ ~override~
 
   ADD_SPELL ~override/spwi914.spl~ 1 7 CLERIC_ENERGY_DRAIN
-    WRITE_SHORT 0x1c 2
-    WRITE_SHORT 0x1e 0
-    WRITE_SHORT 0x34 7
+    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 7 END // for spellbook updates
+    WRITE_SHORT 0x1c 2 // change to divine spell
+    WRITE_SHORT 0x1e 0 // remove exclusion
+    WRITE_SHORT 0x34 7 // change level
     LPF ALTER_EFFECT INT_VAR match_power = 9 power = 7 END
     PATCH_FOR_EACH offset IN 0x50 BEGIN
       READ_LONG ~%offset%~ desc_strref
@@ -408,7 +367,105 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_ENERGY_DRAIN~)) <
 END
 
 // disable original spells that were moved to another level
-COPY_EXISTING ~sppr408.spl~ ~override~
-              ~sppr413.spl~ ~override~
-  WRITE_BYTE 0x21 (THIS BOR (BIT6 + BIT7)) // don't show up automatically in spellbooks
-  BUT_ONLY
+ACTION_IF enhanced_edition BEGIN 
+
+  APPEND ~hidespl.2da~ 
+~sppr408 1 0 0
+sppr413 1 0 0~
+
+END ELSE BEGIN
+
+  COPY_EXISTING ~sppr408.spl~ ~override~
+                ~sppr413.spl~ ~override~
+    WRITE_BYTE 0x21 (THIS BOR (BIT6 + BIT7)) // don't show up automatically in spellbooks
+    BUT_ONLY
+
+END
+
+INCLUDE ~%MOD_FOLDER%/lib/joinable_npc_array.tpa~
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+  ACTION_IF !IS_AN_INT dv BEGIN // joinable NPC
+
+    COPY_EXISTING ~%file%~ ~override~
+      READ_LONG 0x2a0 known_off // basic offsets and info
+      READ_LONG 0x2a4 known_num
+      READ_LONG 0x2a8 minfo_off
+      READ_LONG 0x2ac minfo_num
+      READ_LONG 0x2b0 mem_off
+      READ_LONG 0x2b4 mem_num
+      CLEAR_ARRAY cd_spell_new_working // reset vars
+      SET new_known = 0
+      // go through memorized spells
+      PATCH_IF minfo_num = 17 BEGIN // sanity check - don't proceed unless the full memorization array is present
+        // first, add new spells to known
+        SET maxlevel = "-1"
+        FOR (index = 6 ; index >= 0 ; --index) BEGIN 
+          READ_SHORT (minfo_off + 0x02 + (index * 0x10)) check
+          PATCH_IF check BEGIN 
+            SET maxlevel = index + 1
+            SET index = 0 // kill loop
+          END
+        END
+        // params_1 is meant to check for restrictions, but none of these have restrictions, so
+        PATCH_IF maxlevel >= 0 BEGIN 
+          PATCH_PHP_EACH cd_spell_new AS params => level BEGIN
+            PATCH_IF maxlevel >= level BEGIN
+              DEFINE_ASSOCIATIVE_ARRAY cd_spell_new_working BEGIN ~%params_0%~ => ~%level%~ END
+            END
+          END
+        END    
+        // next, sub changed spells
+        PATCH_PHP_EACH cd_spell_sub AS params => old BEGIN
+          SET matched = 0
+          READ_LONG (minfo_off + 0x08 + (params_1 * 0x10)) mem_tbl_idx
+          READ_LONG (minfo_off + 0x0c + (params_1 * 0x10)) mem_tbl_num
+          FOR (index = 0 ; index < mem_tbl_num ; ++index) BEGIN
+            READ_ASCII (mem_off + 0x00 + ((index + mem_tbl_idx) * 0x0c)) spell
+            PATCH_IF ("%old%" STRING_COMPARE_CASE "%spell%" = 0) BEGIN // matched
+              WRITE_ASCIIE (mem_off + 0x00 + ((index + mem_tbl_idx) * 0x0c)) ~%params_3%~ #8 // replacement spell at old level
+              SET matched = 1
+            END
+          END        
+          PATCH_IF matched BEGIN // if they had the old spell memorized, add it to the new level's memorization
+            READ_LONG (minfo_off + 0x0c + (params_2 * 0x10)) mem_tbl_num
+            PATCH_IF mem_tbl_num BEGIN // sanity check, make sure they actually know some spells here
+              SET select = RANDOM(0 (mem_tbl_num - 1))
+              READ_LONG (minfo_off + 0x08 + (params_2 * 0x10)) mem_tbl_idx
+              WRITE_ASCIIE (mem_off + 0x00 + ((select + mem_tbl_idx) * 0x0c)) ~%params_0%~ #8 // replace a random spell at the new level with the new spell
+            END
+          END 
+        END
+      END
+      // go through known spells and sub new for old
+      FOR (index = 0 ; index < known_num ; ++index) BEGIN
+        READ_ASCII (known_off + 0x00 + (index * 0x0c)) spell
+        PATCH_PHP_EACH cd_spell_sub AS params => old BEGIN
+          PATCH_IF ("%old%" STRING_COMPARE_CASE "%spell%" = 0) BEGIN // matched
+            WRITE_ASCIIE (known_off + 0x00 + (index * 0x0c)) ~%params_0%~ #8 // updated resref
+            WRITE_SHORT  (known_off + 0x08 + (index * 0x0c)) ~%params_2%~    // updated level
+          END
+        END
+      END
+      // now add new known spells
+      PATCH_PHP_EACH cd_spell_new_working AS spell => level BEGIN
+        INSERT_BYTES known_off 0x0c
+        WRITE_ASCIIE (known_off + 0x00) ~%spell%~
+        WRITE_SHORT  (known_off + 0x08) (level - 1) // last short is type, but 0 = priest
+        SET new_known += 1
+      END 
+      PATCH_IF new_known BEGIN
+        WRITE_LONG 0x2a4 known_num + new_known
+        PATCH_FOR_EACH off IN 0x2a8 0x2b0 0x2b8 0x2bc 0x2c4 BEGIN
+          READ_LONG off offcheck
+          PATCH_IF offcheck > known_off BEGIN
+            WRITE_LONG off (THIS + (0x0c * new_known))
+          END
+        END
+      END    
+      BUT_ONLY  
+      
+  END
+
+END 
