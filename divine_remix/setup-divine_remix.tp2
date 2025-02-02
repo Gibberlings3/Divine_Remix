@@ -2109,19 +2109,26 @@ LAF fl#add_kit_ee
     clascolr = ~35 67 67 25 80~
 END
 
-COPY ~divine_remix/spl/nmrnwr1.spl~ ~override~ // 'Enhanced Charm Animal' innate
+COPY_EXISTING ~spcl311.spl~ ~override/nmrnwr1.spl~ // 'Enhanced Charm Animal' innate
   SAY NAME1 @41504
   SAY NAME2 @41504
   SAY UNIDENTIFIED_DESC @41505
   SAY DESC @41505
+  LPF ALTER_EFFECT INT_VAR match_duration = 120 duration = 240 END
+  PATCH_IF !enhanced_edition BEGIN
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = cdca120 resource = cdca240 END
+  END
 
-COPY_EXISTING ~spcl412.spl~ ~override/nmrnwr2.spl~ // Set Snare
+ACTION_IF !enhanced_edition AND !FILE_EXISTS_IN_GAME ~cdca240.eff~ BEGIN
+  COPY_EXISTING ~cdca120.eff~ ~override/cdca240.eff~
+    WRITE_LONG 0x28 240
+END
 
 COPY ~divine_remix/spl/nmrnwr3.spl~ ~override~ // +10% Fire and Cold Resistance
      ~divine_remix/spl/nmrnwr4.spl~ ~override~ // +20% set snares
 
 COPY_EXISTING ~nmrnwr4.spl~ ~override/nmrnwr5.spl~ // +5% set snares
-  WRITE_LONG 0x9e 5
+  LPF ALTER_EFFECT INT_VAR match_opcode = 277 parameter1 = 5 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
