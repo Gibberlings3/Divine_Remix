@@ -1245,11 +1245,15 @@ Inconvénients :
 - Le charisme maximum est inférieur de 2 points à celui d'un membre standard de la même race.~
 @40604 = ~Rage Féroce~
 @40605 = ~Appel Sauvage~
-@40610 = ~Cette capacité permet au Sauvage d'invoquer un compagnon animal qui combattra pour lui pendant 3 rounds +1 round/niveau. Des créatures plus puissantes sont invoquées à plus haut niveau.~
 @40606 = ~Chien Sauvage~
 @40607 = ~Loup~
 @40608 = ~Loup Sanguinaire~
 @40609 = ~Chef de Meute~
+@40610 = ~Cette capacité permet au Sauvage d'invoquer un compagnon animal qui combattra pour lui pendant 3 rounds +1 round/niveau. Des créatures plus puissantes sont invoquées à plus haut niveau.~
+@40611 = ~Rage Féroce
+Le personnage devient enragé pendant 1 tour. Sous cet état, le personnage gagne un bonus de +2 aux jets d'attaque et de dégâts, ainsi qu'à la classe d'armure, et devient immunisé contre les charmes, la confusion, la peur, la débilité mentale, l'immobilisation, l'emprisonnement, le drain de niveau, le labyrinthe, l'étourdissement et le sommeil. Il gagne également 15 points de vie temporaires, qui sont retirés à la fin de la furie, pouvant rendre le personnage inconscient.
+
+À la fin de l'effet, le personnage est essoufflé et subit un malus de -2 à la classe d'armure et aux jets de toucher et de dégâts.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

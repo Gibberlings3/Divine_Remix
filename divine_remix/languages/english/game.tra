@@ -1250,21 +1250,26 @@ Feralans cannot be Lawful Good.
 Advantages:
 - +10% to stealth
 - +1 to Armor Class for every 5 levels of experience (starting at 1st level)
-- May use the 'Feral Rage' ability once a day per 10 levels.  The enraged state lasts for 60 seconds, and grants a bonus of +2 to hit, damage, and AC, and immunity to charm, hold and fear, maze, imprisonment, stun and sleep.  He also gains 15 temporary hit points
+- May use the 'Feral Rage' ability once a day per 10 levels.  The character becomes enraged for 1 turn. While enraged, the character gains a +2 bonus to <PRO_HISHER> attack and damage rolls as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains 15 temporary Hit Points, which are taken away at the end of the berserk spree (possibly knocking the character unconscious).
 - May use the 'Call of the Wild' ability once a day.  This unique ability summons an animal companion who will fight for the caster for 3 rounds + 1 round/level.  More powerful creatures are summoned at higher levels.
 
 Disadvantages:
-- Becomes winded after Feral Rage. While he's winded he receives -2 to hit, -2 to damage and a +2 penalty to armor class
+- Becomes winded after Feral Rage. While he's winded he receives a -2 penalty to Armor Class, to-hit rolls, and damage rolls.
 - Can only become proficient (one point) in bastard swords, long swords, short swords, two-handed swords, katanas, scimitars, halberds, flails and crossbows
 - Cannot wear any armor
 - Maximum Charisma is 2 points lower than a standard member of the race~
 @40604 = ~Feral Rage~
 @40605 = ~Call of the Wild~
-@40610 = ~This unique ability summons an animal companion who will fight for the caster for 3 rounds + 1 round/level.  More powerful creatures are summoned at higher levels.~
 @40606 = ~Wild Dog~
 @40607 = ~Wolf~
 @40608 = ~Dire Wolf~
 @40609 = ~Pack Leader~
+@40610 = ~This unique ability summons an animal companion who will fight for the caster for 3 rounds + 1 round/level.  More powerful creatures are summoned at higher levels.~
+// this is just a copy of BG2EE #100363 with feral rage substituted in the first line
+@40611 = ~Feral Rage
+The character becomes enraged for 1 turn. While enraged, the character gains a +2 bonus to <PRO_HISHER> attack and damage rolls as well as to <PRO_HISHER> Armor Class, and becomes immune to charm, confusion, fear, feeblemind, hold, imprisonment, level drain, maze, stun, and sleep. The character also gains 15 temporary Hit Points, which are taken away at the end of the berserk spree (possibly knocking the character unconscious).
+
+After the effects end, the character becomes winded, suffering a -2 penalty to Armor Class, to-hit rolls, and damage rolls.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

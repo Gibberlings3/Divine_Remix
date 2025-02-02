@@ -1907,20 +1907,27 @@ REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~a#feral.2da~ @9
 
 // shapeshifters get locked out of all armor, either by the druid flag or their individual kit flag
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
-  READ_BYTE 0x1C "type" ELSE 0 // skips invalid files
-  PATCH_IF (("%type%" = 2) OR (("%type%" > 59) AND ("%type%" < 69))) BEGIN // add scale mail to check
-    READ_BYTE 0x21 "druid"
-    READ_BYTE 0x29 "shapeshifter"
-    PATCH_IF (("%druid%" BAND 0b01000000) = 0b01000000) BEGIN // if unusable by druids
-      WRITE_BYTE 0x29 ("%shapeshifter%" BOR 0b00010000) // remove redundant shapeshifter restriction; shapeshifters can't use it 'coz of druid flag //it is a ranger kit and not a druid kit, so we need to keep them
-    END ELSE BEGIN
-      WRITE_BYTE 0x29 ("%shapeshifter%" BOR 0b00010000) // making unusable by shapeshifters
+  READ_BYTE 0x1c type
+  PATCH_IF ((type = 2) OR ((type > 59) AND (type < 68))) BEGIN // any armor
+    READ_LONG  0x1e use
+    PATCH_IF ((use BAND BIT30) = BIT30) BEGIN // if unusable by druids...
+      WRITE_BYTE 0x29 (THIS BAND `BIT4)       // removes redundant shapeshifter flag
+    END ELSE BEGIN                            // if usable by druids...
+      WRITE_BYTE 0x29 (THIS BOR BIT4)         // adds shapeshifter flag
     END
   END
-  BUT_ONLY_IF_IT_CHANGES
+  BUT_ONLY
 
-COPY_EXISTING ~spcl321.spl~ ~override/a#fera02.spl~ // 'Feral Rage' innate
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk STR_VAR source = spcl321 destination = ~a#fera02~ RET_ARRAY cd_clone_spell_array END // enrage (berserker innate)
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
+
+COPY_EXISTING ~a#fera02.spl~ ~override~ // 'Feral Rage' innate
   SAY NAME1 @40604
+  SAY NAME2 @40604
+  SAY UNIDENTIFIED_DESC  @40611
+  SAY DESC  @40611
 
 COPY ~divine_remix/spl/A#fera03.spl~ ~override~ // 'Call of the Wild' innate
   SAY NAME1 @40605
