@@ -2062,18 +2062,17 @@ LAF fl#add_kit_ee
     clascolr = ~35 67 67 25 80~
 END
 
-COPY ~divine_remix/spl/a#just01.spl~ ~override~ // +10% Stealth
-     ~divine_remix/spl/a#just02.spl~ ~override~ // +1 to speed factor and to hit
-     ~divine_remix/spl/a#justns.spl~ ~override~ // Removes priest spells
-
-// change spells to innates as needed
-COPY_EXISTING ~sppr103.spl~ ~override/a#justcl.spl~ // 'cure light wounds'
-              ~sppr111.spl~ ~override/a#justaf.spl~ // 'armour of faith'
-              ~spwi209.spl~ ~override/a#justlu.spl~ // 'luck'
-              ~sppr108.spl~ ~override/a#justrf.spl~ // 'remove fear'
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
-
+COPY ~divine_remix/spl/a#fera01.spl~ ~override/a#just01.spl~ // +10% Stealth
+     ~divine_remix/spl/a#just02.spl~ ~override~              // +1 to speed factor and to hit
+     ~divine_remix/spl/a#justns.spl~ ~override~              // Removes priest spells
+     
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr103 destination = ~a#justcl~ RET_ARRAY cd_clone_spell_array END // cure light wounds
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr111 destination = ~a#justaf~ RET_ARRAY cd_clone_spell_array END // armour of faith
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi209 destination = ~a#justlu~ RET_ARRAY cd_clone_spell_array END // luck
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr108 destination = ~a#justrf~ RET_ARRAY cd_clone_spell_array END // remove fear
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
