@@ -20,13 +20,38 @@ COPY ~divine_remix/spl/cdslmsd.spl~  ~override~ // Moon Shield (innate spell)
 ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr403 destination = ~cdslfre~ RET_ARRAY cd_clone_spell_array END // free action
 
-// build 2da from generic ability schedule
-COPY ~divine_remix/2da/generic.2da~ ~override/cdselune.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~cdslfre~ // free action as 1/5
-  REPLACE_TEXTUALLY ~KITBIL2~ ~cdslmsd~ // moon shield as 1/10
-  PATCH_IF !game_includes_tob THEN BEGIN
-    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
-  END
+ACTION_IF cd_dr_conventional BEGIN 
+
+  // build 2da from generic ability schedule
+  COPY ~divine_remix/2da/generic.2da~ ~override/cdselune.2da~
+    REPLACE_TEXTUALLY ~KITBIL1~ ~cdslfre~ // free action as 1/5
+    REPLACE_TEXTUALLY ~KITBIL2~ ~cdslmsd~ // moon shield as 1/10
+    PATCH_IF !game_includes_tob THEN BEGIN
+      REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+    END
+    
+  OUTER_SPRINT kit_help @10321  
+    
+END ELSE BEGIN 
+
+  COPY ~divine_remix/2da/cdselune.2da~ ~override~
+    
+  OUTER_SPRINT kit_help @10302  
+  
+  COPY ~divine_remix/bam/cdislune.bam~ ~override~ // holy weapon
+  OUTER_SPRINT hw_name @10303
+  OUTER_SPRINT hw_desc @10304
+  LAF cd_dr_holy_weapon STR_VAR item = cdslmc name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
+  
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi523 destination = ~cdslsun~ RET_ARRAY cd_clone_spell_array END // sunfire (innate)
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi702 destination = ~cdslpfe~ RET_ARRAY cd_clone_spell_array END // protection from the elements (innate)
+  
+  COPY ~divine_remix/spl/cdslinf.spl~ ~override~  // infravision (permanent innate spell)
+  
+  OUTER_SET air_elem_divine = 0
+  INCLUDE ~divine_remix/lib/air_elemental.tpa~  // conjure air elemental (innate)
+  
+END
 
 ADD_KIT ~CDSelune~
   ~CDSelune                0           0           1           1           0           1           0           0~
@@ -44,7 +69,7 @@ ADD_KIT ~CDSelune~
   ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
   SAY @10305
   SAY @10301
-  SAY @10321
+  SAY ~%kit_help%~
 
 LAF fl#add_kit_ee
   INT_VAR

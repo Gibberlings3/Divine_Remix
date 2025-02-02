@@ -187,6 +187,7 @@ SUBCOMPONENT @10000
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~BG2FIXPACK/SETUP-BG2FIXPACK.TP2~ ~0~ OR GAME_IS ~bgee bg2ee iwdee eet~) @17 // Fixpack is needed
 GROUP @10
 
+OUTER_SET cd_dr_conventional = 1
 INCLUDE ~divine_remix/lib/cleric_main.tpa~
 
 /////                                                  \\\\\
@@ -198,24 +199,22 @@ SUBCOMPONENT @10000
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~BG2FIXPACK/SETUP-BG2FIXPACK.TP2~ ~0~ OR GAME_IS ~bgee bg2ee iwdee eet~) @17 // Fixpack is needed
 GROUP @10
 
+OUTER_SET cd_dr_conventional = 0
 INCLUDE ~divine_remix/lib/cleric_main.tpa~
 INCLUDE ~divine_remix/lib/cleric_revamp.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// conventional cleric kits                         \\\\\
-/////                                                  \\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
-
-/////                                                  \\\\\
 ///// Silverstar of Selûne                             \\\\\
 /////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @10300 DESIGNATED 103 // component 103
 GROUP @10
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~ @16 // conventional option of CR
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR 
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @16 // conventional option of CR
 
 INCLUDE ~divine_remix/lib/silverstar.tpa~
 

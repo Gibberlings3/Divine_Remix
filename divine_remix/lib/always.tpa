@@ -8,6 +8,9 @@ APPEND ~state.ids~ ~0x00000FC0 STATE_REALLY_DEAD~ UNLESS ~0x00000FC0 STATE_REALL
 APPEND ~spell.ids~ ~1718 CLERIC_SYMBOL_STUN~  UNLESS ~CLERIC_SYMBOL_STUN~
 APPEND ~spell.ids~ ~1719 CLERIC_SYMBOL_DEATH~ UNLESS ~CLERIC_SYMBOL_DEATH~
 
+ACTION_IF MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~ BEGIN OUTER_SET cd_dr_conventional = 1 END
+ACTION_IF MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~ BEGIN OUTER_SET cd_dr_conventional = 0 END
+
 ACTION_IF !enhanced_edition BEGIN 
 
   // eefixpack spell immunity states

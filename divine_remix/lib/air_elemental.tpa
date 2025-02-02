@@ -1,0 +1,75 @@
+ACTION_IF !FILE_EXISTS_IN_GAME cddrair1.eff BEGIN // if the spell doesn't exist
+
+  ACTION_IF air_elem_divine BEGIN // if we're being asked to make divine version
+
+    COPY_EXISTING ~spwi621.spl~ ~override~
+
+    ADD_SPELL ~override/spwi621.spl~ 1 7 CLERIC_CONJURE_AIR_ELEMENTAL 
+      DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 7 END // for spellbook updates
+      WRITE_SHORT 0x1c 2 // change to divine spell
+      WRITE_SHORT 0x34 7 // change level
+      SPRINT spell ~%DEST_RES%~
+  
+  END ELSE BEGIN  // if we're being asked to make innate version for silverstar
+  
+    COPY_EXISTING ~spwi621.spl~ ~override/cdslair.spl~
+      WRITE_SHORT 0x1c 4 // change to innate spell
+      WRITE_SHORT 0x34 1 // change level
+      LPF ALTER_HEADER STR_VAR location = 4 END 
+      WRITE_ASCIIE 0x3A "spwi622b" #8      // writes the bam filename from abilities to spell icon
+      SPRINT spell ~%DEST_RES%~
+      
+  END    
+  
+  COPY_EXISTING ~%spell%.spl~ ~override~ // common changes for both
+    WRITE_SHORT 0x1e 0 // remove exclusion
+    LPF DELETE_EFFECT INT_VAR match_opcode = 165 END // removing the mental combat visual effect for priest
+    LPF DELETE_EFFECT INT_VAR match_opcode = 215 END // removing the mental combat visual effect for priest
+    LPF DELETE_EFFECT INT_VAR match_opcode = 142 END // removing the mental combat visual effect for priest
+    LPF ALTER_EFFECT INT_VAR silent = 1 match_power = 6 power = 7 END
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair1 resource = EVAL ~cddrair1~ END // change elemental calls
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair2 resource = EVAL ~cddrair2~ END // change elemental calls
+    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair3 resource = EVAL ~cddrair3~ END // change elemental calls
+    PATCH_FOR_EACH offset IN 0x50 BEGIN
+      READ_LONG ~%offset%~ desc_strref
+      PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
+        READ_STRREF ~%offset%~ desc
+        INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+          REPLACE_TEXTUALLY ~%level_match%~ ~\1 7~ // change level in description to 7
+        END
+      END
+      SAY_EVALUATED offset ~%desc%~
+    END
+
+  // Cretaing the new creatures to remove the mental combat script for priest
+  COPY_EXISTING "spair1.eff" "override/cddrair1.eff" WRITE_ASCIIE 0x30 ~cddrair2~ (8)
+  COPY_EXISTING "spair2.eff" "override/cddrair2.eff" WRITE_ASCIIE 0x30 ~cddrair3~ (8)
+  COPY_EXISTING "spair3.eff" "override/cddrair3.eff" WRITE_ASCIIE 0x30 ~cddrair4~ (8)
+    
+  COPY_EXISTING "elairsu2.cre" "override/cddrair2.cre"
+                "elairsu3.cre" "override/cddrair3.cre"
+                "elairsu4.cre" "override/cddrair4.cre"
+    WRITE_ASCII 0x248 "" #8
+  
+END ELSE BEGIN // if spell already exists in one form or another
+
+  ACTION_IF air_elem_divine BEGIN // and we're making the divine version
+
+    ADD_SPELL ~override/cdslair.spl~ 1 7 CLERIC_CONJURE_AIR_ELEMENTAL 
+      DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 7 END // for spellbook updates
+      WRITE_SHORT 0x1c 2 // change to divine spell
+      WRITE_SHORT 0x34 7 // change level
+      
+  END ELSE BEGIN // or making the silverstar innate
+  
+    LAF RES_NAME_OF_SPELL_NUM INT_VAR spell_num = IDS_OF_SYMBOL (~spell~ ~CLERIC_CONJURE_AIR_ELEMENTAL~) RET spell_res END
+    COPY_EXISTING ~%spell_res%.spl~ ~override/cdslair.spl~
+      WRITE_SHORT 0x1c 4 // change to innate spell
+      WRITE_SHORT 0x34 1 // change level
+      LPF ALTER_HEADER STR_VAR location = 4 END 
+      WRITE_ASCIIE 0x3A "spwi622b" #8      // writes the bam filename from abilities to spell icon
+      SPRINT spell ~%DEST_RES%~
+      
+  END    
+ 
+END

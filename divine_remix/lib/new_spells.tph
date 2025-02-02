@@ -290,41 +290,8 @@ END
 
 ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_CONJURE_AIR_ELEMENTAL~)) < 0)) BEGIN // only if not present or overwrite selected
 
-  COPY_EXISTING ~spwi621.spl~ ~override~
-
-  ADD_SPELL ~override/spwi621.spl~ 1 7 CLERIC_CONJURE_AIR_ELEMENTAL 
-    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 7 END // for spellbook updates
-    SPRINT drbase ~%DEST_RES%~
-    WRITE_SHORT 0x1c 2 // change to divine spell
-    WRITE_SHORT 0x1e 0 // remove exclusion
-    WRITE_SHORT 0x34 7 // change level
-    LPF DELETE_EFFECT INT_VAR match_opcode = 165 END // removing the mental combat visual effect for priest
-    LPF DELETE_EFFECT INT_VAR match_opcode = 215 END // removing the mental combat visual effect for priest
-    LPF DELETE_EFFECT INT_VAR match_opcode = 142 END // removing the mental combat visual effect for priest
-    LPF ALTER_EFFECT INT_VAR silent = 1 match_power = 6 power = 7 END
-    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair1 resource = EVAL ~%drbase%1~ END // change elemental calls
-    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair2 resource = EVAL ~%drbase%2~ END // change elemental calls
-    LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair3 resource = EVAL ~%drbase%3~ END // change elemental calls
-    PATCH_FOR_EACH offset IN 0x50 BEGIN
-      READ_LONG ~%offset%~ desc_strref
-      PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-        READ_STRREF ~%offset%~ desc
-        INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-          REPLACE_TEXTUALLY ~%level_match%~ ~\1 7~ // change level in description to 7
-        END
-      END
-      SAY_EVALUATED offset ~%desc%~
-    END
-
-  // Cretaing the new creatuers to remove the mental combat script for priest
-  COPY_EXISTING "SPAIR1.EFF" "override/%drbase%1.EFF" WRITE_ASCIIE 0x30 ~%drbase%2~ (8)
-  COPY_EXISTING "SPAIR2.EFF" "override/%drbase%2.EFF" WRITE_ASCIIE 0x30 ~%drbase%3~ (8)
-  COPY_EXISTING "SPAIR3.EFF" "override/%drbase%3.EFF" WRITE_ASCIIE 0x30 ~%drbase%4~ (8)
-    
-  COPY_EXISTING "ELAIRSU2.CRE" "override/%drbase%2.cre"
-                "ELAIRSU3.CRE" "override/%drbase%3.cre"
-                "ELAIRSU4.CRE" "override/%drbase%4.cre"
-    WRITE_ASCII 0x248 "" #8
+  OUTER_SET air_elem_divine = 1
+  INCLUDE ~divine_remix/lib/air_elemental.tpa~
 
 END
 

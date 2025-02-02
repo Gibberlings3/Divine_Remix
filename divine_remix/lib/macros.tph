@@ -1514,16 +1514,16 @@ BEGIN
     SAY_EVALUATED 0x0c ~%name%~
     SAY_EVALUATED 0x50 ~%desc%~
     SAY_EVALUATED 0x54 ~%desc%~
-    LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 18 step_dur = 6 step_size = 1 level_cap = dr_level_cap min_dur = 7 END // 3 rounds + 1 round/level
+    LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 6 step_dur = 0 step_size = 1 level_cap = dr_level_cap END // can't do durations automatically since visual is also 6 seconds
     PATCH_IF !game_is_iwdee BEGIN // have to create extra headers for +4 and +5 weapons even though duration doesn't increase
       LPF CD_EXTEND-O-MATIC INT_VAR dur_special = 1 step_dur = 0 step_size = 1 level_cap = 21 END // just create a level 21 header (no more duration increases)
       LPF CD_EXTEND-O-MATIC INT_VAR dur_special = 1 step_dur = 0 step_size = 5 level_cap = 26 END // just create a level 26 header (no more duration increases)
-      LPF ALTER_EFFECT INT_VAR header = 20 match_opcode = 111 STR_VAR resource = EVAL ~%item%4~ END // set created item
-      LPF ALTER_EFFECT INT_VAR header = 21 match_opcode = 111 STR_VAR resource = EVAL ~%item%5~ END // set created item
+      LPF ALTER_EFFECT INT_VAR header = 20 match_opcode = 111 duration = 120 STR_VAR resource = EVAL ~%item%4~ END // set created item
+      LPF ALTER_EFFECT INT_VAR header = 21 match_opcode = 111 duration = 120 STR_VAR resource = EVAL ~%item%5~ END // set created item
     END
     FOR (index = 0 ; index < dr_level_cap ; ++index) BEGIN 
       SET wpn = index / 5 // using WeiDU's whole number rounding to our advantage
-      LPF ALTER_EFFECT INT_VAR header = index match_opcode = 111 STR_VAR resource = EVAL ~%item%%wpn%~ END // set created item
+      LPF ALTER_EFFECT INT_VAR header = index match_opcode = 111 duration = (6 * (index + 1)) STR_VAR resource = EVAL ~%item%%wpn%~ END // set created item
     END 
 
   OUTER_FOR (index = 0 ; index < 6 ; ++index) BEGIN
