@@ -2,9 +2,49 @@
 ///// innates for bioware three                        \\\\\
 /////                                                  \\\\\
 
-COPY ~divine_remix/2da/clabpr02.2da~ ~override~
+COPY ~divine_remix/2da/clabpr02.2da~ ~override~ // new ability tables
      ~divine_remix/2da/clabpr03.2da~ ~override~
      ~divine_remix/2da/clabpr04.2da~ ~override~
+
+// new descripts
+COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
+  COUNT_2DA_ROWS 9 rows
+  FOR (index = rows ; index > 0 ; --index) BEGIN
+    READ_2DA_ENTRY index 5 8 clab
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr02" = 0) BEGIN // talos
+      READ_2DA_ENTRY index 4 8 talos_sphere
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr03" = 0) BEGIN // helm
+      READ_2DA_ENTRY index 4 8 helm_sphere
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr04" = 0) BEGIN // lathander
+      READ_2DA_ENTRY index 4 8 lathander_sphere
+    END
+    PATCH_IF ("%clab%" STRING_COMPARE_CASE "ohtempus" = 0) BEGIN // tempus
+      READ_2DA_ENTRY index 4 8 tempus_sphere
+    END
+  END
+  BUT_ONLY
+
+ACTION_IF VARIABLE_IS_SET talos_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%talos_sphere%~ @10177
+END
+
+ACTION_IF VARIABLE_IS_SET helm_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%helm_sphere%~ @10194
+END
+
+ACTION_IF VARIABLE_IS_SET lathander_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%lathander_sphere%~ @10178
+END
+
+ACTION_IF VARIABLE_IS_SET tempus_sphere THEN BEGIN
+  STRING_SET_EVALUATE ~%tempus_sphere%~ @10902
+END
+     
+/////                                                  \\\\\
+///// innates                                          \\\\\
+/////                                                  \\\\\
 
 // change spells to innates as needed
 ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
@@ -32,6 +72,10 @@ COPY ~Divine_Remix/spl/cdtldst.spl~ ~override~ // destructive blow
   SAY NAME2 @10169
   SAY UNIDENTIFIED_DESC @10170
   SAY DESC @10170
+     
+/////                                                  \\\\\
+///// holy weapons                                     \\\\\
+/////                                                  \\\\\
 
 COPY ~divine_remix/bam/cdilath.bam~  ~override~
      ~divine_remix/bam/cdihelm.bam~  ~override~
@@ -48,6 +92,10 @@ LAF cd_dr_holy_weapon STR_VAR item = cdhmbs name = EVAL ~%hw_name%~ desc = EVAL 
 OUTER_SPRINT hw_name @10167
 OUTER_SPRINT hw_desc @10168
 LAF cd_dr_holy_weapon STR_VAR item = cdtlsp name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
+     
+/////                                                  \\\\\
+///// tempus check                                     \\\\\
+/////                                                  \\\\\
 
 ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ THEN BEGIN // do tempus as part of the main component on the EEs
 
