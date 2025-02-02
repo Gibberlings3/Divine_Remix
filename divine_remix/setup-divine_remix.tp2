@@ -213,8 +213,8 @@ INCLUDE ~divine_remix/lib/cleric_revamp.tpa~
 
 BEGIN @10300 DESIGNATED 103 // component 103
 GROUP @10
-REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR 
-                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @16 // conventional option of CR
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 
 INCLUDE ~divine_remix/lib/silverstar.tpa~
 
@@ -228,7 +228,8 @@ INCLUDE ~divine_remix/lib/silverstar.tpa~
 
 BEGIN @10600 DESIGNATED 106 // component 106
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@10620)
@@ -333,7 +334,8 @@ END
 
 BEGIN @10700 DESIGNATED 107 // component 107
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR 
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @16 // conventional option of CR
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@10716)
@@ -428,7 +430,8 @@ END
 
 BEGIN @10900 DESIGNATED 109// component 109
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~ohtempus.2da~ @14
 
 ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
@@ -527,7 +530,8 @@ END
 
 BEGIN @11200 DESIGNATED 112 // component 112
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@11211)
@@ -659,7 +663,8 @@ END
 
 BEGIN @11500 DESIGNATED 115
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@11511)
@@ -761,7 +766,8 @@ END
 
 BEGIN @11800 DESIGNATED 118
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@11811)
@@ -866,7 +872,8 @@ END
 
 BEGIN @12100 DESIGNATED 121
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@12109)
@@ -981,7 +988,8 @@ END
 
 BEGIN @12400 DESIGNATED 124
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@12411)
@@ -1118,7 +1126,8 @@ END
 
 BEGIN @12700 DESIGNATED 127
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@12710)
@@ -1214,7 +1223,8 @@ END
 
 BEGIN @13001 DESIGNATED 130
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@13011)
@@ -1855,7 +1865,8 @@ COPY_EXISTING ~viconia.bcs~ ~override~
 BEGIN @2000 DESIGNATED 1000
 GROUP @10 GROUP @11 GROUP @13 // GROUP @12
 REQUIRE_PREDICATE (NOT ENGINE_IS ~bgee bg2ee iwdee~) ~This component is not compatible with EE engine.~
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 
 /////                                                  \\\\\
 ///// add sphere descripts to base classes             \\\\\
