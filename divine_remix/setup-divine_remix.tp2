@@ -2016,14 +2016,15 @@ LAF fl#add_kit_ee
     clascolr = ~35 67 67 25 80~
 END
 
-COPY ~divine_remix/spl/nmrnfr1.spl~ ~override~ // +5% Stealth
+COPY ~divine_remix/spl/a#fera01.spl~ ~override/nmrnfr1.spl~ // +5% Stealth
+  LPF ALTER_EFFECT INT_VAR match_parameter1 = 10 parameter1 = 5 END // converting feralan's +10 to forest runner's +5
 
 COPY ~divine_remix/spl/nmrnfr2.spl~ ~override~ // 'Inspire' innate
   SAY NAME1 @40904
   SAY NAME2 @40904
-  SAY 0xfe  @40905
   SAY UNIDENTIFIED_DESC  @40906
   SAY DESC  @40906
+  LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF(@40905) END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
