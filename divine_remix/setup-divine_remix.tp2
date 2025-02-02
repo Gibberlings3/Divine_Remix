@@ -204,120 +204,20 @@ INCLUDE ~divine_remix/lib/cleric_revamp.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// Silverstar of Selûne                             \\\\\
+///// conventional cleric kits                         \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+/////                                                  \\\\\
+///// Silverstar of Selûne                             \\\\\
+/////                                                  \\\\\
 
 BEGIN @10300 DESIGNATED 103 // component 103
 GROUP @10
-REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~ @16 // conventional option of CR
 
-ACTION_IF game_is_iwdee BEGIN
-  OUTER_SET bio = RESOLVE_STR_REF(@10322)
-END ELSE
-ACTION_IF game_is_bgee BEGIN
-  OUTER_SET bio = 15884
-END
-
-ACTION_IF FILE_EXISTS_IN_GAME ~spwi801b.bam~ BEGIN // use spell shield BAM for moon shield
-  COPY_EXISTING ~spwi801b.bam~ ~override/cdmnshlb.bam~
-END ELSE BEGIN
-  COPY ~divine_remix/bam/cdmnshlb.bam~ ~override~
-END
-
-COPY ~divine_remix/spl/cdslmsd.spl~  ~override~ // Moon Shield (innate spell)
-  SAY NAME1 @10307
-  SAY NAME2 @10307
-  SAY UNIDENTIFIED_DESC @10308
-  SAY DESC @10308
-
-ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
-LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr403 destination = ~cdslfre~ RET_ARRAY cd_clone_spell_array END // free action
-
-// build 2da from generic ability schedule
-COPY ~divine_remix/2da/generic.2da~ ~override/cdselune.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~cdslfre~ // free action as 1/5
-  REPLACE_TEXTUALLY ~KITBIL2~ ~cdslmsd~ // moon shield as 1/10
-  PATCH_IF !game_includes_tob THEN BEGIN
-    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
-  END
-
-ADD_KIT ~CDSelune~
-  ~CDSelune                0           0           1           1           0           1           0           0~
-  ~CDSelune 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
-  ~CDSelune                0       0       0       0       9       0~
-  ~CDSelune                0       0       0       0       0       0~
-  ~CDSelune                0       0       0       0       17      0~
-  ~CDSelune                0       0       0       0       15      0~
-  ~CDSelune                0       0       0       1       0       0       1       1       0~
-  ~CDSelune                1       0       1       1       0       1~
-  ~override/cdselune.2da~
-  ~K_C_D K_C_E K_C_G K_C_H K_C_HE K_C_HL K_C_HO~
-  ~0x00004000     3~
-  ~Cl0~
-  ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
-  SAY @10305
-  SAY @10301
-  SAY @10321
-
-LAF fl#add_kit_ee
-  INT_VAR
-    biography = bio
-  STR_VAR
-    kit_name = CDSelune
-    clascolr = ~35 21 58 25 80~
-END
-
-LAF cd_aoe_compat INT_VAR column = (22 + "%CDSelune%") END
-
-ACTION_IF game_includes_tob THEN BEGIN // holy symbols
-
-  COPY ~divine_remix/bam/cdislhly.bam~ ~override~ // holy symbol
-  COPY ~divine_remix/bam/cdpslhly.bam~ ~override~
-  LAF cd_create_holy_symbol
-  INT_VAR
-    name = RESOLVE_STR_REF(@10319)
-    desc = RESOLVE_STR_REF(@10320)
-    kit  = CDSelune
-    kit319s = RESOLVE_STR_REF(@10305)
-    kitbits = (BIT1 + BIT4)
-  STR_VAR
-    symbol = cdslhly
-    iicon  = cdislhly
-    cicon  = cdpslhly
-  END
-
-END
-
-PRINT @3
-INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
-
-/////                                                  \\\\\
-///// Stronghold fixes                                 \\\\\
-/////                                                  \\\\\
-
-ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
-
-  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/Selune_ar0900.baf~
-  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/Selune_ar0902.baf~
-  COMPILE ~divine_remix/dlg/selune.d~
-
-END
-
-/////                                                  \\\\\
-///// assign kits                                      \\\\\
-/////                                                  \\\\\
-
-OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~CDSelune~)) // talos
-OUTER_SPRINT kitname @10324 // ~Silverstar~
-ACTION_FOR_EACH cre IN bstq007 ysselune BEGIN
-
-  COPY_EXISTING ~%cre%.cre~ ~override~
-    LPF cd_assign_kit_to_cre END
-    BUT_ONLY IF_EXISTS
-
-END
+INCLUDE ~divine_remix/lib/silverstar.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
