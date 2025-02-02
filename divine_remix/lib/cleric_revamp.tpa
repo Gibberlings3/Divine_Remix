@@ -6,6 +6,21 @@ COPY ~divine_remix/2da/clabpr02.2da~ ~override~
      ~divine_remix/2da/clabpr03.2da~ ~override~
      ~divine_remix/2da/clabpr04.2da~ ~override~
 
+// change spells to innates as needed
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi324 destination = cdlthun RET_ARRAY cd_clone_spell_array END // hold undead innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr503 destination = cdltflm RET_ARRAY cd_clone_spell_array END // flame strike innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr607 destination = cdlthel RET_ARRAY cd_clone_spell_array END // heal innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr713 destination = cdltgrs RET_ARRAY cd_clone_spell_array END // greater restoration innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr304 destination = cdhmglp RET_ARRAY cd_clone_spell_array END // glyph of warding innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr415 destination = cdhmfst RET_ARRAY cd_clone_spell_array END // farsight innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi511 destination = cdhmpnw RET_ARRAY cd_clone_spell_array END // protection from normal weapons innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr505 destination = cdhmtse RET_ARRAY cd_clone_spell_array END // true seeing innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi708 destination = cdhmmnt RET_ARRAY cd_clone_spell_array END // mantle innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi502 destination = cdtlcld RET_ARRAY cd_clone_spell_array END // cloudkill innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi615 destination = cdtlcnl RET_ARRAY cd_clone_spell_array END // chain lightning innate
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr720 destination = cdtlqak RET_ARRAY cd_clone_spell_array END // earthquake innate
+
 COPY ~Divine_Remix/spl/cdtlers.spl~ ~override~ // electrical resistance
   SAY NAME1 @10166
   SAY NAME2 @10166
@@ -18,108 +33,28 @@ COPY ~Divine_Remix/spl/cdtldst.spl~ ~override~ // destructive blow
   SAY UNIDENTIFIED_DESC @10170
   SAY DESC @10170
 
-// change spells to innates as needed
-COPY_EXISTING ~spwi324.spl~ ~override/cdlthun.spl~ // hold undead innate
-              ~sppr503.spl~ ~override/cdltflm.spl~ // flame strike innate
-              ~sppr607.spl~ ~override/cdlthel.spl~ // heal innate
-              ~sppr713.spl~ ~override/cdltgrs.spl~ // greater restoration innate
-              ~sppr304.spl~ ~override/cdhmglp.spl~ // glyph of warding innate
-              ~sppr415.spl~ ~override/cdhmfst.spl~ // farsight innate
-              ~spwi511.spl~ ~override/cdhmpnw.spl~ // protection from normal weapons innate
-              ~sppr505.spl~ ~override/cdhmtse.spl~ // true seeing innate
-              ~spwi708.spl~ ~override/cdhmmnt.spl~ // mantle innate
-              ~spwi502.spl~ ~override/cdtlcld.spl~ // cloudkill innate
-              ~spwi615.spl~ ~override/cdtlcnl.spl~ // chain lightning innate
-              ~sppr720.spl~ ~override/cdtlqak.spl~ // earthquake innate
-  LAUNCH_PATCH_MACRO ~spell_to_innate~ // change to innate spell
-  BUT_ONLY_IF_IT_CHANGES
+COPY ~divine_remix/bam/cdilath.bam~  ~override~
+     ~divine_remix/bam/cdihelm.bam~  ~override~
+     ~divine_remix/bam/cditalos.bam~ ~override~
 
-COPY ~Divine_Remix/BAM/cdilath.bam~ ~override~
-COPY ~Divine_Remix/spl/cdltmac.spl~ ~override~  // Lathander's Mace (innate spell)
-  SAY NAME1 @10180
-  SAY NAME2 @10180
-  SAY UNIDENTIFIED_DESC @10181
-  SAY DESC @10181
+OUTER_SPRINT hw_name @10180
+OUTER_SPRINT hw_desc @10181
+LAF cd_dr_holy_weapon STR_VAR item = cdltmc name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
 
-COPY ~Divine_Remix/itm/cdltmc0.itm~ ~override~  // Lathander's Mace +0
-  SAY NAME1 @10180
-  SAY NAME2 @10180
-  SAY UNIDENTIFIED_DESC @10181
-  SAY DESC @10181
-  SET "weap_idx" = 0
+OUTER_SPRINT hw_name @10185
+OUTER_SPRINT hw_desc @10186
+LAF cd_dr_holy_weapon STR_VAR item = cdhmbs name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
 
-COPY_EXISTING ~cdltmc0.itm~ ~override/cdltmc1.itm~  // lathander's mace +1
-              ~cdltmc0.itm~ ~override/cdltmc2.itm~  // lathander's mace +2
-              ~cdltmc0.itm~ ~override/cdltmc3.itm~  // lathander's mace +3
-              ~cdltmc0.itm~ ~override/cdltmc4.itm~  // lathander's mace +4
-              ~cdltmc0.itm~ ~override/cdltmc5.itm~  // lathander's mace +5
-  SET "weap_idx" = ("%weap_idx%" + 1)
-  WRITE_LONG  0x60 "%weap_idx%"
-  WRITE_SHORT 0x86 "%weap_idx%"
-  WRITE_SHORT 0x8C ("%weap_idx%" + 1)
-  WRITE_SHORT 0x84 (7 - "%weap_idx%")
+OUTER_SPRINT hw_name @10167
+OUTER_SPRINT hw_desc @10168
+LAF cd_dr_holy_weapon STR_VAR item = cdtlsp name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
 
-COPY ~Divine_Remix/BAM/cdihelm.bam~ ~override~
-COPY ~Divine_Remix/spl/cdhmbst.spl~ ~override~  // Bastard Sword of Helm (innate spell)
-  SAY NAME1 @10185
-  SAY NAME2 @10185
-  SAY UNIDENTIFIED_DESC @10186
-  SAY DESC @10186
+ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ THEN BEGIN // do tempus as part of the main component on the EEs
 
-COPY ~Divine_Remix/itm/cdhmbs0.itm~ ~override~  // Bastard Sword +0
-  SAY NAME1 @10185
-  SAY NAME2 @10185
-  SAY UNIDENTIFIED_DESC @10186
-  SAY DESC @10186
-  SET "weap_idx" = 0
-
-COPY_EXISTING ~cdhmbs0.itm~ ~override/cdhmbs1.itm~  // bastard sword +1
-              ~cdhmbs0.itm~ ~override/cdhmbs2.itm~  // bastard sword +2
-              ~cdhmbs0.itm~ ~override/cdhmbs3.itm~  // bastard sword +3
-              ~cdhmbs0.itm~ ~override/cdhmbs4.itm~  // bastard sword +4
-              ~cdhmbs0.itm~ ~override/cdhmbs5.itm~  // bastard sword +5
-  SET "weap_idx" = ("%weap_idx%" + 1)
-  WRITE_LONG  0x60 "%weap_idx%"
-  WRITE_SHORT 0x86 "%weap_idx%"
-  WRITE_SHORT 0x8C "%weap_idx%"
-  WRITE_SHORT 0x84 (8 - "%weap_idx%")
-
-COPY ~Divine_Remix/BAM/cditalos.bam~ ~override~
-COPY ~Divine_Remix/spl/cdtlspr.spl~ ~override~  // Half-Spear of Talos (innate spell)
-  SAY NAME1 @10167
-  SAY NAME2 @10167
-  SAY UNIDENTIFIED_DESC @10168
-  SAY DESC @10168
-
-COPY ~Divine_Remix/itm/cdtlsp0.itm~ ~override~  // Half-Spear +0
-  SAY NAME1 @10167
-  SAY NAME2 @10167
-  SAY UNIDENTIFIED_DESC @10168
-  SAY DESC @10168
-  SET "weap_idx" = 0
-
-COPY_EXISTING ~cdtlsp0.itm~ ~override/cdtlsp1.itm~  // half-spear +1
-              ~cdtlsp0.itm~ ~override/cdtlsp2.itm~  // half-spear +2
-              ~cdtlsp0.itm~ ~override/cdtlsp3.itm~  // half-spear +3
-              ~cdtlsp0.itm~ ~override/cdtlsp4.itm~  // half-spear +4
-              ~cdtlsp0.itm~ ~override/cdtlsp5.itm~  // half-spear +5
-  SET "weap_idx" = ("%weap_idx%" + 1)
-  WRITE_LONG  0x60 "%weap_idx%"
-  WRITE_SHORT 0x86 "%weap_idx%"
-  WRITE_SHORT 0x8C "%weap_idx%"
-  PATCH_IF ("%weap_idx%" > 2) BEGIN
-    WRITE_SHORT 0x84 0
-  END ELSE BEGIN
-    WRITE_SHORT 0x84 (3 - "%weap_idx%")
-  END
-
-ACTION_FOR_EACH kts IN cdselune ~a#shar~ ~a#red~ ~a#temp~ ohtempus cdilmatr ~a#koss~ cdxvim ~a#ogma~ nmsune ~A#feyw~ ~A#Cyric~ BEGIN
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~%kts%.2da~ THEN BEGIN
-
-    INCLUDE ~divine_remix/lib/%kts%.tph~
-
-  END
-
-
+  COPY ~divine_remix/2da/a#temp.2da~ ~override/ohtempus.2da~
+  INCLUDE ~divine_remix/lib/tempus_common.tpa~
+  
 END
+
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~

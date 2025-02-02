@@ -1,5 +1,3 @@
-ACTION_IF game_is_iwdee BEGIN OUTER_SET level_cap = 30 END ELSE BEGIN OUTER_SET level_cap = 20 END
-INCLUDE ~divine_remix/lib/cd_extend-o-matic.tpa~
 ACTION_CLEAR_ARRAY cd_spell_sub
 ACTION_CLEAR_ARRAY cd_spell_new
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spell_sub BEGIN END // for spellbook updates
@@ -179,7 +177,7 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_FAERIE_FIRE~)) < 
     SAY NAME2 @112
     SAY UNIDENTIFIED_DESC @113
     SAY DESC @113
-    LPF CD_EXTEND-O-MATIC INT_VAR step_dur = 6 dur_special = 1 step_size = 5 level_cap END
+    LPF CD_EXTEND-O-MATIC INT_VAR step_dur = 6 dur_special = 1 step_size = 5 level_cap = dr_level_cap END
 
   COPY ~divine_remix/bam/cdfaeria.bam~ ~override~
        ~divine_remix/bam/cdfaerib.bam~ ~override~
@@ -195,7 +193,7 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_IMPREGNABLE_MIND~
     SAY NAME2 @171
     SAY UNIDENTIFIED_DESC @172
     SAY DESC @172
-    LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 60 step_dur = 6 step_size = 1 level_cap END // 1 turn + 1 round/level
+    LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 60 step_dur = 6 step_size = 1 level_cap = dr_level_cap END // 1 turn + 1 round/level
 
   COPY ~divine_remix/bam/nmimprea.bam~ ~override~
        ~divine_remix/bam/nmimpreb.bam~ ~override~
@@ -266,7 +264,7 @@ ACTION_IF (((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_RESIST_ACID_AND_
     SAY NAME2 @173
     SAY UNIDENTIFIED_DESC @174
     SAY DESC @174
-    LPF CD_EXTEND-O-MATIC INT_VAR step_dur = 6 step_size = 1 level_cap END // 1 round/level
+    LPF CD_EXTEND-O-MATIC INT_VAR step_dur = 6 step_size = 1 level_cap = dr_level_cap END // 1 round/level
 
   COPY ~divine_remix/bam/nmresaca.bam~ ~override~
        ~divine_remix/bam/nmresacb.bam~ ~override~
@@ -282,7 +280,7 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_STRENGTH_OF_STONE
     SAY NAME2 @175
     SAY UNIDENTIFIED_DESC @176
     SAY DESC @176
-    LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 18 step_dur = 6 step_size = 1 level_cap END // 3 rounds + 1 round/level
+    LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 18 step_dur = 6 step_size = 1 level_cap = dr_level_cap END // 3 rounds + 1 round/level
 
   COPY ~divine_remix/bam/nmstrsta.bam~ ~override~
        ~divine_remix/bam/nmstrstb.bam~ ~override~

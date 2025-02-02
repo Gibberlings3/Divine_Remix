@@ -1491,3 +1491,62 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 INCLUDE ~divine_remix/lib/alter_header.tpa~
+
+/////                                                  \\\\\
+///// CD_EXTEND-O-MATIC, patent pending                \\\\\
+/////                                                  \\\\\
+
+INCLUDE ~divine_remix/lib/cd_extend-o-matic.tpa~
+
+/////                                                  \\\\\
+///// cd_dr_holy_weapon                                \\\\\
+/////                                                  \\\\\
+
+// utilizes game_check vars and the extend-o-matic
+DEFINE_ACTION_FUNCTION cd_dr_holy_weapon 
+  STR_VAR item = ""
+          name = ""
+          desc = ""
+BEGIN
+
+  COPY ~divine_remix/spl/holy_weapon.spl~ ~override/%item%.spl~  // Lathander's Mace (innate spell)
+    SAY_EVALUATED 0x08 ~%name%~
+    SAY_EVALUATED 0x0c ~%name%~
+    SAY_EVALUATED 0x50 ~%desc%~
+    SAY_EVALUATED 0x54 ~%desc%~
+    LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 18 step_dur = 6 step_size = 1 level_cap = dr_level_cap min_dur = 7 END // 3 rounds + 1 round/level
+    PATCH_IF !game_is_iwdee BEGIN // have to create extra headers for +4 and +5 weapons even though duration doesn't increase
+      LPF CD_EXTEND-O-MATIC INT_VAR dur_special = 1 step_dur = 0 step_size = 1 level_cap = 21 END // just create a level 21 header (no more duration increases)
+      LPF CD_EXTEND-O-MATIC INT_VAR dur_special = 1 step_dur = 0 step_size = 5 level_cap = 26 END // just create a level 26 header (no more duration increases)
+      LPF ALTER_EFFECT INT_VAR header = 20 match_opcode = 111 STR_VAR resource = EVAL ~%item%4~ END // set created item
+      LPF ALTER_EFFECT INT_VAR header = 21 match_opcode = 111 STR_VAR resource = EVAL ~%item%5~ END // set created item
+    END
+    FOR (index = 0 ; index < dr_level_cap ; ++index) BEGIN 
+      SET wpn = index / 5 // using WeiDU's whole number rounding to our advantage
+      LPF ALTER_EFFECT INT_VAR header = index match_opcode = 111 STR_VAR resource = EVAL ~%item%%wpn%~ END // set created item
+    END 
+
+  OUTER_FOR (index = 0 ; index < 6 ; ++index) BEGIN
+  
+    COPY ~Divine_Remix/itm/%item%.itm~ ~override/%item%%index%.itm~  // Lathander's Mace +0
+      PATCH_IF !index BEGIN // just do the name/desc for +0
+        SAY_EVALUATED 0x08 ~%name%~
+        SAY_EVALUATED 0x0c ~%name%~
+        SAY_EVALUATED 0x50 ~%desc%~
+        SAY_EVALUATED 0x54 ~%desc%~
+        READ_SHORT    0x84 b_speed // get base item weapon speed
+      END ELSE BEGIN   
+        SAY_EVALUATED 0x08 ~%name% +%index%~ // name it weapon +1 if we're not on the non-magical version
+        SAY_EVALUATED 0x0c ~%name% +%index%~
+        SAY_EVALUATED 0x50 ~%name% +%index%%WNL%%desc%~
+        SAY_EVALUATED 0x54 ~%name% +%index%%WNL%%desc%~
+        WRITE_LONG 0x60 index // enhcantment
+        WRITE_SHORT 0x86 (THIS + index) // to-hit bonus
+        WRITE_SHORT 0x8c (THIS + index) // damage bonus
+        PATCH_IF (index > b_speed) BEGIN SET speed = 0 END ELSE BEGIN SET speed = b_speed - index END   
+        WRITE_SHORT 0x84 speed // speed
+      END  
+
+  END
+  
+END  
