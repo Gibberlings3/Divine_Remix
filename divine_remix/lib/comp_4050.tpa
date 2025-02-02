@@ -1,0 +1,40 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// Change Jaheira to NG                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+INCLUDE ~%MOD_FOLDER%/lib/joinable_npc_array.tpa~
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+  ACTION_IF ("%dv%" STRING_COMPARE_CASE "jaheira" = 0) BEGIN 
+
+    COPY_EXISTING ~%file%~ ~override~
+      READ_LONG 0x08  "strref" ELSE 0
+      READ_BYTE 0x27b "align"  ELSE 0
+      PATCH_IF ((("%strref%" = 9456) OR ("%strref%" = 9475)) AND ("%align%" = 34)) THEN BEGIN // exclude harper cre files
+        WRITE_BYTE 0x27b 33 // neutral good
+      END
+      BUT_ONLY
+      
+  END
+  
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME misc5x.itm BEGIN
+
+  COPY_EXISTING ~misc5x.itm~ ~override~ // harper pin
+    PATCH_IF enhanced_edition BEGIN
+      WRITE_LONG 0x1e 0 // nukes all flags since 319 is in effect; shouldn't have any anyway
+    END ELSE BEGIN
+      READ_BYTE  0x1e "use1"
+      READ_BYTE  0x21 "use2"
+      WRITE_BYTE 0x1e (("%use1%" BOR 0b00001000) BAND 0b11111011) // adds GE-Neutral flag, removes good flag
+      WRITE_BYTE 0x21 ("%use2%" BOR 0b10000000) // adds half-orc flag
+    END
+    BUT_ONLY
+
+END

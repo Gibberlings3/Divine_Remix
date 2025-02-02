@@ -1382,19 +1382,27 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-DEFINE_PATCH_MACRO cd_assign_kit_to_cre BEGIN
-  WRITE_LONG  0x244 0
-  WRITE_SHORT 0x246 kit
-  PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
-    READ_STRREF off name
-    PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
-      INNER_PATCH_SAVE name ~%name%~ BEGIN
-        REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Morninglord'
-        REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Morninglord'
-      END
-      SAY_EVALUATED off ~%name%~ // write changes
+DEFINE_PATCH_FUNCTION cd_assign_kit_to_cre 
+  INT_VAR name = 1
+BEGIN
+
+  READ_LONG 0x244 curr_kit
+  PATCH_IF curr_kit = 0x40000000 OR curr_kit = 0 BEGIN
+    WRITE_LONG  0x244 0
+    WRITE_SHORT 0x246 kit
+    PATCH_IF name BEGIN 
+      PATCH_FOR_EACH off IN 0x08 0x0c BEGIN 
+        READ_STRREF off name
+        PATCH_IF ("%name%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE name ~%name%~ BEGIN
+            REPLACE_TEXTUALLY ~%name_cleric%~ ~%kitname%~ // from 'cleric' to 'Morninglord'
+            REPLACE_TEXTUALLY ~%name_priest%~ ~%kitname%~ // from 'priest/priestess' to 'Morninglord'
+          END
+          SAY_EVALUATED off ~%name%~ // write changes
+        END
+      END 
     END
-  END 
+  END    
 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

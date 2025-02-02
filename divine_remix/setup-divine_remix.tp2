@@ -362,7 +362,7 @@ OUTER_SPRINT kitname @10136 // ~Stormlord~
 ACTION_FOR_EACH cre IN acolyte1 bhnalla c6cler3 cldad cltalp01 ltalos /*nalla*/ scyarryl talmiss talmiss2 talvilon vvpriest yssold16 BEGIN // nalla is a bard, not a priest...
 
   COPY_EXISTING ~%cre%.cre~ ~override~
-    LPM cd_assign_kit_to_cre
+    LPF cd_assign_kit_to_cre END
     BUT_ONLY IF_EXISTS
 
 END
@@ -380,7 +380,7 @@ OUTER_SPRINT kitname @10139 // ~Watcher~
 ACTION_FOR_EACH cre IN acolyte3 bhelm bhoisig c6cler2 helmbyr helmpr oisig sctelwyn nalin shugod01 shugod02 shugar01 ntprihel s#helm01 BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
-    LPM cd_assign_kit_to_cre
+    LPF cd_assign_kit_to_cre END
     BUT_ONLY IF_EXISTS
 
 END
@@ -390,7 +390,7 @@ OUTER_SPRINT kitname @10142 // ~Morninglord~
 ACTION_FOR_EACH cre IN acolyte2 amtcle01 amtcler0 arenthis arval bharval c6cler1 cllatp01 cscleric dawnmas latlara scsain BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
-    LPM cd_assign_kit_to_cre
+    LPF cd_assign_kit_to_cre END
     BUT_ONLY IF_EXISTS
 
 END
@@ -402,7 +402,7 @@ ACTION_IF kit > 0 THEN BEGIN
   ACTION_FOR_EACH cre IN ohdcru01 ohdcru02 ohdlufc1 ohdlumc1 ohdneo03 ohdneo04 ohdppe01 ohdppe02 ohdrdef ohdtree1 BEGIN
 
     COPY_EXISTING ~%cre%.cre~ ~override~
-      LPM cd_assign_kit_to_cre
+      LPF cd_assign_kit_to_cre END
       BUT_ONLY IF_EXISTS
 
   END
@@ -417,7 +417,7 @@ ACTION_IF kit > 0 THEN BEGIN
   ACTION_FOR_EACH cre IN kpchap01 everard accalia BEGIN
 
     COPY_EXISTING ~%cre%.cre~ ~override~
-      LPM cd_assign_kit_to_cre
+      LPF cd_assign_kit_to_cre END
       BUT_ONLY IF_EXISTS
 
   END
@@ -434,7 +434,7 @@ END
 
 BEGIN @10300 DESIGNATED 103 // component 103
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@10322)
@@ -537,7 +537,7 @@ OUTER_SPRINT kitname @10324 // ~Silverstar~
 ACTION_FOR_EACH cre IN bstq007 ysselune BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
-    LPM cd_assign_kit_to_cre
+    LPF cd_assign_kit_to_cre END
     BUT_ONLY IF_EXISTS
 
 END
@@ -552,7 +552,7 @@ END
 
 BEGIN @10600 DESIGNATED 106 // component 106
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@10620)
@@ -657,7 +657,7 @@ END
 
 BEGIN @10700 DESIGNATED 107 // component 107
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@10716)
@@ -752,7 +752,7 @@ END
 
 BEGIN @10900 DESIGNATED 109// component 109
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~ohtempus.2da~ @14
 
 ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
@@ -836,7 +836,7 @@ OUTER_SPRINT kitname @10145 // ~Battleguard~
 ACTION_FOR_EACH cre IN kpchap01 everard accalia BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
-    LPM cd_assign_kit_to_cre
+    LPF cd_assign_kit_to_cre END
     BUT_ONLY IF_EXISTS
 
 END
@@ -851,7 +851,7 @@ END
 
 BEGIN @11200 DESIGNATED 112 // component 112
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@11211)
@@ -968,7 +968,7 @@ OUTER_SPRINT kitname @11214 // ~Painbearer~
 ACTION_FOR_EACH cre IN _priilm _priilmu priilm priilmu slilmat wilmat s#ilmat1 ja#pill1 BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
-    LPM cd_assign_kit_to_cre
+    LPF cd_assign_kit_to_cre END
     BUT_ONLY IF_EXISTS
 
 END
@@ -983,7 +983,7 @@ END
 
 BEGIN @11500 DESIGNATED 115
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@11511)
@@ -1085,7 +1085,7 @@ END
 
 BEGIN @11800 DESIGNATED 118
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@11811)
@@ -1190,7 +1190,7 @@ END
 
 BEGIN @12100 DESIGNATED 121
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@12109)
@@ -1290,7 +1290,7 @@ ACTION_FOR_EACH cre IN
 BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
-    LPM cd_assign_kit_to_cre
+    LPF cd_assign_kit_to_cre END
     BUT_ONLY IF_EXISTS
 
 END
@@ -1305,7 +1305,7 @@ END
 
 BEGIN @12400 DESIGNATED 124
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@12411)
@@ -1408,7 +1408,7 @@ OUTER_SPRINT kitname @12413 // ~Heartwarder~
 ACTION_FOR_EACH cre IN isnfxps /*YxYve1*/ BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
-    LPM cd_assign_kit_to_cre
+    LPF cd_assign_kit_to_cre END
     BUT_ONLY IF_EXISTS
 
 END
@@ -1442,7 +1442,7 @@ END
 
 BEGIN @12700 DESIGNATED 127
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@12710)
@@ -1538,7 +1538,7 @@ END
 
 BEGIN @13001 DESIGNATED 130
 GROUP @10
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@13011)
@@ -1640,7 +1640,7 @@ ACTION_FOR_EACH cre IN
 BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
-    LPM cd_assign_kit_to_cre
+    LPF cd_assign_kit_to_cre END
     BUT_ONLY IF_EXISTS
 
 END
@@ -1680,56 +1680,8 @@ COPY_EXISTING ~jahei14.cre~ ~override~
   END
   BUT_ONLY IF_EXISTS
 
-/////                                                            \\\\\
-///// Druids Use 3e Alignment Restrictions                       \\\\\
-/////                                                            \\\\\
-
-// taken wholesale from anthology, comp_2410
-ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_3e_druid_aligns BEGIN
-
-  DRUID         => 0
-  FIGHTER_DRUID => 0
-  
-END
-
-// now get kits, if available
-ACTION_IF FILE_EXISTS_IN_GAME ~kitlist.2da~ THEN BEGIN
-
-  COPY_EXISTING ~kitlist.2da~ ~override~
-    COUNT_2DA_ROWS 9 rows
-    FOR (row = 0 ; row < rows ; ++row) BEGIN
-      READ_2DA_ENTRY row 8 9 class
-      PATCH_IF (IS_AN_INT class) BEGIN // in case of junk rows being caught
-        PATCH_IF ((class = 11) OR (class = 16)) BEGIN
-          READ_2DA_ENTRY row 1 9 kittext
-          DEFINE_ASSOCIATIVE_ARRAY cd_3e_druid_aligns BEGIN "%kittext%" => 0 END
-        END
-      END
-    END
-    BUT_ONLY    
-
-END
-  
-// Alignment changes
-COPY_EXISTING ~alignmnt.2da~ ~override~
-  PATCH_PHP_EACH cd_3e_druid_aligns AS text => foo BEGIN
-    REPLACE_TEXTUALLY ~^%text%[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0[ %TAB%]+1[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0~
-                      ~%text% 0 1 0 1 1 1 0 1 0~
-  END
-  PRETTY_PRINT_2DA
-  BUT_ONLY
-
-ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1150~ THEN BEGIN // shapeshifter rebalancing
-
-  COPY_EXISTING ~wwwere.itm~   ~override~
-                ~wwweregr.itm~ ~override~
-    WRITE_BYTE 0x1e (THIS BAND `BIT4) // removes lawful
-    WRITE_BYTE 0x1e (THIS BAND `BIT2) // removes good
-    WRITE_BYTE 0x1e (THIS BAND `BIT1) // removes evil
-    WRITE_BYTE 0x1e (THIS BAND `BIT0) // removes chaotic
-    BUT_ONLY
-
-END
+// taken wholesale from anthology, comp_2410 (locally hardlinked)
+INCLUDE ~divine_remix/lib/comp_2410.tpa~ // Druids Use 3e Alignment Restrictions 
 
 PRINT @3
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
@@ -1764,7 +1716,7 @@ COPY_EXISTING ~_b1-3.itm~    ~override~ // adds magical flag to misc weapons
 
 BEGIN @20301 DESIGNATED 203
 GROUP @11
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~200~ @8
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~200~ @8
 
 //Paralytic Touch
 COPY_EXISTING ~spwi218.spl~ ~override/a#ooze1.spl~ //Ghoul Touch
@@ -2140,36 +2092,21 @@ COPY_EXISTING ~nmrnwr4.spl~ ~override/nmrnwr5.spl~ // +5% set snares
 
 BEGIN @60000 DESIGNATED 600 // component 600
 GROUP @10
-REQUIRE_PREDICATE GAME_IS ~bgt tutu tutu_totsc tob soa bg2ee eet bgee~ @16
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~109~ @4
+REQUIRE_PREDICATE ((!GAME_IS ~iwdee~) AND                                // not for iwdee
+                   ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~109~) OR // either we've installed DR's tempus kit
+                    (GAME_IS ~bgee bg2ee eet~))) @16                     // or we're on the EEs, which have their own
 
-// find tempus kit in kitlist
-COPY_EXISTING ~kitlist.2da~ ~override~
-  COUNT_2DA_ROWS ~9~ "rows"
-  FOR (index = rows ; index > 31 ; --index) BEGIN
-    READ_2DA_ENTRY "%index%" 5 9 "clab"
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "ohtempus" = 0) BEGIN
-      READ_2DA_ENTRY "%index%" 0 9 "A#TEMP"
-    END
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "a#temp" = 0) BEGIN
-      READ_2DA_ENTRY "%index%" 0 9 "A#TEMP"
-    END
-  END
-  BUT_ONLY_IF_IT_CHANGES
+ACTION_IF MOD_IS_INSTALLED ~divine_remix.tp2~ ~109~ BEGIN 
+  OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#TEMP~)) // DR's tempus
+END ELSE BEGIN 
+  OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~OHTEMPUS~)) // EE's tempus
+END
 
-OUTER_SET kit = "%A#TEMP%" // tempus
-ACTION_FOR_EACH creature IN branwe branwe5 _branwe _branwe5  O#Bran o#bran25 o#branv ttbran BEGIN
+ACTION_FOR_EACH cre IN branwe branwe5 _branwe _branwe5  O#Bran o#bran25 o#branv ttbran BEGIN
 
-  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
-
-    COPY_EXISTING ~%creature%.cre~ ~override~
-      WRITE_SHORT   0x244 0
-      WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
-      BUT_ONLY
-
-  END
+  COPY_EXISTING ~%cre%.cre~ ~override~
+    LPF cd_assign_kit_to_cre INT_VAR name = 0 END
+    BUT_ONLY IF_EXISTS
 
 END
 
@@ -2183,26 +2120,13 @@ END
 
 BEGIN @60500 DESIGNATED 605
 GROUP @11
-REQUIRE_PREDICATE GAME_IS ~bgt tutu tutu_totsc tob soa bg2ee eet bgee~ @16
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~200~ @8
+REQUIRE_PREDICATE !GAME_IS ~iwdee~ @16
+REQUIRE_PREDICATE !MOD_IS_INSTALLED ~cdtweaks.tp2~ ~4050~ @18
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~200~ @8
+LABEL ~cd_tweaks_ng_jaheira~
 
-// this file does nothing, it just allows other mods to detect this component
-COPY_EXISTING ~SW1H01.itm~ ~override/cdjahs2NG.g3~
-
-COPY_EXISTING_REGEXP GLOB ~^jahei.+\.cre$~ ~override~
-  PATCH_IF (SOURCE_SIZE > 0x2d3) THEN BEGIN // protects against invalid files
-    WRITE_BYTE 0x27b 33 // neutral good
-  END
-  BUT_ONLY_IF_IT_CHANGES
-
-ACTION_IF FILE_EXISTS_IN_GAME misc5x.itm THEN BEGIN
-
-  COPY_EXISTING ~misc5x.itm~ ~override~ // harper pin
-    READ_BYTE  0x1e "use1"
-    WRITE_BYTE 0x1e (("%use1%" BOR 0b00001000) BAND 0b11111011) // adds GE-Neutral flag, removes good flag
-    BUT_ONLY_IF_IT_CHANGES
-
-END
+// taken wholesale from anthology, comp_4050 (locally hardlinked)
+INCLUDE ~divine_remix/lib/comp_4050.tpa~ // Change Jaheira to NG
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -2214,41 +2138,26 @@ END
 
 BEGIN @61000 DESIGNATED 610
 GROUP @10
-REQUIRE_PREDICATE GAME_IS ~bgt tutu tutu_totsc tob soa bg2ee eet bgee~ @16
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~106~ @2
+REQUIRE_PREDICATE ((!GAME_IS ~iwdee~) AND (MOD_IS_INSTALLED ~divine_remix.tp2~ ~106~)) @16
 
-ACTION_IF GAME_INCLUDES ~tob~ THEN BEGIN // Fate Spirit line if ToB is installed
-
+ACTION_IF game_includes_tob THEN BEGIN // Fate Spirit line if ToB is installed
   STRING_SET 65023 @61001
-
 END
 
-// find shar kit in kitlist
-COPY_EXISTING ~kitlist.2da~ ~override~
-  COUNT_2DA_ROWS ~9~ "rows"
-  FOR ( index = 31 ; index <= rows ; index = index + 1 ) BEGIN
-    READ_2DA_ENTRY "%index%" 5 9 "clab"
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "A#SHAR" = 0) BEGIN
-      READ_2DA_ENTRY "%index%" 0 9 "A#SHAR"
-      SET "rows" = 0
-    END
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#SHAR~)) // shar
+
+INCLUDE ~%MOD_FOLDER%/lib/joinable_npc_array.tpa~
+
+ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
+
+  ACTION_IF ("%dv%" STRING_COMPARE_CASE "viconia" = 0) BEGIN 
+
+    COPY_EXISTING ~%file%~ ~override~
+      LPF cd_assign_kit_to_cre INT_VAR name = 0 END
+      BUT_ONLY 
+      
   END
-  BUT_ONLY_IF_IT_CHANGES
-
-OUTER_SET kit = "%A#SHAR%" // shar
-ACTION_FOR_EACH creature IN viconi6 viconi8 viconi9 viconi11 viconi13 viconi16 viconi4 viconi viconi61 viconi6_ BEGIN
-
-  ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
-
-    COPY_EXISTING ~%creature%.cre~ ~override~
-      WRITE_SHORT   0x244 0
-      WRITE_SHORT   0x246 0x4000 + "%kit%"
-//    WRITE_BYTE    0x247 0x40
-      BUT_ONLY
-
-  END
-
+  
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~a#sha0b.spl~ THEN BEGIN OUTER_SPRINT vic_spell "a#sha0b" END ELSE BEGIN OUTER_SPRINT vic_spell "cdshar2" END
@@ -2270,7 +2179,7 @@ COPY_EXISTING ~viconia.bcs~ ~override~
 BEGIN @2000 DESIGNATED 1000
 GROUP @10 GROUP @11 GROUP @13 // GROUP @12
 REQUIRE_PREDICATE (NOT ENGINE_IS ~bgee bg2ee iwdee~) ~This component is not compatible with EE engine.~
-REQUIRE_COMPONENT ~Setup-divine_remix.tp2~ ~100~ @1
+REQUIRE_COMPONENT ~divine_remix.tp2~ ~100~ @1
 
 /////                                                  \\\\\
 ///// add sphere descripts to base classes             \\\\\

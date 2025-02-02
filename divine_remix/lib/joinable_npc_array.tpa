@@ -1,0 +1,129 @@
+/////                                                  \\\\\
+///// joinable npc array                               \\\\\
+/////                                                  \\\\\
+
+/*
+
+originally adapted from EET:
+https://github.com/K4thos/IE-code-repository/blob/master/joinable_npc_array.tpa
+
+The original EET macro only loaded joinable NPCs in the array, but there are
+a few components of Anthology that specifically target non-joinables. As such
+the function now adds all creature files into the array; if they're joinable then
+they get added as crefile => dv and crefile => 0 if they're not. This allows me to
+do IS_AN_INT checks in various components to filter accordingly. 
+
+It's also been expanded to cover non-EET games and has a var check so that it can
+be called multiple times but only execute once. 
+
+* note that it relies on variables from game_checks.tpa *
+  
+used:
+  Bullet Sponge, as cd_bs/lib/joinable_npc_array.tpa [symbolic link]
+  Tweaks Anthology, as cdtweaks/lib/joinable_npc_array.tpa [symbolic link]
+
+platform:
+  all games
+ 
+version history: 
+  unknown
+
+*/
+
+ACTION_IF !VARIABLE_IS_SET cd_joinable BEGIN
+
+  OUTER_SET cd_joinable = 1 
+  
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_dv BEGIN END
+  
+  ACTION_IF game_is_pst OR original_iwd OR game_is_iwd2 BEGIN // these re-use obg pdialog, so determine joinable NPC DVs manually (pstee and iwdee properly use pdialof)
+
+    ACTION_IF game_is_pst BEGIN // pst NPCs
+      
+      OUTER_SET dv_off = 0x324
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_dv BEGIN 
+        ~ANNAH~  => ~~
+        ~MORTE~  => ~~
+        ~NORDOM~ => ~~
+        ~DAKKON~ => ~~
+        ~GRACE~  => ~~
+        ~IGNUS~  => ~~
+        ~VHAIL~  => ~~
+      END
+      
+    END ELSE BEGIN 
+
+      ACTION_IF original_iwd BEGIN // iwd npc is the only npc mod for oiwd, and it uses CHR files
+      
+        OUTER_SET dv_off = 0x2e8 
+        
+      END ELSE BEGIN // iwd2ee has some actual joinables in comp 36; iwd2 npc uses CHR files
+        
+        OUTER_SET dv_off = 0x394  
+      
+        ACTION_IF MOD_IS_INSTALLED ~iwd2ee/iwd2ee.tp2~ ~36~ BEGIN // iwd2ee npc core
+
+          ACTION_DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_dv BEGIN 
+            ~USEMMA~ => ~~ // cleric Emma Moonblade
+            ~USGEOF~ => ~~ // rogue Black Geoffrey
+            ~USPAIR~ => ~~ // sorcerer Pairi
+            ~USREIG~ => ~~ // fighter Reig
+            ~USSERS~ => ~~ // monk Sersa
+            ~USVEIR~ => ~~ // diviner Veira
+            ~USVREK~ => ~~ // troll Vrek Vileclaw
+            ~USVUNA~ => ~~ // goblin Vunarg
+            ~USZACK~ => ~~ // rogue/illusionist Zack Boosenburry
+            ~USXHAA~ => ~~ // abishai Xhaan
+          END    
+
+        END          
+        
+      END 
+      
+    END  
+  
+  END ELSE BEGIN
+  
+    OUTER_SET dv_off = 0x280
+
+    //PDIALOG.2DA exists in all games
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~PDIALOG~ => ~~ END
+    //Check PDIALOG.2DA file variants referenced in CAMPAIGN.2DA
+    ACTION_IF FILE_EXISTS_IN_GAME ~CAMPAIGN.2DA~ BEGIN
+      COPY_EXISTING ~CAMPAIGN.2DA~ ~CAMPAIGN.2DA~
+        COUNT_2DA_ROWS 32 "cntrow"
+        FOR (i = 0; i < cntrow; i = i + 1) BEGIN
+          READ_2DA_ENTRY i 11 32 file
+          TO_UPPER file
+          DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_2da BEGIN ~%file%~ => ~~ END
+        END
+      BUT_ONLY
+    END
+    //Generate array with joinable NPC DV
+    ACTION_PHP_EACH JOINABLE_NPC_ARRAY_2da AS file => ~~ BEGIN
+      ACTION_IF FILE_EXISTS_IN_GAME ~%file%.2da~ BEGIN
+        COPY_EXISTING ~%file%.2da~ ~override~
+          COUNT_2DA_ROWS 3 "cntrow"
+          FOR (i = 1; i < cntrow; i = i + 1) BEGIN
+            READ_2DA_ENTRY i 0 3 "dv"
+            TO_UPPER dv
+            DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY_dv BEGIN ~%dv%~ => ~~ END
+          END
+        BUT_ONLY
+      END
+    END
+    
+  END
+  
+  //Generate array with joinable NPC cre files
+  COPY_EXISTING_REGEXP GLOB ~^.+\.CRE$~ ~override~
+    READ_ASCII dv_off "dv" (32) NULL
+    TO_UPPER dv
+    PATCH_IF VARIABLE_IS_SET $JOINABLE_NPC_ARRAY_dv(~%dv%~) BEGIN
+      DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY BEGIN ~%SOURCE_FILE%~ => ~%dv%~ END
+    END ELSE BEGIN
+      DEFINE_ASSOCIATIVE_ARRAY JOINABLE_NPC_ARRAY BEGIN ~%SOURCE_FILE%~ => 0 END
+    END  
+  BUT_ONLY
+
+END

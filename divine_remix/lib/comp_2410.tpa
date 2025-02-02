@@ -1,0 +1,53 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                            \\\\\
+///// Druids Use 3e Alignment Restrictions                       \\\\\
+/////                                                            \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_3e_druid_aligns BEGIN
+
+  DRUID         => 0
+  FIGHTER_DRUID => 0
+  
+END
+
+// now get kits, if available
+ACTION_IF FILE_EXISTS_IN_GAME ~kitlist.2da~ THEN BEGIN
+
+  COPY_EXISTING ~kitlist.2da~ ~override~
+    COUNT_2DA_ROWS 9 rows
+    FOR (row = 0 ; row < rows ; ++row) BEGIN
+      READ_2DA_ENTRY row 8 9 class
+      PATCH_IF (IS_AN_INT class) BEGIN // in case of junk rows being caught
+        PATCH_IF ((class = 11) OR (class = 16)) BEGIN
+          READ_2DA_ENTRY row 1 9 kittext
+          DEFINE_ASSOCIATIVE_ARRAY cd_3e_druid_aligns BEGIN "%kittext%" => 0 END
+        END
+      END
+    END
+    BUT_ONLY    
+
+END
+  
+// Alignment changes
+COPY_EXISTING ~alignmnt.2da~ ~override~
+  PATCH_PHP_EACH cd_3e_druid_aligns AS text => foo BEGIN
+    REPLACE_TEXTUALLY ~^%text%[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0[ %TAB%]+1[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0[ %TAB%]+0~
+                      ~%text% 0 1 0 1 1 1 0 1 0~
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+
+ACTION_IF MOD_IS_INSTALLED ~cdtweaks/setup-cdtweaks.tp2~ ~1150~ THEN BEGIN // shapeshifter rebalancing
+
+  COPY_EXISTING ~wwwere.itm~   ~override~
+                ~wwweregr.itm~ ~override~
+    WRITE_BYTE 0x1e (THIS BAND `BIT4) // removes lawful
+    WRITE_BYTE 0x1e (THIS BAND `BIT2) // removes good
+    WRITE_BYTE 0x1e (THIS BAND `BIT1) // removes evil
+    WRITE_BYTE 0x1e (THIS BAND `BIT0) // removes chaotic
+    BUT_ONLY
+
+END
