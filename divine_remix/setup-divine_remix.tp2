@@ -816,9 +816,9 @@ COPY_EXISTING ~nmrnwr4.spl~ ~override/nmrnwr5.spl~ // +5% set snares
 
 BEGIN @60000 DESIGNATED 600 // component 600
 GROUP @10
-REQUIRE_PREDICATE ((!GAME_IS ~iwdee~) AND                                // not for iwdee
+REQUIRE_PREDICATE ((!GAME_IS ~iwdee~) AND                          // not for iwdee
                    ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~109~) OR // either we've installed DR's tempus kit
-                    (GAME_IS ~bgee bg2ee eet~))) @16                     // or we're on the EEs, which have their own
+                    (GAME_IS ~bgee bg2ee eet~))) @16               // or we're on the EEs, which have their own
 
 ACTION_IF MOD_IS_INSTALLED ~divine_remix.tp2~ ~109~ BEGIN 
   OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#TEMP~)) // DR's tempus
@@ -884,13 +884,14 @@ ACTION_PHP_EACH JOINABLE_NPC_ARRAY AS file => dv BEGIN
   
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~a#sha0b.spl~ THEN BEGIN OUTER_SPRINT vic_spell "a#sha0b" END ELSE BEGIN OUTER_SPRINT vic_spell "cdshar2" END
+// use holy weapon (non-conventional) or holy bolts in combat instead of flame blade
+ACTION_IF FILE_EXISTS_IN_GAME ~a#sha0.spl~ THEN BEGIN OUTER_SPRINT vic_spell "a#sha0" END ELSE BEGIN OUTER_SPRINT vic_spell "cdshar2" END
 
 COPY_EXISTING ~viconia.bcs~ ~override~
   DECOMPILE_AND_PATCH BEGIN
     REPLACE_TEXTUALLY ~ForceSpell(Myself,CLERIC_FLAME_BLADE)~ ~ForceSpellRES("%vic_spell%",Myself)~
   END
-
+  BUT_ONLY
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
