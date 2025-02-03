@@ -10,14 +10,41 @@ LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi305 destina
 
 COPY ~divine_remix/spl/a#re0b.spl~ ~override~  // Additional Attack per round (innate)
 
-// build 2da from generic ability schedule
-COPY ~divine_remix/2da/generic.2da~ ~override/a#red.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~ // haste as 1/5
-  REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
-  SET_2DA_ENTRY 2 14 50 ~AP_a#re0b~     // extra attack
-  PATCH_IF !game_includes_tob THEN BEGIN
-    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
-  END
+ACTION_IF cd_dr_conventional BEGIN 
+
+  // build 2da from generic ability schedule
+  COPY ~divine_remix/2da/generic.2da~ ~override/a#red.2da~
+    REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~ // haste as 1/5
+    REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
+    SET_2DA_ENTRY 2 14 50 ~AP_a#re0b~     // extra attack
+    PATCH_IF !game_includes_tob THEN BEGIN
+      REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+    END
+    
+  OUTER_SPRINT kit_help @10715  
+    
+END ELSE BEGIN 
+
+  COPY ~divine_remix/2da/a#red.2da~ ~override~
+    
+  OUTER_SPRINT kit_help @10702  
+
+  // change spells to divine for this kit only
+  LAF cd_clone_spell_bulk INT_VAR make_divine = 1 STR_VAR source = spwi111 destination = ~a#re0c~ RET_ARRAY cd_clone_spell_array END // Infravision (spell)
+  LAF cd_clone_spell_bulk INT_VAR make_divine = 1 STR_VAR source = spwi301 destination = ~a#re0d~ RET_ARRAY cd_clone_spell_array END // Clairvoyance (spell)
+  LAF cd_clone_spell_bulk INT_VAR make_divine = 1 STR_VAR source = spwi425 destination = ~a#re0e~ RET_ARRAY cd_clone_spell_array END // Wizard Eye (spell)
+
+  // change spells to innates as needed
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr406 destination = ~a#re09~ RET_ARRAY cd_clone_spell_array END // defensive harmony
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr514 destination = ~a#re11~ RET_ARRAY cd_clone_spell_array END // mass cure
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi708 destination = ~a#re14~ RET_ARRAY cd_clone_spell_array END // mantle
+
+  COPY ~Divine_Remix/bam/a#redw.bam~ ~override~ // holy weapon: checkmate
+  OUTER_SPRINT hw_name @10703
+  OUTER_SPRINT hw_desc @10704
+  LAF cd_dr_holy_weapon STR_VAR item = ~a#redw0~ name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
+  
+END
 
 ADD_KIT ~A#RED~
   ~A#RED                   0           0           1           1           0           1           0           0~
@@ -35,7 +62,7 @@ ADD_KIT ~A#RED~
   ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
   SAY @10714
   SAY @10701
-  SAY @10715
+  SAY ~%kit_help%~
 
 LAF fl#add_kit_ee
   INT_VAR

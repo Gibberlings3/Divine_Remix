@@ -26,6 +26,7 @@ platform:
 version history: 
   * inception: unknown
   * 2/1/25: oBG2 using 206s to block stacking would also block new 206 when creating clone; make an exception for it now
+  * 2/2 added make_divine and make_arcane options
 
 */
 
@@ -34,6 +35,8 @@ ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
 DEFINE_ACTION_FUNCTION cd_clone_spell_bulk
   INT_VAR
     make_innate = 0
+    make_divine = 0
+    make_arcane = 0
     make_atwill = 0
   STR_VAR
     source = ""
@@ -111,11 +114,20 @@ COPY_EXISTING ~%source%.spl~ ~override/%destination%.spl~
       WRITE_SHORT  (abil_off + 0x02 + (index * 0x28)) 4
       READ_ASCII  (abil_off + 0x04 + (index * 0x28)) bam
     END
+    PATCH_IF (make_divine OR make_arcane) AND (index >= 0) AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
+      WRITE_SHORT  (abil_off + 0x02 + (index * 0x28)) 2
+    END
   END
   PATCH_IF make_innate AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
     WRITE_SHORT  0x1c 4                        // sets spell type to innate (4)
     WRITE_LONG   0x34 1                        // sets spell level to 1 to avoid scripting issues
     WRITE_ASCIIE 0x3a ~%bam%~ #8               // writes the bam filename from abilities to spell icon
+  END
+  PATCH_IF make_divine AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
+    WRITE_SHORT  0x1c 2                        // sets spell type to divine (2)
+  END
+  PATCH_IF make_arcane AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
+    WRITE_SHORT  0x1c 1                        // sets spell type to wizard (1)
   END
   BUT_ONLY
 
