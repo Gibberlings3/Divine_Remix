@@ -4,7 +4,7 @@ ACTION_IF game_includes_tob THEN BEGIN
     SAY NAME1 @10912
     SAY NAME2 @10912
     SAY UNIDENTIFIED_DESC @10913
-	SAY DESC @10913
+    SAY DESC @10913
 
 END
 
@@ -13,7 +13,7 @@ OUTER_SPRINT hw_desc @10904
 LAF cd_dr_holy_weapon STR_VAR item = ~a#tem0~ name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
 
 // change spells to innates as needed
-LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr412 destination = ~a#tem07~ RET_ARRAY cd_clone_spell_array END // holy power
+// holy power innate is covered in the file that calls this, either battleguard.tpa or cleric_revamp.tpa
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi508 destination = ~a#tem09~ RET_ARRAY cd_clone_spell_array END // chaos
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi603 destination = ~a#tem11~ RET_ARRAY cd_clone_spell_array END // tenser's transformation
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi711 destination = ~a#tem14~ RET_ARRAY cd_clone_spell_array END // sphere of chaos
