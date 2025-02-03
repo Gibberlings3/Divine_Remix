@@ -1,0 +1,85 @@
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr412 destination = ~a#tem07~ RET_ARRAY cd_clone_spell_array END // holy power
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/a#temp.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#tem07~ // Holy Power as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~spcl321~ // enrage as 1/10
+  PATCH_IF !game_includes_tob THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~A#TEMP~
+  ~A#TEMP                  0           0           1           1           0           1           0           0~
+  ~A#TEMP 0 0 0 0 2 2 0 0 0 0 0 0 0 0 0 0 2 2 0 0 2 2 2 0 0 0 0 0 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#TEMP         0       0       0       0       9       0~
+  ~A#TEMP   0 0 0 0 0 0~
+  ~A#TEMP   0 0 0 0 17  0~
+  ~A#TEMP   0 0 0 0 15  0~
+  ~A#TEMP   0 0 0 0 1 0 1 1 1~
+  ~A#TEMP   1 0 1 1 0 1~
+  ~override/a#temp.2da~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000 3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @10914
+  SAY @10901
+  SAY @10915
+
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = ~a#temp~
+    clascolr = ~80 126 127 93 97~
+    clswpbon = ~1 0 3~
+END
+
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#TEMP%") pips = 2 END
+
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
+
+  COPY ~divine_remix/bam/cditmhly.bam~ ~override~ // holy symbol
+  COPY ~divine_remix/bam/cdptmhly.bam~ ~override~
+  LAF cd_create_holy_symbol
+  INT_VAR
+    name = RESOLVE_STR_REF(@10910)
+    desc = RESOLVE_STR_REF(@10911)
+    kit  = ~%A#TEMP%~
+    kit319s = RESOLVE_STR_REF(@10901)
+    kitbits = BIT4 // no lawful
+  STR_VAR
+    symbol = ~a#tem25~
+    iicon = cditmhly
+    cicon = cdptmhly
+  END
+
+END
+
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/tempus_ar0900.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/tempus_ar0904.baf~
+  COMPILE ~divine_remix/dlg/tempus.d~
+
+END
+
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#TEMP~))
+OUTER_SPRINT kitname @10145 // ~Battleguard~
+ACTION_FOR_EACH cre IN kpchap01 everard accalia BEGIN
+
+  COPY_EXISTING ~%cre%.cre~ ~override~
+    LPF cd_assign_kit_to_cre END
+    BUT_ONLY IF_EXISTS
+
+END

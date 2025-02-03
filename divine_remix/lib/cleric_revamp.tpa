@@ -100,7 +100,7 @@ LAF cd_dr_holy_weapon STR_VAR item = cdtlsp name = EVAL ~%hw_name%~ desc = EVAL 
 ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ THEN BEGIN // do tempus as part of the main component on the EEs
 
   COPY ~divine_remix/2da/a#temp.2da~ ~override/ohtempus.2da~
-  INCLUDE ~divine_remix/lib/tempus_common.tpa~
+  INCLUDE ~divine_remix/lib/battleguard_common.tpa~
   
 END
 
