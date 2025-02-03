@@ -1,0 +1,104 @@
+ACTION_IF game_is_iwdee BEGIN
+  OUTER_SET bio = RESOLVE_STR_REF(@13011)
+END ELSE
+ACTION_IF game_is_bgee BEGIN
+  OUTER_SET bio = 15884
+END
+
+//Dread Blast innate
+COPY ~divine_remix/spl/a#cyr07.spl~ ~override~
+  SAY NAME1 @13000
+  SAY NAME2 @13000
+  SAY 0x50 @13010
+  SAY 0x54 @13010
+  PATCH_IF (confusion_immunity > 0) BEGIN // if eefixpack immunity states
+    LPF CLONE_EFFECT INT_VAR match_opcode = 128 opcode = 324 parameter1 = confusion_immunity parameter2 = 110 timing = 0 duration = 0 resist_dispel = 0 savingthrow = 0 STR_VAR insert = above resource = EVAL ~%SOURCE_RES%~ END
+  END
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/a#cyric.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL423~ // poison weapon as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~a#cyr07~ // dread blast as 1/10
+  PATCH_IF !game_includes_tob THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+OUTER_SPRINT cyric_poison_weapon @13029 // EEs change what assassin poison does, so have to fork description
+ADD_KIT ~A#CYRIC~
+  ~A#CYRIC                  0           0           1           1           0           1           0           0~
+  ~A#CYRIC 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#CYRIC          0       0       0       0       9       0~
+  ~A#CYRIC    0 0 0 0 0 0~
+  ~A#CYRIC    0 0 0 0 17  0~
+  ~A#CYRIC    0 0 0 0 15  0~
+  ~A#CYRIC    0 0 1 0 0 1 0 1 1~
+  ~A#CYRIC    1 0 1 1 0 1~
+  ~override/a#cyric.2da~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000 3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @13002
+  SAY @13003
+  SAY @13009
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~A#CYRIC~
+    clascolr = ~35 67 67 25 80~
+END
+
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#CYRIC%") END
+
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
+
+  LAF cd_create_holy_symbol
+  INT_VAR
+    name = RESOLVE_STR_REF(@13005)
+    desc = RESOLVE_STR_REF(@13006)
+    kit  = "%A#CYRIC%"
+    kit319s = RESOLVE_STR_REF(@13003)
+    kitbits = BIT2 // good
+  STR_VAR
+    symbol = ~a#cyr25~
+    iicon  = imisc85
+    cicon  = cmisc85
+  END
+
+END
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF game_includes_tob THEN BEGIN // Compile dialogue alteration for Cyric in the Pocket Plane
+
+  COMPILE ~divine_remix/dlg/cyricpp.d~
+
+END
+
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/cyric_ar0900.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/cyric_ar0904.baf~
+  COMPILE ~divine_remix/dlg/cyric.d~
+
+END
+
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~%A#CYRIC%~)) // talos
+OUTER_SPRINT kitname @13028 // ~Strifeleader~
+ACTION_FOR_EACH cre IN 
+  ar18prie hghprmod mvpries prcdmod prcmod slapri Z#pri1 Z#pri2 dcleric O#Tiax O#Tiax25 pptiax pptiax2 tiax tiax4 tiax6 dot#tiax lamalh bassil mulahe 
+BEGIN
+
+  COPY_EXISTING ~%cre%.cre~ ~override~
+    LPF cd_assign_kit_to_cre END
+    BUT_ONLY IF_EXISTS
+
+END

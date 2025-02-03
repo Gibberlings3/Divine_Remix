@@ -1,0 +1,124 @@
+ACTION_IF game_is_iwdee BEGIN
+  OUTER_SET bio = RESOLVE_STR_REF(@12411)
+END ELSE
+ACTION_IF game_is_bgee BEGIN
+  OUTER_SET bio = 15884
+END
+
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi411 destination = ~nmsun07~ RET_ARRAY cd_clone_spell_array END // emotion
+
+COPY ~divine_remix/spl/cdsune2.spl~ ~override~
+  SAY NAME1 @12409
+  SAY NAME2 @12409
+  SAY UNIDENTIFIED_DESC @12410
+  SAY DESC @12410
+  // (half-)elven charm immunity
+  PATCH_IF enhanced_edition BEGIN // kids, don't use fixed insert_point values. Only doing it here because it's a known quantity from the mod itself.
+    LPF DELETE_EFFECT INT_VAR match_opcode = 177 END
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 2 opcode = 324 target = 2 parameter2 = 19 probability1 = 29 STR_VAR resource = cdsune2 END // half-elves
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 2 opcode = 324 target = 2 parameter2 = 15 probability1 = 89 STR_VAR resource = cdsune2 END // elves
+    LPF ADD_SPELL_EFFECT INT_VAR insert_point = 2 opcode = 324 target = 2 parameter1 = 1 parameter2 = 113 STR_VAR resource = cdsune2 END // general non-humanoid immunity
+  END
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/nmsune.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~nmsun07~ // emotion as 1/5
+  REPLACE_TEXTUALLY ~KITBIL2~ ~cdsune2~ // Veil of Djalice as 1/10
+  PATCH_IF !game_includes_tob THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~NMSUNE~
+  ~NMSUNE                0           0           1           1           0           1           0           0~
+  ~NMSUNE 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~NMSUNE                0       0       0       0       9      10~ // min 10 chr
+  ~NMSUNE                0       0       0       0       0       1~ // +1 chr bonus
+  ~NMSUNE                0       0       0       0       17      0~
+  ~NMSUNE                0       0       0       0       15     10~
+  ~NMSUNE                0       0       0       1       0       0       1       1       0~
+  ~NMSUNE                1       0       1       1       0       1~
+  ~override/nmsune.2da~
+  ~K_C_D K_C_E K_C_G K_C_H K_C_HE K_C_HL K_C_HO~
+  ~0x00004000 3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @12407
+  SAY @12401
+  SAY @12408
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~NMSUNE~
+    clascolr = ~35 49 46 25 80~
+END
+
+LAF cd_aoe_compat INT_VAR column = (22 + "%NMSUNE%") END
+
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
+
+  COPY ~divine_remix/bam/nmisuhly.bam~ ~override~ // holy symbol
+       ~divine_remix/bam/nmpsuhly.bam~ ~override~
+  LAF cd_create_holy_symbol
+  INT_VAR
+    name = RESOLVE_STR_REF(@12405)
+    desc = RESOLVE_STR_REF(@12406)
+    kit  = NMSUNE
+    kit319s = RESOLVE_STR_REF(@12401)
+    kitbits = (BIT1 + BIT4) // evil, lawful
+  STR_VAR
+    symbol = nmsuhly
+    iicon  = nmisuhly
+    cicon  = nmpsuhly
+  END
+
+END
+
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~Divine_Remix/baf/sune_ar0900.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~Divine_Remix/baf/sune_ar0902.baf~
+  COMPILE ~Divine_Remix/dlg/sune.d~
+
+END
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~NMSUNE~)) // sune
+OUTER_SPRINT kitname @12413 // ~Heartwarder~
+ACTION_FOR_EACH cre IN isnfxps /*YxYve1*/ BEGIN
+
+  COPY_EXISTING ~%cre%.cre~ ~override~
+    LPF cd_assign_kit_to_cre END
+    BUT_ONLY IF_EXISTS
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~YxYve1.cre~ THEN BEGIN
+
+  COPY_EXISTING ~yxyve.bcs~  ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~AddKit(yxkit)~ ~AddKit(nmsune)~
+      APPEND_FILE ~divine_remix/baf/yxyve.baf~
+    END
+    BUT_ONLY
+
+  COPY_EXISTING ~YxYv25.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~LevelGT(Myself,22)~ ~HasItem("NMSUHLY",Myself)~
+      REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~GiveItemCreate("YxSymb",Myself,0,0,0)~
+        ~GiveItemCreate("YxSymb",Myself,0,0,0) DestroyItem("NMSUHLY")~
+    END
+    BUT_ONLY IF_EXISTS
+
+END

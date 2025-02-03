@@ -1,0 +1,102 @@
+ACTION_IF game_is_iwdee BEGIN
+  OUTER_SET bio = RESOLVE_STR_REF(@12109)
+END ELSE
+ACTION_IF game_is_bgee BEGIN
+  OUTER_SET bio = 15884
+END
+
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi419 destination = ~a#og07~ RET_ARRAY cd_clone_spell_array END // secret word
+
+COPY ~divine_remix/spl/a#og0b.spl~ ~override~  // Lore boost (innate)
+
+// build 2da from generic ability schedule
+COPY ~divine_remix/2da/generic.2da~ ~override/a#ogma.2da~
+  REPLACE_TEXTUALLY ~KITBIL1~ ~a#og07~ // secret word as 1/5
+  FOR (index = 1 ; index < 51 ; ++index) BEGIN
+    SET_2DA_ENTRY 2 index 50 ~AP_a#og0b~
+  END
+  PATCH_IF !game_includes_tob THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
+ADD_KIT ~A#OGMA~
+  ~A#OGMA                  0           0           1           1           0           1           0           0~
+  ~A#OGMA 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#OGMA 0 0 0 0 9 0~
+  ~A#OGMA   0 0 0 0 0 0~
+  ~A#OGMA   0 0 0 0 17  0~
+  ~A#OGMA   0 0 0 0 15  0~
+  ~A#OGMA   1 1 1 1 1 1 1 1 1~
+  ~A#OGMA   1 0 1 1 0 1~
+  ~override/a#ogma.2da~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000 3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @12107
+  SAY @12101
+  SAY @12108
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~a#ogma~
+    clascolr = ~35 66 66 25 80~
+END
+
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#OGMA%") END
+
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
+
+  COPY ~divine_remix/bam/cdioghly.bam~   ~override~ // holy symbol
+       ~divine_remix/bam/cdpoghly.bam~   ~override~
+  LAF cd_create_holy_symbol
+  INT_VAR
+    name = RESOLVE_STR_REF(@12105)
+    desc = RESOLVE_STR_REF(@12106)
+    kit  = ~A#OGMA~
+    kit319s = RESOLVE_STR_REF(@12101)
+    kitbits = 0 // no alignment restrictions
+  STR_VAR
+    symbol = ~a#og25~
+    iicon  = ~cdioghly~
+    cicon  = ~cdpoghly~
+  END
+
+END
+
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/oghma_ar0900.baf~
+  EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/oghma_ar0901.baf~
+  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/oghma_ar0902.baf~
+  EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/oghma_ar0904.baf~
+  COMPILE ~divine_remix/dlg/oghma.d~
+
+END
+
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#OGMA~)) // oghma
+OUTER_SPRINT kitname @12112 // ~Lorekeeper~
+ACTION_FOR_EACH cre IN
+  doghma poghm10 poghm3 poghm6 poghm8 poghm9 poghma poghma3 poghma4 poghma5 poghma6 poghma7 poghma8 _poghm10
+  _poghm3 _poghm6 _poghm8 _poghm9 _poghma _poghma3 _poghma4 _poghma5 _poghma6 _poghma7 _poghma8 ja#oghm1
+BEGIN
+
+  COPY_EXISTING ~%cre%.cre~ ~override~
+    LPF cd_assign_kit_to_cre END
+    BUT_ONLY IF_EXISTS
+
+END
