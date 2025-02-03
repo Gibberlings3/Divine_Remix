@@ -59,6 +59,7 @@ LANGUAGE
 BEGIN @1001 DESIGNATED 10 // component 0
 SUBCOMPONENT @1000
 GROUP @10 GROUP @11 GROUP @13 // GROUP @12
+LABEL ~cd_dr_new_spells_overwrite~
 
 OUTER_SET overwrite = 1
 INCLUDE ~divine_remix/lib/new_spells.tph~
@@ -70,6 +71,7 @@ INCLUDE ~divine_remix/lib/new_spells.tph~
 BEGIN @1002 DESIGNATED 11 // component 0
 SUBCOMPONENT @1000
 GROUP @10 GROUP @11 GROUP @13 // GROUP @12
+LABEL ~cd_dr_new_spells~
 
 OUTER_SET overwrite = 0
 INCLUDE ~divine_remix/lib/new_spells.tph~
@@ -90,6 +92,7 @@ BEGIN @5000 DESIGNATED 50
 SUBCOMPONENT @5002
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
+LABEL ~cd_dr_remove_cleric_kits_mod~
 
 LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = c END
 
@@ -101,6 +104,7 @@ BEGIN @5001
 SUBCOMPONENT @5002
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
+LABEL ~cd_dr_remove_cleric_kits_all~
 
 LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = c END
 
@@ -112,6 +116,7 @@ BEGIN @5000
 SUBCOMPONENT @5003
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
+LABEL ~cd_dr_remove_druid_kits_mod~
 
 LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = d END
 
@@ -123,6 +128,7 @@ BEGIN @5001
 SUBCOMPONENT @5003
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
+LABEL ~cd_dr_remove_druid_kits_a11~
 
 LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = d END
 
@@ -134,6 +140,7 @@ BEGIN @5000
 SUBCOMPONENT @5004
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
+LABEL ~cd_dr_remove_paladin_kits_mod~
 
 LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = p END
 
@@ -145,6 +152,7 @@ BEGIN @5001
 SUBCOMPONENT @5004
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
+LABEL ~cd_dr_remove_paladin_kits_a11~
 
 LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = p END
 
@@ -156,6 +164,7 @@ BEGIN @5000
 SUBCOMPONENT @5005
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
+LABEL ~cd_dr_remove_ranger_kits_mod~
 
 LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = r END
 
@@ -167,6 +176,7 @@ BEGIN @5001
 SUBCOMPONENT @5005
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
+LABEL ~cd_dr_remove_ranger_kits_a11~
 
 LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = r END
 
@@ -186,6 +196,7 @@ BEGIN @19 DESIGNATED 100
 SUBCOMPONENT @10000
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~BG2FIXPACK/SETUP-BG2FIXPACK.TP2~ ~0~ OR GAME_IS ~bgee bg2ee iwdee eet~) @17 // Fixpack is needed
 GROUP @10
+LABEL ~cd_dr_cleric_remix~
 
 OUTER_SET cd_dr_conventional = 1
 INCLUDE ~divine_remix/lib/cleric_main.tpa~
@@ -198,6 +209,7 @@ BEGIN @20 DESIGNATED 101
 SUBCOMPONENT @10000
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~BG2FIXPACK/SETUP-BG2FIXPACK.TP2~ ~0~ OR GAME_IS ~bgee bg2ee iwdee eet~) @17 // Fixpack is needed
 GROUP @10
+LABEL ~cd_dr_cleric_remix_new~
 
 OUTER_SET cd_dr_conventional = 0
 INCLUDE ~divine_remix/lib/cleric_main.tpa~
@@ -215,6 +227,7 @@ BEGIN @10300 DESIGNATED 103 // component 103
 GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+LABEL ~cd_dr_silverstar~
 
 INCLUDE ~divine_remix/lib/silverstar.tpa~
 
@@ -230,6 +243,7 @@ BEGIN @10600 DESIGNATED 106 // component 106
 GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+LABEL ~cd_dr_nightcloak~
 
 INCLUDE ~divine_remix/lib/nightcloak.tpa~
 
@@ -245,6 +259,7 @@ BEGIN @10700 DESIGNATED 107 // component 107
 GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR 
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @16 // conventional option of CR
+LABEL ~cd_dr_holy_strategist~
 
 INCLUDE ~divine_remix/lib/holy_strategist.tpa~
 
@@ -261,6 +276,7 @@ GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~ohtempus.2da~ @14
+LABEL ~cd_dr_battleguard~
 
 INCLUDE ~divine_remix/lib/battleguard.tpa~
 
@@ -276,6 +292,7 @@ BEGIN @11200 DESIGNATED 112 // component 112
 GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+LABEL ~cd_dr_painbearer~
 
 INCLUDE ~divine_remix/lib/painbearer.tpa~
 
@@ -291,6 +308,7 @@ BEGIN @11500 DESIGNATED 115
 GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+LABEL ~cd_dr_firewalker~
 
 INCLUDE ~divine_remix/lib/firewalker.tpa~
 
@@ -306,6 +324,7 @@ BEGIN @11800 DESIGNATED 118
 GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+LABEL ~cd_dr_authlim~
 
 INCLUDE ~divine_remix/lib/authlim.tpa~
 
@@ -321,6 +340,7 @@ BEGIN @12100 DESIGNATED 121
 GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+LABEL ~cd_dr_lorekeeper~
 
 INCLUDE ~divine_remix/lib/lorekeeper.tpa~
 
@@ -336,6 +356,7 @@ BEGIN @12400 DESIGNATED 124
 GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+LABEL ~cd_dr_heartwarder~
 
 INCLUDE ~divine_remix/lib/heartwarder.tpa~
 
@@ -351,6 +372,7 @@ BEGIN @12700 DESIGNATED 127
 GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+LABEL ~cd_dr_feywarden~
 
 INCLUDE ~divine_remix/lib/feywarden.tpa~
 
@@ -366,6 +388,7 @@ BEGIN @13001 DESIGNATED 130
 GROUP @10
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+LABEL ~cd_dr_strifeleader~
 
 INCLUDE ~divine_remix/lib/strifeleader.tpa~
 
@@ -379,6 +402,7 @@ INCLUDE ~divine_remix/lib/strifeleader.tpa~
 
 BEGIN @20000 DESIGNATED 200
 GROUP @11
+LABEL ~cd_dr_druid_remix~
 
 COPY ~divine_remix/2da/mxsplprs.2da~ ~override/mxspldru.2da~
 
@@ -441,6 +465,7 @@ COPY_EXISTING ~_b1-3.itm~    ~override~ // adds magical flag to misc weapons
 BEGIN @20301 DESIGNATED 203
 GROUP @11
 REQUIRE_COMPONENT ~divine_remix.tp2~ ~200~ @8
+LABEL ~cd_dr_oozemaster~
 
 //Paralytic Touch
 COPY_EXISTING ~spwi218.spl~ ~override/a#ooze1.spl~ //Ghoul Touch
@@ -525,6 +550,7 @@ LAF cd_aoe_compat INT_VAR column = (22 + "%A#OOZE%") END
 
 BEGIN @40300 DESIGNATED 403
 GROUP @13
+LABEL ~cd_dr_bowslinger~
 
 ADD_KIT NMRNBSLN // ROWNAME in KITLIST.2da
   ~NMRNBSLN                1           1           1           1           1           1           1           1~ // CLASWEAP.2DA (weapons class can use)
@@ -580,6 +606,7 @@ INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 BEGIN @40600 DESIGNATED 406
 GROUP @13
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~a#feral.2da~ @9
+LABEL ~cd_dr_feralan~
 
 // shapeshifters get locked out of all armor, either by the druid flag or their individual kit flag
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
@@ -667,6 +694,7 @@ END
 
 BEGIN @40900 DESIGNATED 409
 GROUP @13
+LABEL ~cd_dr_forest_runner~
 
 ADD_KIT NMRNFRRN // ROWNAME in KITLIST.2da
   ~NMRNFRRN                1           1           1           1           1           1           1           1~ // CLASWEAP.2DA (weapons class can use)
@@ -713,6 +741,7 @@ COPY ~divine_remix/spl/nmrnfr2.spl~ ~override~ // 'Inspire' innate
 BEGIN @41200 DESIGNATED 412
 GROUP @13
 REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~a#justif.2da~ @9
+LABEL ~cd_dr_justifier~
 
 ADD_KIT ~A#JUSTIFIER~
   ~A#JUSTIFIER    1 1 1 1 1 1 1 1~
@@ -760,6 +789,7 @@ INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 BEGIN @41500 DESIGNATED 415
 GROUP @13
+LABEL ~cd_dr_wilderness_runner~
 
 ADD_KIT NMRNWLRN // ROWNAME in KITLIST.2da
   ~NMRNWLRN                1           1           1           1           1           1           1           1~ // CLASWEAP.2DA (weapons class can use)
@@ -819,6 +849,7 @@ GROUP @10
 REQUIRE_PREDICATE ((!GAME_IS ~iwdee~) AND                          // not for iwdee
                    ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~109~) OR // either we've installed DR's tempus kit
                     (GAME_IS ~bgee bg2ee eet~))) @16               // or we're on the EEs, which have their own
+LABEL ~cd_dr_npckit_branwen~
 
 ACTION_IF MOD_IS_INSTALLED ~divine_remix.tp2~ ~109~ BEGIN 
   OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#TEMP~)) // DR's tempus
@@ -863,6 +894,7 @@ INCLUDE ~divine_remix/lib/comp_4050.tpa~ // Change Jaheira to NG
 BEGIN @61000 DESIGNATED 610
 GROUP @10
 REQUIRE_PREDICATE ((!GAME_IS ~iwdee~) AND (MOD_IS_INSTALLED ~divine_remix.tp2~ ~106~)) @16
+LABEL ~cd_dr_npckit_viconia~
 
 ACTION_IF game_includes_tob THEN BEGIN // Fate Spirit line if ToB is installed
   STRING_SET 65023 @61001
@@ -906,6 +938,7 @@ GROUP @10 GROUP @11 GROUP @13 // GROUP @12
 REQUIRE_PREDICATE (NOT ENGINE_IS ~bgee bg2ee iwdee~) ~This component is not compatible with EE engine.~
 REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
                    (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+LABEL ~cd_dr_spheres~
 
 /////                                                  \\\\\
 ///// add sphere descripts to base classes             \\\\\
