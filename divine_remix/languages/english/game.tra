@@ -265,8 +265,9 @@ The casting of this spell opens a channel between the caster's plane and the Neg
 @2024 = ~Sun~
 @2025 = ~Summoning~
 
-@2026 = ~^\(Spheres?:.+\)$~
-@2027 = ~^\(Level:\)\( *.+\)~ // should be 1-7 or 'Quest'
+// disabled until I get to spheres so that my highlighter works
+//@2026 = ~^\(Spheres?:.+\)$~ 
+//@2027 = ~^\(Level:\)\( *.+\)~ // should be 1-7 or 'Quest'
 @2028 = ~Sphere:~
 
 @2029 = ~Plant~

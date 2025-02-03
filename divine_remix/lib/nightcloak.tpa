@@ -1,0 +1,131 @@
+ACTION_IF game_is_iwdee BEGIN
+  OUTER_SET bio = RESOLVE_STR_REF(@10620)
+END ELSE
+ACTION_IF game_is_bgee BEGIN
+  OUTER_SET bio = 15884
+END
+
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi401 destination = ~a#sha07~ RET_ARRAY cd_clone_spell_array END // confusion
+
+COPY ~divine_remix/bam/a#sha01.bam~ ~override~ // bams for dark bolt
+     ~divine_remix/bam/a#sha02.bam~ ~override~
+COPY ~divine_remix/spl/cdshar2.spl~ ~override~  // dark bolt spell
+  SAY NAME1 @10621
+  SAY NAME2 @10621
+  SAY UNIDENTIFIED_DESC @10622
+  SAY DESC @10622
+
+COPY ~divine_remix/itm/cdshar2.itm~ ~override~  // dark bolt item
+  SAY NAME1 @10621
+  SAY NAME2 @10621
+  SAY UNIDENTIFIED_DESC @10624
+  SAY DESC @10624
+
+ACTION_IF cd_dr_conventional BEGIN 
+
+  // build 2da from generic ability schedule
+  COPY ~divine_remix/2da/generic.2da~ ~override/a#shar.2da~
+    REPLACE_TEXTUALLY ~KITBIL1~ ~a#sha07~ // Confusion as 1/5
+    REPLACE_TEXTUALLY ~KITBIL2~ ~cdshar2~ // dark bolt as 1/10
+    PATCH_IF !game_includes_tob THEN BEGIN
+      REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+    END
+    
+  OUTER_SPRINT kit_help @10619
+
+END ELSE BEGIN
+
+  COPY ~divine_remix/2da/a#shar.2da~ ~override~
+    
+  OUTER_SPRINT kit_help @10602
+    
+  COPY_EXISTING ~cdshar2.itm~ ~override~  // dark bolt
+    LPF ALTER_EFFECT INT_VAR match_opcode = 233 parameter1 = 2 END 
+    
+  // change spells to innates as needed
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi509 destination = ~a#sha09~ RET_ARRAY cd_clone_spell_array END // Feeblemind
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi601 destination = ~a#sha11~ RET_ARRAY cd_clone_spell_array END // Invisible Stalker
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi715 destination = ~a#sha14~ RET_ARRAY cd_clone_spell_array END // Power Word, Stun
+
+  COPY ~Divine_Remix/spl/a#sha0c.spl~ ~override~ // Prot. from Blindness.
+    SAY NAME1 @10618
+    SAY NAME2 @10618 
+  
+  COPY ~Divine_Remix/bam/a#sha01.bam~ ~override~ // bams for Chakram
+       ~Divine_Remix/bam/a#sha02.bam~ ~override~
+  OUTER_SPRINT hw_name @10608
+  OUTER_SPRINT hw_desc @10609
+  LAF cd_dr_holy_weapon STR_VAR item = ~a#sha0~ name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
+
+  ACTION_IF game_includes_tob THEN BEGIN
+
+    COPY ~Divine_Remix/spl/a#sha71.spl~ ~override~  // Shar's Curse
+      SAY NAME1 @10604
+      SAY NAME2 @10604
+      SAY UNIDENTIFIED_DESC @10605
+      
+  END
+
+END  
+
+ADD_KIT ~A#SHAR~
+  ~A#SHAR                  0           0           1           1           0           1           0           0~
+  ~A#SHAR 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~A#SHAR 0 0 0 0 9 0~
+  ~A#SHAR   0 0 0 0 0 0~
+  ~A#SHAR   0 0 0 0 17  0~
+  ~A#SHAR   0 0 0 0 15  0~
+  ~A#SHAR   0 0 1 0 1 1 0 0 1~
+  ~A#SHAR   1 0 1 1 0 1~
+  ~override/a#shar.2DA~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000 3~
+  ~cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @10603
+  SAY @10601
+  SAY ~%kit_help%~
+
+LAF fl#add_kit_ee
+  INT_VAR
+    biography = bio
+  STR_VAR
+    kit_name = ~a#shar~
+    clascolr = ~35 66 60 25 80~
+END
+
+LAF cd_aoe_compat INT_VAR column = (22 + "%A#SHAR%") END
+
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
+
+  COPY ~divine_remix/bam/d0shar.bam~ ~override~ // ding0's BAM from BG2FP
+  LAF cd_create_holy_symbol
+  INT_VAR
+    name = RESOLVE_STR_REF(@10615)
+    desc = RESOLVE_STR_REF(@10616)
+    kit  = ~%A#SHAR%~
+    kit319s = RESOLVE_STR_REF(@10601)
+    kitbits = BIT2
+  STR_VAR
+    symbol = ~a#sha25~
+    iicon = d0shar
+    cicon = cmisc6n
+  END
+
+END
+
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
+
+  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/Shar_ar0900.baf~
+  EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/Shar_ar0904.baf~
+  COMPILE ~divine_remix/dlg/shar.d~
+
+END
