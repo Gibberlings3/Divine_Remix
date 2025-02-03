@@ -18,16 +18,67 @@ COPY ~divine_remix/spl/cdxvfear.spl~ ~override~  // immunity to fear (permanent 
   END
 
 ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
-LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi412 destination = ~cdxvgml~ RET_ARRAY cd_clone_spell_array END // greater malison
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi412 destination = cdxvgml RET_ARRAY cd_clone_spell_array END // greater malison
 
-// build 2da from generic ability schedule
-COPY ~divine_remix/2da/generic.2da~ ~override/cdxvim.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~cdxvgml~ // greater malison as 1/5
-  REPLACE_TEXTUALLY ~ABILITY2    GA_KITBIL2 ~ ~ABILITY2    AP_CDXVFEAR~ // no 1/10
-  REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****      ~ // no 1/10
-  PATCH_IF !game_includes_tob THEN BEGIN
-    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+ACTION_IF cd_dr_conventional BEGIN  
+
+  // build 2da from generic ability schedule
+  COPY ~divine_remix/2da/generic.2da~ ~override/cdxvim.2da~
+    REPLACE_TEXTUALLY ~KITBIL1~ ~cdxvgml~ // greater malison as 1/5
+    REPLACE_TEXTUALLY ~ABILITY2    GA_KITBIL2 ~ ~ABILITY2    AP_CDXVFEAR~ // no 1/10
+    REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****      ~ // no 1/10
+    PATCH_IF !game_includes_tob THEN BEGIN
+      REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+    END
+    
+  OUTER_SPRINT kit_help @11810  
+    
+END ELSE BEGIN 
+
+  COPY ~divine_remix/2da/cdxvim.2da~ ~override~
+    
+  OUTER_SPRINT kit_help @11802 
+    
+  // kit innates  
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi605 destination = cdxvdth RET_ARRAY cd_clone_spell_array END // Death Spell (innate)
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi514 destination = cdxvlrs RET_ARRAY cd_clone_spell_array END // Lower Resistance (innate)
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi708 destination = cdxvmtl RET_ARRAY cd_clone_spell_array END // Mantle (innate)
+
+  COPY ~Divine_Remix/bam/cdixvim.bam~ ~override~ // Scimitar of Souls (innate)
+  OUTER_SPRINT hw_name @11805
+  OUTER_SPRINT hw_desc @11806
+  LAF cd_dr_holy_weapon STR_VAR item = cdxvsc name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
+
+  ACTION_IF game_includes_tob THEN BEGIN
+
+    ACTION_IF !FILE_EXISTS_IN_GAME ~beheld01.cre~ THEN BEGIN
+      
+      COPY ~divine_remix/cre/cdxveorb.cre~ ~override~  // creates allied Elder Orbs for summoning
+    
+    END ELSE BEGIN
+
+      COPY_EXISTING ~beheld01.cre~ ~override/cdxveorb.cre~ // creates allied Elder Orbs for summoning
+
+    END
+
+    COPY_EXISTING ~cdxveorb.cre~ ~override~ // creates allied Elder Orbs for summoning
+      WRITE_ASCII 0x248 ~gensht01~ #8
+      WRITE_ASCII 0x250 ~cdxveorb~ #8
+      WRITE_ASCII 0x258 ~~ #16
+      WRITE_ASCII 0x268 ~wtasight~ #8
+    
+    COMPILE ~Divine_Remix/baf/cdxveorb.baf~
+
+    COPY ~Divine_Remix/eff/cdxvhla.eff~ ~override~ // Xvim's Summoning
+    COPY ~Divine_Remix/spl/cdxvhla.spl~ ~override~
+      SAY NAME1 @11807
+      SAY NAME2 @11807
+      SAY UNIDENTIFIED_DESC @11808
+      SAY DESC @11808
+
   END
+  
+END
 
 ADD_KIT ~CDXvim~
   ~CDXvim                  0           0           1           1           0           1           0           0~
@@ -45,7 +96,7 @@ ADD_KIT ~CDXvim~
   ~CHAN09 * HELM07 BAG20 RING06 RING31 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN4,2 POTN14,5 HAM07 SW1H27 STAF08~
   SAY @11809
   SAY @11801
-  SAY @11810
+  SAY ~%kit_help%~
 
 LAF fl#add_kit_ee
   INT_VAR
