@@ -6,7 +6,7 @@ ACTION_IF game_is_bgee BEGIN
 END
 
 ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
-LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi411 destination = ~nmsun07~ RET_ARRAY cd_clone_spell_array END // emotion
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi411 destination = nmsun07 RET_ARRAY cd_clone_spell_array END // emotion
 
 COPY ~divine_remix/spl/cdsune2.spl~ ~override~
   SAY NAME1 @12409
@@ -21,13 +21,35 @@ COPY ~divine_remix/spl/cdsune2.spl~ ~override~
     LPF ADD_SPELL_EFFECT INT_VAR insert_point = 2 opcode = 324 target = 2 parameter1 = 1 parameter2 = 113 STR_VAR resource = cdsune2 END // general non-humanoid immunity
   END
 
-// build 2da from generic ability schedule
-COPY ~divine_remix/2da/generic.2da~ ~override/nmsune.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~nmsun07~ // emotion as 1/5
-  REPLACE_TEXTUALLY ~KITBIL2~ ~cdsune2~ // Veil of Djalice as 1/10
-  PATCH_IF !game_includes_tob THEN BEGIN
-    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
-  END
+ACTION_IF cd_dr_conventional BEGIN  
+
+  // build 2da from generic ability schedule
+  COPY ~divine_remix/2da/generic.2da~ ~override/nmsune.2da~
+    REPLACE_TEXTUALLY ~KITBIL1~ ~nmsun07~ // emotion as 1/5
+    REPLACE_TEXTUALLY ~KITBIL2~ ~cdsune2~ // Veil of Djalice as 1/10
+    PATCH_IF !game_includes_tob THEN BEGIN
+      REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+    END
+    
+  OUTER_SPRINT kit_help @12408  
+    
+END ELSE BEGIN 
+  
+  COPY ~divine_remix/2da/nmsune.2da~ ~override~
+    
+  OUTER_SPRINT kit_help @12402   
+
+  // change spells to innates as needed
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr503 destination = nmsun09 RET_ARRAY cd_clone_spell_array END // flame strike
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi607 destination = nmsun11 RET_ARRAY cd_clone_spell_array END // mislead
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi708 destination = nmsun14 RET_ARRAY cd_clone_spell_array END // mantle
+
+  COPY ~Divine_Remix/bam/nmisune.bam~  ~override~ // Shock Flail (innate)
+  OUTER_SPRINT hw_name @12403
+  OUTER_SPRINT hw_desc @12404
+  LAF cd_dr_holy_weapon STR_VAR item = nmsune0 name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
+
+END
 
 ADD_KIT ~NMSUNE~
   ~NMSUNE                0           0           1           1           0           1           0           0~
@@ -45,7 +67,7 @@ ADD_KIT ~NMSUNE~
   ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
   SAY @12407
   SAY @12401
-  SAY @12408
+  SAY ~%kit_help%~
 
 LAF fl#add_kit_ee
   INT_VAR
