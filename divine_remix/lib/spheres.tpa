@@ -378,7 +378,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_apply_kit_sphere BEGIN
   FIGHTER_DRUID,       clabdr01, 16, 0 =>   9579
   FIGHTER_MAGE_CLERIC, clabpr01, 17, 0 =>   9581
 //CLERIC_RANGER,       clabpr01, 18, 0 =>   9580 // handled special, above
-  SHAMAN,              clabsh01, 21, 0 => 103060
+  SHAMAN,              clabsh01, 21, 0 => ~%shaman_descript%~
 
 END
 

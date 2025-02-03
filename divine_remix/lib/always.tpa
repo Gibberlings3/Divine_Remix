@@ -106,3 +106,14 @@ OUTER_SPRINT name_priest @10156 // Priest/Priestess - used for name replacements
 OUTER_SPRINT holy_symbol_stats @216 // used to fill out holy symbol descriptions
 
 CLEAR_IDS_MAP
+
+// set variables for fixed strings that are used
+OUTER_SET shaman_descript = 103060
+OUTER_SET bio             = "-1"
+ACTION_IF game_is_iwdee BEGIN
+  OUTER_SET shaman_descript = 40885
+END ELSE
+ACTION_IF game_is_bgee BEGIN
+  OUTER_SET shaman_descript = 32341
+  OUTER_SET bio             = 15884
+END

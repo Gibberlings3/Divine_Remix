@@ -1,8 +1,5 @@
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@12710)
-END ELSE
-ACTION_IF game_is_bgee BEGIN
-  OUTER_SET bio = 15884
 END
 
 COPY ~divine_remix/spl/a#fey0a.spl~ ~override~ //save vs.death bonus

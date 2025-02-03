@@ -222,6 +222,13 @@ Ce sort ouvre un canal entre le Plan du lanceur et le Plan de l'Énergie Négative
  Mémorisation d'1 sort supplémentaire du 6ème et du 7ème niveau
  +5 % de Résistance à la magie
  +1 en Force~
+
+// take these strings from bg2
+@217 = ~Victime d'une grave maladie~ // strref 39752
+@218 = ~Malade~                      // strref 54337
+@219 = ~Panique~                     // strref 17427
+@220 = ~Confusion~                   // strref 12051
+@221 = ~Étourdi(e)~                  // strref 1280
  
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

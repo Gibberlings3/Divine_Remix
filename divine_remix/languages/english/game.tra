@@ -230,6 +230,12 @@ The casting of this spell opens a channel between the caster's plane and the Neg
    5% Magic Resistance while worn
    +1 to Strength while worn~
 
+// take these strings from bg2
+@217 = ~Stricken by a foul disease~ // strref 39752
+@218 = ~Diseased~                   // strref 54337
+@219 = ~Panic~                      // strref 17427
+@220 = ~Confusion~                  // strref 12051
+@221 = ~Stunned~                    // strref 1280
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

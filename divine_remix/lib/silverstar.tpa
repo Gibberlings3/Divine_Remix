@@ -1,8 +1,5 @@
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@10322)
-END ELSE
-ACTION_IF game_is_bgee BEGIN
-  OUTER_SET bio = 15884
 END
 
 ACTION_IF FILE_EXISTS_IN_GAME ~spwi801b.bam~ BEGIN // use spell shield BAM for moon shield

@@ -226,7 +226,6 @@ ACTION_IF kit > 0 THEN BEGIN
 
 END
 
-
 OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~OHTEMPUS~)) // tempus
 OUTER_SPRINT kitname @10145 // ~Battleguard~
 ACTION_IF kit > 0 THEN BEGIN

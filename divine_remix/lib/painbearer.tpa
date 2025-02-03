@@ -1,8 +1,5 @@
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@11211)
-END ELSE
-ACTION_IF game_is_bgee BEGIN
-  OUTER_SET bio = 15884
 END
 
 COPY ~divine_remix/bam/cdilenda.bam~ ~override~ // Ilmater's Endurance (innate)
@@ -14,26 +11,13 @@ COPY ~divine_remix/spl/cdilend.spl~  ~override~
   SAY UNIDENTIFIED_DESC @11206
   SAY DESC @11206
   PATCH_IF enhanced_edition BEGIN
+    LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 39752 parameter1 = RESOLVE_STR_REF(@217) END // Stricken by a foul disease
+    LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 54337 parameter1 = RESOLVE_STR_REF(@218) END // Diseased
+    LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = RESOLVE_STR_REF(219) END // Panic
     LPF CLONE_EFFECT INT_VAR match_opcode = 161 opcode = 321 STR_VAR resource = spin105 insert = first END // remove horror (innate)
     LPF CLONE_EFFECT INT_VAR match_opcode = 161 opcode = 321 STR_VAR resource = spwi205 insert = first END // remove horror (arcane)
     LPF CLONE_EFFECT INT_VAR match_opcode = 101 match_parameter2 = 24 opcode = 328 parameter2 =  67 special = 1 END // set spell state: buff_pro_effects
     LPF CLONE_EFFECT INT_VAR match_opcode = 101 match_parameter2 = 24 opcode = 328 parameter2 = 106 special = 1 END // set spell state: resist_fear
-    PATCH_IF game_is_bgee BEGIN // bgee has different fear and disease strings
-      LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 39752 parameter1 = 26453 END // Stricken by a foul disease
-      LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 54337 parameter1 = 31238 END // Diseased
-      LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 20568 END // Morale Failure: Panic
-      LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 25818 END // Panic
-    END ELSE
-    PATCH_IF game_is_iwdee BEGIN // iwdee has different fear and disease strings
-      LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 39752 parameter1 = 35594 END // Stricken by a foul disease
-      LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 54337 parameter1 = 34528 END // Diseased
-      LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 54337 parameter1 = 35593 END // Diseased
-      LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 54337 parameter1 = 17398 END // Diseased
-      LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 20568 END // Morale Failure: Panic
-      LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 17427 END // Panic
-      LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 35483 END // Panic
-      LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 35484 END // Panic
-    END
   END
 
 ACTION_IF cd_dr_conventional BEGIN 
