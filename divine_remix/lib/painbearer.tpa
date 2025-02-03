@@ -36,13 +36,35 @@ COPY ~divine_remix/spl/cdilend.spl~  ~override~
     END
   END
 
-// build 2da from generic ability schedule
-COPY ~divine_remix/2da/generic.2da~ ~override/cdilmatr.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL211~ // lay on hands as 1/5
-  REPLACE_TEXTUALLY ~KITBIL2~ ~cdilend~ // ilmater's endurance as 1/10
-  PATCH_IF !game_includes_tob THEN BEGIN
-    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
-  END
+ACTION_IF cd_dr_conventional BEGIN 
+
+  // build 2da from generic ability schedule
+  COPY ~divine_remix/2da/generic.2da~ ~override/cdilmatr.2da~
+    REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL211~ // lay on hands as 1/5
+    REPLACE_TEXTUALLY ~KITBIL2~ ~cdilend~ // ilmater's endurance as 1/10
+    PATCH_IF !game_includes_tob THEN BEGIN
+      REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+    END
+    
+  OUTER_SPRINT kit_help @11210  
+    
+END ELSE BEGIN 
+
+  COPY ~divine_remix/2da/cdilmatr.2da~ ~override~
+    
+  OUTER_SPRINT kit_help @11202  
+
+  COPY ~Divine_Remix/bam/cdiilmtr.bam~ ~override~ // Hand of Ilmater
+  OUTER_SPRINT hw_name @11203
+  OUTER_SPRINT hw_desc @11204
+  LAF cd_dr_holy_weapon STR_VAR item = cdilfs name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
+
+  // change spells to innates as needed
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr404 destination = cdilnps RET_ARRAY cd_clone_spell_array END // neutralize poison
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr607 destination = cdilhel RET_ARRAY cd_clone_spell_array END // heal
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr711 destination = cdilrgn RET_ARRAY cd_clone_spell_array END // regeneration
+
+END
 
 ADD_KIT ~CDILMATR~
   ~CDILMATR                  0           0           1           1           0           1           0           0~
@@ -60,7 +82,7 @@ ADD_KIT ~CDILMATR~
   ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
   SAY @11209
   SAY @11201
-  SAY @11210
+  SAY ~%kit_help%~
 
 LAF fl#add_kit_ee
   INT_VAR
