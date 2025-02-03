@@ -10,15 +10,47 @@ COPY ~divine_remix/spl/a#fey0a.spl~ ~override~ //save vs.death bonus
 ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi510 destination = ~a#fey09~ RET_ARRAY cd_clone_spell_array END // spell immunity
 
-// build 2da from generic ability schedule
-COPY ~divine_remix/2da/generic.2da~ ~override/a#feyw.2da~
-  REPLACE_TEXTUALLY ~KITBIL1~ ~a#fey09~ // Spell Immunity as 1/5
-  REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
-  SET_2DA_ENTRY 2 1 50 ~AP_a#fey0a~     // save bonus
-  PATCH_IF !game_includes_tob THEN BEGIN
-    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+ACTION_IF cd_dr_conventional BEGIN  
+
+  // build 2da from generic ability schedule
+  COPY ~divine_remix/2da/generic.2da~ ~override/a#feyw.2da~
+    REPLACE_TEXTUALLY ~KITBIL1~ ~a#fey09~ // Spell Immunity as 1/5
+    REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
+    SET_2DA_ENTRY 2 1 50 ~AP_a#fey0a~     // save bonus
+    PATCH_IF !game_includes_tob THEN BEGIN
+      REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+    END
+    PRETTY_PRINT_2DA
+    
+  OUTER_SPRINT kit_help @12709  
+    
+END ELSE BEGIN 
+
+  COPY ~divine_remix/2da/a#feyw.2da~ ~override~
+    
+  OUTER_SPRINT kit_help @12703
+
+  // change spells to innates as needed
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi417 destination = ~a#fey07~ RET_ARRAY cd_clone_spell_array END // enchanted weapon
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi611 destination = ~a#fey11~ RET_ARRAY cd_clone_spell_array END // protection from magical weapons
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi714 destination = ~a#fey14~ RET_ARRAY cd_clone_spell_array END // prismatic spray
+
+  COPY ~divine_remix/bam/a#ifey.bam~  ~override~ // Sahandrian (innate)
+  OUTER_SPRINT hw_name @12704
+  OUTER_SPRINT hw_desc @12705
+  LAF cd_dr_holy_weapon STR_VAR item = ~a#fey0~ name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END
+
+  ACTION_IF game_includes_tob THEN BEGIN
+  
+    LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi921 destination = ~a#hlaal~ RET_ARRAY cd_clone_spell_array END // Improved Alacrity HLA
+    
+    COPY_EXISTING ~a#hlaal.spl~ ~override~ //Improved Alacrity
+      SAY IDENTIFIED_DESC @12706
+      SAY UNIDENTIFIED_DESC @12706
+
   END
-  PRETTY_PRINT_2DA
+  
+END
 
 ADD_KIT ~A#FEYWARDEN~
   ~A#FEYWARDEN                0           0           1           1           0           1           0           0~
@@ -36,7 +68,7 @@ ADD_KIT ~A#FEYWARDEN~
   ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
   SAY @12701
   SAY @12702
-  SAY @12709
+  SAY ~%kit_help%~
 
 LAF fl#add_kit_ee
   INT_VAR
