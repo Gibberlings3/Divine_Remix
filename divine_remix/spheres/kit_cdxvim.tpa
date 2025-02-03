@@ -1,0 +1,25 @@
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // iyachtu xvim
+  INT_VAR
+    string                  = ~%strref%~
+  STR_VAR
+    table                   = EVAL ~%params_1%~
+    class                   = cleric
+    all                     = major
+    combat                  = major
+    creation                = minor
+    divination              = major
+    elemental               = major
+    elemental_air           = major
+    elemental_earth         = major
+    elemental_fire          = major
+    elemental_water         = major
+    guardian                = major
+    healing                 = minor
+    law                     = minor
+    necromantic             = major
+    necromantic_restorative = major
+    summoning               = major
+    sun                     = minor
+    thoughts                = major
+    war                     = major
+  END

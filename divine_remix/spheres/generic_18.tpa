@@ -1,0 +1,54 @@
+ACTION_IF enhanced_edition BEGIN // should also check for obg2 with TobEx
+
+  LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // generic cleric, cr_exception means ranger stuff gets bolted on
+    INT_VAR
+      string                  = ~%strref%~
+      cr_exception            = 1
+    STR_VAR
+      table                   = EVAL ~%params_1%~
+      class                   = cleric
+      all                     = major
+      charm                   = major
+      combat                  = major
+      creation                = major
+      divination              = major
+      elemental_earth         = minor
+      elemental_water         = minor
+      guardian                = major
+      healing                 = major
+      necromantic             = major
+      necromantic_restorative = major
+      protection              = major
+      summoning               = major
+    END
+    
+END ELSE BEGIN 
+
+  LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // generic cleric
+    INT_VAR
+      string                  = ~%strref%~
+    STR_VAR
+      table                   = EVAL ~%params_1%~
+      class                   = cleric
+      all                     = major
+      charm                   = major
+      combat                  = major
+      creation                = major
+      divination              = major
+      elemental_earth         = minor
+      elemental_water         = minor
+      guardian                = major
+      healing                 = major
+      necromantic             = major
+      necromantic_restorative = major
+      protection              = major
+      summoning               = major
+      // ranger
+  //    all                     = major
+      animal                  = major
+  //    healing                 = major
+      plant                   = major
+      weather                 = major
+    END
+    
+END

@@ -1,0 +1,17 @@
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // oozemaster - normal druid minus animal and plant
+  INT_VAR
+    string                  = ~%strref%~
+  STR_VAR
+    table                   = EVAL ~%params_1%~
+    class                   = druid
+    all                     = major
+    elemental               = major
+    elemental_air           = major
+    elemental_earth         = major
+    elemental_fire          = major
+    elemental_water         = major
+    healing                 = major
+    sun                     = major
+    weather                 = major
+  END
+  

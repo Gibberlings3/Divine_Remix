@@ -1,0 +1,28 @@
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // cyric
+  INT_VAR
+    string                  = ~%strref%~
+  STR_VAR
+    table                   = EVAL ~%params_1%~
+    class                   = cleric
+    all                     = major
+    astral                  = major
+    charm                   = major
+    combat                  = major
+    divination              = minor
+    elemental               = minor
+    elemental_air           = minor
+    elemental_earth         = minor
+    elemental_fire          = minor
+    elemental_water         = minor
+    guardian                = major
+    healing                 = major
+    necromantic             = major
+    necromantic_restorative = major
+    numbers                 = minor
+    protection              = minor
+    summoning               = major
+    sun                     = major
+    time                    = major
+    war                     = major
+    weather                 = major
+  END

@@ -1,0 +1,27 @@
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // lathander
+  INT_VAR
+    string                  = ~%strref%~
+  STR_VAR
+    table                   = EVAL ~%params_1%~
+    class                   = cleric
+    all                     = major
+    astral                  = major
+    charm                   = major
+    combat                  = minor
+    creation                = major
+    divination              = minor
+    elemental               = major
+    elemental_air           = major
+    elemental_earth         = major
+    elemental_fire          = major
+    elemental_water         = major
+    guardian                = minor
+    healing                 = major
+    necromantic_restorative = major
+    plant                   = major
+    sun                     = major
+    thoughts                = major
+    time                    = minor
+    wards                   = major
+    weather                 = major
+  END

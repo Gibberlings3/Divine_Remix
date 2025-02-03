@@ -1,0 +1,632 @@
+/////                                                  \\\\\
+///// define variables from tra strings                \\\\\
+/////                                                  \\\\\
+  
+OUTER_SPRINT sphere_header @2031 // header line
+OUTER_SPRINT sphere_major  @2032 // major access; will be added to below
+OUTER_SPRINT sphere_minor  @2033 // major access; will be added to below
+OUTER_SPRINT sphere_none   @2034 // no access; will be added to below
+OUTER_SPRINT sphere_major_orig  @2032 // used to check that major sphere listing contains something
+OUTER_SPRINT sphere_minor_orig  @2033 // used to check that minor sphere listing contains something
+OUTER_SPRINT sphere_none_orig   @2034 // used to check that none sphere listing contains something
+OUTER_SPRINT sphere_major_none  @2037 // replacement string for no major sphere access
+OUTER_SPRINT sphere_minor_none  @2038 // replacement string for no minor sphere access
+OUTER_SPRINT sphere_al     @2001 // All
+OUTER_SPRINT sphere_an     @2002 // Animal
+OUTER_SPRINT sphere_as     @2003 // Astral
+OUTER_SPRINT sphere_cs     @2004 // Chaos
+OUTER_SPRINT sphere_cm     @2005 // Charm
+OUTER_SPRINT sphere_co     @2006 // Combat
+OUTER_SPRINT sphere_cr     @2007 // Creation
+OUTER_SPRINT sphere_di     @2008 // Divination
+OUTER_SPRINT sphere_ex     @2009 // Elemental
+OUTER_SPRINT sphere_ea     @2010 // Elemental Air
+OUTER_SPRINT sphere_ee     @2011 // Elemental Earth
+OUTER_SPRINT sphere_ef     @2012 // Elemental Fire
+OUTER_SPRINT sphere_ew     @2013 // Elemental Water
+OUTER_SPRINT sphere_th     @2014 // Thought
+OUTER_SPRINT sphere_tr     @2015 // Travelers
+OUTER_SPRINT sphere_wa     @2016 // War
+OUTER_SPRINT sphere_we     @2017 // Weather
+OUTER_SPRINT sphere_gu     @2018 // Guardian
+OUTER_SPRINT sphere_he     @2019 // Healing
+OUTER_SPRINT sphere_lw     @2020 // Law
+OUTER_SPRINT sphere_ne     @2021 // Necromantic
+OUTER_SPRINT sphere_nr     @2036 // Necromantic (restorative only)
+OUTER_SPRINT sphere_nu     @2022 // Numbers
+OUTER_SPRINT sphere_pr     @2023 // Protection
+OUTER_SPRINT sphere_sn     @2024 // Sun
+OUTER_SPRINT sphere_su     @2025 // Summoning
+OUTER_SPRINT sphere_pl     @2029 // Plant
+OUTER_SPRINT sphere_wd     @2030 // Wards
+OUTER_SPRINT sphere_ti     @2035 // Time
+
+OUTER_SPRINT sphere_match @2026
+OUTER_SPRINT level_match  @2027
+OUTER_SPRINT sphere_text  @2028
+
+/////                                                  \\\\\
+///// read tables to determine when spells issued      \\\\\
+/////                                                  \\\\\
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_table_lookups BEGIN
+
+  druid   => mxspldru
+  cleric  => mxsplprs
+  paladin => mxsplpal
+  ranger  => mxsplran
+
+END
+
+ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~%table%.2da~ THEN BEGIN
+
+    COPY ~divine_remix/spheres/template.2da~ ~weidu_external/divine_remix/spheres/%class%.2da~
+
+    COPY_EXISTING ~%table%.2da~ ~override~
+      FOR (index = 1 ; index < 8 ; ++index) BEGIN
+        COUNT_2DA_ROWS (index + 1) rows
+        PATCH_IF (index = 1) BEGIN SET start = 2 END ELSE BEGIN SET start = 1 END
+        FOR (index2 = start ; index2 < rows ; ++index2) BEGIN
+          READ_2DA_ENTRY index2 index (index + 1) val
+          PATCH_IF (val > 0) BEGIN
+            READ_2DA_ENTRY index2 0 (index + 1) level
+            SET index2 = rows // kill loop
+            INNER_ACTION BEGIN
+
+              COPY ~weidu_external/divine_remix/spheres/%class%.2da~ ~weidu_external/divine_remix/spheres/%class%.2da~
+                SET_2DA_ENTRY 0 level 50 ~CDREPLACE%index%~
+
+            END
+          END
+        END
+      END
+      BUT_ONLY
+
+  END
+
+END
+
+ACTION_IF NOT FILE_EXISTS ~weidu_external/divine_remix/spheres/druid.2da~ THEN BEGIN
+
+  COPY ~weidu_external/divine_remix/spheres/cleric.2da~ ~weidu_external/divine_remix/spheres/druid.2da~
+
+END
+
+/////                                                  \\\\\
+///// clerics get an extra spell for levels 4-7        \\\\\
+/////                                                  \\\\\
+
+COPY ~divine_remix/spl/cdvngn4.spl~  ~override~
+
+COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn5.spl~     // adds lvl 5 spell slot for non-kit priests
+  WRITE_LONG 0xA2 16
+
+COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn6.spl~     // adds lvl 6 spell slot for non-kit priests
+  WRITE_LONG 0xA2 32
+
+COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn7.spl~     // adds lvl 7 spell slot for non-kit priests
+  WRITE_LONG 0xA2 64
+
+COPY_EXISTING ~clabpr01.2da~ ~override~
+  LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove eof blank lines
+  APPEND_FILE ~weidu_external/divine_remix/spheres/cleric.2da~
+  REPLACE_TEXTUALLY ~CDREPLACE\([4-7]\)~ ~AP_CDVNGN\1~
+  REPLACE_TEXTUALLY ~CDREPLACE[1-3]~     ~**** ~
+  //LAUNCH_PATCH_MACRO ~reindex_clab~ // get ABLITYx in order
+  
+/////                                                  \\\\\
+///// create sphere framework                          \\\\\
+/////                                                  \\\\\
+
+INCLUDE ~divine_remix/spheres/spell_list.tpa~
+
+ACTION_CLEAR_ARRAY cd_spheres_spell_info 
+ACTION_PHP_EACH cd_spheres AS params => symbol BEGIN
+
+  // first, verify the spell exists before we waste any further time
+  OUTER_SET proceed = 0
+  OUTER_SET working = IDS_OF_SYMBOL (~spell~ ~%symbol%~)
+  ACTION_IF working > 0 BEGIN
+    LAF RES_NAME_OF_SPELL_NUM INT_VAR spell_num = working RET spell_res END
+    ACTION_IF FILE_EXISTS_IN_GAME ~%spell_res%.spl~ BEGIN
+      ACTION_IF !params_4 BEGIN // exclude HLAs for now
+        OUTER_SET proceed = 1
+      END  
+    END
+  END      
+  
+  ACTION_IF proceed BEGIN
+
+    OUTER_SPRINT working_sphere ~%sphere_text%~
+    OUTER_SET iteration = 0
+  
+    ACTION_FOR_EACH sphere IN ~%params_1%~ ~%params_2%~ ~%params_3%~ BEGIN
+    
+      ACTION_IF iteration BEGIN OUTER_SPRINT separator ", " END ELSE BEGIN OUTER_SPRINT separator "" END 
+      OUTER_SET iteration += 1
+    
+      ACTION_IF ("%sphere%" STRING_COMPARE_CASE "") BEGIN // skip for blank secondary and tertiary entries
+
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "al" = 0) BEGIN OUTER_SPRINT sph_text @2001 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "an" = 0) BEGIN OUTER_SPRINT sph_text @2002 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "as" = 0) BEGIN OUTER_SPRINT sph_text @2003 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "cs" = 0) BEGIN OUTER_SPRINT sph_text @2004 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "cm" = 0) BEGIN OUTER_SPRINT sph_text @2005 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "co" = 0) BEGIN OUTER_SPRINT sph_text @2006 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "cr" = 0) BEGIN OUTER_SPRINT sph_text @2007 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "di" = 0) BEGIN OUTER_SPRINT sph_text @2008 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ex" = 0) BEGIN OUTER_SPRINT sph_text @2009 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ea" = 0) BEGIN OUTER_SPRINT sph_text @2010 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ee" = 0) BEGIN OUTER_SPRINT sph_text @2011 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ef" = 0) BEGIN OUTER_SPRINT sph_text @2012 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ew" = 0) BEGIN OUTER_SPRINT sph_text @2013 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "gu" = 0) BEGIN OUTER_SPRINT sph_text @2018 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "he" = 0) BEGIN OUTER_SPRINT sph_text @2019 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "lw" = 0) BEGIN OUTER_SPRINT sph_text @2020 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ne" = 0) BEGIN OUTER_SPRINT sph_text @2021 END ELSE // necromantic
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "nr" = 0) BEGIN OUTER_SPRINT sph_text @2021 END ELSE // necromantic restorative
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "nu" = 0) BEGIN OUTER_SPRINT sph_text @2022 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "pl" = 0) BEGIN OUTER_SPRINT sph_text @2029 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "pr" = 0) BEGIN OUTER_SPRINT sph_text @2023 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "su" = 0) BEGIN OUTER_SPRINT sph_text @2025 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "sn" = 0) BEGIN OUTER_SPRINT sph_text @2024 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "th" = 0) BEGIN OUTER_SPRINT sph_text @2014 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ti" = 0) BEGIN OUTER_SPRINT sph_text @2035 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "tr" = 0) BEGIN OUTER_SPRINT sph_text @2015 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "wa" = 0) BEGIN OUTER_SPRINT sph_text @2016 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "wd" = 0) BEGIN OUTER_SPRINT sph_text @2030 END ELSE
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "we" = 0) BEGIN OUTER_SPRINT sph_text @2017 END ELSE BEGIN
+                                                                  OUTER_SPRINT sph_text "" END
+          
+        ACTION_IF ("%sph_text%" STRING_COMPARE_CASE "") BEGIN // only if sphere is legit 
+          OUTER_SPRINT working_sphere ~%working_sphere%%separator%%sph_text%~
+        END  
+        
+      END // end of blank check for params     
+      
+    END // end of php_each for params
+    
+    ACTION_IF ("%working_sphere%" STRING_COMPARE_CASE "%sphere_text%") BEGIN // don't proceed unless we've actually gotten some sphere text
+
+      COPY_EXISTING ~%spell_res%.spl~ ~override~
+        READ_LONG 0x34 level
+        READ_BYTE 0x1e flags
+        PATCH_IF ((flags  BAND BIT0) = 0) THEN BEGIN SET allow_chaotic = 1   END ELSE BEGIN SET allow_chaotic = 0   END
+        PATCH_IF ((flags  BAND BIT1) = 0) THEN BEGIN SET allow_evil = 1      END ELSE BEGIN SET allow_evil = 0      END
+        PATCH_IF ((flags  BAND BIT2) = 0) THEN BEGIN SET allow_good = 1      END ELSE BEGIN SET allow_good = 0      END
+        PATCH_IF ((flags  BAND BIT3) = 0) THEN BEGIN SET allow_geneutral = 1 END ELSE BEGIN SET allow_geneutral = 0 END
+        PATCH_IF ((flags  BAND BIT4) = 0) THEN BEGIN SET allow_lawful = 1    END ELSE BEGIN SET allow_lawful = 0    END
+        PATCH_IF ((flags  BAND BIT5) = 0) THEN BEGIN SET allow_lcneutral = 1 END ELSE BEGIN SET allow_lcneutral = 0 END
+        PATCH_IF ((allow_chaotic + allow_evil + allow_good + allow_geneutral + allow_lawful + allow_lcneutral) = 6) THEN BEGIN
+          SET allow_all = 1
+        END ELSE BEGIN
+          SET allow_all = 0
+        END
+        WRITE_BYTE 0x21 (THIS BOR (BIT6 + BIT7)) // don't show up automatically in spellbooks
+        READ_LONG 0x50 desc_strref
+        READ_STRREF 0x50 desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+            PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP ~%sphere_match%~) THEN BEGIN // description lacks sphere line
+              REPLACE_TEXTUALLY ~%level_match%~ ~\1\2%WNL%%working_sphere%~
+            END ELSE BEGIN // sphere line exists
+              REPLACE_TEXTUALLY ~%sphere_match%~ ~%working_sphere%~
+            END
+          END
+        END
+        BUT_ONLY
+        
+      STRING_SET_EVALUATE desc_strref "%desc%"
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres_spell_info BEGIN 
+        ~%spell_res%~, ~%params_1%~, ~%params_2%~, ~%params_3%~, ~%params_4%~, ~%level%~, ~%allow_all%~, ~%allow_good%~, ~%allow_geneutral%~, ~%allow_evil%~, ~%allow_lawful%~, ~%allow_lcneutral%~, ~%allow_chaotic%~ => ~%spell_res%~
+      END          
+      
+      ACTION_IF allow_all = 0 THEN BEGIN
+
+        COPY ~divine_remix/spheres/template.eff~ ~override/cddr%working%.eff~
+          WRITE_ASCIIE 0x30 ~%spell_res%~ #8
+
+      END
+      
+    END // sphere text check
+
+  END // proceed check 
+
+END // ACTION_PHP_EACH cd_spheres AS params => symbol
+
+/////                                                  \\\\\
+///// create sphere clab templates, spells             \\\\\
+/////                                                  \\\\\
+
+ACTION_FOR_EACH sphere IN al an as cs cm co cr di ex ea ee ef ew gu he lw ne nr nu pl pr su sn th ti tr wa wd we BEGIN
+
+  ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
+
+    COPY ~weidu_external/divine_remix/spheres/%class%.2da~ ~weidu_external/divine_remix/spheres/%class%_%sphere%_major.2da~
+      REPLACE_TEXTUALLY ~CDREPLACE\([1-7]\)~ ~AP_CDDR%sphere%\1~
+
+    COPY ~weidu_external/divine_remix/spheres/%class%_%sphere%_major.2da~ ~weidu_external/divine_remix/spheres/%class%_%sphere%_minor.2da~
+      REPLACE_TEXTUALLY ~AP_CDDR%sphere%[4-7]~ ~****~ // delete levels 4-7 for minor access
+
+  END
+  
+  OUTER_FOR (index = 1 ; index < 8 ; ++index) BEGIN
+  
+    COPY ~divine_remix/spheres/template.spl~ ~override/cddr%sphere%%index%.spl~
+      PATCH_PHP_EACH cd_spheres_spell_info AS params => spell BEGIN
+        PATCH_IF ((("%sphere%" STRING_COMPARE_CASE "%params_1%" = 0) OR   // working sphere matches spell's primary
+                   ("%sphere%" STRING_COMPARE_CASE "%params_2%" = 0) OR   // secondary
+                   ("%sphere%" STRING_COMPARE_CASE "%params_3%" = 0)) AND // or tertiary sphere
+                  (index = params_5)) BEGIN // level matches
+          PATCH_IF params_6 THEN BEGIN // allow all
+            LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = EVAL ~%spell%~ END
+          END ELSE BEGIN // for alignment-restricted spells, effs were created in previous step, just need to add the 177 pointer to them
+            PATCH_IF params_7 BEGIN // allow good
+              PATCH_IF (params_12 AND params_11 AND params_10) BEGIN // no lawful/chaotic restrictions
+                LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 1 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END // mask good
+              END ELSE BEGIN
+                PATCH_IF params_12 BEGIN // chaotic allowed
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 49 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF params_11 BEGIN // lc-neutral allowed
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 33 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF params_10 BEGIN // lawful allowed
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 17 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+              END
+            END
+            PATCH_IF (allow_geneutral = 1) BEGIN
+              PATCH_IF (params_12 AND params_11 AND params_10) BEGIN // no lawful/chaotic restrictions
+                LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 2 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END // mask g/e neutral
+              END ELSE BEGIN
+                PATCH_IF params_12 BEGIN // chaotic allowed
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 50 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF params_11 BEGIN // lc-neutral allowed
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 34 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF params_10 BEGIN // lawful allowed
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 18 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+              END
+            END
+            PATCH_IF (allow_evil = 1) BEGIN
+              PATCH_IF (params_12 AND params_11 AND params_10) BEGIN // no lawful/chaotic restrictions
+                LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 3 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END // mask evil
+              END ELSE BEGIN
+                PATCH_IF params_12 BEGIN // chaotic allowed // chaotic allowed
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 51 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF params_11 BEGIN // lc-neutral allowed
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 35 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+                PATCH_IF params_10 BEGIN // lawful allowed
+                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 19 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
+                END
+              END
+            END
+          END // alow all check
+        END // sphere/level check
+      END // php_each        
+  
+  END // outer_for
+  
+END // ACTION_FOR_EACH sphere iterations
+
+/////                                                  \\\\\
+///// apply spheres to classes and kits                \\\\\
+/////                                                  \\\\\
+
+// most of the work here gets offloaded to the cd_kit_sphere_v9 function in macros.tph
+
+// cleric-rangers are a problem, kinda. They can either get rangers spells as they gain access to the relevant cleric levels (oBG2 behavior)
+// or those spells get delayed to when they would get them normally as a ranger (EE behavior). Thanks to ToBEx on oBG2 and an ini setting on 
+// the EEs, both of these scenarios are available everywhere. If they get the ranger spells as cleric spells, it's simple: we run this function
+// as a cleric class with the ranger domains added. 
+
+// the other scenario is more difficult. We get around this by making an exception: we first build a small, default ranger table and stash it in
+// weidu_external. Any cleric-rangers processed after that get processed as clerics and then get this mini-table tacked on. 
+
+// build special ranger table
+COPY ~weidu_external/divine_remix/spheres/ranger_al_major.2da~ ~weidu_external/divine_remix/spheres/cd_ranger_cleric.2da~
+  APPEND_FILE ~weidu_external/divine_remix/spheres/ranger_an_major.2da~ 
+  APPEND_FILE ~weidu_external/divine_remix/spheres/ranger_he_major.2da~ 
+  APPEND_FILE ~weidu_external/divine_remix/spheres/ranger_pl_major.2da~ 
+  APPEND_FILE ~weidu_external/divine_remix/spheres/ranger_we_major.2da~ 
+
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // generic cleric
+  INT_VAR
+    string                  = 9580
+    cr_exception            = 2 // update the string only
+  STR_VAR
+    table                   = clabrn01
+    class                   = cleric
+    all                     = major
+    charm                   = major
+    combat                  = major
+    creation                = major
+    divination              = major
+    elemental_earth         = minor
+    elemental_water         = minor
+    guardian                = major
+    healing                 = major
+    necromantic             = major
+    necromantic_restorative = major
+    protection              = major
+    summoning               = major
+    // ranger
+//  all                     = major
+    animal                  = major
+//  healing                 = major
+    plant                   = major
+    weather                 = major
+END 
+
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_apply_kit_sphere BEGIN
+
+  // kitname, clan, class => description
+  CLERIC,              clabpr01,  3, 0 =>   9559
+  PALADIN,             clabpa01,  6, 0 =>   9558
+  FIGHTER_CLERIC,      clabpr01,  8, 0 =>   9573
+  DRUID,               clabdr01, 11, 0 =>   9560
+  RANGER,              clabrn01, 12, 0 =>   9557
+  CLERIC_MAGE,         clabpr01, 14, 0 =>   9577
+  CLERIC_THIEF,        clabpr01, 15, 0 =>   9578
+  FIGHTER_DRUID,       clabdr01, 16, 0 =>   9579
+  FIGHTER_MAGE_CLERIC, clabpr01, 17, 0 =>   9581
+//CLERIC_RANGER,       clabpr01, 18, 0 =>   9580 // handled special, above
+  SHAMAN,              clabsh01, 21, 0 => 103060
+
+END
+
+COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
+  COUNT_2DA_ROWS 9 rows
+  FOR (index = 0 ; index < rows ; ++index) BEGIN
+    READ_2DA_ENTRY index 8 9 class
+    PATCH_IF ((IS_AN_INT class) AND ((class = 3) OR (class = 6) OR (class = 8) OR (class = 11) OR (class = 12) OR ((class >= 14) AND (class <= 18)) OR (class = 21))) BEGIN 
+      READ_2DA_ENTRY index 1 9 name
+      READ_2DA_ENTRY index 4 9 string
+      READ_2DA_ENTRY index 5 9 clab
+      READ_2DA_ENTRY index 0 9 kit
+      SET kit += 0x4000
+      DEFINE_ASSOCIATIVE_ARRAY cd_apply_kit_sphere BEGIN ~%name%~, ~%clab%~, ~%class%~, ~%kit%~ => ~%string%~ END
+      //PATCH_PRINT "building ~%name%~, ~%clab%~, ~%class%~, ~%kit%~ => ~%string%~"
+    END
+  END   
+  BUT_ONLY
+  
+ACTION_PHP_EACH cd_apply_kit_sphere AS params => strref BEGIN
+  
+  ACTION_IF FILE_EXISTS ~divine_remix/spheres/kit_%params_1%.tpa~ BEGIN // if we have a kit-specific definition, use it
+    //PRINT  ~using kit for %params_0%...~
+    INCLUDE  ~divine_remix/spheres/kit_%params_1%.tpa~
+  END ELSE BEGIN   
+    //PRINT  ~using class for %params_0%...~
+    INCLUDE  ~divine_remix/spheres/generic_%params_2%.tpa~        // otherwise apply a generic function for their class
+  END  
+  
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// spellbook time                                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// when we processed kits, we made a standalone chunk of 2da that got appended to the clab tables. 
+// now we turn that chunk into a WeiDU array of spells usable by that kit along with level and restrictions.
+ACTION_BASH_FOR ~weidu_external\divine_remix\spheres~ ~^allowed_.+\.tpa$~ BEGIN
+
+  COPY ~%BASH_FOR_FILESPEC%~ ~%BASH_FOR_FILESPEC%~
+    SPRINT new ~~
+    COUNT_2DA_ROWS 50 rows
+    FOR (row = 0 ; row < rows ; ++row) BEGIN
+      FOR (column = 0 ; column < 50 ; ++column) BEGIN
+        READ_2DA_ENTRY row column 50 entry
+        PATCH_IF ("%entry%" STRING_COMPARE_REGEXP ~AP_CDDR[a-z][a-z][0-9]~ = 0) BEGIN
+          INNER_PATCH_SAVE entry ~%entry%~ BEGIN
+            REPLACE_TEXTUALLY ~AP_CDDR~ ~%column%~
+          END
+          SPRINT new ~%new%%WNL%%entry%~
+        END
+      END
+    END      
+
+<<<<<<<<./inline/foo.tpa
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spell_allowed BEGIN
+%new%
+END
+>>>>>>>>
+  COPY ~./inline/foo.tpa~ ~%BASH_FOR_FILESPEC%~ EVALUATE_BUFFER // replace
+    REPLACE_EVALUATE ~\([0-9]+\)\([a-z][a-z]\)\([0-9]\)~ BEGIN
+      SPRINT ~replace~ ~~
+      PATCH_PHP_EACH cd_spheres_spell_info AS params => spell BEGIN
+        PATCH_IF ((("%MATCH2%" STRING_COMPARE_CASE "%params_1%" = 0) OR   // working sphere matches spell's primary
+                   ("%MATCH2%" STRING_COMPARE_CASE "%params_2%" = 0) OR   // secondary
+                   ("%MATCH2%" STRING_COMPARE_CASE "%params_3%" = 0)) AND // or tertiary sphere
+                  (MATCH3 = params_5)) BEGIN // level matches
+          // building new array: resref, level castable, , spell level, ~%allow_all%~, ~%allow_good%~, ~%allow_geneutral%~, ~%allow_evil%~, ~%allow_lawful%~, ~%allow_lcneutral%~, ~%allow_chaotic%~ => ~%spell_res%~
+          SPRINT replace "%replace%%WNL%  ~%params_0%~, ~%MATCH1%~, ~%MATCH3%~, ~%params_6%~, ~%params_7%~, ~%params_8%~, ~%params_9%~, ~%params_10%~, ~%params_11%~, ~%params_12%~ => 0"
+        END
+      END
+    END ~%replace%~  
+    REPLACE_TEXTUALLY ~[ %TAB%]*[%LNL%%MNL%%WNL%]+~ ~%WNL%~
+    
+END
+
+PRINT @3
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+  SET casterlevel = 0
+  READ_BYTE 0x273 class
+  PATCH_IF ((class = 3) OR (class = 6) OR (class = 11) OR (class = 12) OR (class = 14) OR (class = 15) OR (class = 18) OR (class = 21)) BEGIN // single or multis where divine caster is level1
+    READ_BYTE 0x234 casterlevel
+  END ELSE   
+  PATCH_IF ((class = 8) OR (class = 16)) BEGIN
+    READ_BYTE 0x235 casterlevel
+  END ELSE  
+  PATCH_IF (class = 17) BEGIN
+    READ_BYTE 0x236 casterlevel
+  END
+  PATCH_IF casterlevel BEGIN // only proceed if we have a divine caster  
+    READ_LONG 0x2ac minfo_num
+    PATCH_IF minfo_num != 17 BEGIN
+      //PATCH_PRINT ~incomplete memorization array, skipping~
+    END ELSE BEGIN   
+      SPRINT clab ~~
+      READ_SHORT 0x246 kit
+      PATCH_IF (kit != 0) AND (kit != 0x4000) BEGIN // kitted
+        PATCH_PHP_EACH cd_apply_kit_sphere AS params => strref BEGIN
+          PATCH_IF params_3 = kit BEGIN 
+            SPRINT clab ~%params_1%~
+          END
+        END
+      END
+      PATCH_IF (("%clab%" STRING_COMPARE_CASE "" = 0) OR                                       // no matching clab OR
+                (!FILE_EXISTS ~weidu_external/divine_remix/spheres/allowed_%clab%.tpa~)) BEGIN // clab doesn't have a custom
+        PATCH_PHP_EACH cd_apply_kit_sphere AS params => strref BEGIN
+          PATCH_IF params_2 = class BEGIN // then use generic class clab
+            SPRINT clab ~%params_1%~
+          END
+        END
+      END 
+      PATCH_IF (("%clab%" STRING_COMPARE_CASE "" = 0) OR                                       // no matching clab OR
+                (!FILE_EXISTS ~weidu_external/divine_remix/spheres/allowed_%clab%.tpa~)) BEGIN // clab doesn't have a custom
+        //PATCH_PRINT ~no array of allowed spells found, skipping~
+      END ELSE BEGIN
+        CLEAR_ARRAY cd_spell_allowed
+        INNER_ACTION BEGIN
+          INCLUDE ~weidu_external/divine_remix/spheres/allowed_%clab%.tpa~      
+        END  
+        // now we have our allowed spell array, let's get some more data
+        SET known_delta = 0
+        READ_BYTE 0x27b alignment
+        READ_LONG 0x2a0 known_off
+        READ_LONG 0x2a4 known_num
+        PATCH_IF known_num BEGIN // sanity check
+          PATCH_IF ((alignment != 0x11) AND (alignment != 0x12) AND (alignment != 0x13) AND (alignment != 0x21) AND (alignment != 0x22) AND 
+                    (alignment != 0x23) AND (alignment != 0x31) AND (alignment != 0x32) AND (alignment != 0x33)) BEGIN
+            SET alignment = 0 // if not one of the valid alignments, don't bother tryig to check
+          END  
+          FOR (index = 0 ; index < known_num ; ++index) BEGIN
+            READ_ASCII (known_off + 0x00 + (index * 0x0c)) spell
+            PATCH_IF ("%spell%" STRING_COMPARE_REGEXP "^[Ss][Pp][Pp][Rr][1-7][0-4][0-9]$" = 0) BEGIN 
+              SET match = 0
+              PATCH_PHP_EACH cd_spell_allowed AS pm => key BEGIN
+                PATCH_IF ("%spell%" STRING_COMPARE_CASE "%pm_0%" = 0) BEGIN    // if matched
+                  PATCH_IF ((casterlevel >= pm_1) AND                          // should I know this spell at this level?
+                            (((alignment = 0)    OR  (pm_3 = 1)     ) OR       // spell has no alignment restrictions or I have no valid alignment    
+                             ((alignment = 0x11) AND (pm_7 AND pm_4)) OR       // LG and spell is allowed for lawful and good  
+                             ((alignment = 0x12) AND (pm_7 AND pm_5)) OR       // LN and spell is allowed for lawful and ge-neutral
+                             ((alignment = 0x13) AND (pm_7 AND pm_6)) OR       // LE and spell is allowed for lawful and evil  
+                             ((alignment = 0x21) AND (pm_8 AND pm_4)) OR       // NG and spell is allowed for lc-neutral and good  
+                             ((alignment = 0x22) AND (pm_8 AND pm_5)) OR       // TN and spell is allowed for lc-neutral and ge-neutral
+                             ((alignment = 0x23) AND (pm_8 AND pm_6)) OR       // NE and spell is allowed for lc-neutral and evil
+                             ((alignment = 0x31) AND (pm_9 AND pm_4)) OR       // CG and spell is allowed for chaotic and good  
+                             ((alignment = 0x32) AND (pm_9 AND pm_5)) OR       // CN and spell is allowed for chaotic and ge-neutral
+                             ((alignment = 0x33) AND (pm_9 AND pm_6)))) BEGIN  // CE and spell is allowed for chaotic and evil
+                    SET match = 1
+                    //PATCH_PRINT ~%SOURCE_RES%: confirmed %spell% as a good spell~
+                    DEFINE_ASSOCIATIVE_ARRAY cd_spell_allowed BEGIN 
+                      ~%pm_0%~, ~%pm_1%~, ~%pm_2%~, ~%pm_3%~, ~%pm_4%~, ~%pm_5%~, ~%pm_6%~, ~%pm_7%~, ~%pm_8%~, ~%pm_9%~ => 1 END
+                  END
+                END
+              END
+            END
+            PATCH_IF !match BEGIN // if no positive match, delete
+              //PATCH_PRINT ~%SOURCE_RES%: confirmed %spell% as a bad spell, removing~
+              DELETE_BYTES (known_off + 0x00 + (index * 0x0c)) 0x0c
+              SET known_delta -= 1    
+              SET known_num -= 1                 
+              SET index -= 1     
+            END              
+          END // known FOR loop  
+          PATCH_PHP_EACH cd_spell_allowed AS pm => key BEGIN
+             PATCH_IF ((key = 0) AND                                     // if I'm not already in the spellbook
+                       (casterlevel >= pm_1) AND                         // should I know this spell at this level?
+                      (((alignment = 0)    OR  (pm_3 = 1)     ) OR       // spell has no alignment restrictions or I have no valid alignment    
+                       ((alignment = 0x11) AND (pm_7 AND pm_4)) OR       // LG and spell is allowed for lawful and good  
+                       ((alignment = 0x12) AND (pm_7 AND pm_5)) OR       // LN and spell is allowed for lawful and ge-neutral
+                       ((alignment = 0x13) AND (pm_7 AND pm_6)) OR       // LE and spell is allowed for lawful and evil  
+                       ((alignment = 0x21) AND (pm_8 AND pm_4)) OR       // NG and spell is allowed for lc-neutral and good  
+                       ((alignment = 0x22) AND (pm_8 AND pm_5)) OR       // TN and spell is allowed for lc-neutral and ge-neutral
+                       ((alignment = 0x23) AND (pm_8 AND pm_6)) OR       // NE and spell is allowed for lc-neutral and evil
+                       ((alignment = 0x31) AND (pm_9 AND pm_4)) OR       // CG and spell is allowed for chaotic and good  
+                       ((alignment = 0x32) AND (pm_9 AND pm_5)) OR       // CN and spell is allowed for chaotic and ge-neutral
+                       ((alignment = 0x33) AND (pm_9 AND pm_6)))) BEGIN // CE and spell is allowed for chaotic and evil
+              INSERT_BYTES (known_off + 0x00) 0x0c
+              WRITE_ASCIIE (known_off + 0x00) ~%pm_0%~   // spell res
+              WRITE_SHORT  (known_off + 0x08) (pm_2 - 1) // level
+              SET known_delta += 1    
+              SET known_num += 1
+              //PATCH_PRINT ~%SOURCE_RES%: missing good spell %pm_0%, adding~
+              DEFINE_ASSOCIATIVE_ARRAY cd_spell_allowed BEGIN 
+                ~%pm_0%~, ~%pm_1%~, ~%pm_2%~, ~%pm_3%~, ~%pm_4%~, ~%pm_5%~, ~%pm_6%~, ~%pm_7%~, ~%pm_8%~, ~%pm_9%~ => 1 END
+            END
+          END // done with known spells check
+          
+          PATCH_IF known_delta BEGIN // fix offsets is number of known spells changed
+            //PATCH_PRINT ~%SOURCE_RES%: knowb spells have changed by %known_delta%~
+            WRITE_LONG 0x2a4 known_num
+            PATCH_FOR_EACH off IN 0x2a8 0x2b0 0x2b8 0x2bc 0x2c4 BEGIN
+              READ_LONG off offcheck
+              PATCH_IF offcheck > known_off BEGIN
+                WRITE_LONG off (THIS + (0x0c * known_delta)) // can be negative
+              END
+            END
+          END 
+        END // known_num check
+        READ_LONG 0x2b4 mem_num
+        PATCH_IF mem_num BEGIN // sanity check
+          READ_LONG 0x2a8 minfo_off
+          READ_LONG 0x2b0 mem_off
+          FOR (index = 0 ; index < 7 ; ++index) BEGIN
+            CLEAR_ARRAY cd_spell_working
+            SET available = 0
+            PATCH_PHP_EACH cd_spell_allowed AS pm => key BEGIN
+              PATCH_IF ((key = 1) AND (pm_2 = (index + 1))) BEGIN // if allowed (key) and the correct level, make mini-array
+                DEFINE_ASSOCIATIVE_ARRAY cd_spell_working BEGIN ~%available%~ => ~%pm_0%~ END
+                SET available += 1
+              END
+            END
+            PATCH_IF available BEGIN // don't bother if we don't have anything to replace them with          
+              READ_LONG (minfo_off + 0x08 + (0x10 * index)) minfo_mem_idx
+              READ_LONG (minfo_off + 0x0c + (0x10 * index)) minfo_mem_num
+              FOR (index2 = 0 ; index2 < minfo_mem_num ; ++index2) BEGIN 
+                READ_ASCII (mem_off + 0x00 + (0x0c * (index2 + minfo_mem_idx))) spell
+                SET match = 0
+                PATCH_PHP_EACH cd_spell_working AS idx => resref BEGIN
+                  PATCH_IF ("%spell%" STRING_COMPARE_CASE "%resref%" = 0) BEGIN    // if matched
+                    SET match = 1
+                  END
+                END 
+                PATCH_IF !match BEGIN // if not matched, illegal spell, time to replace
+                  SET select = RANDOM(0 (available - 1))
+                  WRITE_ASCIIE (mem_off + 0x00 + (0x0c * (index2 + minfo_mem_idx))) $cd_spell_working("%select%") #8
+                  READ_ASCII (mem_off + 0x00 + (0x0c * (index2 + minfo_mem_idx))) spell_new
+                  //PATCH_PRINT ~%SOURCE_RES%: replaced %spell% with %spell_new%~
+                END
+              END // index2 for
+            END // available check
+          END // index for (mem info loop)
+        END // mem_num check  
+      END // valid allowed array check
+    END // minfo_num check          
+  END // caster level check
+  BUT_ONLY  
+      /*
+          0 resref, 
+          1 level castable, 
+          2 spell level, 
+          3 ~%allow_all%~, 
+          4 ~%allow_good%~, 
+          5 ~%allow_geneutral%~, 
+          6 ~%allow_evil%~, 
+          7 ~%allow_lawful%~, 
+          8 ~%allow_lcneutral%~, 
+          9 ~%allow_chaotic%~ => ~%spell_res%~
+*/

@@ -1,0 +1,29 @@
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // oghma
+  INT_VAR
+    string                  = ~%strref%~
+  STR_VAR
+    table                   = EVAL ~%params_1%~
+    class                   = cleric
+    all                     = major
+    animal                  = minor
+    astral                  = major
+    charm                   = major
+    combat                  = major
+    creation                = minor
+    divination              = major
+    elemental               = major
+    elemental_air           = major
+    elemental_earth         = major
+    elemental_fire          = major
+    elemental_water         = major
+    guardian                = major
+    healing                 = major
+    necromantic             = minor
+    necromantic_restorative = minor
+    protection              = major
+    summoning               = major
+    sun                     = minor
+    thoughts                = major
+    travelers               = major
+    wards                   = minor
+  END

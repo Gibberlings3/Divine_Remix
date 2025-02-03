@@ -1,0 +1,23 @@
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // helm
+  INT_VAR
+    string                  = ~%strref%~
+  STR_VAR
+    table                   = EVAL ~%params_1%~
+    class                   = cleric
+    all                     = major
+    astral                  = major
+    combat                  = major
+    creation                = minor
+    divination              = major
+    elemental               = minor
+    elemental_air           = minor
+    elemental_earth         = minor
+    elemental_fire          = minor
+    elemental_water         = minor
+    guardian                = major
+    healing                 = minor
+    protection              = major
+    sun                     = major
+    war                     = minor
+    wards                   = major
+  END

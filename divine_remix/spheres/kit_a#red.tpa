@@ -1,0 +1,21 @@
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // red knight
+  INT_VAR
+    string                  = ~%strref%~
+  STR_VAR
+    table                   = EVAL ~%params_1%~
+    class                   = cleric
+    all                     = major
+    charm                   = major
+    combat                  = major
+    creation                = minor
+    divination              = major
+    guardian                = major
+    law                     = major
+    necromantic             = minor
+    necromantic_restorative = minor
+    protection              = major
+    thoughts                = minor
+    travelers               = major
+    war                     = major
+    wards                   = minor
+  END

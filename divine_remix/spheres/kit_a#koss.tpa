@@ -1,0 +1,18 @@
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // kossuth
+  INT_VAR
+    string                  = ~%strref%~
+  STR_VAR
+    table                   = EVAL ~%params_1%~
+    class                   = cleric
+    all                     = major
+    combat                  = major
+    divination              = minor
+    elemental_air           = minor
+    elemental_earth         = minor
+    elemental_fire          = major
+    healing                 = major
+    protection              = minor
+    summoning               = major
+    sun                     = major
+    war                     = minor
+  END

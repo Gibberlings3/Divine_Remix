@@ -1,0 +1,13 @@
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // generic ranger
+  INT_VAR
+    string                  = ~%strref%~
+  STR_VAR
+    table                   = EVAL ~%params_1%~
+    class                   = ranger
+    all                     = major
+    animal                  = major
+    healing                 = major
+    plant                   = major
+    weather                 = major
+  END
+  

@@ -1,0 +1,7 @@
+LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // inquisitor
+  INT_VAR
+    string                  = ~%strref%~
+  STR_VAR
+    table                   = EVAL ~%params_1%~
+    class                   = paladin
+  END
