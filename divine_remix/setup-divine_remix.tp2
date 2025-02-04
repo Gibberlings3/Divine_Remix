@@ -944,10 +944,24 @@ COPY_EXISTING ~viconia.bcs~ ~override~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @2000 DESIGNATED 1000
-GROUP @10 GROUP @11 GROUP @13 // GROUP @12
-REQUIRE_PREDICATE (NOT ENGINE_IS ~bgee bg2ee iwdee~) ~This component is not compatible with EE engine.~
-//REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
-//                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+GROUP @21
+REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee iwdee eet~ @16
 LABEL ~cd_dr_spheres~
 
+OUTER_SET include_hlas = 0
 INCLUDE ~divine_remix/lib/spheres.tpa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// implement sphere system for HLAs                 \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @2039 DESIGNATED 1001
+GROUP @21
+REQUIRE_PREDICATE GAME_IS ~tob bgt bg2ee eet~ @16
+LABEL ~cd_dr_spheres_hlas~
+
+INCLUDE ~divine_remix/lib/hla.tpa~

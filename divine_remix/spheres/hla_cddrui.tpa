@@ -1,0 +1,17 @@
+LAUNCH_ACTION_FUNCTION cd_hla_sphere_v9
+  STR_VAR
+    source_table            = EVAL ~%pm_2%~
+    dest_table              = EVAL ~%pm_1%~
+    all                     = major
+    animal                  = major
+    elemental               = major
+    elemental_air           = major
+    elemental_earth         = major
+    elemental_fire          = major
+    elemental_water         = major
+    healing                 = major
+    plant                   = major
+    sun                     = major
+    weather                 = major
+  END
+  

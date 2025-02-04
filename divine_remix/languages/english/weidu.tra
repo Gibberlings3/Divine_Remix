@@ -37,6 +37,7 @@ of all divine casters in the game.~
 @18 = ~This functionality has already been installed from another mod.~
 @19 = ~Use conventional format for cleric kits~
 @20 = ~Use new format for cleric kits~
+@21 = ~Divine Sphere System~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -58,7 +59,8 @@ of all divine casters in the game.~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@2000 = ~Implement sphere system~
+@2000 = ~Implement sphere system for regular divine spells~
+@2039 = ~Implement sphere system for High-Level Abilities~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

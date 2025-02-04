@@ -1,0 +1,130 @@
+ACTION_IF !VARIABLE_IS_SET cd_spell_list_processing BEGIN
+
+  OUTER_SET cd_spell_list_processing = 1
+  
+  INCLUDE ~divine_remix/spheres/spell_list.tpa~
+  
+  ACTION_CLEAR_ARRAY cd_spheres_spell_info 
+  ACTION_PHP_EACH cd_spheres AS params => symbol BEGIN
+
+    // first, verify the spell exists before we waste any further time
+    OUTER_SET proceed = 0
+    OUTER_SET working = IDS_OF_SYMBOL (~spell~ ~%symbol%~)
+    ACTION_IF working > 0 BEGIN
+      LAF RES_NAME_OF_SPELL_NUM INT_VAR spell_num = working RET spell_res END
+      ACTION_IF FILE_EXISTS_IN_GAME ~%spell_res%.spl~ BEGIN
+        ACTION_IF ((!params_4) OR (!game_includes_tob)) BEGIN // only process HLAs if we're in a ToB game
+          OUTER_SET proceed = 1
+        END  
+      END
+    END      
+    
+    ACTION_IF proceed BEGIN
+
+      OUTER_SPRINT working_sphere ~%sphere_text%~
+      OUTER_SET iteration = 0
+    
+      ACTION_FOR_EACH sphere IN ~%params_1%~ ~%params_2%~ ~%params_3%~ BEGIN
+      
+        ACTION_IF iteration BEGIN OUTER_SPRINT separator ", " END ELSE BEGIN OUTER_SPRINT separator "" END 
+        OUTER_SET iteration += 1
+      
+        ACTION_IF ("%sphere%" STRING_COMPARE_CASE "") BEGIN // skip for blank secondary and tertiary entries
+
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "al" = 0) BEGIN OUTER_SPRINT sph_text @2001 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "an" = 0) BEGIN OUTER_SPRINT sph_text @2002 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "as" = 0) BEGIN OUTER_SPRINT sph_text @2003 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "cs" = 0) BEGIN OUTER_SPRINT sph_text @2004 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "cm" = 0) BEGIN OUTER_SPRINT sph_text @2005 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "co" = 0) BEGIN OUTER_SPRINT sph_text @2006 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "cr" = 0) BEGIN OUTER_SPRINT sph_text @2007 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "di" = 0) BEGIN OUTER_SPRINT sph_text @2008 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ex" = 0) BEGIN OUTER_SPRINT sph_text @2009 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ea" = 0) BEGIN OUTER_SPRINT sph_text @2010 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ee" = 0) BEGIN OUTER_SPRINT sph_text @2011 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ef" = 0) BEGIN OUTER_SPRINT sph_text @2012 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ew" = 0) BEGIN OUTER_SPRINT sph_text @2013 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "gu" = 0) BEGIN OUTER_SPRINT sph_text @2018 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "he" = 0) BEGIN OUTER_SPRINT sph_text @2019 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "lw" = 0) BEGIN OUTER_SPRINT sph_text @2020 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ne" = 0) BEGIN OUTER_SPRINT sph_text @2021 END ELSE // necromantic
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "nr" = 0) BEGIN OUTER_SPRINT sph_text @2021 END ELSE // necromantic restorative
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "nu" = 0) BEGIN OUTER_SPRINT sph_text @2022 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "pl" = 0) BEGIN OUTER_SPRINT sph_text @2029 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "pr" = 0) BEGIN OUTER_SPRINT sph_text @2023 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "su" = 0) BEGIN OUTER_SPRINT sph_text @2025 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "sn" = 0) BEGIN OUTER_SPRINT sph_text @2024 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "th" = 0) BEGIN OUTER_SPRINT sph_text @2014 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "ti" = 0) BEGIN OUTER_SPRINT sph_text @2035 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "tr" = 0) BEGIN OUTER_SPRINT sph_text @2015 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "wa" = 0) BEGIN OUTER_SPRINT sph_text @2016 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "wd" = 0) BEGIN OUTER_SPRINT sph_text @2030 END ELSE
+          ACTION_IF ("%sphere%" STRING_COMPARE_CASE "we" = 0) BEGIN OUTER_SPRINT sph_text @2017 END ELSE BEGIN
+                                                                    OUTER_SPRINT sph_text "" END
+            
+          ACTION_IF ("%sph_text%" STRING_COMPARE_CASE "") BEGIN // only if sphere is legit 
+            OUTER_SPRINT working_sphere ~%working_sphere%%separator%%sph_text%~
+          END  
+          
+        END // end of blank check for params     
+        
+      END // end of php_each for params
+      
+      ACTION_IF ("%working_sphere%" STRING_COMPARE_CASE "%sphere_text%") BEGIN // don't proceed unless we've actually gotten some sphere text
+      
+        ACTION_IF params_4 BEGIN // if HLA, just log for now and move on
+        
+          ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla BEGIN ~%spell_res%~, ~%params_1%~, ~%params_2%~, ~%params_3%~ => 0 END   
+          
+        END ELSE BEGIN   
+
+          COPY_EXISTING ~%spell_res%.spl~ ~override~
+            READ_LONG 0x34 level
+            READ_BYTE 0x1e flags
+            PATCH_IF ((flags  BAND BIT0) = 0) THEN BEGIN SET allow_chaotic = 1   END ELSE BEGIN SET allow_chaotic = 0   END
+            PATCH_IF ((flags  BAND BIT1) = 0) THEN BEGIN SET allow_evil = 1      END ELSE BEGIN SET allow_evil = 0      END
+            PATCH_IF ((flags  BAND BIT2) = 0) THEN BEGIN SET allow_good = 1      END ELSE BEGIN SET allow_good = 0      END
+            PATCH_IF ((flags  BAND BIT3) = 0) THEN BEGIN SET allow_geneutral = 1 END ELSE BEGIN SET allow_geneutral = 0 END
+            PATCH_IF ((flags  BAND BIT4) = 0) THEN BEGIN SET allow_lawful = 1    END ELSE BEGIN SET allow_lawful = 0    END
+            PATCH_IF ((flags  BAND BIT5) = 0) THEN BEGIN SET allow_lcneutral = 1 END ELSE BEGIN SET allow_lcneutral = 0 END
+            PATCH_IF ((allow_chaotic + allow_evil + allow_good + allow_geneutral + allow_lawful + allow_lcneutral) = 6) THEN BEGIN
+              SET allow_all = 1
+            END ELSE BEGIN
+              SET allow_all = 0
+            END
+            WRITE_BYTE 0x21 (THIS BOR (BIT6 + BIT7)) // don't show up automatically in spellbooks
+            READ_LONG 0x50 desc_strref
+            READ_STRREF 0x50 desc
+            PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+              INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+                PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP ~%sphere_match%~) THEN BEGIN // description lacks sphere line
+                  REPLACE_TEXTUALLY ~%level_match%~ ~\1\2%WNL%%working_sphere%~
+                END ELSE BEGIN // sphere line exists
+                  REPLACE_TEXTUALLY ~%sphere_match%~ ~%working_sphere%~
+                END
+              END
+            END
+            BUT_ONLY
+          
+          STRING_SET_EVALUATE desc_strref "%desc%"
+          
+          ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres_spell_info BEGIN 
+            ~%spell_res%~, ~%params_1%~, ~%params_2%~, ~%params_3%~, ~%params_4%~, ~%level%~, ~%allow_all%~, ~%allow_good%~, ~%allow_geneutral%~, ~%allow_evil%~, ~%allow_lawful%~, ~%allow_lcneutral%~, ~%allow_chaotic%~ => ~%spell_res%~
+          END  
+        
+          ACTION_IF !allow_all THEN BEGIN
+
+            COPY ~divine_remix/spheres/template.eff~ ~override/cddr%working%.eff~
+              WRITE_ASCIIE 0x30 ~%spell_res%~ #8
+
+          END
+          
+        END  
+        
+      END // sphere text check
+
+    END // proceed check 
+
+  END // ACTION_PHP_EACH cd_spheres AS params => symbol
+  
+END

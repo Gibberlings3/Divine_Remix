@@ -1,0 +1,113 @@
+/////                                                  \\\\\
+///// make new HLAs                                    \\\\\
+/////                                                  \\\\\
+
+COPY_EXISTING ~spcl900.spl~ ~override/cdprwrl.spl~ // hla whirlwind
+              ~spcl906.spl~ ~override/cdprpwr.spl~ // hla power attack
+              ~spcl907.spl~ ~override/cdprhdy.spl~ // hla hardiness
+              ~spcl917.spl~ ~override/cdpravd.spl~ // hla avoid death
+              ~spcl902.spl~ ~override/cdprdbl.spl~ // hla death blow
+              ~spcl908.spl~ ~override/cdprcry.spl~ // hla war cry
+              ~spcl922.spl~ ~override/cdprtrk.spl~ // hla tracking
+  LAUNCH_PATCH_MACRO cd_hla_descript
+
+COPY_EXISTING ~spcl913.spl~ ~override/cdprevd.spl~ // hla evasion
+  SAY UNIDENTIFIED_DESC @10176
+
+COPY_EXISTING ~spcl904.spl~ ~override/cdprrmg.spl~  // resist magic
+  SAY UNIDENTIFIED_DESC @177
+
+COPY ~Divine_Remix/spl/cdlthla.spl~ ~override~ // Lathander's Renewal
+  SAY NAME1 @10192
+  SAY NAME2 @10192
+  SAY UNIDENTIFIED_DESC @10193
+  SAY DESC @10193
+
+COPY ~Divine_Remix/spl/cdprscr.spl~ ~override~ // scribe scrolls
+  SAY NAME1 #70282
+  SAY NAME2 #70282
+  SAY UNIDENTIFIED_DESC @10102
+  SAY DESC @10102
+  
+/////                                                  \\\\\
+///// create sphere framework                          \\\\\
+/////                                                  \\\\\
+
+OUTER_SET include_hlas = 1
+INCLUDE ~divine_remix/spheres/spell_list_processing.tpa~
+  
+/////                                                  \\\\\
+///// make custom tables                               \\\\\
+/////                                                  \\\\\
+
+COPY_EXISTING ~lucl0.2da~ ~override~ // looking through HLA tables to get parameters for existing entries
+              ~ludr0.2da~ ~override~
+  COUNT_2DA_ROWS 10 rows
+  FOR (index = 0 ; index < rows ; ++index) BEGIN 
+    READ_2DA_ENTRY index 1 10 entry
+    PATCH_PHP_EACH cd_spheres_hla AS params => key BEGIN 
+      PATCH_IF !key BEGIN // skip if already matched
+        PATCH_IF ("%entry%" STRING_COMPARE_CASE "GA_%params_0%" = 0) BEGIN // matched
+          READ_2DA_ENTRY index 4 10 p1 // min lev
+          READ_2DA_ENTRY index 5 10 p2 // max lev
+          READ_2DA_ENTRY index 6 10 p3 // num allowed
+          READ_2DA_ENTRY index 7 10 p4 // prereq
+          READ_2DA_ENTRY index 8 10 p5 // exclusion
+          READ_2DA_ENTRY index 9 10 p6 // alignment
+          DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla BEGIN ~%params_0%~, ~%params_1%~, ~%params_2%~, ~%params_3%~, ~%params_4%~ => 1 END   
+          DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla_info BEGIN 
+            ~%params_0%~, ~%params_1%~, ~%params_2%~, ~%params_3%~, ~%p1%~, ~%p2%~, ~%p3%~, ~%p4%~, ~%p5%~, ~%p6%~ => ~%params_0%~
+          END
+        END
+      END 
+    END
+  END
+  BUT_ONLY
+
+ACTION_PHP_EACH cd_spheres_hla AS params => key BEGIN 
+  ACTION_IF !key BEGIN // if not found on tables, give default values
+    ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla_info BEGIN 
+      ~%params_0%~, ~%params_1%~, ~%params_2%~, ~%params_3%~, 16, 99, 1, ~*~, ~*~, ~*~ => ~%params_0%~   
+    END
+  END
+END
+
+// assign kits unique hla tables
+ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_sphere_hla_assign BEGIN
+// add druid, ranger, paladin tables
+  ~a#cyric~    , ~a#cyri~, cl0 => 0
+  ~a#FEYWARDEN~, ~a#feyw~, cl0 => 0
+  ~a#koss~     , ~a#koss~, cl0 => 0
+  ~a#ogma~     , ~a#ogma~, cl0 => 0
+  ~a#ooze~     , ~a#ooze~, dr0 => 0
+  ~a#red~      , ~a#red~ , cl0 => 0
+  ~a#shar~     , ~a#shar~, cl0 => 0
+  ~a#temp~     , ~a#temp~, cl0 => 0
+  ~ohtempus~   , ~a#temp~, cl0 => 0
+  ~cdilmatr~   , ~cdilma~, cl0 => 0
+  ~cdselune~   , ~cdselu~, cl0 => 0
+  ~cdxvim~     , ~cdxvim~, cl0 => 0
+  ~nmsune~     , ~nmsune~, cl0 => 0
+  ~talos~      , ~cdtalo~, cl0 => 0
+  ~helm~       , ~cdhelm~, cl0 => 0
+  ~lathander~  , ~cdlath~, cl0 => 0
+  ~ohtyr~      , ~cdtyr~ , cl0 => 0
+  ~cdtyr~      , ~cdtyr~ , cl0 => 0
+  ~CLERIC~     , ~cdcler~, cl0 => 0
+  ~DRUID~      , ~cddrui~, dr0 => 0
+END
+
+COPY_EXISTING ~luabbr.2da~ ~override~
+  PATCH_PHP_EACH cd_sphere_hla_assign AS pm => present BEGIN
+    REPLACE_EVALUATE CASE_INSENSITIVE ~^\(%pm_0%[ %TAB%]+\)[^ ^%TAB%]+[ %TAB%]*$~ BEGIN
+      DEFINE_ASSOCIATIVE_ARRAY cd_sphere_hla_assign BEGIN ~%pm_0%~, ~%pm_1%~, ~%pm_2%~ => 1 END
+    END ~%MATCH1% %pm_1%~
+  END
+  PRETTY_PRINT_2DA
+  BUT_ONLY
+
+ACTION_PHP_EACH cd_sphere_hla_assign AS pm => present BEGIN 
+  ACTION_IF present BEGIN
+    INCLUDE ~divine_remix/spheres/hla_%pm_1%.tpa~
+  END
+END  

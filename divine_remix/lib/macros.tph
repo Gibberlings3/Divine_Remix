@@ -1,6 +1,32 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// hla string replace                               \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+// used for patching original kit descriptions
+
+DEFINE_PATCH_MACRO cd_hla_descript BEGIN
+
+  READ_STRREF 0x50 desc
+  SPRINT warrior @10151
+  SPRINT rogue   @10152
+  SPRINT priest  @10134
+  SPRINT warrior @10153
+  INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+    REPLACE_TEXTUALLY ~%warrior%~ ~%priest%~
+    REPLACE_TEXTUALLY ~%rogue%~   ~%priest%~
+    REPLACE_TEXTUALLY ~%ranger%~  ~%priest%~
+  END
+  SAY 0x50 ~%desc%~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// cd_descript_replace                              \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -268,15 +294,23 @@ END
 
 INCLUDE ~divine_remix/lib/alter_header.tpa~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
 ///// CD_EXTEND-O-MATIC, patent pending                \\\\\
 /////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 INCLUDE ~divine_remix/lib/cd_extend-o-matic.tpa~
 
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
 ///// cd_dr_holy_weapon                                \\\\\
 /////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 // utilizes game_check vars and the extend-o-matic
 DEFINE_ACTION_FUNCTION cd_dr_holy_weapon 
@@ -330,7 +364,7 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
-///// kit sphere descript                              \\\\\
+///// cd_kit_sphere_v9                                 \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -701,5 +735,127 @@ BEGIN
     END    
     
   END // table check  
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// cd_hla_sphere_v9                                 \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_ACTION_FUNCTION cd_hla_sphere_v9
+  STR_VAR
+    source_table            = ""
+    dest_table              = ""
+    all                     = none
+    animal                  = none
+    astral                  = none
+    chaos                   = none
+    charm                   = none
+    combat                  = none
+    creation                = none
+    divination              = none
+    elemental               = none
+    elemental_air           = none
+    elemental_earth         = none
+    elemental_fire          = none
+    elemental_water         = none
+    guardian                = none
+    healing                 = none
+    law                     = none
+    necromantic             = none
+    necromantic_restorative = none
+    numbers                 = none
+    plant                   = none
+    protection              = none
+    summoning               = none
+    sun                     = none
+    thoughts                = none
+    time                    = none
+    travelers               = none
+    war                     = none
+    wards                   = none
+    weather                 = none
+BEGIN
+
+  ACTION_IF (("%source_table%" STRING_COMPARE_CASE "") AND ("%dest_table%" STRING_COMPARE_CASE "")) BEGIN  
+
+    ACTION_PHP_EACH cd_spheres_hla_info AS pm => resref BEGIN
+      OUTER_SET allowed = 0
+      ACTION_FOR_EACH sphere IN ~%pm_1%~ ~%pm_2%~ ~%pm_3%~ BEGIN
+        ACTION_IF !allowed BEGIN
+          ACTION_IF (("%all%" STRING_COMPARE_CASE "major" = 0)                     AND ("%sphere%" STRING_COMPARE_CASE "al" = 0)) BEGIN OUTER_SET allowed = 1 END  
+          ACTION_IF (("%animal%" STRING_COMPARE_CASE "major" = 0)                  AND ("%sphere%" STRING_COMPARE_CASE "an" = 0)) BEGIN OUTER_SET allowed = 1 END   
+          ACTION_IF (("%astral%" STRING_COMPARE_CASE "major" = 0)                  AND ("%sphere%" STRING_COMPARE_CASE "as" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%chaos%" STRING_COMPARE_CASE "major" = 0)                   AND ("%sphere%" STRING_COMPARE_CASE "cs" = 0)) BEGIN OUTER_SET allowed = 1 END   
+          ACTION_IF (("%charm%" STRING_COMPARE_CASE "major" = 0)                   AND ("%sphere%" STRING_COMPARE_CASE "cm" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%combat%" STRING_COMPARE_CASE "major" = 0)                  AND ("%sphere%" STRING_COMPARE_CASE "co" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%creation%" STRING_COMPARE_CASE "major" = 0)                AND ("%sphere%" STRING_COMPARE_CASE "cr" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%divination%" STRING_COMPARE_CASE "major" = 0)              AND ("%sphere%" STRING_COMPARE_CASE "di" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%elemental%" STRING_COMPARE_CASE "major" = 0)               AND ("%sphere%" STRING_COMPARE_CASE "ex" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%elemental_air%" STRING_COMPARE_CASE "major" = 0)           AND ("%sphere%" STRING_COMPARE_CASE "ea" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%elemental_earth%" STRING_COMPARE_CASE "major" = 0)         AND ("%sphere%" STRING_COMPARE_CASE "ee" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%elemental_fire%" STRING_COMPARE_CASE "major" = 0)          AND ("%sphere%" STRING_COMPARE_CASE "ef" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%elemental_water%" STRING_COMPARE_CASE "major" = 0)         AND ("%sphere%" STRING_COMPARE_CASE "ew" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%guardian%" STRING_COMPARE_CASE "major" = 0)                AND ("%sphere%" STRING_COMPARE_CASE "gy" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%healing%" STRING_COMPARE_CASE "major" = 0)                 AND ("%sphere%" STRING_COMPARE_CASE "he" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%law%" STRING_COMPARE_CASE "major" = 0)                     AND ("%sphere%" STRING_COMPARE_CASE "lw" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%necromantic%" STRING_COMPARE_CASE "major" = 0)             AND ("%sphere%" STRING_COMPARE_CASE "ne" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%necromantic_restorative%" STRING_COMPARE_CASE "major" = 0) AND ("%sphere%" STRING_COMPARE_CASE "nr" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%numbers%" STRING_COMPARE_CASE "major" = 0)                 AND ("%sphere%" STRING_COMPARE_CASE "nu" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%plant%" STRING_COMPARE_CASE "major" = 0)                   AND ("%sphere%" STRING_COMPARE_CASE "pl" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%protection%" STRING_COMPARE_CASE "major" = 0)              AND ("%sphere%" STRING_COMPARE_CASE "pr" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%summoning%" STRING_COMPARE_CASE "major" = 0)               AND ("%sphere%" STRING_COMPARE_CASE "su" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%sun%" STRING_COMPARE_CASE "major" = 0)                     AND ("%sphere%" STRING_COMPARE_CASE "sn" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%thoughts%" STRING_COMPARE_CASE "major" = 0)                AND ("%sphere%" STRING_COMPARE_CASE "th" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%time%" STRING_COMPARE_CASE "major" = 0)                    AND ("%sphere%" STRING_COMPARE_CASE "ti" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%travelers%" STRING_COMPARE_CASE "major" = 0)               AND ("%sphere%" STRING_COMPARE_CASE "tr" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%war%" STRING_COMPARE_CASE "major" = 0)                     AND ("%sphere%" STRING_COMPARE_CASE "wa" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%wards%" STRING_COMPARE_CASE "major" = 0)                   AND ("%sphere%" STRING_COMPARE_CASE "wd" = 0)) BEGIN OUTER_SET allowed = 1 END 
+          ACTION_IF (("%weather%" STRING_COMPARE_CASE "major" = 0)                 AND ("%sphere%" STRING_COMPARE_CASE "we" = 0)) BEGIN OUTER_SET allowed = 1 END 
+        END
+      END
+      ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla_working BEGIN ~%pm_0%~, ~%pm_4%~, ~%pm_5%~, ~%pm_6%~, ~%pm_7%~, ~%pm_8%~, ~%pm_9%~ => ~%allowed%~ END
+    END    
+    
+    COPY_EXISTING ~lu%source_table%.2da~ ~override/lu%dest_table%.2da~
+      LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove blank lines at end of file
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%][0-9]+[ %TAB%]+\*[ %TAB%]+.+$~ ~~ // delete empty ability lines
+      PATCH_PHP_EACH cd_spheres_hla_working AS pm => allowed BEGIN
+        PATCH_IF !allowed BEGIN
+          REPLACE_TEXTUALLY CASE_INSENSITIVE ~[%LNL%%MNL%%WNL%]+[0-9]+[ %TAB%]+GA_%pm_0%[ %TAB%]+.+~ ~~ // delete line
+        END ELSE BEGIN
+          REPLACE_EVALUATE ~\([ %TAB%]+GA_%pm_0%[ %TAB%]+\)~ BEGIN
+            DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla_working BEGIN ~%pm_0%~, ~%pm_1%~, ~%pm_2%~, ~%pm_3%~, ~%pm_4%~, ~%pm_5%~, ~%pm_6%~ => 2 END
+          END ~%MATCH1%~
+        END
+      END  
+
+    ACTION_PHP_EACH cd_spheres_hla_working AS pm => allowed BEGIN
+      ACTION_IF allowed = 1 BEGIN 
+        APPEND ~lu%dest_table%.2da~ ~1 GA_%pm_0% * * %pm_1% %pm_2% %pm_3% %pm_4% %pm_5% %pm_6%~
+      END
+    END
+    
+    COPY_EXISTING ~lu%dest_table%.2da~ ~override~
+      PATCH_IF FILE_EXISTS ~divine_remix/2da/hla_%dest_table%.2da~ BEGIN 
+        APPEND_FILE ~divine_remix/2da/hla_%dest_table%.2da~
+      END
+      APPEND_FILE ~divine_remix/spheres/hla_padding.2da~
+      COUNT_2DA_ROWS 10 rows
+      FOR (index = 0 ; index < rows ; ++index) BEGIN
+        PATCH_IF (index < 24) BEGIN
+          SET_2DA_ENTRY index 0 10 (index + 1) // re-number rows
+        END ELSE BEGIN
+          SET_2DA_ENTRY index 0 10 DELETE_ROW
+        END
+      END
+      REPLACE_TEXTUALLY ~[%LNL%%MNL%%WNL%]DELETE_ROW.+$~ ~~ // delete lines past 24
+      PRETTY_PRINT_2DA
+
+  END
 
 END

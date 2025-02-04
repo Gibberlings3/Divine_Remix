@@ -1,0 +1,25 @@
+LAUNCH_ACTION_FUNCTION cd_hla_sphere_v9
+  STR_VAR
+    source_table            = EVAL ~%pm_2%~
+    dest_table              = EVAL ~%pm_1%~
+    all                     = major
+    astral                  = major
+    charm                   = major
+    combat                  = minor
+    creation                = major
+    divination              = minor
+    elemental               = major
+    elemental_air           = major
+    elemental_earth         = major
+    elemental_fire          = major
+    elemental_water         = major
+    guardian                = minor
+    healing                 = major
+    necromantic_restorative = major
+    plant                   = major
+    sun                     = major
+    thoughts                = major
+    time                    = minor
+    wards                   = major
+    weather                 = major
+  END

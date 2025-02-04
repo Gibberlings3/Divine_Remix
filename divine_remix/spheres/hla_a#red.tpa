@@ -1,0 +1,19 @@
+LAUNCH_ACTION_FUNCTION cd_hla_sphere_v9
+  STR_VAR
+    source_table            = EVAL ~%pm_2%~
+    dest_table              = EVAL ~%pm_1%~
+    all                     = major
+    charm                   = major
+    combat                  = major
+    creation                = minor
+    divination              = major
+    guardian                = major
+    law                     = major
+    necromantic             = minor
+    necromantic_restorative = minor
+    protection              = major
+    thoughts                = minor
+    travelers               = major
+    war                     = major
+    wards                   = minor
+  END
