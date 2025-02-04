@@ -111,7 +111,7 @@ CLEAR_IDS_MAP
 OUTER_SET shaman_descript = 103060
 OUTER_SET bio             = "-1"
 ACTION_IF game_is_iwdee BEGIN
-  OUTER_SET shaman_descript = 40885
+  OUTER_SET shaman_descript = 40885 // iwdee sets bio per kit
 END ELSE
 ACTION_IF game_is_bgee BEGIN
   OUTER_SET shaman_descript = 32341

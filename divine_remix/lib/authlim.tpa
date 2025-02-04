@@ -3,16 +3,7 @@ ACTION_IF game_is_iwdee BEGIN
 END
 
 COPY ~divine_remix/spl/cdxvfear.spl~ ~override~  // immunity to fear (permanent innate spell)
-  PATCH_IF game_is_bgee BEGIN // bgee has different fear strings
-    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 20568 END // Morale Failure: Panic
-    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 25818 END // Panic
-  END ELSE
-  PATCH_IF game_is_iwdee BEGIN // iwdee has different fear strings
-    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 20568 END // Morale Failure: Panic
-    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 17427 END // Panic
-    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 35483 END // Panic
-    LPF CLONE_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = 35484 END // Panic
-  END
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 match_parameter1 = 14007 parameter1 = RESOLVE_STR_REF(@219) END // Panic
 
 ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi412 destination = cdxvgml RET_ARRAY cd_clone_spell_array END // greater malison

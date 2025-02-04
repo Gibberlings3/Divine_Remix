@@ -830,7 +830,7 @@ COPY_EXISTING ~spcl311.spl~ ~override/nmrnwr1.spl~ // 'Enhanced Charm Animal' in
   SAY NAME2 @41504
   SAY UNIDENTIFIED_DESC @41505
   SAY DESC @41505
-  LPF ALTER_EFFECT INT_VAR match_duration = 120 duration = 240 END
+  LPF ALTER_EFFECT INT_VAR match_duration = ((120 - (60 * game_is_iwdee))) duration = 240 END
   PATCH_IF !enhanced_edition BEGIN
     LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = cdca120 resource = cdca240 END
   END
