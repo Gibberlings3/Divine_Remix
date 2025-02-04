@@ -394,6 +394,23 @@ INCLUDE ~divine_remix/lib/strifeleader.tpa~
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// Holy Justice of Tyr kit                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @13300 DESIGNATED 133
+GROUP @10
+REQUIRE_PREDICATE ((MOD_IS_INSTALLED ~divine_remix.tp2~ ~100~) OR  // conventional CR
+                   (MOD_IS_INSTALLED ~divine_remix.tp2~ ~101~)) @1 // unconventional
+REQUIRE_PREDICATE NOT FILE_EXISTS_IN_GAME ~ohtempus.2da~ @14
+LABEL ~cd_dr_holy_justice~
+
+INCLUDE ~divine_remix/lib/holy_justice.tpa~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// Druid Remix                                      \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

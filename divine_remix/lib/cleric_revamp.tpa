@@ -104,6 +104,19 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ THEN BEGIN // do tempus as part of 
   INCLUDE ~divine_remix/lib/battleguard_common.tpa~
   
 END
+     
+/////                                                  \\\\\
+///// tyr check                                        \\\\\
+/////                                                  \\\\\
+
+ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ THEN BEGIN // do tyr as part of the main component on the EEs
+
+  COPY ~divine_remix/2da/cdtyr.2da~ ~override/ohtyr.2da~
+    REPLACE_TEXTUALLY ~cdtyr9~  ~ohtyr1~
+    REPLACE_TEXTUALLY ~cdtyr11~ ~ohtyr2~
+  INCLUDE ~divine_remix/lib/holy_justice_common.tpa~
+  
+END
 
 PRINT @3
 INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~

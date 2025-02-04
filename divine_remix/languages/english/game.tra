@@ -1167,6 +1167,75 @@ Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and conf
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// Holy Justice of Tyr kit                          \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@10148 = ~Holy Justice~
+@10149 = ~holy justice~
+@10150 = ~HOLY JUSTICE~
+@13301 = ~HOLY JUSTICE OF TYR: Tyr is the deity of law and justice and is primarily concerned with the punishment of wrongdoers and the general furthering of law and good in the world. The belief in justice through (benevolent) force, or at least armed vigilance, is the reason for Tyr's existence. Tyr holds great prominence in the pantheon due to his position as leader of the Triad, a trio of lawful good gods that are collectively devoted to the concepts of courage, justice, perseverance, relief of suffering, duty, obedience, honor, and to some extent, righteous martyrdom.
+
+Advantages:
+– May cast Exaltation once per day every 5 levels of the caster (starts at 1st level with one use).
+
+EXALTATION: This spell enables a priest to aid and protect any one being other than themselves. By touch, the caster removes the effects of fear, sleep, feeblemind, unconsciousness, and intoxication, as well as berserk and confused states of mind. In addition, the recipient is protected against spells and other attacks that cause these effects for 1 turn.
+
+– May cast Divine Favor once per day every 10 levels of the caster (starts at 1st level with one use).
+
+DIVINE FAVOR: This spell grants the caster a +1 bonus to hit and damage rolls every 3 levels of the caster. The spell lasts for 2 rounds.
+
+Disadvantages:
+– Alignment restricted to lawful good, neutral good, or lawful neutral.~
+@13302 = ~Exaltation~
+@13303 = ~Exaltation
+(Abjuration)
+
+Level: 3
+Sphere: Healing
+Range: Touch
+Duration: 1 turn
+Casting Time: 9
+Area of Effect: 1 creature
+Saving Throw: None
+
+This spell enables a priest to aid and protect any one being other than the priest. By touch, the caster removes the effects of fear, sleep, feeblemindedness, unconsciousness, and intoxication, as well as berserk and confused states of mind. In addition, the recipient is protected against spells and other attacks that cause these effects for the duration of the spell.~
+@13304 = ~Divine Favor~
+@13305 = ~Divine Favor
+
+This spell grants the caster a +1 bonus to hit and damage rolls every 3 levels of the caster. The spell lasts for 2 rounds.~
+@13306 =~Holy Symbol of Tyr~
+@13307 =~Only the most worthy and devoted servants of the Maimed God are granted these powerful holy symbols.
+
+%holy_symbol_stats%~
+@13308 = ~Welcome Holy Justice. The Maimed God has long been a friend of the Morninglord, and I would ask for your help.~ 
+@13309 = ~Welcome Holy Justice. The Maimed God has long been an staunch ally of the Watcher, and I would ask for your help.~ 
+@13310 = ~HOLY JUSTICE OF TYR: Tyr is the deity of law and justice and is primarily concerned with the punishment of wrongdoers and the general furthering of law and good in the world. The belief in justice through (benevolent) force, or at least armed vigilance, is the reason for Tyr's existence. Tyr holds great prominence in the pantheon due to his position as leader of the Triad, a trio of lawful good gods that are collectively devoted to the concepts of courage, justice, perseverance, relief of suffering, duty, obedience, honor, and to some extent, righteous martyrdom.
+
+Abilities:
+- Spiritual Weapon: Warhammer - 'Hammer of Justice' once per day
+Hammer of Justice is the spiritual weapon of Holy Justices of Tyr, and is wielded as if the caster had grand mastery in the weapon. The Hammer of Justice is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
+- Can cast Hold Person once per day
+- From level 7 can cast Stoneskins once per day, as fourth level mage spell of the same name
+- From level 9 can cast Exaltation once per day
+
+EXALTATION: This spell enables a priest to aid and protect any one being other than themselves. By touch, the caster removes the effects of fear, sleep, feeblemind, unconsciousness, and intoxication, as well as berserk and confused states of mind. In addition, the recipient is protected against spells and other attacks that cause these effects for 1 turn.
+
+- From level 11 can cast Divine Favor once per day.
+
+DIVINE FAVOR: This spell grants the caster a +1 bonus to hit and damage rolls every 3 levels of the caster. The spell lasts for 2 rounds.
+
+- From level 14 can cast Mantle once per day, as seventh level mage spell of the same name
+
+Disadvantages:
+– Alignment restricted to lawful good, neutral good, or lawful neutral.~
+@13311 =~Warhammer - 'Hammer of Justice'~
+@13312 =~Hammer of Justice is the spiritual weapon of Holy Justices of Tyr, and is wielded as if the caster had grand mastery in the weapon. The Hammer of Justice is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// Druid Remix                                      \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

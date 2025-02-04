@@ -1,0 +1,8 @@
+// change spells to innates as needed
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr208 destination = cdtyr1  RET_ARRAY cd_clone_spell_array END // hold person
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi408 destination = cdtyr7  RET_ARRAY cd_clone_spell_array END // stoneskin
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi708 destination = cdtyr14 RET_ARRAY cd_clone_spell_array END // mantle
+
+OUTER_SPRINT hw_name @13311 // Warhammer - 'Hammer of Justice'
+OUTER_SPRINT hw_desc @13312
+LAF cd_dr_holy_weapon STR_VAR item = cdtyr0 name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END

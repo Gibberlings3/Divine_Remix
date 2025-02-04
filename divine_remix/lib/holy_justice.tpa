@@ -1,0 +1,127 @@
+// divine favor
+COPY ~divine_remix/spl/cdtyr11.spl~ ~override~
+  SAY NAME1 @13304
+  SAY NAME2 @13304
+  SAY 0x50 @13305
+  SAY 0x54 @13305
+  
+// if exaltation exists, use it; otherwise copy our own
+OUTER_SET clone_exaltation = 1
+ACTION_IF IDS_OF_SYMBOL (~spell~ ~CLERIC_EXALTATION~) < 0 BEGIN
+  OUTER_SET clone_exaltation = 0 // if no spell.ids entry, install
+END ELSE BEGIN  
+  LAF RES_NAME_OF_SPELL_NUM INT_VAR spell_num = IDS_OF_SYMBOL (~spell~ ~CLERIC_CURE_BLIND_DEAF~) RET spell_res END
+  ACTION_IF !FILE_EXISTS_IN_GAME ~%spell_res%.spl~ BEGIN OUTER_SET clone_exaltation = 0 END // existing spell.ids entry but no actual spell, install
+END
+
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+
+ACTION_IF clone_exaltation BEGIN
+
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = EVAL ~%spell_res%~ destination = cdtyr9 RET_ARRAY cd_clone_spell_array END // chaos
+  
+END ELSE BEGIN
+
+  COPY ~divine_remix/bam/cdtyr9b.bam~  ~override~
+       ~divine_remix/bam/exaltah.bam~  ~override~
+       ~divine_remix/vvc/exaltah.vvc~  ~override~
+       ~divine_remix/wav/#ff_p106.wav~ ~override~
+  COPY ~divine_remix/spl/cdtyr9.spl~   ~override~
+    SAY NAME1 @13302
+    SAY NAME2 @13302
+    SAY 0x50 @13303
+    SAY 0x54 @13304
+    
+END
+
+ACTION_IF cd_dr_conventional BEGIN  
+
+  // build 2da from generic ability schedule
+  COPY ~divine_remix/2da/generic.2da~ ~override/CDTYR.2da~
+    REPLACE_TEXTUALLY ~KITBIL1~ ~cdtyr9 ~ // exaltation
+    REPLACE_TEXTUALLY ~KITBIL2~ ~cdtyr11~ // holy power
+    PATCH_IF !game_includes_tob THEN BEGIN
+      REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+    END
+    
+  OUTER_SPRINT kit_help @13301  
+
+END ELSE BEGIN 
+
+  COPY ~divine_remix/2da/cdtyr.2da~ ~override~
+    
+  OUTER_SPRINT kit_help @13310
+
+  INCLUDE ~divine_remix/lib/holy_justice_common.tpa~
+  
+END
+
+ADD_KIT ~CDTYR~
+  ~CDTYR                  0           0           1           1           0           1           0           0~
+  ~CDTYR 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+  ~CDTYR          0       0       0       0       9       0~
+  ~CDTYR    0 0 0 0 0 0~
+  ~CDTYR    0 0 0 0 17  0~
+  ~CDTYR    0 0 0 0 15  0~
+  ~CDTYR    1 1 0 1 0 0 0 0 0~
+  ~CDTYR    1 0 1 1 0 1~
+  ~override/cdtyr.2da~
+  ~K_C_H    K_C_D   K_C_G   K_C_E   K_C_HE   K_C_HL   K_C_HO~
+  ~0x00004000 3~
+  ~Cl0~
+  ~CHAN09 * HELM07 BAG20 RING06 RING21 * BOOT01 AMUL19 BRAC16 BELT06 AROW11,40 BULL03,40 BOLT06,40 POTN52,5 POTN04,2 POTN14,5 HAMM07 SW1H27 STAF08~
+  SAY @10149
+  SAY @10148
+  SAY ~%kit_help%~
+
+LAF cd_aoe_compat INT_VAR column = (22 + "%CDTYR%") END
+
+ACTION_IF game_includes_tob THEN BEGIN // holy symbols
+
+  COPY ~divine_remix/bam/cdityrhs.bam~ ~override~
+       ~divine_remix/bam/cdctyrhs.bam~ ~override~
+  LAF cd_create_holy_symbol
+  INT_VAR
+    name = RESOLVE_STR_REF(@13306)
+    desc = RESOLVE_STR_REF(@13307)
+    kit  = "%CDTYR%"
+    kit319s = RESOLVE_STR_REF(@10148)
+    kitbits = (BIT0 + BIT1) // evil, chaotic
+  STR_VAR
+    symbol = cdtyrhs
+    iicon  = cdityrhs
+    cicon  = cdctyrhs
+  END
+
+END
+
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
+
+/////                                                  \\\\\
+///// Stronghold fixes                                 \\\\\
+/////                                                  \\\\\
+
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
+
+  COMPILE ~divine_remix/dlg/holy_justice.d~
+
+END
+
+/////                                                  \\\\\
+///// assign kits                                      \\\\\
+/////                                                  \\\\\
+
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~CDTYR~)) // tyr
+OUTER_SPRINT kitname @10148 // ~Holy Justice~
+ACTION_IF kit > 0 THEN BEGIN
+
+  ACTION_FOR_EACH cre IN ohdcru01 ohdcru02 ohdlufc1 ohdlumc1 ohdneo03 ohdneo04 ohdppe01 ohdppe02 ohdrdef ohdtree1 BEGIN
+
+    COPY_EXISTING ~%cre%.cre~ ~override~
+      LPF cd_assign_kit_to_cre END
+      BUT_ONLY IF_EXISTS
+
+  END
+
+END
