@@ -408,7 +408,6 @@ Disadvantages:
 @10178 =~MORNINGLORD OF LATHANDER: Lathander is the good god of renewal, creativity, and youth, and is celebrated nearly everywhere. His followers are very popular throughout the Realms, and there are numerous wealthy temples devoted to him.
 
 Abilities:
-
 - Spiritual Weapon: Mace - 'Dawn's Embrace' once per day
 The mace is the spiritual weapon of Morninglords of Lathander, and is wielded as if the caster had grand mastery in the weapon. The mace is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
 - May cast 'Boon of Lathander' for every 10 levels of the caster, as detailed below  (starts at 1st level with one use).
@@ -467,7 +466,10 @@ The bastard sword is the spiritual weapon of Watchers of Helm, and is wielded as
 - From level 7 can cast Farsight once per day, as fourth level cleric spell of the same name
 - From level 9 can cast Protection From Normal Weapons once per day, as fifth level mage spell of the same name
 - From level 11 can cast True Seeing once per day, as fifth level cleric spell of the same name
-- From level 14 can cast Mantle once per day, as seventh level mage spell of the same name~
+- From level 14 can cast Mantle once per day, as seventh level mage spell of the same name
+
+Disadvantages:
+– Alignment restricted to lawful good, lawful neutral, lawful evil, and true neutral.~
 @10195 =~I bid you welcome to the Home of the Morninglord.~
 @10196 =~High Watcher Oisig mentioned a threat to his temple and yours.~
 @10197 =~Thank you. I'll be on my way.~
@@ -559,8 +561,6 @@ Shar's mortal enemy is the goddess Selûne and the two fight on a number of level
 
 Clerics of Shar are called Nightcloaks. They exist outside the standard church hierarchy. Shar has no main temple, but instead has a scattering of cells and secretive places throughout the Realms. The Nightcloaks of Shar serve as contacts, messengers, and enforcers of the Dark Lady's will.
 
-Nightcloaks of Shar can only be of Neutral Evil, Lawful Evil, Chaotic Evil, and True Neutral alignments.
-
 Abilities:
 - Spiritual Weapon: Chakram - 'Disc of Night' once per day
 The Disc of Night is the spiritual weapon of Nightcloaks. The chakram is treated as a returning dart and is wielded as if the caster had grand mastery in the weapon. The chakram is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
@@ -570,7 +570,10 @@ This spell creates small chakrams in the casters hand (one per level of the cast
 - From level 7 can cast Confusion once per day, as fourth level mage spell of the same name
 - From level 9 can cast Feeblemind once per day, as fifth level mage spell of the same name
 - From level 11 can cast Invisible Stalker once per day, as sixth level mage spell of the same name
-- From level 14 can cast Power Word, Stun once per day, as seventh level mage spell of the same name~
+- From level 14 can cast Power Word, Stun once per day, as seventh level mage spell of the same name
+
+Disadvantages:
+– Alignment restricted to neutral evil, lawful evil, chaotic evil, and true neutral.~
 @10603 =~nightcloak of shar~
 @10604 =~Shar's Curse~
 @10605 =~Shar's Curse (Enchantment/Charm)
@@ -679,8 +682,6 @@ Though these pilgrimages are often considered an unwanted duty by the more polit
 @10902 =~BATTLEGUARD OF TEMPUS: Tempus is the Realms' god of war, the Lord of Battle, the Foehammer. He is random in his favors, yet his chaotic nature favors all sides equally. He may be on an army's side on one day and against them the next. Such is the nature of war as embodied by Tempus.
 
 The dress of the Battleguard of Tempus is armor, battle-worn and battered. In more civilized regions this has been replaced by a steel skullcap, but the message is the same--these are warrior priests. Their place is in the trenches with the troops, urging them onwards. Battleguards of Tempus may be found on both sides of a conflict, as none can ever truly know who the war god will favor.
-
-Battleguards of Tempus can only be of Chaotic Neutral, Chaotic Good, True Neutral, and Chaotic Evil alignments
 
 Abilities:
 - Spiritual Weapon: Battleaxe - 'Battle Prowess' once per day
@@ -824,7 +825,7 @@ The flail is the spiritual weapon of Firewalkers of Kossuth, and is wielded as i
 - From level 14 can cast Delayed Blast Fireball once per day, as the seventh level mage spell of the same name
 
 Disadvantages:
-– None.~
+– None~
 @11505 =~Kossuth's Purifying Touch~
 @11506 =~Kossuth's Purifying Touch (Invocation)
 Level: Quest
@@ -854,7 +855,7 @@ Advantages:
 - Gains 2% fire resistance per level.
 
 Disadvantages:
-– None.~
+– None~
 @11511 = ~Less than a fortnight after your initiation ceremony into the Temple of Kossuth, you were summoned before the Flamesister of your temple. In a cordial, if somewhat formal meeting, you were assigned your first duty as a Promised: to make a pilgrimage to the North and see if you could kindle the fires of Kossuth's faith in the frontier towns. Almost as an afterthought, he mentioned portents and omens concerning events transpiring in the North that might be of interest to the Lord of Flames; it was the belief of the temple that a representative of Kossuth might serve to bring his swift, brutal justice to the region.
 
 Though these pilgrimages are often considered an unwanted duty and the rigid heirarchy of your faith brooks no dissension, you found yourself eager to accept the task. It seemed to be a chance to do the Firelord’s will in a practical way, an opportunity to escape the routine of plots and scehemes in the city. Without hesitation, you agreed to make the pilgrimage, and within a tenday you set out on your journey, armed only with a staff in your hand and fire in your heart.~
@@ -991,7 +992,7 @@ Sune's speciality priests, known as Heartwarders of Sune, are aesthetes and hedo
 Abilities:
 - Spiritual Weapon: Flail - 'Shock Flail' once per day
 The Shock Flail is the spiritual weapon of Heartwarders of Sune, and is wielded as if the caster had grand mastery in the weapon. The Shock Flail is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to 20 rounds.
-- +1 charisma bonus
+- +1 charisma bonus maximum
 - Can cast Veil of Djalice once per day
 The Heartwarder temporarily augments <PRO_HISHER> beauty to unearthly levels, boosting effective charisma to 20 and forcing any hostiles to save vs. spell at -2 or be dire charmed for six rounds.
 - From level 7 can cast Emotion: Hoplessness once per day, as fourth level mage spell of the same name
@@ -1015,7 +1016,7 @@ Sune herself is said to be benevolent and sometimes whimsical, alternating betwe
 Sune's speciality priests, known as Heartwarders of Sune, are aesthetes and hedonists who actively seek out pleasure and beauty in all things, and who nurture the creation of beautiful objects.  They are typically found in large cities in the company of the cultural elite.  Most are active patrons of the arts, and all play the role of matchmaker for persons in all levels of society.  Many are employed as artists, crafters, performers, or instructors, though a few travel the world to promote beauty and love.
 
 Advantages:
-- +1 charisma bonus
+- +1 charisma bonus maximum
 – May cast Emotion: Hoplessness once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
 – May use Veil of Djalice once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
 
@@ -1110,7 +1111,7 @@ Though these missions to the cold North are often considered an unwanted chore b
 
 Cyric's church is pledged to spread strife and work murder everywhere in order to make folk believe in and fear the Dark Sun. It supports cruel rulers and indulges in intrigue in such a way that the world won't be overrun by wars (and thus fall under the sway of Tempus). His church is often beset by internal feuds and backstabbing, but this conflict has decreased in recent years as Cyric has gained better control of himself and has consolidated the churches of the deities whose portfolios he took over.
 
-Strifeleaders wear black and purple robes. Silver bands, the symbol of their enslavement to Cyric, are worn on their wrists. Strifeleaders of Cyric may be of Chaotic Neutral or any Evil alignment.
+Strifeleaders wear black and purple robes. Silver bands, the symbol of their enslavement to Cyric, are worn on their wrists. 
 
 Abilities:
 - Spiritual Weapon: Long Sword - 'Razor's Edge' once per day
@@ -1121,7 +1122,10 @@ Attacks made in the next round with that weapon will inject the poison into the 
 Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and confuses target for 1 round (save vs. spell at -2 to negate confusion)
 - From level 9 can cast Chaos once per day, as fifth level mage spell of the same name
 - From level 11 can cast Death Fog once per day, as sixth level mage spell of the same name
-- From level 14 can cast Sphere of Chaos once per day, as seventh level mage spell of the same name~
+- From level 14 can cast Sphere of Chaos once per day, as seventh level mage spell of the same name
+
+Disadvantages:
+– Alignment restricted to chaotic neutral or any evil.~
 @13005 =~Holy Symbol of Cyric~
 @13006 =~Cyric grants his most powerful servants with a Holy Symbol, silvered bracers inscribed with his device: a skull in front of a dark sun. As well as being a visible symbol of the priest's obvious power, these bracers represent his enslavement to the Prince of Lies. When worn, the symbol enhances the Strifeleader's already fearsome power.
 
@@ -1221,13 +1225,9 @@ Hammer of Justice is the spiritual weapon of Holy Justices of Tyr, and is wielde
 - Can cast Hold Person once per day
 - From level 7 can cast Stoneskins once per day, as fourth level mage spell of the same name
 - From level 9 can cast Exaltation once per day
-
 EXALTATION: This spell enables a priest to aid and protect any one being other than themselves. By touch, the caster removes the effects of fear, sleep, feeblemind, unconsciousness, and intoxication, as well as berserk and confused states of mind. In addition, the recipient is protected against spells and other attacks that cause these effects for 1 turn.
-
 - From level 11 can cast Divine Favor once per day.
-
 DIVINE FAVOR: This spell grants the caster a +1 bonus to hit and damage rolls every 3 levels of the caster. The spell lasts for 2 rounds.
-
 - From level 14 can cast Mantle once per day, as seventh level mage spell of the same name
 
 Disadvantages:

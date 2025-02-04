@@ -7,7 +7,7 @@ ALWAYS
   END
 END
 
-VERSION  ~v8 (Beta)~
+VERSION  ~v9 (work in progress)~
 
 README   ~divine_remix/readme-divine_remix.html~
 
@@ -419,8 +419,6 @@ INCLUDE ~divine_remix/lib/holy_justice.tpa~
 BEGIN @20000 DESIGNATED 200
 GROUP @11
 LABEL ~cd_dr_druid_remix~
-
-COPY ~divine_remix/2da/mxsplprs.2da~ ~override/mxspldru.2da~
 
 // change f/d description to mention armor is now also restricted to druid armor
 OUTER_SPRINT ~old_wep~ @20003

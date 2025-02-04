@@ -718,19 +718,19 @@ BEGIN
                 ("%sphere_minor_orig%" STRING_COMPARE_CASE "%sphere_minor%"))) BEGIN // at least *something^ added (aka the inquisitor exception)
     
       ACTION_IF ("%sphere_none_orig%" STRING_COMPARE_CASE "%sphere_none%" = 0) BEGIN                      // no 'none block'
-        OUTER_SPRINT sphere ~%sphere_header%%WNL%%sphere_major%%WNL%%sphere_minor%~                       // assemble full block without none
+        OUTER_SPRINT sphere ~%sphere_header%%LNL%%sphere_major%%LNL%%sphere_minor%~                       // assemble full block without none
       END ELSE BEGIN
-        OUTER_SPRINT sphere ~%sphere_header%%WNL%%sphere_major%%WNL%%sphere_minor%%WNL%%sphere_none%~     // assemble full block with none
+        OUTER_SPRINT sphere ~%sphere_header%%LNL%%sphere_major%%LNL%%sphere_minor%%LNL%%sphere_none%~     // assemble full block with none
       END  
       OUTER_INNER_PATCH_SAVE sphere ~%sphere%~ BEGIN                                                      // and clean it up
-        REPLACE_TEXTUALLY ~%sphere_major_orig%~ ~%sphere_major_none%~                                     // nothing was added to major, so sub alternate line
-        REPLACE_TEXTUALLY ~%sphere_minor_orig%~ ~%sphere_minor_none%~                                     // nothing was added to minor, so sub alternate line
+        REPLACE_TEXTUALLY ~^%sphere_major_orig%$~ ~%sphere_major_none%~                                     // nothing was added to major, so sub alternate line
+        REPLACE_TEXTUALLY ~^%sphere_minor_orig%$~ ~%sphere_minor_none%~                                     // nothing was added to minor, so sub alternate line
         REPLACE_TEXTUALLY ~%sphere_ne%, %sphere_nr%~ ~%sphere_ne%~                                        // collapse necromantic entries, if possible
         REPLACE_TEXTUALLY ~%sphere_ex%, %sphere_ea%, %sphere_ee%, %sphere_ef%, %sphere_ew%~ ~%sphere_ex%~ // collapse elemental entries, if possible
         REPLACE_TEXTUALLY ~CD_REPLACEME, ~ ~~                                                             // cleanup
       END  
     
-      STRING_SET_EVALUATE string "%desc%%WNL%%WNL%%sphere%"
+      STRING_SET_EVALUATE string "%desc%%LNL%%LNL%%sphere%"
       
     END    
     
