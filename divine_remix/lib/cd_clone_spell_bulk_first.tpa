@@ -129,8 +129,6 @@ COPY_EXISTING ~%source%.spl~ ~override/%destination%.spl~
   PATCH_IF make_arcane AND ("%SOURCE_FILE%" STRING_COMPARE_CASE "%DEST_FILE%") BEGIN
     WRITE_SHORT  0x1c 1                        // sets spell type to wizard (1)
   END
-  BUT_ONLY
-
 
   ACTION_IF ((FILE_EXISTS_IN_GAME ~7eyes.2da~) AND (FILE_CONTAINS_EVALUATED (~7eyes.2da~ ~[ %TAB%]%source%[ %TAB%%LNL%%MNL%%WNL%]~))) THEN BEGIN
   

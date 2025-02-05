@@ -12,6 +12,8 @@ LAF cd_clone_spell_bulk STR_VAR source = spcl908 destination = cdprcry RET_ARRAY
 LAF cd_clone_spell_bulk STR_VAR source = spcl913 destination = cdprevd RET_ARRAY cd_clone_spell_array END // hla evasion
 LAF cd_clone_spell_bulk STR_VAR source = spcl917 destination = cdpravd RET_ARRAY cd_clone_spell_array END // hla avoid death
 LAF cd_clone_spell_bulk STR_VAR source = spcl922 destination = cdprtrk RET_ARRAY cd_clone_spell_array END // hla tracking
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 COPY_EXISTING ~cdprwrl.spl~ ~override~ // hla whirlwind
               ~cdprpwr.spl~ ~override~ // hla power attack
@@ -39,15 +41,11 @@ COPY ~Divine_Remix/spl/cdprscr.spl~ ~override~ // scribe scrolls
   SAY NAME2 #70282
   SAY UNIDENTIFIED_DESC @10102
   SAY DESC @10102
-
-PRINT @3
-INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
   
 /////                                                  \\\\\
 ///// create sphere framework                          \\\\\
 /////                                                  \\\\\
 
-OUTER_SET include_hlas = 1
 INCLUDE ~divine_remix/spheres/spell_list_processing.tpa~
   
 /////                                                  \\\\\
@@ -68,7 +66,7 @@ COPY_EXISTING ~lucl0.2da~ ~override~ // looking through HLA tables to get parame
           READ_2DA_ENTRY index 7 10 p4 // prereq
           READ_2DA_ENTRY index 8 10 p5 // exclusion
           READ_2DA_ENTRY index 9 10 p6 // alignment
-          DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla BEGIN ~%params_0%~, ~%params_1%~, ~%params_2%~, ~%params_3%~, ~%params_4%~ => 1 END   
+          DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla BEGIN ~%params_0%~, ~%params_1%~, ~%params_2%~, ~%params_3%~ => 1 END   
           DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla_info BEGIN 
             ~%params_0%~, ~%params_1%~, ~%params_2%~, ~%params_3%~, ~%p1%~, ~%p2%~, ~%p3%~, ~%p4%~, ~%p5%~, ~%p6%~ => ~%params_0%~
           END
@@ -119,7 +117,7 @@ COPY_EXISTING ~luabbr.2da~ ~override~
   END
   PRETTY_PRINT_2DA
   BUT_ONLY
-
+  
 ACTION_PHP_EACH cd_sphere_hla_assign AS pm => present BEGIN 
   ACTION_IF present BEGIN
     INCLUDE ~divine_remix/spheres/hla_%pm_1%.tpa~

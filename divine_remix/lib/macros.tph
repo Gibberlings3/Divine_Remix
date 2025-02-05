@@ -787,36 +787,15 @@ BEGIN
       OUTER_SET allowed = 0
       ACTION_FOR_EACH sphere IN ~%pm_1%~ ~%pm_2%~ ~%pm_3%~ BEGIN
         ACTION_IF !allowed BEGIN
-          ACTION_IF (("%all%" STRING_COMPARE_CASE "major" = 0)                     AND ("%sphere%" STRING_COMPARE_CASE "al" = 0)) BEGIN OUTER_SET allowed = 1 END  
-          ACTION_IF (("%animal%" STRING_COMPARE_CASE "major" = 0)                  AND ("%sphere%" STRING_COMPARE_CASE "an" = 0)) BEGIN OUTER_SET allowed = 1 END   
-          ACTION_IF (("%astral%" STRING_COMPARE_CASE "major" = 0)                  AND ("%sphere%" STRING_COMPARE_CASE "as" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%chaos%" STRING_COMPARE_CASE "major" = 0)                   AND ("%sphere%" STRING_COMPARE_CASE "cs" = 0)) BEGIN OUTER_SET allowed = 1 END   
-          ACTION_IF (("%charm%" STRING_COMPARE_CASE "major" = 0)                   AND ("%sphere%" STRING_COMPARE_CASE "cm" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%combat%" STRING_COMPARE_CASE "major" = 0)                  AND ("%sphere%" STRING_COMPARE_CASE "co" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%creation%" STRING_COMPARE_CASE "major" = 0)                AND ("%sphere%" STRING_COMPARE_CASE "cr" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%divination%" STRING_COMPARE_CASE "major" = 0)              AND ("%sphere%" STRING_COMPARE_CASE "di" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%elemental%" STRING_COMPARE_CASE "major" = 0)               AND ("%sphere%" STRING_COMPARE_CASE "ex" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%elemental_air%" STRING_COMPARE_CASE "major" = 0)           AND ("%sphere%" STRING_COMPARE_CASE "ea" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%elemental_earth%" STRING_COMPARE_CASE "major" = 0)         AND ("%sphere%" STRING_COMPARE_CASE "ee" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%elemental_fire%" STRING_COMPARE_CASE "major" = 0)          AND ("%sphere%" STRING_COMPARE_CASE "ef" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%elemental_water%" STRING_COMPARE_CASE "major" = 0)         AND ("%sphere%" STRING_COMPARE_CASE "ew" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%guardian%" STRING_COMPARE_CASE "major" = 0)                AND ("%sphere%" STRING_COMPARE_CASE "gy" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%healing%" STRING_COMPARE_CASE "major" = 0)                 AND ("%sphere%" STRING_COMPARE_CASE "he" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%law%" STRING_COMPARE_CASE "major" = 0)                     AND ("%sphere%" STRING_COMPARE_CASE "lw" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%necromantic%" STRING_COMPARE_CASE "major" = 0)             AND ("%sphere%" STRING_COMPARE_CASE "ne" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%necromantic_restorative%" STRING_COMPARE_CASE "major" = 0) AND ("%sphere%" STRING_COMPARE_CASE "nr" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%numbers%" STRING_COMPARE_CASE "major" = 0)                 AND ("%sphere%" STRING_COMPARE_CASE "nu" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%plant%" STRING_COMPARE_CASE "major" = 0)                   AND ("%sphere%" STRING_COMPARE_CASE "pl" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%protection%" STRING_COMPARE_CASE "major" = 0)              AND ("%sphere%" STRING_COMPARE_CASE "pr" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%summoning%" STRING_COMPARE_CASE "major" = 0)               AND ("%sphere%" STRING_COMPARE_CASE "su" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%sun%" STRING_COMPARE_CASE "major" = 0)                     AND ("%sphere%" STRING_COMPARE_CASE "sn" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%thoughts%" STRING_COMPARE_CASE "major" = 0)                AND ("%sphere%" STRING_COMPARE_CASE "th" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%time%" STRING_COMPARE_CASE "major" = 0)                    AND ("%sphere%" STRING_COMPARE_CASE "ti" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%travelers%" STRING_COMPARE_CASE "major" = 0)               AND ("%sphere%" STRING_COMPARE_CASE "tr" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%war%" STRING_COMPARE_CASE "major" = 0)                     AND ("%sphere%" STRING_COMPARE_CASE "wa" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%wards%" STRING_COMPARE_CASE "major" = 0)                   AND ("%sphere%" STRING_COMPARE_CASE "wd" = 0)) BEGIN OUTER_SET allowed = 1 END 
-          ACTION_IF (("%weather%" STRING_COMPARE_CASE "major" = 0)                 AND ("%sphere%" STRING_COMPARE_CASE "we" = 0)) BEGIN OUTER_SET allowed = 1 END 
-        END
+          ACTION_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN   
+            ACTION_IF ("%sphere%" STRING_COMPARE_CASE "%sphinfo_0%" = 0) BEGIN
+              OUTER_SPRINT check EVAL ~%%long%%~  // sets check to e.g all
+              ACTION_IF ("%check%" STRING_COMPARE_CASE "major" = 0) BEGIN
+                OUTER_SET allowed = 1
+              END
+            END
+          END
+        END          
       END
       ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla_working BEGIN ~%pm_0%~, ~%pm_4%~, ~%pm_5%~, ~%pm_6%~, ~%pm_7%~, ~%pm_8%~, ~%pm_9%~ => ~%allowed%~ END
     END    
