@@ -20,6 +20,7 @@ used:
   Bullet Sponge, as cd_bs/lib/game_checks.tpa [symbolic link]
   Spell-50, as spell50/lib/game_checks.tpa [symbolic link]
   The Calling, as thecalling/lib/game_checks.tpa [symbolic link]
+  The Divine Remix, as divine_remix/lib/game_checks.tpa [symbolic link]
 
 platform:
   all games

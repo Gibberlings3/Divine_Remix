@@ -1,5 +1,13 @@
 ACTION_IF !VARIABLE_IS_SET cd_spell_list_processing BEGIN
 
+  OUTER_SET cd_spell_list_processing = 1
+  
+  INCLUDE ~divine_remix/spheres/spell_list.tpa~
+
+  /////                                                  \\\\\
+  ///// define variables from tra strings                \\\\\
+  /////                                                  \\\\\
+
   OUTER_SPRINT sphere_header @2031 // header line
   OUTER_SPRINT sphere_major  @2032 // major access; will be added to below
   OUTER_SPRINT sphere_minor  @2033 // major access; will be added to below
@@ -84,10 +92,6 @@ ACTION_IF !VARIABLE_IS_SET cd_spell_list_processing BEGIN
       END ~%MATCH1%%MATCH2%~
       BUT_ONLY
   END
-
-  OUTER_SET cd_spell_list_processing = 1
-  
-  INCLUDE ~divine_remix/spheres/spell_list.tpa~
 
   // attempt to build spheres from unkown spells
   COPY_EXISTING_REGEXP GLOB ~^sppr[1-7][0-4][0-9]\.spl$~ ~override~

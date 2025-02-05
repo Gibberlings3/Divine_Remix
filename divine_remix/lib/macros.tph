@@ -410,7 +410,7 @@ BEGIN
   ACTION_IF ((FILE_EXISTS_IN_GAME ~%table%.2da~) OR (cr_exception = 2)) THEN BEGIN // sanity check
       
     // don't mess with it if spell sphere spells already exist    
-    ACTION_IF ((FILE_EXISTS ~weidu_external/divine_remix/sphere/allowed_%table%.2da~) OR (cr_exception = 2)) THEN BEGIN // in mode 2, don't mess with the table
+    ACTION_IF ((FILE_EXISTS ~weidu_external/divine_remix/spheres/allowed_%table%.tpa~) OR (cr_exception = 2)) THEN BEGIN // in mode 2, don't mess with the table
     
       OUTER_SET cd_adjust_table = 0
       
@@ -440,266 +440,22 @@ BEGIN
     OUTER_SPRINT sphere_none  ~%sphere_none_orig%~
     
     COPY ~./inline/temp.tpa~ ~weidu_external/divine_remix/spheres/temp.tpa~
-      PATCH_IF (("%all%" STRING_COMPARE_CASE "major" = 0) OR (cr_exception = 1)) THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_al%" 
-        PATCH_IF ("%all%" STRING_COMPARE_CASE "major" = 0) BEGIN APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_al_major.2da~ END
-      END ELSE
-      PATCH_IF ("%all%" STRING_COMPARE_CASE "minor" = 0)                     THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_al%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_al_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_al%" END
-      
-      PATCH_IF (("%animal%" STRING_COMPARE_CASE "major" = 0) OR (cr_exception = 1)) THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_an%" 
-        PATCH_IF ("%animal%" STRING_COMPARE_CASE "major" = 0) BEGIN APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_an_major.2da~ END
-      END ELSE 
-      PATCH_IF ("%animal%" STRING_COMPARE_CASE "minor" = 0)                  THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_an%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_an_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_an%" END
-      
-      PATCH_IF ("%astral%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_as%" 
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_as_major.2da~
-      END ELSE
-      PATCH_IF ("%astral%" STRING_COMPARE_CASE "minor" = 0)                  THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_as%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_as_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_as%" END
-      
-      PATCH_IF ("%chaos%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_cs%" 
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_cs_major.2da~
-      END ELSE
-      PATCH_IF ("%chaos%" STRING_COMPARE_CASE "minor" = 0)                   THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_cs%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_cs_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_cs%" END
-      
-      PATCH_IF ("%charm%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_cm%" 
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_cm_major.2da~
-      END ELSE
-      PATCH_IF ("%charm%" STRING_COMPARE_CASE "minor" = 0)                   THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_cm%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_cm_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_cm%" END
-      
-      PATCH_IF ("%combat%" STRING_COMPARE_CASE "major" = 0)                  THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_co%" 
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_co_major.2da~
-      END ELSE
-      PATCH_IF ("%combat%" STRING_COMPARE_CASE "minor" = 0)                  THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_co%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_co_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_co%" END
-      
-      PATCH_IF ("%creation%" STRING_COMPARE_CASE "major" = 0)                THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_cr%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_cr_major.2da~
-      END ELSE
-      PATCH_IF ("%creation%" STRING_COMPARE_CASE "minor" = 0)                THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_cr%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_cr_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_cr%" END
-      
-      PATCH_IF ("%divination%" STRING_COMPARE_CASE "major" = 0)              THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_di%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_di_major.2da~
-      END ELSE
-      PATCH_IF ("%divination%" STRING_COMPARE_CASE "minor" = 0)              THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_di%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_di_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_di%" END
-      
-      PATCH_IF ("%elemental%" STRING_COMPARE_CASE "major" = 0)               THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_ex%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ex_major.2da~
-      END ELSE
-      PATCH_IF ("%elemental%" STRING_COMPARE_CASE "minor" = 0)               THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_ex%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ex_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ex%" END
-      
-      PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "major" = 0)           THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_ea%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ea_major.2da~
-      END ELSE
-      PATCH_IF ("%elemental_air%" STRING_COMPARE_CASE "minor" = 0)           THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_ea%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ea_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ea%" END
-      
-      PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_ee%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ee_major.2da~
-      END ELSE
-      PATCH_IF ("%elemental_earth%" STRING_COMPARE_CASE "minor" = 0)         THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_ee%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ee_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ee%" END
-      
-      PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "major" = 0)          THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_ef%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ef_major.2da~
-      END ELSE
-      PATCH_IF ("%elemental_fire%" STRING_COMPARE_CASE "minor" = 0)          THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_ef%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ef_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ef%" END
-      
-      PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "major" = 0)         THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_ew%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ew_major.2da~
-      END ELSE
-      PATCH_IF ("%elemental_water%" STRING_COMPARE_CASE "minor" = 0)         THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_ew%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ew_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ew%" END
-      
-      PATCH_IF ("%guardian%" STRING_COMPARE_CASE "major" = 0)                THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_gu%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_gu_major.2da~
-      END ELSE
-      PATCH_IF ("%guardian%" STRING_COMPARE_CASE "minor" = 0)                THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_gu%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_gu_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_gu%" END
-      
-      PATCH_IF (("%healing%" STRING_COMPARE_CASE "major" = 0) OR (cr_exception = 1)) THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_he%"  
-        PATCH_IF ("%healing%" STRING_COMPARE_CASE "major" = 0) BEGIN APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_he_major.2da~ END
-      END ELSE
-      PATCH_IF ("%healing%" STRING_COMPARE_CASE "minor" = 0)                 THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_he%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_he_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_he%" END
-      
-      PATCH_IF ("%law%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_lw%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_lw_major.2da~
-      END ELSE
-      PATCH_IF ("%law%" STRING_COMPARE_CASE "minor" = 0)                     THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_lw%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_lw_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_lw%" END
-      
-      PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "major" = 0)             THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_ne%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ne_major.2da~
-      END ELSE
-      PATCH_IF ("%necromantic%" STRING_COMPARE_CASE "minor" = 0)             THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_ne%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ne_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ne%" END
-      
-      PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "major" = 0) THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_nr%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_nr_major.2da~
-      END ELSE
-      PATCH_IF ("%necromantic_restorative%" STRING_COMPARE_CASE "minor" = 0) THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_nr%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_nr_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_nr%" END
-      
-      PATCH_IF ("%numbers%" STRING_COMPARE_CASE "major" = 0)                 THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_nu%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_nu_major.2da~
-      END ELSE
-      PATCH_IF ("%numbers%" STRING_COMPARE_CASE "minor" = 0)                 THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_nu%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_nu_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_nu%" END
-      
-      PATCH_IF (("%plant%" STRING_COMPARE_CASE "major" = 0) OR (cr_exception = 1)) THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_pl%"  
-        PATCH_IF ("%plant%" STRING_COMPARE_CASE "major" = 0) BEGIN APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_pl_major.2da~ END
-      END ELSE
-      PATCH_IF ("%plant%" STRING_COMPARE_CASE "minor" = 0)                   THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_pl%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_pl_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_pl%" END
-      
-      PATCH_IF ("%protection%" STRING_COMPARE_CASE "major" = 0)              THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_pr%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_pr_major.2da~
-      END ELSE
-      PATCH_IF ("%protection%" STRING_COMPARE_CASE "minor" = 0)              THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_pr%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_pr_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_pr%" END
-      
-      PATCH_IF ("%summoning%" STRING_COMPARE_CASE "major" = 0)               THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_su%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_su_major.2da~
-      END ELSE
-      PATCH_IF ("%summoning%" STRING_COMPARE_CASE "minor" = 0)               THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_su%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_su_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_su%" END
-      
-      PATCH_IF ("%sun%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_sn%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_sn_major.2da~
-      END ELSE
-      PATCH_IF ("%sun%" STRING_COMPARE_CASE "minor" = 0)                     THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_sn%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_sn_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_sn%" END
-      
-      PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "major" = 0)                THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_th%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_th_major.2da~
-      END ELSE
-      PATCH_IF ("%thoughts%" STRING_COMPARE_CASE "minor" = 0)                THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_th%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_th_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_th%" END
-      
-      PATCH_IF ("%time%" STRING_COMPARE_CASE "major" = 0)                    THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_ti%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ti_major.2da~
-      END ELSE
-      PATCH_IF ("%time%" STRING_COMPARE_CASE "minor" = 0)                    THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_ti%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_ti_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_ti%" END
-      
-      PATCH_IF ("%travelers%" STRING_COMPARE_CASE "major" = 0)               THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_tr%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_tr_major.2da~
-      END ELSE
-      PATCH_IF ("%travelers%" STRING_COMPARE_CASE "minor" = 0)               THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_tr%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_tr_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_tr%" END
-      
-      PATCH_IF ("%war%" STRING_COMPARE_CASE "major" = 0)                     THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_wa%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_wa_major.2da~
-      END ELSE
-      PATCH_IF ("%war%" STRING_COMPARE_CASE "minor" = 0)                     THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_wa%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_wa_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_wa%" END
-      
-      PATCH_IF ("%wards%" STRING_COMPARE_CASE "major" = 0)                   THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_wd%"  
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_wd_major.2da~
-      END ELSE
-      PATCH_IF ("%wards%" STRING_COMPARE_CASE "minor" = 0)                   THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_wd%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_wd_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_wd%" END
-      
-      PATCH_IF (("%weather%" STRING_COMPARE_CASE "major" = 0) OR (cr_exception = 1)) THEN BEGIN 
-        SPRINT sphere_major "%sphere_major%, %sphere_we%"  
-        PATCH_IF ("%weather%" STRING_COMPARE_CASE "major" = 0) BEGIN APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_we_major.2da~ END
-      END ELSE
-      PATCH_IF ("%weather%" STRING_COMPARE_CASE "minor" = 0)                 THEN BEGIN 
-        SPRINT sphere_minor "%sphere_minor%, %sphere_we%"   
-        APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_wd_minor.2da~
-      END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphere_we%" END
+      PATCH_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN   
+        SPRINT check EVAL ~%%long%%~
+        PATCH_IF (("%check%" STRING_COMPARE_CASE "major" = 0) OR 
+                  (("%sphinfo_0%" STRING_COMPARE_CASE "al" = 0) AND (cr_exception = 1)) OR 
+                  (("%sphinfo_0%" STRING_COMPARE_CASE "an" = 0) AND (cr_exception = 1)) OR 
+                  (("%sphinfo_0%" STRING_COMPARE_CASE "he" = 0) AND (cr_exception = 1)) OR 
+                  (("%sphinfo_0%" STRING_COMPARE_CASE "pl" = 0) AND (cr_exception = 1)) OR 
+                  (("%sphinfo_0%" STRING_COMPARE_CASE "we" = 0) AND (cr_exception = 1))) BEGIN 
+          SPRINT sphere_major "%sphere_major%, %sphinfo_2%" 
+          PATCH_IF ("%check%" STRING_COMPARE_CASE "major" = 0) BEGIN APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_%sphinfo_0%_major.2da~ END
+        END ELSE 
+        PATCH_IF ("%check%" STRING_COMPARE_CASE "minor" = 0) BEGIN 
+          SPRINT sphere_minor "%sphere_minor%, %sphinfo_2%"  
+          APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_%sphinfo_0%_minor.2da~
+        END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphinfo_2%" END
+      END   
       PATCH_IF cr_exception = 1 BEGIN APPEND_FILE ~weidu_external/divine_remix/spheres/cd_ranger_cleric.2da~ END
       
       ACTION_IF cd_adjust_table BEGIN 

@@ -1,49 +1,8 @@
 /////                                                  \\\\\
-///// define variables from tra strings                \\\\\
+///// create sphere framework                          \\\\\
 /////                                                  \\\\\
-  
-OUTER_SPRINT sphere_header @2031 // header line
-OUTER_SPRINT sphere_major  @2032 // major access; will be added to below
-OUTER_SPRINT sphere_minor  @2033 // major access; will be added to below
-OUTER_SPRINT sphere_none   @2034 // no access; will be added to below
-OUTER_SPRINT sphere_major_orig  @2032 // used to check that major sphere listing contains something
-OUTER_SPRINT sphere_minor_orig  @2033 // used to check that minor sphere listing contains something
-OUTER_SPRINT sphere_none_orig   @2034 // used to check that none sphere listing contains something
-OUTER_SPRINT sphere_major_none  @2037 // replacement string for no major sphere access
-OUTER_SPRINT sphere_minor_none  @2038 // replacement string for no minor sphere access
-OUTER_SPRINT sphere_al     @2001 // All
-OUTER_SPRINT sphere_an     @2002 // Animal
-OUTER_SPRINT sphere_as     @2003 // Astral
-OUTER_SPRINT sphere_cs     @2004 // Chaos
-OUTER_SPRINT sphere_cm     @2005 // Charm
-OUTER_SPRINT sphere_co     @2006 // Combat
-OUTER_SPRINT sphere_cr     @2007 // Creation
-OUTER_SPRINT sphere_di     @2008 // Divination
-OUTER_SPRINT sphere_ex     @2009 // Elemental
-OUTER_SPRINT sphere_ea     @2010 // Elemental Air
-OUTER_SPRINT sphere_ee     @2011 // Elemental Earth
-OUTER_SPRINT sphere_ef     @2012 // Elemental Fire
-OUTER_SPRINT sphere_ew     @2013 // Elemental Water
-OUTER_SPRINT sphere_th     @2014 // Thought
-OUTER_SPRINT sphere_tr     @2015 // Travelers
-OUTER_SPRINT sphere_wa     @2016 // War
-OUTER_SPRINT sphere_we     @2017 // Weather
-OUTER_SPRINT sphere_gu     @2018 // Guardian
-OUTER_SPRINT sphere_he     @2019 // Healing
-OUTER_SPRINT sphere_lw     @2020 // Law
-OUTER_SPRINT sphere_ne     @2021 // Necromantic
-OUTER_SPRINT sphere_nr     @2036 // Necromantic (restorative only)
-OUTER_SPRINT sphere_nu     @2022 // Numbers
-OUTER_SPRINT sphere_pr     @2023 // Protection
-OUTER_SPRINT sphere_sn     @2024 // Sun
-OUTER_SPRINT sphere_su     @2025 // Summoning
-OUTER_SPRINT sphere_pl     @2029 // Plant
-OUTER_SPRINT sphere_wd     @2030 // Wards
-OUTER_SPRINT sphere_ti     @2035 // Time
 
-OUTER_SPRINT sphere_match @2026
-OUTER_SPRINT level_match  @2027
-OUTER_SPRINT sphere_text  @2028
+INCLUDE ~divine_remix/spheres/spell_list_processing.tpa~
 
 /////                                                  \\\\\
 ///// read tables to determine when spells issued      \\\\\
@@ -115,36 +74,30 @@ COPY_EXISTING ~clabpr01.2da~ ~override~
   REPLACE_TEXTUALLY ~CDREPLACE\([4-7]\)~ ~AP_CDVNGN\1~
   REPLACE_TEXTUALLY ~CDREPLACE[1-3]~     ~**** ~
   //LAUNCH_PATCH_MACRO ~reindex_clab~ // get ABLITYx in order
-  
-/////                                                  \\\\\
-///// create sphere framework                          \\\\\
-/////                                                  \\\\\
-
-INCLUDE ~divine_remix/spheres/spell_list_processing.tpa~
 
 /////                                                  \\\\\
 ///// create sphere clab templates, spells             \\\\\
 /////                                                  \\\\\
 
-ACTION_FOR_EACH sphere IN al an as cs cm co cr di ex ea ee ef ew gu he lw ne nr nu pl pr su sn th ti tr wa wd we BEGIN
+ACTION_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN           
 
   ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
 
-    COPY ~weidu_external/divine_remix/spheres/%class%.2da~ ~weidu_external/divine_remix/spheres/%class%_%sphere%_major.2da~
-      REPLACE_TEXTUALLY ~CDREPLACE\([1-7]\)~ ~AP_CDDR%sphere%\1~
+    COPY ~weidu_external/divine_remix/spheres/%class%.2da~ ~weidu_external/divine_remix/spheres/%class%_%sphinfo_0%_major.2da~
+      REPLACE_TEXTUALLY ~CDREPLACE\([1-7]\)~ ~AP_CDDR%sphinfo_0%\1~
 
-    COPY ~weidu_external/divine_remix/spheres/%class%_%sphere%_major.2da~ ~weidu_external/divine_remix/spheres/%class%_%sphere%_minor.2da~
-      REPLACE_TEXTUALLY ~AP_CDDR%sphere%[4-7]~ ~****~ // delete levels 4-7 for minor access
+    COPY ~weidu_external/divine_remix/spheres/%class%_%sphinfo_0%_major.2da~ ~weidu_external/divine_remix/spheres/%class%_%sphinfo_0%_minor.2da~
+      REPLACE_TEXTUALLY ~AP_CDDR%sphinfo_0%[4-7]~ ~****~ // delete levels 4-7 for minor access
 
   END
   
   OUTER_FOR (index = 1 ; index < 8 ; ++index) BEGIN
   
-    COPY ~divine_remix/spheres/template.spl~ ~override/cddr%sphere%%index%.spl~
+    COPY ~divine_remix/spheres/template.spl~ ~override/cddr%sphinfo_0%%index%.spl~
       PATCH_PHP_EACH cd_spheres_spell_info AS params => spell BEGIN
-        PATCH_IF ((("%sphere%" STRING_COMPARE_CASE "%params_1%" = 0) OR   // working sphere matches spell's primary
-                   ("%sphere%" STRING_COMPARE_CASE "%params_2%" = 0) OR   // secondary
-                   ("%sphere%" STRING_COMPARE_CASE "%params_3%" = 0)) AND // or tertiary sphere
+        PATCH_IF ((("%sphinfo_0%" STRING_COMPARE_CASE "%params_1%" = 0) OR   // working sphere matches spell's primary
+                   ("%sphinfo_0%" STRING_COMPARE_CASE "%params_2%" = 0) OR   // secondary
+                   ("%sphinfo_0%" STRING_COMPARE_CASE "%params_3%" = 0)) AND // or tertiary sphere
                   (index = params_5)) BEGIN // level matches
           PATCH_IF params_6 THEN BEGIN // allow all
             LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = EVAL ~%spell%~ END
@@ -265,7 +218,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_apply_kit_sphere BEGIN
   FIGHTER_MAGE_CLERIC, clabpr01, 17, 0 =>   9581
 //CLERIC_RANGER,       clabpr01, 18, 0 =>   9580 // handled special, above
   SHAMAN,              clabsh01, 21, 0 => ~%shaman_descript%~
-
+  
 END
 
 COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
@@ -503,16 +456,4 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
       END // valid allowed array check
     END // minfo_num check          
   END // caster level check
-  BUT_ONLY  
-      /*
-          0 resref, 
-          1 level castable, 
-          2 spell level, 
-          3 ~%allow_all%~, 
-          4 ~%allow_good%~, 
-          5 ~%allow_geneutral%~, 
-          6 ~%allow_evil%~, 
-          7 ~%allow_lawful%~, 
-          8 ~%allow_lcneutral%~, 
-          9 ~%allow_chaotic%~ => ~%spell_res%~
-*/
+  BUT_ONLY 

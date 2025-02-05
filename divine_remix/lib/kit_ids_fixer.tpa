@@ -16,6 +16,7 @@ used:
   Haldamir, as haldamir/lib/kit_ids_fixer.tpa [local symlink]
   Totemic Cernd, as totemiccernd/lib/kit_ids_fixer.tpa [local symlink]
   Tweaks Anthology, as cdtweaks/lib/kit_ids_fixer.tpa [local symlink]
+  The Divine Remix, as divine_remix/lib/kit_ids_fixer.tpa [symbolic link]
 
 platform:
   obg2, though it should be harmless on other bg2-based engines

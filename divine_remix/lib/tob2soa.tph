@@ -18,6 +18,7 @@ used:
   Sarah, as sarahtob/lib/tob2soa.tph [symbolic link]
   SP Collection, as spstuff/lib/tob2soa.tph [symbolic link]
   Tweaks Anthology, as cdtweaks/lib/tob2soa.tph [symbolic link]
+  The Divine Remix, as divine_remix/lib/tob2soa.tph [symbolic link]
 
 platform:
   obg2, specifically SoA--though it should be harmless on other bg2-based engines

@@ -21,6 +21,7 @@ be called multiple times but only execute once.
 used:
   Bullet Sponge, as cd_bs/lib/joinable_npc_array.tpa [symbolic link]
   Tweaks Anthology, as cdtweaks/lib/joinable_npc_array.tpa [symbolic link]
+  The Divine Remix, as divine_remix/lib/joinable_npc_array.tpa [symbolic link]
 
 platform:
   all games

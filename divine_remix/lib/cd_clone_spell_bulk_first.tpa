@@ -19,6 +19,7 @@ used:
   Divine Remix, as divine_remix/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
   P&P Celestials, as celestials/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
   G3 Community Item Pack as g3cip/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
+  The Divine Remix, as divine_remix/lib/cd_clone_spell_bulk_first.tpa [symbolic link]
 
 platform:
   bg2-based engines
@@ -27,6 +28,7 @@ version history:
   * inception: unknown
   * 2/1/25: oBG2 using 206s to block stacking would also block new 206 when creating clone; make an exception for it now
   * 2/2 added make_divine and make_arcane options
+  * 2/5 removed the BUT_ONLY clause; if we're just cloning to have an alternative then the new file never gets created
 
 */
 
