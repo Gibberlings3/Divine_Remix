@@ -2,19 +2,30 @@
 ///// make new HLAs                                    \\\\\
 /////                                                  \\\\\
 
-COPY_EXISTING ~spcl900.spl~ ~override/cdprwrl.spl~ // hla whirlwind
-              ~spcl906.spl~ ~override/cdprpwr.spl~ // hla power attack
-              ~spcl907.spl~ ~override/cdprhdy.spl~ // hla hardiness
-              ~spcl917.spl~ ~override/cdpravd.spl~ // hla avoid death
-              ~spcl902.spl~ ~override/cdprdbl.spl~ // hla death blow
-              ~spcl908.spl~ ~override/cdprcry.spl~ // hla war cry
-              ~spcl922.spl~ ~override/cdprtrk.spl~ // hla tracking
+ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
+LAF cd_clone_spell_bulk STR_VAR source = spcl900 destination = cdprwrl RET_ARRAY cd_clone_spell_array END // hla whirlwind
+LAF cd_clone_spell_bulk STR_VAR source = spcl902 destination = cdprdbl RET_ARRAY cd_clone_spell_array END // hla death blow
+LAF cd_clone_spell_bulk STR_VAR source = spcl904 destination = cdprrmg RET_ARRAY cd_clone_spell_array END // resist magic
+LAF cd_clone_spell_bulk STR_VAR source = spcl906 destination = cdprpwr RET_ARRAY cd_clone_spell_array END // hla power attack
+LAF cd_clone_spell_bulk STR_VAR source = spcl907 destination = cdprhdy RET_ARRAY cd_clone_spell_array END // hla hardiness
+LAF cd_clone_spell_bulk STR_VAR source = spcl908 destination = cdprcry RET_ARRAY cd_clone_spell_array END // hla war cry
+LAF cd_clone_spell_bulk STR_VAR source = spcl913 destination = cdprevd RET_ARRAY cd_clone_spell_array END // hla evasion
+LAF cd_clone_spell_bulk STR_VAR source = spcl917 destination = cdpravd RET_ARRAY cd_clone_spell_array END // hla avoid death
+LAF cd_clone_spell_bulk STR_VAR source = spcl922 destination = cdprtrk RET_ARRAY cd_clone_spell_array END // hla tracking
+
+COPY_EXISTING ~cdprwrl.spl~ ~override~ // hla whirlwind
+              ~cdprpwr.spl~ ~override~ // hla power attack
+              ~cdprhdy.spl~ ~override~ // hla hardiness
+              ~cdpravd.spl~ ~override~ // hla avoid death
+              ~cdprdbl.spl~ ~override~ // hla death blow
+              ~cdprcry.spl~ ~override~ // hla war cry
+              ~cdprtrk.spl~ ~override~ // hla tracking
   LAUNCH_PATCH_MACRO cd_hla_descript
 
-COPY_EXISTING ~spcl913.spl~ ~override/cdprevd.spl~ // hla evasion
+COPY_EXISTING ~cdprevd.spl~  ~override~ // hla evasion
   SAY UNIDENTIFIED_DESC @10176
 
-COPY_EXISTING ~spcl904.spl~ ~override/cdprrmg.spl~  // resist magic
+COPY_EXISTING ~cdprrmg.spl~  ~override~ // resist magic
   SAY UNIDENTIFIED_DESC @177
 
 COPY ~Divine_Remix/spl/cdlthla.spl~ ~override~ // Lathander's Renewal
@@ -28,6 +39,9 @@ COPY ~Divine_Remix/spl/cdprscr.spl~ ~override~ // scribe scrolls
   SAY NAME2 #70282
   SAY UNIDENTIFIED_DESC @10102
   SAY DESC @10102
+
+PRINT @3
+INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
   
 /////                                                  \\\\\
 ///// create sphere framework                          \\\\\
