@@ -1,0 +1,33 @@
+  ACTION_CLEAR_ARRAY cd_spheres_definitions
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres_definitions BEGIN
+    // 2-digit code, in-game text for spells, in-game text for kits, text for matching in strings => long name
+    al, ~%sphere_al%~, ~%sphere_al%~, ~%sphere_al%~ => all
+    an, ~%sphere_an%~, ~%sphere_an%~, ~%sphere_an%~ => animal
+    as, ~%sphere_as%~, ~%sphere_as%~, ~%sphere_as%~ => astral
+    cs, ~%sphere_cs%~, ~%sphere_cs%~, ~%sphere_cs%~ => chaos
+    cm, ~%sphere_cm%~, ~%sphere_cm%~, ~%sphere_cm%~ => charm
+    co, ~%sphere_co%~, ~%sphere_co%~, ~%sphere_co%~ => combat
+    cr, ~%sphere_cr%~, ~%sphere_cr%~, ~%sphere_cr%~ => creation
+    di, ~%sphere_di%~, ~%sphere_di%~, ~%sphere_di%~ => divination
+    ea, ~%sphere_ea%~, ~%sphere_ea%~, ~%match_ea%~  => elemental_air
+    ee, ~%sphere_ee%~, ~%sphere_ee%~, ~%match_ee%~  => elemental_earth
+    ef, ~%sphere_ef%~, ~%sphere_ef%~, ~%match_ef%~  => elemental_fire
+    ew, ~%sphere_ew%~, ~%sphere_ew%~, ~%match_ew%~  => elemental_water
+    ex, ~%sphere_ex%~, ~%sphere_ex%~, ~%sphere_ex%~ => elemental
+    gu, ~%sphere_gu%~, ~%sphere_gu%~, ~%sphere_gu%~ => guardian
+    he, ~%sphere_he%~, ~%sphere_he%~, ~%sphere_he%~ => healing
+    lw, ~%sphere_lw%~, ~%sphere_lw%~, ~%sphere_lw%~ => law
+    ne, ~%sphere_ne%~, ~%sphere_ne%~, ~%sphere_ne%~ => necromantic
+    nr, ~%sphere_ne%~, ~%sphere_nr%~, ~%sphere_nr%~ => necromantic_restorative
+    nu, ~%sphere_nu%~, ~%sphere_nu%~, ~%sphere_nu%~ => numbers
+    pl, ~%sphere_pl%~, ~%sphere_pl%~, ~%sphere_pl%~ => plant
+    pr, ~%sphere_pr%~, ~%sphere_pr%~, ~%sphere_pr%~ => protection
+    su, ~%sphere_su%~, ~%sphere_su%~, ~%sphere_su%~ => summoning
+    sn, ~%sphere_sn%~, ~%sphere_sn%~, ~%sphere_sn%~ => sun
+    th, ~%sphere_th%~, ~%sphere_th%~, ~%sphere_th%~ => thought
+    ti, ~%sphere_ti%~, ~%sphere_ti%~, ~%sphere_ti%~ => time
+    tr, ~%sphere_tr%~, ~%sphere_tr%~, ~%sphere_tr%~ => travelers
+    wa, ~%sphere_wa%~, ~%sphere_wa%~, ~%sphere_wa%~ => war
+    wd, ~%sphere_wd%~, ~%sphere_wd%~, ~%sphere_wd%~ => wards
+    we, ~%sphere_we%~, ~%sphere_we%~, ~%sphere_we%~ => weather
+  END

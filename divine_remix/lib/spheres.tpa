@@ -99,55 +99,7 @@ ACTION_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN
                    ("%sphinfo_0%" STRING_COMPARE_CASE "%params_2%" = 0) OR   // secondary
                    ("%sphinfo_0%" STRING_COMPARE_CASE "%params_3%" = 0)) AND // or tertiary sphere
                   (index = params_5)) BEGIN // level matches
-          PATCH_IF params_6 THEN BEGIN // allow all
-            LPF ADD_SPELL_EFFECT INT_VAR opcode = 171 target = 1 timing = 9 STR_VAR resource = EVAL ~%spell%~ END
-          END ELSE BEGIN // for alignment-restricted spells, effs were created in previous step, just need to add the 177 pointer to them
-            PATCH_IF params_7 BEGIN // allow good
-              PATCH_IF (params_12 AND params_11 AND params_10) BEGIN // no lawful/chaotic restrictions
-                LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 1 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END // mask good
-              END ELSE BEGIN
-                PATCH_IF params_12 BEGIN // chaotic allowed
-                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 49 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
-                END
-                PATCH_IF params_11 BEGIN // lc-neutral allowed
-                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 33 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
-                END
-                PATCH_IF params_10 BEGIN // lawful allowed
-                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 17 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
-                END
-              END
-            END
-            PATCH_IF (allow_geneutral = 1) BEGIN
-              PATCH_IF (params_12 AND params_11 AND params_10) BEGIN // no lawful/chaotic restrictions
-                LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 2 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END // mask g/e neutral
-              END ELSE BEGIN
-                PATCH_IF params_12 BEGIN // chaotic allowed
-                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 50 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
-                END
-                PATCH_IF params_11 BEGIN // lc-neutral allowed
-                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 34 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
-                END
-                PATCH_IF params_10 BEGIN // lawful allowed
-                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 18 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
-                END
-              END
-            END
-            PATCH_IF (allow_evil = 1) BEGIN
-              PATCH_IF (params_12 AND params_11 AND params_10) BEGIN // no lawful/chaotic restrictions
-                LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 3 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END // mask evil
-              END ELSE BEGIN
-                PATCH_IF params_12 BEGIN // chaotic allowed // chaotic allowed
-                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 51 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
-                END
-                PATCH_IF params_11 BEGIN // lc-neutral allowed
-                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 35 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
-                END
-                PATCH_IF params_10 BEGIN // lawful allowed
-                  LPF ADD_SPELL_EFFECT INT_VAR opcode = 177 target = 1 parameter1 = 19 parameter2 = 8 timing = 9 STR_VAR resource = EVAL ~cddr%working%~ END
-                END
-              END
-            END
-          END // alow all check
+          LPM cd_dr_spell_exclusions
         END // sphere/level check
       END // php_each        
   

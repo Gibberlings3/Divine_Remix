@@ -1,0 +1,53 @@
+/////                                                  \\\\\
+///// define variables from tra strings                \\\\\
+/////                                                  \\\\\
+
+OUTER_SPRINT sphere_header @2031 // header line
+OUTER_SPRINT sphere_major  @2032 // major access; will be added to below
+OUTER_SPRINT sphere_minor  @2033 // major access; will be added to below
+OUTER_SPRINT sphere_none   @2034 // no access; will be added to below
+OUTER_SPRINT sphere_major_orig  @2032 // used to check that major sphere listing contains something
+OUTER_SPRINT sphere_minor_orig  @2033 // used to check that minor sphere listing contains something
+OUTER_SPRINT sphere_none_orig   @2034 // used to check that none sphere listing contains something
+OUTER_SPRINT sphere_major_none  @2037 // replacement string for no major sphere access
+OUTER_SPRINT sphere_minor_none  @2038 // replacement string for no minor sphere access
+OUTER_SPRINT sphere_match @2026
+OUTER_SPRINT level_match  @2027
+OUTER_SPRINT sphere_text  @2028
+
+// for in-game text
+OUTER_SPRINT sphere_al     @2001 // All
+OUTER_SPRINT sphere_an     @2002 // Animal
+OUTER_SPRINT sphere_as     @2003 // Astral
+OUTER_SPRINT sphere_cs     @2004 // Chaos
+OUTER_SPRINT sphere_cm     @2005 // Charm
+OUTER_SPRINT sphere_co     @2006 // Combat
+OUTER_SPRINT sphere_cr     @2007 // Creation
+OUTER_SPRINT sphere_di     @2008 // Divination
+OUTER_SPRINT sphere_ex     @2009 // Elemental
+OUTER_SPRINT sphere_ea     @2010 // Elemental Air
+OUTER_SPRINT sphere_ee     @2011 // Elemental Earth
+OUTER_SPRINT sphere_ef     @2012 // Elemental Fire
+OUTER_SPRINT sphere_ew     @2013 // Elemental Water
+OUTER_SPRINT sphere_th     @2014 // Thought
+OUTER_SPRINT sphere_tr     @2015 // Travelers
+OUTER_SPRINT sphere_wa     @2016 // War
+OUTER_SPRINT sphere_we     @2017 // Weather
+OUTER_SPRINT sphere_gu     @2018 // Guardian
+OUTER_SPRINT sphere_he     @2019 // Healing
+OUTER_SPRINT sphere_lw     @2020 // Law
+OUTER_SPRINT sphere_ne     @2021 // Necromantic
+OUTER_SPRINT sphere_nr     @2036 // Necromantic (restorative only)
+OUTER_SPRINT sphere_nu     @2022 // Numbers
+OUTER_SPRINT sphere_pr     @2023 // Protection
+OUTER_SPRINT sphere_sn     @2024 // Sun
+OUTER_SPRINT sphere_su     @2025 // Summoning
+OUTER_SPRINT sphere_pl     @2029 // Plant
+OUTER_SPRINT sphere_wd     @2030 // Wards
+OUTER_SPRINT sphere_ti     @2035 // Time
+
+// for matching sphere names in descriptions
+OUTER_SPRINT match_ea     @2040 // Elemental Air
+OUTER_SPRINT match_ee     @2041 // Elemental Earth
+OUTER_SPRINT match_ef     @2042 // Elemental Fire
+OUTER_SPRINT match_ew     @2043 // Elemental Water

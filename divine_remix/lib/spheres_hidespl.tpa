@@ -1,0 +1,7 @@
+ACTION_IF enhanced_edition BEGIN
+  COPY_EXISTING - ~hidespl.2da~ ~override~
+    REPLACE_EVALUATE CASE_INSENSITIVE ~^\([ %TAB%]*sppr[1-7][0-4][0-9]\)\([ %TAB%]+1\)~ BEGIN
+      SET $hidespl(~%MATCH1%~) = 1
+    END ~%MATCH1%%MATCH2%~
+    BUT_ONLY
+END

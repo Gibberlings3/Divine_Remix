@@ -963,3 +963,7 @@ REQUIRE_PREDICATE GAME_IS ~tob bgt bg2ee eet~ @16
 LABEL ~cd_dr_spheres_hlas~
 
 INCLUDE ~divine_remix/lib/hla.tpa~
+
+BEGIN ~cam testing~ DESIGNATED 1002
+
+INCLUDE ~divine_remix/lib/modder_add_spells_example.tpa~
