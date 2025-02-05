@@ -17,6 +17,11 @@ ACTION_IF !VARIABLE_IS_SET cd_spell_list_processing BEGIN
   OUTER_SPRINT sphere_none_orig   @2034 // used to check that none sphere listing contains something
   OUTER_SPRINT sphere_major_none  @2037 // replacement string for no major sphere access
   OUTER_SPRINT sphere_minor_none  @2038 // replacement string for no minor sphere access
+  OUTER_SPRINT sphere_match @2026
+  OUTER_SPRINT level_match  @2027
+  OUTER_SPRINT sphere_text  @2028
+  
+  // for in-game text
   OUTER_SPRINT sphere_al     @2001 // All
   OUTER_SPRINT sphere_an     @2002 // Animal
   OUTER_SPRINT sphere_as     @2003 // Astral
@@ -46,10 +51,12 @@ ACTION_IF !VARIABLE_IS_SET cd_spell_list_processing BEGIN
   OUTER_SPRINT sphere_pl     @2029 // Plant
   OUTER_SPRINT sphere_wd     @2030 // Wards
   OUTER_SPRINT sphere_ti     @2035 // Time
-
-  OUTER_SPRINT sphere_match @2026
-  OUTER_SPRINT level_match  @2027
-  OUTER_SPRINT sphere_text  @2028
+  
+  // for matching sphere names in descriptions
+  OUTER_SPRINT match_ea     @2040 // Elemental Air
+  OUTER_SPRINT match_ee     @2041 // Elemental Earth
+  OUTER_SPRINT match_ef     @2042 // Elemental Fire
+  OUTER_SPRINT match_ew     @2043 // Elemental Water
 
   ACTION_CLEAR_ARRAY cd_spheres_definitions
   ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_spheres_definitions BEGIN
@@ -62,10 +69,10 @@ ACTION_IF !VARIABLE_IS_SET cd_spell_list_processing BEGIN
     co, ~%sphere_co%~, ~%sphere_co%~, ~%sphere_co%~ => combat
     cr, ~%sphere_cr%~, ~%sphere_cr%~, ~%sphere_cr%~ => creation
     di, ~%sphere_di%~, ~%sphere_di%~, ~%sphere_di%~ => divination
-    ea, ~%sphere_ea%~, ~%sphere_ea%~, ~%sphere_ea%~ => elemental_air
-    ee, ~%sphere_ee%~, ~%sphere_ee%~, ~%sphere_ee%~ => elemental_earth
-    ef, ~%sphere_ef%~, ~%sphere_ef%~, ~%sphere_ef%~ => elemental_fire
-    ew, ~%sphere_ew%~, ~%sphere_ew%~, ~%sphere_ew%~ => elemental_water
+    ea, ~%sphere_ea%~, ~%sphere_ea%~, ~%match_ea%~  => elemental_air
+    ee, ~%sphere_ee%~, ~%sphere_ee%~, ~%match_ee%~  => elemental_earth
+    ef, ~%sphere_ef%~, ~%sphere_ef%~, ~%match_ef%~  => elemental_fire
+    ew, ~%sphere_ew%~, ~%sphere_ew%~, ~%match_ew%~  => elemental_water
     ex, ~%sphere_ex%~, ~%sphere_ex%~, ~%sphere_ex%~ => elemental
     gu, ~%sphere_gu%~, ~%sphere_gu%~, ~%sphere_gu%~ => guardian
     he, ~%sphere_he%~, ~%sphere_he%~, ~%sphere_he%~ => healing
@@ -93,148 +100,165 @@ ACTION_IF !VARIABLE_IS_SET cd_spell_list_processing BEGIN
       BUT_ONLY
   END
 
-  // attempt to build spheres from unkown spells
+  // attempt to build spheres from unknown spells
   COPY_EXISTING_REGEXP GLOB ~^sppr[1-7][0-4][0-9]\.spl$~ ~override~
-  //COPY_EXISTING_REGEXP GLOB ~^[Ss][Pp][Pp][Rr]1[0-4][0-9]\.spl$~ ~override~
     READ_LONG 0x1e flags 
     SPRINT spell_res ~%SOURCE_RES%~
-    PATCH_IF ((((flags & BIT30) & BIT31)) = 0) BEGIN // make sure it's not flagged awy from both clerics and druids
-      LPF NAME_NUM_OF_SPELL_RES STR_VAR spell_res = EVAL ~%SOURCE_RES%~ RET spell_num spell_name END
+    PATCH_IF ((((flags & BIT30) & BIT31)) = 0) BEGIN // make sure it's not flagged awy from both clerics and druids  
       READ_LONG 0x34 level
       SET elemental_match = 0
       SPRINT sphere1 ~~
       SPRINT sphere2 ~~
       SPRINT sphere3 ~~
+      SPRINT sphere1p ~~
+      SPRINT sphere2p ~~
+      SPRINT sphere3p ~~
       SET cnt = 0    
-      SET lookup = 0    
-      READ_STRREF 0x50 desc
-      PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
-        INNER_PATCH ~%desc%~ BEGIN
-          REPLACE_EVALUATE CASE_INSENSITIVE ~%level_match%~ BEGIN // first do a quick HLA check
-            PATCH_IF !IS_AN_INT ~%MATCH2%~ BEGIN SET level = 8 END // Level: Quest as opposed to Level 3
-            //PATCH_PRINT ~%spell_res% level being checked~
-          END ~%MATCH1%%MATCH2%~ 
-          REPLACE_EVALUATE CASE_INSENSITIVE ~^\([ %TAB%]*Sphere[ %TAB%]*:[ %TAB%]*\)\(.+\)$~ BEGIN 
-            PATCH_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN              
-              PATCH_IF (cnt < 3) AND ("%MATCH2%" STRING_CONTAINS_REGEXP "%sphinfo_3%" = 0) BEGIN 
-                PATCH_IF ("%sphinfo_0%" STRING_CONTAINS_REGEXP "e[aefw]" = 0) BEGIN // special check for elemental
-                  SET elemental_match = 1
-                  SET cnt += 1 SPRINT EVAL ~sphere%cnt%~ ~%sphinfo_0%~ 
-                END ELSE  
-                PATCH_IF ("%sphinfo_0%" STRING_COMPARE_CASE "ex" = 0) BEGIN // only set elemental spehre if it hasn't already been sorted into air/earth/fire/water
-                  PATCH_IF !elemental_match BEGIN 
-                    SET cnt += 1 SPRINT EVAL ~sphere%cnt%~ ~%sphinfo_0%~ 
-                  END
-                END ELSE       
-                PATCH_IF ("%sphinfo_0%" STRING_COMPARE_CASE "ne" = 0) BEGIN // need to determine if spell is in the restorative bits of necromantic
-                  SET necromantic = 0
-                  PATCH_IF spell_num > 0 BEGIN
-                    // orignally I had a long opcode check, but some spells like favor of ilmater do all their work through a subspell
-                    PATCH_IF (("%spell_name%" STRING_COMPARE_CASE "CLERIC_AID" = 0) OR
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_DEATH_WARD" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_FAVOR_OF_ILMATER" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_HOLY_SMITE" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_LESSER_RESTORATION" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_MASS_RAISE_DEAD" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_NEGATIVE_PLANE_PROTECTION" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_RAISE_DEAD" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_REGENERATE" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_REINCARNATION" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_REMOVE_PARALYSIS" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_REPULSE_UNDEAD" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_RESTORATION" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_RESURRECTION" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_UNFAILING_ENDURANCE" = 0) OR 
-                              ("%spell_name%" STRING_COMPARE_CASE "CLERIC_UNHOLY_BLIGHT" = 0)) BEGIN
-                      SET necromantic = 1
-                    END
-                  END    
-                  SET cnt += 1 
-                  PATCH_IF necromantic BEGIN 
-                    SPRINT EVAL ~sphere%cnt%~ ~nr~ // nothing uses "necromantic restorative" in the game, so we don't have to worry about it matching here
-                  END ELSE BEGIN
-                    SPRINT EVAL ~sphere%cnt%~ ~%sphinfo_0%~ 
-                  END 
-                END ELSE BEGIN
-                  SET cnt += 1 SPRINT EVAL ~sphere%cnt%~ ~%sphinfo_0%~ 
-                END  
-              END
-            END 
-            //PATCH_PRINT ~%spell_res%: found sphere line, checking against %MATCH1%, matched %cnt%~
-          END ~%MATCH1%%MATCH2%~ 
-        END // inner_atch
-      END // str valid check
-      PATCH_IF !cnt BEGIN // not matched from descript, try to manually set      
-        LPF NAME_NUM_OF_SPELL_RES STR_VAR spell_res = EVAL ~%SOURCE_RES%~ RET spell_num spell_name END
-        PATCH_IF spell_num > 0 BEGIN
-          PATCH_PHP_EACH cd_spheres AS pm => symbol BEGIN
-            PATCH_IF !cnt AND ("%symbol%" STRING_COMPARE_CASE "%spell_name%" = 0) BEGIN // if it's in the lookup table and not already found
+      SET lookup = "-1" // base, 1 if we're using a table value (correction or otherwise), 0 of matched but used descript    
+      LPF NAME_NUM_OF_SPELL_RES STR_VAR spell_res = EVAL ~%SOURCE_RES%~ RET spell_num spell_name END
+      PATCH_IF spell_num > 0 BEGIN
+        PATCH_PHP_EACH cd_spheres AS pm => symbol BEGIN
+          PATCH_IF ("%symbol%" STRING_COMPARE_CASE "%spell_name%" = 0) BEGIN // match
+            PATCH_IF pm_4 BEGIN // if the sphere needs correction, force the issue
               SPRINT sphere1 ~%pm_1%~
               SPRINT sphere2 ~%pm_2%~
               SPRINT sphere3 ~%pm_3%~
-              SET cnt = 3
               SET lookup = 1 
-            END
+              SET cnt = 3
+            END ELSE BEGIN   
+              SPRINT sphere1p ~%pm_1%~
+              SPRINT sphere2p ~%pm_2%~
+              SPRINT sphere3p ~%pm_3%~
+              SET lookup = 0
+            END  
           END
+        END
+      END  
+      PATCH_IF lookup != 1 BEGIN // if the sphere needed a correction, skip using the description
+        READ_STRREF 0x50 desc
+        PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+          INNER_PATCH ~%desc%~ BEGIN
+            REPLACE_EVALUATE CASE_INSENSITIVE ~%level_match%~ BEGIN // first do a quick HLA check
+              PATCH_IF !IS_AN_INT ~%MATCH2%~ BEGIN SET level = 8 END // Level: Quest as opposed to Level 3
+              //PATCH_PRINT ~%spell_res% level being checked~
+            END ~%MATCH1%%MATCH2%~ 
+            REPLACE_EVALUATE CASE_INSENSITIVE ~^\([ %TAB%]*Sphere[ %TAB%]*:[ %TAB%]*\)\(.+\)$~ BEGIN 
+              PATCH_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN  
+                PATCH_IF ((cnt < 3) AND 
+                          (("%MATCH2%" STRING_CONTAINS_REGEXP "%sphinfo_2%" = 0) OR     // in-game name
+                           ("%MATCH2%" STRING_CONTAINS_REGEXP "%sphinfo_3%" = 0))) BEGIN // match string 
+                  PATCH_IF ("%sphinfo_0%" STRING_COMPARE_REGEXP "e[aefw]" = 0) BEGIN // special check for elemental
+                    SET elemental_match = 1
+                    SET cnt += 1 SPRINT EVAL ~sphere%cnt%~ ~%sphinfo_0%~ 
+                  END ELSE  
+                  PATCH_IF ("%sphinfo_0%" STRING_COMPARE_CASE "ex" = 0) BEGIN // only set elemental spehre if it hasn't already been sorted into air/earth/fire/water
+                    PATCH_IF !elemental_match BEGIN             
+                      SET cnt += 1 SPRINT EVAL ~sphere%cnt%~ ~%sphinfo_0%~ 
+                    END
+                  END ELSE       
+                  PATCH_IF ("%sphinfo_0%" STRING_COMPARE_CASE "ne" = 0) BEGIN // need to determine if spell is in the restorative bits of necromantic
+                    SET necromantic = 0
+                    PATCH_IF spell_num > 0 BEGIN
+                      // orignally I had a long opcode check, but some spells like favor of ilmater do all their work through a subspell
+                      PATCH_IF (("%spell_name%" STRING_COMPARE_CASE "CLERIC_AID" = 0) OR
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_DEATH_WARD" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_FAVOR_OF_ILMATER" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_HOLY_SMITE" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_LESSER_RESTORATION" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_MASS_RAISE_DEAD" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_NEGATIVE_PLANE_PROTECTION" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_RAISE_DEAD" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_REGENERATE" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_REINCARNATION" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_REMOVE_PARALYSIS" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_REPULSE_UNDEAD" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_RESTORATION" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_RESURRECTION" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_UNFAILING_ENDURANCE" = 0) OR 
+                                ("%spell_name%" STRING_COMPARE_CASE "CLERIC_UNHOLY_BLIGHT" = 0)) BEGIN
+                        SET necromantic = 1
+                      END
+                    END    
+                    SET cnt += 1 
+                    PATCH_IF necromantic BEGIN 
+                      SPRINT EVAL ~sphere%cnt%~ ~nr~ // nothing uses "necromantic restorative" in the game, so we don't have to worry about it matching here
+                    END ELSE BEGIN
+                      SPRINT EVAL ~sphere%cnt%~ ~%sphinfo_0%~ 
+                    END 
+                  END ELSE BEGIN
+                    SET cnt += 1 SPRINT EVAL ~sphere%cnt%~ ~%sphinfo_0%~ 
+                  END  
+                END
+              END 
+              //PATCH_PRINT ~%spell_res%: found sphere line, checking against %MATCH1%, matched %cnt%~
+            END ~%MATCH1%%MATCH2%~ 
+          END // inner_patch
+        END // str valid check
+      END // lookup = 1 check  
+      PATCH_IF !cnt BEGIN // if not matched from descript, try to manually set (or force a set from the lookup table)
+        PATCH_IF !lookup BEGIN
+          SPRINT sphere1 ~%sphere1p%~
+          SPRINT sphere2 ~%sphere2p%~
+          SPRINT sphere3 ~%sphere3p%~
+          SET cnt = 3
+          SET lookup = 1  
+        END ELSE BEGIN   
+          PATCH_PRINT ~ == skipping %SOURCE_RES%: no spheres detected and no matching lookup~
         END  
       END // cnt check
-      PATCH_IF !cnt BEGIN 
-        PATCH_PRINT ~ == %SOURCE_RES%: no spheres detected and no matching lookup~
-      END ELSE BEGIN
-        PATCH_IF level = 8 BEGIN // HLA
-          DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla BEGIN ~%spell_res%~, ~%sphere1%~, ~%sphere2%~, ~%sphere3%~ => 0 END 
-        END ELSE BEGIN 
-          PATCH_IF ((!enhanced_edition) OR (!VARIABLE_IS_SET $hidespl(~%spell_res%~))) BEGIN // makde sure it's not hidden on the EEs
-            PATCH_IF ((flags  BAND BIT0) = 0) THEN BEGIN SET allow_chaotic = 1   END ELSE BEGIN SET allow_chaotic = 0   END
-            PATCH_IF ((flags  BAND BIT1) = 0) THEN BEGIN SET allow_evil = 1      END ELSE BEGIN SET allow_evil = 0      END
-            PATCH_IF ((flags  BAND BIT2) = 0) THEN BEGIN SET allow_good = 1      END ELSE BEGIN SET allow_good = 0      END
-            PATCH_IF ((flags  BAND BIT3) = 0) THEN BEGIN SET allow_geneutral = 1 END ELSE BEGIN SET allow_geneutral = 0 END
-            PATCH_IF ((flags  BAND BIT4) = 0) THEN BEGIN SET allow_lawful = 1    END ELSE BEGIN SET allow_lawful = 0    END
-            PATCH_IF ((flags  BAND BIT5) = 0) THEN BEGIN SET allow_lcneutral = 1 END ELSE BEGIN SET allow_lcneutral = 0 END
-            PATCH_IF ((allow_chaotic + allow_evil + allow_good + allow_geneutral + allow_lawful + allow_lcneutral) = 6) THEN BEGIN
-              SET allow_all = 1
-            END ELSE BEGIN
-              SET allow_all = 0
-              INNER_ACTION BEGIN 
-                COPY ~divine_remix/spheres/template.eff~ ~override/cddr%working%.eff~
-                  WRITE_ASCIIE 0x30 ~%spell_res%~ #8
-              END             
-            END
+      PATCH_IF level = 8 BEGIN // HLA
+        DEFINE_ASSOCIATIVE_ARRAY cd_spheres_hla BEGIN ~%spell_res%~, ~%sphere1%~, ~%sphere2%~, ~%sphere3%~ => 0 END 
+      END ELSE BEGIN 
+        PATCH_IF ((!enhanced_edition) OR (!VARIABLE_IS_SET $hidespl(~%spell_res%~))) BEGIN // makde sure it's not hidden on the EEs
+          PATCH_IF ((flags  BAND BIT0) = 0) THEN BEGIN SET allow_chaotic = 1   END ELSE BEGIN SET allow_chaotic = 0   END
+          PATCH_IF ((flags  BAND BIT1) = 0) THEN BEGIN SET allow_evil = 1      END ELSE BEGIN SET allow_evil = 0      END
+          PATCH_IF ((flags  BAND BIT2) = 0) THEN BEGIN SET allow_good = 1      END ELSE BEGIN SET allow_good = 0      END
+          PATCH_IF ((flags  BAND BIT3) = 0) THEN BEGIN SET allow_geneutral = 1 END ELSE BEGIN SET allow_geneutral = 0 END
+          PATCH_IF ((flags  BAND BIT4) = 0) THEN BEGIN SET allow_lawful = 1    END ELSE BEGIN SET allow_lawful = 0    END
+          PATCH_IF ((flags  BAND BIT5) = 0) THEN BEGIN SET allow_lcneutral = 1 END ELSE BEGIN SET allow_lcneutral = 0 END
+          PATCH_IF ((allow_chaotic + allow_evil + allow_good + allow_geneutral + allow_lawful + allow_lcneutral) = 6) THEN BEGIN
+            SET allow_all = 1
+          END ELSE BEGIN
+            SET allow_all = 0
+            INNER_ACTION BEGIN 
+              COPY ~divine_remix/spheres/template.eff~ ~override/cddr%working%.eff~
+                WRITE_ASCIIE 0x30 ~%spell_res%~ #8
+            END             
+          END
+          
+          DEFINE_ASSOCIATIVE_ARRAY cd_spheres_spell_info BEGIN // params_4 was hla, but don't need any more. Keep as 0 since I don't want to renumber params in rest of code
+            ~%spell_res%~, ~%sphere1%~, ~%sphere2%~, ~%sphere3%~, ~0~, ~%level%~, ~%allow_all%~, ~%allow_good%~, ~%allow_geneutral%~, ~%allow_evil%~, ~%allow_lawful%~, ~%allow_lcneutral%~, ~%allow_chaotic%~ => ~%spell_res%~
+          END  
+          
+          WRITE_BYTE 0x21 (THIS BOR (BIT6 + BIT7)) // don't show up automatically in spellbooks
+          
+          PATCH_IF lookup = 1 BEGIN // update descript if it needs a correction or if we had to use the lookup table
+            SPRINT working_sphere ~%sphere_text%~
+            SET iteration = 0
+            PATCH_FOR_EACH sphere IN ~%sphere1%~ ~%sphere2%~ ~%sphere3%~ BEGIN
+              PATCH_IF iteration BEGIN SPRINT separator ", " END ELSE BEGIN SPRINT separator " " END 
+              SET iteration += 1    
+              PATCH_IF ("%sphere%" STRING_COMPARE_CASE "") BEGIN // skip for blank secondary and tertiary entries
+                PATCH_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN  
+                  PATCH_IF ("%sphere%" STRING_COMPARE_CASE "%sphinfo_0%" = 0) BEGIN SPRINT working_sphere ~%working_sphere%%separator%%sphinfo_1%~ END
+                END // php_each 
+              END // end of blank check for params   
+            END // end of php_each for params
             
-            DEFINE_ASSOCIATIVE_ARRAY cd_spheres_spell_info BEGIN // params_4 was hla, but don't need any more. Keep as 0 since I don't want to renumber params in rest of code
-              ~%spell_res%~, ~%sphere1%~, ~%sphere2%~, ~%sphere3%~, ~0~, ~%level%~, ~%allow_all%~, ~%allow_good%~, ~%allow_geneutral%~, ~%allow_evil%~, ~%allow_lawful%~, ~%allow_lcneutral%~, ~%allow_chaotic%~ => ~%spell_res%~
-            END  
-            
-            WRITE_BYTE 0x21 (THIS BOR (BIT6 + BIT7)) // don't show up automatically in spellbooks
-            
-            PATCH_IF !lookup BEGIN // if we're relying on sphere assignments from the table, update the spell description
-              SPRINT working_sphere ~%sphere_text%~
-              SET iteration = 0
-              PATCH_FOR_EACH sphere IN ~%sphere1%~ ~%sphere2%~ ~%sphere3%~ BEGIN
-                PATCH_IF iteration BEGIN SPRINT separator ", " END ELSE BEGIN SPRINT separator " " END 
-                SET iteration += 1    
-                PATCH_IF ("%sphere%" STRING_COMPARE_CASE "") BEGIN // skip for blank secondary and tertiary entries
-                  PATCH_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN  
-                    PATCH_IF ("%sphere%" STRING_COMPARE_CASE "%sphinfo_0%" = 0) BEGIN SPRINT working_sphere ~%working_sphere%%separator%%sphinfo_1%~ END
-                  END // php_each 
-                END // end of blank check for params   
-              END // end of php_each for params
-              
-              READ_LONG 0x50 desc_strref
-              PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
-                INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-                  PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP ~%sphere_match%~) THEN BEGIN // description lacks sphere line
-                    REPLACE_TEXTUALLY ~%level_match%~ ~\1\2%WNL%%working_sphere%~
-                  END ELSE BEGIN // sphere line exists
-                    REPLACE_TEXTUALLY ~%sphere_match%~ ~%working_sphere%~
-                  END
+            READ_LONG 0x50 desc_strref
+            PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
+              INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+                PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP ~%sphere_match%~) THEN BEGIN // description lacks sphere line
+                  REPLACE_TEXTUALLY ~%level_match%~ ~\1\2%WNL%%working_sphere%~
+                END ELSE BEGIN // sphere line exists
+                  REPLACE_TEXTUALLY ~%sphere_match%~ ~%working_sphere%~
                 END
-                INNER_ACTION BEGIN STRING_SET_EVALUATE desc_strref "%desc%" END 
-              END // description valid check
-            END // end lookup check
-          END // hidespl check  
-        END // hla check
-      END // end cnt check
+              END
+              INNER_ACTION BEGIN STRING_SET_EVALUATE desc_strref "%desc%" END 
+            END // description valid check
+          END // end lookup check
+        END // hidespl check  
+      END // hla check
     END // end hidden check (bit 30/31) 
     BUT_ONLY  
 

@@ -289,7 +289,10 @@ The casting of this spell opens a channel between the caster's plane and the Neg
 @2037 = ~- No major sphere access~
 @2038 = ~- No minor sphere access~
 // @2039 used in weidu.tra
-
+@2040 = ~Elemental[ %TAB%]*:?[ %TAB%]*(?Air)?~
+@2041 = ~Elemental[ %TAB%]*:?[ %TAB%]*(?Earth)?~
+@2042 = ~Elemental[ %TAB%]*:?[ %TAB%]*(?Fire)?~
+@2043 = ~Elemental[ %TAB%]*:?[ %TAB%]*(?Water)?~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
