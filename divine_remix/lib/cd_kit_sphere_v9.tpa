@@ -1,0 +1,133 @@
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// cd_kit_sphere_v9                                 \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_ACTION_FUNCTION cd_kit_sphere_v9
+  INT_VAR 
+    string                  = 0
+    cr_exception            = 0
+  STR_VAR
+    table                   = clabpr01
+    class                   = cleric
+    all                     = none
+    animal                  = none
+    astral                  = none
+    chaos                   = none
+    charm                   = none
+    combat                  = none
+    creation                = none
+    divination              = none
+    elemental               = none
+    elemental_air           = none
+    elemental_earth         = none
+    elemental_fire          = none
+    elemental_water         = none
+    guardian                = none
+    healing                 = none
+    law                     = none
+    necromantic             = none
+    necromantic_restorative = none
+    numbers                 = none
+    plant                   = none
+    protection              = none
+    summoning               = none
+    sun                     = none
+    thoughts                = none
+    time                    = none
+    travelers               = none
+    war                     = none
+    wards                   = none
+    weather                 = none
+BEGIN
+   
+  ACTION_IF ((FILE_EXISTS_IN_GAME ~%table%.2da~) OR (cr_exception = 2)) THEN BEGIN // sanity check
+      
+    // don't mess with it if spell sphere spells already exist    
+    ACTION_IF ((FILE_EXISTS ~weidu_external/divine_remix/spheres/allowed_%table%.tpa~) OR (cr_exception = 2)) THEN BEGIN // in mode 2, don't mess with the table
+    
+      OUTER_SET cd_adjust_table = 0
+      
+    END ELSE BEGIN 
+    
+      OUTER_SET cd_adjust_table = 1
+      
+      COPY_EXISTING ~%table%.2da~ ~override~ // extends CLAB to level 50 if needed
+        PATCH_IF (SOURCE_SIZE > 0) BEGIN
+          LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove eof blank lines
+          REPLACE_TEXTUALLY ~[%WNL%%MNL%]+~ ~%LNL%~
+          REPLACE_TEXTUALLY ~\(1[ %TAB%]+2[ %TAB%]+3[ %TAB%]+4[ %TAB%]+5[ %TAB%]+6[ %TAB%]+7[ %TAB%]+8[ %TAB%]+9[ %TAB%]+10[ %TAB%]+11[ %TAB%]+12[ %TAB%]+13[ %TAB%]+14[ %TAB%]+15[ %TAB%]+16[ %TAB%]+17[ %TAB%]+18[ %TAB%]+19[ %TAB%]+20[ %TAB%]+21[ %TAB%]+22[ %TAB%]+23[ %TAB%]+24[ %TAB%]+25[ %TAB%]+26[ %TAB%]+27[ %TAB%]+28[ %TAB%]+29[ %TAB%]+30[ %TAB%]+31[ %TAB%]+32[ %TAB%]+33[ %TAB%]+34[ %TAB%]+35[ %TAB%]+36[ %TAB%]+37[ %TAB%]+38[ %TAB%]+39\)\([ %TAB%]+\)40[ %TAB%]*~
+            ~\1\240\241\242\243\244\245\246\247\248\249\250~
+          REPLACE_TEXTUALLY ~^\(ABILITY[0-9A-Z]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+\)\([ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%]+[ %TAB%]+[^ %TAB%%LNL%]+\)[ %TAB%]*$~
+            ~\1\2\2~
+        END
+        UNLESS ~41[ %TAB%]+42[ %TAB%]+43[ %TAB%]+44[ %TAB%]+45[ %TAB%]+46[ %TAB%]+47[ %TAB%]+48[ %TAB%]+49[ %TAB%]+50~
+        BUT_ONLY
+        
+    END    
+    
+  PRINT ~we are here %cd_adjust_table%~
+<<<<<<<<./inline/temp.tpa
+>>>>>>>>
+  
+    OUTER_SPRINT sphere_major ~%sphere_major_orig%~ // initialize strings
+    OUTER_SPRINT sphere_minor ~%sphere_minor_orig%~
+    OUTER_SPRINT sphere_none  ~%sphere_none_orig%~
+    
+    COPY ~./inline/temp.tpa~ ~weidu_external/divine_remix/spheres/temp.tpa~
+      PATCH_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN   
+        SPRINT check EVAL ~%%long%%~
+        PATCH_IF (("%check%" STRING_COMPARE_CASE "major" = 0) OR 
+                  (("%sphinfo_0%" STRING_COMPARE_CASE "al" = 0) AND (cr_exception = 1)) OR 
+                  (("%sphinfo_0%" STRING_COMPARE_CASE "an" = 0) AND (cr_exception = 1)) OR 
+                  (("%sphinfo_0%" STRING_COMPARE_CASE "he" = 0) AND (cr_exception = 1)) OR 
+                  (("%sphinfo_0%" STRING_COMPARE_CASE "pl" = 0) AND (cr_exception = 1)) OR 
+                  (("%sphinfo_0%" STRING_COMPARE_CASE "we" = 0) AND (cr_exception = 1))) BEGIN 
+          SPRINT sphere_major "%sphere_major%, %sphinfo_2%" 
+          PATCH_IF ("%check%" STRING_COMPARE_CASE "major" = 0) BEGIN APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_%sphinfo_0%_major.2da~ END
+        END ELSE 
+        PATCH_IF ("%check%" STRING_COMPARE_CASE "minor" = 0) BEGIN 
+          SPRINT sphere_minor "%sphere_minor%, %sphinfo_2%"  
+          APPEND_FILE ~weidu_external/divine_remix/spheres/%class%_%sphinfo_0%_minor.2da~
+        END ELSE BEGIN SPRINT sphere_none "%sphere_none%, %sphinfo_2%" END
+      END   
+      PATCH_IF cr_exception = 1 BEGIN APPEND_FILE ~weidu_external/divine_remix/spheres/cd_ranger_cleric.2da~ END
+      
+      ACTION_IF cd_adjust_table BEGIN 
+        COPY ~weidu_external/divine_remix/spheres/temp.tpa~ ~weidu_external/divine_remix/spheres/allowed_%table%.tpa~
+        COPY_EXISTING ~%table%.2da~ ~override~      
+          APPEND_FILE ~weidu_external/divine_remix/spheres/allowed_%table%.tpa~
+          LAUNCH_PATCH_MACRO ~reindex_clab~ // get ABLITYx in order
+          PRETTY_PRINT_2DA
+      END  
+      
+    // take care of descriptions
+    ACTION_GET_STRREF string desc
+    ACTION_IF (("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) AND      // don't bother if no valid content in string
+               ("%desc%" STRING_COMPARE_CASE ~%sphere_header%~) AND                  // strings should be unique, but in case sphere info already present, skip
+               (("%sphere_major_orig%" STRING_COMPARE_CASE "%sphere_major%") OR 
+                ("%sphere_minor_orig%" STRING_COMPARE_CASE "%sphere_minor%"))) BEGIN // at least *something^ added (aka the inquisitor exception)
+    
+      ACTION_IF ("%sphere_none_orig%" STRING_COMPARE_CASE "%sphere_none%" = 0) BEGIN                      // no 'none block'
+        OUTER_SPRINT sphere ~%sphere_header%%LNL%%sphere_major%%LNL%%sphere_minor%~                       // assemble full block without none
+      END ELSE BEGIN
+        OUTER_SPRINT sphere ~%sphere_header%%LNL%%sphere_major%%LNL%%sphere_minor%%LNL%%sphere_none%~     // assemble full block with none
+      END  
+      OUTER_INNER_PATCH_SAVE sphere ~%sphere%~ BEGIN                                                      // and clean it up
+        REPLACE_TEXTUALLY ~^%sphere_major_orig%$~ ~%sphere_major_none%~                                     // nothing was added to major, so sub alternate line
+        REPLACE_TEXTUALLY ~^%sphere_minor_orig%$~ ~%sphere_minor_none%~                                     // nothing was added to minor, so sub alternate line
+        REPLACE_TEXTUALLY ~%sphere_ne%, %sphere_nr%~ ~%sphere_ne%~                                        // collapse necromantic entries, if possible
+        REPLACE_TEXTUALLY ~%sphere_ex%, %sphere_ea%, %sphere_ee%, %sphere_ef%, %sphere_ew%~ ~%sphere_ex%~ // collapse elemental entries, if possible
+        REPLACE_TEXTUALLY ~CD_REPLACEME, ~ ~~                                                             // cleanup
+      END  
+    
+      STRING_SET_EVALUATE string "%desc%%LNL%%LNL%%sphere%"
+      
+    END    
+    
+  END // table check  
+
+END

@@ -1,0 +1,67 @@
+// this and modder_strings.tpa is the only thing meeded for the kits; everything else here is for adding spells
+INCLUDE ~divine_remix/lib/cd_kit_sphere_v9.tpa~ // for applying spheres to kitts
+
+// set defaults
+OUTER_SPRINT dr_lang_folder english
+OUTER_SPRINT dr_lang_path   ~weidu_external/divine_remix/languages~
+OUTER_SET enhanced_edition = 1
+OUTER_SET dr_external_mode = 1
+
+COPY - ~weidu.log~ ~weidu.log~ // use - so even if we do accidentally change something, no harm done
+  REPLACE_EVALUATE CASE_INSENSITIVE "\(~.+divine_remix\.tp2~ #\)\([0-9]+\)" BEGIN 
+    PATCH_MATCH MATCH2 WITH
+      1 BEGIN SPRINT dr_lang_folder ~french~ END
+      DEFAULT 
+    END  
+  END ~%MATCH1%%MATCH2%~ 
+  
+ACTION_IF !GAME_IS ~bgee bg2ee eet iwdee~ BEGIN 
+  OUTER_SET enhanced_edition = 0
+  OUTER_SPRINT dr_lang_path   ~divine_remix/languages~ 
+END
+
+WITH_TRA ~%dr_lang_path%/%dr_lang_folder%/game.tra~ BEGIN
+  INCLUDE ~divine_remix/lib/modder_strings.tpa~ // sets vars from DR strings
+END
+
+DEFINE_ACTION_MACRO cd_add_spells_to_dr_spheres BEGIN 
+  
+  INCLUDE ~divine_remix/lib/spheres_hidespl.tpa~     // processes hidespl
+  INCLUDE ~divine_remix/lib/modder_spell.tpa~        // loads macros
+  INCLUDE ~divine_remix/lib/spheres_definitions.tpa~ // sphere info
+
+  ACTION_PHP_EACH cd_add_spells_to_dr_spheres AS pm => key BEGIN
+
+    LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = EVAL ~%pm_0%~ RET spell_num spell_res END
+    ACTION_IF ((spell_num >= 1000) AND (spell_num < 2000)) BEGIN // sanity check
+    
+      OUTER_SET working = spell_num - 1000
+      
+      COPY_EXISTING ~%spell_res%.spl~ ~override~
+        LPM cd_dr_spell_macro
+        BUT_ONLY  
+
+    END
+    
+  END
+
+  ACTION_PHP_EACH cd_spheres_spell_info AS params => spell BEGIN
+
+    LAF NAME_NUM_OF_SPELL_RES STR_VAR spell_res = EVAL ~%spell%~ RET spell_num END
+    OUTER_SET working = spell_num - 1000
+
+    ACTION_FOR_EACH sphere IN ~%params_1%~ ~%params_2%~ ~%params_3%~ BEGIN
+    
+      ACTION_IF ("%sphere%" STRING_COMPARE_CASE "") BEGIN // if not blank 
+
+        COPY_EXISTING ~cddr%sphere%%params_5%.spl~ ~override~
+          LPM cd_dr_spell_exclusions
+          BUT_ONLY
+          
+      END
+
+    END
+
+  END
+
+END
