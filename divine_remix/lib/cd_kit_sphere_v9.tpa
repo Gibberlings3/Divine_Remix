@@ -69,7 +69,6 @@ BEGIN
         
     END    
     
-  PRINT ~we are here %cd_adjust_table%~
 <<<<<<<<./inline/temp.tpa
 >>>>>>>>
   
