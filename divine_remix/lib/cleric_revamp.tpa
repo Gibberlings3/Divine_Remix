@@ -5,42 +5,6 @@
 COPY ~divine_remix/2da/clabpr02.2da~ ~override~ // new ability tables
      ~divine_remix/2da/clabpr03.2da~ ~override~
      ~divine_remix/2da/clabpr04.2da~ ~override~
-
-// new descripts
-COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
-  COUNT_2DA_ROWS 9 rows
-  FOR (index = rows ; index > 0 ; --index) BEGIN
-    READ_2DA_ENTRY index 5 8 clab
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr02" = 0) BEGIN // talos
-      READ_2DA_ENTRY index 4 8 talos_sphere
-    END
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr03" = 0) BEGIN // helm
-      READ_2DA_ENTRY index 4 8 helm_sphere
-    END
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr04" = 0) BEGIN // lathander
-      READ_2DA_ENTRY index 4 8 lathander_sphere
-    END
-    PATCH_IF ("%clab%" STRING_COMPARE_CASE "ohtempus" = 0) BEGIN // tempus
-      READ_2DA_ENTRY index 4 8 tempus_sphere
-    END
-  END
-  BUT_ONLY
-
-ACTION_IF VARIABLE_IS_SET talos_sphere THEN BEGIN
-  STRING_SET_EVALUATE ~%talos_sphere%~ @10177
-END
-
-ACTION_IF VARIABLE_IS_SET helm_sphere THEN BEGIN
-  STRING_SET_EVALUATE ~%helm_sphere%~ @10194
-END
-
-ACTION_IF VARIABLE_IS_SET lathander_sphere THEN BEGIN
-  STRING_SET_EVALUATE ~%lathander_sphere%~ @10178
-END
-
-ACTION_IF VARIABLE_IS_SET tempus_sphere THEN BEGIN
-  STRING_SET_EVALUATE ~%tempus_sphere%~ @10902
-END
      
 /////                                                  \\\\\
 ///// innates                                          \\\\\

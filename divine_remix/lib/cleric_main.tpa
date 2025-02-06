@@ -48,6 +48,14 @@ ACTION_IF NOT FILE_CONTAINS_EVALUATED (~alignment.2da~ ~^LATHANDER[ %TAB%]+1[ %T
 
 END
 
+ACTION_IF !cd_dr_conventional BEGIN
+  OUTER_SPRINT clabpr02_newhelp @10177
+  OUTER_SPRINT clabpr03_newhelp @10194
+  OUTER_SPRINT clabpr04_newhelp @10178
+  OUTER_SPRINT ohtempus_newhelp @10902
+  OUTER_SPRINT ohtyr_newhelp    @13310
+END
+  
 // new descripts
 COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
   SPRINT mixed_match @10154 // Priest
@@ -56,6 +64,7 @@ COPY_EXISTING ~kitlist.2da~ ~override~ // look for kit descripts
   COUNT_2DA_ROWS 9 rows
   FOR (index = 0 ; index < rows ; ++index) BEGIN
     READ_2DA_ENTRY index 5 8 clab
+    TO_LOWER clab
     PATCH_IF ("%clab%" STRING_COMPARE_CASE "clabpr02" = 0) BEGIN // talos
       SPRINT mixed_replace @10136 // Stormlord
       SPRINT lower_replace @10137 // stormlord

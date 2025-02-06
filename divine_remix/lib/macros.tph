@@ -48,10 +48,14 @@ DEFINE_PATCH_MACRO cd_descript_replace BEGIN
     END
   END
   READ_2DA_ENTRY index 4 8 strref
-  GET_STRREF strref desc
-  INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-    REPLACE_TEXTUALLY ~%upper_match%~ ~%upper_replace%~
-  END
+  PATCH_IF cd_dr_conventional BEGIN // just update priest name
+    GET_STRREF strref desc
+    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+      REPLACE_TEXTUALLY ~%upper_match%~ ~%upper_replace%~
+    END
+  END ELSE BEGIN                    // drop in new description
+    SPRINT desc EVAL ~%%clab%_newhelp%~  
+  END  
   INNER_ACTION BEGIN
     STRING_SET_EVALUATE ~%strref%~ ~%desc%~
   END
