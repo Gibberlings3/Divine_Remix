@@ -1,8 +1,8 @@
 DEFINE_PATCH_MACRO cd_dr_spell_macro BEGIN
 
   READ_LONG 0x1e flags 
-  SPRINT spell_res ~%SOURCE_RES%~
   PATCH_IF ((((flags & BIT30) & BIT31)) = 0) BEGIN // make sure it's not flagged awy from both clerics and druids    
+    SPRINT spell_res ~%SOURCE_RES%~
     READ_LONG 0x34 level
     PATCH_IF dr_external_mode BEGIN
       SET cnt = 3

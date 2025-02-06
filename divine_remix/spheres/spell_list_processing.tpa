@@ -11,6 +11,8 @@ ACTION_IF !VARIABLE_IS_SET cd_spell_list_processing BEGIN
   
   // attempt to build spheres from unknown spells
   COPY_EXISTING_REGEXP GLOB ~^sppr[1-7][0-4][0-9]\.spl$~ ~override~
+    LPF NAME_NUM_OF_SPELL_RES STR_VAR spell_res = EVAL ~%SOURCE_RES%~ RET spell_num END
+    SET working = spell_num - 1000
     LPM cd_dr_spell_macro
     BUT_ONLY  
 

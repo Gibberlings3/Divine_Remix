@@ -2,6 +2,7 @@ LAUNCH_ACTION_FUNCTION cd_kit_sphere_v9 // helm
   INT_VAR
     string                  = ~%strref%~
   STR_VAR
+    kitname                 = GODHELM
     table                   = EVAL ~%params_1%~
     class                   = cleric
     all                     = major

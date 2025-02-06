@@ -11,6 +11,7 @@ DEFINE_ACTION_FUNCTION cd_kit_sphere_v9
     string                  = 0
     cr_exception            = 0
   STR_VAR
+    kitname                 = ""
     table                   = clabpr01
     class                   = cleric
     all                     = none
@@ -128,5 +129,32 @@ BEGIN
     END    
     
   END // table check  
+  
+//  ACTION_IF enhanced_edition AND ("%kitname%" STRING_COMPARE_CASE "") BEGIN 
+//  
+//    OUTER_SET cd_working_kit = (IDS_OF_SYMBOL(~kit~ ~%kitname%~) - 0x4000)
+//    PRINT ~checking kit %kitname%, cd_working_kitis %cd_working_kit% ~
+//    
+//    ACTION_IF cd_working_kit > 0 BEGIN 
+//    
+//      OUTER_SPRINT cd_allowed ~~
+//      ACTION_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN   
+//        OUTER_SPRINT check EVAL ~%%long%%~
+//        ACTION_IF (("%check%" STRING_COMPARE_CASE "major" = 0) OR 
+//                   ("%check%" STRING_COMPARE_CASE "minor" = 0)) BEGIN 
+//          OUTER_SPRINT cd_allowed "%cd_allowed%'%long%_%check%',"  
+//        END
+//      END   
+//
+//      APPEND ~m_cddrsp.lua~ ~   
+//      
+//dwLearnedKitSpellBlock[%cd_working_kit%]={}
+//dwLearnedKitSpellAllow[%cd_working_kit%]={'every_spell'}
+//dwPriestKitSpellBlock[%cd_working_kit%]={}
+//dwPriestKitSpellAllow[%cd_working_kit%]={%cd_allowed%}~
+//
+//    END
+//
+//  END  
 
 END

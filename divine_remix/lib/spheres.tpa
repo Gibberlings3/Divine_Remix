@@ -99,6 +99,8 @@ ACTION_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN
                    ("%sphinfo_0%" STRING_COMPARE_CASE "%params_2%" = 0) OR   // secondary
                    ("%sphinfo_0%" STRING_COMPARE_CASE "%params_3%" = 0)) AND // or tertiary sphere
                   (index = params_5)) BEGIN // level matches
+          LPF NAME_NUM_OF_SPELL_RES STR_VAR spell_res = EVAL ~%spell%~ RET spell_num END
+          SET working = spell_num - 1000
           LPM cd_dr_spell_exclusions
         END // sphere/level check
       END // php_each        
@@ -106,6 +108,38 @@ ACTION_PHP_EACH cd_spheres_definitions AS sphinfo => long BEGIN
   END // outer_for
   
 END // ACTION_FOR_EACH sphere iterations
+
+//ACTION_IF enhanced_edition BEGIN
+//  
+//  COPY ~divine_remix/lua/m_cddrsp.lua~ ~override~
+//    PATCH_PHP_EACH cd_spheres_definitions AS pm => long BEGIN
+//      REPLACE_TEXTUALLY ~\(-- replaceme_spells\)~ 
+//~dwSpellList['%long%_major']={
+//  --replaceme_sph_%pm_0%_major
+//}
+//
+//dwSpellList['%long%_major'].empty={}
+//dwSpellList['%long%_minor']={
+//  --replaceme_sph_%pm_0%_minor
+//}
+//
+//dwSpellList['%long%_minor'].empty={}
+//\1~
+//      SPRINT EVAL ~sph_%pm_0%~ ~~ // initialize sph_al, sph_an, &c.
+//    END 
+//    PATCH_PHP_EACH cd_spheres_spell_info AS pm => spell BEGIN
+//      PATCH_FOR_EACH sphere IN ~%pm_1%~ ~%pm_2%~ ~%pm_3%~ BEGIN
+//        PATCH_IF pm_6 = 1 BEGIN // allow all
+//          REPLACE_TEXTUALLY ~\(--replaceme_sph_%sphere%_major\)~ ~%spell%=true,%LNL%  \1~
+//          PATCH_IF pm_5 < 4 BEGIN 
+//            REPLACE_TEXTUALLY ~\(--replaceme_sph_%sphere%_minor\)~ ~%spell%=true,%LNL%  \1~
+//          END  
+//        END
+//      END
+//    END
+//    REPLACE_TEXTUALLY ~%LNL%  --replaceme_sph_[a-z]+_m[ai][jn]or~ ~~
+//        
+//END           
 
 /////                                                  \\\\\
 ///// apply spheres to classes and kits                \\\\\
@@ -409,3 +443,16 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
     END // minfo_num check          
   END // caster level check
   BUT_ONLY 
+
+//ACTION_IF enhanced_edition BEGIN
+//
+//  COPY_EXISTING ~ui.menu~ ~override~
+//    REPLACE_TEXTUALLY 
+//      ~table.sort(chargen.choose_spell, sortByPriestSpellName)[ %TAB%%LNL%%MNL%%WNL%]+currentChargenMemorizePriestSpell = nil~
+//      ~dwOnOpen('CHARGEN_MEMORIZE_PRIEST')~
+//    BUT_ONLY
+//    
+//  COPY ~divine_remix/lua/m_dw_oof.lua~ ~override~
+//       ~divine_remix/lua/m_dw_ssf.lua~ ~override~
+//
+//END    
