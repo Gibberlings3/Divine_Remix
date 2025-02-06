@@ -4,7 +4,11 @@
 
 COPY ~divine_remix/2da/clabpr02.2da~ ~override~ // new ability tables
      ~divine_remix/2da/clabpr03.2da~ ~override~
-     ~divine_remix/2da/clabpr04.2da~ ~override~
+     ~divine_remix/2da/clabpr04.2da~ ~override~  
+  PATCH_IF !game_includes_tob THEN BEGIN
+    REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+  END
+
      
 /////                                                  \\\\\
 ///// innates                                          \\\\\
@@ -65,6 +69,9 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtempus.2da~ THEN BEGIN // do tempus as part of 
 
   LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr412 destination = ~a#tem07~ RET_ARRAY cd_clone_spell_array END // holy power
   COPY ~divine_remix/2da/a#temp.2da~ ~override/ohtempus.2da~
+    PATCH_IF !game_includes_tob THEN BEGIN
+      REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+    END
   INCLUDE ~divine_remix/lib/battleguard_common.tpa~
   
 END
@@ -78,6 +85,9 @@ ACTION_IF FILE_EXISTS_IN_GAME ~ohtyr.2da~ THEN BEGIN // do tyr as part of the ma
   COPY ~divine_remix/2da/cdtyr.2da~ ~override/ohtyr.2da~
     REPLACE_TEXTUALLY ~cdtyr9~  ~ohtyr1~
     REPLACE_TEXTUALLY ~cdtyr11~ ~ohtyr2~
+    PATCH_IF !game_includes_tob THEN BEGIN
+      REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
+    END
   INCLUDE ~divine_remix/lib/holy_justice_common.tpa~
   
 END
