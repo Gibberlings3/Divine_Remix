@@ -352,6 +352,9 @@ BEGIN
     SAY_EVALUATED 0x0c ~%name%~
     SAY_EVALUATED 0x50 ~%desc%~
     SAY_EVALUATED 0x54 ~%desc%~
+    PATCH_IF game_is_iwdee BEGIN
+      WRITE_ASCIIE 0x58 ~~ #8 // iwdee doesn't use description images
+    END
     LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 6 step_dur = 0 step_size = 1 level_cap = dr_level_cap END // can't do durations automatically since visual is also 6 seconds
     PATCH_IF !game_is_iwdee BEGIN // have to create extra headers for +4 and +5 weapons even though duration doesn't increase
       LPF CD_EXTEND-O-MATIC INT_VAR dur_special = 1 step_dur = 0 step_size = 1 level_cap = 21 END // just create a level 21 header (no more duration increases)
