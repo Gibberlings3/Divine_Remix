@@ -26,6 +26,7 @@ ACTION_IF !FILE_EXISTS_IN_GAME cddrair1.eff BEGIN // if the spell doesn't exist
   COPY_EXISTING ~%spell%.spl~ ~override~ // common changes for both
     WRITE_SHORT 0x1e 0 // remove exclusion
     PATCH_IF !game_is_iwdee BEGIN // no mental combat on iwdee
+      SAY 0x50 @214 // bg2 descript minus the mental combat nonsense
       LPF DELETE_EFFECT INT_VAR match_opcode = 165 END // removing the mental combat visual effect for priest
       LPF DELETE_EFFECT INT_VAR match_opcode = 215 END // removing the mental combat visual effect for priest
       LPF DELETE_EFFECT INT_VAR match_opcode = 142 END // removing the mental combat visual effect for priest
@@ -39,7 +40,7 @@ ACTION_IF !FILE_EXISTS_IN_GAME cddrair1.eff BEGIN // if the spell doesn't exist
       PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
         READ_STRREF ~%offset%~ desc
         INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-          REPLACE_TEXTUALLY ~%level_match%~ ~\1 7~ // change level in description to 7
+          REPLACE_TEXTUALLY ~%level_match%~ ~\1 7%LNL%%sphere_text% %sphere_ea%~ // change level in description to 7, add sphere line
         END
       END
       SAY_EVALUATED offset ~%desc%~

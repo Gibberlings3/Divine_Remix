@@ -15,23 +15,25 @@ COPY_EXISTING ~sppr317.spl~ ~override~ // cure disease - no longer cures blindne
   LPF DELETE_EFFECT INT_VAR match_opcode = 240 match_parameter2 = 112 END
   BUT_ONLY
 
-OUTER_SPRINT level_match  @2027 // needed to change descripts, below
-
 // move protection from evil 10' to level 3
 COPY_EXISTING ~sppr408.spl~ ~override~
 ADD_SPELL ~override/sppr408.spl~ 1 3 CLERIC_PROTECTION_FROM_EVIL_10_FOOT
   DEFINE_ASSOCIATIVE_ARRAY cd_spell_sub BEGIN ~%DEST_RES%~, 3, 2, sppr406 => sppr408 END // for spellbook updates
   WRITE_LONG 0x34 3
-  LPF ALTER_EFFECT INT_VAR match_power = 4 power = 3 END
   PATCH_FOR_EACH offset IN 0x50 BEGIN
     READ_LONG ~%offset%~ desc_strref
     PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
       READ_STRREF ~%offset%~ desc
       INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-        REPLACE_TEXTUALLY ~%level_match%~ ~\1 3~ // change level in description to 3
+        REPLACE_TEXTUALLY ~%level_match%~ ~\13~ // change level in description to 3
       END
     END
   END
+  // because it's going from a lev 4>3, minimum durations are wrong so we cut out the extended headers and rebuild
+  LPF CD_TRIM-O-MATIC INT_VAR level_cap = 1 END // delete all headers
+  LPF ALTER_EFFECT INT_VAR match_power = 4 power = 3 END
+  LPF ALTER_EFFECT INT_VAR match_duration = 420 duration = 300 END
+  LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 0 step_dur = 60 level_cap = dr_level_cap min_lev_alt = 5 END // 1 turn/level
 
 STRING_SET_EVALUATE desc_strref "%desc%" // change default descript
 
@@ -46,7 +48,7 @@ ADD_SPELL ~override/sppr413.spl~ 1 3 CLERIC_NEGATIVE_PLANE_PROTECTION
     PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
       READ_STRREF ~%offset%~ desc
       INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-        REPLACE_TEXTUALLY ~%level_match%~ ~\1 3~ // change level in description to 3
+        REPLACE_TEXTUALLY ~%level_match%~ ~\13~ // change level in description to 3
       END
     END
   END
@@ -59,6 +61,7 @@ COPY_EXISTING ~sppr508.spl~ ~override~
 COPY ~divine_remix/spl/sppr508.spl~ ~override~ // chaotic commands - major changes
   WRITE_LONG 0x08 name
   SAY UNIDENTIFIED_DESC @168
+  LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 0 step_dur = 60 level_cap = dr_level_cap END // 1 turn/level
 
 /////                                                  \\\\\
 ///// new spells                                       \\\\\
@@ -201,31 +204,44 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_IMPREGNABLE_MIND~
 
 END
 
-ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_PROTECT_FROM_GOOD~)) < 0)) BEGIN // only if not present or overwrite selected
+// iwdee mytos already has a CLERIC_PROTECT_FROM_GOOD, but it's outside of the usable spells for player clerics
+OUTER_SET cpfg = IDS_OF_SYMBOL (~spell~ ~CLERIC_PROTECT_FROM_GOOD~)
+ACTION_IF ((overwrite = 1) OR (cpfg < 0) OR (cpfg = 1199)) BEGIN // only if not present or overwrite selected
 
-  COPY_EXISTING ~sppr107.spl~ ~override~
+  ACTION_IF cpfg = 1199 BEGIN // iwdee with mytos
+    
+    COPY_EXISTING ~sppr199.spl~ ~override~ // descripiton, effects already fine
+    ADD_SPELL ~override/sppr199.spl~ 1 1 CLERIC_PROTECT_FROM_GOOD_TEMP
+      DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 1 END // for spellbook updates
+      WRITE_ASCII 0x3a cdprgooc #8
+      LPF ALTER_HEADER STR_VAR icon = cdprgoob END
+      LPF ALTER_EFFECT STR_VAR match_resource = sppr199 resource = EVAL ~%DEST_RES%~ END
+      
+  END ELSE BEGIN    
 
-  ADD_SPELL ~override/sppr107.spl~ 1 1 CLERIC_PROTECT_FROM_GOOD
-    DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 1 END // for spellbook updates
-    SAY NAME1 @196
-    SAY NAME2 @196
-    SAY UNIDENTIFIED_DESC @197
-    SAY DESC @197
-    WRITE_ASCII 0x3a cdprgooc #8
-    LPF ALTER_HEADER STR_VAR icon = cdprgoob END
-    LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF(@201) END // "protected from good"
-    LPF ALTER_EFFECT INT_VAR match_opcode = 219 parameter1 = 1 END                     // change alignment for attack penalty
-    LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 END          // for ds, if present
-    LPF ALTER_EFFECT INT_VAR match_opcode = 100 parameter1 = 156 parameter2 = 4 END    // protection from demons > solars
+    COPY_EXISTING ~sppr107.spl~ ~override~
+    ADD_SPELL ~override/sppr107.spl~ 1 1 CLERIC_PROTECT_FROM_GOOD_TEMP
+      DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 1 END // for spellbook updates
+      SAY NAME1 @196
+      SAY NAME2 @196
+      SAY UNIDENTIFIED_DESC @197
+      SAY DESC @197
+      WRITE_ASCII 0x3a cdprgooc #8
+      LPF ALTER_HEADER STR_VAR icon = cdprgoob END
+      LPF ALTER_EFFECT INT_VAR match_opcode = 139 parameter1 = RESOLVE_STR_REF(@201) END // "protected from good"
+      LPF ALTER_EFFECT INT_VAR match_opcode = 219 parameter1 = 1 END                     // change alignment for attack penalty
+      LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 233 parameter1 = 2 END          // for ds, if present
+      LPF ALTER_EFFECT INT_VAR match_opcode = 100 parameter1 = 156 parameter2 = 4 END    // protection from demons > solars
 
+  END
+  
+  COPY_EXISTING ~spell.ids~ ~override~
+    REPLACE_TEXTUALLY ~^\(1199[ %TAB%]*CLERIC_PROTECT_FROM_GOOD\)\([ %TAB%%LNL%%MNL%%WNL%]+\)~ ~\1_MYTOS\2~ // rename existing entry (iwdee)
+    REPLACE_TEXTUALLY ~^\(11[0-9][0-9][ %TAB%]*CLERIC_PROTECT_FROM_GOOD\)_TEMP\([ %TAB%%LNL%%MNL%%WNL%]+\)~ ~\1\2~ // rename new spell entry
+  
   COPY ~divine_remix/bam/cdprgooa.bam~ ~override~
        ~divine_remix/bam/cdprgoob.bam~ ~override~
        ~divine_remix/bam/cdprgooc.bam~ ~override~
-
-  COPY_EXISTING ~statdesc.2da~ ~override~ // changes Protected from Evil icon description to Protection from Alignment
-    SET newtext = RESOLVE_STR_REF(@206)
-    REPLACE_TEXTUALLY ~^9[ %TAB%]+[0-9]+~ ~9 %newtext%~
-    PRETTY_PRINT_2DA
 
 END
 
@@ -235,8 +251,13 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_PROTECTION_FROM_G
     DEFINE_ASSOCIATIVE_ARRAY cd_spell_new BEGIN ~%DEST_RES%~, 0 => 3 END // for spellbook updates
     SAY NAME1 @198
     SAY NAME2 @198
-    SAY UNIDENTIFIED_DESC @199
-    SAY DESC @199
+    PATCH_IF game_is_iwdee BEGIN // iwdee pro-evil also blocks charm
+      SAY UNIDENTIFIED_DESC @222
+      SAY DESC @222
+    END ELSE BEGIN
+      SAY UNIDENTIFIED_DESC @199
+      SAY DESC @199
+    END  
     WRITE_LONG  0x34 3 // level 3
     WRITE_ASCII 0x3a cdprgd1c #8
     LPF ALTER_HEADER STR_VAR icon = cdprgd1b END
@@ -248,11 +269,6 @@ ACTION_IF ((overwrite = 1) OR ((IDS_OF_SYMBOL (~spell~ ~CLERIC_PROTECTION_FROM_G
   COPY ~divine_remix/bam/cdprgd1a.bam~ ~override~
        ~divine_remix/bam/cdprgd1b.bam~ ~override~
        ~divine_remix/bam/cdprgd1c.bam~ ~override~
-
-  COPY_EXISTING ~statdesc.2da~ ~override~ // changes Protected from Evil icon description to Protection from Alignment
-    SET newtext = RESOLVE_STR_REF(@206)
-    REPLACE_TEXTUALLY ~^9[ %TAB%]+[0-9]+~ ~9 %newtext%~
-    PRETTY_PRINT_2DA
 
 END
 
@@ -323,7 +339,7 @@ ACTION_IF install_nmcurebd BEGIN
       PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
         READ_STRREF ~%offset%~ desc
         INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-          REPLACE_TEXTUALLY ~%level_match%~ ~\1 7~ // change level in description to 7
+          REPLACE_TEXTUALLY ~%level_match%~ ~\17%LNL%%sphere_text% %sphere_ne%~ // change level in description to 7, add sphere
         END
       END
       SAY_EVALUATED offset ~%desc%~
@@ -338,12 +354,54 @@ ACTION_IF enhanced_edition BEGIN
 ~sppr408 1 0 0
 sppr413 1 0 0~
 
+  ACTION_IF VARIABLE_IS_SET ~%CLERIC_DIVINE_SHELL%~ BEGIN // if this was installed
+
+    // copy new portrait icons for divine shell
+    COPY ~divine_remix/bam/cddsheld.bam~ ~override~
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@166) STR_VAR bam_file = cddsheld RET cddsheld = icon END
+    LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = CLERIC_DIVINE_SHELL RET spell_res END  
+    COPY_EXISTING ~%spell_res%.spl~ ~override~
+      LPF DELETE_EFFECT INT_VAR multi_match = 4 match_opcode = 142 END 
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 parameter2 = cddsheld END
+  
+  END
+  
+  ACTION_IF VARIABLE_IS_SET ~%CLERIC_PROTECT_FROM_GOOD_TEMP%~ BEGIN // if this was installed
+  
+    COPY ~divine_remix/bam/cdprgood.bam~ ~override~
+    LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@208) STR_VAR bam_file = cdprgood RET cdprgood = icon END
+    LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = CLERIC_PROTECT_FROM_GOOD RET spell_res END  
+    COPY_EXISTING ~%spell_res%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 9 parameter2 = cdprgood END
+  END  
+  
+  ACTION_IF VARIABLE_IS_SET ~%CLERIC_PROTECTION_FROM_GOOD_10_FOOT%~ BEGIN // if this was installed
+    
+    ACTION_IF !FILE_EXISTS_IN_GAME ~cdprgood.bam~ BEGIN 
+      COPY ~divine_remix/bam/cdprgood.bam~ ~override~
+      LAF cd_new_portrait_icon INT_VAR string = RESOLVE_STR_REF(@208) STR_VAR bam_file = cdprgood RET cdprgood = icon END
+    END
+    LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = CLERIC_PROTECTION_FROM_GOOD_10_FOOT RET spell_res END  
+    COPY_EXISTING ~%spell_res%.spl~ ~override~
+      LPF ALTER_EFFECT INT_VAR match_opcode = 142 match_parameter2 = 9 parameter2 = cdprgood END
+    
+  END   
+  
 END ELSE BEGIN
 
   COPY_EXISTING ~sppr408.spl~ ~override~
                 ~sppr413.spl~ ~override~
     WRITE_BYTE 0x21 (THIS BOR (BIT6 + BIT7)) // don't show up automatically in spellbooks
     BUT_ONLY
+    
+  ACTION_IF VARIABLE_IS_SET ~%CLERIC_PROTECT_FROM_GOOD_TEMP%~ OR VARIABLE_IS_SET ~%CLERIC_PROTECTION_FROM_GOOD_10_FOOT%~ BEGIN // if this was installed
+
+    COPY_EXISTING ~statdesc.2da~ ~override~ // changes Protected from Evil icon description to Protection from Alignment
+      SET newtext = RESOLVE_STR_REF(@206)
+      REPLACE_TEXTUALLY ~^9[ %TAB%]+[0-9]+~ ~9 %newtext%~
+      PRETTY_PRINT_2DA
+
+  END
 
 END
 

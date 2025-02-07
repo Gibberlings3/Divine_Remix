@@ -66,6 +66,8 @@ END ELSE BEGIN
 
 END  
 
+INCLUDE ~divine_remix/lib/modder_strings.tpa~ // sets vars from tra file (keep after charset conversion)
+
 ACTION_IF NOT VARIABLE_IS_SET charm_immunity THEN BEGIN // ee fixpack immunity spellstates
 
   ACTION_IF enhanced_edition BEGIN

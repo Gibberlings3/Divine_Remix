@@ -42,7 +42,7 @@ Level: 6
 Sphere: Chaos
 Range: Caster
 Duration: 8 rounds
-Casting Time: 9
+Casting Time: 6
 Area of Effect: Caster
 Saving Throw: None
 
@@ -88,7 +88,7 @@ This spell provides a subject with a better resistance to acid, corrosives, and 
 @176 = ~Strength of Stone 
 (Invocation/Evocation)
 Level: 1
-Sphere: Elemental (earth)
+Sphere: Elemental Earth
 Range: Touch
 Duration: 3 rounds + 1 round/level
 Casting Time: 4
@@ -109,7 +109,7 @@ Range: Touch
 Duration: Permanent
 Casting Time: 1
 Area of Effect: Creature touched
-Saving Throw: Special
+Saving Throw: None
 
 By touching the creature afflicted, the priest employing the spell can permanently cure some forms of blindness or deafness.~
 @181 = ~Cause Blindness or Deafness~
@@ -121,7 +121,7 @@ Range: Touch
 Duration: 10 turns
 Casting Time: 1
 Area of Effect: Creature touched
-Saving Throw: Special
+Saving Throw: Neg.
 
 This spell requires a successful touch (successful attack roll) on the victim. If the victim rolls a successful saving throw, the effect is negated. If the saving throw is failed, a non-damaging magical blindness or deafness results (50% chance of each).
 
@@ -148,7 +148,7 @@ Level: 1
 Sphere:  Divination
 Range: Visual range of caster
 Duration: Instant
-Casting Time: 2
+Casting Time: 9
 Area of Effect: Sight
 Saving Throw: None
 
@@ -181,48 +181,22 @@ When this spell is cast, all creatures within a 10' radius are affected individu
 
 @201 =~Protected from Good~
 
-/*
-@204 =~Cause Medium Wounds~
-@205 =~Cause Medium Wounds 
-(Necromancy)
-Level: 5
-Sphere: Healing
-Range: Touch
-Duration: Permanent
-Casting Time: 5
-Area of Effect: Creature touched
-Saving Throw: None
-
-This spell is the reverse of cure light wounds. Instead of healing the creature touched, it causes damage.  On a successful touch from the priest, the spell inflicts 14 damage upon the target.  The next attack that the priest makes will inflict this effect, however he only has 2 rounds to make the attack before the spell fizzles.  Also, if the priest misses the target creature the spell is wasted.  There is no saving throw.~
-*/
 @206 =~Protection from Alignment~
-
 
 @208 =~Protection from Good~
 
-
 @214 =~Conjure Air Elemental 
 (Conjuration/Summoning)
-Sphere: Elemental (air)
 Level: 7
+Sphere: Elemental Air
 Range: Visual sight of caster 
 Duration: 1 turn/level
 Casting Time: 1 round
 Area of Effect: Special 
 Saving Throw: None 
 
-Upon casting a conjure air elemental spell, the caster opens a special gate to the elemental plane of Air, and an air elemental is summoned to the vicinity of the spellcaster.  It is 60% likely that a 12 hit dice elemental appears, 35% likely that a 16 hit dice elemental appears, and 5% likely that a 24 hit dice elemental appears.  Once the elemental appears the caster must concentrate on the creature for 3 rounds in order to assure that the elemental will not turn on him (there is a 15% chance of losing control).  However, after this period has passed the elemental will do the bidding of the caster until it is slain, or the duration of the spell runs out.  All of the commands given to the elemental are done so telepathically, so there is no time lost due to miscommunication, and it is not necessary to know the language of the summoned creature.~
-@215 =~Energy Drain 
-(Necromancy)
-Level: 7
-Sphere:  Necromantic
-Range: Touch
-Duration: Permanent
-Casting Time: 3
-Area of Effect: 1 Creature
-Saving Throw: None
+Upon casting a Conjure Air Elemental spell, the caster opens a special gate to the Elemental Plane of Air, and an air elemental is summoned in the vicinity of the caster. There is a 60% chance that a 12-Hit-Dice elemental appears, a 35% chance that a 16-Hit-Dice elemental appears, and a 5% chance that a 24-Hit-Dice elemental appears. The elemental will do the bidding of the caster until it is slain or the duration of the spell runs out. All of the commands given to the elemental are done telepathically, so there is no time lost due to miscommunication and no need to know the language of the summoned creature.~
 
-The casting of this spell opens a channel between the caster's plane and the Negative Energy plane.  The caster of the spell acts as a conduit between the two planes, sucking life from a victim and transferring it to the Negative energy plane, draining him of 2 levels of experience.  The target of this spell loses levels, Hit Dice, hit points, and abilities permanently.  These levels can only be restored by a priest's restoration spell.~
 // this is the statistics block that is used for ALL holy symbols; copy from BG2 belt12, 13, or 14
 @216 = ~STATISTICS:
 
@@ -236,6 +210,19 @@ The casting of this spell opens a channel between the caster's plane and the Neg
 @219 = ~Panic~                      // strref 17427
 @220 = ~Confusion~                  // strref 12051
 @221 = ~Stunned~                    // strref 1280
+
+// iwdee protection-from evil also blocks charm
+@222 = ~Protection From Good 10' Radius
+(Abjuration)
+Level: 3
+Sphere: Protection
+Range: Touch
+Duration: 1 turn/level
+Casting Time: 7
+Area of Effect: 10' radius
+Saving Throw: None
+
+When this spell is cast, all creatures within a 15-ft. radius are affected individually by Protection From Good. Hence, they receive a +2 bonus to Armor Class and Saving Throws against good-aligned opponents and they will be immune to all charm-based spells.~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

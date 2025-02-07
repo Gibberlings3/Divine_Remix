@@ -206,6 +206,7 @@ DEFINE_PATCH_FUNCTION CD_TRIM-O-MATIC
   RET     abil_delta
 BEGIN
 
+  SET abil_delta = 0
   READ_SHORT 0x68 abil_num
   PATCH_IF abil_num > 1 BEGIN // *always* leave at least one ability
     READ_LONG  0x64 abil_off
