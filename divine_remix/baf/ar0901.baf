@@ -38,6 +38,7 @@ THEN
 END
 
 IF
+  Global("cd_kit_insert","GLOBAL",0)
 	Global("TelwynSpawn","GLOBAL",0)
 	Global("CDWorkingForLathander","GLOBAL",0)
 	OR(3)

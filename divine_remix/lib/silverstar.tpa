@@ -8,11 +8,17 @@ END ELSE BEGIN
   COPY ~divine_remix/bam/cdmnshlb.bam~ ~override~
 END
 
+OUTER_SET mr_cdslmsd = (2 * dr_level_cap)
 COPY ~divine_remix/spl/cdslmsd.spl~  ~override~ // Moon Shield (innate spell)
   SAY NAME1 @10307
   SAY NAME2 @10307
   SAY UNIDENTIFIED_DESC @10308
   SAY DESC @10308
+  LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 18 step_dur = 6 level_cap = dr_level_cap END // 3 rounds + 1 round/level
+  READ_SHORT 0x68 abil_num // should be dr_level_cap, but be safe
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN 
+    LPF ALTER_EFFECT INT_VAR header = index match_opcode = 166 parameter1 = (2 * (index + 1)) END
+  END   
 
 ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr403 destination = ~cdslfre~ RET_ARRAY cd_clone_spell_array END // free action
@@ -106,8 +112,18 @@ INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
-  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/Selune_ar0900.baf~
-  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/Selune_ar0902.baf~
+  COPY_EXISTING ~ar0900.bcs~ ~override~
+                ~ar0902.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~\(Global("cd_kit_insert","GLOBAL",0)\)~ ~!Kit(Player1,CDSELUNE) \1~
+      APPEND_FILE ~divine_remix/baf/Selune_%SOURCE_RES%.baf~
+    END
+
+  COPY_EXISTING ~ar0904.bcs~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+      REPLACE_TEXTUALLY ~\(Global("cd_kit_insert","GLOBAL",0)\)~ ~!Kit(Player1,CDSELUNE) \1~
+    END
+    
   COMPILE ~divine_remix/dlg/selune.d~
 
 END
@@ -116,7 +132,7 @@ END
 ///// assign kits                                      \\\\\
 /////                                                  \\\\\
 
-OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~CDSelune~)) // talos
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~CDSelune~)) // selune
 OUTER_SPRINT kitname @10324 // ~Silverstar~
 ACTION_FOR_EACH cre IN bstq007 ysselune BEGIN
 

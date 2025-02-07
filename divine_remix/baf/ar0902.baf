@@ -34,6 +34,7 @@ THEN
 END
 
 IF
+  Global("cd_kit_insert","GLOBAL",0)
 	Global("SainSpawn","GLOBAL",0)
 	OR(3)
 		Alignment(Player1,MASK_GOOD)

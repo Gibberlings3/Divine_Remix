@@ -213,7 +213,7 @@ Casting Time: 9
 Area of Effect: The caster
 Saving Throw: None
 
-Upon casting this spell, the Silverstar receives resistance to all magic.  The resistance conferred is 2% per level of the cleric up to a maximum of 40% at 20th level.  This resistance is set so if the target already has more magic resistance than the cleric would confer, it will actually lower it to the set value.  This effect will last for the duration of the spell or until dispelled.~
+Upon casting this spell, the Silverstar receives resistance to all magic.  The resistance conferred is 2% per level of the cleric up to a maximum of %mr_cdslmsd%% at %dr_level_cap%th level.  This resistance is set so if the target already has more magic resistance than the cleric would confer, it will actually lower it to the set value.  This effect will last for the duration of the spell or until dispelled.~
 
 
 @10624 = ~Created by the Dark Bolt spell. When thrown at opponents they cause 2d4 points of cold damage as well as causing silence on a failed save vs. spell. Undead creatures must also make a save vs. paralyzation or be held for one round. 

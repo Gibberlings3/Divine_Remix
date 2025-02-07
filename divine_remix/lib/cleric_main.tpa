@@ -3,7 +3,7 @@
 /////                                                  \\\\\
 
 // only if alignments not already shifted
-ACTION_IF NOT FILE_CONTAINS_EVALUATED (~alignment.2da~ ~^LATHANDER[ %TAB%]+1[ %TAB%]+0[ %TAB%]+0[ %TAB%]+1[ %TAB%]+1[ %TAB%]+0[ %TAB%]+1[ %TAB%]+0[ %TAB%]+0~) THEN BEGIN
+ACTION_IF NOT FILE_CONTAINS_EVALUATED (~alignmnt.2da~ ~^LATHANDER[ %TAB%]+1[ %TAB%]+0[ %TAB%]+0[ %TAB%]+1[ %TAB%]+1[ %TAB%]+0[ %TAB%]+1[ %TAB%]+0[ %TAB%]+0~) THEN BEGIN
 
   COPY_EXISTING ~alignmnt.2da~ ~override~
     REPLACE_TEXTUALLY ~^TALOS[ %TAB%]+.+~     ~TALOS     0 0 0 0 0 1 0 1 1~
@@ -12,7 +12,7 @@ ACTION_IF NOT FILE_CONTAINS_EVALUATED (~alignment.2da~ ~^LATHANDER[ %TAB%]+1[ %T
     PRETTY_PRINT_2DA
     BUT_ONLY
 
-  ACTION_IF GAME_IS ~soa bg2 tob bgt~ THEN BEGIN // temple stronghold stuff - accounting for changed alignments for temple kits
+  ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff - accounting for changed alignments for temple kits
 
     COMPILE ~divine_remix/dlg/temple.d~
 
@@ -46,6 +46,69 @@ ACTION_IF NOT FILE_CONTAINS_EVALUATED (~alignment.2da~ ~^LATHANDER[ %TAB%]+1[ %T
 
   END
 
+END ELSE BEGIN
+
+  ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff - accounting for changed alignments for temple kits
+
+    // add a fake variable check so it's easier for kits to add their kits
+    COPY_EXISTING ~ar0900.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN 
+        REPLACE_TEXTUALLY // oversight, oisig
+          ~\(Global("GaalSpoke","AR0900",1)[ %TAB%%LNL%%MNL%%WNL%]+!Kit(Player1,GODTALOS)\)~ 
+          ~Global("cd_kit_insert","GLOBAL",0) \1~ 
+        REPLACE_TEXTUALLY // oversight, arval
+          ~\(Global("GaalSpoke","AR0900",1)[ %TAB%%LNL%%MNL%%WNL%]+!Kit(Player1,GODHELM)[ %TAB%%LNL%%MNL%%WNL%]+!Kit(Player1,GODTALOS)\)~ 
+          ~Global("cd_kit_insert","GLOBAL",0) \1~ 
+        REPLACE_TEXTUALLY // oversight, nalla
+          ~\(Global("GaalSpoke","AR0900",1)[ %TAB%%LNL%%MNL%%WNL%]+!Kit(Player1,GODHELM)[ %TAB%%LNL%%MNL%%WNL%]+!Kit(Player1,GODLATHANDER)\)~ 
+          ~Global("cd_kit_insert","GLOBAL",0) \1~ 
+        REPLACE_TEXTUALLY // bg2ee
+          ~\(Global("GaalSpoke","AR0900",1)[ %TAB%%LNL%%MNL%%WNL%]+OR([0-9]+)[ %TAB%%LNL%%MNL%%WNL%]+Alignment(Player1,\(LAWFUL_NEUTRAL\|MASK_GOOD\|CHAOTIC_NEUTRAL)\)\)~ 
+          ~Global("cd_kit_insert","GLOBAL",0) \1~ 
+      END    
+      BUT_ONLY  
+      
+    COPY_EXISTING ~ar0901.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN 
+        REPLACE_TEXTUALLY // oversight
+          ~\(Global("TelwynSpawn","GLOBAL",0)[ %TAB%%LNL%%MNL%%WNL%]+!Kit(Player1,GODTALOS)\)~ 
+          ~Global("cd_kit_insert","GLOBAL",0) \1~ 
+        REPLACE_TEXTUALLY // bg2ee
+          ~\(Global("TelwynSpawn","GLOBAL",0)[ %TAB%%LNL%%MNL%%WNL%]+Global("CDWorkingForLathander","GLOBAL",0)[ %TAB%%LNL%%MNL%%WNL%]+OR([0-9]+)[ %TAB%%LNL%%MNL%%WNL%]+Alignment(Player1,MASK_LAWFUL)\)~ 
+          ~Global("cd_kit_insert","GLOBAL",0) \1~ 
+      END    
+      BUT_ONLY  
+      
+    COPY_EXISTING ~ar0902.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN 
+        REPLACE_TEXTUALLY // fix a bg2ee bug while we're here
+          ~\(Global("SainSpawn","GLOBAL",0)[ %TAB%%LNL%%MNL%%WNL%]+\(OR([0-9])+[ %TAB%%LNL%%MNL%%WNL%]+\)?Class(Player1,CLERIC\(_ALL\)?)\)~
+          ~False() \1~
+        REPLACE_TEXTUALLY // oversight
+          ~\(Global("SainSpawn","GLOBAL",0)[ %TAB%%LNL%%MNL%%WNL%]+!Kit(Player1,GODTALOS)\)~ 
+          ~Global("cd_kit_insert","GLOBAL",0) \1~ 
+        REPLACE_TEXTUALLY // bg2ee
+          ~\(Global("SainSpawn","GLOBAL",0)[ %TAB%%LNL%%MNL%%WNL%]+OR([0-9]+)[ %TAB%%LNL%%MNL%%WNL%]+Alignment(Player1,MASK_GOOD)\)~ 
+          ~Global("cd_kit_insert","GLOBAL",0) \1~ 
+      END    
+      BUT_ONLY  
+      
+    COPY_EXISTING ~ar0904.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN 
+        REPLACE_TEXTUALLY // fix a bg2ee bug while we're here
+          ~\(Global("YarrylSpawn","GLOBAL",0)[ %TAB%%LNL%%MNL%%WNL%]+\(OR([0-9])+[ %TAB%%LNL%%MNL%%WNL%]+\)?Class(Player1,CLERIC\(_ALL\)?)\)~
+          ~False() \1~
+        REPLACE_TEXTUALLY // oversight
+          ~\(Global("YarrylSpawn","GLOBAL",0)[ %TAB%%LNL%%MNL%%WNL%]+!Kit(Player1,GODHELM)\)~ 
+          ~Global("cd_kit_insert","GLOBAL",0) \1~ 
+        REPLACE_TEXTUALLY // bg2ee
+          ~\(Global("YarrylSpawn","GLOBAL",0)[ %TAB%%LNL%%MNL%%WNL%]+OR([0-9]+)[ %TAB%%LNL%%MNL%%WNL%]+Alignment(Player1,CHAOTIC_NEUTRAL)\)~ 
+          ~Global("cd_kit_insert","GLOBAL",0) \1~ 
+      END    
+      BUT_ONLY  
+      
+  END
+  
 END
 
 ACTION_IF !cd_dr_conventional BEGIN
