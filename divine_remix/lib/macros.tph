@@ -205,6 +205,41 @@ END
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// stronghold stuff                                 \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
+
+  DEFINE_ACTION_FUNCTION cd_stronghold_junk
+    STR_VAR kit = ""
+  BEGIN
+  
+    COPY_EXISTING ~ar0900.bcs~ ~override~
+                  ~ar0901.bcs~ ~override~
+                  ~ar0902.bcs~ ~override~
+                  ~ar0904.bcs~ ~override~
+      DECOMPILE_AND_PATCH BEGIN
+        REPLACE_TEXTUALLY ~\(Global("cd_kit_insert","GLOBAL",0)\)~ ~!Kit(Player1,%kit%) \1~
+        PATCH_IF FILE_EXISTS ~divine_remix/baf/%kit%_%SOURCE_RES%.baf~ BEGIN 
+          APPEND_FILE ~divine_remix/baf/%kit%_%SOURCE_RES%.baf~
+        END  
+      END
+      
+    COMPILE ~divine_remix/dlg/%kit%.d~
+  
+  END  
+
+END ELSE BEGIN
+  
+  DEFINE_ACTION_FUNCTION cd_stronghold_junk BEGIN END
+  
+END 
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// cd_assign_kit_to_cre                             \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

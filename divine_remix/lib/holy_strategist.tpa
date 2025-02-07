@@ -97,10 +97,5 @@ INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
+LAF cd_stronghold_junk STR_VAR kit = ~A#RED~ END 
 
-  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/red_ar0900.baf~
-  EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/red_ar0901.baf~
-  COMPILE ~divine_remix/dlg/red.d~
-
-END
