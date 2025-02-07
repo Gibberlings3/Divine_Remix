@@ -11,6 +11,7 @@ COPY ~divine_remix/spl/a#cyr07.spl~ ~override~
   PATCH_IF (confusion_immunity > 0) BEGIN // if eefixpack immunity states
     LPF CLONE_EFFECT INT_VAR match_opcode = 128 opcode = 324 parameter1 = confusion_immunity parameter2 = 110 timing = 0 duration = 0 resist_dispel = 0 savingthrow = 0 STR_VAR insert = above resource = EVAL ~%SOURCE_RES%~ END
   END
+  LPF CD_EXTEND-O-MATIC INT_VAR step_dur = 0 base_dur = 6 step_size = 1 level_cap = dr_level_cap base_dmg_rolls = 4 damage_fixed   = 1 END
 
 ACTION_IF cd_dr_conventional BEGIN  
 

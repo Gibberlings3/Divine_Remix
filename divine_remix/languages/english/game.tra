@@ -1121,7 +1121,7 @@ Razor's Edge is the spiritual weapon of Strifeleaders of Cyric, and is wielded a
 - May coat his weapon in poison once per day per 6 levels.  
 Attacks made in the next round with that weapon will inject the poison into the target, dealing out 1 damage per second for 24 seconds (3 damage for the first 6 seconds).  A saving throw vs. poison limits damage to 12 total.
 - From level 7 can cast Dread Blast once per day
-Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and confuses target for 1 round (save vs. spell at -2 to negate confusion)
+Fires a ray of negative energy that deals 4d8 damage +1/level (max +%dr_level_cap%) and confuses target for 1 round (save vs. spell at -2 to negate confusion)
 - From level 9 can cast Chaos once per day, as fifth level mage spell of the same name
 - From level 11 can cast Death Fog once per day, as sixth level mage spell of the same name
 - From level 14 can cast Sphere of Chaos once per day, as seventh level mage spell of the same name
@@ -1145,12 +1145,12 @@ Advantages:
 %cyric_poison_weapon%
 
 – May use Dread Blast once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
-DREAD BLAST: Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and confuses target for one round (save vs. spell at -2 to negate confusion)
+DREAD BLAST: Fires a ray of negative energy that deals 4d8 damage +1/level (max +%dr_level_cap%) and confuses target for one round (save vs. spell at -2 to negate confusion)
 
 Disadvantages:
 – Alignment restricted to chaotic neutral or any evil.~
 @13010 = ~Dread Blast
-Fires a ray of negative energy that deals 4d8 damage +1/level (max +20) and confuses target for one round (save vs. spell at -2 to negate confusion)~
+Fires a ray of negative energy that deals 4d8 damage +1/level (max +%dr_level_cap%) and confuses target for one round (save vs. spell at -2 to negate confusion)~
 @13011 = ~~
 @13012 =~The upstart Prince of Lies sends a Strifeleader? Although not as fearsome as mighty Talos, your lord Cyric must surely wish you to aid us against the heathens!~
 @13013= ~Things are starting to resolve themselves, and there's only a bare few of the spawn left.  Bhaalspawn like yourself... very powerful, very resourceful mortals.  Like I once was.  You can imagine my concern, hm?~
