@@ -9,6 +9,11 @@ COPY ~divine_remix/spl/a#kos0c.spl~ ~override~
 ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi523 destination = ~a#kos09~ RET_ARRAY cd_clone_spell_array END // sunfire
 
+COPY_EXISTING ~spwi523d.spl~ ~override~ // on the EEs, sunfire is farmed out to a subspell - make innate so it doesn't summon CWs
+  WRITE_SHORT 0x1c 4 // innate
+  WRITE_LONG  0x34 1 // level 
+  BUT_ONLY IF_EXISTS
+
 ACTION_IF cd_dr_conventional BEGIN  
 
   // build 2da from generic ability schedule
@@ -43,7 +48,7 @@ END ELSE BEGIN
 
   ACTION_IF game_includes_tob THEN BEGIN
 
-    COPY ~Divine_Remix/spl/a#koss20.spl~ ~override~ //Kossuth's Purifying Touch
+    COPY ~divine_remix/spl/a#koss20.spl~ ~override~ // just casts heal and sunfire (a#kos9)
       SAY NAME1 @11505
       SAY NAME2 @11505
       SAY UNIDENTIFIED_DESC @11506

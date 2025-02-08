@@ -272,6 +272,21 @@ This spell doubles the hit points of the spell recipient for the spell duration.
 
 All saving throws receive a +2 bonus and the target is immune to fear and disease. In addition, no being protected by Endurance of Ilmater can be knocked over, trampled, ridden down, or overthrown; all protected beings can stand firm against all charges.~
 
+@11506 =~Kossuth's Purifying Touch 
+(Evocation)
+
+Level: Quest
+Sphere: Elemental Fire
+Range: 0
+Duration: Instant
+Casting Time: 3
+Area of Effect: 15-ft. radius
+Saving Throw: 1/2
+
+Calling upon his deity's blazing touch, the Firewalker channels some of Kossuth's searing energy through himself. Both sides of fire's majestic power - both it's destructiveness, and it's ability to purify - are in evidence. Firstly, this spell deals 15d6 fire damage (save vs. spells for half) to all foes within 15 feet of the caster. This does not affect party members. Secondly, the caster's body is purified by the holy flames, as per the effects of a Heal spell.
+
+Choosing this allows the casting of the spell once per day as an innate ability. It can only be chosen once.~
+
 @11808 =~Xvim's Summoning 
 (Conjuration/Summoning)
 Level: Quest
