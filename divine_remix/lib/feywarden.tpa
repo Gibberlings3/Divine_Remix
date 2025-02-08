@@ -103,10 +103,4 @@ INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
-
-  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/Corellon_ar0900.baf~
-  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/Corellon_ar0902.baf~
-  COMPILE ~divine_remix/dlg/corellon.d~
-
-END
+LAF cd_stronghold_junk STR_VAR kit = ~a#feywarden~ END 
