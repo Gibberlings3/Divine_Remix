@@ -101,13 +101,7 @@ ACTION_IF game_includes_tob THEN BEGIN // Compile dialogue alteration for Cyric 
 
 END
 
-ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
-
-  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/cyric_ar0900.baf~
-  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/cyric_ar0904.baf~
-  COMPILE ~divine_remix/dlg/cyric.d~
-
-END
+LAF cd_stronghold_junk STR_VAR kit = ~a#cyric~ END 
 
 /////                                                  \\\\\
 ///// assign kits                                      \\\\\

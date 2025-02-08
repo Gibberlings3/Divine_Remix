@@ -1,0 +1,11 @@
+IF
+  Global("GaalSpoke","AR0900",1)
+  Kit(Player1,A#CYRIC)
+	Class(Player1,CLERIC_ALL)
+THEN
+	RESPONSE #100
+		Wait(2)
+		CreateCreature("bhnalla",[3077.1630],2) // Stormherald Nallabir
+		SetGlobal("EvilMask","AR0900",1)
+		SetGlobal("GaalSpoke","AR0900",2)
+END
