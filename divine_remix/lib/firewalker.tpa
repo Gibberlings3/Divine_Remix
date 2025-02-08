@@ -109,10 +109,7 @@ INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
-  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/kossuth_ar0900.baf~
-  EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/kossuth_ar0901.baf~
-  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/kossuth_ar0902.baf~
-  EXTEND_TOP ~ar0904.bcs~   ~divine_remix/baf/kossuth_ar0904.baf~
-  COMPILE ~divine_remix/dlg/kossuth.d~
-
-END
+  INCLUDE ~divine_remix/lib/temple_dlg_vars.tpa~ // let firewalkers get generic lathander/helm/talos split
+  COMPILE EVALUATE_BUFFER ~divine_remix/dlg/a#koss.d~
+  
+END 

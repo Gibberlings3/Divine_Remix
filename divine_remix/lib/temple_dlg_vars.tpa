@@ -1,0 +1,19 @@
+ACTION_IF !VARIABLE_IS_SET PerhapsHelpHelm BEGIN 
+
+  ACTION_IF enhanced_edition BEGIN // since these are in the EEs, fixed values
+
+    OUTER_SET PerhapsHelpHelm      = 75
+    OUTER_SET CDOisigRefer         = 70
+    OUTER_SET CDArvalRefer         = 73
+    OUTER_SET PerhapsHelpLathander = 78
+
+  END ELSE BEGIN  // since we add these on oBG2, state numbers could be anything
+
+    OUTER_SET PerhapsHelpHelm      = (STATE_WHICH_SAYS 10131 IN ~%tra_path%/%LANGUAGE%/game.tra~ FROM ~bharval~)
+    OUTER_SET CDOisigRefer         = (STATE_WHICH_SAYS 10195 IN ~%tra_path%/%LANGUAGE%/game.tra~ FROM ~bharval~)
+    OUTER_SET CDArvalRefer         = (STATE_WHICH_SAYS 10123 IN ~%tra_path%/%LANGUAGE%/game.tra~ FROM ~bhoisig~)
+    OUTER_SET PerhapsHelpLathander = (STATE_WHICH_SAYS 10132 IN ~%tra_path%/%LANGUAGE%/game.tra~ FROM ~bhoisig~)
+
+  END
+  
+END
