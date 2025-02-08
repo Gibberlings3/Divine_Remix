@@ -1,11 +1,7 @@
 IF // sends Corellon clerics to Lathander
-  Global("GaalSpoke","AR0900",1)
+  Global("OHLathanderOverride","GLOBAL",0)
   Kit(Player1,A#FEYWARDEN)
-  Class(Player1,CLERIC_ALL)
 THEN
   RESPONSE #100
-    Wait(2)
-    CreateCreature("bharval",[3077.1630],2) // High Mornmaster Arval
-    SetGlobal("GoodMask","AR0900",1)
-    SetGlobal("GaalSpoke","AR0900",2)
+    SetGlobal("OHLathanderOverride","GLOBAL",1)
 END

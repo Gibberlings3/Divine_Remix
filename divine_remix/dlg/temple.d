@@ -33,8 +33,6 @@ Global("CDSpawnArval","GLOBAL",0)
 InPartySlot(LastTalkedToBy,0)
 Global("BeholderPlot","GLOBAL",0)
 Global("NoHelpBeholder","GLOBAL",0)
-Global("CDWorkingForHelm","GLOBAL",0)
-Global("CDWorkingForTalos","GLOBAL",0)
 ReputationGT(Player1,14)~
 
 REPLACE_STATE_TRIGGER BHARVAL 5 // remove rep check--only get here if 3 doesn't fire, so condition that one on rep
@@ -42,8 +40,7 @@ REPLACE_STATE_TRIGGER BHARVAL 5 // remove rep check--only get here if 3 doesn't 
 Global("CDSpawnArval","GLOBAL",0)
 InPartySlot(LastTalkedToBy,0)
 Global("BeholderPlot","GLOBAL",0)
-Global("NoHelpBeholder","GLOBAL",0)
-Global("CDWorkingForHelm","GLOBAL",0)~
+Global("NoHelpBeholder","GLOBAL",0)~
 
 ADD_STATE_TRIGGER BHARVAL 22
 ~Global("CDWorkingForHelm","GLOBAL",0)~
@@ -126,7 +123,6 @@ REPLACE_STATE_TRIGGER BHOISIG 4
 Global("BeholderPlot","GLOBAL",0)
 Global("NoHelpBeholder","GLOBAL",0)
 !Kit(Player1,GODLATHANDER)
-Global("CDWorkingForLathander","GLOBAL",0)
 InPartySlot(LastTalkedToBy,0)
 ReputationGT(Player1,14)~
 
@@ -135,7 +131,6 @@ REPLACE_STATE_TRIGGER BHOISIG 5 // remove rep checks (state 4 is weighted higher
 Global("BeholderPlot","GLOBAL",0)
 Global("NoHelpBeholder","GLOBAL",0)
 !Kit(Player1,GODLATHANDER)
-Global("CDWorkingForLathander","GLOBAL",0)
 InPartySlot(LastTalkedToBy,0)~
 
 REPLACE_STATE_TRIGGER BHOISIG 6

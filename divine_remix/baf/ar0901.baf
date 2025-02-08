@@ -1,75 +1,66 @@
 
 IF
-	Global("TelwynSpawn","GLOBAL",0)
-	Global("cd_beholder_dc_shenanigans","GLOBAL",1)
+  Global("TelwynSpawn","GLOBAL",0)
+  Global("cd_beholder_dc_shenanigans","GLOBAL",1)
 THEN
-	RESPONSE #100
-		SetGlobal("TelwynSpawn","GLOBAL",1)
-		CreateCreature("SCTELWYN",[705.711],8)  // Guardian Telwyn
+  RESPONSE #100
+    SetGlobal("TelwynSpawn","GLOBAL",1)
+    CreateCreature("SCTELWYN",[705.711],8)  // Guardian Telwyn
 END
 
 IF
-	Global("CDWorkingForLathander","GLOBAL",1)
-	Global("OHD_Telwyn_Spawn","AR0901",0)  // Temple of Helm
-	!Global("TelwynSpawn","GLOBAL",2)
+  Global("CDWorkingForLathander","GLOBAL",1)
+  Global("OHD_Telwyn_Spawn","AR0901",0)  // Temple of Helm
+  !Global("TelwynSpawn","GLOBAL",2)
 THEN
-	RESPONSE #100
-		SetGlobal("TelwynSpawn","GLOBAL",2)
-		ActionOverride("SCTELWYN",DestroySelf())
+  RESPONSE #100
+    SetGlobal("TelwynSpawn","GLOBAL",2)
+    ActionOverride("SCTELWYN",DestroySelf())
 END
 
 IF
-	Global("CDWorkingForLathander","GLOBAL",1)
-	!Global("CDSpawnOisig","GLOBAL",3)
+  Global("CDWorkingForLathander","GLOBAL",1)
+  !Global("CDSpawnOisig","GLOBAL",3)
 THEN
-	RESPONSE #100
-		SetGlobal("CDSpawnOisig","GLOBAL",3)
-		ActionOverride("Oisig",DestroySelf())
+  RESPONSE #100
+    SetGlobal("CDSpawnOisig","GLOBAL",3)
+    ActionOverride("Oisig",DestroySelf())
 END
 
 IF
-	Global("CDSpawnOisig","GLOBAL",1)
-	Global("CDWorkingForLathander","GLOBAL",0)
+  Global("CDSpawnOisig","GLOBAL",1)
+  Global("CDWorkingForLathander","GLOBAL",0)
 THEN
-	RESPONSE #100
-		SetGlobal("CDSpawnOisig","GLOBAL",2)
-		CreateCreature("BHOISIG",[690.565],4)  // High Watcher Oisig
-		ActionOverride("oisig",SetNumTimesTalkedTo(1))
+  RESPONSE #100
+    SetGlobal("CDSpawnOisig","GLOBAL",2)
+    CreateCreature("BHOISIG",[690.565],4)  // High Watcher Oisig
+    ActionOverride("oisig",SetNumTimesTalkedTo(1))
 END
 
 IF
-  Global("cd_kit_insert","GLOBAL",0)
-	Global("TelwynSpawn","GLOBAL",0)
-	Global("CDWorkingForLathander","GLOBAL",0)
-	OR(3)
-		Alignment(Player1,MASK_LAWFUL)
-		Alignment(Player1,NEUTRAL)
-		Kit(Player1,GODHELM)
-	OR(6)
-		Class(Player1,CLERIC)
-		Class(Player1,FIGHTER_CLERIC)
-		Class(Player1,CLERIC_MAGE)
-		Class(Player1,CLERIC_THIEF)
-		Class(Player1,FIGHTER_MAGE_CLERIC)
-		Class(Player1,CLERIC_RANGER)
-	!Kit(Player1,GODLATHANDER)
-	!Kit(Player1,GODTALOS)
+  Global("OHLathanderOverride","GLOBAL",0)
+  Global("OHTalosOverride","GLOBAL",0)
+  Global("TelwynSpawn","GLOBAL",0)
+  Global("CDWorkingForLathander","GLOBAL",0)
+  OR(4)
+    Global("OHHelmOverride","GLOBAL",1)
+    Alignment(Player1,MASK_LAWFUL)
+    Alignment(Player1,NEUTRAL)
+    Kit(Player1,GODHELM)
+  Class(Player1,CLERIC_ALL)
+  !Kit(Player1,GODLATHANDER)
+  !Kit(Player1,GODTALOS)
 THEN
-	RESPONSE #100
-		SetGlobal("TelwynSpawn","GLOBAL",1)
-		CreateCreature("SCTELWYN",[705.711],8)  // Guardian Telwyn
+  RESPONSE #100
+    SetGlobal("TelwynSpawn","GLOBAL",1)
+    CreateCreature("SCTELWYN",[705.711],8)  // Guardian Telwyn
 END
 
 IF
-	Global("TelwynSpawn","GLOBAL",0)
-	!Class(Player1,CLERIC)
-	!Class(Player1,FIGHTER_CLERIC)
-	!Class(Player1,CLERIC_MAGE)
-	!Class(Player1,CLERIC_THIEF)
-	!Class(Player1,FIGHTER_MAGE_CLERIC)
-	!Class(Player1,CLERIC_RANGER)
+  Global("TelwynSpawn","GLOBAL",0)
+  !Class(Player1,CLERIC_ALL)
 THEN
-	RESPONSE #100
-		SetGlobal("TelwynSpawn","GLOBAL",1)
-		CreateCreature("SCTELWYN",[705.711],8)  // Guardian Telwyn
+  RESPONSE #100
+    SetGlobal("TelwynSpawn","GLOBAL",1)
+    CreateCreature("SCTELWYN",[705.711],8)  // Guardian Telwyn
 END

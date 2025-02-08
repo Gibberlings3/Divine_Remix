@@ -2,7 +2,7 @@ IF
   Kit(Player1,%kit%)
   HasItem("CDHLYSYM",Player%index%)
 THEN 
-RESPONSE #100
-  ApplySpellRES("CDHLYSY2",Player%index%)
-  TakeItemReplace("%symbol%","CDHLYSYM",Player%index%)
+  RESPONSE #100
+    ApplySpellRES("CDHLYSY2",Player%index%)
+    TakeItemReplace("%symbol%","CDHLYSYM",Player%index%)
 END

@@ -1,24 +1,20 @@
 
 IF
-  Global("cd_kit_insert","GLOBAL",0)
-	Global("YarrylSpawn","GLOBAL",0)
-	OR(4)
-		Alignment(Player1,CHAOTIC_NEUTRAL)
-		Alignment(Player1,NEUTRAL_EVIL)
-		Alignment(Player1,CHAOTIC_EVIL)
-		Kit(Player1,GODTALOS)
-	OR(6)
-		Class(Player1,CLERIC)
-		Class(Player1,FIGHTER_CLERIC)
-		Class(Player1,CLERIC_MAGE)
-		Class(Player1,CLERIC_THIEF)
-		Class(Player1,FIGHTER_MAGE_CLERIC)
-		Class(Player1,CLERIC_RANGER)
-	!Kit(Player1,GODLATHANDER)
-	!Kit(Player1,GODHELM)
-	!Global("cd_beholder_dc_shenanigans","GLOBAL",1)
+  Global("OHLathanderOverride","GLOBAL",0)
+  Global("OHHelmOverride","GLOBAL",0)
+  Global("YarrylSpawn","GLOBAL",0)
+  OR(5)
+    Global("OHTalosOverride","GLOBAL",1)
+    Alignment(Player1,CHAOTIC_NEUTRAL)
+    Alignment(Player1,NEUTRAL_EVIL)
+    Alignment(Player1,CHAOTIC_EVIL)
+    Kit(Player1,GODTALOS)
+  Class(Player1,CLERIC_ALL)
+  !Kit(Player1,GODLATHANDER)
+  !Kit(Player1,GODHELM)
+  !Global("cd_beholder_dc_shenanigans","GLOBAL",1)
 THEN
-	RESPONSE #100
-		SetGlobal("YarrylSpawn","GLOBAL",1)
-		CreateCreature("SCYARRYL",[341.323],12)  // Talon Yarryl
+  RESPONSE #100
+    SetGlobal("YarrylSpawn","GLOBAL",1)
+    CreateCreature("SCYARRYL",[341.323],12)  // Talon Yarryl
 END

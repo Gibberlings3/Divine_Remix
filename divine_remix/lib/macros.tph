@@ -218,21 +218,14 @@ ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
   BEGIN
   
     ACTION_IF need_vars BEGIN INCLUDE ~divine_remix/lib/temple_dlg_vars.tpa~ END 
-    COPY_EXISTING ~ar0900.bcs~ ~override~
-                  ~ar0901.bcs~ ~override~
-                  ~ar0902.bcs~ ~override~
-                  ~ar0904.bcs~ ~override~
-      DECOMPILE_AND_PATCH BEGIN
-        REPLACE_TEXTUALLY ~\(Global("cd_kit_insert","GLOBAL",0)\)~ ~!Kit(Player1,%kit%) \1~
-        PATCH_IF FILE_EXISTS ~divine_remix/baf/%kit%_%SOURCE_RES%.baf~ BEGIN 
-          APPEND_FILE ~divine_remix/baf/%kit%_%SOURCE_RES%.baf~
-        END  
-      END
-      
+    ACTION_IF FILE_EXISTS ~divine_remix/baf/%kit%_0900.baf~ BEGIN 
+      EXTEND_BOTTOM ~ar0900.bcs~ ~divine_remix/baf/%kit%_0900.baf~
+    END   
+        
     COMPILE EVALUATE_BUFFER ~divine_remix/dlg/%kit%.d~
-  
-  END  
 
+  END
+  
 END ELSE BEGIN
   
   DEFINE_ACTION_FUNCTION cd_stronghold_junk BEGIN END

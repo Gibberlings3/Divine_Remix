@@ -1,11 +1,7 @@
 IF
-  Global("GaalSpoke","AR0900",1)
+  Global("OHTalosOverride","GLOBAL",0)
   Kit(Player1,A#SHAR)
-  Class(Player1,CLERIC_ALL)
 THEN
   RESPONSE #100
-    Wait(2)
-    CreateCreature("bhnalla",[3077.1630],2) // Stormherald Nallabir
-    SetGlobal("EvilMask","AR0900",1)
-    SetGlobal("GaalSpoke","AR0900",2)
+    SetGlobal("OHTalosOverride","GLOBAL",1)
 END

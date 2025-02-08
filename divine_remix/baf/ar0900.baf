@@ -1,108 +1,82 @@
 IF
-	Global("GaalSpoke","AR0900",2)  // Temple District
-	Global("NeutralMask","AR0900",1)  // Temple District
-	Global("cd_beholder_dc_shenanigans","GLOBAL",0)
-	!Alignment(Player1,MASK_GENEUTRAL)
-	OR(6)
-		Class(Player1,CLERIC)
-		Class(Player1,FIGHTER_CLERIC)
-		Class(Player1,CLERIC_MAGE)
-		Class(Player1,CLERIC_THIEF)
-		Class(Player1,FIGHTER_MAGE_CLERIC)
-		Class(Player1,CLERIC_RANGER)
+  Global("GaalSpoke","AR0900",2)  // Temple District
+  Global("NeutralMask","AR0900",1)  // Temple District
+  Global("cd_beholder_dc_shenanigans","GLOBAL",0)
+  !Alignment(Player1,MASK_GENEUTRAL)
+  Class(Player1,CLERIC_ALL)
 THEN
-	RESPONSE #100
-		SetGlobal("cd_beholder_dc_shenanigans","GLOBAL",1)
+  RESPONSE #100
+    SetGlobal("cd_beholder_dc_shenanigans","GLOBAL",1)
 END
 
 IF
-  Global("cd_kit_insert","GLOBAL",0)
-	Global("GaalSpoke","AR0900",1)  // Temple District
-	OR(3)
-		Alignment(Player1,MASK_GOOD)
-		Kit(Player1,GODLATHANDER)
-		Global("OHLathanderOverride","GLOBAL",1)
-	OR(6)
-		Class(Player1,CLERIC)
-		Class(Player1,FIGHTER_CLERIC)
-		Class(Player1,CLERIC_MAGE)
-		Class(Player1,CLERIC_THIEF)
-		Class(Player1,FIGHTER_MAGE_CLERIC)
-		Class(Player1,CLERIC_RANGER)
-	!Kit(Player1,GODHELM)
-	!Kit(Player1,GODTALOS)
+  Global("OHHelmOverride","GLOBAL",0)
+  Global("OHTalosOverride","GLOBAL",0)
+  Global("GaalSpoke","AR0900",1)  // Temple District
+  OR(3)
+    Alignment(Player1,MASK_GOOD)
+    Kit(Player1,GODLATHANDER)
+    Global("OHLathanderOverride","GLOBAL",1)
+  Class(Player1,CLERIC_ALL)
+  !Kit(Player1,GODTALOS)
+  !Kit(Player1,GODHELM)
 THEN
-	RESPONSE #100
-		Wait(2)
-		CreateCreature("bharval",[3077.1630],4)  // High Mornmaster Arval
-		SetGlobal("GoodMask","AR0900",1)  // Temple District
-		SetGlobal("GaalSpoke","AR0900",2)  // Temple District
+  RESPONSE #100
+    Wait(2)
+    CreateCreature("bharval",[3077.1630],4)  // High Mornmaster Arval
+    SetGlobal("GoodMask","AR0900",1)  // Temple District
+    SetGlobal("GaalSpoke","AR0900",2)  // Temple District
 END
 
 IF
-  Global("cd_kit_insert","GLOBAL",0)
-	Global("GaalSpoke","AR0900",1)  // Temple District
-	OR(5)
-		Alignment(Player1,LAWFUL_NEUTRAL)
-		Alignment(Player1,NEUTRAL)
-		Alignment(Player1,LAWFUL_EVIL)
-		Kit(Player1,GODHELM)
-		Global("OHHelmOverride","GLOBAL",1)
-	OR(6)
-		Class(Player1,CLERIC)
-		Class(Player1,FIGHTER_CLERIC)
-		Class(Player1,CLERIC_MAGE)
-		Class(Player1,CLERIC_THIEF)
-		Class(Player1,FIGHTER_MAGE_CLERIC)
-		Class(Player1,CLERIC_RANGER)
-	!Kit(Player1,GODLATHANDER)
-	!Kit(Player1,GODTALOS)
+  Global("OHLathanderOverride","GLOBAL",0)
+  Global("OHTalosOverride","GLOBAL",0)
+  Global("GaalSpoke","AR0900",1)  // Temple District
+  OR(5)
+    Alignment(Player1,LAWFUL_NEUTRAL)
+    Alignment(Player1,NEUTRAL)
+    Alignment(Player1,LAWFUL_EVIL)
+    Kit(Player1,GODHELM)
+    Global("OHHelmOverride","GLOBAL",1)
+  Class(Player1,CLERIC_ALL)
+  !Kit(Player1,GODLATHANDER)
+  !Kit(Player1,GODTALOS)
 THEN
-	RESPONSE #100
-		Wait(2)
-		CreateCreature("bhoisig",[3077.1630],4)  // High Watcher Oisig
-		SetGlobal("NeutralMask","AR0900",1)  // Temple District
-		SetGlobal("GaalSpoke","AR0900",2)  // Temple District
+  RESPONSE #100
+    Wait(2)
+    CreateCreature("bhoisig",[3077.1630],4)  // High Watcher Oisig
+    SetGlobal("NeutralMask","AR0900",1)  // Temple District
+    SetGlobal("GaalSpoke","AR0900",2)  // Temple District
 END
 
 IF
-  Global("cd_kit_insert","GLOBAL",0)
-	Global("GaalSpoke","AR0900",1)  // Temple District
-	OR(5)
-		Alignment(Player1,CHAOTIC_NEUTRAL)
-		Alignment(Player1,NEUTRAL_EVIL)
-		Alignment(Player1,CHAOTIC_EVIL)
-		Kit(Player1,GODTALOS)
-		Global("OHTalosOverride","GLOBAL",1)
-	OR(6)
-		Class(Player1,CLERIC)
-		Class(Player1,FIGHTER_CLERIC)
-		Class(Player1,CLERIC_MAGE)
-		Class(Player1,CLERIC_THIEF)
-		Class(Player1,FIGHTER_MAGE_CLERIC)
-		Class(Player1,CLERIC_RANGER)
-	!Kit(Player1,GODLATHANDER)
-	!Kit(Player1,GODHELM)
+  Global("OHLathanderOverride","GLOBAL",0)
+  Global("OHHelmOverride","GLOBAL",0)
+  Global("GaalSpoke","AR0900",1)  // Temple District
+  OR(5)
+    Alignment(Player1,CHAOTIC_NEUTRAL)
+    Alignment(Player1,NEUTRAL_EVIL)
+    Alignment(Player1,CHAOTIC_EVIL)
+    Kit(Player1,GODTALOS)
+    Global("OHTalosOverride","GLOBAL",1)
+  Class(Player1,CLERIC_ALL)
+  !Kit(Player1,GODLATHANDER)
+  !Kit(Player1,GODHELM)
 THEN
-	RESPONSE #100
-		Wait(2)
-		CreateCreature("bhnalla",[3077.1630],4)  // Stormherald Nallabir
-		SetGlobal("EvilMask","AR0900",1)  // Temple District
-		SetGlobal("GaalSpoke","AR0900",2)  // Temple District
+  RESPONSE #100
+    Wait(2)
+    CreateCreature("bhnalla",[3077.1630],4)  // Stormherald Nallabir
+    SetGlobal("EvilMask","AR0900",1)  // Temple District
+    SetGlobal("GaalSpoke","AR0900",2)  // Temple District
 END
 
 IF
-	Global("GaalSpoke","AR0900",1)  // Temple District
-	!Class(Player1,CLERIC)
-	!Class(Player1,FIGHTER_CLERIC)
-	!Class(Player1,CLERIC_MAGE)
-	!Class(Player1,CLERIC_THIEF)
-	!Class(Player1,FIGHTER_MAGE_CLERIC)
-	!Class(Player1,CLERIC_RANGER)
+  Global("GaalSpoke","AR0900",1)  // Temple District
+  !Class(Player1,CLERIC_ALL)
 THEN
-	RESPONSE #100
-		Wait(2)
-		CreateCreature("bhoisig",[3077.1630],4)  // High Watcher Oisig
-		SetGlobal("NeutralMask","AR0900",1)  // Temple District
-		SetGlobal("GaalSpoke","AR0900",2)  // Temple District
+  RESPONSE #100
+    Wait(2)
+    CreateCreature("bhoisig",[3077.1630],4)  // High Watcher Oisig
+    SetGlobal("NeutralMask","AR0900",1)  // Temple District
+    SetGlobal("GaalSpoke","AR0900",2)  // Temple District
 END
