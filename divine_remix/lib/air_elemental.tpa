@@ -30,20 +30,20 @@ ACTION_IF !FILE_EXISTS_IN_GAME cddrair1.eff BEGIN // if the spell doesn't exist
       LPF DELETE_EFFECT INT_VAR match_opcode = 165 END // removing the mental combat visual effect for priest
       LPF DELETE_EFFECT INT_VAR match_opcode = 215 END // removing the mental combat visual effect for priest
       LPF DELETE_EFFECT INT_VAR match_opcode = 142 END // removing the mental combat visual effect for priest
-      LPF ALTER_EFFECT INT_VAR silent = 1 match_power = 6 power = 7 END
       LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair1 resource = EVAL ~cddrair1~ END // change elemental calls
       LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair2 resource = EVAL ~cddrair2~ END // change elemental calls
       LPF ALTER_EFFECT INT_VAR match_opcode = 177 STR_VAR match_resource = spair3 resource = EVAL ~cddrair3~ END // change elemental calls
-    END  
-    PATCH_FOR_EACH offset IN 0x50 BEGIN
-      READ_LONG ~%offset%~ desc_strref
-      PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
-        READ_STRREF ~%offset%~ desc
-        INNER_PATCH_SAVE desc ~%desc%~ BEGIN
-          REPLACE_TEXTUALLY ~%level_match%~ ~\1 7%LNL%%sphere_text% %sphere_ea%~ // change level in description to 7, add sphere line
+    END ELSE BEGIN
+      PATCH_FOR_EACH offset IN 0x50 BEGIN
+        READ_LONG ~%offset%~ desc_strref
+        PATCH_IF (desc_strref >= 0 && desc_strref < 2147483646) BEGIN
+          READ_STRREF ~%offset%~ desc
+          INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+            REPLACE_TEXTUALLY ~%level_match%~ ~\17%LNL%%sphere_text% %sphere_ea%~ // change level in description to 7, add sphere line
+          END
         END
-      END
-      SAY_EVALUATED offset ~%desc%~
+        SAY_EVALUATED offset ~%desc%~
+      END  
     END
 
   // Cretaing the new creatures to remove the mental combat script for priest
