@@ -77,10 +77,15 @@ END ELSE BEGIN
 
   ACTION_IF game_includes_tob THEN BEGIN
 
-    COPY ~Divine_Remix/spl/a#sha71.spl~ ~override~  // Shar's Curse
+    LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi509 destination = ~a#sha71~ RET_ARRAY cd_clone_spell_array END // Feeblemind
+    COPY_EXISTING ~a#sha71.spl~ ~override~  // Shar's Curse
       SAY NAME1 @10604
       SAY NAME2 @10604
       SAY UNIDENTIFIED_DESC @10605
+      SAY DESC @10605
+      WRITE_ASCII 0x3a ~sppr113b~ #8
+      LPF ALTER_HEADER INT_VAR speed = 3 projectile = 181 STR_VAR icon = sppr113b END // faster, small AoE
+      LPF ALTER_EFFECT INT_VAR power = 0 savebonus = "-4" END // up save penalty, fix power
       
   END
 
