@@ -31,6 +31,12 @@ END ELSE BEGIN
   LAF cd_clone_spell_bulk INT_VAR make_divine = 1 STR_VAR source = spwi301 destination = ~a#re0d~ RET_ARRAY cd_clone_spell_array END // Clairvoyance (spell)
   LAF cd_clone_spell_bulk INT_VAR make_divine = 1 STR_VAR source = spwi425 destination = ~a#re0e~ RET_ARRAY cd_clone_spell_array END // Wizard Eye (spell)
 
+  COPY_EXISTING ~a#re0c.spl~ ~override~
+                ~a#re0d.spl~ ~override~
+                ~a#re0e.spl~ ~override~
+    WRITE_LONG 0x1e 0 // remove exclusion flags, if any
+    BUT_ONLY
+
   // change spells to innates as needed
   LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr406 destination = ~a#re09~ RET_ARRAY cd_clone_spell_array END // defensive harmony
   LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr514 destination = ~a#re11~ RET_ARRAY cd_clone_spell_array END // mass cure
