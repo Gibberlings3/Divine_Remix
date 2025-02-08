@@ -102,20 +102,15 @@ INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
+LAF cd_stronghold_junk STR_VAR kit = nmsune END 
 
-  EXTEND_TOP ~ar0900.bcs~   ~Divine_Remix/baf/sune_ar0900.baf~
-  EXTEND_TOP ~ar0902.bcs~   ~Divine_Remix/baf/sune_ar0902.baf~
-  COMPILE ~Divine_Remix/dlg/sune.d~
-
-END
 /////                                                  \\\\\
 ///// assign kits                                      \\\\\
 /////                                                  \\\\\
 
 OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~NMSUNE~)) // sune
 OUTER_SPRINT kitname @12413 // ~Heartwarder~
-ACTION_FOR_EACH cre IN isnfxps /*YxYve1*/ BEGIN
+ACTION_FOR_EACH cre IN isnfxps /*yxyve1*/ BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
     LPF cd_assign_kit_to_cre END
@@ -123,7 +118,7 @@ ACTION_FOR_EACH cre IN isnfxps /*YxYve1*/ BEGIN
 
 END
 
-ACTION_IF FILE_EXISTS_IN_GAME ~YxYve1.cre~ THEN BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~yxyve1.cre~ THEN BEGIN
 
   COPY_EXISTING ~yxyve.bcs~  ~override~
     DECOMPILE_AND_PATCH BEGIN
@@ -132,7 +127,7 @@ ACTION_IF FILE_EXISTS_IN_GAME ~YxYve1.cre~ THEN BEGIN
     END
     BUT_ONLY
 
-  COPY_EXISTING ~YxYv25.bcs~ ~override~
+  COPY_EXISTING ~yxyv25.bcs~ ~override~
     DECOMPILE_AND_PATCH BEGIN
       REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~LevelGT(Myself,22)~ ~HasItem("NMSUHLY",Myself)~
       REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~GiveItemCreate("YxSymb",Myself,0,0,0)~
