@@ -1,13 +1,19 @@
 ACTION_IF game_includes_tob THEN BEGIN
 
-  COPY ~Divine_Remix/spl/a#tem71.spl~ ~override~  // Tempus' Shield
+  LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi907 destination = ~a#tem71~ RET_ARRAY cd_clone_spell_array END // absolute immunity
+
+  COPY_EXISTING ~a#tem71.spl~ ~override~  // Tempus' Shield
     SAY NAME1 @10912
     SAY NAME2 @10912
     SAY UNIDENTIFIED_DESC @10913
     SAY DESC @10913
+    LPF DELETE_EFFECT INT_VAR match_opcode = 139 END // remove 'Protected by Absolute Immunity' string
+    LPF ALTER_EFFECT INT_VAR match_power = 9 power = 0 END
+    LPF ALTER_HEADER INT_VAR speed = 1 END 
 
 END
 
+COPY ~divine_remix/bam/cditmpus.bam~ ~override~
 OUTER_SPRINT hw_name @10903
 OUTER_SPRINT hw_desc @10904
 LAF cd_dr_holy_weapon STR_VAR item = ~a#tem0~ name = EVAL ~%hw_name%~ desc = EVAL ~%hw_desc%~ END

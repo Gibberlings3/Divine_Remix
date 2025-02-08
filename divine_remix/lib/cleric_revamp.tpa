@@ -40,6 +40,7 @@ COPY ~Divine_Remix/spl/cdtldst.spl~ ~override~ // destructive blow
   SAY NAME2 @10169
   SAY UNIDENTIFIED_DESC @10170
   SAY DESC @10170
+  LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 0 step_dur = 6 level_cap = dr_level_cap END // 1 round/level
      
 /////                                                  \\\\\
 ///// holy weapons                                     \\\\\

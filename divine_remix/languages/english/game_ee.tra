@@ -229,6 +229,19 @@ Damage: 2d4 (cold)
 
 Weight: 0~
 
+@10913 =~Tempus' Shield 
+(Abjuration)
+
+Level: Quest
+Sphere: Combat
+Range: 0
+Duration: 4 rounds
+Casting Time: 1
+Area of Effect: Caster
+Saving Throw: None
+
+Calling upon Tempus for endurance in adversity, the Battleguard becomes protected from most physical harm. When the spell is cast, it confers complete invulnerability to all weapons except for those of greater than +5 enchantment. This spell is incredibly powerful, hence the short duration. However the casting time is also very short making this spell incredibly useful in the thick of combat where buying a few seconds can mean the difference between life or death. This spell lasts for the duration or until dispelled.~
+
 @11206 = ~Endurance of Ilmater
 (Necromancy)
 
