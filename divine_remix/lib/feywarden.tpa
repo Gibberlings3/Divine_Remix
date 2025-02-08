@@ -80,7 +80,6 @@ LAF cd_aoe_compat INT_VAR column = (22 + "%A#FEYWARDEN%") pips = 2 END
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
   COPY ~divine_remix/bam/a#feyhly.bam~ ~override~ // holy symbol
-       ~divine_remix/itm/a#feyhly.itm~ ~override~
   LAF cd_create_holy_symbol
   INT_VAR
     name = RESOLVE_STR_REF(@12707)
