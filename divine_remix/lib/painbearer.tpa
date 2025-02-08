@@ -10,15 +10,23 @@ COPY ~divine_remix/spl/cdilend.spl~  ~override~
   SAY NAME2 @11205
   SAY UNIDENTIFIED_DESC @11206
   SAY DESC @11206
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 match_parameter1 = 39752 parameter1 = RESOLVE_STR_REF(@217) END // Stricken by a foul disease
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 match_parameter1 = 54337 parameter1 = RESOLVE_STR_REF(@218) END // Diseased
+  LPF ALTER_EFFECT INT_VAR silent = 1 match_opcode = 267 match_parameter1 = 14007 parameter1 = RESOLVE_STR_REF(@219) END // Panic
   PATCH_IF enhanced_edition BEGIN
-    LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 39752 parameter1 = RESOLVE_STR_REF(@217) END // Stricken by a foul disease
-    LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 54337 parameter1 = RESOLVE_STR_REF(@218) END // Diseased
-    LPF ALTER_EFFECT INT_VAR match_opcode = 267 match_parameter1 = 14007 parameter1 = RESOLVE_STR_REF(219) END // Panic
     LPF CLONE_EFFECT INT_VAR match_opcode = 161 opcode = 321 STR_VAR resource = spin105 insert = first END // remove horror (innate)
     LPF CLONE_EFFECT INT_VAR match_opcode = 161 opcode = 321 STR_VAR resource = spwi205 insert = first END // remove horror (arcane)
     LPF CLONE_EFFECT INT_VAR match_opcode = 101 match_parameter2 = 24 opcode = 328 parameter2 =  67 special = 1 END // set spell state: buff_pro_effects
     LPF CLONE_EFFECT INT_VAR match_opcode = 101 match_parameter2 = 24 opcode = 328 parameter2 = 106 special = 1 END // set spell state: resist_fear
   END
+  LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 6 step_dur = 6 level_cap = dr_level_cap END // 1 round + 1 round/level
+  
+COPY_EXISTING ~spcl211.spl~ ~override~
+  LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 0 step_dur = 0 level_cap = 50 END // extend healing to l50
+  READ_SHORT 0x68 abil_num // should be dr_level_cap, but be safe
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN 
+    LPF ALTER_EFFECT INT_VAR header = index match_opcode = 17 parameter1 = ((index + 1) * 2) END // heal 2 hp/level
+  END   
 
 ACTION_IF cd_dr_conventional BEGIN 
 
@@ -101,14 +109,7 @@ END
 ///// Stronghold fixes                                 \\\\\
 /////                                                  \\\\\
 
-ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
-
-  EXTEND_TOP ~ar0900.bcs~   ~divine_remix/baf/ilmater_ar0900.baf~
-  EXTEND_TOP ~ar0901.bcs~   ~divine_remix/baf/ilmater_ar0901.baf~
-  EXTEND_TOP ~ar0902.bcs~   ~divine_remix/baf/ilmater_ar0902.baf~
-  COMPILE ~divine_remix/dlg/ilmater.d~
-
-END
+LAF cd_stronghold_junk STR_VAR kit = cdilmatr END 
 
 /////                                                  \\\\\
 ///// assign kits                                      \\\\\
@@ -116,7 +117,7 @@ END
 
 OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~CDILMATR~)) // talos
 OUTER_SPRINT kitname @11214 // ~Painbearer~
-ACTION_FOR_EACH cre IN _priilm _priilmu priilm priilmu slilmat wilmat s#ilmat1 ja#pill1 BEGIN
+ACTION_FOR_EACH cre IN _priilm _priilmu priilm priilmu slilmat wilmat s#ilmat1 ja#pill1 ferg gus calliana egenia BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
     LPF cd_assign_kit_to_cre END
