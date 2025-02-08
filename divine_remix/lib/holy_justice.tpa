@@ -1,9 +1,16 @@
+OUTER_SET hj_clone = 0
+
 // divine favor
 COPY ~divine_remix/spl/cdtyr11.spl~ ~override~
   SAY NAME1 @13304
   SAY NAME2 @13304
   SAY 0x50 @13305
   SAY 0x54 @13305
+  LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 12 step_dur = 0 step_size = 3 level_cap = dr_level_cap END // perm duration
+  READ_SHORT 0x68 abil_num // should be dr_level_cap, but be safe
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN 
+    LPF ALTER_EFFECT INT_VAR header = index match_parameter1 = 1 parameter1 = (index + 1) END
+  END   
   
 // if exaltation exists, use it; otherwise copy our own
 OUTER_SET clone_exaltation = 1
@@ -18,6 +25,7 @@ ACTION_CLEAR_ARRAY cd_clone_spell_array // do this once
 
 ACTION_IF clone_exaltation BEGIN
 
+  OUTER_SET hj_clone = 1
   LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = EVAL ~%spell_res%~ destination = cdtyr9 RET_ARRAY cd_clone_spell_array END // chaos
   
 END ELSE BEGIN
@@ -52,6 +60,7 @@ END ELSE BEGIN
     
   OUTER_SPRINT kit_help @13310
 
+  OUTER_SET hj_clone = 1
   INCLUDE ~divine_remix/lib/holy_justice_common.tpa~
   
 END
@@ -95,8 +104,10 @@ ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
 END
 
-PRINT @3
-INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
+ACTION_IF  hj_clone BEGIN
+  PRINT @3
+  INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
+END
 
 /////                                                  \\\\\
 ///// Stronghold fixes                                 \\\\\
@@ -104,7 +115,7 @@ INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
 ACTION_IF game_includes_soa THEN BEGIN // temple stronghold stuff
 
-  COMPILE ~divine_remix/dlg/holy_justice.d~
+  COMPILE ~divine_remix/dlg/cdtyr.d~
 
 END
 
