@@ -591,6 +591,11 @@ COPY ~divine_remix/spl/nmrnbs2.spl~ ~override~ // Steady Shot
   SAY NAME2 @40306
   SAY UNIDENTIFIED_DESC  @40307
   SAY DESC  @40307
+  LPF CD_EXTEND-O-MATIC INT_VAR base_dur = 20 step_dur = 0 step_size = 4 min_lev_alt = 4 level_cap = dr_level_cap END // extend to cap
+  READ_SHORT 0x68 abil_num // should be dr_level_cap, but be safe
+  FOR (index = 0 ; index < abil_num ; ++index) BEGIN 
+    LPF ALTER_EFFECT INT_VAR header = index match_parameter1 = 1 parameter1 = (index + 1) END // +1 per 4 levels
+  END   
 
 COPY ~divine_remix/spl/nmrnbs3.spl~ ~override~ // Speed Shot
   SAY NAME1 @40304

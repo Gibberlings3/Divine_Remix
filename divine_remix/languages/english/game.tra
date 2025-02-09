@@ -1286,8 +1286,10 @@ Disadvantages:
 Advantages:
 - +1 THAC0 and damage with any missile weapon for every three levels of experience, slowing to every five levels once the bowslinger reaches 18th level
 - Can achieve high mastery (four points) in bows
-- May use the 'Steady Shot' ability once a day per four levels (starting at 4th level).  When the bowslinger activates this ability, any shot made within the next 20 seconds gains +1 to both THAC0 and damage for every four levels of experience
-- May use the 'Speed Shot' ability once a day per eight levels (starting at 8th level).  When the bowslinger activates this ability, he makes one extra attack per round for five rounds
+- May use the 'Steady Shot' ability once a day per four levels (starting at 4th level).
+STEADY SHOT: When the bowslinger activates this ability, any shot made within the next 20 seconds gains +1 to both THAC0 and damage for every four levels of experience
+- May use the 'Speed Shot' ability once a day per eight levels (starting at 8th level).
+SPEED SHOT: When the bowslinger activates this ability, he makes one extra attack per round for five rounds
 - May cast 'Detect Invisibility' once a day per six levels (starting at 6th level)
 
 Disadvantages:
@@ -1295,8 +1297,8 @@ Disadvantages:
 - Does not gain 'Charm Animal' as an innate ability
 - -1 to damage with any melee weapon
 - Can only become proficient (one point) in long swords, short swords and daggers
-- Can not even be proficient in any other melee weapon
-- Cannot wear any metal armor~
+- Can not be proficient in any other melee weapon
+– May only wear leather, studded leather, and hide armor~
 @40304 = ~Speed Shot~
 @40305 = ~When the bowslinger activates this ability, he makes one extra attack per round for five rounds.~
 @40306 = ~Steady Shot~
