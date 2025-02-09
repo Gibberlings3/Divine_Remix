@@ -14,6 +14,7 @@ ACTION_IF cd_dr_conventional BEGIN
     REPLACE_TEXTUALLY ~KITBIL1~ ~a#re07 ~ // haste as 1/5
     REPLACE_TEXTUALLY ~GA_KITBIL2~ ~****   ~ // nothing as 1/10
     SET_2DA_ENTRY 2 14 50 ~AP_a#re0b~     // extra attack
+    REPLACE_TEXTUALLY ~cdusec0~ ~cdusek0~ // special usability
     PATCH_IF !game_includes_tob THEN BEGIN
       REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
     END

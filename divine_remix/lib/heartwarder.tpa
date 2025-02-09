@@ -24,6 +24,7 @@ ACTION_IF cd_dr_conventional BEGIN
   COPY ~divine_remix/2da/generic.2da~ ~override/nmsune.2da~
     REPLACE_TEXTUALLY ~KITBIL1~ ~nmsun07~ // emotion as 1/5
     REPLACE_TEXTUALLY ~KITBIL2~ ~cdsune2~ // Veil of Djalice as 1/10
+    REPLACE_TEXTUALLY ~cdusec0~ ~cdusek1~ // special usability
     PATCH_IF !game_includes_tob THEN BEGIN
       REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
     END

@@ -48,6 +48,7 @@ ACTION_IF cd_dr_conventional BEGIN
   COPY ~divine_remix/2da/generic.2da~ ~override/CDTYR.2da~
     REPLACE_TEXTUALLY ~KITBIL1~ ~cdtyr9 ~ // exaltation
     REPLACE_TEXTUALLY ~KITBIL2~ ~cdtyr11~ // holy power
+    REPLACE_TEXTUALLY ~cdusec0~ ~cdusek2~ // special usability
     PATCH_IF !game_includes_tob THEN BEGIN
       REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
     END

@@ -19,6 +19,7 @@ ACTION_IF cd_dr_conventional BEGIN
   COPY ~divine_remix/2da/generic.2da~ ~override/a#cyric.2da~
     REPLACE_TEXTUALLY ~KITBIL1~ ~SPCL423~ // poison weapon as 1/5
     REPLACE_TEXTUALLY ~KITBIL2~ ~a#cyr07~ // dread blast as 1/10
+    REPLACE_TEXTUALLY ~cdusec0~ ~cdusek2~ // special usability
     PATCH_IF !game_includes_tob THEN BEGIN
       REPLACE_TEXTUALLY ~AP_CDHLYSYM~ ~****       ~
     END

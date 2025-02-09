@@ -1449,3 +1449,24 @@ If the Wilderness Runner harms or attempts to harm the charmed animal, the charm
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 @61001 =~Bring me Viconia, the drow Nightcloak of Shar.~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// usability stuff                                  \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+@300000 = ~Alternative Item Usability Scheme for Cleric Kits~
+@300001 = ~Clerics cannot use this item~
+@300002 = ~^Disadvantages:~
+@300003 = ~^\(Abilities\|Advantages\):~
+@300004 = ~– Can use long swords~
+@300005 = ~– Can use long and bastard swords~
+@300006 = ~– Can use any weapon available to rangers~
+@300007 = ~– Can use darts~
+@300008 = ~– Cannot wear armor~
+@300009 = ~– Cannot wear armor heavier than chain~
+@300010 = ~– Cannot wear armor heavier than splint or use shields~
+@300011 = ~– None~
