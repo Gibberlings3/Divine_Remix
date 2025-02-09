@@ -804,6 +804,7 @@ LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr103 destina
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr111 destination = ~a#justaf~ RET_ARRAY cd_clone_spell_array END // armour of faith
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = spwi209 destination = ~a#justlu~ RET_ARRAY cd_clone_spell_array END // luck
 LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr108 destination = ~a#justrf~ RET_ARRAY cd_clone_spell_array END // remove fear
+LAF cd_clone_spell_bulk INT_VAR make_innate = 1 STR_VAR source = sppr214 destination = ~a#justhm~ RET_ARRAY cd_clone_spell_array END // duhm
 PRINT @3
 INCLUDE ~divine_remix/lib/cd_clone_spell_bulk_last.tpa~
 
