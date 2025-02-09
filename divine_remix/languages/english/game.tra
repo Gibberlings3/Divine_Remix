@@ -1362,7 +1362,7 @@ Advantages:
 - May use the 'Inspire' ability once a day per six levels (starting at 1st level).  This unique ability boosts the morale and attack rolls of the Forest Runner's companions for 3 rounds.
 
 Disadvantages:
-- May not wear any metallic armor
+- May only wear leather, studded leather, and hide armor
 - Can only become proficient (one point) in axes, two-handed swords, warhammers, and crossbows~
 @40904 = ~Inspire~
 @40905 = ~Inspired~
