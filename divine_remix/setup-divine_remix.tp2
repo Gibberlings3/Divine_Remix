@@ -842,6 +842,7 @@ LAF fl#add_kit_ee
   STR_VAR
     kit_name = ~nmrnwlrn~
     clascolr = ~35 67 67 25 80~
+    thiefscl = "0 0 0 100 100 0 100 0" // allow set traps
 END
 
 COPY_EXISTING ~spcl311.spl~ ~override/nmrnwr1.spl~ // 'Enhanced Charm Animal' innate
