@@ -436,7 +436,7 @@ COPY_EXISTING ~jahei14.cre~ ~override~
   READ_LONG  0x2c0 itm_num
   FOR (index = 0 ; index < itm_num ; ++index) BEGIN
     READ_ASCII (itm_off + (0x14 * index)) item
-    PATCH_IF (item STRING_COMPARE_CASE chan08 = 0) BEGIN
+    PATCH_IF ("%item%" STRING_COMPARE_CASE "chan08" = 0) BEGIN
       WRITE_ASCII (itm_off + (0x14 * index)) plat06 #8
     END
   END
@@ -448,7 +448,7 @@ INCLUDE ~divine_remix/lib/comp_2410.tpa~ // Druids Use 3e Alignment Restrictions
 PRINT @3
 COPY_EXISTING_REGEXP GLOB ~^.+\.itm$~ ~override~
   READ_BYTE 0x1c type ELSE 0
-  PATCH_IF ((type = 2) OR ((type > 59) AND (type < 68))) BEGIN // any armor
+  PATCH_IF ((type = 2) OR ((type >= 59) AND (type <= 68))) BEGIN // any armor
     READ_LONG  0x1e use
     PATCH_IF ((use BAND BIT30) = BIT30) BEGIN // if unusable by druids...
       WRITE_LONG 0x1e (THIS BOR BIT12)        // adds f/d flag
