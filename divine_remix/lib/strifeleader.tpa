@@ -1,3 +1,4 @@
+OUTER_SPRINT cyric_poison_weapon @13029 // EEs change what assassin poison does, so have to fork description
 ACTION_IF game_is_iwdee BEGIN
   OUTER_SET bio = RESOLVE_STR_REF(@13011)
 END
@@ -46,7 +47,6 @@ END ELSE BEGIN
     
 END
 
-OUTER_SPRINT cyric_poison_weapon @13029 // EEs change what assassin poison does, so have to fork description
 ADD_KIT ~A#CYRIC~
   ~A#CYRIC                  0           0           1           1           0           1           0           0~
   ~A#CYRIC 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
