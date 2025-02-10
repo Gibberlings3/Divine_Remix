@@ -546,7 +546,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 67 67 25 80~
 END
 
-LAF cd_aoe_compat INT_VAR column = (22 + "%A#OOZE%") END
+LAF cd_aoe_compat END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -997,6 +997,7 @@ INCLUDE ~divine_remix/lib/hla.tpa~
 BEGIN @300000 DESIGNATED 3000
 GROUP @21
 REQUIRE_PREDICATE GAME_IS ~bgee bg2ee iwdee eet~ @16
+REQUIRE_PREDICATE !FILE_EXISTS_IN_GAME ~j#aoev22.txt~ @16 // if Ashes of Embers is installed
 LABEL ~cd_dr_usabilities~
 
 INCLUDE ~divine_remix/lib/usability.tpa~

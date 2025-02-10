@@ -318,17 +318,21 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~j#aoev22.txt~ THEN BEGIN // if Ashes of Embers is installed
 
   DEFINE_ACTION_FUNCTION cd_aoe_compat
-    INT_VAR column = "-1"
-            pips   = 1
+    INT_VAR pips   = 1
+            ranged = 1 // include ranged weapons
+            styles = 1 // include weapon styles
   BEGIN
 
     COPY_EXISTING ~weapprof.2da~ ~override~
-      FOR (row = 2; row < (45 - (10 * pips)) ; row = row + 1) BEGIN // go to row 35 if pips = 1, 25 if pips = 2
-        SET_2DA_ENTRY_LATER ~aoe~ row column ~%pips%~
+      COUNT_2DA_COLS cols // since we also invoke this after a kit is installed, we know it's the last column
+      FOR (row = 1; row < (31 + (4 * styles)) ; ++row) BEGIN // go to row 34 if we include weapon styles
+        PATCH_IF ((row < 26) OR (row > 30) OR (ranged = 1)) BEGIN // exlcude rows 26-30 for non-ranged kits
+          SET_2DA_ENTRY_LATER ~aoe~ row (cols - 1) ~%pips%~
+        END  
       END
-      PATCH_IF pips = 2 BEGIN
-        SET_2DA_ENTRY_LATER ~aoe~ 4 column ~0~
-        SET_2DA_ENTRY_LATER ~aoe~ 9 column ~0~
+      PATCH_IF !ranged BEGIN
+        SET_2DA_ENTRY_LATER ~aoe~  5 (cols - 1) ~0~
+        SET_2DA_ENTRY_LATER ~aoe~ 10 (cols - 1) ~0~
       END
       SET_2DA_ENTRIES_NOW ~aoe~ 1
       BUT_ONLY

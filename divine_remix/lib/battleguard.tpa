@@ -48,7 +48,7 @@ LAF fl#add_kit_ee
     clswpbon = ~1 0 3~
 END
 
-LAF cd_aoe_compat INT_VAR column = (22 + "%A#TEMP%") pips = 2 END
+LAF cd_aoe_compat INT_VAR pips = 2 ranged = 0 END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 

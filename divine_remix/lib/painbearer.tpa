@@ -84,7 +84,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 67 67 25 80~
 END
 
-LAF cd_aoe_compat INT_VAR column = (22 + "%CDILMATR%") END
+LAF cd_aoe_compat END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 

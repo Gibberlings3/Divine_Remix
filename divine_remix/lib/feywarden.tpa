@@ -76,7 +76,7 @@ LAF fl#add_kit_ee
     clascolr = ~35 21 57 25 80~
 END
 
-LAF cd_aoe_compat INT_VAR column = (22 + "%A#FEYWARDEN%") pips = 2 END
+LAF cd_aoe_compat INT_VAR pips = 2 styles = 0 END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 

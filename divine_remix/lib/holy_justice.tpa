@@ -84,7 +84,7 @@ ADD_KIT ~CDTYR~
   SAY @10148
   SAY ~%kit_help%~
 
-LAF cd_aoe_compat INT_VAR column = (22 + "%CDTYR%") END
+LAF cd_aoe_compat END
 
 ACTION_IF game_includes_tob THEN BEGIN // holy symbols
 
