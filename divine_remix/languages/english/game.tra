@@ -1460,7 +1460,6 @@ If the Wilderness Runner harms or attempts to harm the charmed animal, the charm
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
-@300000 = ~Alternative Item Usability Scheme for Cleric Kits~
 @300001 = ~Clerics cannot use this item~
 @300002 = ~^Disadvantages:~
 @300003 = ~^\(Abilities\|Advantages\):~

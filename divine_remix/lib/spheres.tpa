@@ -20,9 +20,8 @@ END
 ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
 
   ACTION_IF FILE_EXISTS_IN_GAME ~%table%.2da~ THEN BEGIN
-
-    COPY ~divine_remix/spheres/template.2da~ ~weidu_external/divine_remix/spheres/%class%.2da~
-
+    
+    ACTION_CLEAR_ARRAY cd_spell_avail
     COPY_EXISTING ~%table%.2da~ ~override~
       FOR (index = 1 ; index < 8 ; ++index) BEGIN
         COUNT_2DA_ROWS (index + 1) rows
@@ -31,18 +30,18 @@ ACTION_PHP_EACH cd_table_lookups AS class => table BEGIN
           READ_2DA_ENTRY index2 index (index + 1) val
           PATCH_IF (val > 0) BEGIN
             READ_2DA_ENTRY index2 0 (index + 1) level
+            SET $cd_spell_avail("CDREPLACE%index%") = level
             SET index2 = rows // kill loop
-            INNER_ACTION BEGIN
-
-              COPY ~weidu_external/divine_remix/spheres/%class%.2da~ ~weidu_external/divine_remix/spheres/%class%.2da~
-                SET_2DA_ENTRY 0 level 50 ~CDREPLACE%index%~
-
-            END
           END
         END
       END
       BUT_ONLY
 
+    COPY ~divine_remix/spheres/template.2da~ ~weidu_external/divine_remix/spheres/%class%.2da~
+      PATCH_PHP_EACH cd_spell_avail AS entry => level BEGIN
+        SET_2DA_ENTRY 0 level 50 ~%entry%~
+      END  
+      
   END
 
 END
@@ -52,28 +51,6 @@ ACTION_IF NOT FILE_EXISTS ~weidu_external/divine_remix/spheres/druid.2da~ THEN B
   COPY ~weidu_external/divine_remix/spheres/cleric.2da~ ~weidu_external/divine_remix/spheres/druid.2da~
 
 END
-
-/////                                                  \\\\\
-///// clerics get an extra spell for levels 4-7        \\\\\
-/////                                                  \\\\\
-
-COPY ~divine_remix/spl/cdvngn4.spl~  ~override~
-
-COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn5.spl~     // adds lvl 5 spell slot for non-kit priests
-  WRITE_LONG 0xA2 16
-
-COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn6.spl~     // adds lvl 6 spell slot for non-kit priests
-  WRITE_LONG 0xA2 32
-
-COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn7.spl~     // adds lvl 7 spell slot for non-kit priests
-  WRITE_LONG 0xA2 64
-
-COPY_EXISTING ~clabpr01.2da~ ~override~
-  LAUNCH_PATCH_MACRO ~remove_blank_lines_from_eof~ // remove eof blank lines
-  APPEND_FILE ~weidu_external/divine_remix/spheres/cleric.2da~
-  REPLACE_TEXTUALLY ~CDREPLACE\([4-7]\)~ ~AP_CDVNGN\1~
-  REPLACE_TEXTUALLY ~CDREPLACE[1-3]~     ~**** ~
-  //LAUNCH_PATCH_MACRO ~reindex_clab~ // get ABLITYx in order
 
 /////                                                  \\\\\
 ///// create sphere clab templates, spells             \\\\\

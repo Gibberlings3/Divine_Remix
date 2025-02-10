@@ -1,4 +1,45 @@
 /////                                                  \\\\\
+///// clerics get an extra spell for levels 4-7        \\\\\
+/////                                                  \\\\\
+
+COPY_EXISTING ~mxsplprs.2da~ ~override~
+  FOR (index = 4 ; index < 8 ; ++index) BEGIN
+    COUNT_2DA_ROWS (index + 1) rows
+    FOR (index2 = 1 ; index2 < rows ; ++index2) BEGIN
+      READ_2DA_ENTRY index2 index (index + 1) val
+      PATCH_IF (val > 0) BEGIN
+        READ_2DA_ENTRY index2 0 (index + 1) level
+        SET $cd_spell_avail("AP_CDVNGN%index%") = level
+        SET index2 = rows // kill loop
+      END
+    END
+  END
+  BUT_ONLY
+
+COPY ~divine_remix/spl/cdvngn4.spl~  ~override~
+
+COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn5.spl~     // adds lvl 5 spell slot for non-kit priests
+  WRITE_LONG 0xA2 16
+
+COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn6.spl~     // adds lvl 6 spell slot for non-kit priests
+  WRITE_LONG 0xA2 32
+
+COPY_EXISTING ~cdvngn4.spl~ ~override/cdvngn7.spl~     // adds lvl 7 spell slot for non-kit priests
+  WRITE_LONG 0xA2 64
+
+COPY_EXISTING ~clabpr01.2da~ ~override~
+  LPM remove_blank_lines_from_eof // remove eof blank lines
+  LPM extend_clab_to_level_50
+  APPEND_FILE ~divine_remix/spheres/template.2da~
+  COUNT_2DA_ROWS 50 rows
+  PATCH_PRINT ~rows are %rows%~
+  PATCH_PHP_EACH cd_spell_avail AS entry => column BEGIN
+    SET_2DA_ENTRY (rows - 1) column 50 ~%entry%~
+  END  
+  LAUNCH_PATCH_MACRO ~reindex_clab~ // get ABLITYx in order
+  PRETTY_PRINT_2DA
+
+/////                                                  \\\\\
 ///// innates for bioware three                        \\\\\
 /////                                                  \\\\\
 
