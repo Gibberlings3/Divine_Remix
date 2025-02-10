@@ -965,7 +965,7 @@ COPY_EXISTING ~viconia.bcs~ ~override~
 
 BEGIN @2000 DESIGNATED 1000
 GROUP @21
-REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee iwdee eet~ @16
+//REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee iwdee eet~ @16
 LABEL ~cd_dr_spheres~
 
 OUTER_SET include_hlas = 0

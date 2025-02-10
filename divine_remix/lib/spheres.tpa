@@ -1,4 +1,25 @@
 /////                                                  \\\\\
+///// ui changes for EEs                               \\\\\
+/////                                                  \\\\\
+
+ACTION_IF enhanced_edition BEGIN
+
+  COPY ~divine_remix/lua/m_cddr1.lua~ ~override~
+  COPY_EXISTING ~ui.menu~ ~override~
+    COUNT_REGEXP_INSTANCES 
+      ~name 'CHARGEN_MEMORIZE_PRIEST'[ %TAB%%LNL%%MNL%%WNL%]+align center center[ %TAB%%LNL%%MNL%%WNL%]+ignoreesc[ %TAB%%LNL%%MNL%%WNL%]+onOpen[ %TAB%%LNL%%MNL%%WNL%]+"~
+      uiupdated
+    REPLACE_TEXTUALLY ~\(name 'CHARGEN_MEMORIZE_PRIEST'[ %TAB%%LNL%%MNL%%WNL%]+align center center[ %TAB%%LNL%%MNL%%WNL%]+ignoreesc[ %TAB%%LNL%%MNL%%WNL%]+onOpen[ %TAB%%LNL%%MNL%%WNL%]+"\)~
+      ~\1%WNL%%TAB%%TAB%B3ForceSkipPriestMemorization()~
+    BUT_ONLY  
+
+  ACTION_IF !uiupdated BEGIN
+    FAIL @22
+  END  
+
+END 
+
+/////                                                  \\\\\
 ///// create sphere framework                          \\\\\
 /////                                                  \\\\\
 
@@ -261,7 +282,7 @@ END
     
 END
 
-PRINT @3
+PRINT @6
 COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
   SET casterlevel = 0
   READ_BYTE 0x273 class
