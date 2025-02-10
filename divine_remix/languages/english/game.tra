@@ -984,7 +984,7 @@ The Shock Flail is the spiritual weapon of Heartwarders of Sune, and is wielded 
 - +1 charisma bonus maximum
 - Can cast Veil of Djalice once per day
 The Heartwarder temporarily augments <PRO_HISHER> beauty to unearthly levels, boosting effective charisma to 20 and forcing any hostiles to save vs. spell at -2 or be dire charmed for six rounds.
-- From level 7 can cast Emotion: Hoplessness once per day, as fourth level mage spell of the same name
+- From level 7 can cast Emotion: Hopelessness once per day, as fourth level mage spell of the same name
 - From level 9 can cast Flamestrike once per day, as fifth level cleric spell of the same name
 - From level 11 can cast Mislead once per day, as sixth level mage spell of the same name
 - From level 14 can cast Mantle once per day, as seventh level mage spell of the same name
@@ -1006,7 +1006,7 @@ Sune's speciality priests, known as Heartwarders of Sune, are aesthetes and hedo
 
 Advantages:
 - +1 charisma bonus maximum
-- May cast Emotion: Hoplessness once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
+- May cast Emotion: Hopelessness once per day. Gains one use at level 1 and an additional use every 5 levels thereafter.
 - May use Veil of Djalice once per day. Gains one use at level 1 and an additional use every 10 levels thereafter.
 
 VEIL OF DJALICE: The Heartwarder temporarily augments <PRO_HISHER> beauty to unearthly levels, boosting effective charisma to 20 and forcing any hostiles to save vs. spell at -2 or be dire charmed for six rounds.
@@ -1106,7 +1106,7 @@ Abilities:
 - Spiritual Weapon: Long Sword - 'Razor's Edge' once per day
 Razor's Edge is the spiritual weapon of Strifeleaders of Cyric, and is wielded as if the caster had grand mastery in the weapon. The Razor's Edge is a regular weapon at levels 1-5, +1 at levels 6-10, +2 at 11-15, +3 at 16-20, +4 at 21-25, and +5 at levels 26 and above. The spiritual weapon lasts for one round per level of the caster, up to %dr_level_cap% rounds.
 - May coat his weapon in poison once per day per 6 levels.  
-Attacks made in the next round with that weapon will inject the poison into the target, dealing out 1 damage per second for 24 seconds (3 damage for the first 6 seconds).  A saving throw vs. poison limits damage to 12 total.
+%cyric_poison_weapon%
 - From level 7 can cast Dread Blast once per day
 Fires a ray of negative energy that deals 4d8 damage +1/level (max +%dr_level_cap%) and confuses target for 1 round (save vs. spell at -2 to negate confusion)
 - From level 9 can cast Chaos once per day, as fifth level mage spell of the same name
@@ -1313,7 +1313,7 @@ Disadvantages:
 
 @40601 = ~feralan~
 @40602 = ~Feralan~
-@40603 = ~FERALAN: What happens to children who wander in the wilderness and are never recovered? Or worse, those who are abandoned there? Many succumb to the dangers of the wild, but a fortunate few are taken in by animals, raised as a part of a lion`s brood, or a wolf`s litter. Cut off from civilization, they gradually take on the characteristics of the creatures who adopted them, forming some kind of unity with the spirit of the wild. In the process they become feralans, beings who combine the savagery of beasts with the intellect of man.
+@40603 = ~FERALAN: What happens to children who wander in the wilderness and are never recovered? Or worse, those who are abandoned there? Many succumb to the dangers of the wild, but a fortunate few are taken in by animals, raised as a part of a lion's brood, or a wolf's litter. Cut off from civilization, they gradually take on the characteristics of the creatures who adopted them, forming some kind of unity with the spirit of the wild. In the process they become feralans, beings who combine the savagery of beasts with the intellect of man.
 
 Feralans cannot be Lawful Good.
 
