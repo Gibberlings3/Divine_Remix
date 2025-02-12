@@ -7,7 +7,7 @@ ALWAYS
   END
 END
 
-VERSION  ~v9 (work in progress)~
+VERSION  ~v9_Test_Build_1~
 
 README   ~divine_remix/readme-divine_remix.html~
 
@@ -99,7 +99,7 @@ LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = c END
 ///// remove cleric kits, all                          \\\\\
 /////                                                  \\\\\
 
-BEGIN @5001
+BEGIN @5001 DESIGNATED 51
 SUBCOMPONENT @5002
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
@@ -111,7 +111,7 @@ LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = c END
 ///// remove druid kits, mod                           \\\\\
 /////                                                  \\\\\
 
-BEGIN @5000
+BEGIN @5000 DESIGNATED 52
 SUBCOMPONENT @5003
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
@@ -123,7 +123,7 @@ LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = d END
 ///// remove druid kits, all                           \\\\\
 /////                                                  \\\\\
 
-BEGIN @5001
+BEGIN @5001 DESIGNATED 53
 SUBCOMPONENT @5003
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
@@ -135,7 +135,7 @@ LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = d END
 ///// remove paladin kits, mod                         \\\\\
 /////                                                  \\\\\
 
-BEGIN @5000
+BEGIN @5000 DESIGNATED 54
 SUBCOMPONENT @5004
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
@@ -147,7 +147,7 @@ LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = p END
 ///// remove paladin kits, all                         \\\\\
 /////                                                  \\\\\
 
-BEGIN @5001
+BEGIN @5001 DESIGNATED 55
 SUBCOMPONENT @5004
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
@@ -159,7 +159,7 @@ LAF cd_mkr INT_VAR remove_orig = 1 STR_VAR class = p END
 ///// remove ranger kits, mod                          \\\\\
 /////                                                  \\\\\
 
-BEGIN @5000
+BEGIN @5000 DESIGNATED 56
 SUBCOMPONENT @5005
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15
@@ -171,7 +171,7 @@ LAF cd_mkr INT_VAR remove_orig = 0 STR_VAR class = r END
 ///// remove ranger kits, all                          \\\\\
 /////                                                  \\\\\
 
-BEGIN @5001
+BEGIN @5001 DESIGNATED 57
 SUBCOMPONENT @5005
 REQUIRE_PREDICATE !GAME_IS ~bgee bg2ee eet iwdee~ @16
 GROUP @15

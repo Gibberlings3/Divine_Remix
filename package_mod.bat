@@ -6,7 +6,7 @@ call "%~dp0..\ModPackaging\utilities\ie_games.bat"
 
 REM /* MODIFY: set the values of the 3 variables below to reflect the current mod version */
 set "mod_name=The Divine Remix"
-set mod_version=v8_Beta
+set mod_version=v9_Test_Build_1
 set mod_folder=divine_remix
 
 REM /* MODIFY: list here which IE games the mod is compatible with, from this list of possibilities: */
