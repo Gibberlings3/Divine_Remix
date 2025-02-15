@@ -1,0 +1,6 @@
+COPY_EXISTING ~lu%dest_table%.2da~ ~override~
+  LPF cd_lazy_hla STR_VAR hlastring = ~GA_CDPREVD * * 1 99 16 * *          *~ END
+  // don't add tracking as an HLA if IWDification has turned it into an at-will ability
+  PATCH_IF ((!MOD_IS_INSTALLED ~iwdification.tp2~ ~110~) AND (!MOD_IS_INSTALLED ~iwdification.tp2~ ~111~)) BEGIN 
+    LPF cd_lazy_hla STR_VAR hlastring = ~GA_CDPRTRK * * 1 99  1 * GA_CDPRTRK *~ END
+  END  

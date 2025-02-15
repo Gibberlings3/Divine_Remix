@@ -1,0 +1,4 @@
+COPY_EXISTING ~lu%dest_table%.2da~ ~override~
+  LPF cd_lazy_hla STR_VAR hlastring = ~GA_CDPRDBL * * 1 99 20 * * *~ END
+  LPF cd_lazy_hla STR_VAR hlastring = ~GA_CDPRPWR * * 1 99 20 * * *~ END
+  LPF cd_lazy_hla STR_VAR hlastring = ~GA_cdxvhla * * 1 99 1 * * *~ END

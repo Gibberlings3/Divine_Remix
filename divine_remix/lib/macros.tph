@@ -1,6 +1,28 @@
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
+///// very lazy add-an-hla                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+DEFINE_PATCH_FUNCTION cd_lazy_hla
+  STR_VAR hlastring = ""
+BEGIN
+
+  SET insert = 0
+  REPLACE_EVALUATE ~^\([0-9]+[ %TAB%]+\)\(\*[ %TAB%]+.+\)~ BEGIN // find an empty row
+    PATCH_IF !insert BEGIN
+      SET insert = 1
+      SPRINT MATCH2 ~%hlastring%~
+    END
+  END ~%MATCH1%%MATCH2%~
+
+END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
 ///// hla string replace                               \\\\\
 /////                                                  \\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -518,10 +540,16 @@ BEGIN
     END
     
     COPY_EXISTING ~lu%dest_table%.2da~ ~override~
-      PATCH_IF FILE_EXISTS ~divine_remix/2da/hla_%dest_table%.2da~ BEGIN 
-        APPEND_FILE ~divine_remix/2da/hla_%dest_table%.2da~
-      END
       APPEND_FILE ~divine_remix/spheres/hla_padding.2da~
+    
+    ACTION_IF FILE_EXISTS ~divine_remix/spheres/hla_%dest_table%_extra.tpa~ BEGIN 
+      PRINT ~running divine_remix/spheres/hla_%dest_table%_extra.tpa~
+      INCLUDE ~divine_remix/spheres/hla_%dest_table%_extra.tpa~
+    END ELSE BEGIN 
+      PRINT ~not found: divine_remix/spheres/hla_%dest_table%_extra.tpa~
+    END   
+    
+    COPY_EXISTING ~lu%dest_table%.2da~ ~override~
       COUNT_2DA_ROWS 10 rows
       FOR (index = 0 ; index < rows ; ++index) BEGIN
         PATCH_IF (index < 24) BEGIN
