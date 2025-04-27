@@ -15,6 +15,7 @@ used:
   Item Upgrade, as itemupgrade/lib/alter_header.tpa [symbolic link]
   G3 Community Item Pack as g3cip/lib/alter_header.tpa [symbolic link]
   The Divine Remix, as divine_remix/lib/alter_header.tpa [symbolic link]
+  Sword and Fist, as sword_and_fist/lib/alter_header.tpa [symbolic link]
 
 platform:
   all except iwd2 and pst

@@ -14,12 +14,15 @@ more documentation here:
 https://www.gibberlings3.net/forums/topic/28835-toss-your-semi-useful-weidu-macros-here/page/13/#comment-332943
 
 used:
-  Spell-50, as spell50/lib/cd_level_select-o-matic.tpa
-  The Divine Remix, as divine_remix/lib/cd_level_select-o-matic.tpa
+  Spell-50, as spell50/lib/cd_level_select-o-matic.tpa [symbolic link]
+  The Divine Remix, as divine_remix/lib/cd_level_select-o-matic.tpa [symbolic link]
+  Sword and Fist, as sword_and_fist/lib/cd_level_select-o-matic.tpa [symbolic link]
+  SP Collection, as spstuff/lib/cd_level_select-o-matic.tpa [symbolic link]
  
 version history: 
   unk: creation of the original CD_EXTEND-O-MATIC
   12/30/23: Added level select and trim macros; expended extend; bundled together for Spell-50
+  2/6/25: fixed bug where TRIM-O-MATIC never initialized the abil_delta variable
 
 platform:
   everything except pst and iwd2
