@@ -6,19 +6,6 @@
 
 see notes in cd_clone_spell_bulk_first.tpa
 
-used:
-  P&P Celestials, as celestials/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
-  G3 Community Item Pack as g3cip/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
-  The Divine Remix, as divine_remix/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
-  Sword and Fist, as sword_and_fist/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
-  SP Collection, as spstuff/lib/cd_clone_spell_bulk_last.tpa [symbolic link]
-
-platform:
-  bg2-based engines
- 
-version history: 
-  unknown
-
 */
 
 // first section: basically anything that removes/blocks the original spell should also remove/block the cloned innate.
@@ -102,3 +89,5 @@ COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
     END
   END // end file size check
   BUT_ONLY
+  
+ACTION_CLEAR_ARRAY cd_clone_spell_array // reset the array

@@ -162,6 +162,7 @@ DEFINE_PATCH_MACRO cd_dr_spell_macro BEGIN
             END // end of php_each for params
             
             READ_LONG 0x50 desc_strref
+            READ_STRREF 0x50 desc
             PATCH_IF ("%desc%" STRING_COMPARE_REGEXP ~<Invalid Strref -?[0-9]+>~) BEGIN // checking for valid content in string
               INNER_PATCH_SAVE desc ~%desc%~ BEGIN
                 PATCH_IF ("%desc%" STRING_CONTAINS_REGEXP ~%sphere_match%~) THEN BEGIN // description lacks sphere line
