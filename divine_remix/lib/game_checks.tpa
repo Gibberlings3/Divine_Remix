@@ -18,11 +18,12 @@ original_iwd or enhanced_edition are also generated.
 
 used:
   Bullet Sponge, as cd_bs/lib/game_checks.tpa [symbolic link]
+  Project Javelin, as cd_javelins/lib/game_checks.tpa [symbolic link]
+  SP Collection, as spstuff/lib/game_checks.tpa [symbolic link]
   Spell-50, as spell50/lib/game_checks.tpa [symbolic link]
+  Sword and Fist, as sword_and_fist/lib/game_checks.tpa [symbolic link]
   The Calling, as thecalling/lib/game_checks.tpa [symbolic link]
   The Divine Remix, as divine_remix/lib/game_checks.tpa [symbolic link]
-  Sword and Fist, as sword_and_fist/lib/game_checks.tpa [symbolic link]
-  SP Collection, as spstuff/lib/game_checks.tpa [symbolic link]
 
 platform:
   all games

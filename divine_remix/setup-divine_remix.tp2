@@ -883,14 +883,127 @@ LABEL ~cd_dr_npckit_branwen~
 
 ACTION_IF MOD_IS_INSTALLED ~divine_remix.tp2~ ~109~ BEGIN 
   OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#TEMP~)) // DR's tempus
+  OUTER_SET tempus_profs = 1
 END ELSE BEGIN 
   OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~OHTEMPUS~)) // EE's tempus
+  OUTER_SET tempus_profs = 0
 END
 
 ACTION_FOR_EACH cre IN branwe branwe5 _branwe _branwe5  O#Bran o#bran25 o#branv ttbran BEGIN
 
   COPY_EXISTING ~%cre%.cre~ ~override~
-    LPF cd_assign_kit_to_cre INT_VAR name = 0 END
+    LPF cd_assign_kit_to_cre INT_VAR name = 0 RET kit_assigned END
+    // move any ranged profs into melee
+    PATCH_IF (tempus_profs = 1) AND (kit_assigned = 1) BEGIN
+      CLEAR_ARRAY branwen_profs // reset array
+      FOR (index = 89 ; index < 116 ; ++index) BEGIN 
+        SET $branwen_profs("%index%") = 0
+      END   
+      // log existing profs
+      READ_BYTE 0x033 fx_type
+      READ_LONG 0x2c4 fx_off
+      READ_LONG 0x2c8 fx_num
+      FOR (index = 0 ; index < fx_num ; ++index) BEGIN 
+        READ_SHORT (fx_off        + (0x08 * fx_type) + (index * (0x30 + (0xd8 * fx_type)))) opcode
+        PATCH_IF opcode = 233 BEGIN 
+          READ_LONG  (fx_off + 0x04 + (0x10 * fx_type) + (index * (0x30 + (0xd8 * fx_type)))) stars
+          READ_SHORT (fx_off + 0x08 + (0x10 * fx_type) + (index * (0x30 + (0xd8 * fx_type)))) prof // only capturing prof half
+          SET $branwen_profs("%prof%") = stars
+        END
+      END 
+      SET free_stars = 0
+      // first pass: remove stars from illegal profs
+      PATCH_PHP_EACH branwen_profs AS prof => stars BEGIN 
+        PATCH_IF prof != 97 AND prof != 115 AND prof != 100 AND prof != 101 AND prof != 102 AND prof != 111 AND prof != 112 AND prof != 113 AND prof != 114 BEGIN
+          SET $branwen_profs("%prof%") = 0 
+          SET free_stars += stars
+        END
+      END
+      SET modified = 0 
+      PATCH_IF free_stars > 0 BEGIN // if we do have free stars 
+        PATCH_PHP_EACH branwen_profs AS prof => stars BEGIN // first check: looking for a 1-star prof that we can bump to 2 
+          PATCH_IF free_stars > 0 BEGIN // make sure we still have some left to assign 
+            PATCH_IF ((stars = 1) AND // looking for a 1-star prof that we can bump to 2
+               (prof = 97 OR prof = 115 OR prof = 100 OR prof = 101 OR prof = 102)) BEGIN
+              SET $branwen_profs("%prof%") = 2
+              SET free_stars -= 1
+              SET modified = 1
+            END
+          END
+        END 
+      END   
+      PATCH_IF free_stars > 0 BEGIN // if we do have free stars 
+        PATCH_PHP_EACH branwen_profs AS prof => stars BEGIN // next check: maximizing existing weapon styles 
+          PATCH_IF free_stars > 0 BEGIN // make sure we still have some left to assign 
+            PATCH_IF (stars < 3) AND (prof = 114) BEGIN // do dual-wield separate since it maxes at 3
+              PATCH_IF (stars = 2) OR (free_stars > 1) BEGIN // if we can max it
+                SET $branwen_profs("%prof%") = 3
+                SET free_stars -= (3 - stars)
+                SET modified = 1
+              END ELSE BEGIN // 1 star currently and only 1 star to place
+                SET $branwen_profs("%prof%") = 2
+                SET free_stars -= 1
+                SET modified = 1
+              END   
+            END ELSE
+            PATCH_IF (stars < 2) AND ((prof > 110) AND (prof < 114)) BEGIN // other weapon styles
+              SET $branwen_profs("%prof%") = 2
+              SET free_stars -= 1
+              SET modified = 1
+            END
+          END
+        END 
+      END   
+      PATCH_IF free_stars > 1 BEGIN // if we still have free stars 
+        PATCH_FOR_EACH prof IN 97 101 100 115 102 BEGIN // next check: looking for a new melee prof that we can invest in
+          PATCH_IF $branwen_profs("%prof%") = 0 BEGIN // no existing stars
+            PATCH_IF free_stars > 1 BEGIN 
+              SET $branwen_profs("%prof%") = 2
+              SET free_stars -= 2
+              SET modified = 1
+            END ELSE BEGIN   
+              SET $branwen_profs("%prof%") = 1
+              SET free_stars -= 1
+              SET modified = 1
+            END // free stars
+          END // var is set
+        END // patch_for_each
+      END     
+      PATCH_IF free_stars > 1 BEGIN // if we still have free stars 
+        PATCH_FOR_EACH prof IN 113 114 112 111 BEGIN // next check: looking for a new melee prof that we can invest in
+          PATCH_IF $branwen_profs("%prof%") = 0 BEGIN // no existing stars
+            PATCH_IF free_stars > 1 BEGIN 
+              PATCH_IF (prof != 114) BEGIN 
+                PATCH_IF (free_stars > 1) BEGIN 
+                  SET $branwen_profs("%prof%") = 2
+                  SET free_stars -= 2
+                  SET modified = 1
+                END ELSE BEGIN   
+                  SET $branwen_profs("%prof%") = 1
+                  SET free_stars -= 1
+                  SET modified = 1
+                END // free stars
+              END ELSE BEGIN // dual wield  
+                PATCH_IF (free_stars > 2) BEGIN 
+                  SET $branwen_profs("%prof%") = 3
+                  SET free_stars -= 3
+                  SET modified = 1
+                END ELSE BEGIN // otherwise palce last stars 
+                  SET $branwen_profs("%prof%") = free_stars
+                  SET free_stars = 0
+                  SET modified = 1
+                END 
+              END // dual-wield check
+            END   
+          END // var is set
+        END // patch_for_each
+      END // final free_stats loop
+      PATCH_IF modified BEGIN // if we do have actual changes
+        PATCH_PHP_EACH branwen_profs AS prof => stars BEGIN // next check: maximizing existing weapon styles 
+          SET_BG2_PROFICIENCY "%prof%" stars
+        END 
+      END   
+    END   
     BUT_ONLY IF_EXISTS
 
 END
