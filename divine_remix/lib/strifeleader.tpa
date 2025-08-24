@@ -108,7 +108,7 @@ LAF cd_stronghold_junk STR_VAR kit = ~a#cyric~ END
 ///// assign kits                                      \\\\\
 /////                                                  \\\\\
 
-OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~%A#CYRIC%~)) // talos
+OUTER_SET kit = (IDS_OF_SYMBOL (~KIT~ ~A#CYRIC~)) // talos
 OUTER_SPRINT kitname @13028 // ~Strifeleader~
 ACTION_FOR_EACH cre IN 
   ar18prie hghprmod mvpries prcdmod prcmod slapri Z#pri1 Z#pri2 dcleric O#Tiax O#Tiax25 pptiax pptiax2 tiax tiax4 tiax6 dot#tiax lamalh bassil mulahe 
